@@ -136,6 +136,7 @@ type LootResultItem = {
   qty: number;
   kind: string;
   quality: string;
+  rollText?: string;
 };
 
 
@@ -877,6 +878,7 @@ export default function ArcaneCraftingCodexPage() {
   const [lootTableId, setLootTableId] = useState(lootTables[0]?.id || "skeleton");
   const [lootQuality, setLootQuality] = useState<LootQuality | "none" | "unrolled">("unrolled");
   const [targetLootName, setTargetLootName] = useState("random");
+  const [targetSpecificLoot, setTargetSpecificLoot] = useState(false);
   const [lootResults, setLootResults] = useState<LootResultItem[]>([]);
   const [lootCharacterId, setLootCharacterId] = useState<string>(() => characters[0].id);
   const [harvestStarted, setHarvestStarted] = useState(false);
@@ -1724,6 +1726,7 @@ export default function ArcaneCraftingCodexPage() {
     setHarvestDc(rule.dc);
     setLootQuality("unrolled");
     setTargetLootName("random");
+    setTargetSpecificLoot(false);
     setPendingLootRolls(0);
     setDoubleNextLoot(false);
     setHarvestStep("attempt");
@@ -1736,11 +1739,21 @@ export default function ArcaneCraftingCodexPage() {
     setHarvestDc(creatureTierRules[lootTier].dc);
     setLootQuality("unrolled");
     setTargetLootName("random");
+    setTargetSpecificLoot(false);
     setLootResults([]);
     setHarvestLog([]);
     setPendingLootRolls(0);
     setDoubleNextLoot(false);
     setHarvestStep("setup");
+  }
+
+  function getTargetedLootSelection(quality: LootQuality) {
+    if (!targetSpecificLoot || targetLootName === "random") return null;
+
+    const table = getLootTable(lootTableId);
+    const entry = (table.tables[quality] || []).find((item) => item.name === targetLootName);
+
+    return entry ? { entry, quality } : null;
   }
 
   function lootingAttempt() {
@@ -1749,8 +1762,9 @@ export default function ArcaneCraftingCodexPage() {
     const character = characters.find((item) => item.id === lootCharacterId) || characters[0];
     const roll = Math.floor(Math.random() * 20) + 1;
     const harvestingBonus = character?.harvesting ?? 0;
+    const baseDc = Math.min(20, harvestDc);
+    const currentDc = targetSpecificLoot ? Math.min(22, baseDc + 2) : baseDc;
     const total = roll + harvestingBonus;
-    const currentDc = Math.min(20, harvestDc);
 
     if (roll === 1) {
       const nextAttempts = Math.max(0, harvestAttemptsRemaining - 2);
@@ -1769,35 +1783,35 @@ export default function ArcaneCraftingCodexPage() {
       setLootQuality("unrolled");
       setHarvestStep("quality");
       setHarvestLog((current) => [
-        `Critical success: ${character?.name || "Harvester"} rolled Nat 20. Gain 2 loot rolls, double the first item found, and the DC stays ${currentDc}.`,
+        `Critical success: ${character?.name || "Harvester"} rolled Nat 20 vs DC ${currentDc}. Gain 2 loot rolls, double the first item found, and the DC stays ${baseDc}.${targetSpecificLoot ? " Targeted harvest active." : ""}`,
         ...current,
       ]);
       return;
     }
 
     if (total >= currentDc + 5) {
-      const nextDc = Math.min(20, currentDc + 1);
+      const nextDc = Math.min(20, baseDc + 1);
       setHarvestDc(nextDc);
       setPendingLootRolls(2);
       setDoubleNextLoot(false);
       setLootQuality("unrolled");
       setHarvestStep("quality");
       setHarvestLog((current) => [
-        `Great success: ${character?.name || "Harvester"} rolled ${roll} + ${harvestingBonus} = ${total} vs DC ${currentDc}. Gain 2 loot rolls. Next DC ${nextDc}.`,
+        `Great success: ${character?.name || "Harvester"} rolled ${roll} + ${harvestingBonus} = ${total} vs DC ${currentDc}. Gain 2 loot rolls. Next base DC ${nextDc}.${targetSpecificLoot ? " Targeted harvest active." : ""}`,
         ...current,
       ]);
       return;
     }
 
     if (total >= currentDc) {
-      const nextDc = Math.min(20, currentDc + 1);
+      const nextDc = Math.min(20, baseDc + 1);
       setHarvestDc(nextDc);
       setPendingLootRolls(1);
       setDoubleNextLoot(false);
       setLootQuality("unrolled");
       setHarvestStep("quality");
       setHarvestLog((current) => [
-        `Success: ${character?.name || "Harvester"} rolled ${roll} + ${harvestingBonus} = ${total} vs DC ${currentDc}. Gain 1 loot roll. Next DC ${nextDc}.`,
+        `Success: ${character?.name || "Harvester"} rolled ${roll} + ${harvestingBonus} = ${total} vs DC ${currentDc}. Gain 1 loot roll. Next base DC ${nextDc}.${targetSpecificLoot ? " Targeted harvest active." : ""}`,
         ...current,
       ]);
       return;
@@ -1845,6 +1859,7 @@ export default function ArcaneCraftingCodexPage() {
 
     const table = getLootTable(lootTableId);
     const quality = lootQuality === "unrolled" ? rollWeightedLootQuality(lootTier) : lootQuality;
+    const targetSelection = quality === "none" ? null : getTargetedLootSelection(quality);
 
     if (quality === "none") {
       setLootQuality("none");
@@ -1869,8 +1884,8 @@ export default function ArcaneCraftingCodexPage() {
     }
 
     const entry =
-      targetLootName !== "random"
-        ? entries.find((item) => item.name === targetLootName) || entries[0]
+      targetSelection && targetSelection.quality === quality
+        ? targetSelection.entry
         : entries[Math.floor(Math.random() * entries.length)];
 
     const baseQty = rollDiceExpression(entry.amount);
@@ -1880,6 +1895,7 @@ export default function ArcaneCraftingCodexPage() {
       qty: (Number(baseQty) || 1) * (shouldDouble ? 2 : 1),
       kind: entry.kind || "material",
       quality,
+      rollText: entry.amount ? `${entry.amount} rolled ${Number(baseQty) || 1}${shouldDouble ? " and doubled" : ""}` : undefined,
     };
 
     setLootQuality("unrolled");
@@ -1889,9 +1905,14 @@ export default function ArcaneCraftingCodexPage() {
     const remainingRolls = Math.max(0, pendingLootRolls - 1);
     setPendingLootRolls(remainingRolls);
     setDoubleNextLoot(false);
+    if (targetSelection) setTargetLootName("random");
     setHarvestStep(remainingRolls > 0 ? "quality" : "attempt");
+    const lootFoundMessage = result.rollText
+      ? `Loot found: ${result.name}. ${result.rollText}. Quantity found: ${result.qty}.`
+      : `Loot found: ${result.name}. Quantity found: ${result.qty}.`;
+
     setHarvestLog((current) => [
-      `Loot found: ${result.qty}× ${result.name}${shouldDouble ? " (doubled from critical success)" : ""}. ${remainingRolls} pending loot roll${remainingRolls === 1 ? "" : "s"} remaining.`,
+      `${lootFoundMessage} ${remainingRolls} pending loot roll${remainingRolls === 1 ? "" : "s"} remaining.`,
       ...current,
     ]);
 
@@ -2406,6 +2427,8 @@ export default function ArcaneCraftingCodexPage() {
             setLootQuality={setLootQuality}
             targetLootName={targetLootName}
             setTargetLootName={setTargetLootName}
+            targetSpecificLoot={targetSpecificLoot}
+            setTargetSpecificLoot={setTargetSpecificLoot}
             lootResults={lootResults}
             characters={characters}
             lootCharacterId={lootCharacterId}
@@ -3582,6 +3605,8 @@ function LootingPanel({
   setLootQuality,
   targetLootName,
   setTargetLootName,
+  targetSpecificLoot,
+  setTargetSpecificLoot,
   lootResults,
   characters,
   lootCharacterId,
@@ -3607,6 +3632,8 @@ function LootingPanel({
   setLootQuality: (quality: LootQuality | "none" | "unrolled") => void;
   targetLootName: string;
   setTargetLootName: (name: string) => void;
+  targetSpecificLoot: boolean;
+  setTargetSpecificLoot: (value: boolean) => void;
   lootResults: LootResultItem[];
   characters: Character[];
   lootCharacterId: string;
@@ -3626,7 +3653,7 @@ function LootingPanel({
 }) {
   const selectedTable = getLootTable(lootTableId);
   const usableQuality = lootQuality === "unrolled" || lootQuality === "none" ? "common" : lootQuality;
-  const targetEntries = selectedTable.tables[usableQuality] || [];
+  const targetEntries = lootQuality !== "none" && lootQuality !== "unrolled" ? selectedTable.tables[lootQuality] || [] : [];
   const tierRule = creatureTierRules[lootTier];
   const depleted = harvestStarted && harvestAttemptsRemaining <= 0;
   const canAttempt = harvestStarted && !depleted && harvestStep === "attempt";
@@ -3699,13 +3726,33 @@ function LootingPanel({
           </div>
 
           <div className="rounded-xl border border-[#9a7b45] bg-[#f2dfb9] p-4">
-            <p><strong>Current DC:</strong> {harvestStarted ? Math.min(20, harvestDc) : tierRule.dc}</p>
+            <p><strong>Current DC:</strong> {harvestStarted ? Math.min(targetSpecificLoot && canAttempt ? 22 : 20, harvestDc + (targetSpecificLoot && canAttempt ? 2 : 0)) : tierRule.dc}</p>
             <p><strong>Harvest Attempts:</strong> {harvestStarted ? harvestAttemptsRemaining : tierRule.attempts}</p>
             <p><strong>Current Step:</strong> {harvestStarted ? harvestStep : "setup"}</p>
             <p><strong>Pending Loot Rolls:</strong> {pendingLootRolls}{doubleNextLoot ? " • next loot doubled" : ""}</p>
             <p><strong>Loot Weights:</strong> No Loot {tierRule.weights.noLoot}, Common {tierRule.weights.common}, Rare {tierRule.weights.rare}, Epic {tierRule.weights.epic}</p>
             {depleted && <p className="mt-2 font-bold text-red-800">This creature is depleted. Press New Creature to continue.</p>}
           </div>
+
+          {harvestStarted && !depleted && (
+            <div className="rounded-xl border border-[#9a7b45] bg-[#f2dfb9] p-3">
+              <label className="flex items-center gap-2 font-bold">
+                <input
+                  type="checkbox"
+                  checked={targetSpecificLoot}
+                  disabled={!canAttempt}
+                  onChange={(event) => {
+                    setTargetSpecificLoot(event.target.checked);
+                    setTargetLootName("random");
+                  }}
+                />
+                Target a specific material/item on this attempt (+2 DC, max 22)
+              </label>
+              <p className="text-xs mt-1">
+                Roll quality first. If the attempt succeeds, you choose the exact result from that rarity before rolling loot.
+              </p>
+            </div>
+          )}
 
           <div className="flex flex-wrap gap-3">
             <Button
@@ -3742,17 +3789,21 @@ function LootingPanel({
             <p><strong>Current Loot Quality:</strong> {lootQuality === "unrolled" ? "Not rolled yet" : lootQuality === "none" ? "No Loot" : `${lootQuality[0].toUpperCase()}${lootQuality.slice(1)} Loot`}</p>
           </div>
 
-          {lootQuality !== "none" && lootQuality !== "unrolled" && (
+
+          {targetSpecificLoot && canRollLoot && lootQuality !== "none" && lootQuality !== "unrolled" && (
             <label className="space-y-1 block">
-              <strong>Optional Target Material / Item (+2 starting DC)</strong>
+              <strong>Choose Target Result from {lootQuality} table</strong>
               <FantasySelect value={targetLootName} onValueChange={setTargetLootName}>
-                <SelectItem value="random">Random from {lootQuality} table</SelectItem>
+                <SelectItem value="random">Choose randomly instead</SelectItem>
                 {targetEntries.map((entry) => (
-                  <SelectItem key={entry.name} value={entry.name}>{entry.name}{entry.amount ? ` (${entry.amount})` : ""}</SelectItem>
+                  <SelectItem key={entry.name} value={entry.name}>
+                    {entry.name}{entry.amount ? ` (${entry.amount})` : ""}
+                  </SelectItem>
                 ))}
               </FantasySelect>
             </label>
           )}
+
         </div>
       </ParchmentCard>
 
@@ -3768,6 +3819,7 @@ function LootingPanel({
                   <div>
                     <strong>{result.name}</strong>
                     <p className="text-sm">{result.kind} • {result.quality}</p>
+                    {result.rollText && <p className="text-xs font-bold">{result.rollText}</p>}
                   </div>
                   <strong>{result.qty > 0 ? `×${result.qty}` : ""}</strong>
                 </div>
@@ -3860,8 +3912,8 @@ function LootingRulesPanel() {
             <div className="rounded-xl border-2 border-[#9a7b45] bg-[#f2dfb9] p-4">
               <h3 className="text-xl font-bold">Harvesting Roll</h3>
               <p className="text-sm leading-relaxed">
-                Roll d20 + Harvesting against the current Harvest DC. The DC caps at 20.
-                Targeting a specific material or item raises the starting DC by +2.
+                Roll d20 + Harvesting against the current Harvest DC. The normal DC caps at 20.
+                Targeted harvesting is chosen before the Looting Attempt and raises that attempt's DC by +2, up to 22. If the attempt succeeds, roll loot quality first, then choose the exact result from that rarity table before Roll Loot.
               </p>
             </div>
 
