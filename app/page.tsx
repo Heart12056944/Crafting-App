@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import {
   BookOpen,
@@ -37,6 +37,12 @@ import {
   recipeAlreadyPhaseTouched,
 } from "@/data/phaseEffects";
 
+import { fetchCampaigns, createCampaign, deleteCampaign } from "@/lib/supabaseCampaigns";
+import { fetchCampaignMaterials, replaceCampaignMaterials } from "@/lib/supabaseMaterials";
+import { fetchCampaignCraftedItems, insertCraftedItem, deleteCraftedItem } from "@/lib/supabaseCraftedItems";
+import { fetchCampaignCharacters, replaceCampaignCharacters } from "@/lib/supabaseCharacters";
+import { supabase } from "@/lib/supabaseClient";
+
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -68,7 +74,7 @@ type InventoryProfile = {
 
 type Stat = "STR" | "DEX" | "CON" | "INT" | "WIS" | "CHA";
 
-type TabId = "craft" | "available" | "recipes" | "materials" | "characters" | "rules" | "admin";
+type TabId = "craft" | "available" | "recipes" | "materials" | "characters" | "advancement" | "rules" | "admin";
 
 const tabs = [
   ["craft", "Craft", Hammer],
@@ -76,6 +82,7 @@ const tabs = [
   ["recipes", "All Recipes", ClipboardList],
   ["materials", "Materials", FlaskConical],
   ["characters", "Characters", UserRound],
+  ["advancement", "PP Improvements", Wrench],
   ["rules", "Rules", ScrollText],
   ["admin", "Admin", KeyRound],
 ] as const satisfies readonly (readonly [TabId, string, React.ComponentType<{ className?: string }>])[];
@@ -347,6 +354,74 @@ const SPECIALIZATIONS = [
   "Leatherworker: Tracker Gearwright, Venom Ward Crafter, Beastskin Crafter, Lifewoven Crafter, Adaptive Skin Crafter.",
 ];
 
+const TOOL_IMPROVEMENT_OPTIONS: Record<string, string[]> = {
+  Smith: [
+    "Specialization: Bonebreaker",
+    "Specialization: Armoursmith",
+    "Specialization: Edgecrafter",
+    "Specialization: Forgeheart Smith",
+    "Specialization: Composite Forge Master",
+  ],
+  Tinker: [
+    "Specialization: Siege Engineer",
+    "Specialization: Precision Mechanic",
+    "Specialization: Control Systems Builder",
+    "Specialization: Overclock Engineer",
+    "Specialization: Ironblood Smith",
+    "Specialization: Hybrid Ballistics Engineer",
+  ],
+  Weaver: [
+    "Specialization: Silkshaper",
+    "Specialization: Shadowweaver",
+    "Specialization: Phaseweaver",
+    "Specialization: Threadbinder",
+    "Specialization: Soulthread Weaver",
+    "Specialization: Phasecurrent Weaver",
+  ],
+  Leatherworker: [
+    "Specialization: Tracker Gearwright",
+    "Specialization: Venom Ward Crafter",
+    "Specialization: Beastskin Crafter",
+    "Specialization: Lifewoven Crafter",
+    "Specialization: Adaptive Skin Crafter",
+  ],
+  Alchemist: [
+    "Specialization: Venomcrafter",
+    "Specialization: Neurotoxin Specialist",
+    "Specialization: Hybrid Infusion Expert",
+    "Specialization: Corrosive Alchemist",
+    "Specialization: Vitality Brewer",
+  ],
+  Poisoner: [
+    "Specialization: Venomcrafter",
+    "Specialization: Neurotoxin Specialist",
+    "Specialization: Corrosive Alchemist",
+  ],
+};
+
+const MASTERY_OPTIONS = [
+  "Mastery: Advantage on crafting rolls",
+  "Mastery: Reduce crafting DC by 1",
+  "Mastery: Treat failures within 2 of DC as Normal",
+];
+
+function improvementSlotsForPp(pp: number) {
+  return pp >= 25 ? Math.floor(pp / 25) : 0;
+}
+
+function toolImprovementOptions(tool: string) {
+  return [...(TOOL_IMPROVEMENT_OPTIONS[tool] || []), ...MASTERY_OPTIONS];
+}
+
+function isMasteryImprovement(improvement: string) {
+  return improvement.startsWith("Mastery:");
+}
+
+function characterHasMasteryForTool(character: Character, tool: string) {
+  const progress = character.toolProgress?.[tool] ?? emptyToolProgress();
+  return (progress.specializations || []).some(isMasteryImprovement);
+}
+
 function normalizeName(value: string) {
   return normalizeMaterialName(value);
 }
@@ -576,6 +651,105 @@ function NormalOutcomePreview({ recipe, compact = false }: { recipe: Recipe; com
 }
 
 
+function supabaseMaterialsToLocalMaterials(
+  rows: { id: string; name: string; qty: number; tier: number | null }[]
+): Material[] {
+  return rows.map((row) => ({
+    id: row.id,
+    name: row.name,
+    qty: row.qty,
+    tier: row.tier ?? getMaterialTier(row.name),
+  }));
+}
+
+function supabaseCraftedItemsToLocalItems(
+  rows: {
+    id: string;
+    name: string;
+    rarity: string | null;
+    category: string | null;
+    quality: string | null;
+    effect: string[] | null;
+    stat_block: string | null;
+    phase_effect: Record<string, unknown> | null;
+    created_at: string;
+  }[]
+): CraftedItem[] {
+  return rows.map((row) => {
+    const phaseEffect = row.phase_effect as CraftedEffect | null;
+
+    return {
+      id: row.id,
+      name: row.name,
+      type: row.category || "item",
+      rarity: (row.rarity || "common") as Rarity,
+      tags: [],
+      quality: (row.quality || "Normal") as CraftQualityOrFailed,
+      crafter: "Shared Campaign",
+      rollTotal: 0,
+      naturalRoll: 0,
+      effect: row.effect || [],
+      statBlock: row.stat_block || undefined,
+      phaseTouched: Boolean(phaseEffect),
+      phaseTouchedEffect: phaseEffect || undefined,
+    };
+  });
+}
+
+function normalizeCharacter(character: Partial<Character>): Character {
+  return {
+    id: character.id || crypto.randomUUID(),
+    name: character.name || "Unnamed Crafter",
+    stats: {
+      STR: character.stats?.STR ?? 0,
+      DEX: character.stats?.DEX ?? 0,
+      CON: character.stats?.CON ?? 0,
+      INT: character.stats?.INT ?? 0,
+      WIS: character.stats?.WIS ?? 0,
+      CHA: character.stats?.CHA ?? 0,
+    },
+    tools: {
+      ...TOOL_OPTIONS.reduce((acc, tool) => {
+        acc[tool] = "none";
+        return acc;
+      }, {} as Record<string, ProficiencyLevel>),
+      ...(character.tools || {}),
+    },
+    progressPoints: character.progressPoints || {},
+    toolProgress: {
+      ...buildToolProgress(false),
+      ...(character.toolProgress || {}),
+    },
+  };
+}
+
+function supabaseCharactersToLocalCharacters(
+  rows: {
+    id: string;
+    name: string;
+    tool_progress: Record<string, unknown>;
+  }[]
+): Character[] {
+  return rows.map((row) => {
+    const stored = row.tool_progress?.character as Partial<Character> | undefined;
+    return normalizeCharacter({
+      ...(stored || {}),
+      id: row.id,
+      name: stored?.name || row.name,
+    });
+  });
+}
+
+function characterToSupabasePayload(character: Character) {
+  return {
+    id: character.id,
+    name: character.name,
+    data: {
+      character,
+    } as Record<string, unknown>,
+  };
+}
+
 function defaultCharacter(): Character {
   return {
     id: crypto.randomUUID(),
@@ -644,95 +818,267 @@ export default function ArcaneCraftingCodexPage() {
   const [tagFilter, setTagFilter] = useState("all");
   const [rarityFilter, setRarityFilter] = useState("all");
   const [materialsLoaded, setMaterialsLoaded] = useState(false);
+  const [isLoadingCampaignData, setIsLoadingCampaignData] = useState(false);
+  const skipSupabaseSaveRef = useRef(false);
+  const realtimeRefreshTimerRef = useRef<number | null>(null);
+  const shouldSaveMaterialsRef = useRef(false);
+  const shouldSaveCharactersRef = useRef(false);
+
+  function skipNextSupabaseSave() {
+    skipSupabaseSaveRef.current = true;
+    window.setTimeout(() => {
+      skipSupabaseSaveRef.current = false;
+    }, 2000);
+  }
+
+  function markMaterialsForSupabaseSave() {
+    shouldSaveMaterialsRef.current = true;
+  }
+
+  function markCharactersForSupabaseSave() {
+    shouldSaveCharactersRef.current = true;
+  }
 
   useEffect(() => {
-    try {
-      const savedProfiles = window.localStorage.getItem(INVENTORY_PROFILES_STORAGE_KEY);
-      const savedActiveId = window.localStorage.getItem(ACTIVE_INVENTORY_STORAGE_KEY);
-      const oldSavedMaterials = window.localStorage.getItem("arcane-crafting-materials") || window.localStorage.getItem(MATERIALS_STORAGE_KEY);
-      const oldSavedDisabledTags = window.localStorage.getItem(DISABLED_TAGS_STORAGE_KEY);
+    async function loadCampaignData() {
+      try {
+        const savedProfiles = window.localStorage.getItem(INVENTORY_PROFILES_STORAGE_KEY);
+        const savedActiveId = window.localStorage.getItem(ACTIVE_INVENTORY_STORAGE_KEY);
+        const oldSavedMaterials = window.localStorage.getItem("arcane-crafting-materials") || window.localStorage.getItem(MATERIALS_STORAGE_KEY);
+        const oldSavedDisabledTags = window.localStorage.getItem(DISABLED_TAGS_STORAGE_KEY);
 
-      let profiles: InventoryProfile[] = [];
+        let profiles: InventoryProfile[] = [];
 
-      if (savedProfiles) {
-        profiles = (JSON.parse(savedProfiles) as Partial<InventoryProfile>[]).map((profile) => ({
-          id: profile.id || crypto.randomUUID(),
-          name: profile.name || "Campaign",
-          materials: (profile.materials || []).map((material) => ({
-            ...material,
-            id: material.id || crypto.randomUUID(),
-            tier: material.tier ?? getMaterialTier(material.name),
-          })),
-          characters:
-            profile.characters && profile.characters.length > 0
-              ? profile.characters.map((character) => ({
-                  ...character,
-                  id: character.id || crypto.randomUUID(),
-                  toolProgress: character.toolProgress || buildToolProgress(false),
-                }))
-              : [defaultCharacter()],
-          craftedItems: profile.craftedItems || [],
-          disabledTags: profile.disabledTags || [],
-        }));
-      }
-
-      if (profiles.length === 0) {
-        const startingMaterials = oldSavedMaterials
-          ? (JSON.parse(oldSavedMaterials) as Material[]).map((material) => ({
+        if (savedProfiles) {
+          profiles = (JSON.parse(savedProfiles) as Partial<InventoryProfile>[]).map((profile) => ({
+            id: profile.id || crypto.randomUUID(),
+            name: profile.name || "Campaign",
+            materials: (profile.materials || []).map((material) => ({
               ...material,
               id: material.id || crypto.randomUUID(),
               tier: material.tier ?? getMaterialTier(material.name),
-            }))
-          : buildStartingMaterials();
+            })),
+            characters:
+              profile.characters && profile.characters.length > 0
+                ? profile.characters.map((character) => ({
+                    ...character,
+                    id: character.id || crypto.randomUUID(),
+                    toolProgress: character.toolProgress || buildToolProgress(false),
+                  }))
+                : [defaultCharacter()],
+            craftedItems: profile.craftedItems || [],
+            disabledTags: profile.disabledTags || [],
+          }));
+        }
 
-        profiles = [
-          {
-            id: crypto.randomUUID(),
-            name: "Main Campaign",
-            materials: startingMaterials,
-            characters: [defaultCharacter()],
-            craftedItems: [],
-            disabledTags: oldSavedDisabledTags ? JSON.parse(oldSavedDisabledTags) : [],
-          },
-        ];
+        if (profiles.length === 0) {
+          const startingMaterials = oldSavedMaterials
+            ? (JSON.parse(oldSavedMaterials) as Material[]).map((material) => ({
+                ...material,
+                id: material.id || crypto.randomUUID(),
+                tier: material.tier ?? getMaterialTier(material.name),
+              }))
+            : buildStartingMaterials();
+
+          profiles = [
+            {
+              id: crypto.randomUUID(),
+              name: "Main Campaign",
+              materials: startingMaterials,
+              characters: [defaultCharacter()],
+              craftedItems: [],
+              disabledTags: oldSavedDisabledTags ? JSON.parse(oldSavedDisabledTags) : [],
+            },
+          ];
+        }
+
+        // Stage 1 Supabase sync:
+        // Campaign IDs/names come from Supabase. Materials, characters, and crafted items still use localStorage for now.
+        const supabaseCampaigns = await fetchCampaigns();
+
+        if (supabaseCampaigns.length > 0) {
+          profiles = supabaseCampaigns.map((campaign) => {
+            const localMatch =
+              profiles.find((profile) => profile.id === campaign.id) ||
+              profiles.find((profile) => profile.name === campaign.name);
+
+            return {
+              id: campaign.id,
+              name: campaign.name,
+              materials: localMatch?.materials || [],
+              characters: localMatch?.characters?.length ? localMatch.characters : [defaultCharacter()],
+              craftedItems: localMatch?.craftedItems || [],
+              disabledTags: localMatch?.disabledTags || [],
+            };
+          });
+        }
+
+        const activeProfile =
+          profiles.find((profile) => profile.id === savedActiveId) ||
+          profiles.find((profile) => profile.name === "Tales on The Sea") ||
+          profiles[0];
+
+        const [supabaseMaterials, supabaseCraftedRows, supabaseCharacterRows] = await Promise.all([
+          fetchCampaignMaterials(activeProfile.id),
+          fetchCampaignCraftedItems(activeProfile.id),
+          fetchCampaignCharacters(activeProfile.id),
+        ]);
+
+        const activeMaterials =
+          supabaseMaterials.length > 0
+            ? supabaseMaterialsToLocalMaterials(supabaseMaterials)
+            : activeProfile.materials;
+
+        const activeCraftedItems =
+          supabaseCraftedRows.length > 0
+            ? supabaseCraftedItemsToLocalItems(supabaseCraftedRows)
+            : activeProfile.craftedItems || [];
+
+        const activeCharacters =
+          supabaseCharacterRows.length > 0
+            ? supabaseCharactersToLocalCharacters(supabaseCharacterRows)
+            : activeProfile.characters.length
+              ? activeProfile.characters
+              : [defaultCharacter()];
+
+        skipNextSupabaseSave();
+        skipNextSupabaseSave();
+        setInventoryProfiles(
+          profiles.map((profile) =>
+            profile.id === activeProfile.id
+              ? { ...profile, materials: activeMaterials, craftedItems: activeCraftedItems, characters: activeCharacters }
+              : profile
+          )
+        );
+        setActiveInventoryId(activeProfile.id);
+        setMaterials(activeMaterials);
+        setCharacters(activeCharacters);
+        setCraftedItems(activeCraftedItems);
+        setDisabledTags(activeProfile.disabledTags || []);
+        setSelectedCharacterId((activeCharacters[0] || defaultCharacter()).id);
+      } catch (error) {
+        console.error("Failed to load Supabase campaigns. Falling back to local data.", error);
+
+        const fallbackMaterials = buildStartingMaterials();
+        const fallbackCharacter = defaultCharacter();
+        const fallbackProfile: InventoryProfile = {
+          id: crypto.randomUUID(),
+          name: "Main Campaign",
+          materials: fallbackMaterials,
+          characters: [fallbackCharacter],
+          craftedItems: [],
+          disabledTags: [],
+        };
+
+        skipNextSupabaseSave();
+        skipNextSupabaseSave();
+        setInventoryProfiles([fallbackProfile]);
+        setActiveInventoryId(fallbackProfile.id);
+        setMaterials(fallbackMaterials);
+        setCharacters([fallbackCharacter]);
+        setCraftedItems([]);
+        setDisabledTags([]);
+        setSelectedCharacterId(fallbackCharacter.id);
+      } finally {
+        setMaterialsLoaded(true);
       }
-
-      const activeProfile =
-        profiles.find((profile) => profile.id === savedActiveId) || profiles[0];
-
-      setInventoryProfiles(profiles);
-      setActiveInventoryId(activeProfile.id);
-      setMaterials(activeProfile.materials);
-      setCharacters(activeProfile.characters.length ? activeProfile.characters : [defaultCharacter()]);
-      setCraftedItems(activeProfile.craftedItems || []);
-      setDisabledTags(activeProfile.disabledTags || []);
-      setSelectedCharacterId((activeProfile.characters[0] || defaultCharacter()).id);
-    } catch {
-      const fallbackMaterials = buildStartingMaterials();
-      const fallbackCharacter = defaultCharacter();
-      const fallbackProfile: InventoryProfile = {
-        id: crypto.randomUUID(),
-        name: "Main Campaign",
-        materials: fallbackMaterials,
-        characters: [fallbackCharacter],
-        craftedItems: [],
-        disabledTags: [],
-      };
-
-      setInventoryProfiles([fallbackProfile]);
-      setActiveInventoryId(fallbackProfile.id);
-      setMaterials(fallbackMaterials);
-      setCharacters([fallbackCharacter]);
-      setCraftedItems([]);
-      setDisabledTags([]);
-      setSelectedCharacterId(fallbackCharacter.id);
-    } finally {
-      setMaterialsLoaded(true);
     }
+
+    loadCampaignData();
   }, []);
+
+  async function refreshActiveCampaignFromSupabase(campaignId: string) {
+    setIsLoadingCampaignData(true);
+
+    try {
+      const [supabaseMaterials, supabaseCraftedRows, supabaseCharacterRows] = await Promise.all([
+        fetchCampaignMaterials(campaignId),
+        fetchCampaignCraftedItems(campaignId),
+        fetchCampaignCharacters(campaignId),
+      ]);
+
+      const activeMaterials = supabaseMaterialsToLocalMaterials(supabaseMaterials);
+      const activeCraftedItems = supabaseCraftedItemsToLocalItems(supabaseCraftedRows);
+      const activeCharacters = supabaseCharacterRows.length > 0
+        ? supabaseCharactersToLocalCharacters(supabaseCharacterRows)
+        : characters;
+
+      skipNextSupabaseSave();
+      setMaterials(activeMaterials);
+      setCraftedItems(activeCraftedItems);
+      setCharacters(activeCharacters);
+      setSelectedCharacterId((currentId) =>
+        activeCharacters.some((character) => character.id === currentId)
+          ? currentId
+          : (activeCharacters[0]?.id || currentId)
+      );
+
+      setInventoryProfiles((current) =>
+        current.map((profile) =>
+          profile.id === campaignId
+            ? {
+                ...profile,
+                materials: activeMaterials,
+                craftedItems: activeCraftedItems,
+                characters: activeCharacters,
+              }
+            : profile
+        )
+      );
+    } catch (error) {
+      setImportLog("Realtime refresh was delayed by Supabase. Refresh if the shared data looks stale.");
+    } finally {
+      setIsLoadingCampaignData(false);
+    }
+  }
+
+  function scheduleRealtimeRefresh(campaignId: string) {
+    if (realtimeRefreshTimerRef.current) {
+      window.clearTimeout(realtimeRefreshTimerRef.current);
+    }
+
+    realtimeRefreshTimerRef.current = window.setTimeout(() => {
+      refreshActiveCampaignFromSupabase(campaignId);
+    }, 1200);
+  }
 
   useEffect(() => {
     if (!materialsLoaded || !activeInventoryId) return;
+
+    const channel = supabase
+      .channel(`artisan-codex-campaign-${activeInventoryId}`)
+      .on(
+        "postgres_changes",
+        {
+          event: "*",
+          schema: "public",
+          table: "crafted_items",
+          filter: `campaign_id=eq.${activeInventoryId}`,
+        },
+        () => scheduleRealtimeRefresh(activeInventoryId)
+      )
+      .on(
+        "postgres_changes",
+        {
+          event: "*",
+          schema: "public",
+          table: "campaign_characters",
+          filter: `campaign_id=eq.${activeInventoryId}`,
+        },
+        () => scheduleRealtimeRefresh(activeInventoryId)
+      )
+      .subscribe();
+
+    return () => {
+      if (realtimeRefreshTimerRef.current) {
+        window.clearTimeout(realtimeRefreshTimerRef.current);
+      }
+      supabase.removeChannel(channel);
+    };
+  }, [materialsLoaded, activeInventoryId]);
+
+  useEffect(() => {
+    if (!materialsLoaded || !activeInventoryId || isLoadingCampaignData || skipSupabaseSaveRef.current) return;
 
     setInventoryProfiles((current) =>
       current.map((profile) =>
@@ -745,7 +1091,35 @@ export default function ArcaneCraftingCodexPage() {
     window.localStorage.setItem(MATERIALS_STORAGE_KEY, JSON.stringify(materials));
     window.localStorage.setItem("arcane-crafting-materials", JSON.stringify(materials));
     window.localStorage.setItem(DISABLED_TAGS_STORAGE_KEY, JSON.stringify(disabledTags));
-  }, [materials, characters, craftedItems, disabledTags, materialsLoaded, activeInventoryId]);
+
+    if (shouldSaveMaterialsRef.current) {
+      shouldSaveMaterialsRef.current = false;
+
+      replaceCampaignMaterials(
+        activeInventoryId,
+        materials.map((material) => ({
+          name: material.name,
+          qty: material.qty,
+          tier: material.tier ?? getMaterialTier(material.name),
+        }))
+      ).catch((error) => {
+        console.warn("Failed to save campaign materials to Supabase.", error);
+        setImportLog("Warning: materials saved locally, but Supabase sync failed.");
+      });
+    }
+
+    if (shouldSaveCharactersRef.current && characters.length > 0) {
+      shouldSaveCharactersRef.current = false;
+
+      replaceCampaignCharacters(
+        activeInventoryId,
+        characters.map(characterToSupabasePayload)
+      ).catch((error) => {
+        console.warn("Failed to save campaign characters to Supabase.", error);
+        setImportLog("Warning: characters saved locally, but Supabase character sync failed.");
+      });
+    }
+  }, [materials, characters, disabledTags, materialsLoaded, activeInventoryId, isLoadingCampaignData]);
 
   useEffect(() => {
     if (!materialsLoaded || inventoryProfiles.length === 0) return;
@@ -835,6 +1209,7 @@ export default function ArcaneCraftingCodexPage() {
 
   function addMaterial() {
     if (!adminUnlocked || !newMaterial.name.trim()) return;
+    markMaterialsForSupabaseSave();
     setMaterials((current) =>
       upsertMaterialList(current, [
         {
@@ -851,6 +1226,7 @@ export default function ArcaneCraftingCodexPage() {
   function importMaterials() {
     if (!adminUnlocked) return;
     const parsed = parseInventoryText(bulkMaterials);
+    markMaterialsForSupabaseSave();
     setMaterials((current) => upsertMaterialList(current, parsed));
     setImportLog(`Imported or updated ${parsed.length} material rows. Saved permanently in this browser.`);
     setBulkMaterials("");
@@ -858,6 +1234,7 @@ export default function ArcaneCraftingCodexPage() {
 
   function resetMaterialsToStartingInventory() {
     if (!adminUnlocked) return;
+    markMaterialsForSupabaseSave();
     setMaterials([]);
     setImportLog("Current campaign inventory wiped.");
   }
@@ -874,51 +1251,113 @@ export default function ArcaneCraftingCodexPage() {
     setImportLog("Current campaign inventory list copied to clipboard.");
   }
 
-  function switchInventoryProfile(profileId: string) {
+  async function switchInventoryProfile(profileId: string) {
     if (!adminUnlocked) return;
     const profile = inventoryProfiles.find((item) => item.id === profileId);
     if (!profile) return;
 
-    setActiveInventoryId(profile.id);
-    setMaterials(profile.materials);
-    setImportLog(`Switched to ${profile.name}.`);
+    setIsLoadingCampaignData(true);
+
+    try {
+      const [supabaseMaterials, supabaseCraftedRows, supabaseCharacterRows] = await Promise.all([
+        fetchCampaignMaterials(profile.id),
+        fetchCampaignCraftedItems(profile.id),
+        fetchCampaignCharacters(profile.id),
+      ]);
+
+      const activeMaterials =
+        supabaseMaterials.length > 0
+          ? supabaseMaterialsToLocalMaterials(supabaseMaterials)
+          : profile.materials;
+
+      const activeCraftedItems =
+        supabaseCraftedRows.length > 0
+          ? supabaseCraftedItemsToLocalItems(supabaseCraftedRows)
+          : profile.craftedItems || [];
+
+      const activeCharacters =
+        supabaseCharacterRows.length > 0
+          ? supabaseCharactersToLocalCharacters(supabaseCharacterRows)
+          : profile.characters.length
+            ? profile.characters
+            : [defaultCharacter()];
+
+      skipNextSupabaseSave();
+      skipNextSupabaseSave();
+      setActiveInventoryId(profile.id);
+      setMaterials(activeMaterials);
+      setCharacters(activeCharacters);
+      setCraftedItems(activeCraftedItems);
+      setDisabledTags(profile.disabledTags || []);
+      setSelectedCharacterId((activeCharacters[0] || defaultCharacter()).id);
+      setImportLog(`Switched to ${profile.name}.`);
+    } catch (error) {
+      console.error(error);
+      setImportLog("Could not load campaign materials from Supabase.");
+    } finally {
+      setIsLoadingCampaignData(false);
+    }
   }
 
-  function createInventoryProfile(copyCurrent = false) {
+  async function createInventoryProfile(copyCurrent = false) {
     if (!adminUnlocked) return;
-    const name = newInventoryName.trim() || `Campaign ${inventoryProfiles.length + 1}`;
-    const defaultCampaignCharacter = defaultCharacter();
-    const profile: InventoryProfile = {
-      id: crypto.randomUUID(),
-      name,
-      materials: copyCurrent
-        ? materials.map((material) => ({ ...material, id: crypto.randomUUID() }))
-        : [],
-      characters: copyCurrent
-        ? characters.map((character) => ({
-            ...character,
-            id: crypto.randomUUID(),
-          }))
-        : [defaultCampaignCharacter],
-      craftedItems: copyCurrent
-        ? craftedItems.map((item) => ({
-            ...item,
-            id: crypto.randomUUID(),
-            createdAt: new Date().toLocaleString(),
-          }))
-        : [],
-      disabledTags: copyCurrent ? [...disabledTags] : [],
-    };
 
-    setInventoryProfiles((current) => [...current, profile]);
-    setActiveInventoryId(profile.id);
-    setMaterials(profile.materials);
-    setCharacters(profile.characters);
-    setCraftedItems(profile.craftedItems);
-    setDisabledTags(profile.disabledTags);
-    setSelectedCharacterId(profile.characters[0].id);
-    setNewInventoryName("");
-    setImportLog(`Created and opened ${name}.`);
+    try {
+      const name = newInventoryName.trim() || `Campaign ${inventoryProfiles.length + 1}`;
+      const campaign = await createCampaign(name);
+      const defaultCampaignCharacter = defaultCharacter();
+
+      const profile: InventoryProfile = {
+        id: campaign.id,
+        name: campaign.name,
+        materials: copyCurrent
+          ? materials.map((material) => ({ ...material, id: crypto.randomUUID() }))
+          : [],
+        characters: copyCurrent
+          ? characters.map((character) => ({
+              ...character,
+              id: crypto.randomUUID(),
+            }))
+          : [defaultCampaignCharacter],
+        craftedItems: copyCurrent
+          ? craftedItems.map((item) => ({
+              ...item,
+              id: crypto.randomUUID(),
+              createdAt: new Date().toLocaleString(),
+            }))
+          : [],
+        disabledTags: copyCurrent ? [...disabledTags] : [],
+      };
+
+      setInventoryProfiles((current) => [...current, profile]);
+      setActiveInventoryId(profile.id);
+      setMaterials(profile.materials);
+      setCharacters(profile.characters);
+      setCraftedItems(profile.craftedItems);
+      setDisabledTags(profile.disabledTags);
+      setSelectedCharacterId(profile.characters[0].id);
+      if (profile.materials.length > 0) {
+        await replaceCampaignMaterials(
+          profile.id,
+          profile.materials.map((material) => ({
+            name: material.name,
+            qty: material.qty,
+            tier: material.tier ?? getMaterialTier(material.name),
+          }))
+        );
+      }
+
+      await replaceCampaignCharacters(
+        profile.id,
+        profile.characters.map(characterToSupabasePayload)
+      );
+
+      setNewInventoryName("");
+      setImportLog(`Created and opened ${name}.`);
+    } catch (error) {
+      console.error(error);
+      setImportLog("Could not create campaign in Supabase.");
+    }
   }
 
   function renameInventoryProfile(profileId: string, name: string) {
@@ -930,8 +1369,16 @@ export default function ArcaneCraftingCodexPage() {
     );
   }
 
-  function deleteInventoryProfile(profileId: string) {
+  async function deleteInventoryProfile(profileId: string) {
     if (!adminUnlocked || inventoryProfiles.length <= 1) return;
+
+    try {
+      await deleteCampaign(profileId);
+    } catch (error) {
+      console.error(error);
+      setImportLog("Could not delete campaign from Supabase.");
+      return;
+    }
 
     setInventoryProfiles((current) => {
       const remaining = current.filter((profile) => profile.id !== profileId);
@@ -970,6 +1417,7 @@ export default function ArcaneCraftingCodexPage() {
 
   function addCharacter() {
     if (!newCharacter.name.trim()) return;
+    markCharactersForSupabaseSave();
     const character = {
       ...newCharacter,
       id: crypto.randomUUID(),
@@ -991,6 +1439,7 @@ export default function ArcaneCraftingCodexPage() {
   }
 
   function removeCharacter(id: string) {
+    markCharactersForSupabaseSave();
     setCharacters((current) => current.filter((character) => character.id !== id));
     if (selectedCharacterId === id && characters.length > 1) {
       const replacement = characters.find((character) => character.id !== id);
@@ -1000,6 +1449,8 @@ export default function ArcaneCraftingCodexPage() {
 
   function applyTrainingToCharacter(characterId: string, tool: string, trainingType: "regular" | "expert") {
     if (!adminUnlocked) return;
+    markCharactersForSupabaseSave();
+    markCharactersForSupabaseSave();
     setCharacters((current) =>
       current.map((character) => {
         if (character.id !== characterId) return character;
@@ -1029,6 +1480,7 @@ export default function ArcaneCraftingCodexPage() {
 
   function updateCharacterStat(characterId: string, stat: Stat, value: number) {
     if (!adminUnlocked) return;
+    markCharactersForSupabaseSave();
     setCharacters((current) =>
       current.map((character) =>
         character.id === characterId
@@ -1040,6 +1492,7 @@ export default function ArcaneCraftingCodexPage() {
 
   function updateCharacterTool(characterId: string, tool: string, level: ProficiencyLevel) {
     if (!adminUnlocked) return;
+    markCharactersForSupabaseSave();
     setCharacters((current) =>
       current.map((character) => {
         if (character.id !== characterId) return character;
@@ -1060,7 +1513,69 @@ export default function ArcaneCraftingCodexPage() {
     );
   }
 
-  function craftSelectedRecipe(recipeOverride?: Recipe) {
+  function addToolImprovement(characterId: string, tool: string, improvement: string) {
+    if (!improvement || improvement === "select") return;
+
+    markCharactersForSupabaseSave();
+    setCharacters((current) =>
+      current.map((character) => {
+        if (character.id !== characterId) return character;
+
+        const currentProgress = character.toolProgress?.[tool] ?? emptyToolProgress();
+        const selectedImprovements = currentProgress.specializations || [];
+        const slots = improvementSlotsForPp(currentProgress.pp);
+
+        const alreadyHasMastery = selectedImprovements.some(isMasteryImprovement);
+
+        if (
+          selectedImprovements.includes(improvement) ||
+          selectedImprovements.length >= slots ||
+          (isMasteryImprovement(improvement) && alreadyHasMastery)
+        ) {
+          return character;
+        }
+
+        return {
+          ...character,
+          toolProgress: {
+            ...character.toolProgress,
+            [tool]: {
+              ...currentProgress,
+              specializations: [...selectedImprovements, improvement],
+            },
+          },
+        };
+      })
+    );
+  }
+
+  function passDay() {
+    if (!adminUnlocked) return;
+
+    markCharactersForSupabaseSave();
+    setCharacters((current) =>
+      current.map((character) => ({
+        ...character,
+        toolProgress: Object.fromEntries(
+          TOOL_OPTIONS.map((tool) => {
+            const progress = character.toolProgress?.[tool] ?? emptyToolProgress();
+
+            return [
+              tool,
+              {
+                ...progress,
+                craftsTodayByCategory: {},
+              },
+            ];
+          })
+        ) as Record<string, ToolProgress>,
+      }))
+    );
+
+    setImportLog("A new crafting day has begun. Daily craft counts reset, PP gain is available again, and daily-limit advantage has been removed.");
+  }
+
+  async function craftSelectedRecipe(recipeOverride?: Recipe) {
     const recipe = recipeOverride || selectedRecipe;
     if (!recipe || !selectedCharacter) return;
 
@@ -1121,8 +1636,13 @@ export default function ArcaneCraftingCodexPage() {
 
     const toolProgress = selectedCharacter.toolProgress?.[recipe.tool] ?? emptyToolProgress();
     const craftsToday = toolProgress.craftsTodayByCategory?.[recipe.category] ?? 0;
+    const selectedImprovements = toolProgress.specializations || [];
+    const hasAdvantageMastery = selectedImprovements.includes("Mastery: Advantage on crafting rolls");
+    const hasDcReductionMastery = selectedImprovements.includes("Mastery: Reduce crafting DC by 1");
+    const hasNearFailureMastery = selectedImprovements.includes("Mastery: Treat failures within 2 of DC as Normal");
+    const adjustedDc = hasDcReductionMastery ? Math.max(1, recipe.dc - 1) : recipe.dc;
     const dailyAdvantage = shouldGainAdvantageFromDailyCategoryLimit(craftsToday);
-    const effectiveRollMode = dailyAdvantage ? "advantage" : rollMode;
+    const effectiveRollMode = dailyAdvantage || hasAdvantageMastery ? "advantage" : rollMode;
 
     const toolLevel = selectedCharacter.tools[recipe.tool] || (toolProgress.proficient ? "proficient" : "none");
     const proficiencyBonus = PROFICIENCY_BONUS[toolLevel] || 0;
@@ -1140,8 +1660,8 @@ export default function ArcaneCraftingCodexPage() {
       }
     }
 
-    const total = npcCraft ? recipe.dc : naturalRoll + statBonus + proficiencyBonus + plusTwo;
-    const craftResult = npcCraft
+    const total = npcCraft ? adjustedDc : naturalRoll + statBonus + proficiencyBonus + plusTwo;
+    let craftResult = npcCraft
       ? {
           type: "success",
           title: "NPC Crafting Complete",
@@ -1154,10 +1674,28 @@ export default function ArcaneCraftingCodexPage() {
       : calculateCraftResult({
           naturalRoll,
           total,
-          dc: recipe.dc,
+          dc: adjustedDc,
           categoryCraftsToday: craftsToday,
           isFirstTimeItemType: !selectedCharacter.progressPoints?.[recipe.category],
         });
+
+    if (
+      hasNearFailureMastery &&
+      !npcCraft &&
+      craftResult.quality === "Flawed" &&
+      total >= adjustedDc - 2
+    ) {
+      craftResult = {
+        ...craftResult,
+        type: "success",
+        title: "Mastery Recovery",
+        quality: "Normal" as CraftQualityOrFailed,
+        ppGain: Math.max(craftResult.ppGain, 1),
+        materialsConsumed: "normal",
+        itemCreated: true,
+        message: "Mastery applied: a near failure within 2 of the DC becomes a Normal success.",
+      };
+    }
 
     let quality = craftResult.quality;
     const outcome = quality === "Failed" ? undefined : getOutcome(recipe, quality as CraftQuality);
@@ -1182,6 +1720,7 @@ export default function ArcaneCraftingCodexPage() {
     }
     const phaseEffect = usingPhaseTouched ? getPhaseTouchedEffectForCategory(recipe.category) : null;
 
+    markMaterialsForSupabaseSave();
     setMaterials((current) => {
       let next = current.map((material) => ({ ...material }));
 
@@ -1224,27 +1763,53 @@ export default function ArcaneCraftingCodexPage() {
     });
 
     if (!materialRecipe && craftResult.itemCreated && quality !== "Failed") {
-      setCraftedItems((current) => [
-        {
-          id: crypto.randomUUID(),
-          name: usingPhaseTouched ? `Phase-Touched ${recipe.name}` : recipe.name,
-          type: recipe.category,
-          rarity: getRarityFromTags(recipe),
-          tags: usingPhaseTouched ? [...new Set([...recipe.tags, "phase-touched", "phase"])] : recipe.tags,
-          quality,
-          crafter: selectedCharacter.name,
-          rollTotal: total,
-          naturalRoll,
-          effect: outcome?.effect,
-          statBlock: outcome?.statBlock,
-          phaseTouched: usingPhaseTouched,
-          phaseTouchedMaterial: selectedPhaseMaterial || undefined,
-          phaseTouchedEffect: phaseEffect
-            ? { name: phaseEffect.name, description: phaseEffect.description, effect: phaseEffect.effect }
-            : undefined,
-        },
-        ...current,
-      ]);
+      const craftedItem: CraftedItem = {
+        id: crypto.randomUUID(),
+        name: usingPhaseTouched ? `Phase-Touched ${recipe.name}` : recipe.name,
+        type: recipe.category,
+        rarity: getRarityFromTags(recipe),
+        tags: usingPhaseTouched ? [...new Set([...recipe.tags, "phase-touched", "phase"])] : recipe.tags,
+        quality,
+        crafter: selectedCharacter.name,
+        rollTotal: total,
+        naturalRoll,
+        effect: outcome?.effect,
+        statBlock: outcome?.statBlock,
+        phaseTouched: usingPhaseTouched,
+        phaseTouchedMaterial: selectedPhaseMaterial || undefined,
+        phaseTouchedEffect: phaseEffect
+          ? { name: phaseEffect.name, description: phaseEffect.description, effect: phaseEffect.effect }
+          : undefined,
+      };
+
+      setCraftedItems((current) => [craftedItem, ...current]);
+
+      if (activeInventoryId) {
+        try {
+          const savedItem = await insertCraftedItem({
+            campaignId: activeInventoryId,
+            characterId: null,
+            recipeId: recipe.id,
+            name: craftedItem.name,
+            rarity: craftedItem.rarity,
+            category: craftedItem.type,
+            quality: craftedItem.quality,
+            description: recipe.description,
+            effect: craftedItem.effect || [],
+            statBlock: craftedItem.statBlock,
+            phaseEffect: craftedItem.phaseTouchedEffect || null,
+          });
+
+          setCraftedItems((current) =>
+            current.map((item) =>
+              item.id === craftedItem.id ? { ...item, id: savedItem.id } : item
+            )
+          );
+        } catch (error) {
+          console.warn("Failed to save crafted item to Supabase.", error);
+          setImportLog("Warning: crafted item saved locally, but Supabase crafted item sync failed. Check the browser console for the Supabase error details.");
+        }
+      }
     }
 
     setCharacters((current) =>
@@ -1412,6 +1977,13 @@ export default function ArcaneCraftingCodexPage() {
           />
         )}
 
+        {activeTab === "advancement" && (
+          <AdvancementPanel
+            characters={characters}
+            addToolImprovement={addToolImprovement}
+          />
+        )}
+
         {activeTab === "rules" && <RulesPanel />}
 
         {activeTab === "admin" && (
@@ -1443,6 +2015,7 @@ export default function ArcaneCraftingCodexPage() {
             toggleDisabledTag={toggleDisabledTag}
             enableAllTags={enableAllTags}
             disableAllTags={disableAllTags}
+            passDay={passDay}
           />
         )}
       </div>
@@ -1707,6 +2280,13 @@ function CraftPanel(props: {
             {craftsToday >= 5 ? " • Daily limit reached: advantage applies, no PP gained" : ""}
           </p>
 
+          {selectedToolProgress.specializations?.length > 0 && (
+            <p className="text-sm">
+              <strong>Active {selectedRecipe.tool} improvements:</strong>{" "}
+              {selectedToolProgress.specializations.join(", ")}
+            </p>
+          )}
+
           {!available && missing.length > 0 && (
             <p className="text-red-800 font-bold">
               Missing: {missing.map((m) => `${m.needed - m.available}× ${m.name}`).join(", ")}
@@ -1731,7 +2311,7 @@ function CraftPanel(props: {
         </div>
 
         <Button
-          onClick={props.craftSelectedRecipe}
+          onClick={() => props.craftSelectedRecipe()}
           disabled={!available}
           className="w-full py-7 text-xl font-serif bg-[#4b3115] hover:bg-[#62401c] text-[#fff0c7] border border-[#9a7b45]"
         >
@@ -1819,7 +2399,12 @@ function CraftedItemList({
                 <Button
                   variant="destructive"
                   size="icon"
-                  onClick={() => setItems((current) => current.filter((i) => i.id !== item.id))}
+                  onClick={() => {
+                    setItems((current) => current.filter((i) => i.id !== item.id));
+                    deleteCraftedItem(item.id).catch((error) => {
+                      console.warn("Failed to delete crafted item from Supabase.", error);
+                    });
+                  }}
                 >
                   <Trash2 className="w-4 h-4" />
                 </Button>
@@ -2289,6 +2874,103 @@ function CharactersPanel({
   );
 }
 
+
+function AdvancementPanel({
+  characters,
+  addToolImprovement,
+}: {
+  characters: Character[];
+  addToolImprovement: (characterId: string, tool: string, improvement: string) => void;
+}) {
+  return (
+    <div className="space-y-6">
+      <ParchmentCard>
+        <div className="space-y-3 font-serif">
+          <div className="flex items-center gap-3">
+            <Wrench className="w-8 h-8" />
+            <h2 className="text-3xl font-bold">PP Improvements</h2>
+          </div>
+          <p>
+            At <strong>10 PP</strong>, the character gains proficiency. At <strong>25 PP</strong>
+            and every additional <strong>25 PP</strong>, choose one specialization or mastery.
+            Each tool can only take <strong>one mastery</strong>, but may eventually learn all of its specializations.
+          </p>
+        </div>
+      </ParchmentCard>
+
+      {characters.map((character) => (
+        <ParchmentCard key={character.id}>
+          <div className="space-y-4 font-serif">
+            <h3 className="text-2xl font-bold">{character.name}</h3>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+              {TOOL_OPTIONS.map((tool) => {
+                const progress = character.toolProgress?.[tool] ?? emptyToolProgress();
+                const selected = progress.specializations || [];
+                const slots = improvementSlotsForPp(progress.pp);
+                const hasMastery = selected.some(isMasteryImprovement);
+                const availableOptions = toolImprovementOptions(tool).filter(
+                  (option) => !selected.includes(option) && (!isMasteryImprovement(option) || !hasMastery)
+                );
+                const canChoose = slots > selected.length && availableOptions.length > 0;
+
+                return (
+                  <div
+                    key={`${character.id}-${tool}-advancement`}
+                    className="rounded-xl border border-[#9a7b45] bg-[#f2dfb9] p-4 space-y-3"
+                  >
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <h4 className="text-xl font-bold">{tool}</h4>
+                      <span className="rounded-full border border-[#9a7b45] px-3 py-1 text-sm font-bold">
+                        {progress.pp} PP
+                      </span>
+                    </div>
+
+                    <p className="text-sm">
+                      Proficiency: <strong>{progress.pp >= 10 || progress.proficient ? "Unlocked" : "Locked"}</strong>
+                      {" "}• Improvement slots: <strong>{selected.length}/{slots}</strong>
+                    </p>
+
+                    {selected.length > 0 ? (
+                      <ul className="list-disc ml-5 text-sm">
+                        {selected.map((item) => (
+                          <li key={`${character.id}-${tool}-${item}`}>{item}</li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="text-sm italic">No specializations or masteries selected yet.</p>
+                    )}
+
+                    {canChoose ? (
+                      <FantasySelect
+                        value="select"
+                        onValueChange={(value) => addToolImprovement(character.id, tool, value)}
+                      >
+                        <SelectItem value="select">Choose improvement</SelectItem>
+                        {availableOptions.map((option) => (
+                          <SelectItem key={`${tool}-${option}`} value={option}>
+                            {option}
+                          </SelectItem>
+                        ))}
+                      </FantasySelect>
+                    ) : (
+                      <p className="text-xs">
+                        {slots === 0
+                          ? "Reach 25 PP to choose the first specialization or mastery."
+                          : "No improvement slot currently available."}
+                      </p>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </ParchmentCard>
+      ))}
+    </div>
+  );
+}
+
 function RulesPanel() {
   return (
     <div className="grid grid-cols-1 xl:grid-cols-3 gap-7">
@@ -2361,6 +3043,7 @@ function AdminPanel(props: {
   toggleDisabledTag: (tag: string) => void;
   enableAllTags: () => void;
   disableAllTags: () => void;
+  passDay: () => void;
 }) {
   return (
     <ParchmentCard>
@@ -2372,12 +3055,20 @@ function AdminPanel(props: {
           </div>
 
           {props.adminUnlocked && (
-            <Button
-              onClick={props.lockAdmin}
-              className="w-fit bg-[#4b3115] hover:bg-[#62401c] text-[#fff0c7]"
-            >
-              Leave Admin
-            </Button>
+            <div className="flex flex-wrap gap-2">
+              <Button
+                onClick={props.passDay}
+                className="w-fit bg-[#2f3b4b] hover:bg-[#3d4c60] text-[#fff0c7]"
+              >
+                Pass Day
+              </Button>
+              <Button
+                onClick={props.lockAdmin}
+                className="w-fit bg-[#4b3115] hover:bg-[#62401c] text-[#fff0c7]"
+              >
+                Leave Admin
+              </Button>
+            </div>
           )}
         </div>
 
@@ -2388,13 +3079,18 @@ function AdminPanel(props: {
               placeholder="Admin password"
               value={props.adminPassword}
               onChange={(event) => props.setAdminPassword(event.target.value)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter") {
+                  event.preventDefault();
+                  props.unlockAdmin();
+                }
+              }}
             />
             <Button onClick={props.unlockAdmin} className="bg-[#4b3115] hover:bg-[#62401c] text-[#fff0c7]">
               Unlock
             </Button>
             <p className="text-sm md:col-span-2">
-              Prototype password: <strong>craftadmin</strong>. Use real authentication before
-              public launch.
+              Enter the admin password to unlock campaign management.
             </p>
           </div>
         ) : (
