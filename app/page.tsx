@@ -1,5 +1,6 @@
 "use client";
 
+
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import {
@@ -41,6 +42,7 @@ import { fetchCampaigns, createCampaign, deleteCampaign } from "@/lib/supabaseCa
 import { fetchCampaignMaterials, replaceCampaignMaterials } from "@/lib/supabaseMaterials";
 import { fetchCampaignCraftedItems, insertCraftedItem, deleteCraftedItem } from "@/lib/supabaseCraftedItems";
 import { fetchCampaignCharacters, replaceCampaignCharacters } from "@/lib/supabaseCharacters";
+import { creatureTierRules, lootTables, rollDiceExpression, rollWeightedLootQuality, getLootTable, type CreatureTier, type LootQuality } from "@/data/lootTables";
 import { supabase } from "@/lib/supabaseClient";
 
 import { Card, CardContent } from "@/components/ui/card";
@@ -74,7 +76,7 @@ type InventoryProfile = {
 
 type Stat = "STR" | "DEX" | "CON" | "INT" | "WIS" | "CHA";
 
-type TabId = "craft" | "available" | "recipes" | "materials" | "characters" | "advancement" | "rules" | "admin";
+type TabId = "craft" | "available" | "recipes" | "materials" | "characters" | "advancement" | "looting" | "craftingRules" | "lootingRules" | "admin";
 
 const tabs = [
   ["craft", "Craft", Hammer],
@@ -83,7 +85,9 @@ const tabs = [
   ["materials", "Materials", FlaskConical],
   ["characters", "Characters", UserRound],
   ["advancement", "PP Improvements", Wrench],
-  ["rules", "Rules", ScrollText],
+  ["looting", "Looting", Package],
+  ["craftingRules", "Crafting Rules", ScrollText],
+  ["lootingRules", "Looting Rules", Dice5],
   ["admin", "Admin", KeyRound],
 ] as const satisfies readonly (readonly [TabId, string, React.ComponentType<{ className?: string }>])[];
 
@@ -101,8 +105,11 @@ type CraftedEffect = {
 type Character = {
   id: string;
   name: string;
+  harvesting: number;
   stats: Record<Stat, number>;
   tools: Record<string, ProficiencyLevel>;
+  ownedTools: Record<string, boolean>;
+  brokenTools: Record<string, boolean>;
   progressPoints: Record<string, number>;
   toolProgress: Record<string, ToolProgress>;
 };
@@ -122,6 +129,13 @@ type CraftedItem = {
   phaseTouched?: boolean;
   phaseTouchedMaterial?: string;
   phaseTouchedEffect?: CraftedEffect;
+};
+
+type LootResultItem = {
+  name: string;
+  qty: number;
+  kind: string;
+  quality: string;
 };
 
 
@@ -194,6 +208,30 @@ function buildToolProgress(defaultProficient = false): Record<string, ToolProgre
     acc[tool] = { ...emptyToolProgress(), proficient: defaultProficient, pp: defaultProficient ? 10 : 0 };
     return acc;
   }, {} as Record<string, ToolProgress>);
+}
+
+function buildToolOwnership(defaultOwned = false): Record<string, boolean> {
+  return TOOL_OPTIONS.reduce((acc, tool) => {
+    acc[tool] = defaultOwned;
+    return acc;
+  }, {} as Record<string, boolean>);
+}
+
+function characterHasUsableTool(character: Character, tool: string) {
+  return Boolean(character.ownedTools?.[tool]) && !Boolean(character.brokenTools?.[tool]);
+}
+
+function recipeAlwaysKnown(recipe: Recipe) {
+  return recipe.tags.includes("basic") || recipe.tags.includes("material-creation");
+}
+
+function recipeIsDiscovered(recipe: Recipe, discoveredMaterialNames: Set<string>) {
+  if (recipeAlwaysKnown(recipe)) return true;
+
+  return (recipe.materials as RecipeMaterialWithTag[]).some((material) => {
+    if (material.tagRequirement) return true;
+    return discoveredMaterialNames.has(normalizeName(material.name));
+  });
 }
 
 const RARITY_ORDER: Rarity[] = [
@@ -700,6 +738,7 @@ function normalizeCharacter(character: Partial<Character>): Character {
   return {
     id: character.id || crypto.randomUUID(),
     name: character.name || "Unnamed Crafter",
+    harvesting: character.harvesting ?? 0,
     stats: {
       STR: character.stats?.STR ?? 0,
       DEX: character.stats?.DEX ?? 0,
@@ -714,6 +753,14 @@ function normalizeCharacter(character: Partial<Character>): Character {
         return acc;
       }, {} as Record<string, ProficiencyLevel>),
       ...(character.tools || {}),
+    },
+    ownedTools: {
+      ...buildToolOwnership(false),
+      ...(character.ownedTools || {}),
+    },
+    brokenTools: {
+      ...buildToolOwnership(false),
+      ...(character.brokenTools || {}),
     },
     progressPoints: character.progressPoints || {},
     toolProgress: {
@@ -754,11 +801,14 @@ function defaultCharacter(): Character {
   return {
     id: crypto.randomUUID(),
     name: "Admin Crafter",
+    harvesting: 1,
     stats: { STR: 3, DEX: 3, CON: 1, INT: 3, WIS: 1, CHA: 0 },
     tools: TOOL_OPTIONS.reduce((acc, tool) => {
       acc[tool] = "proficient";
       return acc;
     }, {} as Record<string, ProficiencyLevel>),
+    ownedTools: buildToolOwnership(true),
+    brokenTools: buildToolOwnership(false),
     progressPoints: {},
     toolProgress: buildToolProgress(true),
   };
@@ -805,11 +855,14 @@ export default function ArcaneCraftingCodexPage() {
   const [newCharacter, setNewCharacter] = useState<Character>(() => ({
     id: crypto.randomUUID(),
     name: "",
+    harvesting: 0,
     stats: { STR: 0, DEX: 0, CON: 0, INT: 0, WIS: 0, CHA: 0 },
     tools: TOOL_OPTIONS.reduce((acc, tool) => {
       acc[tool] = "none";
       return acc;
     }, {} as Record<string, ProficiencyLevel>),
+    ownedTools: buildToolOwnership(false),
+    brokenTools: buildToolOwnership(false),
     progressPoints: {},
     toolProgress: buildToolProgress(false),
   }));
@@ -817,6 +870,22 @@ export default function ArcaneCraftingCodexPage() {
   const [recipeSearch, setRecipeSearch] = useState("");
   const [tagFilter, setTagFilter] = useState("all");
   const [rarityFilter, setRarityFilter] = useState("all");
+  const [availableRecipePage, setAvailableRecipePage] = useState(1);
+  const [allRecipePage, setAllRecipePage] = useState(1);
+  const [manuallyDiscoveredMaterials, setManuallyDiscoveredMaterials] = useState<string[]>([]);
+  const [lootTier, setLootTier] = useState<CreatureTier>("common");
+  const [lootTableId, setLootTableId] = useState(lootTables[0]?.id || "skeleton");
+  const [lootQuality, setLootQuality] = useState<LootQuality | "none" | "unrolled">("unrolled");
+  const [targetLootName, setTargetLootName] = useState("random");
+  const [lootResults, setLootResults] = useState<LootResultItem[]>([]);
+  const [lootCharacterId, setLootCharacterId] = useState<string>(() => characters[0].id);
+  const [harvestStarted, setHarvestStarted] = useState(false);
+  const [harvestAttemptsRemaining, setHarvestAttemptsRemaining] = useState(0);
+  const [harvestDc, setHarvestDc] = useState(10);
+  const [harvestLog, setHarvestLog] = useState<string[]>([]);
+  const [harvestStep, setHarvestStep] = useState<"setup" | "attempt" | "quality" | "loot">("setup");
+  const [pendingLootRolls, setPendingLootRolls] = useState(0);
+  const [doubleNextLoot, setDoubleNextLoot] = useState(false);
   const [materialsLoaded, setMaterialsLoaded] = useState(false);
   const [isLoadingCampaignData, setIsLoadingCampaignData] = useState(false);
   const skipSupabaseSaveRef = useRef(false);
@@ -1136,6 +1205,22 @@ export default function ArcaneCraftingCodexPage() {
   }, [disabledTags]);
 
   useEffect(() => {
+    try {
+      const saved = window.localStorage.getItem("artisan-codex-discovered-materials");
+      if (saved) setManuallyDiscoveredMaterials(JSON.parse(saved));
+    } catch {
+      setManuallyDiscoveredMaterials([]);
+    }
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem(
+      "artisan-codex-discovered-materials",
+      JSON.stringify(manuallyDiscoveredMaterials)
+    );
+  }, [manuallyDiscoveredMaterials]);
+
+  useEffect(() => {
     setPhaseTouchedMaterial("none");
   }, [selectedRecipeId]);
 
@@ -1144,6 +1229,41 @@ export default function ArcaneCraftingCodexPage() {
     materials.forEach((material) => map.set(normalizeName(material.name), material.qty));
     return map;
   }, [materials]);
+
+  const discoveredMaterialNames = useMemo(() => {
+    return new Set([
+      ...materials
+        .filter((material) => material.qty > 0)
+        .map((material) => normalizeName(material.name)),
+      ...manuallyDiscoveredMaterials.map((name) => normalizeName(name)),
+    ]);
+  }, [materials, manuallyDiscoveredMaterials]);
+
+  function markMaterialDiscovered(name: string, discovered = true) {
+    const normalized = normalizeName(name);
+    setManuallyDiscoveredMaterials((current) => {
+      const existing = new Set(current.map((item) => normalizeName(item)));
+      if (discovered) {
+        if (existing.has(normalized)) return current;
+        return [...current, name];
+      }
+      return current.filter((item) => normalizeName(item) !== normalized);
+    });
+  }
+
+  function markMaterialsDiscovered(names: string[]) {
+    setManuallyDiscoveredMaterials((current) => {
+      const existing = new Set(current.map((item) => normalizeName(item)));
+      const next = [...current];
+      names.forEach((name) => {
+        if (!existing.has(normalizeName(name))) {
+          existing.add(normalizeName(name));
+          next.push(name);
+        }
+      });
+      return next;
+    });
+  }
 
   const selectedRecipe = recipes.find((recipe) => recipe.id === selectedRecipeId) || recipes[0];
   const selectedCharacter =
@@ -1166,8 +1286,9 @@ export default function ArcaneCraftingCodexPage() {
       available: canRecipe(recipe, materialMap),
       missing: missingMaterials(recipe, materialMap),
       rarityFromTags: getRarityFromTags(recipe),
+      discovered: recipeIsDiscovered(recipe, discoveredMaterialNames),
     }));
-  }, [recipes, materialMap]);
+  }, [recipes, materialMap, discoveredMaterialNames]);
 
   const filteredRecipes = useMemo(() => {
     const search = recipeSearch.trim().toLowerCase();
@@ -1180,7 +1301,7 @@ export default function ArcaneCraftingCodexPage() {
         " "
       )}`.toLowerCase();
       const searchMatches = !search || searchText.includes(search);
-      return !hiddenByDisabledTag && tagMatches && rarityMatches && searchMatches;
+      return recipe.discovered && !hiddenByDisabledTag && tagMatches && rarityMatches && searchMatches;
     });
   }, [recipeStatus, recipeSearch, tagFilter, rarityFilter, disabledTags]);
 
@@ -1227,6 +1348,7 @@ export default function ArcaneCraftingCodexPage() {
     if (!adminUnlocked) return;
     const parsed = parseInventoryText(bulkMaterials);
     markMaterialsForSupabaseSave();
+    markMaterialsDiscovered(parsed.map((material) => material.name));
     setMaterials((current) => upsertMaterialList(current, parsed));
     setImportLog(`Imported or updated ${parsed.length} material rows. Saved permanently in this browser.`);
     setBulkMaterials("");
@@ -1236,7 +1358,9 @@ export default function ArcaneCraftingCodexPage() {
     if (!adminUnlocked) return;
     markMaterialsForSupabaseSave();
     setMaterials([]);
-    setImportLog("Current campaign inventory wiped.");
+    setManuallyDiscoveredMaterials([]);
+    window.localStorage.removeItem("artisan-codex-discovered-materials");
+    setImportLog("Current campaign inventory wiped and all materials marked undiscovered.");
   }
 
   function exportMaterialsJson() {
@@ -1428,11 +1552,14 @@ export default function ArcaneCraftingCodexPage() {
     setNewCharacter({
       id: crypto.randomUUID(),
       name: "",
+      harvesting: 0,
       stats: { STR: 0, DEX: 0, CON: 0, INT: 0, WIS: 0, CHA: 0 },
       tools: TOOL_OPTIONS.reduce((acc, tool) => {
         acc[tool] = "none";
         return acc;
       }, {} as Record<string, ProficiencyLevel>),
+      ownedTools: buildToolOwnership(false),
+      brokenTools: buildToolOwnership(false),
       progressPoints: {},
       toolProgress: buildToolProgress(false),
     });
@@ -1447,9 +1574,40 @@ export default function ArcaneCraftingCodexPage() {
     }
   }
 
-  function applyTrainingToCharacter(characterId: string, tool: string, trainingType: "regular" | "expert") {
+  function updateCharacterToolOwned(characterId: string, tool: string, owned: boolean) {
     if (!adminUnlocked) return;
     markCharactersForSupabaseSave();
+    setCharacters((current) =>
+      current.map((character) =>
+        character.id === characterId
+          ? {
+              ...character,
+              ownedTools: { ...character.ownedTools, [tool]: owned },
+              brokenTools: owned ? character.brokenTools : { ...character.brokenTools, [tool]: false },
+            }
+          : character
+      )
+    );
+  }
+
+  function updateCharacterToolBroken(characterId: string, tool: string, broken: boolean) {
+    if (!adminUnlocked) return;
+    markCharactersForSupabaseSave();
+    setCharacters((current) =>
+      current.map((character) =>
+        character.id === characterId
+          ? {
+              ...character,
+              ownedTools: broken ? { ...character.ownedTools, [tool]: true } : character.ownedTools,
+              brokenTools: { ...character.brokenTools, [tool]: broken },
+            }
+          : character
+      )
+    );
+  }
+
+  function applyTrainingToCharacter(characterId: string, tool: string, trainingType: "regular" | "expert") {
+    if (!adminUnlocked) return;
     markCharactersForSupabaseSave();
     setCharacters((current) =>
       current.map((character) => {
@@ -1475,6 +1633,16 @@ export default function ArcaneCraftingCodexPage() {
           },
         };
       })
+    );
+  }
+
+  function updateCharacterHarvesting(characterId: string, value: number) {
+    if (!adminUnlocked) return;
+    markCharactersForSupabaseSave();
+    setCharacters((current) =>
+      current.map((character) =>
+        character.id === characterId ? { ...character, harvesting: value } : character
+      )
     );
   }
 
@@ -1549,6 +1717,205 @@ export default function ArcaneCraftingCodexPage() {
     );
   }
 
+  function startHarvesting() {
+    const rule = creatureTierRules[lootTier];
+    setHarvestStarted(true);
+    setHarvestAttemptsRemaining(rule.attempts);
+    setHarvestDc(rule.dc);
+    setLootQuality("unrolled");
+    setTargetLootName("random");
+    setPendingLootRolls(0);
+    setDoubleNextLoot(false);
+    setHarvestStep("attempt");
+    setHarvestLog([`Started harvesting ${getLootTable(lootTableId).label}. Attempts: ${rule.attempts}, DC ${rule.dc}.`]);
+  }
+
+  function newCreature() {
+    setHarvestStarted(false);
+    setHarvestAttemptsRemaining(0);
+    setHarvestDc(creatureTierRules[lootTier].dc);
+    setLootQuality("unrolled");
+    setTargetLootName("random");
+    setLootResults([]);
+    setHarvestLog([]);
+    setPendingLootRolls(0);
+    setDoubleNextLoot(false);
+    setHarvestStep("setup");
+  }
+
+  function lootingAttempt() {
+    if (!harvestStarted || harvestAttemptsRemaining <= 0 || harvestStep !== "attempt") return;
+
+    const character = characters.find((item) => item.id === lootCharacterId) || characters[0];
+    const roll = Math.floor(Math.random() * 20) + 1;
+    const harvestingBonus = character?.harvesting ?? 0;
+    const total = roll + harvestingBonus;
+    const currentDc = Math.min(20, harvestDc);
+
+    if (roll === 1) {
+      const nextAttempts = Math.max(0, harvestAttemptsRemaining - 2);
+      setHarvestAttemptsRemaining(nextAttempts);
+      setHarvestStep(nextAttempts <= 0 ? "setup" : "attempt");
+      setHarvestLog((current) => [
+        `Critical failure: ${character?.name || "Harvester"} rolled Nat 1 (${total}) vs DC ${currentDc}. Lose 2 attempts. ${nextAttempts} remaining.`,
+        ...current,
+      ]);
+      return;
+    }
+
+    if (roll === 20) {
+      setPendingLootRolls(2);
+      setDoubleNextLoot(true);
+      setLootQuality("unrolled");
+      setHarvestStep("quality");
+      setHarvestLog((current) => [
+        `Critical success: ${character?.name || "Harvester"} rolled Nat 20. Gain 2 loot rolls, double the first item found, and the DC stays ${currentDc}.`,
+        ...current,
+      ]);
+      return;
+    }
+
+    if (total >= currentDc + 5) {
+      const nextDc = Math.min(20, currentDc + 1);
+      setHarvestDc(nextDc);
+      setPendingLootRolls(2);
+      setDoubleNextLoot(false);
+      setLootQuality("unrolled");
+      setHarvestStep("quality");
+      setHarvestLog((current) => [
+        `Great success: ${character?.name || "Harvester"} rolled ${roll} + ${harvestingBonus} = ${total} vs DC ${currentDc}. Gain 2 loot rolls. Next DC ${nextDc}.`,
+        ...current,
+      ]);
+      return;
+    }
+
+    if (total >= currentDc) {
+      const nextDc = Math.min(20, currentDc + 1);
+      setHarvestDc(nextDc);
+      setPendingLootRolls(1);
+      setDoubleNextLoot(false);
+      setLootQuality("unrolled");
+      setHarvestStep("quality");
+      setHarvestLog((current) => [
+        `Success: ${character?.name || "Harvester"} rolled ${roll} + ${harvestingBonus} = ${total} vs DC ${currentDc}. Gain 1 loot roll. Next DC ${nextDc}.`,
+        ...current,
+      ]);
+      return;
+    }
+
+    const nextAttempts = Math.max(0, harvestAttemptsRemaining - 1);
+    setHarvestAttemptsRemaining(nextAttempts);
+    setHarvestStep(nextAttempts <= 0 ? "setup" : "attempt");
+    setHarvestLog((current) => [
+      `Failure: ${character?.name || "Harvester"} rolled ${roll} + ${harvestingBonus} = ${total} vs DC ${currentDc}. Lose 1 attempt. ${nextAttempts} remaining.`,
+      ...current,
+    ]);
+  }
+
+  function rollLootQualityOnly() {
+    if (!harvestStarted || harvestAttemptsRemaining <= 0 || harvestStep !== "quality" || pendingLootRolls <= 0) return;
+
+    const quality = rollWeightedLootQuality(lootTier);
+    setLootQuality(quality);
+
+    if (quality === "none") {
+      const remainingRolls = Math.max(0, pendingLootRolls - 1);
+      setPendingLootRolls(remainingRolls);
+      setHarvestStep(remainingRolls > 0 ? "quality" : "attempt");
+      setLootResults((current) => [
+        { name: "No Loot", qty: 0, kind: "none", quality: "none" },
+        ...current,
+      ]);
+      setHarvestLog((current) => [
+        `Loot quality rolled: No Loot. Skipping Roll Loot. ${remainingRolls} pending loot roll${remainingRolls === 1 ? "" : "s"} remaining.`,
+        ...current,
+      ]);
+      return;
+    }
+
+    setHarvestStep("loot");
+    setHarvestLog((current) => [
+      `Loot quality rolled: ${quality} loot.`,
+      ...current,
+    ]);
+  }
+
+  function addLootToInventory() {
+    if (!harvestStarted || harvestAttemptsRemaining <= 0 || harvestStep !== "loot" || pendingLootRolls <= 0) return;
+
+    const table = getLootTable(lootTableId);
+    const quality = lootQuality === "unrolled" ? rollWeightedLootQuality(lootTier) : lootQuality;
+
+    if (quality === "none") {
+      setLootQuality("none");
+      setLootResults((current) => [{ name: "No Loot", qty: 0, kind: "none", quality: "none" }, ...current]);
+      const remainingRolls = Math.max(0, pendingLootRolls - 1);
+      setPendingLootRolls(remainingRolls);
+      setHarvestStep(remainingRolls > 0 ? "quality" : "attempt");
+      setHarvestLog((current) => [
+        `No Loot found. ${remainingRolls} pending loot roll${remainingRolls === 1 ? "" : "s"} remaining.`,
+        ...current,
+      ]);
+      return;
+    }
+
+    const entries = table.tables[quality] || [];
+    if (entries.length === 0) {
+      setLootResults((current) => [{ name: "No entries for this table.", qty: 0, kind: "none", quality }, ...current]);
+      const remainingRolls = Math.max(0, pendingLootRolls - 1);
+      setPendingLootRolls(remainingRolls);
+      setHarvestStep(remainingRolls > 0 ? "quality" : "attempt");
+      return;
+    }
+
+    const entry =
+      targetLootName !== "random"
+        ? entries.find((item) => item.name === targetLootName) || entries[0]
+        : entries[Math.floor(Math.random() * entries.length)];
+
+    const baseQty = rollDiceExpression(entry.amount);
+    const shouldDouble = doubleNextLoot;
+    const result: LootResultItem = {
+      name: entry.name,
+      qty: (Number(baseQty) || 1) * (shouldDouble ? 2 : 1),
+      kind: entry.kind || "material",
+      quality,
+    };
+
+    setLootQuality("unrolled");
+    setLootResults((current) => [result, ...current]);
+    markMaterialDiscovered(entry.name, true);
+
+    const remainingRolls = Math.max(0, pendingLootRolls - 1);
+    setPendingLootRolls(remainingRolls);
+    setDoubleNextLoot(false);
+    setHarvestStep(remainingRolls > 0 ? "quality" : "attempt");
+    setHarvestLog((current) => [
+      `Loot found: ${result.qty}× ${result.name}${shouldDouble ? " (doubled from critical success)" : ""}. ${remainingRolls} pending loot roll${remainingRolls === 1 ? "" : "s"} remaining.`,
+      ...current,
+    ]);
+
+    if ((entry.kind || "material") === "material") {
+      markMaterialsForSupabaseSave();
+      setMaterials((current) =>
+        upsertMaterialList(current, [{ id: crypto.randomUUID(), name: entry.name, qty: result.qty, tier: getMaterialTier(entry.name) }])
+      );
+    } else {
+      const lootedItem: CraftedItem = {
+        id: crypto.randomUUID(),
+        name: entry.name,
+        type: entry.kind || "item",
+        rarity: quality === "epic" ? "epic" : quality === "rare" ? "rare" : "common",
+        tags: ["looted", table.family, quality],
+        quality: "Normal",
+        crafter: "Looted",
+        rollTotal: 0,
+        naturalRoll: 0,
+      };
+      setCraftedItems((current) => [lootedItem, ...current]);
+    }
+  }
+
   function passDay() {
     if (!adminUnlocked) return;
 
@@ -1578,6 +1945,32 @@ export default function ArcaneCraftingCodexPage() {
   async function craftSelectedRecipe(recipeOverride?: Recipe) {
     const recipe = recipeOverride || selectedRecipe;
     if (!recipe || !selectedCharacter) return;
+
+    if (!selectedCharacter.ownedTools?.[recipe.tool]) {
+      setLastRoll({
+        recipeName: recipe.name,
+        naturalRoll: 0,
+        total: 0,
+        quality: "Failed",
+        ppGained: 0,
+        title: "Missing Tool",
+        message: `${selectedCharacter.name} does not own ${recipe.tool}'s Tools and cannot craft ${recipe.name}.`,
+      });
+      return;
+    }
+
+    if (selectedCharacter.brokenTools?.[recipe.tool]) {
+      setLastRoll({
+        recipeName: recipe.name,
+        naturalRoll: 0,
+        total: 0,
+        quality: "Failed",
+        ppGained: 0,
+        title: "Broken Tool",
+        message: `${selectedCharacter.name}'s ${recipe.tool}'s Tools are broken and must be repaired or replaced before crafting.`,
+      });
+      return;
+    }
 
     if (!canRecipe(recipe, materialMap)) {
       setLastRoll({
@@ -1812,6 +2205,8 @@ export default function ArcaneCraftingCodexPage() {
       }
     }
 
+    const brokeToolOnNatOne = !npcCraft && naturalRoll === 1;
+
     setCharacters((current) =>
       current.map((character) => {
         if (character.id !== selectedCharacter.id) return character;
@@ -1827,6 +2222,9 @@ export default function ArcaneCraftingCodexPage() {
             ...character.progressPoints,
             [recipe.category]: (character.progressPoints[recipe.category] || 0) + craftResult.ppGain,
           },
+          brokenTools: brokeToolOnNatOne
+            ? { ...character.brokenTools, [recipe.tool]: true }
+            : character.brokenTools,
           toolProgress: {
             ...character.toolProgress,
             [recipe.tool]: {
@@ -1853,7 +2251,7 @@ export default function ArcaneCraftingCodexPage() {
       title: craftResult.title,
       result: craftResult as CraftResultSummary,
       phaseTouchedEffect: phaseEffect?.name,
-      message: `${craftResult.message}${dailyAdvantage ? " Daily category limit reached: advantage applied, no PP gained." : ""}${materialRecipe && createdMaterials.length > 0 ? ` Added material output to inventory: ${createdMaterials.map((m) => `${m.qty}× ${m.name}`).join(", ")}.` : ""}`,
+      message: `${craftResult.message}${brokeToolOnNatOne ? ` Natural 1: ${recipe.tool}'s Tools broke.` : ""}${dailyAdvantage ? " Daily category limit reached: advantage applied, no PP gained." : ""}${materialRecipe && createdMaterials.length > 0 ? ` Added material output to inventory: ${createdMaterials.map((m) => `${m.qty}× ${m.name}`).join(", ")}.` : ""}`,
     });
   }
 
@@ -1878,7 +2276,7 @@ export default function ArcaneCraftingCodexPage() {
             The Artisan’s Codex
           </motion.h1>
           <p className="max-w-4xl text-lg md:text-xl leading-relaxed text-[#e7c75e] font-serif">
-            Discover recipes, track materials, check crafting requirements, plan upgrades, and see what your character can create.
+            Forge your legend through crafting, looting, and discovery. Explore recipes, track materials, uncover treasures, plan powerful upgrades, and reveal everything your character can create.
           </p>
         </header>
 
@@ -1948,6 +2346,8 @@ export default function ArcaneCraftingCodexPage() {
               setEnabled: setShowPhaseCraftableOnly,
               count: phaseCraftableRecipes.length,
             }}
+            page={availableRecipePage}
+            setPage={setAvailableRecipePage}
           />
         )}
 
@@ -1958,10 +2358,19 @@ export default function ArcaneCraftingCodexPage() {
             materialMap={materialMap}
             onCraft={(recipe) => { setSelectedRecipeId(recipe.id); setActiveTab("craft"); }}
             showMissing
+            page={allRecipePage}
+            setPage={setAllRecipePage}
           />
         )}
 
-        {activeTab === "materials" && <MaterialsPanel materials={materials} adminUnlocked={adminUnlocked} />}
+        {activeTab === "materials" && (
+          <MaterialsPanel
+            materials={materials}
+            adminUnlocked={adminUnlocked}
+            discoveredMaterialNames={discoveredMaterialNames}
+            markMaterialDiscovered={markMaterialDiscovered}
+          />
+        )}
 
         {activeTab === "characters" && (
           <CharactersPanel
@@ -1973,7 +2382,10 @@ export default function ArcaneCraftingCodexPage() {
             adminUnlocked={adminUnlocked}
             applyTrainingToCharacter={applyTrainingToCharacter}
             updateCharacterStat={updateCharacterStat}
+            updateCharacterHarvesting={updateCharacterHarvesting}
             updateCharacterTool={updateCharacterTool}
+            updateCharacterToolOwned={updateCharacterToolOwned}
+            updateCharacterToolBroken={updateCharacterToolBroken}
           />
         )}
 
@@ -1984,7 +2396,38 @@ export default function ArcaneCraftingCodexPage() {
           />
         )}
 
-        {activeTab === "rules" && <RulesPanel />}
+        {activeTab === "looting" && (
+          <LootingPanel
+            lootTier={lootTier}
+            setLootTier={setLootTier}
+            lootTableId={lootTableId}
+            setLootTableId={setLootTableId}
+            lootQuality={lootQuality}
+            setLootQuality={setLootQuality}
+            targetLootName={targetLootName}
+            setTargetLootName={setTargetLootName}
+            lootResults={lootResults}
+            characters={characters}
+            lootCharacterId={lootCharacterId}
+            setLootCharacterId={setLootCharacterId}
+            harvestStarted={harvestStarted}
+            harvestAttemptsRemaining={harvestAttemptsRemaining}
+            harvestDc={harvestDc}
+            harvestLog={harvestLog}
+            harvestStep={harvestStep}
+            pendingLootRolls={pendingLootRolls}
+            doubleNextLoot={doubleNextLoot}
+            startHarvesting={startHarvesting}
+            newCreature={newCreature}
+            lootingAttempt={lootingAttempt}
+            rollLootQualityOnly={rollLootQualityOnly}
+            addLootToInventory={addLootToInventory}
+          />
+        )}
+
+        {activeTab === "craftingRules" && <RulesPanel />}
+
+        {activeTab === "lootingRules" && <LootingRulesPanel />}
 
         {activeTab === "admin" && (
           <AdminPanel
@@ -2058,15 +2501,17 @@ function FantasySelect({
   onValueChange,
   children,
   placeholder,
+  disabled = false,
 }: {
   value: string;
   onValueChange: (value: string) => void;
   children: React.ReactNode;
   placeholder?: string;
+  disabled?: boolean;
 }) {
   return (
-    <Select value={value} onValueChange={onValueChange}>
-      <SelectTrigger className="bg-[#f2dfb9] border-[#9a7b45] text-[#251b10] font-serif">
+    <Select value={value} onValueChange={onValueChange} disabled={disabled}>
+      <SelectTrigger className="bg-[#f2dfb9] border-[#9a7b45] text-[#251b10] font-serif disabled:opacity-60">
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
       <SelectContent>{children}</SelectContent>
@@ -2163,7 +2608,10 @@ function CraftPanel(props: {
     return <ParchmentCard>No recipes or characters loaded.</ParchmentCard>;
   }
 
-  const available = canRecipe(selectedRecipe, props.materialMap);
+  const hasRequiredTool = Boolean(selectedCharacter.ownedTools?.[selectedRecipe.tool]);
+  const requiredToolBroken = Boolean(selectedCharacter.brokenTools?.[selectedRecipe.tool]);
+  const materialsAvailable = canRecipe(selectedRecipe, props.materialMap);
+  const available = materialsAvailable && hasRequiredTool && !requiredToolBroken;
   const missing = missingMaterials(selectedRecipe, props.materialMap);
   const rarityColor = getRarityColor(selectedRecipe);
   const rarity = getRarityFromTags(selectedRecipe);
@@ -2287,7 +2735,15 @@ function CraftPanel(props: {
             </p>
           )}
 
-          {!available && missing.length > 0 && (
+          {!hasRequiredTool && (
+            <p className="text-red-800 font-bold">Missing Tool: {selectedRecipe.tool}'s Tools</p>
+          )}
+
+          {hasRequiredTool && requiredToolBroken && (
+            <p className="text-red-800 font-bold">Broken Tool: {selectedRecipe.tool}'s Tools</p>
+          )}
+
+          {!materialsAvailable && missing.length > 0 && (
             <p className="text-red-800 font-bold">
               Missing: {missing.map((m) => `${m.needed - m.available}× ${m.name}`).join(", ")}
             </p>
@@ -2319,7 +2775,15 @@ function CraftPanel(props: {
           Roll d20 and Craft
         </Button>
 
-        {!available && <p className="text-lg">Not enough materials to craft this item.</p>}
+        {!available && (
+          <p className="text-lg">
+            {!hasRequiredTool
+              ? `Missing required tool: ${selectedRecipe.tool}'s Tools.`
+              : requiredToolBroken
+                ? `Required tool is broken: ${selectedRecipe.tool}'s Tools.`
+                : "Not enough materials to craft this item."}
+          </p>
+        )}
 
         {props.lastRoll && (
           <div className="rounded-xl border-2 border-[#9a7b45] bg-[#f2dfb9] p-4">
@@ -2464,6 +2928,8 @@ function RecipeGrid({
   onCraft,
   showMissing = false,
   phaseToggle,
+  page = 1,
+  setPage,
 }: {
   title: string;
   recipes: (Recipe & { available?: boolean; missing?: { name: string; needed: number; available: number }[] })[];
@@ -2475,14 +2941,24 @@ function RecipeGrid({
     setEnabled: (value: boolean) => void;
     count: number;
   };
+  page?: number;
+  setPage?: (page: number) => void;
 }) {
+  const pageSize = 12;
+  const totalPages = Math.max(1, Math.ceil(recipes.length / pageSize));
+  const safePage = Math.min(page, totalPages);
+  const pageRecipes = recipes.slice((safePage - 1) * pageSize, safePage * pageSize);
+
   return (
     <ParchmentCard>
       <div className="space-y-5 font-serif">
         <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex items-center gap-3">
             <BookOpen className="w-8 h-8" />
-            <h2 className="text-3xl font-bold">{title}</h2>
+            <div>
+              <h2 className="text-3xl font-bold">{title}</h2>
+              <p className="text-sm">{recipes.length} recipes • Page {safePage} of {totalPages}</p>
+            </div>
           </div>
 
           {phaseToggle && (
@@ -2511,7 +2987,7 @@ function RecipeGrid({
         )}
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
-          {recipes.map((recipe) => {
+          {pageRecipes.map((recipe) => {
             const available = recipe.available ?? canRecipe(recipe, materialMap);
             const color = getRarityColor(recipe);
             const rarity = getRarityFromTags(recipe);
@@ -2576,6 +3052,68 @@ function RecipeGrid({
             );
           })}
         </div>
+
+        {totalPages > 1 && (
+          <div className="flex flex-wrap items-center justify-center gap-2 pt-2">
+            <Button
+              disabled={safePage <= 1}
+              onClick={() => setPage?.(1)}
+              className="min-w-10 bg-[#4b3115] hover:bg-[#62401c] text-[#fff0c7] disabled:opacity-40"
+            >
+              «
+            </Button>
+            <Button
+              disabled={safePage <= 1}
+              onClick={() => setPage?.(safePage - 1)}
+              className="min-w-10 bg-[#4b3115] hover:bg-[#62401c] text-[#fff0c7] disabled:opacity-40"
+            >
+              ‹
+            </Button>
+
+            {Array.from({ length: totalPages })
+              .map((_, index) => index + 1)
+              .filter((pageNumber) =>
+                pageNumber === 1 ||
+                pageNumber === totalPages ||
+                Math.abs(pageNumber - safePage) <= 2
+              )
+              .map((pageNumber, index, visiblePages) => {
+                const previousPage = visiblePages[index - 1];
+                const showGap = previousPage && pageNumber - previousPage > 1;
+
+                return (
+                  <React.Fragment key={pageNumber}>
+                    {showGap && <span className="px-2 font-bold">…</span>}
+                    <Button
+                      onClick={() => setPage?.(pageNumber)}
+                      className={`min-w-10 ${
+                        pageNumber === safePage
+                          ? "bg-[#171717] text-[#fff0c7] border border-[#d2ad5f]"
+                          : "bg-[#ead6ad] text-[#251b10] border border-[#b99b62] hover:bg-[#f4e3bd]"
+                      }`}
+                    >
+                      {pageNumber}
+                    </Button>
+                  </React.Fragment>
+                );
+              })}
+
+            <Button
+              disabled={safePage >= totalPages}
+              onClick={() => setPage?.(safePage + 1)}
+              className="min-w-10 bg-[#4b3115] hover:bg-[#62401c] text-[#fff0c7] disabled:opacity-40"
+            >
+              ›
+            </Button>
+            <Button
+              disabled={safePage >= totalPages}
+              onClick={() => setPage?.(totalPages)}
+              className="min-w-10 bg-[#4b3115] hover:bg-[#62401c] text-[#fff0c7] disabled:opacity-40"
+            >
+              »
+            </Button>
+          </div>
+        )}
       </div>
     </ParchmentCard>
   );
@@ -2584,9 +3122,13 @@ function RecipeGrid({
 function MaterialsPanel({
   materials,
   adminUnlocked,
+  discoveredMaterialNames,
+  markMaterialDiscovered,
 }: {
   materials: Material[];
   adminUnlocked: boolean;
+  discoveredMaterialNames: Set<string>;
+  markMaterialDiscovered: (name: string, discovered: boolean) => void;
 }) {
   const grouped = RARITY_ORDER; // just prevents unused false positives in some editors
   void grouped;
@@ -2652,7 +3194,7 @@ function MaterialsPanel({
               <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-3">
                 {tier.materials.map((material) => (
                   <div
-                    key={material.id}
+                    key={`${tier.tier}-${material.name}-${material.id}`}
                     className="rounded-xl border px-3 py-2 flex justify-between"
                     style={{
                       borderColor: material.qty > 0 ? "#9a7b45" : "#c8ad77",
@@ -2661,7 +3203,19 @@ function MaterialsPanel({
                     }}
                   >
                     <span>{material.name}</span>
-                    <strong>{material.qty}</strong>
+                    <div className="flex items-center gap-3">
+                      {adminUnlocked && (
+                        <label className="flex items-center gap-1 text-xs">
+                          <input
+                            type="checkbox"
+                            checked={discoveredMaterialNames.has(normalizeName(material.name))}
+                            onChange={(event) => markMaterialDiscovered(material.name, event.target.checked)}
+                          />
+                          Discovered
+                        </label>
+                      )}
+                      <strong>{material.qty}</strong>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -2701,7 +3255,10 @@ function CharactersPanel({
   adminUnlocked,
   applyTrainingToCharacter,
   updateCharacterStat,
+  updateCharacterHarvesting,
   updateCharacterTool,
+  updateCharacterToolOwned,
+  updateCharacterToolBroken,
 }: {
   characters: Character[];
   newCharacter: Character;
@@ -2711,7 +3268,10 @@ function CharactersPanel({
   adminUnlocked: boolean;
   applyTrainingToCharacter: (characterId: string, tool: string, trainingType: "regular" | "expert") => void;
   updateCharacterStat: (characterId: string, stat: Stat, value: number) => void;
+  updateCharacterHarvesting: (characterId: string, value: number) => void;
   updateCharacterTool: (characterId: string, tool: string, level: ProficiencyLevel) => void;
+  updateCharacterToolOwned: (characterId: string, tool: string, owned: boolean) => void;
+  updateCharacterToolBroken: (characterId: string, tool: string, broken: boolean) => void;
 }) {
   return (
     <div className="grid grid-cols-1 xl:grid-cols-2 gap-7">
@@ -2729,6 +3289,17 @@ function CharactersPanel({
               setNewCharacter((current) => ({ ...current, name: event.target.value }))
             }
           />
+
+          <label className="space-y-1 block">
+            <strong>Harvesting</strong>
+            <FantasyInput
+              type="number"
+              value={newCharacter.harvesting}
+              onChange={(event) =>
+                setNewCharacter((current) => ({ ...current, harvesting: numberValue(event.target.value) }))
+              }
+            />
+          </label>
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {STATS.map((stat) => (
@@ -2806,6 +3377,16 @@ function CharactersPanel({
                 )}
               </div>
 
+              <label className="space-y-1 block">
+                <strong>Harvesting</strong>
+                <FantasyInput
+                  type="number"
+                  value={character.harvesting}
+                  disabled={!adminUnlocked}
+                  onChange={(event) => updateCharacterHarvesting(character.id, numberValue(event.target.value))}
+                />
+              </label>
+
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                 {STATS.map((stat) => (
                   <label key={stat} className="space-y-1">
@@ -2836,6 +3417,26 @@ function CharactersPanel({
                           <SelectItem value="proficient">Proficient</SelectItem>
                           <SelectItem value="expertise">Expertise</SelectItem>
                         </FantasySelect>
+                      </div>
+                      <div className="flex flex-wrap gap-4 text-sm">
+                        <label className="flex items-center gap-2">
+                          <input
+                            type="checkbox"
+                            checked={Boolean(character.ownedTools?.[tool])}
+                            disabled={!adminUnlocked}
+                            onChange={(event) => updateCharacterToolOwned(character.id, tool, event.target.checked)}
+                          />
+                          Owns tool
+                        </label>
+                        <label className="flex items-center gap-2">
+                          <input
+                            type="checkbox"
+                            checked={Boolean(character.brokenTools?.[tool])}
+                            disabled={!adminUnlocked || !character.ownedTools?.[tool]}
+                            onChange={(event) => updateCharacterToolBroken(character.id, tool, event.target.checked)}
+                          />
+                          Broken
+                        </label>
                       </div>
                       <p className="text-sm">
                         PP: <strong>{progress.pp}</strong> • Regular Training: {progress.regularTrainingUsed}/5 • Expert Training: {progress.expertTrainingUsed}/5
@@ -2971,6 +3572,225 @@ function AdvancementPanel({
   );
 }
 
+
+function LootingPanel({
+  lootTier,
+  setLootTier,
+  lootTableId,
+  setLootTableId,
+  lootQuality,
+  setLootQuality,
+  targetLootName,
+  setTargetLootName,
+  lootResults,
+  characters,
+  lootCharacterId,
+  setLootCharacterId,
+  harvestStarted,
+  harvestAttemptsRemaining,
+  harvestDc,
+  harvestLog,
+  harvestStep,
+  pendingLootRolls,
+  doubleNextLoot,
+  startHarvesting,
+  newCreature,
+  lootingAttempt,
+  rollLootQualityOnly,
+  addLootToInventory,
+}: {
+  lootTier: CreatureTier;
+  setLootTier: (tier: CreatureTier) => void;
+  lootTableId: string;
+  setLootTableId: (id: string) => void;
+  lootQuality: LootQuality | "none" | "unrolled";
+  setLootQuality: (quality: LootQuality | "none" | "unrolled") => void;
+  targetLootName: string;
+  setTargetLootName: (name: string) => void;
+  lootResults: LootResultItem[];
+  characters: Character[];
+  lootCharacterId: string;
+  setLootCharacterId: (id: string) => void;
+  harvestStarted: boolean;
+  harvestAttemptsRemaining: number;
+  harvestDc: number;
+  harvestLog: string[];
+  harvestStep: "setup" | "attempt" | "quality" | "loot";
+  pendingLootRolls: number;
+  doubleNextLoot: boolean;
+  startHarvesting: () => void;
+  newCreature: () => void;
+  lootingAttempt: () => void;
+  rollLootQualityOnly: () => void;
+  addLootToInventory: () => void;
+}) {
+  const selectedTable = getLootTable(lootTableId);
+  const usableQuality = lootQuality === "unrolled" || lootQuality === "none" ? "common" : lootQuality;
+  const targetEntries = selectedTable.tables[usableQuality] || [];
+  const tierRule = creatureTierRules[lootTier];
+  const depleted = harvestStarted && harvestAttemptsRemaining <= 0;
+  const canAttempt = harvestStarted && !depleted && harvestStep === "attempt";
+  const canRollQuality = harvestStarted && !depleted && harvestStep === "quality" && pendingLootRolls > 0;
+  const canRollLoot = harvestStarted && !depleted && harvestStep === "loot" && pendingLootRolls > 0;
+
+  return (
+    <div className="grid grid-cols-1 xl:grid-cols-[0.9fr_1.1fr] gap-7">
+      <ParchmentCard>
+        <div className="space-y-5 font-serif">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div className="flex items-center gap-3">
+              <Package className="w-8 h-8" />
+              <h2 className="text-3xl font-bold">Looting</h2>
+            </div>
+            <Button onClick={newCreature} className="bg-[#4b3115] hover:bg-[#62401c] text-[#fff0c7]">
+              New Creature
+            </Button>
+          </div>
+
+          <p>
+            Choose the creature tier and creature table, then start harvesting. Once started,
+            the creature setup locks until New Creature is pressed.
+          </p>
+
+          <label className="space-y-1 block">
+            <strong>Harvester</strong>
+            <FantasySelect value={lootCharacterId} onValueChange={setLootCharacterId} disabled={harvestStarted}>
+              {characters.map((character) => (
+                <SelectItem key={character.id} value={character.id}>
+                  {character.name} (Harvesting +{character.harvesting ?? 0})
+                </SelectItem>
+              ))}
+            </FantasySelect>
+          </label>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <label className="space-y-1">
+              <strong>Creature Tier</strong>
+              <FantasySelect
+                value={lootTier}
+                disabled={harvestStarted}
+                onValueChange={(value) => {
+                  setLootTier(value as CreatureTier);
+                  setLootQuality("unrolled");
+                  setTargetLootName("random");
+                }}
+              >
+                {Object.entries(creatureTierRules).map(([id, rule]) => (
+                  <SelectItem key={id} value={id}>{rule.label}</SelectItem>
+                ))}
+              </FantasySelect>
+            </label>
+
+            <label className="space-y-1">
+              <strong>Creature Table</strong>
+              <FantasySelect
+                value={lootTableId}
+                disabled={harvestStarted}
+                onValueChange={(value) => {
+                  setLootTableId(value);
+                  setTargetLootName("random");
+                }}
+              >
+                {lootTables.map((table) => (
+                  <SelectItem key={table.id} value={table.id}>{table.label}</SelectItem>
+                ))}
+              </FantasySelect>
+            </label>
+          </div>
+
+          <div className="rounded-xl border border-[#9a7b45] bg-[#f2dfb9] p-4">
+            <p><strong>Current DC:</strong> {harvestStarted ? Math.min(20, harvestDc) : tierRule.dc}</p>
+            <p><strong>Harvest Attempts:</strong> {harvestStarted ? harvestAttemptsRemaining : tierRule.attempts}</p>
+            <p><strong>Current Step:</strong> {harvestStarted ? harvestStep : "setup"}</p>
+            <p><strong>Pending Loot Rolls:</strong> {pendingLootRolls}{doubleNextLoot ? " • next loot doubled" : ""}</p>
+            <p><strong>Loot Weights:</strong> No Loot {tierRule.weights.noLoot}, Common {tierRule.weights.common}, Rare {tierRule.weights.rare}, Epic {tierRule.weights.epic}</p>
+            {depleted && <p className="mt-2 font-bold text-red-800">This creature is depleted. Press New Creature to continue.</p>}
+          </div>
+
+          <div className="flex flex-wrap gap-3">
+            <Button
+              onClick={startHarvesting}
+              disabled={harvestStarted}
+              className="bg-[#4b3115] hover:bg-[#62401c] text-[#fff0c7]"
+            >
+              Start Harvesting
+            </Button>
+            <Button
+              onClick={lootingAttempt}
+              disabled={!canAttempt}
+              className="bg-[#4b3115] hover:bg-[#62401c] text-[#fff0c7]"
+            >
+              Looting Attempt
+            </Button>
+            <Button
+              onClick={rollLootQualityOnly}
+              disabled={!canRollQuality}
+              className="bg-[#4b3115] hover:bg-[#62401c] text-[#fff0c7]"
+            >
+              Roll Quality
+            </Button>
+            <Button
+              onClick={addLootToInventory}
+              disabled={!canRollLoot}
+              className="bg-[#2f3b4b] hover:bg-[#3d4c60] text-[#fff0c7]"
+            >
+              Roll Loot
+            </Button>
+          </div>
+
+          <div className="rounded-xl border border-[#9a7b45] bg-[#f2dfb9] p-4">
+            <p><strong>Current Loot Quality:</strong> {lootQuality === "unrolled" ? "Not rolled yet" : lootQuality === "none" ? "No Loot" : `${lootQuality[0].toUpperCase()}${lootQuality.slice(1)} Loot`}</p>
+          </div>
+
+          {lootQuality !== "none" && lootQuality !== "unrolled" && (
+            <label className="space-y-1 block">
+              <strong>Optional Target Material / Item (+2 starting DC)</strong>
+              <FantasySelect value={targetLootName} onValueChange={setTargetLootName}>
+                <SelectItem value="random">Random from {lootQuality} table</SelectItem>
+                {targetEntries.map((entry) => (
+                  <SelectItem key={entry.name} value={entry.name}>{entry.name}{entry.amount ? ` (${entry.amount})` : ""}</SelectItem>
+                ))}
+              </FantasySelect>
+            </label>
+          )}
+        </div>
+      </ParchmentCard>
+
+      <ParchmentCard>
+        <div className="space-y-4 font-serif">
+          <h2 className="text-3xl font-bold">Loot Results</h2>
+          {lootResults.length === 0 ? (
+            <p>No loot rolled yet.</p>
+          ) : (
+            <div className="space-y-3">
+              {lootResults.map((result, index) => (
+                <div key={`${result.name}-${index}`} className="rounded-xl border border-[#9a7b45] bg-[#f2dfb9] p-3 flex justify-between gap-3">
+                  <div>
+                    <strong>{result.name}</strong>
+                    <p className="text-sm">{result.kind} • {result.quality}</p>
+                  </div>
+                  <strong>{result.qty > 0 ? `×${result.qty}` : ""}</strong>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {harvestLog.length > 0 && (
+            <div className="mt-6 space-y-2">
+              <h3 className="text-xl font-bold">Harvest Log</h3>
+              {harvestLog.map((entry, index) => (
+                <div key={`${entry}-${index}`} className="rounded-xl border border-[#9a7b45] bg-[#f2dfb9] p-3 text-sm">
+                  {entry}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </ParchmentCard>
+    </div>
+  );
+}
+
 function RulesPanel() {
   return (
     <div className="grid grid-cols-1 xl:grid-cols-3 gap-7">
@@ -3007,6 +3827,100 @@ function RulesPanel() {
           {SPECIALIZATIONS.map((specialization) => (
             <div key={specialization} className="rounded-xl border border-[#9a7b45] bg-[#f2dfb9] p-3 text-sm">
               {specialization}
+            </div>
+          ))}
+        </div>
+      </ParchmentCard>
+    </div>
+  );
+}
+
+
+function LootingRulesPanel() {
+  const lootTierRows = Object.entries(creatureTierRules);
+
+  return (
+    <div className="grid grid-cols-1 xl:grid-cols-3 gap-7">
+      <ParchmentCard className="xl:col-span-2">
+        <div className="space-y-5 font-serif">
+          <div className="flex items-center gap-3">
+            <Dice5 className="w-8 h-8" />
+            <h2 className="text-3xl font-bold">Looting Rules</h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="rounded-xl border-2 border-[#9a7b45] bg-[#f2dfb9] p-4">
+              <h3 className="text-xl font-bold">Harvest Attempt Pool</h3>
+              <p className="text-sm leading-relaxed">
+                Each creature has a finite pool of Harvest Attempts. Success preserves the corpse.
+                Failure degrades it. Harvesting ends when attempts reach 0.
+              </p>
+            </div>
+
+            <div className="rounded-xl border-2 border-[#9a7b45] bg-[#f2dfb9] p-4">
+              <h3 className="text-xl font-bold">Harvesting Roll</h3>
+              <p className="text-sm leading-relaxed">
+                Roll d20 + Harvesting against the current Harvest DC. The DC caps at 20.
+                Targeting a specific material or item raises the starting DC by +2.
+              </p>
+            </div>
+
+            <div className="rounded-xl border-2 border-[#9a7b45] bg-[#f2dfb9] p-4">
+              <h3 className="text-xl font-bold">Success</h3>
+              <p className="text-sm leading-relaxed">
+                Meeting the DC grants 1 loot roll, consumes no Harvest Attempts, and increases
+                the next Harvest DC by +1.
+              </p>
+            </div>
+
+            <div className="rounded-xl border-2 border-[#9a7b45] bg-[#f2dfb9] p-4">
+              <h3 className="text-xl font-bold">Great Success</h3>
+              <p className="text-sm leading-relaxed">
+                Beating the DC by 5 or more grants 2 loot rolls, consumes no Harvest Attempts,
+                and increases the next Harvest DC by +1.
+              </p>
+            </div>
+
+            <div className="rounded-xl border-2 border-[#9a7b45] bg-[#f2dfb9] p-4">
+              <h3 className="text-xl font-bold">Critical Success</h3>
+              <p className="text-sm leading-relaxed">
+                A natural 20 grants 2 loot rolls, doubles the first item found, and does not
+                increase the Harvest DC.
+              </p>
+            </div>
+
+            <div className="rounded-xl border-2 border-[#9a7b45] bg-[#f2dfb9] p-4">
+              <h3 className="text-xl font-bold">Failure / Critical Failure</h3>
+              <p className="text-sm leading-relaxed">
+                Failure loses 1 Harvest Attempt. A natural 1 loses 2 Harvest Attempts.
+              </p>
+            </div>
+
+            <div className="rounded-xl border-2 border-[#9a7b45] bg-[#f2dfb9] p-4 md:col-span-2">
+              <h3 className="text-xl font-bold">No Loot</h3>
+              <p className="text-sm leading-relaxed">
+                If loot quality rolls No Loot, Roll Loot is skipped. If another loot roll is pending
+                from a natural 20 or great success, the flow returns to Roll Quality; otherwise it
+                returns to Looting Attempt.
+              </p>
+            </div>
+          </div>
+        </div>
+      </ParchmentCard>
+
+      <ParchmentCard>
+        <div className="space-y-4 font-serif">
+          <h2 className="text-2xl font-bold">Creature Tier Table</h2>
+
+          {lootTierRows.map(([tier, rule]) => (
+            <div key={tier} className="rounded-xl border border-[#9a7b45] bg-[#f2dfb9] p-3 text-sm">
+              <h3 className="font-bold">{rule.label}</h3>
+              <p>Attempts: {rule.attempts}</p>
+              <p>Starting DC: {rule.dc}</p>
+              <p>
+                Weights: No Loot {rule.weights.noLoot}, Common {rule.weights.common},
+                Rare {rule.weights.rare}, Epic {rule.weights.epic}
+              </p>
             </div>
           ))}
         </div>
