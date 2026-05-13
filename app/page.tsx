@@ -57,6 +57,15 @@ type Material = {
   tier?: number;
 };
 
+type InventoryProfile = {
+  id: string;
+  name: string;
+  materials: Material[];
+  characters: Character[];
+  craftedItems: CraftedItem[];
+  disabledTags: string[];
+};
+
 type Stat = "STR" | "DEX" | "CON" | "INT" | "WIS" | "CHA";
 
 type TabId = "craft" | "available" | "recipes" | "materials" | "characters" | "rules" | "admin";
@@ -110,6 +119,36 @@ type CraftedItem = {
 
 
 const ADMIN_PASSWORD = "craftadmin";
+
+const MAIN_RECIPE_TAGS = [
+  "spider",
+  "blue dragon",
+  "hybrid",
+] as const;
+
+const WEAPON_RECIPE_TAGS = [
+  "weapon",
+  "weapon-upgrade",
+  "flintlock",
+  "musket",
+  "blunderbuss",
+  "firearm",
+  "ranged",
+  "melee",
+  "dagger",
+  "rapier",
+  "stiletto",
+  "warhammer",
+  "morning-star",
+  "staff",
+] as const;
+
+const MANAGED_RECIPE_TAGS = [...MAIN_RECIPE_TAGS, ...WEAPON_RECIPE_TAGS];
+
+const MATERIALS_STORAGE_KEY = "artisan-codex-materials";
+const INVENTORY_PROFILES_STORAGE_KEY = "artisan-codex-inventory-profiles";
+const ACTIVE_INVENTORY_STORAGE_KEY = "artisan-codex-active-inventory";
+const DISABLED_TAGS_STORAGE_KEY = "artisan-codex-disabled-tags";
 const STATS: Stat[] = ["STR", "DEX", "CON", "INT", "WIS", "CHA"];
 
 const TOOL_OPTIONS = [
@@ -510,6 +549,8 @@ function defaultCharacter(): Character {
 
 export default function ArcaneCraftingCodexPage() {
   const [materials, setMaterials] = useState<Material[]>([]);
+  const [inventoryProfiles, setInventoryProfiles] = useState<InventoryProfile[]>([]);
+  const [activeInventoryId, setActiveInventoryId] = useState("");
   const [recipes] = useState<Recipe[]>(recipesRaw);
   const [characters, setCharacters] = useState<Character[]>([defaultCharacter()]);
   const [craftedItems, setCraftedItems] = useState<CraftedItem[]>([]);
@@ -520,6 +561,8 @@ export default function ArcaneCraftingCodexPage() {
   const [adminPassword, setAdminPassword] = useState("");
   const [bulkMaterials, setBulkMaterials] = useState("");
   const [newMaterial, setNewMaterial] = useState({ name: "", qty: 1 });
+  const [newInventoryName, setNewInventoryName] = useState("");
+  const [disabledTags, setDisabledTags] = useState<string[]>([]);
   const [importLog, setImportLog] = useState("");
 
   const [selectedCharacterId, setSelectedCharacterId] = useState<string>(() => characters[0].id);
@@ -561,30 +604,119 @@ export default function ArcaneCraftingCodexPage() {
 
   useEffect(() => {
     try {
-      const saved = window.localStorage.getItem("arcane-crafting-materials");
-      if (saved) {
-        const parsed = JSON.parse(saved) as Material[];
-        setMaterials(
-          parsed.map((material) => ({
+      const savedProfiles = window.localStorage.getItem(INVENTORY_PROFILES_STORAGE_KEY);
+      const savedActiveId = window.localStorage.getItem(ACTIVE_INVENTORY_STORAGE_KEY);
+      const oldSavedMaterials = window.localStorage.getItem("arcane-crafting-materials") || window.localStorage.getItem(MATERIALS_STORAGE_KEY);
+      const oldSavedDisabledTags = window.localStorage.getItem(DISABLED_TAGS_STORAGE_KEY);
+
+      let profiles: InventoryProfile[] = [];
+
+      if (savedProfiles) {
+        profiles = (JSON.parse(savedProfiles) as Partial<InventoryProfile>[]).map((profile) => ({
+          id: profile.id || crypto.randomUUID(),
+          name: profile.name || "Campaign",
+          materials: (profile.materials || []).map((material) => ({
             ...material,
             id: material.id || crypto.randomUUID(),
             tier: material.tier ?? getMaterialTier(material.name),
-          }))
-        );
-      } else {
-        setMaterials(buildStartingMaterials());
+          })),
+          characters:
+            profile.characters && profile.characters.length > 0
+              ? profile.characters.map((character) => ({
+                  ...character,
+                  id: character.id || crypto.randomUUID(),
+                  toolProgress: character.toolProgress || buildToolProgress(false),
+                }))
+              : [defaultCharacter()],
+          craftedItems: profile.craftedItems || [],
+          disabledTags: profile.disabledTags || [],
+        }));
       }
+
+      if (profiles.length === 0) {
+        const startingMaterials = oldSavedMaterials
+          ? (JSON.parse(oldSavedMaterials) as Material[]).map((material) => ({
+              ...material,
+              id: material.id || crypto.randomUUID(),
+              tier: material.tier ?? getMaterialTier(material.name),
+            }))
+          : buildStartingMaterials();
+
+        profiles = [
+          {
+            id: crypto.randomUUID(),
+            name: "Main Campaign",
+            materials: startingMaterials,
+            characters: [defaultCharacter()],
+            craftedItems: [],
+            disabledTags: oldSavedDisabledTags ? JSON.parse(oldSavedDisabledTags) : [],
+          },
+        ];
+      }
+
+      const activeProfile =
+        profiles.find((profile) => profile.id === savedActiveId) || profiles[0];
+
+      setInventoryProfiles(profiles);
+      setActiveInventoryId(activeProfile.id);
+      setMaterials(activeProfile.materials);
+      setCharacters(activeProfile.characters.length ? activeProfile.characters : [defaultCharacter()]);
+      setCraftedItems(activeProfile.craftedItems || []);
+      setDisabledTags(activeProfile.disabledTags || []);
+      setSelectedCharacterId((activeProfile.characters[0] || defaultCharacter()).id);
     } catch {
-      setMaterials(buildStartingMaterials());
+      const fallbackMaterials = buildStartingMaterials();
+      const fallbackCharacter = defaultCharacter();
+      const fallbackProfile: InventoryProfile = {
+        id: crypto.randomUUID(),
+        name: "Main Campaign",
+        materials: fallbackMaterials,
+        characters: [fallbackCharacter],
+        craftedItems: [],
+        disabledTags: [],
+      };
+
+      setInventoryProfiles([fallbackProfile]);
+      setActiveInventoryId(fallbackProfile.id);
+      setMaterials(fallbackMaterials);
+      setCharacters([fallbackCharacter]);
+      setCraftedItems([]);
+      setDisabledTags([]);
+      setSelectedCharacterId(fallbackCharacter.id);
     } finally {
       setMaterialsLoaded(true);
     }
   }, []);
 
   useEffect(() => {
-    if (!materialsLoaded) return;
+    if (!materialsLoaded || !activeInventoryId) return;
+
+    setInventoryProfiles((current) =>
+      current.map((profile) =>
+        profile.id === activeInventoryId
+          ? { ...profile, materials, characters, craftedItems, disabledTags }
+          : profile
+      )
+    );
+
+    window.localStorage.setItem(MATERIALS_STORAGE_KEY, JSON.stringify(materials));
     window.localStorage.setItem("arcane-crafting-materials", JSON.stringify(materials));
-  }, [materials, materialsLoaded]);
+    window.localStorage.setItem(DISABLED_TAGS_STORAGE_KEY, JSON.stringify(disabledTags));
+  }, [materials, characters, craftedItems, disabledTags, materialsLoaded, activeInventoryId]);
+
+  useEffect(() => {
+    if (!materialsLoaded || inventoryProfiles.length === 0) return;
+    window.localStorage.setItem(INVENTORY_PROFILES_STORAGE_KEY, JSON.stringify(inventoryProfiles));
+  }, [inventoryProfiles, materialsLoaded]);
+
+  useEffect(() => {
+    if (!activeInventoryId) return;
+    window.localStorage.setItem(ACTIVE_INVENTORY_STORAGE_KEY, activeInventoryId);
+  }, [activeInventoryId]);
+
+  useEffect(() => {
+    window.localStorage.setItem(DISABLED_TAGS_STORAGE_KEY, JSON.stringify(disabledTags));
+  }, [disabledTags]);
 
   useEffect(() => {
     setPhaseTouchedMaterial("none");
@@ -606,6 +738,11 @@ export default function ArcaneCraftingCodexPage() {
     return [...set].sort();
   }, [recipes]);
 
+  const managedTags = useMemo(() => {
+    const existing = new Set(allTags);
+    return MANAGED_RECIPE_TAGS.filter((tag) => existing.has(tag));
+  }, [allTags]);
+
   const recipeStatus = useMemo(() => {
     return recipes.map((recipe) => ({
       ...recipe,
@@ -619,15 +756,16 @@ export default function ArcaneCraftingCodexPage() {
     const search = recipeSearch.trim().toLowerCase();
 
     return recipeStatus.filter((recipe) => {
+      const hiddenByDisabledTag = recipe.tags.some((tag) => disabledTags.includes(tag));
       const tagMatches = tagFilter === "all" || recipe.tags.includes(tagFilter);
       const rarityMatches = rarityFilter === "all" || getRarityFromTags(recipe) === rarityFilter;
       const searchText = `${recipe.name} ${recipe.description} ${recipe.category} ${recipe.rarity} ${recipe.tags.join(
         " "
       )}`.toLowerCase();
       const searchMatches = !search || searchText.includes(search);
-      return tagMatches && rarityMatches && searchMatches;
+      return !hiddenByDisabledTag && tagMatches && rarityMatches && searchMatches;
     });
-  }, [recipeStatus, recipeSearch, tagFilter, rarityFilter]);
+  }, [recipeStatus, recipeSearch, tagFilter, rarityFilter, disabledTags]);
 
   const availableRecipes = filteredRecipes.filter((recipe) => recipe.available);
   const unavailableRecipes = filteredRecipes.filter((recipe) => !recipe.available);
@@ -643,6 +781,13 @@ export default function ArcaneCraftingCodexPage() {
     } else {
       setImportLog("Incorrect password.");
     }
+  }
+
+  function lockAdmin() {
+    setAdminUnlocked(false);
+    setAdminPassword("");
+    setImportLog("Admin locked.");
+    setActiveTab("craft");
   }
 
   function addMaterial() {
@@ -670,15 +815,114 @@ export default function ArcaneCraftingCodexPage() {
 
   function resetMaterialsToStartingInventory() {
     if (!adminUnlocked) return;
-    setMaterials(buildStartingMaterials());
-    setImportLog("Inventory reset to the built-in starting list and saved.");
+    setMaterials([]);
+    setImportLog("Current campaign inventory wiped.");
   }
 
   function exportMaterialsJson() {
     if (!adminUnlocked) return;
-    const data = JSON.stringify(materials, null, 2);
+    const data = materials
+      .filter((material) => material.qty > 0)
+      .sort((a, b) => a.name.localeCompare(b.name))
+      .map((material) => `${material.name} - ${material.qty}`)
+      .join("\n");
+
     navigator.clipboard?.writeText(data);
-    setImportLog("Current inventory JSON copied to clipboard.");
+    setImportLog("Current campaign inventory list copied to clipboard.");
+  }
+
+  function switchInventoryProfile(profileId: string) {
+    if (!adminUnlocked) return;
+    const profile = inventoryProfiles.find((item) => item.id === profileId);
+    if (!profile) return;
+
+    setActiveInventoryId(profile.id);
+    setMaterials(profile.materials);
+    setImportLog(`Switched to ${profile.name}.`);
+  }
+
+  function createInventoryProfile(copyCurrent = false) {
+    if (!adminUnlocked) return;
+    const name = newInventoryName.trim() || `Campaign ${inventoryProfiles.length + 1}`;
+    const defaultCampaignCharacter = defaultCharacter();
+    const profile: InventoryProfile = {
+      id: crypto.randomUUID(),
+      name,
+      materials: copyCurrent
+        ? materials.map((material) => ({ ...material, id: crypto.randomUUID() }))
+        : [],
+      characters: copyCurrent
+        ? characters.map((character) => ({
+            ...character,
+            id: crypto.randomUUID(),
+          }))
+        : [defaultCampaignCharacter],
+      craftedItems: copyCurrent
+        ? craftedItems.map((item) => ({
+            ...item,
+            id: crypto.randomUUID(),
+            createdAt: new Date().toLocaleString(),
+          }))
+        : [],
+      disabledTags: copyCurrent ? [...disabledTags] : [],
+    };
+
+    setInventoryProfiles((current) => [...current, profile]);
+    setActiveInventoryId(profile.id);
+    setMaterials(profile.materials);
+    setCharacters(profile.characters);
+    setCraftedItems(profile.craftedItems);
+    setDisabledTags(profile.disabledTags);
+    setSelectedCharacterId(profile.characters[0].id);
+    setNewInventoryName("");
+    setImportLog(`Created and opened ${name}.`);
+  }
+
+  function renameInventoryProfile(profileId: string, name: string) {
+    if (!adminUnlocked) return;
+    setInventoryProfiles((current) =>
+      current.map((profile) =>
+        profile.id === profileId ? { ...profile, name: name || "Campaign" } : profile
+      )
+    );
+  }
+
+  function deleteInventoryProfile(profileId: string) {
+    if (!adminUnlocked || inventoryProfiles.length <= 1) return;
+
+    setInventoryProfiles((current) => {
+      const remaining = current.filter((profile) => profile.id !== profileId);
+      const nextActive = activeInventoryId === profileId ? remaining[0] : current.find((profile) => profile.id === activeInventoryId) || remaining[0];
+
+      if (nextActive) {
+        setActiveInventoryId(nextActive.id);
+        setMaterials(nextActive.materials);
+        setCharacters(nextActive.characters.length ? nextActive.characters : [defaultCharacter()]);
+        setCraftedItems(nextActive.craftedItems || []);
+        setDisabledTags(nextActive.disabledTags || []);
+        setSelectedCharacterId((nextActive.characters[0] || defaultCharacter()).id);
+      }
+
+      return remaining;
+    });
+    setImportLog("Campaign deleted.");
+  }
+
+  function toggleDisabledTag(tag: string) {
+    if (!adminUnlocked) return;
+    setDisabledTags((current) =>
+      current.includes(tag) ? current.filter((item) => item !== tag) : [...current, tag]
+    );
+  }
+
+  function enableAllTags() {
+    if (!adminUnlocked) return;
+    setDisabledTags([]);
+  }
+
+  function disableAllTags() {
+    if (!adminUnlocked) return;
+    setDisabledTags(managedTags);
   }
 
   function addCharacter() {
@@ -1023,11 +1267,10 @@ export default function ArcaneCraftingCodexPage() {
             className="text-5xl md:text-6xl font-serif font-bold tracking-tight"
             style={{ color: "#fff0c7", textShadow: "0 2px 0 #5c3b1d" }}
           >
-            Arcane Crafting Codex
+            The Artisan’s Codex
           </motion.h1>
           <p className="max-w-4xl text-lg md:text-xl leading-relaxed text-[#e7c75e] font-serif">
-            A parchment-style D&D crafting tool for recipes, materials, character proficiencies,
-            crafting rules, upgrades, and available items.
+            Discover recipes, track materials, check crafting requirements, plan upgrades, and see what your character can create.
           </p>
         </header>
 
@@ -1110,7 +1353,7 @@ export default function ArcaneCraftingCodexPage() {
           />
         )}
 
-        {activeTab === "materials" && <MaterialsPanel materials={materials} />}
+        {activeTab === "materials" && <MaterialsPanel materials={materials} adminUnlocked={adminUnlocked} />}
 
         {activeTab === "characters" && (
           <CharactersPanel
@@ -1134,6 +1377,7 @@ export default function ArcaneCraftingCodexPage() {
             adminPassword={adminPassword}
             setAdminPassword={setAdminPassword}
             unlockAdmin={unlockAdmin}
+            lockAdmin={lockAdmin}
             newMaterial={newMaterial}
             setNewMaterial={setNewMaterial}
             addMaterial={addMaterial}
@@ -1143,6 +1387,19 @@ export default function ArcaneCraftingCodexPage() {
             resetMaterialsToStartingInventory={resetMaterialsToStartingInventory}
             exportMaterialsJson={exportMaterialsJson}
             importLog={importLog}
+            inventoryProfiles={inventoryProfiles}
+            activeInventoryId={activeInventoryId}
+            switchInventoryProfile={switchInventoryProfile}
+            newInventoryName={newInventoryName}
+            setNewInventoryName={setNewInventoryName}
+            createInventoryProfile={createInventoryProfile}
+            renameInventoryProfile={renameInventoryProfile}
+            deleteInventoryProfile={deleteInventoryProfile}
+            allTags={managedTags}
+            disabledTags={disabledTags}
+            toggleDisabledTag={toggleDisabledTag}
+            enableAllTags={enableAllTags}
+            disableAllTags={disableAllTags}
           />
         )}
       </div>
@@ -1198,6 +1455,53 @@ function FantasySelect({
       </SelectTrigger>
       <SelectContent>{children}</SelectContent>
     </Select>
+  );
+}
+
+function RequiredMaterialsPanel({
+  recipe,
+  materialMap,
+}: {
+  recipe: Recipe;
+  materialMap: Map<string, number>;
+}) {
+  const requirements = recipe.materials as RecipeMaterialWithTag[];
+
+  return (
+    <div className="rounded-xl border border-[#9a7b45] bg-[#f2dfb9] p-3 font-serif">
+      <p className="mb-2 text-xs font-bold uppercase tracking-wide text-[#7b5524]">
+        Materials being used
+      </p>
+      <div className="space-y-2">
+        {requirements.length === 0 ? (
+          <p className="text-sm">No materials required.</p>
+        ) : (
+          requirements.map((required, index) => {
+            const available = availableQtyForRequirement(required, materialMap);
+            const enough = available >= required.qty;
+            const label = required.tagRequirement
+              ? `${required.name} (${required.tagRequirement})`
+              : required.name;
+
+            return (
+              <div
+                key={`${required.name}-${index}`}
+                className="flex items-center justify-between gap-3 rounded-lg border px-3 py-2 text-sm"
+                style={{
+                  borderColor: enough ? "#9a7b45" : "#a40000",
+                  background: enough ? "#f7e7c5" : "#f7d6d2",
+                }}
+              >
+                <span>{label}</span>
+                <strong className={enough ? "text-[#251b10]" : "text-[#a40000]"}>
+                  {available}/{required.qty}
+                </strong>
+              </div>
+            );
+          })
+        )}
+      </div>
+    </div>
   );
 }
 
@@ -1285,13 +1589,7 @@ function CraftPanel(props: {
             ))}
           </FantasySelect>
 
-          <FantasySelect value={props.selectedRecipeId} onValueChange={props.setSelectedRecipeId}>
-            {props.recipes.map((recipe) => (
-              <SelectItem key={recipe.id} value={recipe.id}>
-                {recipe.name} ({RARITY_LABELS[getRarityFromTags(recipe)]})
-              </SelectItem>
-            ))}
-          </FantasySelect>
+          <RequiredMaterialsPanel recipe={selectedRecipe} materialMap={props.materialMap} />
 
           <FantasySelect value={props.rollMode} onValueChange={(v) => props.setRollMode(v as "normal" | "advantage")}>
             <SelectItem value="normal">Normal Roll</SelectItem>
@@ -1651,23 +1949,64 @@ function RecipeGrid({
   );
 }
 
-function MaterialsPanel({ materials }: { materials: Material[] }) {
+function MaterialsPanel({
+  materials,
+  adminUnlocked,
+}: {
+  materials: Material[];
+  adminUnlocked: boolean;
+}) {
   const grouped = RARITY_ORDER; // just prevents unused false positives in some editors
   void grouped;
 
-  const byTier = materialTiers.map((tier) => ({
-    ...tier,
-    materials: materials.filter((m) => m.tier === tier.tier),
-  }));
+  const materialMap = new Map(
+    materials.map((material) => [normalizeMaterialName(material.name), material])
+  );
 
-  const unknown = materials.filter((m) => m.tier === undefined);
+  const byTier = materialTiers.map((tier) => {
+    const tierMaterials = adminUnlocked
+      ? tier.names.map((name) => {
+          const existing = materialMap.get(normalizeMaterialName(name));
+          return (
+            existing || {
+              id: `tier-${tier.tier}-${name}`,
+              name,
+              qty: 0,
+              tier: tier.tier,
+            }
+          );
+        })
+      : materials.filter((m) => m.tier === tier.tier && m.qty > 0);
+
+    return {
+      ...tier,
+      materials: tierMaterials,
+    };
+  });
+
+  const knownTierNames = new Set(
+    materialTiers.flatMap((tier) => tier.names.map((name) => normalizeMaterialName(name)))
+  );
+
+  const unknown = materials.filter(
+    (material) =>
+      !knownTierNames.has(normalizeMaterialName(material.name)) &&
+      (adminUnlocked || material.qty > 0)
+  );
 
   return (
     <div className="space-y-6">
       <ParchmentCard>
-        <div className="flex items-center gap-3 font-serif">
-          <Boxes className="w-8 h-8" />
-          <h2 className="text-3xl font-bold">Material Inventory</h2>
+        <div className="space-y-2 font-serif">
+          <div className="flex items-center gap-3">
+            <Boxes className="w-8 h-8" />
+            <h2 className="text-3xl font-bold">Material Inventory</h2>
+          </div>
+          {adminUnlocked && (
+            <p className="text-sm">
+              Admin view shows every known material, including materials currently at 0.
+            </p>
+          )}
         </div>
       </ParchmentCard>
 
@@ -1682,7 +2021,12 @@ function MaterialsPanel({ materials }: { materials: Material[] }) {
                 {tier.materials.map((material) => (
                   <div
                     key={material.id}
-                    className="rounded-xl border border-[#9a7b45] bg-[#f2dfb9] px-3 py-2 flex justify-between"
+                    className="rounded-xl border px-3 py-2 flex justify-between"
+                    style={{
+                      borderColor: material.qty > 0 ? "#9a7b45" : "#c8ad77",
+                      background: material.qty > 0 ? "#f2dfb9" : "#ead6ad",
+                      opacity: material.qty > 0 ? 1 : 0.65,
+                    }}
                   >
                     <span>{material.name}</span>
                     <strong>{material.qty}</strong>
@@ -1947,6 +2291,7 @@ function AdminPanel(props: {
   adminPassword: string;
   setAdminPassword: (value: string) => void;
   unlockAdmin: () => void;
+  lockAdmin: () => void;
   newMaterial: { name: string; qty: number };
   setNewMaterial: React.Dispatch<React.SetStateAction<{ name: string; qty: number }>>;
   addMaterial: () => void;
@@ -1956,13 +2301,37 @@ function AdminPanel(props: {
   resetMaterialsToStartingInventory: () => void;
   exportMaterialsJson: () => void;
   importLog: string;
+  inventoryProfiles: InventoryProfile[];
+  activeInventoryId: string;
+  switchInventoryProfile: (profileId: string) => void;
+  newInventoryName: string;
+  setNewInventoryName: (value: string) => void;
+  createInventoryProfile: (copyCurrent?: boolean) => void;
+  renameInventoryProfile: (profileId: string, name: string) => void;
+  deleteInventoryProfile: (profileId: string) => void;
+  allTags: string[];
+  disabledTags: string[];
+  toggleDisabledTag: (tag: string) => void;
+  enableAllTags: () => void;
+  disableAllTags: () => void;
 }) {
   return (
     <ParchmentCard>
       <div className="space-y-5 font-serif">
-        <div className="flex items-center gap-3">
-          <KeyRound className="w-8 h-8" />
-          <h2 className="text-3xl font-bold">Admin Panel</h2>
+        <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+          <div className="flex items-center gap-3">
+            <KeyRound className="w-8 h-8" />
+            <h2 className="text-3xl font-bold">Admin Panel</h2>
+          </div>
+
+          {props.adminUnlocked && (
+            <Button
+              onClick={props.lockAdmin}
+              className="w-fit bg-[#4b3115] hover:bg-[#62401c] text-[#fff0c7]"
+            >
+              Leave Admin
+            </Button>
+          )}
         </div>
 
         {!props.adminUnlocked ? (
@@ -1983,6 +2352,107 @@ function AdminPanel(props: {
           </div>
         ) : (
           <div className="space-y-5">
+            <div className="rounded-2xl border border-[#9a7b45] bg-[#f2dfb9] p-4 space-y-4">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <div>
+                  <h3 className="text-xl font-bold">Campaigns</h3>
+                  <p className="text-sm">Create separate campaigns. Each campaign has its own recipe tag visibility, players, crafted items, and material inventory.</p>
+                </div>
+                <FantasySelect value={props.activeInventoryId} onValueChange={props.switchInventoryProfile}>
+                  {props.inventoryProfiles.map((profile) => (
+                    <SelectItem key={profile.id} value={profile.id}>
+                      {profile.name}
+                    </SelectItem>
+                  ))}
+                </FantasySelect>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_auto] gap-3">
+                <FantasyInput
+                  placeholder="New campaign name"
+                  value={props.newInventoryName}
+                  onChange={(event) => props.setNewInventoryName(event.target.value)}
+                />
+                <Button onClick={() => props.createInventoryProfile(false)} className="bg-[#4b3115] hover:bg-[#62401c] text-[#fff0c7]">
+                  New Campaign
+                </Button>
+                <Button onClick={() => props.createInventoryProfile(true)} className="bg-[#2f3b4b] hover:bg-[#3d4c60] text-[#fff0c7]">
+                  Copy Current Campaign
+                </Button>
+              </div>
+
+              <div className="space-y-2">
+                {props.inventoryProfiles.map((profile) => {
+                  const isActive = profile.id === props.activeInventoryId;
+
+                  return (
+                    <div key={profile.id} className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-3 rounded-xl border border-[#b99b62] p-3">
+                      <button
+                        type="button"
+                        onClick={() => props.switchInventoryProfile(profile.id)}
+                        className="rounded-xl border px-4 py-2 text-left font-bold transition"
+                        style={{
+                          borderColor: isActive ? "#4b3115" : "#b99b62",
+                          background: isActive ? "#4b3115" : "#f7e7c5",
+                          color: isActive ? "#fff0c7" : "#251b10",
+                        }}
+                      >
+                        {profile.name}
+                        {isActive ? "  • Active" : ""}
+                      </button>
+                      <Button
+                        onClick={() => props.deleteInventoryProfile(profile.id)}
+                        disabled={props.inventoryProfiles.length <= 1}
+                        variant="destructive"
+                      >
+                        Delete
+                      </Button>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-[#9a7b45] bg-[#f2dfb9] p-4 space-y-4">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <div>
+                  <h3 className="text-xl font-bold">Campaign Recipe Visibility</h3>
+                  <p className="text-sm">Only main recipe groups and weapon tags are shown here to keep campaign controls clean.</p>
+                </div>
+                <div className="flex gap-2">
+                  <Button onClick={props.enableAllTags} className="bg-[#4b3115] hover:bg-[#62401c] text-[#fff0c7]">
+                    Show All
+                  </Button>
+                  <Button onClick={props.disableAllTags} className="bg-[#2f3b4b] hover:bg-[#3d4c60] text-[#fff0c7]">
+                    Hide All
+                  </Button>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-2">
+                {props.allTags.map((tag) => {
+                  const disabled = props.disabledTags.includes(tag);
+
+                  return (
+                    <button
+                      key={tag}
+                      type="button"
+                      onClick={() => props.toggleDisabledTag(tag)}
+                      className="rounded-full border px-3 py-1 text-sm font-bold"
+                      style={{
+                        borderColor: disabled ? "#9a1b1b" : "#9a7b45",
+                        background: disabled ? "#f3c1b8" : "#f7e7c5",
+                        color: "#251b10",
+                      }}
+                    >
+                      {disabled ? "Hidden: " : "Visible: "}
+                      {tag}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-[1fr_140px_auto] gap-3">
               <FantasyInput
                 placeholder="Material name"
@@ -2022,14 +2492,14 @@ function AdminPanel(props: {
                   Import Materials
                 </Button>
                 <Button onClick={props.exportMaterialsJson} className="bg-[#2f3b4b] hover:bg-[#3d4c60] text-[#fff0c7]">
-                  Export Current Inventory
+                  Export Current Campaign Inventory
                 </Button>
                 <Button onClick={props.resetMaterialsToStartingInventory} variant="destructive">
-                  Reset to Starting Inventory
+                  Wipe Current Inventory
                 </Button>
               </div>
               <p className="text-sm">
-                Inventory changes are saved permanently in this browser using localStorage.
+                Inventory changes are saved permanently in this browser and tied to the selected campaign.
               </p>
             </div>
           </div>
