@@ -533,6 +533,49 @@ function getOutcome(recipe: Recipe, quality: CraftQuality) {
   return recipe.outcomes.find((outcome) => outcome.quality === quality);
 }
 
+
+function NormalOutcomePreview({ recipe, compact = false }: { recipe: Recipe; compact?: boolean }) {
+  const normalOutcome = getOutcome(recipe, "Normal");
+
+  if (!normalOutcome) return null;
+
+  const effectLines = normalOutcome.effect || [];
+
+  return (
+    <div
+      className={`rounded-xl border border-[#b99b62] bg-[#f8e8c2] ${compact ? "p-3 text-xs" : "p-4 text-sm"}`}
+    >
+      <h4 className={`${compact ? "text-sm" : "text-base"} font-bold`}>Normal Craft Preview</h4>
+
+      {normalOutcome.description && (
+        <p className="mt-1 leading-relaxed">{normalOutcome.description}</p>
+      )}
+
+      {normalOutcome.statBlock && (
+        <p className="mt-2">
+          <strong>Stat Block:</strong> {normalOutcome.statBlock}
+        </p>
+      )}
+
+      {effectLines.length > 0 && (
+        <div className="mt-2">
+          <strong>Effect:</strong>
+          <ul className="ml-5 list-disc">
+            {effectLines.map((line, index) => (
+              <li key={`${recipe.id}-normal-effect-${index}`}>{line}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {!normalOutcome.statBlock && effectLines.length === 0 && (
+        <p className="mt-2 italic">Creates the normal version of this recipe.</p>
+      )}
+    </div>
+  );
+}
+
+
 function defaultCharacter(): Character {
   return {
     id: crypto.randomUUID(),
@@ -1672,6 +1715,8 @@ function CraftPanel(props: {
 
           <p className="leading-relaxed">{selectedRecipe.description}</p>
 
+          <NormalOutcomePreview recipe={selectedRecipe} />
+
           <div className="flex flex-wrap gap-2">
             {selectedRecipe.tags.map((tag) => (
               <span
@@ -1903,7 +1948,7 @@ function RecipeGrid({
                   </div>
                 </div>
 
-                <div className="p-4 space-y-2 min-h-[250px]">
+                <div className="p-4 space-y-2 min-h-[360px]">
                   <p className="text-sm font-bold">
                     DC {recipe.dc} • {recipe.time} • {recipe.tool} ({recipe.stat})
                   </p>
@@ -1911,6 +1956,8 @@ function RecipeGrid({
                   <p className="text-xs">
                     <strong>Materials:</strong> {materialText(recipe.materials)}
                   </p>
+
+                  <NormalOutcomePreview recipe={recipe} compact />
 
                   {showMissing && !available && missing.length > 0 && (
                     <p className="text-xs text-red-800 font-bold">
