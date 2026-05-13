@@ -224,6 +224,96 @@ export const lootTables: LootTable[] = [
       ].map((name) => e(name)),
     },
   },
+  {
+    id: "merfolk-reaver",
+    label: "Merfolk Reaver",
+    family: "merfolk",
+    tables: {
+      common: [
+        "Brittle Coral Shards (1d4)",
+        "Wet Scale Clippings (1d4)",
+        "Salty Slime Residue (1d4)",
+        "Fin Membranes (1d4)",
+        "Bone Needle Fragments (1d4)",
+        "Sea-Glass Scraps (1d4)",
+      ].map((name) => e(name)),
+      rare: [
+        "Hardened Shell Fragment",
+        "Living Coral Branch",
+        "Reaver’s Spear-Tip",
+        "Bioluminescent Gland",
+        "Siren’s Pearl (Minor)",
+        "Aquatic Sinew",
+      ].map((name) => e(name)),
+      epic: [
+        "Reinforced Reef Plate",
+        "Tide-Caller Node (Minor)",
+        "Siren Essence (Refined)",
+        "Coral Core Fragment",
+        "Shamanic Bone Carving",
+      ].map((name) => e(name)),
+    },
+  },
+  {
+    id: "merfolk-tide-caller",
+    label: "Merfolk Tide-Caller",
+    family: "merfolk",
+    tables: {
+      common: [
+        "Hardened Shell Fragment",
+        "Living Coral Branch",
+        "Siren’s Pearl (Minor)",
+        "Bioluminescent Gland",
+        "Tide-Caller Node (Minor)",
+        "Aquatic Sinew",
+        "Luminous Sea-Glass",
+      ].map((name) => e(name)),
+      rare: [
+        "Ancient Deep-Pearl",
+        "Tide-Caller's Heart Node",
+        "Concentrated Siren Essence",
+        "Reef-Spire Fragment",
+        "Deep-Sea Essence",
+        "Oceanic Binding Fiber",
+      ].map((name) => e(name)),
+      epic: [
+        "Heart of the Sea Node",
+        "Sovereign Tide-Core",
+        "Ancient Reef-Core",
+        "Abyssal Pearl (Pristine)",
+        "Tide-Master’s Staff Fragment",
+      ].map((name) => e(name)),
+    },
+  },
+  {
+    id: "coral-hulked-behemoth",
+    label: "Coral-Hulked Behemoth",
+    family: "behemoth",
+    tables: {
+      common: [
+        "Brittle Coral Shards (1d6)",
+        "Hardened Shell Fragment (1d6)",
+        "Salty Slime Residue (1d6)",
+        "Thick Chitin Fragments (1d6)",
+        "Crustacean Meat (Raw) (1d6)",
+        "Heavy Bone Segments (1d6)",
+      ].map((name) => e(name)),
+      rare: [
+        "Reinforced Reef Plate",
+        "Massive Behemoth Pincer",
+        "Living Coral Branch (Large)",
+        "Hardened Chitin Plate",
+        "Behemoth Eye-Stalk",
+      ].map((name) => e(name)),
+      epic: [
+        "Leviathan-Scratched Carapace",
+        "Heart of the Sea Node",
+        "Ancient Reef-Core",
+        "Apex Mobility Core (Oceanic)",
+        "Behemoth Soul-Pearl",
+      ].map((name) => e(name)),
+    },
+  },
 ];
 
 export function rollWeightedLootQuality(tier: CreatureTier): LootQuality | "none" {

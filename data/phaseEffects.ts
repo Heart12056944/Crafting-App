@@ -1,20 +1,23 @@
 export type ItemCategory =
   | "weapon"
   | "armour"
+  | "armor"
   | "accessory"
   | "item"
   | "consumable"
+  | "potion"
   | "poison"
   | "material"
   | "weapon-upgrade"
   | "armour-upgrade"
+  | "armor-upgrade"
   | "material-refinement"
   | string;
 
 export type PhaseTouchedEffect = {
   id: string;
   name: string;
-  appliesTo: "weapon" | "armour" | "accessory" | "item";
+  appliesTo: "weapon" | "armour" | "accessory" | "item" | "potion" | "poison";
   description: string;
   effect: string[];
 };
@@ -40,6 +43,29 @@ export const phaseDeflection: PhaseTouchedEffect = {
   effect: [
     "Once per combat when you are hit by an attack, reduce the damage by 1d6.",
     "After reducing the damage, you may move 5 ft without provoking opportunity attacks.",
+  ],
+};
+
+export const phaseSlipDraught: PhaseTouchedEffect = {
+  id: "phase-slip-draught",
+  name: "Phase Slip Draught",
+  appliesTo: "potion",
+  description:
+    "The potion briefly loosens the drinker from physical space.",
+  effect: [
+    "After drinking this potion, the user may teleport 10 ft to an unoccupied space they can see.",
+    "This movement does not provoke opportunity attacks.",
+  ],
+};
+
+export const phaseVenom: PhaseTouchedEffect = {
+  id: "phase-venom",
+  name: "Phase Venom",
+  appliesTo: "poison",
+  description:
+    "The poison disrupts the target’s position and timing.",
+  effect: [
+    "On hit, the target takes the poison’s normal effect and has disadvantage on its next attack roll.",
   ],
 };
 
@@ -100,8 +126,127 @@ export const phaseAccessoryEffects: PhaseTouchedEffect[] = [
   },
 ];
 
+export const stormSurge: PhaseTouchedEffect = {
+  id: "storm-surge",
+  name: "Storm Surge",
+  appliesTo: "weapon",
+  description:
+    "The weapon carries a built-up charge that releases on impact.",
+  effect: [
+    "Once per turn on hit, deal +1d4 lightning damage.",
+    "Once per combat, when you deal lightning damage with this weapon, the target loses 10 ft movement until the start of your next turn.",
+  ],
+};
+
+export const stormguard: PhaseTouchedEffect = {
+  id: "stormguard",
+  name: "Stormguard",
+  appliesTo: "armour",
+  description:
+    "The armour redirects electrical force across its surface.",
+  effect: [
+    "Once per combat when you take damage, reduce the damage by 1d6.",
+    "If the damage is lightning, reduce it by 1d8 instead.",
+  ],
+};
+
+export const stormchargeDraught: PhaseTouchedEffect = {
+  id: "stormcharge-draught",
+  name: "Stormcharge Draught",
+  appliesTo: "potion",
+  description:
+    "The potion fills the drinker with a controlled burst of storm energy.",
+  effect: [
+    "After drinking this potion, the user gains +10 ft movement until the end of their next turn.",
+    "Their next weapon hit before the end of their next turn deals +1d4 lightning damage.",
+  ],
+};
+
+export const shockVenom: PhaseTouchedEffect = {
+  id: "shock-venom",
+  name: "Shock Venom",
+  appliesTo: "poison",
+  description:
+    "The poison carries an electrical charge that disrupts movement.",
+  effect: [
+    "On hit, the target takes the poison’s normal effect and loses 10 ft movement until the start of your next turn.",
+  ],
+};
+
+export const stormAccessoryEffects: PhaseTouchedEffect[] = [
+  {
+    id: "stormstep",
+    name: "Stormstep",
+    appliesTo: "accessory",
+    description:
+      "The accessory stores a short burst of storm energy for movement.",
+    effect: [
+      "Once per short rest, gain +10 ft movement until the end of your turn.",
+    ],
+  },
+  {
+    id: "storm-focus",
+    name: "Storm Focus",
+    appliesTo: "accessory",
+    description:
+      "The accessory sharpens your control over lightning and storm magic.",
+    effect: [
+      "Gain +1 to spell attack rolls for spells or effects that deal lightning or thunder damage.",
+    ],
+  },
+  {
+    id: "charged-reflex",
+    name: "Charged Reflex",
+    appliesTo: "accessory",
+    description:
+      "The accessory improves your reaction speed through small electrical pulses.",
+    effect: [
+      "Gain +1 to Initiative.",
+      "Once per short rest, you may reroll one failed DEX saving throw. You must use the new result.",
+    ],
+  },
+  {
+    id: "storm-ward",
+    name: "Storm Ward",
+    appliesTo: "accessory",
+    description:
+      "The accessory creates a thin field of charged air around you.",
+    effect: [
+      "Once per combat when you are hit by a melee attack, the attacker takes 1d4 lightning damage.",
+    ],
+  },
+  {
+    id: "thunderheart",
+    name: "Thunderheart",
+    appliesTo: "accessory",
+    description:
+      "The accessory strengthens your body against pressure, shock, and disruption.",
+    effect: [
+      "Gain +1 to CON saving throws.",
+      "Once per short rest, gain advantage on one save against being stunned, knocked prone, or forcibly moved.",
+    ],
+  },
+];
+
 export function isPhaseTouchedName(name: string): boolean {
   return name.toLowerCase().includes("phase-touched");
+}
+
+export function isStormTouchedName(name: string): boolean {
+  const lower = name.toLowerCase();
+  return (
+    lower.includes("storm-touched") ||
+    lower.includes("lightning-charged") ||
+    lower.includes("tempest-touched") ||
+    lower.includes("draconic-storm") ||
+    lower.includes("ascendant storm-forged")
+  );
+}
+
+export function getInfusionPrefixForMaterialName(name: string): "phase" | "storm" | null {
+  if (isPhaseTouchedName(name)) return "phase";
+  if (isStormTouchedName(name)) return "storm";
+  return null;
 }
 
 export function recipeAlreadyPhaseTouched(recipe: {
@@ -129,15 +274,58 @@ export function getRandomPhaseAccessoryEffect(
   return phaseAccessoryEffects[Math.max(0, Math.min(index, phaseAccessoryEffects.length - 1))];
 }
 
+export function getRandomStormAccessoryEffect(
+  rng: () => number = Math.random
+): PhaseTouchedEffect {
+  const index = Math.floor(rng() * stormAccessoryEffects.length);
+  return stormAccessoryEffects[Math.max(0, Math.min(index, stormAccessoryEffects.length - 1))];
+}
+
+function normalizeCategory(category: ItemCategory): string {
+  const normalized = category.toLowerCase();
+  if (normalized === "armor") return "armour";
+  if (normalized === "armor-upgrade") return "armour-upgrade";
+  if (normalized === "consumable") return "potion";
+  return normalized;
+}
+
 export function getPhaseTouchedEffectForCategory(
   category: ItemCategory,
   rng: () => number = Math.random
 ): PhaseTouchedEffect | null {
-  const normalized = category.toLowerCase();
+  const normalized = normalizeCategory(category);
 
   if (normalized === "weapon" || normalized === "weapon-upgrade") return phaseStrike;
-  if (normalized === "armour" || normalized === "armor" || normalized === "armour-upgrade" || normalized === "armor-upgrade") return phaseDeflection;
-  if (["accessory", "item", "consumable", "poison"].includes(normalized)) return getRandomPhaseAccessoryEffect(rng);
+  if (normalized === "armour" || normalized === "armour-upgrade") return phaseDeflection;
+  if (normalized === "potion") return phaseSlipDraught;
+  if (normalized === "poison") return phaseVenom;
+  if (["accessory", "item"].includes(normalized)) return getRandomPhaseAccessoryEffect(rng);
+  return null;
+}
+
+export function getStormTouchedEffectForCategory(
+  category: ItemCategory,
+  rng: () => number = Math.random
+): PhaseTouchedEffect | null {
+  const normalized = normalizeCategory(category);
+
+  if (normalized === "weapon" || normalized === "weapon-upgrade") return stormSurge;
+  if (normalized === "armour" || normalized === "armour-upgrade") return stormguard;
+  if (normalized === "potion") return stormchargeDraught;
+  if (normalized === "poison") return shockVenom;
+  if (["accessory", "item"].includes(normalized)) return getRandomStormAccessoryEffect(rng);
+  return null;
+}
+
+export function getInfusedEffectForCategory(
+  materialName: string,
+  category: ItemCategory,
+  rng: () => number = Math.random
+): PhaseTouchedEffect | null {
+  const infusion = getInfusionPrefixForMaterialName(materialName);
+
+  if (infusion === "phase") return getPhaseTouchedEffectForCategory(category, rng);
+  if (infusion === "storm") return getStormTouchedEffectForCategory(category, rng);
   return null;
 }
 
