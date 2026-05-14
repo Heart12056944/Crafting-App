@@ -1954,6 +1954,36 @@ export default function ArcaneCraftingCodexPage() {
     );
   }
 
+  function adjustToolPp(characterId: string, tool: string, amount: number) {
+    if (!adminUnlocked || !Number.isFinite(amount) || amount === 0) return;
+
+    markCharactersForSupabaseSave();
+    setCharacters((current) =>
+      current.map((character) => {
+        if (character.id !== characterId) return character;
+
+        const currentProgress = character.toolProgress?.[tool] ?? emptyToolProgress();
+        const nextPp = Math.max(0, currentProgress.pp + amount);
+
+        return {
+          ...character,
+          tools: {
+            ...character.tools,
+            [tool]: nextPp >= 10 ? "proficient" : character.tools[tool] ?? "none",
+          },
+          toolProgress: {
+            ...character.toolProgress,
+            [tool]: {
+              ...currentProgress,
+              pp: nextPp,
+              proficient: nextPp >= 10 || currentProgress.proficient,
+            },
+          },
+        };
+      })
+    );
+  }
+
   function addCreatureToLootQueue() {
     if (!adminUnlocked) return;
 
@@ -2525,6 +2555,7 @@ export default function ArcaneCraftingCodexPage() {
 
     const brokeToolOnNatOne = !npcCraft && naturalRoll === 1;
 
+    markCharactersForSupabaseSave();
     setCharacters((current) =>
       current.map((character) => {
         if (character.id !== selectedCharacter.id) return character;
@@ -2722,6 +2753,8 @@ export default function ArcaneCraftingCodexPage() {
           <AdvancementPanel
             characters={characters}
             addToolImprovement={addToolImprovement}
+            adminUnlocked={adminUnlocked}
+            adjustToolPp={adjustToolPp}
           />
         )}
 
@@ -3932,9 +3965,13 @@ function CharactersPanel({
 function AdvancementPanel({
   characters,
   addToolImprovement,
+  adminUnlocked,
+  adjustToolPp,
 }: {
   characters: Character[];
   addToolImprovement: (characterId: string, tool: string, improvement: string) => void;
+  adminUnlocked: boolean;
+  adjustToolPp: (characterId: string, tool: string, amount: number) => void;
 }) {
   return (
     <div className="space-y-6">
@@ -3979,6 +4016,25 @@ function AdvancementPanel({
                         {progress.pp} PP
                       </span>
                     </div>
+
+                    {adminUnlocked && (
+                      <div className="flex flex-wrap gap-2">
+                        {[-10, -5, -1, 1, 5, 10].map((amount) => (
+                          <Button
+                            key={`${character.id}-${tool}-pp-${amount}`}
+                            type="button"
+                            onClick={() => adjustToolPp(character.id, tool, amount)}
+                            className={`px-3 py-1 text-xs ${
+                              amount > 0
+                                ? "bg-green-100 hover:bg-green-200 text-green-800"
+                                : "bg-red-100 hover:bg-red-200 text-red-800"
+                            }`}
+                          >
+                            {amount > 0 ? `+${amount}` : amount} PP
+                          </Button>
+                        ))}
+                      </div>
+                    )}
 
                     <p className="text-sm">
                       Proficiency: <strong>{progress.pp >= 10 || progress.proficient ? "Unlocked" : "Locked"}</strong>
