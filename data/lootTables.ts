@@ -314,6 +314,86 @@ export const lootTables: LootTable[] = [
       ].map((name) => e(name)),
     },
   },
+  {
+    id: "reef-shark",
+    label: "Reef Shark",
+    family: "oceanic-shark",
+    tables: {
+      common: [
+        "Torn Reefskin Strips (1d4)", "Saltwater Cartilage (1d4)", "Jagged Tooth Fragments (1d4)", "Slick Fin Membranes (1d4)", "Brine Blood Residue (1d4)", "Coral-Scored Hide (1d4)", "Shark Liver Chunks (1d4)", "Razor Gill Fibers (1d4)",
+      ].map((name) => e(name)),
+      rare: [
+        "Reinforced Reefskin", "Serrated Shark Jaw", "Hunter’s Fin Blade", "Dense Cartilage Core", "Bloodscent Gland", "Reef Predator Eye",
+      ].map((name) => e(name)),
+      epic: [
+        "Apex Reef Jawbone", "Living Predator Core", "Tidehunter Spine Segment", "Oceanic Frenzy Organ", "Reinforced Reef Carapace",
+      ].map((name) => e(name)),
+    },
+  },
+  {
+    id: "hunter-shark",
+    label: "Hunter Shark",
+    family: "oceanic-shark",
+    tables: {
+      common: [
+        "Torn Reefskin Strips (1d4)", "Reinforced Reefskin (1d4)", "Serrated Shark Teeth (1d4)", "Slick Fin Membranes (1d4)", "Bloodscent Residue (1d4)", "Dense Cartilage Fragments (1d4)", "Razor Gill Fibers (1d4)", "Hunter Muscle Strands (1d4)", "Coral-Scored Hide (1d4)",
+      ].map((name) => e(name)),
+      rare: [
+        "Massive Hunter Jaw", "Reinforced Predator Fin", "Bloodscent Gland", "Oceanic Tendon Bundle", "Hunter Spine Segment", "Dense Cartilage Core", "Tidehunter Eye Cluster",
+      ].map((name) => e(name)),
+      epic: [
+        "Apex Hunter Core", "Frenzied Blood Organ", "Living Tidehunter Node", "Reinforced Leviathan Cartilage", "Hunter King Jawplate", "Predator Instinct Core (Oceanic)",
+      ].map((name) => e(name)),
+    },
+  },
+  {
+    id: "giant-shark",
+    label: "Giant Shark",
+    family: "oceanic-shark",
+    tables: {
+      common: [
+        "Reinforced Reefskin (1d6)", "Serrated Shark Teeth (1d6)", "Dense Cartilage Fragments (1d6)", "Massive Bone Segments (1d6)", "Bloodscent Residue (1d6)", "Oceanic Tendon Bundle (1d6)", "Hunter Spine Segment (1d6)", "Thick Fin Membranes (1d6)", "Brine-Soaked Muscle Chunks (1d6)",
+      ].map((name) => e(name)),
+      rare: [
+        "Leviathan Jaw Fragment", "Titanic Cartilage Plate", "Giant Predator Eye", "Reinforced Tidehunter Spine", "Abyssal Blood Gland", "Massive Hunter Fin", "Oceanic Crushing Tendon",
+      ].map((name) => e(name)),
+      epic: [
+        "Leviathan Heart-Core", "Apex Oceanic Predator Core", "Deep-Sea Frenzy Node", "Titanic Jawbone Plate", "Living Abyssal Organ", "Sovereign Tidehunter Core", "Oceanic Apex Mobility Core",
+      ].map((name) => e(name)),
+    },
+  },
+  {
+    id: "giant-crab",
+    label: "Giant Crab",
+    family: "oceanic-crab",
+    tables: {
+      common: [
+        "Cracked Shell Fragments (1d4)", "Saltwater Chitin Shards (1d4)", "Brine-Stained Claw Pieces (1d4)", "Crustacean Meat (Raw) (1d4)", "Barnacle-Covered Carapace (1d4)", "Coastal Tendon Fibers (1d4)", "Sea-Slime Residue (1d4)", "Hardened Leg Segments (1d4)",
+      ].map((name) => e(name)),
+      rare: [
+        "Reinforced Crab Carapace", "Massive Crushing Claw", "Dense Chitin Plate", "Oceanic Muscle Bundle", "Brineheart Organ", "Tidebreaker Shell Segment",
+      ].map((name) => e(name)),
+      epic: [
+        "Leviathan Crab Shell", "Crushing Pincer Core", "Ancient Reef Carapace", "Apex Crustacean Node", "Titanic Claw Blade",
+      ].map((name) => e(name)),
+    },
+  },
+  {
+    id: "giant-octopus",
+    label: "Giant Octopus",
+    family: "oceanic-octopus",
+    tables: {
+      common: [
+        "Slick Tentacle Strips (1d4)", "Ink Residue Sac (1d4)", "Suction Cup Clusters (1d4)", "Flexible Membrane Sheets (1d4)", "Oceanic Nerve Fibers (1d4)", "Saltwater Tendon Strands (1d4)", "Deep-Sea Flesh Chunks (1d4)", "Camouflage Skin Scraps (1d4)",
+      ].map((name) => e(name)),
+      rare: [
+        "Concentrated Ink Gland", "Reinforced Tentacle Core", "Adaptive Skin Membrane", "Oceanic Neural Cluster", "Deepwater Eye Orb", "Flexible Tendon Bundle",
+      ].map((name) => e(name)),
+      epic: [
+        "Abyssal Ink Core", "Sovereign Tentacle Node", "Krakenblood Organ Fragment", "Living Camouflage Membrane", "Deep-Sea Neural Nexus",
+      ].map((name) => e(name)),
+    },
+  }
 ];
 
 export function rollWeightedLootQuality(tier: CreatureTier): LootQuality | "none" {

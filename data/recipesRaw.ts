@@ -7866,6 +7866,3935 @@ export const recipesRaw: Recipe[] = [
     ],
   },
 
+
+  // Oceanic recipes from updated Oceanic Crafting Recipe Doc
+  {
+    id: "oceanic-reefskin-wrap-armour-light-armour",
+    name: "Reefskin Wrap Armour (Light Armour)",
+    category: "armour",
+    rarity: "common",
+    tags: [
+      "common",
+      "armour",
+      "leatherworker",
+      "reef"
+    ],
+    description: "Flexible armour stitched from reef shark hide and reinforced cartilage.",
+    dc: 13,
+    time: "45 min",
+    tool: "Leatherworker",
+    stat: "DEX",
+    materials: [
+      {
+        name: "Torn Reefskin Strips",
+        qty: 2
+      },
+      {
+        name: "Saltwater Cartilage",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The hide flexes naturally while dispersing impact.",
+        effect: [
+          "Advantage on Stealth"
+        ],
+        statBlock: "AC 12 + DEX"
+      },
+      {
+        quality: "Normal",
+        description: "Lightweight sharkskin armour suitable for agile combat.",
+        statBlock: "AC 11 + DEX"
+      },
+      {
+        quality: "Flawed",
+        description: "The scales loosen under strain.",
+        effect: [
+          "Disadvantage on Stealth"
+        ],
+        statBlock: "AC 10 + DEX"
+      }
+    ]
+  },
+  {
+    id: "oceanic-barnacle-guard-vest-medium-armour",
+    name: "Barnacle Guard Vest (Medium Armour)",
+    category: "armour",
+    rarity: "common",
+    tags: [
+      "common",
+      "armour",
+      "leatherworker"
+    ],
+    description: "A crude vest layered with shell fragments and hardened crab plating.",
+    dc: 13,
+    time: "1 hr",
+    tool: "Leatherworker",
+    stat: "DEX",
+    materials: [
+      {
+        name: "Cracked Shell Fragments",
+        qty: 2
+      },
+      {
+        name: "Barnacle-Covered Carapace",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The shell plates absorb heavy impacts surprisingly well.",
+        effect: [
+          "Reduce damage by 1"
+        ],
+        statBlock: "AC 14 + DEX (max 2)"
+      },
+      {
+        quality: "Normal",
+        description: "Heavy shell plating offers solid protection.",
+        statBlock: "AC 13 + DEX (max 2)"
+      },
+      {
+        quality: "Flawed",
+        description: "Uneven shell placement restricts movement.",
+        effect: [
+          "−5 ft movement"
+        ],
+        statBlock: "AC 12 + DEX (max 2)"
+      }
+    ]
+  },
+  {
+    id: "oceanic-inkveil-robes-robes",
+    name: "Inkveil Robes (Robes)",
+    category: "armour",
+    rarity: "common",
+    tags: [
+      "common",
+      "armour",
+      "weaver",
+      "ink"
+    ],
+    description: "Dark robes infused with octopus ink and membrane fibers.",
+    dc: 13,
+    time: "45 min",
+    tool: "Weaver",
+    stat: "DEX",
+    materials: [
+      {
+        name: "Ink Residue Sac",
+        qty: 1
+      },
+      {
+        name: "Flexible Membrane Sheets",
+        qty: 1
+      },
+      {
+        name: "Cloth Bolts",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "Shadows cling unnaturally to the robe.",
+        effect: [
+          "Advantage on Stealth"
+        ],
+        statBlock: "AC 11 + DEX"
+      },
+      {
+        quality: "Normal",
+        description: "Ink-darkened cloth obscures movement.",
+        effect: [
+          "+2 Stealth"
+        ],
+        statBlock: "AC 10 + DEX"
+      },
+      {
+        quality: "Flawed",
+        description: "The ink smears and stiffens the fabric.",
+        statBlock: "AC 10 + DEX"
+      }
+    ]
+  },
+  {
+    id: "oceanic-reefbite-flintlock",
+    name: "Reefbite Flintlock",
+    category: "weapon",
+    rarity: "common",
+    tags: [
+      "common",
+      "weapon",
+      "tinker",
+      "reef",
+      "firearm",
+      "ranged"
+    ],
+    description: "A compact flintlock reinforced with shark cartilage and coral scoring.",
+    dc: 13,
+    time: "45 min",
+    tool: "Tinker",
+    stat: "INT",
+    materials: [
+      {
+        name: "Serrated Shark Teeth",
+        qty: 1
+      },
+      {
+        name: "Flintlock Frame",
+        qty: 1
+      },
+      {
+        name: "Saltwater Cartilage",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The weapon snaps into alignment with predatory precision.",
+        effect: [
+          "+1 to hit"
+        ],
+        statBlock: "2d6 piercing"
+      },
+      {
+        quality: "Normal",
+        description: "Reliable firearm with reinforced structure.",
+        statBlock: "2d6 piercing"
+      },
+      {
+        quality: "Flawed",
+        description: "Salt corrosion disrupts the firing chamber.",
+        effect: [
+          "Misfire 1–2"
+        ],
+        statBlock: "2d6 piercing"
+      }
+    ]
+  },
+  {
+    id: "oceanic-tidefang-cutlass",
+    name: "Tidefang Cutlass",
+    category: "weapon",
+    rarity: "common",
+    tags: [
+      "common",
+      "weapon",
+      "smith",
+      "tide"
+    ],
+    description: "A curved blade edged with jagged shark teeth.",
+    dc: 13,
+    time: "45 min",
+    tool: "Smith",
+    stat: "STR",
+    materials: [
+      {
+        name: "Jagged Tooth Fragments",
+        qty: 2
+      },
+      {
+        name: "Scrap Steel",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The serrated edge tears deeply into flesh.",
+        effect: [
+          "+1d4 bleed damage"
+        ],
+        statBlock: "1d8 slashing"
+      },
+      {
+        quality: "Normal",
+        description: "A sharp and seaworthy weapon.",
+        statBlock: "1d8 slashing"
+      },
+      {
+        quality: "Flawed",
+        description: "The teeth loosen under impact.",
+        effect: [
+          "−1 to hit"
+        ],
+        statBlock: "1d8 slashing"
+      }
+    ]
+  },
+  {
+    id: "oceanic-coralband-ring",
+    name: "Coralband Ring",
+    category: "accessory",
+    rarity: "common",
+    tags: [
+      "common",
+      "accessory",
+      "jeweler",
+      "coral"
+    ],
+    description: "A ring carved from reef coral and polished sea-glass.",
+    dc: 13,
+    time: "20 min",
+    tool: "Jeweler",
+    stat: "DEX",
+    materials: [
+      {
+        name: "Coral-Scored Hide",
+        qty: 1
+      },
+      {
+        name: "Sea-Glass Scraps",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The coral resonates with oceanic rhythm.",
+        effect: [
+          "+1 to DEX checks"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "Encourages balance and fluid movement.",
+        effect: [
+          "+1 Acrobatics"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The coral chips easily.",
+        effect: [
+          "+1 Acrobatics (first check only)"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-brinefang-necklace",
+    name: "Brinefang Necklace",
+    category: "accessory",
+    rarity: "common",
+    tags: [
+      "common",
+      "accessory",
+      "jeweler",
+      "brine"
+    ],
+    description: "A shark tooth necklace worn by coastal hunters.",
+    dc: 13,
+    time: "30 min",
+    tool: "Jeweler",
+    stat: "DEX",
+    materials: [
+      {
+        name: "Jagged Tooth Fragments",
+        qty: 1
+      },
+      {
+        name: "Leather Cord",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The necklace sharpens your predatory instincts.",
+        effect: [
+          "+1 Initiative",
+          "+1 Survival"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "Heightens awareness near danger.",
+        effect: [
+          "+1 Survival"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The cord slips awkwardly during movement.",
+        effect: [
+          "Advantage on one Survival check per combat"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-deepcurrent-bracelet",
+    name: "Deepcurrent Bracelet",
+    category: "accessory",
+    rarity: "common",
+    tags: [
+      "common",
+      "accessory",
+      "weaver"
+    ],
+    description: "A bracelet woven from octopus tendons and slick membranes.",
+    dc: 13,
+    time: "20 min",
+    tool: "Weaver",
+    stat: "DEX",
+    materials: [
+      {
+        name: "Saltwater Tendon Strands",
+        qty: 1
+      },
+      {
+        name: "Flexible Membrane Sheets",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The bracelet reacts instantly to sudden motion.",
+        effect: [
+          "Advantage on Initiative"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "Slightly enhances reaction speed.",
+        effect: [
+          "+1 Initiative"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The strands tighten unpredictably.",
+        effect: [
+          "+1 Initiative (first round only)"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-inkdrop-earring",
+    name: "Inkdrop Earring",
+    category: "accessory",
+    rarity: "common",
+    tags: [
+      "common",
+      "accessory",
+      "jeweler",
+      "ink"
+    ],
+    description: "A polished black earring infused with octopus ink residue.",
+    dc: 13,
+    time: "20 min",
+    tool: "Jeweler",
+    stat: "DEX",
+    materials: [
+      {
+        name: "Ink Residue Sac",
+        qty: 1
+      },
+      {
+        name: "Sea-Glass Scraps",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "Your movements become subtle and unreadable.",
+        effect: [
+          "Advantage on Deception"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "Dark ink softens your appearance in shadow.",
+        effect: [
+          "+2 Stealth in dim light"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The residue stains constantly.",
+        effect: [
+          "+1 Stealth in dim light"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-tidehunter-brigandine-medium-armour",
+    name: "Tidehunter Brigandine (Medium Armour)",
+    category: "armour",
+    rarity: "rare",
+    tags: [
+      "rare",
+      "armour",
+      "leatherworker",
+      "tide"
+    ],
+    description: "Layered sharkskin armour reinforced with stabilized predator materials.",
+    dc: 16,
+    time: "2 hr",
+    tool: "Leatherworker",
+    stat: "DEX",
+    materials: [
+      {
+        name: "Reinforced Reef Carapace",
+        qty: 1
+      },
+      {
+        name: "Oceanic Tendon Bundle",
+        qty: 1
+      },
+      {
+        name: "Hunter Spine Segment",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The armour moves fluidly while resisting powerful blows.",
+        effect: [
+          "Reduce damage by 1",
+          "Advantage on Athletics while swimming"
+        ],
+        statBlock: "AC 16 + DEX (max 3)"
+      },
+      {
+        quality: "Normal",
+        description: "Durable armour built for oceanic predators.",
+        statBlock: "AC 16 + DEX (max 2)"
+      },
+      {
+        quality: "Flawed",
+        description: "Heavy cartilage restricts flexibility.",
+        effect: [
+          "Disadvantage on Stealth"
+        ],
+        statBlock: "AC 15 + DEX (max 2)"
+      }
+    ]
+  },
+  {
+    id: "oceanic-reefshell-plate-heavy-armour",
+    name: "Reefshell Plate (Heavy Armour)",
+    category: "armour",
+    rarity: "rare",
+    tags: [
+      "rare",
+      "armour",
+      "smith",
+      "reef"
+    ],
+    description: "Heavy armour assembled from giant crab shell plating.",
+    dc: 17,
+    time: "2 hr",
+    tool: "Smith",
+    stat: "STR",
+    materials: [
+      {
+        name: "Leviathan Crab Shell",
+        qty: 1
+      },
+      {
+        name: "Dense Chitin Plate",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "Massive shell layers absorb incoming force.",
+        effect: [
+          "Reduce all incoming damage by 1"
+        ],
+        statBlock: "AC 17"
+      },
+      {
+        quality: "Normal",
+        description: "Thick shell plating provides heavy defense.",
+        statBlock: "AC 16"
+      },
+      {
+        quality: "Flawed",
+        description: "The weight strains the wearer.",
+        effect: [
+          "−5 ft movement"
+        ],
+        statBlock: "AC 15"
+      }
+    ]
+  },
+  {
+    id: "oceanic-abyssal-veil-robes-robes",
+    name: "Abyssal Veil Robes (Robes)",
+    category: "armour",
+    rarity: "rare",
+    tags: [
+      "rare",
+      "armour",
+      "weaver",
+      "abyssal"
+    ],
+    description: "Flowing robes infused with adaptive octopus membranes.",
+    dc: 16,
+    time: "2 hr",
+    tool: "Weaver",
+    stat: "DEX",
+    materials: [
+      {
+        name: "Adaptive Skin Membrane",
+        qty: 1
+      },
+      {
+        name: "Oceanic Neural Cluster",
+        qty: 1
+      },
+      {
+        name: "Cloth Bolts",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The robes shift color with the surrounding environment.",
+        effect: [
+          "Advantage on Stealth",
+          "Advantage on Deception"
+        ],
+        statBlock: "AC 12 + DEX"
+      },
+      {
+        quality: "Normal",
+        description: "The fabric subtly mimics nearby colors.",
+        effect: [
+          "+2 Stealth"
+        ],
+        statBlock: "AC 11 + DEX"
+      },
+      {
+        quality: "Flawed",
+        description: "The shifting pattern flickers inconsistently.",
+        statBlock: "AC 10 + DEX"
+      }
+    ]
+  },
+  {
+    id: "oceanic-hunter-s-precision-flintlock",
+    name: "Hunter’s Precision Flintlock",
+    category: "weapon",
+    rarity: "rare",
+    tags: [
+      "rare",
+      "weapon",
+      "tinker",
+      "firearm",
+      "ranged"
+    ],
+    description: "A reinforced firearm balanced around shark fin structure.",
+    dc: 16,
+    time: "1 hr",
+    tool: "Tinker",
+    stat: "INT",
+    materials: [
+      {
+        name: "Reinforced Predator Fin",
+        qty: 1
+      },
+      {
+        name: "Flintlock Frame",
+        qty: 1
+      },
+      {
+        name: "Bloodscent Gland",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The weapon tracks wounded targets instinctively.",
+        effect: [
+          "+1 to hit",
+          "+1d4 damage vs wounded targets"
+        ],
+        statBlock: "2d8 piercing"
+      },
+      {
+        quality: "Normal",
+        description: "Stable and deadly against weakened prey.",
+        effect: [
+          "+1 to hit"
+        ],
+        statBlock: "2d8 piercing"
+      },
+      {
+        quality: "Flawed",
+        description: "Blood residue fouls the mechanism.",
+        effect: [
+          "Misfire 1–3"
+        ],
+        statBlock: "2d8 piercing"
+      }
+    ]
+  },
+  {
+    id: "oceanic-reefbreaker-musket",
+    name: "Reefbreaker Musket",
+    category: "weapon",
+    rarity: "rare",
+    tags: [
+      "rare",
+      "weapon",
+      "smith",
+      "reef",
+      "firearm",
+      "ranged"
+    ],
+    description: "A long firearm reinforced with giant crab shell supports.",
+    dc: 16,
+    time: "1.5 hr",
+    tool: "Smith",
+    stat: "STR",
+    materials: [
+      {
+        name: "Massive Crushing Claw",
+        qty: 1
+      },
+      {
+        name: "Musket Frame",
+        qty: 1
+      },
+      {
+        name: "Dense Chitin Plate",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The reinforced frame absorbs recoil perfectly.",
+        effect: [
+          "Ignore disadvantage at long range"
+        ],
+        statBlock: "3d10 piercing"
+      },
+      {
+        quality: "Normal",
+        description: "Heavy but reliable firearm.",
+        statBlock: "3d10 piercing"
+      },
+      {
+        quality: "Flawed",
+        description: "The claw frame cracks under pressure.",
+        effect: [
+          "Misfire 1–3"
+        ],
+        statBlock: "2d10 piercing"
+      }
+    ]
+  },
+  {
+    id: "oceanic-inkstorm-blunderbuss",
+    name: "Inkstorm Blunderbuss",
+    category: "weapon",
+    rarity: "rare",
+    tags: [
+      "rare",
+      "weapon",
+      "tinker",
+      "ink",
+      "firearm",
+      "ranged"
+    ],
+    description: "A wide-barrel firearm that disperses blinding octopus ink.",
+    dc: 16,
+    time: "1 hr",
+    tool: "Tinker",
+    stat: "INT",
+    materials: [
+      {
+        name: "Concentrated Ink Gland",
+        qty: 1
+      },
+      {
+        name: "Blunderbuss Frame",
+        qty: 1
+      },
+      {
+        name: "Flexible Tendon Bundle",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "Thick clouds of ink erupt alongside the blast.",
+        effect: [
+          "Targets blinded until end of next turn"
+        ],
+        statBlock: "2d8 piercing (cone)"
+      },
+      {
+        quality: "Normal",
+        description: "Ink obscures enemy vision briefly.",
+        effect: [
+          "Targets suffer −2 to hit next attack"
+        ],
+        statBlock: "2d8 piercing (cone)"
+      },
+      {
+        quality: "Flawed",
+        description: "Ink disperses unevenly.",
+        statBlock: "2d8 piercing (cone)"
+      }
+    ]
+  },
+  {
+    id: "oceanic-predator-circlet",
+    name: "Predator Circlet",
+    category: "accessory",
+    rarity: "rare",
+    tags: [
+      "rare",
+      "accessory",
+      "jeweler",
+      "predator"
+    ],
+    description: "A circlet infused with hunter instinct and oceanic senses.",
+    dc: 15,
+    time: "1 hr",
+    tool: "Jeweler",
+    stat: "DEX",
+    materials: [
+      {
+        name: "Reef Predator Eye",
+        qty: 1
+      },
+      {
+        name: "Bloodscent Gland",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "Your awareness sharpens to predatory levels.",
+        effect: [
+          "Advantage on Perception",
+          "Advantage on Initiative"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "Heightens your senses in combat.",
+        effect: [
+          "+2 Perception"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The sensory enhancement overwhelms you.",
+        effect: [
+          "+1 Perception"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-abyssloop-tattoo",
+    name: "Abyssloop Tattoo",
+    category: "item",
+    rarity: "rare",
+    tags: [
+      "rare",
+      "item",
+      "tattoo-artist-needles",
+      "tattoo"
+    ],
+    description: "A living tattoo inked from concentrated octopus residue.",
+    dc: 16,
+    time: "1 hr",
+    tool: "Tattoo Artist Needles",
+    stat: "DEX",
+    materials: [
+      {
+        name: "Concentrated Ink Gland",
+        qty: 1
+      },
+      {
+        name: "Oceanic Neural Cluster",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The markings shift and writhe beneath your skin.",
+        effect: [
+          "Once per combat: become invisible until end of turn"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "Shadows cling unnaturally to your body.",
+        effect: [
+          "Advantage on Stealth"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The ink pulses unpredictably.",
+        effect: [
+          "+2 Stealth"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-leviathan-carapace-plate-heavy-armour",
+    name: "Leviathan Carapace Plate (Heavy Armour)",
+    category: "armour",
+    rarity: "epic",
+    tags: [
+      "epic",
+      "armour",
+      "smith",
+      "leviathan"
+    ],
+    description: "Massive armour forged from giant shark and crab apex plating.",
+    dc: 20,
+    time: "3 hr",
+    tool: "Smith",
+    stat: "STR",
+    materials: [
+      {
+        name: "Titanic Cartilage Plate",
+        qty: 1
+      },
+      {
+        name: "Leviathan Crab Shell",
+        qty: 1
+      },
+      {
+        name: "Reinforced Reef Carapace",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The armour withstands monstrous force without yielding.",
+        effect: [
+          "Reduce all incoming damage by 2",
+          "Cannot be knocked prone"
+        ],
+        statBlock: "AC 19"
+      },
+      {
+        quality: "Normal",
+        description: "Titanic plating offers unmatched durability.",
+        effect: [
+          "Reduce incoming damage by 1"
+        ],
+        statBlock: "AC 18"
+      },
+      {
+        quality: "Flawed",
+        description: "The weight strains movement.",
+        effect: [
+          "−10 ft movement"
+        ],
+        statBlock: "AC 17"
+      }
+    ]
+  },
+  {
+    id: "oceanic-tidehunter-scale-coat-medium-armour",
+    name: "Tidehunter Scale Coat (Medium Armour)",
+    category: "armour",
+    rarity: "epic",
+    tags: [
+      "epic",
+      "armour",
+      "leatherworker",
+      "tide"
+    ],
+    description: "A reinforced predator coat built from apex shark hide.",
+    dc: 20,
+    time: "2.5 hr",
+    tool: "Leatherworker",
+    stat: "DEX",
+    materials: [
+      {
+        name: "Reinforced Leviathan Cartilage",
+        qty: 1
+      },
+      {
+        name: "Hunter King Jawplate",
+        qty: 1
+      },
+      {
+        name: "Oceanic Crushing Tendon",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The coat flexes around incoming strikes.",
+        effect: [
+          "Reduce damage by 2",
+          "Advantage on STR saves"
+        ],
+        statBlock: "AC 17 + DEX (max 3)"
+      },
+      {
+        quality: "Normal",
+        description: "Durable predator armour.",
+        statBlock: "AC 17 + DEX (max 2)"
+      },
+      {
+        quality: "Flawed",
+        description: "Heavy plating slows movement.",
+        effect: [
+          "−5 ft movement"
+        ],
+        statBlock: "AC 16 + DEX (max 2)"
+      }
+    ]
+  },
+  {
+    id: "oceanic-abysswalker-vestments-light-armour",
+    name: "Abysswalker Vestments (Light Armour)",
+    category: "armour",
+    rarity: "epic",
+    tags: [
+      "epic",
+      "armour",
+      "weaver"
+    ],
+    description: "Elegant robes woven from abyssal membranes and living oceanic organs.",
+    dc: 20,
+    time: "2.5 hr",
+    tool: "Weaver",
+    stat: "DEX",
+    materials: [
+      {
+        name: "Living Camouflage Membrane",
+        qty: 1
+      },
+      {
+        name: "Deep-Sea Neural Nexus",
+        qty: 1
+      },
+      {
+        name: "Abyssal Ink Core",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The robes blend seamlessly into darkness and mist.",
+        effect: [
+          "Advantage on Stealth",
+          "Once per turn: impose disadvantage on one attack against you"
+        ],
+        statBlock: "AC 15 + DEX"
+      },
+      {
+        quality: "Normal",
+        description: "Abyssal fibers distort your silhouette.",
+        effect: [
+          "Advantage on Stealth"
+        ],
+        statBlock: "AC 14 + DEX"
+      },
+      {
+        quality: "Flawed",
+        description: "The illusion flickers inconsistently.",
+        statBlock: "AC 13 + DEX"
+      }
+    ]
+  },
+  {
+    id: "oceanic-leviathan-precision-flintlock",
+    name: "Leviathan Precision Flintlock",
+    category: "weapon",
+    rarity: "epic",
+    tags: [
+      "epic",
+      "weapon",
+      "tinker",
+      "leviathan",
+      "firearm",
+      "ranged"
+    ],
+    description: "A masterwork firearm balanced around abyssal predator instincts.",
+    dc: 20,
+    time: "2 hr",
+    tool: "Tinker",
+    stat: "INT",
+    materials: [
+      {
+        name: "Apex Oceanic Predator Core",
+        qty: 1
+      },
+      {
+        name: "Flintlock Frame",
+        qty: 1
+      },
+      {
+        name: "Tidehunter Spine Segment",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The weapon instinctively tracks moving prey.",
+        effect: [
+          "+1 to hit",
+          "Ignore half cover",
+          "+1d6 damage on first attack each turn"
+        ],
+        statBlock: "2d10 piercing"
+      },
+      {
+        quality: "Normal",
+        description: "Precision systems improve accuracy dramatically.",
+        effect: [
+          "+1 to hit"
+        ],
+        statBlock: "2d10 piercing"
+      },
+      {
+        quality: "Flawed",
+        description: "Instinctive corrections lag behind movement.",
+        effect: [
+          "+1 to hit (first attack only)"
+        ],
+        statBlock: "2d10 piercing"
+      }
+    ]
+  },
+  {
+    id: "oceanic-deep-sea-longshot-musket",
+    name: "Deep-Sea Longshot Musket",
+    category: "weapon",
+    rarity: "epic",
+    tags: [
+      "epic",
+      "weapon",
+      "smith",
+      "firearm",
+      "ranged"
+    ],
+    description: "A massive musket reinforced with abyssal predator cores.",
+    dc: 21,
+    time: "2.5 hr",
+    tool: "Smith",
+    stat: "STR",
+    materials: [
+      {
+        name: "Leviathan Heart-Core",
+        qty: 1
+      },
+      {
+        name: "Musket Frame",
+        qty: 1
+      },
+      {
+        name: "Oceanic Apex Mobility Core",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "Shots thunder through the air like crashing waves.",
+        effect: [
+          "Ignore disadvantage at long range",
+          "+1d8 damage vs Large or larger creatures"
+        ],
+        statBlock: "3d12 piercing"
+      },
+      {
+        quality: "Normal",
+        description: "The weapon delivers devastating ranged force.",
+        statBlock: "3d12 piercing"
+      },
+      {
+        quality: "Flawed",
+        description: "The recoil destabilizes the weapon.",
+        effect: [
+          "Misfire 1–3"
+        ],
+        statBlock: "2d12 piercing"
+      }
+    ]
+  },
+  {
+    id: "oceanic-abyssal-scattercannon",
+    name: "Abyssal Scattercannon",
+    category: "weapon",
+    rarity: "epic",
+    tags: [
+      "epic",
+      "weapon",
+      "tinker",
+      "abyssal",
+      "firearm",
+      "ranged"
+    ],
+    description: "A blunderbuss fueled by unstable abyssal energy.",
+    dc: 20,
+    time: "2 hr",
+    tool: "Tinker",
+    stat: "INT",
+    materials: [
+      {
+        name: "Deep-Sea Frenzy Node",
+        qty: 1
+      },
+      {
+        name: "Blunderbuss Frame",
+        qty: 1
+      },
+      {
+        name: "Living Abyssal Organ",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The blast erupts with abyssal pressure and frenzy energy.",
+        effect: [
+          "+1d6 force",
+          "Targets knocked prone"
+        ],
+        statBlock: "2d10 piercing (cone)"
+      },
+      {
+        quality: "Normal",
+        description: "Abyssal energy enhances the cone blast.",
+        effect: [
+          "+1d6 force"
+        ],
+        statBlock: "2d10 piercing (cone)"
+      },
+      {
+        quality: "Flawed",
+        description: "The pressure disperses unevenly.",
+        effect: [
+          "+1d4 force"
+        ],
+        statBlock: "2d8 piercing (cone)"
+      }
+    ]
+  },
+  {
+    id: "oceanic-leviathan-crown-circlet",
+    name: "Leviathan Crown Circlet",
+    category: "accessory",
+    rarity: "epic",
+    tags: [
+      "epic",
+      "accessory",
+      "jeweler",
+      "leviathan"
+    ],
+    description: "A circlet crafted from apex shark jawbone and abyssal coral.",
+    dc: 18,
+    time: "1.5 hr",
+    tool: "Jeweler",
+    stat: "DEX",
+    materials: [
+      {
+        name: "Titanic Jawbone Plate",
+        qty: 1
+      },
+      {
+        name: "Living Predator Core",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The crown radiates overwhelming predator dominance.",
+        effect: [
+          "Advantage on Intimidation",
+          "Advantage on Initiative",
+          "+1 to hit"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "Heightens predatory confidence.",
+        effect: [
+          "+1 to hit on first attack each turn"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The aggressive energy is difficult to control.",
+        effect: [
+          "+1 damage on first attack only"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-oceanheart-necklace",
+    name: "Oceanheart Necklace",
+    category: "accessory",
+    rarity: "epic",
+    tags: [
+      "epic",
+      "accessory",
+      "jeweler"
+    ],
+    description: "A living necklace infused with abyssal oceanic energy.",
+    dc: 18,
+    time: "2 hr",
+    tool: "Jeweler",
+    stat: "DEX",
+    materials: [
+      {
+        name: "Living Abyssal Organ",
+        qty: 1
+      },
+      {
+        name: "Sovereign Tidehunter Core",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The necklace pulses with restorative tidal energy.",
+        effect: [
+          "Heal 1d4 at start of your turn",
+          "Allies within 10 ft gain +1 saves"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "Oceanic energy restores vitality steadily.",
+        effect: [
+          "Heal 1d4 each turn"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The pulse fluctuates unevenly.",
+        effect: [
+          "Heal 1 HP per turn",
+          "TIER 5 MATERIAL REFINEMENT"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-sovereign-leviathan-core-creation",
+    name: "Sovereign Leviathan Core Creation",
+    category: "material-refinement",
+    rarity: "epic",
+    tags: [
+      "epic",
+      "material-refinement",
+      "alchemist",
+      "leviathan",
+      "material-creation"
+    ],
+    description: "Condenses apex oceanic predator materials into a perfected sovereign core.",
+    dc: 23,
+    time: "3 hr",
+    tool: "Alchemist",
+    stat: "INT",
+    materials: [
+      {
+        name: "Sovereign Tidehunter Core",
+        qty: 2
+      },
+      {
+        name: "Leviathan Heart-Core",
+        qty: 1
+      },
+      {
+        name: "Deep-Sea Frenzy Node",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The materials stabilize into a perfectly awakened abyssal core.",
+        effect: [
+          "Create 2× Sovereign Leviathan Core"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "The core stabilizes successfully.",
+        effect: [
+          "Create 1× Sovereign Leviathan Core"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The unstable energies partially collapse.",
+        effect: [
+          "Create 1× Apex Oceanic Predator Core"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-abyssal-tide-matrix-formation",
+    name: "Abyssal Tide Matrix Formation",
+    category: "material-refinement",
+    rarity: "epic",
+    tags: [
+      "epic",
+      "material-refinement",
+      "alchemist",
+      "abyssal",
+      "tide",
+      "material-creation"
+    ],
+    description: "A legendary matrix formed from neural and abyssal oceanic materials.",
+    dc: 23,
+    time: "3 hr",
+    tool: "Alchemist",
+    stat: "INT",
+    materials: [
+      {
+        name: "Deep-Sea Neural Nexus",
+        qty: 1
+      },
+      {
+        name: "Living Abyssal Organ",
+        qty: 1
+      },
+      {
+        name: "Abyssal Ink Core",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The matrix hums with synchronized abyssal intelligence.",
+        effect: [
+          "Create 2× Abyssal Tide Matrix"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "The abyssal energies stabilize successfully.",
+        effect: [
+          "Create 1× Abyssal Tide Matrix"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The neural network destabilizes.",
+        effect: [
+          "Create 1× Deep-Sea Neural Nexus"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-primordial-kraken-nexus",
+    name: "Primordial Kraken Nexus",
+    category: "item",
+    rarity: "epic",
+    tags: [
+      "epic",
+      "item",
+      "alchemist"
+    ],
+    description: "A living nexus created from perfected octopus and abyssal materials.",
+    dc: 24,
+    time: "4 hr",
+    tool: "Alchemist",
+    stat: "INT",
+    materials: [
+      {
+        name: "Sovereign Tentacle Node",
+        qty: 1
+      },
+      {
+        name: "Living Camouflage Membrane",
+        qty: 1
+      },
+      {
+        name: "Krakenblood Organ Fragment",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The nexus awakens into a living abyssal intelligence.",
+        effect: [
+          "Create 2× Primordial Kraken Nexus"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "The nexus stabilizes into an ascendant organic core.",
+        effect: [
+          "Create 1× Primordial Kraken Nexus"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The living structure collapses.",
+        effect: [
+          "Create 1× Sovereign Tentacle Node"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-oceanic-dominion-heart",
+    name: "Oceanic Dominion Heart",
+    category: "item",
+    rarity: "epic",
+    tags: [
+      "epic",
+      "item",
+      "alchemist",
+      "oceanic"
+    ],
+    description: "A perfected tidal heart formed from sovereign oceanic materials.",
+    dc: 24,
+    time: "4 hr",
+    tool: "Alchemist",
+    stat: "INT",
+    materials: [
+      {
+        name: "Sovereign Tidehunter Core",
+        qty: 1
+      },
+      {
+        name: "Heart of the Sea Node",
+        qty: 1
+      },
+      {
+        name: "Ancient Reef-Core",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The heart pulses with overwhelming tidal authority.",
+        effect: [
+          "Create 2× Oceanic Dominion Heart"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "The heart stabilizes into a master oceanic core.",
+        effect: [
+          "Create 1× Oceanic Dominion Heart"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The tidal resonance weakens during formation.",
+        effect: [
+          "Create 1× Heart of the Sea Node"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-eternal-reef-crown",
+    name: "Eternal Reef Crown",
+    category: "accessory",
+    rarity: "epic",
+    tags: [
+      "epic",
+      "accessory",
+      "jeweler",
+      "reef"
+    ],
+    description: "A crown-like reef structure forged from ancient abyssal coral and sovereign pearl essence.",
+    dc: 24,
+    time: "4 hr",
+    tool: "Jeweler",
+    stat: "DEX",
+    materials: [
+      {
+        name: "Abyssal Pearl (Pristine)",
+        qty: 1
+      },
+      {
+        name: "Ancient Reef-Core",
+        qty: 1
+      },
+      {
+        name: "Tide-Master’s Staff Fragment",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The reef crown radiates ancient oceanic authority.",
+        effect: [
+          "Create 2× Eternal Reef Crown"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "The reef stabilizes into a sovereign crown component.",
+        effect: [
+          "Create 1× Eternal Reef Crown"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The coral fractures during stabilization.",
+        effect: [
+          "Create 1× Ancient Reef-Core"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-sovereign-leviathan-plate-heavy-armour",
+    name: "Sovereign Leviathan Plate (Heavy Armour)",
+    category: "armour",
+    rarity: "ascendant",
+    tags: [
+      "ascendant",
+      "armour",
+      "smith",
+      "leviathan"
+    ],
+    description: "A legendary suit forged from perfected abyssal predator materials.",
+    dc: 23,
+    time: "3 hr",
+    tool: "Smith",
+    stat: "STR",
+    materials: [
+      {
+        name: "Sovereign Tidehunter Core",
+        qty: 1
+      },
+      {
+        name: "Leviathan Heart-Core",
+        qty: 1
+      },
+      {
+        name: "Reinforced Reef Carapace",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The armour absorbs catastrophic force with ease.",
+        effect: [
+          "Reduce all incoming damage by 3",
+          "Cannot be knocked prone",
+          "Resistance to force damage"
+        ],
+        statBlock: "AC 20"
+      },
+      {
+        quality: "Normal",
+        description: "Titanic abyssal plating grants unmatched durability.",
+        effect: [
+          "Reduce all incoming damage by 2"
+        ],
+        statBlock: "AC 19"
+      },
+      {
+        quality: "Flawed",
+        description: "The armour remains enormously heavy.",
+        effect: [
+          "−5 ft movement"
+        ],
+        statBlock: "AC 18"
+      }
+    ]
+  },
+  {
+    id: "oceanic-apex-tidehunter-harness-medium-armour",
+    name: "Apex Tidehunter Harness (Medium Armour)",
+    category: "armour",
+    rarity: "ascendant",
+    tags: [
+      "ascendant",
+      "armour",
+      "leatherworker",
+      "tide"
+    ],
+    description: "A perfectly balanced predator combat harness.",
+    dc: 23,
+    time: "3 hr",
+    tool: "Leatherworker",
+    stat: "DEX",
+    materials: [
+      {
+        name: "Apex Oceanic Predator Core",
+        qty: 1
+      },
+      {
+        name: "Oceanic Apex Mobility Core",
+        qty: 1
+      },
+      {
+        name: "Reinforced Leviathan Cartilage",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The harness flows with every movement.",
+        effect: [
+          "+10 ft movement",
+          "Reduce damage by 2",
+          "Advantage on Initiative"
+        ],
+        statBlock: "AC 18 + DEX (max 3)"
+      },
+      {
+        quality: "Normal",
+        description: "Predator instincts enhance mobility.",
+        effect: [
+          "+5 ft movement"
+        ],
+        statBlock: "AC 18 + DEX (max 2)"
+      },
+      {
+        quality: "Flawed",
+        description: "The harness reacts inconsistently.",
+        statBlock: "AC 17 + DEX (max 2)"
+      }
+    ]
+  },
+  {
+    id: "oceanic-sovereign-abyss-robes-light-armour-robes",
+    name: "Sovereign Abyss Robes (Light Armour / Robes)",
+    category: "armour",
+    rarity: "ascendant",
+    tags: [
+      "ascendant",
+      "armour",
+      "weaver"
+    ],
+    description: "Robes infused with perfected abyssal camouflage and oceanic neural energy.",
+    dc: 23,
+    time: "3 hr",
+    tool: "Weaver",
+    stat: "DEX",
+    materials: [
+      {
+        name: "Deep-Sea Neural Nexus",
+        qty: 1
+      },
+      {
+        name: "Living Camouflage Membrane",
+        qty: 1
+      },
+      {
+        name: "Sovereign Tidehunter Core",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "Your body flickers between shadow and seawater.",
+        effect: [
+          "Advantage on Stealth",
+          "Once per turn: avoid all damage from one attack",
+          "Ignore difficult terrain"
+        ],
+        statBlock: "AC 16 + DEX"
+      },
+      {
+        quality: "Normal",
+        description: "The robes distort attacks and movement.",
+        effect: [
+          "Advantage on Stealth"
+        ],
+        statBlock: "AC 15 + DEX"
+      },
+      {
+        quality: "Flawed",
+        description: "The abyssal distortion flickers.",
+        statBlock: "AC 14 + DEX"
+      }
+    ]
+  },
+  {
+    id: "oceanic-sovereign-tidecaller-flintlock",
+    name: "Sovereign Tidecaller Flintlock",
+    category: "weapon",
+    rarity: "ascendant",
+    tags: [
+      "ascendant",
+      "weapon",
+      "tinker",
+      "tide",
+      "firearm",
+      "ranged"
+    ],
+    description: "A perfected firearm that hunts prey through instinctive oceanic force.",
+    dc: 22,
+    time: "2.5 hr",
+    tool: "Tinker",
+    stat: "INT",
+    materials: [
+      {
+        name: "Sovereign Tidehunter Core",
+        qty: 1
+      },
+      {
+        name: "Flintlock Frame",
+        qty: 1
+      },
+      {
+        name: "Apex Oceanic Predator Core",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "Each shot bends slightly toward vulnerable targets.",
+        effect: [
+          "+1 to hit",
+          "Ignore disadvantage from movement",
+          "+1d8 damage on first attack each turn"
+        ],
+        statBlock: "2d10 piercing"
+      },
+      {
+        quality: "Normal",
+        description: "Oceanic instincts guide each shot.",
+        effect: [
+          "+1 to hit"
+        ],
+        statBlock: "2d10 piercing"
+      },
+      {
+        quality: "Flawed",
+        description: "The targeting pulse drifts unpredictably.",
+        effect: [
+          "+1 to hit (first attack only)"
+        ],
+        statBlock: "2d10 piercing"
+      }
+    ]
+  },
+  {
+    id: "oceanic-leviathan-depth-musket",
+    name: "Leviathan Depth Musket",
+    category: "weapon",
+    rarity: "ascendant",
+    tags: [
+      "ascendant",
+      "weapon",
+      "smith",
+      "leviathan",
+      "firearm",
+      "ranged"
+    ],
+    description: "A colossal firearm infused with abyssal pressure cores.",
+    dc: 23,
+    time: "3 hr",
+    tool: "Smith",
+    stat: "STR",
+    materials: [
+      {
+        name: "Leviathan Heart-Core",
+        qty: 1
+      },
+      {
+        name: "Musket Frame",
+        qty: 1
+      },
+      {
+        name: "Oceanic Apex Mobility Core",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The weapon fires with catastrophic abyssal force.",
+        effect: [
+          "Ignore all disadvantage",
+          "+1d8 force",
+          "Targets Large or smaller knocked prone"
+        ],
+        statBlock: "4d12 piercing"
+      },
+      {
+        quality: "Normal",
+        description: "Extreme force devastates distant targets.",
+        effect: [
+          "Ignore disadvantage at long range"
+        ],
+        statBlock: "3d12 piercing"
+      },
+      {
+        quality: "Flawed",
+        description: "Abyssal recoil strains the structure.",
+        effect: [
+          "Misfire 1–3"
+        ],
+        statBlock: "3d10 piercing"
+      }
+    ]
+  },
+  {
+    id: "oceanic-sovereign-abyss-blunderbuss",
+    name: "Sovereign Abyss Blunderbuss",
+    category: "weapon",
+    rarity: "ascendant",
+    tags: [
+      "ascendant",
+      "weapon",
+      "tinker",
+      "firearm",
+      "ranged"
+    ],
+    description: "A legendary scatter weapon capable of overwhelming entire groups.",
+    dc: 22,
+    time: "2.5 hr",
+    tool: "Tinker",
+    stat: "INT",
+    materials: [
+      {
+        name: "Deep-Sea Frenzy Node",
+        qty: 1
+      },
+      {
+        name: "Blunderbuss Frame",
+        qty: 1
+      },
+      {
+        name: "Living Abyssal Organ",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The blast erupts with abyssal frenzy energy.",
+        effect: [
+          "+1d8 force",
+          "Targets knocked prone",
+          "Targets suffer −10 ft movement"
+        ],
+        statBlock: "2d12 piercing (cone)"
+      },
+      {
+        quality: "Normal",
+        description: "Abyssal energy overwhelms enemies.",
+        effect: [
+          "+1d6 force"
+        ],
+        statBlock: "2d10 piercing (cone)"
+      },
+      {
+        quality: "Flawed",
+        description: "The energy destabilizes before impact.",
+        effect: [
+          "+1d4 force"
+        ],
+        statBlock: "2d8 piercing (cone)"
+      }
+    ]
+  },
+  {
+    id: "oceanic-abyss-king-ring",
+    name: "Abyss King Ring",
+    category: "accessory",
+    rarity: "ascendant",
+    tags: [
+      "ascendant",
+      "accessory",
+      "jeweler"
+    ],
+    description: "A legendary ring formed from abyssal predator cores.",
+    dc: 21,
+    time: "2 hr",
+    tool: "Jeweler",
+    stat: "DEX",
+    materials: [
+      {
+        name: "Living Predator Core",
+        qty: 1
+      },
+      {
+        name: "Deep-Sea Frenzy Node",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The ring radiates sovereign predator dominance.",
+        effect: [
+          "+1 to hit",
+          "Advantage on Initiative",
+          "+1d6 damage on first attack each turn"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "Enhances predatory aggression.",
+        effect: [
+          "+1 to hit on first attack each turn"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The power fades quickly.",
+        effect: [
+          "+1 damage on first attack only"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-leviathan-tattoo",
+    name: "Leviathan Tattoo",
+    category: "item",
+    rarity: "ascendant",
+    tags: [
+      "ascendant",
+      "item",
+      "tattoo-artist-needles",
+      "leviathan",
+      "tattoo"
+    ],
+    description: "A massive oceanic tattoo infused with abyssal blood.",
+    dc: 21,
+    time: "2 hr",
+    tool: "Tattoo Artist Needles",
+    stat: "DEX",
+    materials: [
+      {
+        name: "Abyssal Blood Gland",
+        qty: 1
+      },
+      {
+        name: "Deep-Sea Neural Nexus",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "Abyssal markings pulse across your skin like living tides.",
+        effect: [
+          "Resistance to cold and force damage",
+          "Once per combat: teleport 10 ft"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "Oceanic energy reinforces your body.",
+        effect: [
+          "Resistance to cold damage"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The abyssal pulse is unstable.",
+        effect: [
+          "Reduce force damage by 1d4 (1/day)"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-reefskin-reinforcement-ac",
+    name: "Reefskin Reinforcement (+AC)",
+    category: "armour-upgrade",
+    rarity: "rare",
+    tags: [
+      "rare",
+      "armour-upgrade",
+      "leatherworker",
+      "reef"
+    ],
+    description: "Reefskin Reinforcement (+AC) upgrade.",
+    dc: 14,
+    time: "1 hr",
+    tool: "Leatherworker",
+    stat: "DEX",
+    materials: [
+      {
+        name: "Reinforced Reefskin",
+        qty: 1
+      },
+      {
+        name: "Dense Cartilage Core",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "Superior result.",
+        effect: [
+          "+2 AC",
+          "Reduce damage by 1"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "Normal result.",
+        effect: [
+          "+1 AC"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "Flawed result.",
+        effect: [
+          "+1 AC"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-5-ft-movement",
+    name: "−5 ft movement",
+    category: "armour-upgrade",
+    rarity: "rare",
+    tags: [
+      "rare",
+      "armour-upgrade",
+      "smith"
+    ],
+    description: "Leviathan Shell Plating (+AC)",
+    dc: 16,
+    time: "1.5 hr",
+    tool: "Smith",
+    stat: "STR",
+    materials: [
+      {
+        name: "Leviathan Crab Shell",
+        qty: 1
+      },
+      {
+        name: "Titanic Cartilage Plate",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "Superior result.",
+        effect: [
+          "+2 AC",
+          "Cannot be knocked prone"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "Normal result.",
+        effect: [
+          "+1 AC"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "Flawed result.",
+        effect: [
+          "+1 AC"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-disadvantage-on-stealth",
+    name: "Disadvantage on Stealth",
+    category: "armour-upgrade",
+    rarity: "rare",
+    tags: [
+      "rare",
+      "armour-upgrade",
+      "weaver"
+    ],
+    description: "Abyssal Membrane Layer (Resistance)",
+    dc: 15,
+    time: "1 hr",
+    tool: "Weaver",
+    stat: "DEX",
+    materials: [
+      {
+        name: "Living Camouflage Membrane",
+        qty: 1
+      },
+      {
+        name: "Flexible Tendon Bundle",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "Superior result.",
+        effect: [
+          "Resistance to force damage",
+          "Advantage on Stealth"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "Normal result.",
+        effect: [
+          "Resistance to force damage"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "Flawed result.",
+        effect: [
+          "Reduce force damage by 1d4 (1/day)"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-frenzy-edge-1d6-damage",
+    name: "Frenzy Edge (+1d6 Damage)",
+    category: "weapon-upgrade",
+    rarity: "rare",
+    tags: [
+      "rare",
+      "weapon-upgrade",
+      "smith"
+    ],
+    description: "Frenzy Edge (+1d6 Damage) upgrade.",
+    dc: 15,
+    time: "1 hr",
+    tool: "Smith",
+    stat: "STR",
+    materials: [
+      {
+        name: "Deep-Sea Frenzy Node",
+        qty: 1
+      },
+      {
+        name: "Serrated Shark Jaw",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "Superior result.",
+        effect: [
+          "+1d6 damage",
+          "+1d6 additional damage vs wounded targets"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "Normal result.",
+        effect: [
+          "+1d6 damage"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "Flawed result."
+      }
+    ]
+  },
+  {
+    id: "oceanic-1d4-damage",
+    name: "+1d4 damage",
+    category: "weapon-upgrade",
+    rarity: "rare",
+    tags: [
+      "rare",
+      "weapon-upgrade",
+      "alchemist"
+    ],
+    description: "Abyssal Pressure Core (+1d6 Force)",
+    dc: 16,
+    time: "1.5 hr",
+    tool: "Alchemist",
+    stat: "INT",
+    materials: [
+      {
+        name: "Living Abyssal Organ",
+        qty: 1
+      },
+      {
+        name: "Abyssal Ink Core",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "Superior result.",
+        effect: [
+          "+1d6 force",
+          "Knock target prone once per turn"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "Normal result.",
+        effect: [
+          "+1d6 force"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "Flawed result."
+      }
+    ]
+  },
+  {
+    id: "oceanic-1d4-force",
+    name: "+1d4 force",
+    category: "weapon-upgrade",
+    rarity: "rare",
+    tags: [
+      "rare",
+      "weapon-upgrade",
+      "tinker"
+    ],
+    description: "Tidehunter Precision Mechanism (+Accuracy)",
+    dc: 15,
+    time: "1 hr",
+    tool: "Tinker",
+    stat: "INT",
+    materials: [
+      {
+        name: "Apex Oceanic Predator Core",
+        qty: 1
+      },
+      {
+        name: "Hunter Spine Segment",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "Superior result.",
+        effect: [
+          "+1 to hit",
+          "Ignore disadvantage from movement"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "Normal result.",
+        effect: [
+          "+1 to hit"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "Flawed result.",
+        effect: [
+          "+1 to hit on first attack only"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-reefskin-curing",
+    name: "Reefskin Curing",
+    category: "material-refinement",
+    rarity: "common",
+    tags: [
+      "common",
+      "material-refinement",
+      "leatherworker",
+      "reef",
+      "material-creation"
+    ],
+    description: "Cures raw sharkskin strips into reinforced hide suitable for armour and bindings.",
+    dc: 13,
+    time: "45 min",
+    tool: "Leatherworker",
+    stat: "DEX",
+    materials: [
+      {
+        name: "Torn Reefskin Strips or Coral-Scored Hide",
+        qty: 4
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The hide cures cleanly into strong, flexible reefskin.",
+        effect: [
+          "Create 2× Reinforced Reefskin"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "The hide stabilizes into usable armour material.",
+        effect: [
+          "Create 1× Reinforced Reefskin"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The hide stiffens unevenly during curing.",
+        effect: [
+          "Create 3× Torn Reefskin Strips or Coral-Scored Hide"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-leviathan-reefskin-binding",
+    name: "Leviathan Reefskin Binding",
+    category: "material-refinement",
+    rarity: "rare",
+    tags: [
+      "rare",
+      "material-refinement",
+      "leatherworker",
+      "reef",
+      "leviathan",
+      "material-creation"
+    ],
+    description: "Binds reinforced sharkskin with predator muscle and tendon to create heavy hide plating.",
+    dc: 15,
+    time: "1 hr",
+    tool: "Leatherworker",
+    stat: "DEX",
+    materials: [
+      {
+        name: "Reinforced Reefskin",
+        qty: 4
+      },
+      {
+        name: "Hunter Muscle Strands",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The skin thickens into durable predator-grade hide.",
+        effect: [
+          "Create 2× Reinforced Reef Carapace"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "The reefskin stabilizes into strong defensive material.",
+        effect: [
+          "Create 1× Reinforced Reef Carapace"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The binding weakens before fully setting.",
+        effect: [
+          "Create 3× Reinforced Reefskin"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-tooth-fragment-sorting",
+    name: "Tooth Fragment Sorting",
+    category: "material-refinement",
+    rarity: "common",
+    tags: [
+      "common",
+      "material-refinement",
+      "smith",
+      "material-creation"
+    ],
+    description: "Sorts and sharpens broken shark teeth into usable serrated weapon material.",
+    dc: 13,
+    time: "30 min",
+    tool: "Smith",
+    stat: "DEX",
+    materials: [
+      {
+        name: "Jagged Tooth Fragments or Serrated Shark Teeth",
+        qty: 4
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The teeth are sorted into clean, vicious cutting edges.",
+        effect: [
+          "Create 2× Serrated Shark Jaw"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "The fragments form a usable serrated jaw section.",
+        effect: [
+          "Create 1× Serrated Shark Jaw"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "Several teeth crack during preparation.",
+        effect: [
+          "Create 3× Jagged Tooth Fragments or Serrated Shark Teeth"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-hunter-jaw-reinforcement",
+    name: "Hunter Jaw Reinforcement",
+    category: "material-refinement",
+    rarity: "rare",
+    tags: [
+      "rare",
+      "material-refinement",
+      "smith",
+      "material-creation"
+    ],
+    description: "Reinforces serrated jaw sections into stronger predatory weapon cores.",
+    dc: 15,
+    time: "1 hr",
+    tool: "Smith",
+    stat: "STR",
+    materials: [
+      {
+        name: "Serrated Shark Jaw",
+        qty: 4
+      },
+      {
+        name: "Dense Cartilage Core",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The jaw locks into a powerful hunter-grade frame.",
+        effect: [
+          "Create 2× Massive Hunter Jaw"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "The jaw stabilizes into a strong weapon component.",
+        effect: [
+          "Create 1× Massive Hunter Jaw"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The jaw alignment slips under pressure.",
+        effect: [
+          "Create 3× Serrated Shark Jaw"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-leviathan-jaw-formation",
+    name: "Leviathan Jaw Formation",
+    category: "material-refinement",
+    rarity: "rare",
+    tags: [
+      "rare",
+      "material-refinement",
+      "smith",
+      "leviathan",
+      "material-creation"
+    ],
+    description: "Condenses massive hunter jaws into giant shark jaw fragments.",
+    dc: 17,
+    time: "1.5 hr",
+    tool: "Smith",
+    stat: "STR",
+    materials: [
+      {
+        name: "Massive Hunter Jaw",
+        qty: 3
+      },
+      {
+        name: "Hunter King Jawplate",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The jaws fuse into a brutal leviathan-grade bite structure.",
+        effect: [
+          "Create 2× Leviathan Jaw Fragment"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "The jaw stabilizes into a heavy leviathan fragment.",
+        effect: [
+          "Create 1× Leviathan Jaw Fragment"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The structure partially splinters.",
+        effect: [
+          "Create 2× Massive Hunter Jaw"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-titanic-jawbone-plate-creation",
+    name: "Titanic Jawbone Plate Creation",
+    category: "material-refinement",
+    rarity: "epic",
+    tags: [
+      "epic",
+      "material-refinement",
+      "smith",
+      "material-creation"
+    ],
+    description: "Refines leviathan jaw fragments into master-grade jawbone plates.",
+    dc: 20,
+    time: "2 hr",
+    tool: "Smith",
+    stat: "STR",
+    materials: [
+      {
+        name: "Leviathan Jaw Fragment",
+        qty: 4
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The jawbone compresses into a flawless predatory plate.",
+        effect: [
+          "Create 2× Titanic Jawbone Plate"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "The material stabilizes into a powerful jawbone plate.",
+        effect: [
+          "Create 1× Titanic Jawbone Plate"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The plate cracks before fully forming.",
+        effect: [
+          "Create 3× Leviathan Jaw Fragment"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-cartilage-compression",
+    name: "Cartilage Compression",
+    category: "material-refinement",
+    rarity: "common",
+    tags: [
+      "common",
+      "material-refinement",
+      "smith",
+      "material-creation"
+    ],
+    description: "Compresses saltwater cartilage into dense internal support material.",
+    dc: 13,
+    time: "45 min",
+    tool: "Smith",
+    stat: "STR",
+    materials: [
+      {
+        name: "Saltwater Cartilage or Dense Cartilage Fragments",
+        qty: 4
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The cartilage compresses into a firm, springy core.",
+        effect: [
+          "Create 2× Dense Cartilage Core"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "The cartilage becomes usable structural material.",
+        effect: [
+          "Create 1× Dense Cartilage Core"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The cartilage softens and loses structure.",
+        effect: [
+          "Create 3× Saltwater Cartilage or Dense Cartilage Fragments"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-leviathan-cartilage-reinforcement",
+    name: "Leviathan Cartilage Reinforcement",
+    category: "material-refinement",
+    rarity: "rare",
+    tags: [
+      "rare",
+      "material-refinement",
+      "smith",
+      "leviathan",
+      "material-creation"
+    ],
+    description: "Refines dense cartilage into high-tier flexible armour support.",
+    dc: 17,
+    time: "1.5 hr",
+    tool: "Smith",
+    stat: "STR",
+    materials: [
+      {
+        name: "Dense Cartilage Core",
+        qty: 4
+      },
+      {
+        name: "Massive Bone Segments",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The cartilage becomes powerful, flexible, and extremely resilient.",
+        effect: [
+          "Create 2× Reinforced Leviathan Cartilage"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "The material stabilizes into high-tier support plating.",
+        effect: [
+          "Create 1× Reinforced Leviathan Cartilage"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The structure bends out of alignment.",
+        effect: [
+          "Create 3× Dense Cartilage Core"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-titanic-cartilage-plate-creation",
+    name: "Titanic Cartilage Plate Creation",
+    category: "material-refinement",
+    rarity: "epic",
+    tags: [
+      "epic",
+      "material-refinement",
+      "smith",
+      "material-creation"
+    ],
+    description: "Condenses reinforced cartilage into giant shark armour plating.",
+    dc: 20,
+    time: "2 hr",
+    tool: "Smith",
+    stat: "STR",
+    materials: [
+      {
+        name: "Reinforced Leviathan Cartilage",
+        qty: 3
+      },
+      {
+        name: "Massive Bone Segments",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The cartilage hardens into a massive flexible defensive plate.",
+        effect: [
+          "Create 2× Titanic Cartilage Plate"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "The cartilage stabilizes into titanic plating.",
+        effect: [
+          "Create 1× Titanic Cartilage Plate"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The plate forms with weak seams.",
+        effect: [
+          "Create 2× Reinforced Leviathan Cartilage"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-fin-blade-shaping",
+    name: "Fin Blade Shaping",
+    category: "material-refinement",
+    rarity: "common",
+    tags: [
+      "common",
+      "material-refinement",
+      "leatherworker",
+      "material-creation"
+    ],
+    description: "Shapes slick fin membranes into flexible blade-like components.",
+    dc: 13,
+    time: "30 min",
+    tool: "Leatherworker",
+    stat: "DEX",
+    materials: [
+      {
+        name: "Slick Fin Membranes or Thick Fin Membranes",
+        qty: 4
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The fins are cut and treated into sharp, flexible blades.",
+        effect: [
+          "Create 2× Hunter’s Fin Blade"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "The fin stabilizes into a usable weapon component.",
+        effect: [
+          "Create 1× Hunter’s Fin Blade"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The fin membrane tears during shaping.",
+        effect: [
+          "Create 3× Slick Fin Membranes or Thick Fin Membranes"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-predator-fin-reinforcement",
+    name: "Predator Fin Reinforcement",
+    category: "material-refinement",
+    rarity: "rare",
+    tags: [
+      "rare",
+      "material-refinement",
+      "leatherworker",
+      "predator",
+      "material-creation"
+    ],
+    description: "Reinforces hunter fin blades into stronger mobility and weapon components.",
+    dc: 15,
+    time: "1 hr",
+    tool: "Leatherworker",
+    stat: "DEX",
+    materials: [
+      {
+        name: "Hunter’s Fin Blade",
+        qty: 4
+      },
+      {
+        name: "Oceanic Tendon Bundle",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The fin becomes strong, flexible, and highly responsive.",
+        effect: [
+          "Create 2× Reinforced Predator Fin"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "The fin stabilizes into a reinforced component.",
+        effect: [
+          "Create 1× Reinforced Predator Fin"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The fin loses tension while curing.",
+        effect: [
+          "Create 3× Hunter’s Fin Blade"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-oceanic-tendon-binding",
+    name: "Oceanic Tendon Binding",
+    category: "material-refinement",
+    rarity: "rare",
+    tags: [
+      "rare",
+      "material-refinement",
+      "leatherworker",
+      "oceanic",
+      "material-creation"
+    ],
+    description: "Binds tendon strands into strong oceanic movement bundles.",
+    dc: 15,
+    time: "1 hr",
+    tool: "Leatherworker",
+    stat: "DEX",
+    materials: [
+      {
+        name: "Coastal Tendon Fibers or Saltwater Tendon Strands",
+        qty: 4
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The tendons bind into a powerful elastic bundle.",
+        effect: [
+          "Create 2× Oceanic Tendon Bundle"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "The tendons stabilize into usable crafting material.",
+        effect: [
+          "Create 1× Oceanic Tendon Bundle"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The tendons fray and partially separate.",
+        effect: [
+          "Create 3× Coastal Tendon Fibers or Saltwater Tendon Strands"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-crushing-tendon-formation",
+    name: "Crushing Tendon Formation",
+    category: "material-refinement",
+    rarity: "rare",
+    tags: [
+      "rare",
+      "material-refinement",
+      "leatherworker",
+      "material-creation"
+    ],
+    description: "Condenses oceanic tendon into heavy crushing tendon structures.",
+    dc: 17,
+    time: "1.5 hr",
+    tool: "Leatherworker",
+    stat: "DEX",
+    materials: [
+      {
+        name: "Oceanic Tendon Bundle",
+        qty: 3
+      },
+      {
+        name: "Hunter Spine Segment",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The tendon becomes dense enough to drive crushing force.",
+        effect: [
+          "Create 2× Oceanic Crushing Tendon"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "The tendon stabilizes into a powerful structural component.",
+        effect: [
+          "Create 1× Oceanic Crushing Tendon"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The tendon loses compression under strain.",
+        effect: [
+          "Create 2× Oceanic Tendon Bundle"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-bloodscent-coagulation",
+    name: "Bloodscent Coagulation",
+    category: "material-refinement",
+    rarity: "common",
+    tags: [
+      "common",
+      "material-refinement",
+      "alchemist",
+      "material-creation"
+    ],
+    description: "Condenses blood residue into a stable predator scent gland.",
+    dc: 13,
+    time: "45 min",
+    tool: "Alchemist",
+    stat: "INT",
+    materials: [
+      {
+        name: "Brine Blood Residue or Bloodscent Residue",
+        qty: 4
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The blood stabilizes into a potent tracking gland.",
+        effect: [
+          "Create 2× Bloodscent Gland"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "The blood condenses into usable glandular material.",
+        effect: [
+          "Create 1× Bloodscent Gland"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The blood thins and loses potency.",
+        effect: [
+          "Create 3× Brine Blood Residue or Bloodscent Residue"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-frenzied-blood-organ-formation",
+    name: "Frenzied Blood Organ Formation",
+    category: "material-refinement",
+    rarity: "rare",
+    tags: [
+      "rare",
+      "material-refinement",
+      "alchemist",
+      "material-creation"
+    ],
+    description: "Refines bloodscent glands into powerful frenzy organs.",
+    dc: 17,
+    time: "1.5 hr",
+    tool: "Alchemist",
+    stat: "INT",
+    materials: [
+      {
+        name: "Bloodscent Gland",
+        qty: 4
+      },
+      {
+        name: "Oceanic Frenzy Organ",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The gland awakens into a volatile predatory organ.",
+        effect: [
+          "Create 2× Frenzied Blood Organ"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "The gland stabilizes into a frenzy organ.",
+        effect: [
+          "Create 1× Frenzied Blood Organ"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The organ destabilizes and loses intensity.",
+        effect: [
+          "Create 3× Bloodscent Gland"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-abyssal-blood-gland-creation",
+    name: "Abyssal Blood Gland Creation",
+    category: "material-refinement",
+    rarity: "epic",
+    tags: [
+      "epic",
+      "material-refinement",
+      "alchemist",
+      "abyssal",
+      "material-creation"
+    ],
+    description: "Condenses frenzied organs into abyssal blood glands.",
+    dc: 20,
+    time: "2 hr",
+    tool: "Alchemist",
+    stat: "INT",
+    materials: [
+      {
+        name: "Frenzied Blood Organ",
+        qty: 3
+      },
+      {
+        name: "Living Abyssal Organ",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The blood organ becomes dense, dark, and abyssal.",
+        effect: [
+          "Create 2× Abyssal Blood Gland"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "The organ stabilizes into an abyssal gland.",
+        effect: [
+          "Create 1× Abyssal Blood Gland"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The blood thins before full condensation.",
+        effect: [
+          "Create 2× Frenzied Blood Organ"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-predator-core-awakening",
+    name: "Predator Core Awakening",
+    category: "material-refinement",
+    rarity: "rare",
+    tags: [
+      "rare",
+      "material-refinement",
+      "alchemist",
+      "predator",
+      "material-creation"
+    ],
+    description: "Awakens predatory organs into living predator cores.",
+    dc: 17,
+    time: "1.5 hr",
+    tool: "Alchemist",
+    stat: "INT",
+    materials: [
+      {
+        name: "Oceanic Frenzy Organ",
+        qty: 2
+      },
+      {
+        name: "Reef Predator Eye",
+        qty: 2
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The organs pulse with living predatory instinct.",
+        effect: [
+          "Create 2× Living Predator Core"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "The organs stabilize into a living predator core.",
+        effect: [
+          "Create 1× Living Predator Core"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The instinct fails to fully awaken.",
+        effect: [
+          "Create 1× Oceanic Frenzy Organ"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-apex-hunter-core-formation",
+    name: "Apex Hunter Core Formation",
+    category: "material-refinement",
+    rarity: "rare",
+    tags: [
+      "rare",
+      "material-refinement",
+      "alchemist",
+      "material-creation"
+    ],
+    description: "Refines living predator cores into apex hunter cores.",
+    dc: 18,
+    time: "2 hr",
+    tool: "Alchemist",
+    stat: "INT",
+    materials: [
+      {
+        name: "Living Predator Core",
+        qty: 3
+      },
+      {
+        name: "Tidehunter Spine Segment",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The core sharpens into an apex hunting focus.",
+        effect: [
+          "Create 2× Apex Hunter Core"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "The core stabilizes into apex predator material.",
+        effect: [
+          "Create 1× Apex Hunter Core"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The core collapses into weaker instinct.",
+        effect: [
+          "Create 2× Living Predator Core"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-apex-oceanic-predator-core-creation",
+    name: "Apex Oceanic Predator Core Creation",
+    category: "material-refinement",
+    rarity: "epic",
+    tags: [
+      "epic",
+      "material-refinement",
+      "alchemist",
+      "oceanic",
+      "predator",
+      "material-creation"
+    ],
+    description: "Condenses apex hunter cores into giant shark predator cores.",
+    dc: 20,
+    time: "2 hr",
+    tool: "Alchemist",
+    stat: "INT",
+    materials: [
+      {
+        name: "Apex Hunter Core",
+        qty: 3
+      },
+      {
+        name: "Giant Predator Eye",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The predator instinct becomes overwhelming and perfectly focused.",
+        effect: [
+          "Create 2× Apex Oceanic Predator Core"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "The material stabilizes into a giant oceanic predator core.",
+        effect: [
+          "Create 1× Apex Oceanic Predator Core"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The instinct fractures under pressure.",
+        effect: [
+          "Create 2× Apex Hunter Core"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-sovereign-tidehunter-core-creation",
+    name: "Sovereign Tidehunter Core Creation",
+    category: "material-refinement",
+    rarity: "ascendant",
+    tags: [
+      "ascendant",
+      "material-refinement",
+      "alchemist",
+      "tide",
+      "material-creation"
+    ],
+    description: "Refines apex predator cores into sovereign tidehunter cores.",
+    dc: 23,
+    time: "3 hr",
+    tool: "Alchemist",
+    stat: "INT",
+    materials: [
+      {
+        name: "Apex Oceanic Predator Core",
+        qty: 2
+      },
+      {
+        name: "Leviathan Heart-Core",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The core becomes a perfected sovereign ocean predator source.",
+        effect: [
+          "Create 1× Sovereign Tidehunter Core"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "The predator core stabilizes at sovereign strength.",
+        effect: [
+          "Create 1× Sovereign Tidehunter Core"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The core falls back into apex instability.",
+        effect: [
+          "Create 1× Apex Oceanic Predator Core"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-shell-fragment-binding",
+    name: "Shell Fragment Binding",
+    category: "material-refinement",
+    rarity: "common",
+    tags: [
+      "common",
+      "material-refinement",
+      "smith",
+      "material-creation"
+    ],
+    description: "Binds cracked shell and chitin fragments into reinforced crab carapace.",
+    dc: 13,
+    time: "45 min",
+    tool: "Smith",
+    stat: "STR",
+    materials: [
+      {
+        name: "Cracked Shell Fragments or Saltwater Chitin Shards",
+        qty: 4
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The shell locks into clean layered protection.",
+        effect: [
+          "Create 2× Reinforced Crab Carapace"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "The shell stabilizes into usable armour material.",
+        effect: [
+          "Create 1× Reinforced Crab Carapace"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The shell flakes during binding.",
+        effect: [
+          "Create 3× Cracked Shell Fragments or Saltwater Chitin Shards"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-chitin-plate-compression",
+    name: "Chitin Plate Compression",
+    category: "material-refinement",
+    rarity: "rare",
+    tags: [
+      "rare",
+      "material-refinement",
+      "smith",
+      "material-creation"
+    ],
+    description: "Compresses crab chitin into dense defensive plates.",
+    dc: 15,
+    time: "1 hr",
+    tool: "Smith",
+    stat: "STR",
+    materials: [
+      {
+        name: "Reinforced Crab Carapace",
+        qty: 4
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The carapace compresses into thick protective plates.",
+        effect: [
+          "Create 2× Dense Chitin Plate"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "The shell stabilizes into dense chitin plating.",
+        effect: [
+          "Create 1× Dense Chitin Plate"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The plate cracks during compression.",
+        effect: [
+          "Create 3× Reinforced Crab Carapace"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-pincer-core-formation",
+    name: "Pincer Core Formation",
+    category: "material-refinement",
+    rarity: "rare",
+    tags: [
+      "rare",
+      "material-refinement",
+      "smith",
+      "material-creation"
+    ],
+    description: "Refines claw pieces into massive crushing claw components.",
+    dc: 15,
+    time: "1 hr",
+    tool: "Smith",
+    stat: "STR",
+    materials: [
+      {
+        name: "Brine-Stained Claw Pieces",
+        qty: 4
+      },
+      {
+        name: "Hardened Leg Segments",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The claw structure condenses into a powerful crushing component.",
+        effect: [
+          "Create 2× Massive Crushing Claw"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "The claw stabilizes into usable heavy weapon material.",
+        effect: [
+          "Create 1× Massive Crushing Claw"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The claw cracks along the hinge.",
+        effect: [
+          "Create 3× Brine-Stained Claw Pieces"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-crushing-pincer-core-creation",
+    name: "Crushing Pincer Core Creation",
+    category: "material-refinement",
+    rarity: "epic",
+    tags: [
+      "epic",
+      "material-refinement",
+      "smith",
+      "material-creation"
+    ],
+    description: "Condenses massive claws into apex crushing cores.",
+    dc: 20,
+    time: "2 hr",
+    tool: "Smith",
+    stat: "STR",
+    materials: [
+      {
+        name: "Massive Crushing Claw",
+        qty: 3
+      },
+      {
+        name: "Brineheart Organ",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The pincer becomes a brutal crushing engine.",
+        effect: [
+          "Create 2× Crushing Pincer Core"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "The pincer stabilizes into an apex weapon core.",
+        effect: [
+          "Create 1× Crushing Pincer Core"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The hinge structure partially collapses.",
+        effect: [
+          "Create 2× Massive Crushing Claw"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-ink-residue-distillation",
+    name: "Ink Residue Distillation",
+    category: "material-refinement",
+    rarity: "common",
+    tags: [
+      "common",
+      "material-refinement",
+      "alchemist",
+      "ink",
+      "material-creation"
+    ],
+    description: "Distills octopus ink residue into concentrated ink glands.",
+    dc: 13,
+    time: "30 min",
+    tool: "Alchemist",
+    stat: "INT",
+    materials: [
+      {
+        name: "Ink Residue Sac",
+        qty: 4
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The ink condenses into a rich, stable gland.",
+        effect: [
+          "Create 2× Concentrated Ink Gland"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "The ink stabilizes into a usable gland.",
+        effect: [
+          "Create 1× Concentrated Ink Gland"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The ink thins and loses potency.",
+        effect: [
+          "Create 3× Ink Residue Sac"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-abyssal-ink-core-creation",
+    name: "Abyssal Ink Core Creation",
+    category: "material-refinement",
+    rarity: "epic",
+    tags: [
+      "epic",
+      "material-refinement",
+      "alchemist",
+      "abyssal",
+      "ink",
+      "material-creation"
+    ],
+    description: "Compresses concentrated ink into an abyssal ink core.",
+    dc: 20,
+    time: "2 hr",
+    tool: "Alchemist",
+    stat: "INT",
+    materials: [
+      {
+        name: "Concentrated Ink Gland",
+        qty: 4
+      },
+      {
+        name: "Deepwater Eye Orb",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The ink becomes dense, dark, and magically reactive.",
+        effect: [
+          "Create 2× Abyssal Ink Core"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "The ink stabilizes into an abyssal core.",
+        effect: [
+          "Create 1× Abyssal Ink Core"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The core bleeds back into unstable ink.",
+        effect: [
+          "Create 3× Concentrated Ink Gland"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-membrane-flexing",
+    name: "Membrane Flexing",
+    category: "material-refinement",
+    rarity: "rare",
+    tags: [
+      "rare",
+      "material-refinement",
+      "weaver",
+      "material-creation"
+    ],
+    description: "Refines flexible membranes into adaptive skin material.",
+    dc: 15,
+    time: "1 hr",
+    tool: "Weaver",
+    stat: "DEX",
+    materials: [
+      {
+        name: "Flexible Membrane Sheets or Camouflage Skin Scraps",
+        qty: 4
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The membrane becomes responsive and color-shifting.",
+        effect: [
+          "Create 2× Adaptive Skin Membrane"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "The membrane stabilizes into adaptive material.",
+        effect: [
+          "Create 1× Adaptive Skin Membrane"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The membrane loses elasticity.",
+        effect: [
+          "Create 3× Flexible Membrane Sheets or Camouflage Skin Scraps"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-living-camouflage-membrane-creation",
+    name: "Living Camouflage Membrane Creation",
+    category: "material-refinement",
+    rarity: "epic",
+    tags: [
+      "epic",
+      "material-refinement",
+      "weaver",
+      "material-creation"
+    ],
+    description: "Awakens adaptive membranes into living camouflage material.",
+    dc: 20,
+    time: "2 hr",
+    tool: "Weaver",
+    stat: "DEX",
+    materials: [
+      {
+        name: "Adaptive Skin Membrane",
+        qty: 3
+      },
+      {
+        name: "Abyssal Ink Core",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The membrane becomes alive and reacts instantly to surroundings.",
+        effect: [
+          "Create 2× Living Camouflage Membrane"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "The membrane stabilizes into living camouflage material.",
+        effect: [
+          "Create 1× Living Camouflage Membrane"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The membrane flickers and loses cohesion.",
+        effect: [
+          "Create 2× Adaptive Skin Membrane"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-neural-fiber-binding",
+    name: "Neural Fiber Binding",
+    category: "material-refinement",
+    rarity: "rare",
+    tags: [
+      "rare",
+      "material-refinement",
+      "alchemist",
+      "material-creation"
+    ],
+    description: "Binds oceanic nerve fibers into neural clusters.",
+    dc: 15,
+    time: "1 hr",
+    tool: "Alchemist",
+    stat: "INT",
+    materials: [
+      {
+        name: "Oceanic Nerve Fibers",
+        qty: 4
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The fibers synchronize into a reactive neural cluster.",
+        effect: [
+          "Create 2× Oceanic Neural Cluster"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "The fibers stabilize into usable neural material.",
+        effect: [
+          "Create 1× Oceanic Neural Cluster"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The fibers fail to synchronize.",
+        effect: [
+          "Create 3× Oceanic Nerve Fibers"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-deep-sea-neural-nexus-creation",
+    name: "Deep-Sea Neural Nexus Creation",
+    category: "material-refinement",
+    rarity: "epic",
+    tags: [
+      "epic",
+      "material-refinement",
+      "alchemist",
+      "material-creation"
+    ],
+    description: "Refines neural clusters into a powerful deep-sea nexus.",
+    dc: 20,
+    time: "2 hr",
+    tool: "Alchemist",
+    stat: "INT",
+    materials: [
+      {
+        name: "Oceanic Neural Cluster",
+        qty: 4
+      },
+      {
+        name: "Deepwater Eye Orb",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The neural pathways become a perfectly responsive nexus.",
+        effect: [
+          "Create 2× Deep-Sea Neural Nexus"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "The cluster stabilizes into a deep-sea neural nexus.",
+        effect: [
+          "Create 1× Deep-Sea Neural Nexus"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The network partially collapses.",
+        effect: [
+          "Create 3× Oceanic Neural Cluster"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-tentacle-core-reinforcement",
+    name: "Tentacle Core Reinforcement",
+    category: "material-refinement",
+    rarity: "rare",
+    tags: [
+      "rare",
+      "material-refinement",
+      "leatherworker",
+      "material-creation"
+    ],
+    description: "Refines tentacle strips and suction clusters into reinforced tentacle cores.",
+    dc: 15,
+    time: "1 hr",
+    tool: "Leatherworker",
+    stat: "DEX",
+    materials: [
+      {
+        name: "Slick Tentacle Strips",
+        qty: 3
+      },
+      {
+        name: "Suction Cup Clusters",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The tentacle material becomes strong and responsive.",
+        effect: [
+          "Create 2× Reinforced Tentacle Core"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "The material stabilizes into a tentacle core.",
+        effect: [
+          "Create 1× Reinforced Tentacle Core"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The core loses grip and elasticity.",
+        effect: [
+          "Create 2× Slick Tentacle Strips"
+        ]
+      }
+    ]
+  },
+  {
+    id: "oceanic-sovereign-tentacle-node-creation",
+    name: "Sovereign Tentacle Node Creation",
+    category: "material-refinement",
+    rarity: "epic",
+    tags: [
+      "epic",
+      "material-refinement",
+      "leatherworker",
+      "material-creation"
+    ],
+    description: "Condenses reinforced tentacles into sovereign control nodes.",
+    dc: 20,
+    time: "2 hr",
+    tool: "Leatherworker",
+    stat: "DEX",
+    materials: [
+      {
+        name: "Reinforced Tentacle Core",
+        qty: 3
+      },
+      {
+        name: "Oceanic Neural Cluster",
+        qty: 1
+      }
+    ],
+    outcomes: [
+      {
+        quality: "Superior",
+        description: "The tentacle core awakens into a powerful control node.",
+        effect: [
+          "Create 2× Sovereign Tentacle Node"
+        ]
+      },
+      {
+        quality: "Normal",
+        description: "The structure stabilizes into a sovereign tentacle node.",
+        effect: [
+          "Create 1× Sovereign Tentacle Node"
+        ]
+      },
+      {
+        quality: "Flawed",
+        description: "The node fails to fully awaken.",
+        effect: [
+          "Create 2× Reinforced Tentacle Core"
+        ]
+      }
+    ]
+  },
 ];
 
 export default recipesRaw;

@@ -17,6 +17,14 @@ type GmAuthState = {
   mustChangePassword: boolean;
 };
 
+type GmProfileRow = {
+  id: string;
+  username: string;
+  display_name: string | null;
+  is_site_admin: boolean;
+  created_at: string;
+};
+
 export function GmLoginPanel({
   onAuthChange,
 }: {
@@ -50,7 +58,8 @@ export function GmLoginPanel({
   }
 
   useEffect(() => {
-    refreshAuthState().catch(() => {
+    refreshAuthState().catch((error) => {
+      console.warn("Failed to refresh GM auth state.", error);
       setAuthState(null);
       onAuthChange(null);
     });
@@ -58,7 +67,8 @@ export function GmLoginPanel({
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange(() => {
-      refreshAuthState().catch(() => {
+      refreshAuthState().catch((error) => {
+        console.warn("Failed to refresh GM auth state.", error);
         setAuthState(null);
         onAuthChange(null);
       });
@@ -194,6 +204,7 @@ export function CreateGmPanel({ isSiteAdmin }: { isSiteAdmin: boolean }) {
   const [displayName, setDisplayName] = useState("");
   const [temporaryPassword, setTemporaryPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [refreshKey, setRefreshKey] = useState(0);
 
   if (!isSiteAdmin) return null;
 
@@ -205,11 +216,16 @@ export function CreateGmPanel({ isSiteAdmin }: { isSiteAdmin: boolean }) {
         data: { session },
       } = await supabase.auth.getSession();
 
+      if (!session?.access_token) {
+        setMessage("You are not signed in.");
+        return;
+      }
+
       const response = await fetch("/api/admin/create-gm", {
         method: "POST",
         headers: {
           "content-type": "application/json",
-          authorization: `Bearer ${session?.access_token}`,
+          authorization: `Bearer ${session.access_token}`,
         },
         body: JSON.stringify({
           username,
@@ -228,45 +244,118 @@ export function CreateGmPanel({ isSiteAdmin }: { isSiteAdmin: boolean }) {
       setUsername("");
       setDisplayName("");
       setTemporaryPassword("");
+      setRefreshKey((current) => current + 1);
     } catch (error) {
       setMessage(error instanceof Error ? error.message : "Failed to create GM.");
     }
   }
 
   return (
+    <div className="space-y-4">
+      <div className="rounded-xl border border-[#9a7b45] bg-[#f2dfb9] p-4 space-y-3 font-serif text-[#251b10]">
+        <h3 className="text-xl font-bold">Site Admin: Create Temporary GM Login</h3>
+
+        <input
+          className="w-full rounded border border-[#9a7b45] bg-[#fff0c7] p-2"
+          placeholder="Username"
+          value={username}
+          onChange={(event) => setUsername(event.target.value)}
+        />
+
+        <input
+          className="w-full rounded border border-[#9a7b45] bg-[#fff0c7] p-2"
+          placeholder="Display name"
+          value={displayName}
+          onChange={(event) => setDisplayName(event.target.value)}
+        />
+
+        <input
+          className="w-full rounded border border-[#9a7b45] bg-[#fff0c7] p-2"
+          type="password"
+          placeholder="Temporary password"
+          value={temporaryPassword}
+          onChange={(event) => setTemporaryPassword(event.target.value)}
+        />
+
+        {message && <p>{message}</p>}
+
+        <button
+          className="rounded bg-[#4b3115] px-4 py-2 text-[#fff0c7]"
+          onClick={createGm}
+        >
+          Create GM
+        </button>
+      </div>
+
+      <GmListPanel refreshKey={refreshKey} />
+    </div>
+  );
+}
+
+function GmListPanel({ refreshKey }: { refreshKey: number }) {
+  const [gms, setGms] = useState<GmProfileRow[]>([]);
+  const [message, setMessage] = useState("");
+
+  async function loadGms() {
+    setMessage("");
+
+    const { data, error } = await supabase
+      .from("gm_profiles")
+      .select("id, username, display_name, is_site_admin, created_at")
+      .order("created_at", { ascending: true });
+
+    if (error) {
+      setMessage(error.message);
+      return;
+    }
+
+    setGms(data || []);
+  }
+
+  useEffect(() => {
+    loadGms();
+  }, [refreshKey]);
+
+  return (
     <div className="rounded-xl border border-[#9a7b45] bg-[#f2dfb9] p-4 space-y-3 font-serif text-[#251b10]">
-      <h3 className="text-xl font-bold">Site Admin: Create Temporary GM Login</h3>
-
-      <input
-        className="w-full rounded border border-[#9a7b45] bg-[#fff0c7] p-2"
-        placeholder="Username"
-        value={username}
-        onChange={(event) => setUsername(event.target.value)}
-      />
-
-      <input
-        className="w-full rounded border border-[#9a7b45] bg-[#fff0c7] p-2"
-        placeholder="Display name"
-        value={displayName}
-        onChange={(event) => setDisplayName(event.target.value)}
-      />
-
-      <input
-        className="w-full rounded border border-[#9a7b45] bg-[#fff0c7] p-2"
-        type="password"
-        placeholder="Temporary password"
-        value={temporaryPassword}
-        onChange={(event) => setTemporaryPassword(event.target.value)}
-      />
+      <div className="flex items-center justify-between gap-3">
+        <h3 className="text-xl font-bold">Created GMs</h3>
+        <button
+          className="rounded bg-[#4b3115] px-3 py-1 text-sm text-[#fff0c7]"
+          onClick={loadGms}
+        >
+          Refresh
+        </button>
+      </div>
 
       {message && <p>{message}</p>}
 
-      <button
-        className="rounded bg-[#4b3115] px-4 py-2 text-[#fff0c7]"
-        onClick={createGm}
-      >
-        Create GM
-      </button>
+      {gms.length === 0 ? (
+        <p>No GM profiles found.</p>
+      ) : (
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-[#9a7b45] text-left">
+                <th className="p-2">Username</th>
+                <th className="p-2">Display Name</th>
+                <th className="p-2">Role</th>
+                <th className="p-2">Created</th>
+              </tr>
+            </thead>
+            <tbody>
+              {gms.map((gm) => (
+                <tr key={gm.id} className="border-b border-[#d0b77f]">
+                  <td className="p-2 font-bold">{gm.username}</td>
+                  <td className="p-2">{gm.display_name || gm.username}</td>
+                  <td className="p-2">{gm.is_site_admin ? "Site Admin" : "GM"}</td>
+                  <td className="p-2">{new Date(gm.created_at).toLocaleString()}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 }

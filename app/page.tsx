@@ -202,6 +202,7 @@ const WEAPON_RECIPE_TAGS = [
   "warhammer",
   "morning-star",
   "staff",
+  "tattoo",
 ] as const;
 
 const MANAGED_RECIPE_TAGS = [...MAIN_RECIPE_TAGS, ...WEAPON_RECIPE_TAGS];
@@ -230,6 +231,7 @@ const TOOL_OPTIONS = [
   "Woodcarver",
   "Jeweler",
   "Fletcher",
+  "Tattoo Artist Needles",
 ];
 
 const PROFICIENCY_BONUS: Record<ProficiencyLevel, number> = {
@@ -436,6 +438,7 @@ const SPECIALIZATIONS = [
   "Weaver: Silkshaper, Shadowweaver, Phaseweaver, Threadbinder, Soulthread Weaver, Phasecurrent Weaver.",
   "Smith: Bonebreaker, Armoursmith, Edgecrafter, Forgeheart Smith, Composite Forge Master.",
   "Leatherworker: Tracker Gearwright, Venom Ward Crafter, Beastskin Crafter, Lifewoven Crafter, Adaptive Skin Crafter.",
+  "Tattoo Artist Needles: Inkbinder, Runic Skinworker, Living Mark Specialist, Oceanic Tattooist.",
 ];
 
 const TOOL_IMPROVEMENT_OPTIONS: Record<string, string[]> = {
@@ -480,6 +483,12 @@ const TOOL_IMPROVEMENT_OPTIONS: Record<string, string[]> = {
     "Specialization: Venomcrafter",
     "Specialization: Neurotoxin Specialist",
     "Specialization: Corrosive Alchemist",
+  ],
+  "Tattoo Artist Needles": [
+    "Specialization: Inkbinder",
+    "Specialization: Runic Skinworker",
+    "Specialization: Living Mark Specialist",
+    "Specialization: Oceanic Tattooist",
   ],
 };
 
