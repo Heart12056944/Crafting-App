@@ -44,8 +44,16 @@ import { fetchCampaigns, createCampaign, deleteCampaign } from "@/lib/supabaseCa
 import { fetchCampaignMaterials, replaceCampaignMaterials } from "@/lib/supabaseMaterials";
 import { fetchCampaignCraftedItems, insertCraftedItem, deleteCraftedItem } from "@/lib/supabaseCraftedItems";
 import { fetchCampaignCharacters, replaceCampaignCharacters } from "@/lib/supabaseCharacters";
+import {
+  fetchCampaignLootCreatures,
+  insertCampaignLootCreature,
+  deleteCampaignLootCreature,
+  decrementCampaignLootCreature,
+  type SupabaseLootCreature,
+} from "@/lib/supabaseLootCreatures";
 import { creatureTierRules, lootTables, rollDiceExpression, rollWeightedLootQuality, getLootTable, type CreatureTier, type LootQuality } from "@/data/lootTables";
 import { supabase } from "@/lib/supabaseClient";
+import { GmLoginPanel, CreateGmPanel } from "@/components/GmAuthPanels";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -90,7 +98,7 @@ const tabs = [
   ["looting", "Looting", Package],
   ["craftingRules", "Crafting Rules", ScrollText],
   ["lootingRules", "Looting Rules", Dice5],
-  ["admin", "Admin", KeyRound],
+  ["admin", "GM", KeyRound],
 ] as const satisfies readonly (readonly [TabId, string, React.ComponentType<{ className?: string }>])[];
 
 type ProficiencyLevel = "none" | "proficient" | "expertise";
@@ -107,6 +115,7 @@ type CraftedEffect = {
 type Character = {
   id: string;
   name: string;
+  isActive: boolean;
   harvesting: number;
   stats: Record<Stat, number>;
   tools: Record<string, ProficiencyLevel>;
@@ -149,6 +158,25 @@ type CreatureLootQueueEntry = {
   creatureTier: CreatureTier;
   qty: number;
 };
+
+
+type GmAuthState = {
+  userId: string;
+  username: string;
+  displayName: string;
+  isSiteAdmin: boolean;
+  mustChangePassword: boolean;
+};
+
+function supabaseLootCreatureToLocal(row: SupabaseLootCreature): CreatureLootQueueEntry {
+  return {
+    id: row.id,
+    creatureTableId: row.creature_table_id,
+    creatureLabel: row.creature_label,
+    creatureTier: row.creature_tier as CreatureTier,
+    qty: row.remaining ?? row.qty ?? 1,
+  };
+}
 
 
 const ADMIN_PASSWORD = "craftadmin";
@@ -824,6 +852,7 @@ function normalizeCharacter(character: Partial<Character>): Character {
   return {
     id: character.id || crypto.randomUUID(),
     name: character.name || "Unnamed Crafter",
+    isActive: character.isActive ?? true,
     harvesting: character.harvesting ?? 0,
     stats: {
       STR: character.stats?.STR ?? 0,
@@ -860,6 +889,7 @@ function supabaseCharactersToLocalCharacters(
   rows: {
     id: string;
     name: string;
+    is_active?: boolean;
     tool_progress: Record<string, unknown>;
   }[]
 ): Character[] {
@@ -869,6 +899,7 @@ function supabaseCharactersToLocalCharacters(
       ...(stored || {}),
       id: row.id,
       name: stored?.name || row.name,
+      isActive: row.is_active ?? stored?.isActive ?? true,
     });
   });
 }
@@ -877,6 +908,7 @@ function characterToSupabasePayload(character: Character) {
   return {
     id: character.id,
     name: character.name,
+    isActive: character.isActive,
     data: {
       character,
     } as Record<string, unknown>,
@@ -886,7 +918,8 @@ function characterToSupabasePayload(character: Character) {
 function defaultCharacter(): Character {
   return {
     id: crypto.randomUUID(),
-    name: "Admin Crafter",
+    name: "GM Crafter",
+    isActive: true,
     harvesting: 1,
     stats: { STR: 3, DEX: 3, CON: 1, INT: 3, WIS: 1, CHA: 0 },
     tools: TOOL_OPTIONS.reduce((acc, tool) => {
@@ -911,6 +944,7 @@ export default function ArcaneCraftingCodexPage() {
   const [activeTab, setActiveTab] = useState<TabId>("craft");
   const [showPhaseCraftableOnly, setShowPhaseCraftableOnly] = useState(false);
   const [adminUnlocked, setAdminUnlocked] = useState(false);
+  const [gmAuth, setGmAuth] = useState<GmAuthState | null>(null);
   const [adminPassword, setAdminPassword] = useState("");
   const [bulkMaterials, setBulkMaterials] = useState("");
   const [newMaterial, setNewMaterial] = useState({ name: "", qty: 1 });
@@ -941,6 +975,7 @@ export default function ArcaneCraftingCodexPage() {
   const [newCharacter, setNewCharacter] = useState<Character>(() => ({
     id: crypto.randomUUID(),
     name: "",
+    isActive: true,
     harvesting: 0,
     stats: { STR: 0, DEX: 0, CON: 0, INT: 0, WIS: 0, CHA: 0 },
     tools: TOOL_OPTIONS.reduce((acc, tool) => {
@@ -1027,11 +1062,7 @@ export default function ArcaneCraftingCodexPage() {
             })),
             characters:
               profile.characters && profile.characters.length > 0
-                ? profile.characters.map((character) => ({
-                    ...character,
-                    id: character.id || crypto.randomUUID(),
-                    toolProgress: character.toolProgress || buildToolProgress(false),
-                  }))
+                ? profile.characters.map((character) => normalizeCharacter(character))
                 : [defaultCharacter()],
             craftedItems: profile.craftedItems || [],
             disabledTags: profile.disabledTags || [],
@@ -1303,21 +1334,56 @@ export default function ArcaneCraftingCodexPage() {
   }, [disabledTags]);
 
   useEffect(() => {
-    try {
-      const saved = window.localStorage.getItem(CREATURE_LOOT_QUEUE_STORAGE_KEY);
-      if (saved) {
-        const parsed = JSON.parse(saved) as CreatureLootQueueEntry[];
-        setCreatureLootQueue(parsed);
-        setSelectedCreatureQueueId(parsed[0]?.id || "");
-      }
-    } catch {
+    if (!activeInventoryId) {
       setCreatureLootQueue([]);
       setSelectedCreatureQueueId("");
+      return;
     }
-  }, []);
+
+    let cancelled = false;
+
+    async function loadCreatureQueue() {
+      try {
+        const rows = await fetchCampaignLootCreatures(activeInventoryId);
+        if (cancelled) return;
+
+        const localQueue = rows.map(supabaseLootCreatureToLocal);
+        setCreatureLootQueue(localQueue);
+        setSelectedCreatureQueueId((current) =>
+          current && localQueue.some((entry) => entry.id === current)
+            ? current
+            : localQueue[0]?.id || ""
+        );
+      } catch (error) {
+        console.warn("Failed to load creature loot queue from Supabase.", error);
+      }
+    }
+
+    loadCreatureQueue();
+
+    const channel = supabase
+      .channel(`campaign-loot-creatures-${activeInventoryId}`)
+      .on(
+        "postgres_changes",
+        {
+          event: "*",
+          schema: "public",
+          table: "campaign_loot_creatures",
+          filter: `campaign_id=eq.${activeInventoryId}`,
+        },
+        () => {
+          loadCreatureQueue();
+        }
+      )
+      .subscribe();
+
+    return () => {
+      cancelled = true;
+      supabase.removeChannel(channel);
+    };
+  }, [activeInventoryId]);
 
   useEffect(() => {
-    window.localStorage.setItem(CREATURE_LOOT_QUEUE_STORAGE_KEY, JSON.stringify(creatureLootQueue));
     if (selectedCreatureQueueId && !creatureLootQueue.some((entry) => entry.id === selectedCreatureQueueId)) {
       setSelectedCreatureQueueId(creatureLootQueue[0]?.id || "");
     }
@@ -1545,19 +1611,18 @@ export default function ArcaneCraftingCodexPage() {
   );
   const visibleAvailableRecipes = showPhaseCraftableOnly ? phaseCraftableRecipes : availableRecipes;
 
-  function unlockAdmin() {
-    if (adminPassword === ADMIN_PASSWORD) {
-      setAdminUnlocked(true);
-      setImportLog("Admin unlocked.");
-    } else {
-      setImportLog("Incorrect password.");
-    }
+  function unlockGM() {
+    setImportLog("Use GM Sign In instead.");
   }
 
-  function lockAdmin() {
-    setAdminUnlocked(false);
+  useEffect(() => {
+    setAdminUnlocked(Boolean(gmAuth));
+  }, [gmAuth]);
+
+  function lockGM() {
     setAdminPassword("");
-    setImportLog("Admin locked.");
+    setImportLog(gmAuth ? "Use Sign Out in the GM panel to fully leave GM mode." : "GM locked.");
+    if (!gmAuth) setAdminUnlocked(false);
     setActiveTab("craft");
   }
 
@@ -1789,6 +1854,7 @@ export default function ArcaneCraftingCodexPage() {
     setNewCharacter({
       id: crypto.randomUUID(),
       name: "",
+      isActive: true,
       harvesting: 0,
       stats: { STR: 0, DEX: 0, CON: 0, INT: 0, WIS: 0, CHA: 0 },
       tools: TOOL_OPTIONS.reduce((acc, tool) => {
@@ -1870,6 +1936,17 @@ export default function ArcaneCraftingCodexPage() {
           },
         };
       })
+    );
+  }
+
+  function updateCharacterActive(characterId: string, isActive: boolean) {
+    if (!adminUnlocked) return;
+
+    markCharactersForSupabaseSave();
+    setCharacters((current) =>
+      current.map((character) =>
+        character.id === characterId ? { ...character, isActive } : character
+      )
     );
   }
 
@@ -1985,27 +2062,42 @@ export default function ArcaneCraftingCodexPage() {
   }
 
   function addCreatureToLootQueue() {
-    if (!adminUnlocked) return;
+    if (!adminUnlocked || !activeInventoryId) return;
 
     const table = getLootTable(newLootCreatureTableId);
     const qty = Math.max(1, Math.floor(newLootCreatureQty || 1));
-    const entry: CreatureLootQueueEntry = {
-      id: crypto.randomUUID(),
+
+    insertCampaignLootCreature({
+      campaignId: activeInventoryId,
       creatureTableId: table.id,
       creatureLabel: table.label,
       creatureTier: newLootCreatureTier,
       qty,
-    };
-
-    setCreatureLootQueue((current) => [...current, entry]);
-    setSelectedCreatureQueueId((current) => current || entry.id);
-    setImportLog(`Added ${qty}× ${table.label} to the looting table.`);
+    })
+      .then((row) => {
+        const entry = supabaseLootCreatureToLocal(row);
+        setCreatureLootQueue((current) => [...current.filter((item) => item.id !== entry.id), entry]);
+        setSelectedCreatureQueueId((current) => current || entry.id);
+        setImportLog(`Added ${qty}× ${table.label} to the shared looting table.`);
+      })
+      .catch((error) => {
+        console.warn("Failed to add creature to Supabase loot queue.", error);
+        setImportLog("Failed to add creature to the shared looting table. Check the browser console.");
+      });
   }
 
   function removeCreatureFromLootQueue(entryId: string) {
     if (!adminUnlocked) return;
-    setCreatureLootQueue((current) => current.filter((entry) => entry.id !== entryId));
-    if (selectedCreatureQueueId === entryId) setSelectedCreatureQueueId("");
+
+    deleteCampaignLootCreature(entryId)
+      .then(() => {
+        setCreatureLootQueue((current) => current.filter((entry) => entry.id !== entryId));
+        if (selectedCreatureQueueId === entryId) setSelectedCreatureQueueId("");
+      })
+      .catch((error) => {
+        console.warn("Failed to remove creature from Supabase loot queue.", error);
+        setImportLog("Failed to remove creature from the shared looting table. Check the browser console.");
+      });
   }
 
   function startHarvesting() {
@@ -2030,6 +2122,15 @@ export default function ArcaneCraftingCodexPage() {
 
   function newCreature() {
     if (activeCreatureQueueId) {
+      const activeEntry = creatureLootQueue.find((entry) => entry.id === activeCreatureQueueId);
+
+      if (activeEntry) {
+        decrementCampaignLootCreature(activeEntry.id, activeEntry.qty).catch((error) => {
+          console.warn("Failed to decrement creature loot queue in Supabase.", error);
+          setImportLog("Warning: creature was finished locally, but shared loot queue sync failed.");
+        });
+      }
+
       setCreatureLootQueue((current) =>
         current.flatMap((entry) => {
           if (entry.id !== activeCreatureQueueId) return [entry];
@@ -2743,6 +2844,7 @@ export default function ArcaneCraftingCodexPage() {
             applyTrainingToCharacter={applyTrainingToCharacter}
             updateCharacterStat={updateCharacterStat}
             updateCharacterHarvesting={updateCharacterHarvesting}
+            updateCharacterActive={updateCharacterActive}
             updateCharacterTool={updateCharacterTool}
             updateCharacterToolOwned={updateCharacterToolOwned}
             updateCharacterToolBroken={updateCharacterToolBroken}
@@ -2806,12 +2908,14 @@ export default function ArcaneCraftingCodexPage() {
         {activeTab === "lootingRules" && <LootingRulesPanel />}
 
         {activeTab === "admin" && (
-          <AdminPanel
+          <GMPanel
             adminUnlocked={adminUnlocked}
             adminPassword={adminPassword}
             setAdminPassword={setAdminPassword}
-            unlockAdmin={unlockAdmin}
-            lockAdmin={lockAdmin}
+            unlockGM={unlockGM}
+            lockGM={lockGM}
+            gmAuth={gmAuth}
+            setGmAuth={setGmAuth}
             newMaterial={newMaterial}
             setNewMaterial={setNewMaterial}
             addMaterial={addMaterial}
@@ -3664,7 +3768,7 @@ function MaterialsPanel({
           </div>
           {adminUnlocked && (
             <p className="text-sm">
-              Admin view shows every known material, including materials currently at 0.
+              GM view shows every known material, including materials currently at 0.
             </p>
           )}
         </div>
@@ -3742,6 +3846,7 @@ function CharactersPanel({
   applyTrainingToCharacter,
   updateCharacterStat,
   updateCharacterHarvesting,
+  updateCharacterActive,
   updateCharacterTool,
   updateCharacterToolOwned,
   updateCharacterToolBroken,
@@ -3755,6 +3860,7 @@ function CharactersPanel({
   applyTrainingToCharacter: (characterId: string, tool: string, trainingType: "regular" | "expert") => void;
   updateCharacterStat: (characterId: string, stat: Stat, value: number) => void;
   updateCharacterHarvesting: (characterId: string, value: number) => void;
+  updateCharacterActive: (characterId: string, isActive: boolean) => void;
   updateCharacterTool: (characterId: string, tool: string, level: ProficiencyLevel) => void;
   updateCharacterToolOwned: (characterId: string, tool: string, owned: boolean) => void;
   updateCharacterToolBroken: (characterId: string, tool: string, broken: boolean) => void;
@@ -3843,16 +3949,17 @@ function CharactersPanel({
             <h2 className="text-3xl font-bold">Characters</h2>
           </div>
 
-          {characters.map((character) => (
+          {characters.filter((character) => adminUnlocked || character.isActive !== false).map((character) => (
             <div
               key={character.id}
-              className="rounded-xl border border-[#9a7b45] bg-[#f2dfb9] p-4 space-y-4"
+              className="rounded-xl border border-[#9a7b45] p-4 space-y-4"
+              style={{ background: character.isActive === false ? "#f5c16c" : "#f2dfb9" }}
             >
               <div className="flex justify-between gap-3">
                 <div>
                   <h3 className="text-xl font-bold">{character.name}</h3>
                   {!adminUnlocked && (
-                    <p className="text-sm">Admin unlock required to edit character stats, tools, PP, and training.</p>
+                    <p className="text-sm">GM unlock required to edit character stats, tools, PP, and training.</p>
                   )}
                 </div>
 
@@ -3862,6 +3969,18 @@ function CharactersPanel({
                   </Button>
                 )}
               </div>
+
+              {adminUnlocked && (
+                <label className="flex items-center gap-2 rounded-xl border border-[#9a7b45] bg-[#ead6ad] px-3 py-2 text-sm font-bold">
+                  <input
+                    type="checkbox"
+                    checked={character.isActive !== false}
+                    onChange={(event) => updateCharacterActive(character.id, event.target.checked)}
+                  />
+                  Active in party
+                  {character.isActive === false && <span className="text-[#7a3f00]">(hidden from players)</span>}
+                </label>
+              )}
 
               <label className="space-y-1 block">
                 <strong>Harvesting</strong>
@@ -3989,7 +4108,7 @@ function AdvancementPanel({
         </div>
       </ParchmentCard>
 
-      {characters.map((character) => (
+      {characters.filter((character) => adminUnlocked || character.isActive !== false).map((character) => (
         <ParchmentCard key={character.id}>
           <div className="space-y-4 font-serif">
             <h3 className="text-2xl font-bold">{character.name}</h3>
@@ -4233,10 +4352,10 @@ function LootingPanel({
           )}
 
           <div className="rounded-2xl border border-[#9a7b45] bg-[#f2dfb9] p-4 space-y-3">
-            <h3 className="text-xl font-bold">Creatures Available to Loot</h3>
+            <h3 className="text-xl font-bold">Shared Creatures Available to Loot</h3>
 
             {creatureLootQueue.length === 0 ? (
-              <p>No creatures are currently available to loot.</p>
+              <p>No shared creatures are currently available to loot.</p>
             ) : (
               <div className="space-y-2">
                 {creatureLootQueue.map((entry) => {
@@ -4289,7 +4408,7 @@ function LootingPanel({
           <label className="space-y-1 block">
             <strong>Harvester</strong>
             <FantasySelect value={lootCharacterId} onValueChange={setLootCharacterId} disabled={harvestStarted}>
-              {characters.map((character) => (
+              {characters.filter((character) => adminUnlocked || character.isActive !== false).map((character) => (
                 <SelectItem key={character.id} value={character.id}>
                   {character.name} (Harvesting +{character.harvesting ?? 0})
                 </SelectItem>
@@ -4546,12 +4665,14 @@ function LootingRulesPanel() {
   );
 }
 
-function AdminPanel(props: {
+function GMPanel(props: {
   adminUnlocked: boolean;
   adminPassword: string;
   setAdminPassword: (value: string) => void;
-  unlockAdmin: () => void;
-  lockAdmin: () => void;
+  unlockGM: () => void;
+  lockGM: () => void;
+  gmAuth: GmAuthState | null;
+  setGmAuth: (state: GmAuthState | null) => void;
   newMaterial: { name: string; qty: number };
   setNewMaterial: React.Dispatch<React.SetStateAction<{ name: string; qty: number }>>;
   addMaterial: () => void;
@@ -4582,7 +4703,7 @@ function AdminPanel(props: {
         <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
           <div className="flex items-center gap-3">
             <KeyRound className="w-8 h-8" />
-            <h2 className="text-3xl font-bold">Admin Panel</h2>
+            <h2 className="text-3xl font-bold">GM Panel</h2>
           </div>
 
           {props.adminUnlocked && (
@@ -4593,36 +4714,26 @@ function AdminPanel(props: {
               >
                 Pass Day
               </Button>
-              <Button
-                onClick={props.lockAdmin}
-                className="w-fit bg-[#4b3115] hover:bg-[#62401c] text-[#fff0c7]"
-              >
-                Leave Admin
-              </Button>
             </div>
           )}
         </div>
 
+        <GmLoginPanel onAuthChange={props.setGmAuth} />
+
+        <CreateGmPanel isSiteAdmin={Boolean(props.gmAuth?.isSiteAdmin)} />
+
+        {props.gmAuth && (
+          <div className="rounded-xl border border-[#9a7b45] bg-[#ead6ad] p-3 text-[#251b10]">
+            <strong>GM:</strong> {props.gmAuth.displayName}
+            {props.gmAuth.isSiteAdmin && (
+              <span className="ml-2 text-[#7a3f00]">(Site Admin)</span>
+            )}
+          </div>
+        )}
+
         {!props.adminUnlocked ? (
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-3">
-            <FantasyInput
-              type="password"
-              placeholder="Admin password"
-              value={props.adminPassword}
-              onChange={(event) => props.setAdminPassword(event.target.value)}
-              onKeyDown={(event) => {
-                if (event.key === "Enter") {
-                  event.preventDefault();
-                  props.unlockAdmin();
-                }
-              }}
-            />
-            <Button onClick={props.unlockAdmin} className="bg-[#4b3115] hover:bg-[#62401c] text-[#fff0c7]">
-              Unlock
-            </Button>
-            <p className="text-sm md:col-span-2">
-              Enter the admin password to unlock campaign management.
-            </p>
+          <div className="rounded-xl border border-[#9a7b45] bg-[#f2dfb9] p-4 text-sm">
+            Sign in above to unlock GM tools.
           </div>
         ) : (
           <div className="space-y-5">

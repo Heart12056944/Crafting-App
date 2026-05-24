@@ -5,6 +5,7 @@ export type SupabaseCharacter = {
   campaign_id: string;
   name: string;
   is_admin: boolean;
+  is_active: boolean;
   tool_progress: Record<string, unknown>;
   created_at: string;
   updated_at: string;
@@ -14,6 +15,7 @@ export type CharacterPayload = {
   id?: string;
   name: string;
   isAdmin?: boolean;
+  isActive?: boolean;
   data: Record<string, unknown>;
 };
 
@@ -35,6 +37,7 @@ export async function insertCampaignCharacter(input: {
   name: string;
   data: Record<string, unknown>;
   isAdmin?: boolean;
+  isActive?: boolean;
 }): Promise<SupabaseCharacter> {
   const { data, error } = await supabase
     .from("campaign_characters")
@@ -42,6 +45,7 @@ export async function insertCampaignCharacter(input: {
       campaign_id: input.campaignId,
       name: input.name,
       is_admin: input.isAdmin ?? false,
+      is_active: input.isActive ?? true,
       tool_progress: input.data,
     })
     .select("*")
@@ -57,6 +61,7 @@ export async function upsertCampaignCharacter(input: {
   name: string;
   data: Record<string, unknown>;
   isAdmin?: boolean;
+  isActive?: boolean;
 }): Promise<SupabaseCharacter> {
   if (!input.id) {
     return insertCampaignCharacter({
@@ -64,6 +69,7 @@ export async function upsertCampaignCharacter(input: {
       name: input.name,
       data: input.data,
       isAdmin: input.isAdmin,
+      isActive: input.isActive,
     });
   }
 
@@ -75,6 +81,7 @@ export async function upsertCampaignCharacter(input: {
         campaign_id: input.campaignId,
         name: input.name,
         is_admin: input.isAdmin ?? false,
+        is_active: input.isActive ?? true,
         tool_progress: input.data,
       },
       {
@@ -108,6 +115,7 @@ export async function replaceCampaignCharacters(
         campaign_id: campaignId,
         name: character.name,
         is_admin: character.isAdmin ?? false,
+        is_active: character.isActive ?? true,
         tool_progress: character.data,
       }))
     )
