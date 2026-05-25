@@ -51,6 +51,11 @@ import {
   decrementCampaignLootCreature,
   type SupabaseLootCreature,
 } from "@/lib/supabaseLootCreatures";
+import {
+  fetchCampaignLootLog,
+  insertCampaignLootLog,
+  type SupabaseLootLog,
+} from "@/lib/supabaseLootLog";
 import { creatureTierRules, lootTables, rollDiceExpression, rollWeightedLootQuality, getLootTable, type CreatureTier, type LootQuality } from "@/data/lootTables";
 import { supabase } from "@/lib/supabaseClient";
 import { GmLoginPanel, CreateGmPanel } from "@/components/GmAuthPanels";
@@ -150,6 +155,13 @@ type LootResultItem = {
   rollText?: string;
 };
 
+type SharedLootResultItem = LootResultItem & {
+  id: string;
+  createdAt: string;
+  characterName?: string;
+  creatureLabel?: string;
+};
+
 
 type CreatureLootQueueEntry = {
   id: string;
@@ -175,6 +187,24 @@ function supabaseLootCreatureToLocal(row: SupabaseLootCreature): CreatureLootQue
     creatureLabel: row.creature_label,
     creatureTier: row.creature_tier as CreatureTier,
     qty: row.remaining ?? row.qty ?? 1,
+  };
+}
+
+function supabaseLootLogToLocal(row: SupabaseLootLog, characters: Character[]): SharedLootResultItem {
+  const character = row.character_id
+    ? characters.find((item) => item.id === row.character_id)
+    : undefined;
+
+  return {
+    id: row.id,
+    name: row.loot_name,
+    qty: row.qty,
+    kind: row.kind,
+    quality: row.loot_quality || "unknown",
+    rollText: row.roll_text || undefined,
+    createdAt: row.created_at,
+    characterName: character?.name,
+    creatureLabel: row.creature_label || undefined,
   };
 }
 
@@ -1014,6 +1044,7 @@ export default function ArcaneCraftingCodexPage() {
   const [targetLootName, setTargetLootName] = useState("random");
   const [targetSpecificLoot, setTargetSpecificLoot] = useState(false);
   const [lootResults, setLootResults] = useState<LootResultItem[]>([]);
+  const [sharedLootResults, setSharedLootResults] = useState<SharedLootResultItem[]>([]);
   const [creatureLootQueue, setCreatureLootQueue] = useState<CreatureLootQueueEntry[]>([]);
   const [selectedCreatureQueueId, setSelectedCreatureQueueId] = useState("");
   const [newLootCreatureTier, setNewLootCreatureTier] = useState<CreatureTier>("common");
@@ -2070,6 +2101,72 @@ export default function ArcaneCraftingCodexPage() {
     );
   }
 
+  useEffect(() => {
+    if (!activeInventoryId) {
+      setSharedLootResults([]);
+      return;
+    }
+
+    let cancelled = false;
+
+    async function loadLootLog() {
+      try {
+        const rows = await fetchCampaignLootLog(activeInventoryId);
+        if (!cancelled) {
+          setSharedLootResults(rows.map((row) => supabaseLootLogToLocal(row, characters)));
+        }
+      } catch (error) {
+        console.warn("Failed to load shared loot log from Supabase.", error);
+      }
+    }
+
+    loadLootLog();
+
+    const channel = supabase
+      .channel(`campaign-loot-log-${activeInventoryId}`)
+      .on(
+        "postgres_changes",
+        {
+          event: "*",
+          schema: "public",
+          table: "campaign_loot_log",
+          filter: `campaign_id=eq.${activeInventoryId}`,
+        },
+        () => {
+          loadLootLog();
+        }
+      )
+      .subscribe();
+
+    return () => {
+      cancelled = true;
+      supabase.removeChannel(channel);
+    };
+  }, [activeInventoryId, characters]);
+
+  function recordSharedLootResult(result: LootResultItem) {
+    if (!activeInventoryId) return;
+
+    const activeEntry = creatureLootQueue.find((entry) => entry.id === activeCreatureQueueId);
+
+    insertCampaignLootLog({
+      campaignId: activeInventoryId,
+      characterId: lootCharacterId || null,
+      creatureQueueId: activeCreatureQueueId || null,
+      creatureTableId: lootTableId,
+      creatureLabel: activeEntry?.creatureLabel || getLootTable(lootTableId).label,
+      creatureTier: lootTier,
+      lootQuality: result.quality,
+      lootName: result.name,
+      qty: result.qty,
+      kind: result.kind,
+      rollText: result.rollText || null,
+    }).catch((error) => {
+      console.warn("Failed to save shared loot result to Supabase.", error);
+      setImportLog("Loot was added locally, but the shared loot log failed to sync.");
+    });
+  }
+
   function addCreatureToLootQueue() {
     if (!adminUnlocked || !activeInventoryId) return;
 
@@ -2254,10 +2351,9 @@ export default function ArcaneCraftingCodexPage() {
       const remainingRolls = Math.max(0, pendingLootRolls - 1);
       setPendingLootRolls(remainingRolls);
       setHarvestStep(remainingRolls > 0 ? "quality" : "attempt");
-      setLootResults((current) => [
-        { name: "No Loot", qty: 0, kind: "none", quality: "none" },
-        ...current,
-      ]);
+      const result: LootResultItem = { name: "No Loot", qty: 0, kind: "none", quality: "none" };
+      setLootResults((current) => [result, ...current]);
+      recordSharedLootResult(result);
       setHarvestLog((current) => [
         `Loot quality rolled: No Loot. Skipping Roll Loot. ${remainingRolls} pending loot roll${remainingRolls === 1 ? "" : "s"} remaining.`,
         ...current,
@@ -2280,8 +2376,10 @@ export default function ArcaneCraftingCodexPage() {
     const targetSelection = quality === "none" ? null : getTargetedLootSelection(quality);
 
     if (quality === "none") {
+      const result: LootResultItem = { name: "No Loot", qty: 0, kind: "none", quality: "none" };
       setLootQuality("none");
-      setLootResults((current) => [{ name: "No Loot", qty: 0, kind: "none", quality: "none" }, ...current]);
+      setLootResults((current) => [result, ...current]);
+      recordSharedLootResult(result);
       const remainingRolls = Math.max(0, pendingLootRolls - 1);
       setPendingLootRolls(remainingRolls);
       setHarvestStep(remainingRolls > 0 ? "quality" : "attempt");
@@ -2294,7 +2392,9 @@ export default function ArcaneCraftingCodexPage() {
 
     const entries = table.tables[quality] || [];
     if (entries.length === 0) {
-      setLootResults((current) => [{ name: "No entries for this table.", qty: 0, kind: "none", quality }, ...current]);
+      const result: LootResultItem = { name: "No entries for this table.", qty: 0, kind: "none", quality };
+      setLootResults((current) => [result, ...current]);
+      recordSharedLootResult(result);
       const remainingRolls = Math.max(0, pendingLootRolls - 1);
       setPendingLootRolls(remainingRolls);
       setHarvestStep(remainingRolls > 0 ? "quality" : "attempt");
@@ -2318,6 +2418,7 @@ export default function ArcaneCraftingCodexPage() {
 
     setLootQuality("unrolled");
     setLootResults((current) => [result, ...current]);
+    recordSharedLootResult(result);
     markMaterialDiscovered(entry.name, true);
 
     const remainingRolls = Math.max(0, pendingLootRolls - 1);
@@ -2882,6 +2983,7 @@ export default function ArcaneCraftingCodexPage() {
             targetSpecificLoot={targetSpecificLoot}
             setTargetSpecificLoot={setTargetSpecificLoot}
             lootResults={lootResults}
+            sharedLootResults={sharedLootResults}
             adminUnlocked={adminUnlocked}
             creatureLootQueue={creatureLootQueue}
             selectedCreatureQueueId={selectedCreatureQueueId}
@@ -4222,6 +4324,7 @@ function LootingPanel({
   targetSpecificLoot,
   setTargetSpecificLoot,
   lootResults,
+  sharedLootResults,
   adminUnlocked,
   creatureLootQueue,
   selectedCreatureQueueId,
@@ -4261,6 +4364,7 @@ function LootingPanel({
   targetSpecificLoot: boolean;
   setTargetSpecificLoot: (value: boolean) => void;
   lootResults: LootResultItem[];
+  sharedLootResults: SharedLootResultItem[];
   adminUnlocked: boolean;
   creatureLootQueue: CreatureLootQueueEntry[];
   selectedCreatureQueueId: string;
@@ -4519,6 +4623,30 @@ function LootingPanel({
               ))}
             </div>
           )}
+
+          <div className="mt-6 space-y-2">
+            <h3 className="text-xl font-bold">Shared Campaign Loot Log</h3>
+            {sharedLootResults.length === 0 ? (
+              <p className="text-sm">No shared loot results yet.</p>
+            ) : (
+              <div className="space-y-2 max-h-[420px] overflow-y-auto pr-1">
+                {sharedLootResults.map((result) => (
+                  <div key={result.id} className="rounded-xl border border-[#9a7b45] bg-[#f2dfb9] p-3 flex justify-between gap-3">
+                    <div>
+                      <strong>{result.name}</strong>
+                      <p className="text-sm">
+                        {result.kind} • {result.quality}
+                        {result.characterName ? ` • ${result.characterName}` : ""}
+                        {result.creatureLabel ? ` • ${result.creatureLabel}` : ""}
+                      </p>
+                      {result.rollText && <p className="text-xs font-bold">{result.rollText}</p>}
+                    </div>
+                    <strong>{result.qty > 0 ? `×${result.qty}` : ""}</strong>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
 
           {harvestLog.length > 0 && (
             <div className="mt-6 space-y-2">
