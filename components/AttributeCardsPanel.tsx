@@ -411,6 +411,51 @@ export default function AttributeCardsPanel({
     }
   }
 
+  function tagVisibilityStats(tagName: string) {
+    const taggedCards = ATTRIBUTE_CARDS.filter((card) => card.tags.includes(tagName));
+    const visibleCount = taggedCards.filter((card) => isCardVisible(card.id, visibility)).length;
+
+    return {
+      total: taggedCards.length,
+      visible: visibleCount,
+      hidden: taggedCards.length - visibleCount,
+      allVisible: taggedCards.length > 0 && visibleCount === taggedCards.length,
+    };
+  }
+
+  async function setTagVisibility(tagName: string, isVisible: boolean) {
+    if (!adminUnlocked || !campaignId) return;
+
+    const taggedCards = ATTRIBUTE_CARDS.filter((card) => card.tags.includes(tagName));
+    if (taggedCards.length === 0) return;
+
+    const rows = taggedCards.map((card) => ({
+      campaign_id: campaignId,
+      card_id: card.id,
+      is_visible: isVisible,
+    }));
+
+    setVisibility((current) => {
+      const next = { ...current };
+      taggedCards.forEach((card) => {
+        next[card.id] = isVisible;
+      });
+      return next;
+    });
+
+    const { error } = await supabase
+      .from("campaign_attribute_visibility")
+      .upsert(rows, { onConflict: "campaign_id,card_id" });
+
+    if (error) {
+      setMessage(error.message);
+      loadAttributeData();
+      return;
+    }
+
+    setMessage(`${tagName} attributes are now ${isVisible ? "visible" : "hidden"}.`);
+  }
+
   function hasVetoUsed(characterId: string) {
     return vetoRows.some((row) => row.character_id === characterId && row.used);
   }
@@ -596,6 +641,41 @@ export default function AttributeCardsPanel({
 
       {subTab === "browse" && (
         <div className="space-y-4">
+          {adminUnlocked && (
+            <div className="rounded-xl border border-[#9a7b45] bg-[#f2dfb9] p-4 text-[#251b10]">
+              <div className="mb-3">
+                <h3 className="font-serif text-xl font-bold">GM Tag Visibility</h3>
+                <p className="text-sm">Toggle entire attribute groups on or off without opening each card.</p>
+              </div>
+
+              <div className="flex flex-wrap gap-2">
+                {allTags.filter((tagName) => tagName !== "All").map((tagName) => {
+                  const stats = tagVisibilityStats(tagName);
+
+                  return (
+                    <div key={tagName} className="flex items-center gap-2 rounded-lg border border-[#9a7b45] bg-[#fff0c7] px-3 py-2">
+                      <span
+                        className="rounded border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#e8d5a3]"
+                        style={{ background: TAG_COLORS[tagName] || "#333", borderColor: "rgba(200,170,100,0.3)" }}
+                      >
+                        {tagName}
+                      </span>
+                      <span className="text-xs">
+                        {stats.visible}/{stats.total} visible
+                      </span>
+                      <button
+                        onClick={() => setTagVisibility(tagName, !stats.allVisible)}
+                        className={`rounded px-2 py-1 text-xs font-bold ${stats.allVisible ? "bg-[#5b1f1f] text-[#fff0c7]" : "bg-[#1f4d2e] text-[#fff0c7]"}`}
+                      >
+                        {stats.allVisible ? "Hide Tag" : "Show Tag"}
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
           <div className="flex flex-col gap-3 rounded-xl border border-[#9a7b45] bg-[#f2dfb9] p-4 text-[#251b10] md:flex-row">
             <input
               className="min-w-0 flex-1 rounded border border-[#9a7b45] bg-[#fff0c7] p-2"
