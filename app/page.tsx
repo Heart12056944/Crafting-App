@@ -58,6 +58,7 @@ import {
 } from "@/lib/supabaseLootLog";
 import { creatureTierRules, lootTables, rollDiceExpression, rollWeightedLootQuality, getLootTable, type CreatureTier, type LootQuality } from "@/data/lootTables";
 import { supabase } from "@/lib/supabaseClient";
+import AttributeCardsPanel from "@/components/AttributeCardsPanel";
 import { GmLoginPanel, CreateGmPanel } from "@/components/GmAuthPanels";
 
 import { Card, CardContent } from "@/components/ui/card";
@@ -91,7 +92,7 @@ type InventoryProfile = {
 
 type Stat = "STR" | "DEX" | "CON" | "INT" | "WIS" | "CHA";
 
-type TabId = "craft" | "available" | "recipes" | "materials" | "characters" | "advancement" | "looting" | "craftingRules" | "lootingRules" | "admin";
+type TabId = "craft" | "available" | "recipes" | "materials" | "characters" | "advancement" | "attributes" | "looting" | "craftingRules" | "lootingRules" | "admin";
 
 const tabs = [
   ["craft", "Craft", Hammer],
@@ -100,6 +101,7 @@ const tabs = [
   ["materials", "Materials", FlaskConical],
   ["characters", "Characters", UserRound],
   ["advancement", "PP Improvements", Wrench],
+  ["attributes", "Attributes", BookOpen],
   ["looting", "Looting", Package],
   ["craftingRules", "Crafting Rules", ScrollText],
   ["lootingRules", "Looting Rules", Dice5],
@@ -2967,6 +2969,14 @@ export default function ArcaneCraftingCodexPage() {
             addToolImprovement={addToolImprovement}
             adminUnlocked={adminUnlocked}
             adjustToolPp={adjustToolPp}
+          />
+        )}
+
+        {activeTab === "attributes" && (
+          <AttributeCardsPanel
+            campaignId={activeInventoryId}
+            characters={characters}
+            adminUnlocked={adminUnlocked}
           />
         )}
 
