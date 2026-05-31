@@ -1883,16 +1883,47 @@ export default function ArcaneCraftingCodexPage() {
     setDisabledTags(managedTags);
   }
 
-  function addCharacter() {
+  async function addCharacter() {
     if (!newCharacter.name.trim()) return;
-    markCharactersForSupabaseSave();
+
     const character = {
       ...newCharacter,
       id: crypto.randomUUID(),
       name: newCharacter.name.trim(),
+      isActive: true,
     };
+
     setCharacters((current) => [...current, character]);
     setSelectedCharacterId(character.id);
+
+    if (activeInventoryId) {
+      const { error } = await supabase.from("campaign_characters").upsert(
+        {
+          id: character.id,
+          campaign_id: activeInventoryId,
+          name: character.name,
+          is_admin: false,
+          is_active: character.isActive,
+          harvesting: character.harvesting ?? 0,
+          tool_progress: {
+            character,
+          },
+        },
+        { onConflict: "id" }
+      );
+
+      if (error) {
+        console.warn("Failed to save new character to Supabase.", error);
+        setImportLog("Warning: character was added locally, but Supabase sync failed.");
+        markCharactersForSupabaseSave();
+      } else {
+        setImportLog(`Character "${character.name}" added to the shared campaign.`);
+        shouldSaveCharactersRef.current = false;
+      }
+    } else {
+      markCharactersForSupabaseSave();
+    }
+
     setNewCharacter({
       id: crypto.randomUUID(),
       name: "",
