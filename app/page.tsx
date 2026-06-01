@@ -203,6 +203,190 @@ const ATTRIBUTE_TOOL_AFFINITY: Record<number, string[]> = {
   [CRAFTING_ATTRIBUTE_IDS.threadborne]: ["Weaver"],
 };
 
+
+type AttributeEffectMeta = {
+  id: number;
+  name: string;
+  summary: string;
+};
+
+const HARVESTING_ATTRIBUTE_EFFECT_IDS = [
+  CRAFTING_ATTRIBUTE_IDS.keenHarvester,
+  CRAFTING_ATTRIBUTE_IDS.efficientHarvester,
+  CRAFTING_ATTRIBUTE_IDS.phaseExtractor,
+  CRAFTING_ATTRIBUTE_IDS.dragonSense,
+  CRAFTING_ATTRIBUTE_IDS.criticalAnatomy,
+  CRAFTING_ATTRIBUTE_IDS.scavengersEye,
+  CRAFTING_ATTRIBUTE_IDS.cantLeaveIt,
+] as number[];
+
+const CRAFTING_ATTRIBUTE_EFFECT_IDS = [
+  CRAFTING_ATTRIBUTE_IDS.masterworkInstinct,
+  CRAFTING_ATTRIBUTE_IDS.materialMemory,
+  CRAFTING_ATTRIBUTE_IDS.salvager,
+  CRAFTING_ATTRIBUTE_IDS.hybridIntuition,
+  CRAFTING_ATTRIBUTE_IDS.quickHands,
+  CRAFTING_ATTRIBUTE_IDS.natTwentyFrugal,
+  CRAFTING_ATTRIBUTE_IDS.masteryFastTrack,
+  CRAFTING_ATTRIBUTE_IDS.perfectionist,
+  CRAFTING_ATTRIBUTE_IDS.closeEnough,
+  CRAFTING_ATTRIBUTE_IDS.battlefieldCrafter,
+  CRAFTING_ATTRIBUTE_IDS.forgeBorn,
+  CRAFTING_ATTRIBUTE_IDS.alchemicalBloodline,
+  CRAFTING_ATTRIBUTE_IDS.leatherworkerHands,
+  CRAFTING_ATTRIBUTE_IDS.tinkersGift,
+  CRAFTING_ATTRIBUTE_IDS.threadborne,
+  CRAFTING_ATTRIBUTE_IDS.venomWise,
+  CRAFTING_ATTRIBUTE_IDS.phaseStable,
+  CRAFTING_ATTRIBUTE_IDS.stormReader,
+  CRAFTING_ATTRIBUTE_IDS.chitinCraft,
+  CRAFTING_ATTRIBUTE_IDS.silkSmith,
+  CRAFTING_ATTRIBUTE_IDS.dailyGrind,
+] as number[];
+
+const CRAFTING_ATTRIBUTE_EFFECT_META: Record<number, AttributeEffectMeta> = {
+  [CRAFTING_ATTRIBUTE_IDS.keenHarvester]: {
+    id: CRAFTING_ATTRIBUTE_IDS.keenHarvester,
+    name: "Keen Harvester",
+    summary: "Harvesting advantage, Nat 20 grants an extra loot roll, and first failed harvest per creature costs no attempt.",
+  },
+  [CRAFTING_ATTRIBUTE_IDS.efficientHarvester]: {
+    id: CRAFTING_ATTRIBUTE_IDS.efficientHarvester,
+    name: "Efficient Harvester",
+    summary: "Successful harvests gain +1 loot roll, and No Loot becomes common loot.",
+  },
+  [CRAFTING_ATTRIBUTE_IDS.phaseExtractor]: {
+    id: CRAFTING_ATTRIBUTE_IDS.phaseExtractor,
+    name: "Phase Extractor",
+    summary: "Advantage against phase/dimensional creatures and common phase loot can improve by one reroll.",
+  },
+  [CRAFTING_ATTRIBUTE_IDS.dragonSense]: {
+    id: CRAFTING_ATTRIBUTE_IDS.dragonSense,
+    name: "Dragon Sense",
+    summary: "Advantage against dragon/draconic creatures and common draconic loot can improve by one reroll.",
+  },
+  [CRAFTING_ATTRIBUTE_IDS.criticalAnatomy]: {
+    id: CRAFTING_ATTRIBUTE_IDS.criticalAnatomy,
+    name: "Critical Anatomy",
+    summary: "Harvesting DC is reduced by 2, minimum DC 8.",
+  },
+  [CRAFTING_ATTRIBUTE_IDS.scavengersEye]: {
+    id: CRAFTING_ATTRIBUTE_IDS.scavengersEye,
+    name: "Scavenger's Eye",
+    summary: "When attempts run out, grants one final DC 10 bonus harvest check.",
+  },
+  [CRAFTING_ATTRIBUTE_IDS.cantLeaveIt]: {
+    id: CRAFTING_ATTRIBUTE_IDS.cantLeaveIt,
+    name: "Can't Leave It",
+    summary: "Nat 1 harvesting checks only lose 1 attempt instead of 2.",
+  },
+  [CRAFTING_ATTRIBUTE_IDS.masterworkInstinct]: {
+    id: CRAFTING_ATTRIBUTE_IDS.masterworkInstinct,
+    name: "Masterwork Instinct",
+    summary: "Once per long rest, upgrades a Normal crafting success to Superior.",
+  },
+  [CRAFTING_ATTRIBUTE_IDS.materialMemory]: {
+    id: CRAFTING_ATTRIBUTE_IDS.materialMemory,
+    name: "Material Memory",
+    summary: "First craft of each category that day gets -2 DC and first-time PP applies again.",
+  },
+  [CRAFTING_ATTRIBUTE_IDS.salvager]: {
+    id: CRAFTING_ATTRIBUTE_IDS.salvager,
+    name: "Salvager",
+    summary: "On failed crafts, supports material recovery rules and rarest-material protection.",
+  },
+  [CRAFTING_ATTRIBUTE_IDS.hybridIntuition]: {
+    id: CRAFTING_ATTRIBUTE_IDS.hybridIntuition,
+    name: "Hybrid Intuition",
+    summary: "Hybrid crafting penalties are ignored for this character.",
+  },
+  [CRAFTING_ATTRIBUTE_IDS.quickHands]: {
+    id: CRAFTING_ATTRIBUTE_IDS.quickHands,
+    name: "Quick Hands",
+    summary: "Crafting time benefits apply narratively; the app flags this character as a fast crafter.",
+  },
+  [CRAFTING_ATTRIBUTE_IDS.natTwentyFrugal]: {
+    id: CRAFTING_ATTRIBUTE_IDS.natTwentyFrugal,
+    name: "Nat Twenty Frugal",
+    summary: "Nat 20 crafting preserves the two rarest materials instead of only the rarest.",
+  },
+  [CRAFTING_ATTRIBUTE_IDS.masteryFastTrack]: {
+    id: CRAFTING_ATTRIBUTE_IDS.masteryFastTrack,
+    name: "Mastery Fast-Track",
+    summary: "Successful crafts gain +1 additional PP.",
+  },
+  [CRAFTING_ATTRIBUTE_IDS.perfectionist]: {
+    id: CRAFTING_ATTRIBUTE_IDS.perfectionist,
+    name: "Perfectionist",
+    summary: "Superior results gain +1 additional PP.",
+  },
+  [CRAFTING_ATTRIBUTE_IDS.closeEnough]: {
+    id: CRAFTING_ATTRIBUTE_IDS.closeEnough,
+    name: "Close Enough",
+    summary: "Failures within 2 of the DC become Normal successes.",
+  },
+  [CRAFTING_ATTRIBUTE_IDS.battlefieldCrafter]: {
+    id: CRAFTING_ATTRIBUTE_IDS.battlefieldCrafter,
+    name: "Battlefield Crafter",
+    summary: "Short-rest/common-item crafting benefits apply narratively; app flags the attribute here.",
+  },
+  [CRAFTING_ATTRIBUTE_IDS.forgeBorn]: {
+    id: CRAFTING_ATTRIBUTE_IDS.forgeBorn,
+    name: "Forge-Born",
+    summary: "Smith tools are treated as proficient with at least 10 PP.",
+  },
+  [CRAFTING_ATTRIBUTE_IDS.alchemicalBloodline]: {
+    id: CRAFTING_ATTRIBUTE_IDS.alchemicalBloodline,
+    name: "Alchemical Bloodline",
+    summary: "Alchemist and Poisoner tools are treated as proficient with at least 10 PP; Normal potion/poison crafts can become Superior.",
+  },
+  [CRAFTING_ATTRIBUTE_IDS.leatherworkerHands]: {
+    id: CRAFTING_ATTRIBUTE_IDS.leatherworkerHands,
+    name: "Leatherworker's Hands",
+    summary: "Leatherworker tools are treated as proficient with at least 10 PP; some creature-material crafts get -1 DC.",
+  },
+  [CRAFTING_ATTRIBUTE_IDS.tinkersGift]: {
+    id: CRAFTING_ATTRIBUTE_IDS.tinkersGift,
+    name: "The Tinker's Gift",
+    summary: "Tinker tools are treated as proficient with at least 10 PP; Tinker failures within 2 become Normal.",
+  },
+  [CRAFTING_ATTRIBUTE_IDS.threadborne]: {
+    id: CRAFTING_ATTRIBUTE_IDS.threadborne,
+    name: "Threadborne",
+    summary: "Weaver tools are treated as proficient with at least 10 PP.",
+  },
+  [CRAFTING_ATTRIBUTE_IDS.venomWise]: {
+    id: CRAFTING_ATTRIBUTE_IDS.venomWise,
+    name: "Venom Wise",
+    summary: "Venom crafting benefits apply narratively; app flags this attribute for the crafter.",
+  },
+  [CRAFTING_ATTRIBUTE_IDS.phaseStable]: {
+    id: CRAFTING_ATTRIBUTE_IDS.phaseStable,
+    name: "Phase Stable",
+    summary: "Phase-touched effect selection benefits apply narratively; app flags this attribute for the crafter.",
+  },
+  [CRAFTING_ATTRIBUTE_IDS.stormReader]: {
+    id: CRAFTING_ATTRIBUTE_IDS.stormReader,
+    name: "Storm Reader",
+    summary: "Crafting with blue-dragon/storm/lightning materials gains advantage.",
+  },
+  [CRAFTING_ATTRIBUTE_IDS.chitinCraft]: {
+    id: CRAFTING_ATTRIBUTE_IDS.chitinCraft,
+    name: "Chitin Craft",
+    summary: "Chitin/spider material crafts get -2 DC.",
+  },
+  [CRAFTING_ATTRIBUTE_IDS.silkSmith]: {
+    id: CRAFTING_ATTRIBUTE_IDS.silkSmith,
+    name: "Silk Smith",
+    summary: "Silk crafting benefits apply narratively; app flags this attribute for the crafter.",
+  },
+  [CRAFTING_ATTRIBUTE_IDS.dailyGrind]: {
+    id: CRAFTING_ATTRIBUTE_IDS.dailyGrind,
+    name: "Daily Grind",
+    summary: "Successful crafts gain +1 additional PP even after the daily category cap.",
+  },
+};
+
 type SharedLootResultItem = LootResultItem & {
   id: string;
   createdAt: string;
@@ -3196,6 +3380,7 @@ export default function ArcaneCraftingCodexPage() {
               materials={materials}
               phaseTouchedMaterial={phaseTouchedMaterial}
               setPhaseTouchedMaterial={setPhaseTouchedMaterial}
+              characterAttributeAssignments={characterAttributeAssignments}
             />
             <CraftedItemList items={craftedItems} setItems={setCraftedItems} />
           </div>
@@ -3318,6 +3503,7 @@ export default function ArcaneCraftingCodexPage() {
             lootingAttempt={lootingAttempt}
             rollLootQualityOnly={rollLootQualityOnly}
             addLootToInventory={addLootToInventory}
+            characterAttributeAssignments={characterAttributeAssignments}
           />
         )}
 
@@ -3464,6 +3650,41 @@ function RequiredMaterialsPanel({
   );
 }
 
+
+function CharacterAttributeEffectList({
+  characterId,
+  assignments,
+  attributeIds,
+  title,
+}: {
+  characterId: string;
+  assignments: CharacterAttributeAssignmentRow[];
+  attributeIds: number[];
+  title: string;
+}) {
+  const activeAttributes = attributeIds
+    .filter((cardId) => assignments.some((assignment) => assignment.character_id === characterId && assignment.card_id === cardId))
+    .map((cardId) => CRAFTING_ATTRIBUTE_EFFECT_META[cardId])
+    .filter((attribute): attribute is AttributeEffectMeta => Boolean(attribute));
+
+  if (activeAttributes.length === 0) return null;
+
+  return (
+    <div className="rounded-xl border border-[#9a7b45] bg-[#fff0c7] p-3 text-[#251b10]">
+      <p className="mb-2 font-bold">{title}</p>
+      <div className="space-y-2">
+        {activeAttributes.map((attribute) => (
+          <div key={attribute.id} className="rounded-lg border border-[#b99b62] bg-[#f2dfb9] p-2">
+            <p className="font-bold">{attribute.name}</p>
+            <p className="text-sm">{attribute.summary}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+
 function CraftPanel(props: {
   characters: Character[];
   recipes: Recipe[];
@@ -3494,6 +3715,7 @@ function CraftPanel(props: {
   materials: Material[];
   phaseTouchedMaterial: string;
   setPhaseTouchedMaterial: (value: string) => void;
+  characterAttributeAssignments: CharacterAttributeAssignmentRow[];
 }) {
   const selectedRecipe =
     props.recipes.find((recipe) => recipe.id === props.selectedRecipeId) || props.recipes[0];
@@ -3563,6 +3785,13 @@ function CraftPanel(props: {
             <SelectItem value="plus2">Assistant +2 Bonus</SelectItem>
           </FantasySelect>
         </div>
+
+        <CharacterAttributeEffectList
+          characterId={selectedCharacter.id}
+          assignments={props.characterAttributeAssignments}
+          attributeIds={CRAFTING_ATTRIBUTE_EFFECT_IDS}
+          title="Active crafting attributes for this character"
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
           <label className="flex items-center gap-3 text-sm rounded-xl border border-[#9a7b45] bg-[#f2dfb9] p-3">
@@ -4659,6 +4888,7 @@ function LootingPanel({
   lootingAttempt,
   rollLootQualityOnly,
   addLootToInventory,
+  characterAttributeAssignments,
 }: {
   lootTier: CreatureTier;
   setLootTier: (tier: CreatureTier) => void;
@@ -4699,6 +4929,7 @@ function LootingPanel({
   lootingAttempt: () => void;
   rollLootQualityOnly: () => void;
   addLootToInventory: () => void;
+  characterAttributeAssignments: CharacterAttributeAssignmentRow[];
 }) {
   const selectedTable = getLootTable(lootTableId);
   const selectedQueueEntry = creatureLootQueue.find((entry) => entry.id === selectedCreatureQueueId);
@@ -4835,6 +5066,13 @@ function LootingPanel({
               ))}
             </FantasySelect>
           </label>
+
+          <CharacterAttributeEffectList
+            characterId={lootCharacterId}
+            assignments={characterAttributeAssignments}
+            attributeIds={HARVESTING_ATTRIBUTE_EFFECT_IDS}
+            title="Active harvesting attributes for this character"
+          />
 
           <div className="rounded-xl border border-[#9a7b45] bg-[#f2dfb9] p-4">
             <p><strong>Current Creature:</strong> {harvestStarted ? activeTable.label : selectedQueueEntry?.creatureLabel || "None selected"}</p>
