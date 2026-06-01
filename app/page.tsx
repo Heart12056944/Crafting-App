@@ -157,6 +157,52 @@ type LootResultItem = {
   rollText?: string;
 };
 
+
+type CharacterAttributeAssignmentRow = {
+  campaign_id: string;
+  character_id: string;
+  card_id: number;
+};
+
+const CRAFTING_ATTRIBUTE_IDS = {
+  keenHarvester: 7201,
+  efficientHarvester: 7202,
+  phaseExtractor: 7203,
+  dragonSense: 7204,
+  criticalAnatomy: 7205,
+  scavengersEye: 7206,
+  cantLeaveIt: 7207,
+  masterworkInstinct: 7208,
+  materialMemory: 7209,
+  salvager: 7210,
+  hybridIntuition: 7211,
+  quickHands: 7212,
+  natTwentyFrugal: 7213,
+  masteryFastTrack: 7214,
+  perfectionist: 7215,
+  closeEnough: 7216,
+  battlefieldCrafter: 7217,
+  forgeBorn: 7218,
+  alchemicalBloodline: 7219,
+  leatherworkerHands: 7220,
+  tinkersGift: 7221,
+  threadborne: 7222,
+  venomWise: 7223,
+  phaseStable: 7224,
+  stormReader: 7225,
+  chitinCraft: 7226,
+  silkSmith: 7227,
+  dailyGrind: 7228,
+} as const;
+
+const ATTRIBUTE_TOOL_AFFINITY: Record<number, string[]> = {
+  [CRAFTING_ATTRIBUTE_IDS.forgeBorn]: ["Smith"],
+  [CRAFTING_ATTRIBUTE_IDS.alchemicalBloodline]: ["Alchemist", "Poisoner"],
+  [CRAFTING_ATTRIBUTE_IDS.leatherworkerHands]: ["Leatherworker"],
+  [CRAFTING_ATTRIBUTE_IDS.tinkersGift]: ["Tinker"],
+  [CRAFTING_ATTRIBUTE_IDS.threadborne]: ["Weaver"],
+};
+
 type SharedLootResultItem = LootResultItem & {
   id: string;
   createdAt: string;
@@ -1067,6 +1113,12 @@ export default function ArcaneCraftingCodexPage() {
   const realtimeRefreshTimerRef = useRef<number | null>(null);
   const shouldSaveMaterialsRef = useRef(false);
   const shouldSaveCharactersRef = useRef(false);
+  const [characterAttributeAssignments, setCharacterAttributeAssignments] = useState<CharacterAttributeAssignmentRow[]>([]);
+  const [harvestAttributeFlags, setHarvestAttributeFlags] = useState({
+    firstFailIgnored: false,
+    scavengerEyeUsed: false,
+    masterworkInstinctUsed: false,
+  });
 
   function skipNextSupabaseSave() {
     skipSupabaseSaveRef.current = true;
@@ -1316,6 +1368,68 @@ export default function ArcaneCraftingCodexPage() {
       supabase.removeChannel(channel);
     };
   }, [materialsLoaded, activeInventoryId]);
+
+
+  async function loadCharacterAttributeAssignments(campaignId: string) {
+    const { data, error } = await supabase
+      .from("campaign_character_attributes")
+      .select("campaign_id, character_id, card_id")
+      .eq("campaign_id", campaignId);
+
+    if (error) {
+      console.warn("Failed to load character attribute assignments.", error);
+      return;
+    }
+
+    setCharacterAttributeAssignments((data as CharacterAttributeAssignmentRow[] | null) || []);
+  }
+
+  useEffect(() => {
+    if (!materialsLoaded || !activeInventoryId) return;
+
+    loadCharacterAttributeAssignments(activeInventoryId);
+
+    const channel = supabase
+      .channel(`artisan-codex-attributes-for-effects-${activeInventoryId}`)
+      .on(
+        "postgres_changes",
+        {
+          event: "*",
+          schema: "public",
+          table: "campaign_character_attributes",
+          filter: `campaign_id=eq.${activeInventoryId}`,
+        },
+        () => loadCharacterAttributeAssignments(activeInventoryId)
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [materialsLoaded, activeInventoryId]);
+
+  function characterHasAttribute(characterId: string | undefined, cardId: number) {
+    if (!characterId) return false;
+    return characterAttributeAssignments.some((row) => row.character_id === characterId && row.card_id === cardId);
+  }
+
+  function characterHasAnyAttribute(characterId: string | undefined, cardIds: number[]) {
+    return cardIds.some((cardId) => characterHasAttribute(characterId, cardId));
+  }
+
+  function currentLootTableLooksLike(...terms: string[]) {
+    const table = getLootTable(lootTableId);
+    const haystack = `${table.id} ${table.label} ${table.family}`.toLowerCase();
+    return terms.some((term) => haystack.includes(term.toLowerCase()));
+  }
+
+  function improveLootQualityOnce(quality: LootQuality | "none", creatureTerms: string[]): LootQuality | "none" {
+    if (quality !== "common" || !currentLootTableLooksLike(...creatureTerms)) return quality;
+
+    const reroll = rollWeightedLootQuality(lootTier);
+    const rank: Record<LootQuality | "none", number> = { none: 0, common: 1, rare: 2, epic: 3 };
+    return rank[reroll] > rank[quality] ? reroll : quality;
+  }
 
   useEffect(() => {
     if (!materialsLoaded || !activeInventoryId || isLoadingCampaignData || skipSupabaseSaveRef.current) return;
@@ -2248,6 +2362,7 @@ export default function ArcaneCraftingCodexPage() {
     setLootTableId(selectedQueueEntry.creatureTableId);
     setActiveCreatureQueueId(selectedQueueEntry.id);
     setHarvestStarted(true);
+    setHarvestAttributeFlags({ firstFailIgnored: false, scavengerEyeUsed: false, masterworkInstinctUsed: false });
     setHarvestAttemptsRemaining(rule.attempts);
     setHarvestDc(rule.dc);
     setLootQuality("unrolled");
@@ -2282,6 +2397,7 @@ export default function ArcaneCraftingCodexPage() {
     }
 
     setHarvestStarted(false);
+    setHarvestAttributeFlags({ firstFailIgnored: false, scavengerEyeUsed: false, masterworkInstinctUsed: false });
     setActiveCreatureQueueId("");
     setHarvestAttemptsRemaining(0);
     setHarvestDc(creatureTierRules[lootTier].dc);
@@ -2308,30 +2424,48 @@ export default function ArcaneCraftingCodexPage() {
     if (!harvestStarted || harvestAttemptsRemaining <= 0 || harvestStep !== "attempt") return;
 
     const character = characters.find((item) => item.id === lootCharacterId) || characters[0];
-    const roll = Math.floor(Math.random() * 20) + 1;
+    const harvestingAttributeIds = CRAFTING_ATTRIBUTE_IDS;
+    const hasKeenHarvester = characterHasAttribute(character?.id, harvestingAttributeIds.keenHarvester);
+    const hasPhaseExtractor = characterHasAttribute(character?.id, harvestingAttributeIds.phaseExtractor) && currentLootTableLooksLike("phase", "dimensional");
+    const hasDragonSense = characterHasAttribute(character?.id, harvestingAttributeIds.dragonSense) && currentLootTableLooksLike("dragon", "draconic");
+    const harvestAdvantage = hasKeenHarvester || hasPhaseExtractor || hasDragonSense;
+
+    let roll = Math.floor(Math.random() * 20) + 1;
+    let secondHarvestRoll: number | undefined;
+    if (harvestAdvantage) {
+      secondHarvestRoll = Math.floor(Math.random() * 20) + 1;
+      roll = Math.max(roll, secondHarvestRoll);
+    }
+
     const harvestingBonus = character?.harvesting ?? 0;
+    const hasCriticalAnatomy = characterHasAttribute(character?.id, harvestingAttributeIds.criticalAnatomy);
     const baseDc = Math.min(20, harvestDc);
-    const currentDc = targetSpecificLoot ? Math.min(22, baseDc + 2) : baseDc;
+    const currentDcBeforeAttribute = targetSpecificLoot ? Math.min(22, baseDc + 2) : baseDc;
+    const currentDc = hasCriticalAnatomy ? Math.max(8, currentDcBeforeAttribute - 2) : currentDcBeforeAttribute;
     const total = roll + harvestingBonus;
+    const advantageText = harvestAdvantage ? ` Advantage roll${secondHarvestRoll ? ` (${roll}/${secondHarvestRoll})` : ""}.` : "";
+    const dcText = hasCriticalAnatomy ? ` Critical Anatomy reduced DC from ${currentDcBeforeAttribute} to ${currentDc}.` : "";
 
     if (roll === 1) {
-      const nextAttempts = Math.max(0, harvestAttemptsRemaining - 2);
+      const hasCantLeaveIt = characterHasAttribute(character?.id, CRAFTING_ATTRIBUTE_IDS.cantLeaveIt);
+      const loss = hasCantLeaveIt ? 1 : 2;
+      const nextAttempts = Math.max(0, harvestAttemptsRemaining - loss);
       setHarvestAttemptsRemaining(nextAttempts);
       setHarvestStep(nextAttempts <= 0 ? "setup" : "attempt");
       setHarvestLog((current) => [
-        `Critical failure: ${character?.name || "Harvester"} rolled Nat 1 (${total}) vs DC ${currentDc}. Lose 2 attempts. ${nextAttempts} remaining.`,
+        `${hasCantLeaveIt ? "Can't Leave It softened the Nat 1: " : "Critical failure: "}${character?.name || "Harvester"} rolled Nat 1 (${total}) vs DC ${currentDc}. Lose ${loss} attempt${loss === 1 ? "" : "s"}. ${nextAttempts} remaining.${advantageText}${dcText}`,
         ...current,
       ]);
       return;
     }
 
     if (roll === 20) {
-      setPendingLootRolls(2);
+      setPendingLootRolls(characterHasAttribute(character?.id, CRAFTING_ATTRIBUTE_IDS.keenHarvester) ? 3 : 2);
       setDoubleNextLoot(true);
       setLootQuality("unrolled");
       setHarvestStep("quality");
       setHarvestLog((current) => [
-        `Critical success: ${character?.name || "Harvester"} rolled Nat 20 vs DC ${currentDc}. Gain 2 loot rolls, double the first item found, and the DC stays ${baseDc}.${targetSpecificLoot ? " Targeted harvest active." : ""}`,
+        `Critical success: ${character?.name || "Harvester"} rolled Nat 20 vs DC ${currentDc}. Gain ${characterHasAttribute(character?.id, CRAFTING_ATTRIBUTE_IDS.keenHarvester) ? 3 : 2} loot rolls, double the first item found, and the DC stays ${baseDc}.${targetSpecificLoot ? " Targeted harvest active." : ""}${advantageText}${dcText}`,
         ...current,
       ]);
       return;
@@ -2340,12 +2474,12 @@ export default function ArcaneCraftingCodexPage() {
     if (total >= currentDc + 5) {
       const nextDc = Math.min(20, baseDc + 1);
       setHarvestDc(nextDc);
-      setPendingLootRolls(2);
+      setPendingLootRolls(2 + (characterHasAttribute(character?.id, CRAFTING_ATTRIBUTE_IDS.efficientHarvester) ? 1 : 0));
       setDoubleNextLoot(false);
       setLootQuality("unrolled");
       setHarvestStep("quality");
       setHarvestLog((current) => [
-        `Great success: ${character?.name || "Harvester"} rolled ${roll} + ${harvestingBonus} = ${total} vs DC ${currentDc}. Gain 2 loot rolls. Next base DC ${nextDc}.${targetSpecificLoot ? " Targeted harvest active." : ""}`,
+        `Great success: ${character?.name || "Harvester"} rolled ${roll} + ${harvestingBonus} = ${total} vs DC ${currentDc}. Gain ${2 + (characterHasAttribute(character?.id, CRAFTING_ATTRIBUTE_IDS.efficientHarvester) ? 1 : 0)} loot rolls. Next base DC ${nextDc}.${targetSpecificLoot ? " Targeted harvest active." : ""}${advantageText}${dcText}`,
         ...current,
       ]);
       return;
@@ -2354,22 +2488,44 @@ export default function ArcaneCraftingCodexPage() {
     if (total >= currentDc) {
       const nextDc = Math.min(20, baseDc + 1);
       setHarvestDc(nextDc);
-      setPendingLootRolls(1);
+      setPendingLootRolls(1 + (characterHasAttribute(character?.id, CRAFTING_ATTRIBUTE_IDS.efficientHarvester) ? 1 : 0));
       setDoubleNextLoot(false);
       setLootQuality("unrolled");
       setHarvestStep("quality");
       setHarvestLog((current) => [
-        `Success: ${character?.name || "Harvester"} rolled ${roll} + ${harvestingBonus} = ${total} vs DC ${currentDc}. Gain 1 loot roll. Next base DC ${nextDc}.${targetSpecificLoot ? " Targeted harvest active." : ""}`,
+        `Success: ${character?.name || "Harvester"} rolled ${roll} + ${harvestingBonus} = ${total} vs DC ${currentDc}. Gain ${1 + (characterHasAttribute(character?.id, CRAFTING_ATTRIBUTE_IDS.efficientHarvester) ? 1 : 0)} loot roll${characterHasAttribute(character?.id, CRAFTING_ATTRIBUTE_IDS.efficientHarvester) ? "s" : ""}. Next base DC ${nextDc}.${targetSpecificLoot ? " Targeted harvest active." : ""}${advantageText}${dcText}`,
         ...current,
       ]);
       return;
     }
 
-    const nextAttempts = Math.max(0, harvestAttemptsRemaining - 1);
-    setHarvestAttemptsRemaining(nextAttempts);
-    setHarvestStep(nextAttempts <= 0 ? "setup" : "attempt");
+    const hasKeenFirstFail = characterHasAttribute(character?.id, CRAFTING_ATTRIBUTE_IDS.keenHarvester) && !harvestAttributeFlags.firstFailIgnored;
+    const nextAttemptsAfterFailure = hasKeenFirstFail ? harvestAttemptsRemaining : Math.max(0, harvestAttemptsRemaining - 1);
+    let nextDcAfterFailure = harvestDc;
+    let nextStepAfterFailure: "setup" | "attempt" = nextAttemptsAfterFailure <= 0 ? "setup" : "attempt";
+    let extraFailureText = hasKeenFirstFail ? " Keen Harvester ignored this creature's first failed Harvesting check." : "";
+
+    if (
+      !hasKeenFirstFail &&
+      nextAttemptsAfterFailure <= 0 &&
+      characterHasAttribute(character?.id, CRAFTING_ATTRIBUTE_IDS.scavengersEye) &&
+      !harvestAttributeFlags.scavengerEyeUsed
+    ) {
+      nextDcAfterFailure = 10;
+      nextStepAfterFailure = "attempt";
+      extraFailureText += " Scavenger's Eye grants one final DC 10 bonus harvesting check.";
+      setHarvestAttributeFlags((current) => ({ ...current, scavengerEyeUsed: true }));
+    }
+
+    if (hasKeenFirstFail) {
+      setHarvestAttributeFlags((current) => ({ ...current, firstFailIgnored: true }));
+    }
+
+    setHarvestAttemptsRemaining(nextStepAfterFailure === "attempt" && nextAttemptsAfterFailure <= 0 ? 1 : nextAttemptsAfterFailure);
+    setHarvestDc(nextDcAfterFailure);
+    setHarvestStep(nextStepAfterFailure);
     setHarvestLog((current) => [
-      `Failure: ${character?.name || "Harvester"} rolled ${roll} + ${harvestingBonus} = ${total} vs DC ${currentDc}. Lose 1 attempt. ${nextAttempts} remaining.`,
+      `Failure: ${character?.name || "Harvester"} rolled ${roll} + ${harvestingBonus} = ${total} vs DC ${currentDc}. ${hasKeenFirstFail ? "No attempt lost." : `Lose 1 attempt. ${nextAttemptsAfterFailure} remaining.`}${extraFailureText}${advantageText}${dcText}`,
       ...current,
     ]);
   }
@@ -2377,7 +2533,21 @@ export default function ArcaneCraftingCodexPage() {
   function rollLootQualityOnly() {
     if (!harvestStarted || harvestAttemptsRemaining <= 0 || harvestStep !== "quality" || pendingLootRolls <= 0) return;
 
-    const quality = rollWeightedLootQuality(lootTier);
+    const character = characters.find((item) => item.id === lootCharacterId) || characters[0];
+    let quality = rollWeightedLootQuality(lootTier);
+
+    if (quality === "none" && characterHasAttribute(character?.id, CRAFTING_ATTRIBUTE_IDS.efficientHarvester)) {
+      quality = "common";
+    }
+
+    if (characterHasAttribute(character?.id, CRAFTING_ATTRIBUTE_IDS.phaseExtractor)) {
+      quality = improveLootQualityOnce(quality, ["phase", "dimensional"]);
+    }
+
+    if (characterHasAttribute(character?.id, CRAFTING_ATTRIBUTE_IDS.dragonSense)) {
+      quality = improveLootQualityOnce(quality, ["dragon", "draconic"]);
+    }
+
     setLootQuality(quality);
 
     if (quality === "none") {
@@ -2405,7 +2575,20 @@ export default function ArcaneCraftingCodexPage() {
     if (!harvestStarted || harvestAttemptsRemaining <= 0 || harvestStep !== "loot" || pendingLootRolls <= 0) return;
 
     const table = getLootTable(lootTableId);
-    const quality = lootQuality === "unrolled" ? rollWeightedLootQuality(lootTier) : lootQuality;
+    const character = characters.find((item) => item.id === lootCharacterId) || characters[0];
+    let quality = lootQuality === "unrolled" ? rollWeightedLootQuality(lootTier) : lootQuality;
+
+    if (quality === "none" && characterHasAttribute(character?.id, CRAFTING_ATTRIBUTE_IDS.efficientHarvester)) {
+      quality = "common";
+    }
+
+    if (characterHasAttribute(character?.id, CRAFTING_ATTRIBUTE_IDS.phaseExtractor)) {
+      quality = improveLootQualityOnce(quality, ["phase", "dimensional"]);
+    }
+
+    if (characterHasAttribute(character?.id, CRAFTING_ATTRIBUTE_IDS.dragonSense)) {
+      quality = improveLootQualityOnce(quality, ["dragon", "draconic"]);
+    }
     const targetSelection = quality === "none" ? null : getTargetedLootSelection(quality);
 
     if (quality === "none") {
@@ -2597,17 +2780,42 @@ export default function ArcaneCraftingCodexPage() {
       return;
     }
 
+    const hasCraftingAttribute = (cardId: number) => characterHasAttribute(selectedCharacter.id, cardId);
+    const hasToolAffinity = Object.entries(ATTRIBUTE_TOOL_AFFINITY).some(([cardId, tools]) =>
+      hasCraftingAttribute(Number(cardId)) && tools.includes(recipe.tool)
+    );
+
     const toolProgress = selectedCharacter.toolProgress?.[recipe.tool] ?? emptyToolProgress();
     const craftsToday = toolProgress.craftsTodayByCategory?.[recipe.category] ?? 0;
     const selectedImprovements = toolProgress.specializations || [];
     const hasAdvantageMastery = selectedImprovements.includes("Mastery: Advantage on crafting rolls");
     const hasDcReductionMastery = selectedImprovements.includes("Mastery: Reduce crafting DC by 1");
     const hasNearFailureMastery = selectedImprovements.includes("Mastery: Treat failures within 2 of DC as Normal");
-    const adjustedDc = hasDcReductionMastery ? Math.max(1, recipe.dc - 1) : recipe.dc;
+    const hasCloseEnough = hasCraftingAttribute(CRAFTING_ATTRIBUTE_IDS.closeEnough);
+    const hasTinkerNearFailure = hasCraftingAttribute(CRAFTING_ATTRIBUTE_IDS.tinkersGift) && recipe.tool === "Tinker";
+    const hasMaterialMemoryDc = hasCraftingAttribute(CRAFTING_ATTRIBUTE_IDS.materialMemory) && craftsToday === 0;
+    const hasLeatherworkerDc =
+      hasCraftingAttribute(CRAFTING_ATTRIBUTE_IDS.leatherworkerHands) &&
+      recipe.tool === "Leatherworker" &&
+      recipe.materials.some((material) => /spider|hide|chitin|leather|creature/i.test(normalizeRequirement(material as RecipeMaterialWithTag).name));
+    const hasChitinCraftDc =
+      hasCraftingAttribute(CRAFTING_ATTRIBUTE_IDS.chitinCraft) &&
+      recipe.materials.some((material) => /chitin|spider/i.test(normalizeRequirement(material as RecipeMaterialWithTag).name));
+    const baseAttributeDcReduction =
+      (hasDcReductionMastery ? 1 : 0) +
+      (hasMaterialMemoryDc ? 2 : 0) +
+      (hasLeatherworkerDc ? 1 : 0) +
+      (hasChitinCraftDc ? 2 : 0);
+    const adjustedDc = Math.max(1, recipe.dc - baseAttributeDcReduction);
     const dailyAdvantage = shouldGainAdvantageFromDailyCategoryLimit(craftsToday);
-    const effectiveRollMode = dailyAdvantage || hasAdvantageMastery ? "advantage" : rollMode;
+    const hasStormReaderAdvantage =
+      hasCraftingAttribute(CRAFTING_ATTRIBUTE_IDS.stormReader) &&
+      recipe.materials.some((material) => /blue[- ]?dragon|storm|lightning/i.test(normalizeRequirement(material as RecipeMaterialWithTag).name));
+    const effectiveRollMode = dailyAdvantage || hasAdvantageMastery || hasStormReaderAdvantage ? "advantage" : rollMode;
 
-    const toolLevel = selectedCharacter.tools[recipe.tool] || (toolProgress.proficient ? "proficient" : "none");
+    const toolLevel = hasToolAffinity
+      ? "proficient"
+      : selectedCharacter.tools[recipe.tool] || (toolProgress.proficient ? "proficient" : "none");
     const proficiencyBonus = PROFICIENCY_BONUS[toolLevel] || 0;
     const statBonus = selectedCharacter.stats[recipe.stat] || 0;
     const plusTwo = assistantBonus === "plus2" ? 2 : 0;
@@ -2639,11 +2847,11 @@ export default function ArcaneCraftingCodexPage() {
           total,
           dc: adjustedDc,
           categoryCraftsToday: craftsToday,
-          isFirstTimeItemType: !selectedCharacter.progressPoints?.[recipe.category],
+          isFirstTimeItemType: hasCraftingAttribute(CRAFTING_ATTRIBUTE_IDS.materialMemory) || !selectedCharacter.progressPoints?.[recipe.category],
         });
 
     if (
-      hasNearFailureMastery &&
+      (hasNearFailureMastery || hasCloseEnough || hasTinkerNearFailure) &&
       !npcCraft &&
       craftResult.quality === "Flawed" &&
       total >= adjustedDc - 2
@@ -2651,12 +2859,65 @@ export default function ArcaneCraftingCodexPage() {
       craftResult = {
         ...craftResult,
         type: "success",
-        title: "Mastery Recovery",
+        title: hasCloseEnough ? "Close Enough" : hasTinkerNearFailure ? "Tinker's Gift" : "Mastery Recovery",
         quality: "Normal" as CraftQualityOrFailed,
         ppGain: Math.max(craftResult.ppGain, 1),
         materialsConsumed: "normal",
         itemCreated: true,
-        message: "Mastery applied: a near failure within 2 of the DC becomes a Normal success.",
+        message: `${hasCloseEnough ? "Close Enough" : hasTinkerNearFailure ? "Tinker's Gift" : "Mastery"} applied: a near failure within 2 of the DC becomes a Normal success.`,
+      };
+    }
+
+    if (
+      hasCraftingAttribute(CRAFTING_ATTRIBUTE_IDS.masterworkInstinct) &&
+      !harvestAttributeFlags.masterworkInstinctUsed &&
+      craftResult.quality === "Normal" &&
+      craftResult.itemCreated
+    ) {
+      craftResult = {
+        ...craftResult,
+        quality: "Superior" as CraftQualityOrFailed,
+        title: "Masterwork Instinct",
+        message: `${craftResult.message} Masterwork Instinct upgraded this Normal result to Superior.`,
+      };
+      setHarvestAttributeFlags((current) => ({ ...current, masterworkInstinctUsed: true }));
+    }
+
+    if (
+      hasCraftingAttribute(CRAFTING_ATTRIBUTE_IDS.alchemicalBloodline) &&
+      ["potion", "poison"].some((word) => recipe.category.toLowerCase().includes(word) || recipe.tags.some((tag) => tag.toLowerCase().includes(word))) &&
+      craftResult.quality === "Normal" &&
+      craftResult.itemCreated &&
+      Math.floor(Math.random() * 6) + 1 >= 5
+    ) {
+      craftResult = {
+        ...craftResult,
+        quality: "Superior" as CraftQualityOrFailed,
+        title: "Alchemical Bloodline",
+        message: `${craftResult.message} Alchemical Bloodline upgraded this Normal alchemical result to Superior.`,
+      };
+    }
+
+    if (
+      hasCraftingAttribute(CRAFTING_ATTRIBUTE_IDS.perfectionist) &&
+      craftResult.quality === "Superior"
+    ) {
+      craftResult = {
+        ...craftResult,
+        ppGain: craftResult.ppGain + 1,
+        message: `${craftResult.message} Perfectionist grants +1 additional PP on Superior results.`,
+      };
+    }
+
+    if (
+      (hasCraftingAttribute(CRAFTING_ATTRIBUTE_IDS.masteryFastTrack) || hasCraftingAttribute(CRAFTING_ATTRIBUTE_IDS.dailyGrind)) &&
+      craftResult.itemCreated &&
+      craftResult.quality !== "Failed"
+    ) {
+      craftResult = {
+        ...craftResult,
+        ppGain: craftResult.ppGain + 1,
+        message: `${craftResult.message} ${hasCraftingAttribute(CRAFTING_ATTRIBUTE_IDS.masteryFastTrack) ? "Mastery Fast-Track" : "Daily Grind"} grants +1 additional PP.`,
       };
     }
 
@@ -2707,17 +2968,21 @@ export default function ArcaneCraftingCodexPage() {
           return;
         }
 
-        const shouldKeepRarestOnNat20 =
-          naturalRoll === 20 &&
-          recipe.materials
-            .map((m) => {
-              const normalized = normalizeRequirement(m as RecipeMaterialWithTag);
-              const selected = firstAvailableMaterialForRequirement(normalized, materialMap);
-              return { name: selected?.name || normalized.name, tier: selected?.tier ?? getMaterialTier(normalized.name) ?? 0 };
-            })
-            .sort((a, b) => b.tier - a.tier)[0]?.name === required.name;
+        const natTwentyPreservedMaterials = naturalRoll === 20
+          ? recipe.materials
+              .map((m) => {
+                const normalized = normalizeRequirement(m as RecipeMaterialWithTag);
+                const selected = firstAvailableMaterialForRequirement(normalized, materialMap);
+                return { name: selected?.name || normalized.name, tier: selected?.tier ?? getMaterialTier(normalized.name) ?? 0 };
+              })
+              .sort((a, b) => b.tier - a.tier)
+              .slice(0, hasCraftingAttribute(CRAFTING_ATTRIBUTE_IDS.natTwentyFrugal) ? 2 : 1)
+              .map((item) => normalizeName(item.name))
+          : [];
 
-        if (!shouldKeepRarestOnNat20) consumeMaterial(required.name, required.qty);
+        const shouldKeepOnNat20 = natTwentyPreservedMaterials.includes(normalizeName(required.name));
+
+        if (!shouldKeepOnNat20) consumeMaterial(required.name, required.qty);
       });
 
       if (usingPhaseTouched) consumeMaterial(selectedPhaseMaterial, 1);
@@ -2804,7 +3069,8 @@ export default function ArcaneCraftingCodexPage() {
       current.map((character) => {
         if (character.id !== selectedCharacter.id) return character;
         const currentProgress = character.toolProgress?.[recipe.tool] ?? emptyToolProgress();
-        const nextPp = Math.max(0, currentProgress.pp + craftResult.ppGain);
+        const startingPpFromAffinity = hasToolAffinity ? Math.max(currentProgress.pp, 10) : currentProgress.pp;
+        const nextPp = Math.max(0, startingPpFromAffinity + craftResult.ppGain);
         return {
           ...character,
           tools: {
@@ -2844,7 +3110,7 @@ export default function ArcaneCraftingCodexPage() {
       title: craftResult.title,
       result: craftResult as CraftResultSummary,
       phaseTouchedEffect: phaseEffect?.name,
-      message: `${craftResult.message}${brokeToolOnNatOne ? ` Natural 1: ${recipe.tool}'s Tools broke.` : ""}${dailyAdvantage ? " Daily category limit reached: advantage applied, no PP gained." : ""}${materialRecipe && createdMaterials.length > 0 ? ` Added material output to inventory: ${createdMaterials.map((m) => `${m.qty}× ${m.name}`).join(", ")}.` : ""}`,
+      message: `${craftResult.message}${brokeToolOnNatOne ? ` Natural 1: ${recipe.tool}'s Tools broke.` : ""}${dailyAdvantage ? " Daily category limit reached: advantage applied." : ""}${baseAttributeDcReduction ? ` Attribute DC reduction applied: -${baseAttributeDcReduction}.` : ""}${hasToolAffinity ? ` Tool Affinity applied: ${recipe.tool} treated as proficient with at least 10 PP.` : ""}${hasStormReaderAdvantage ? " Storm Reader applied: advantage on this crafting roll." : ""}${materialRecipe && createdMaterials.length > 0 ? ` Added material output to inventory: ${createdMaterials.map((m) => `${m.qty}× ${m.name}`).join(", ")}.` : ""}`,
     });
   }
 
