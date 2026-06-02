@@ -1569,7 +1569,10 @@ export default function ArcaneCraftingCodexPage() {
   }
 
   useEffect(() => {
-    if (!materialsLoaded || !activeInventoryId) return;
+    if (!activeInventoryId) {
+      setCharacterAttributeAssignments([]);
+      return;
+    }
 
     loadCharacterAttributeAssignments(activeInventoryId);
 
@@ -1590,7 +1593,7 @@ export default function ArcaneCraftingCodexPage() {
     return () => {
       supabase.removeChannel(channel);
     };
-  }, [materialsLoaded, activeInventoryId]);
+  }, [activeInventoryId]);
 
   function characterHasAttribute(characterId: string | undefined, cardId: number) {
     if (!characterId) return false;
@@ -3662,8 +3665,14 @@ function CharacterAttributeEffectList({
   attributeIds: number[];
   title: string;
 }) {
+  const assignedIds = new Set(
+    assignments
+      .filter((assignment) => assignment.character_id === characterId)
+      .map((assignment) => Number(assignment.card_id))
+  );
+
   const activeAttributes = attributeIds
-    .filter((cardId) => assignments.some((assignment) => assignment.character_id === characterId && assignment.card_id === cardId))
+    .filter((cardId) => assignedIds.has(Number(cardId)))
     .map((cardId) => CRAFTING_ATTRIBUTE_EFFECT_META[cardId])
     .filter((attribute): attribute is AttributeEffectMeta => Boolean(attribute));
 
