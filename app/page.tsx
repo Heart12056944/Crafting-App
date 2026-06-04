@@ -9,6 +9,7 @@ import {
   ClipboardList,
   Dice5,
   FlaskConical,
+  Gift,
   Hammer,
   KeyRound,
   Package,
@@ -59,6 +60,7 @@ import {
 import { creatureTierRules, lootTables, rollDiceExpression, rollWeightedLootQuality, getLootTable, type CreatureTier, type LootQuality } from "@/data/lootTables";
 import { supabase } from "@/lib/supabaseClient";
 import AttributeCardsPanel from "@/components/AttributeCardsPanel";
+import RewardsPanel from "@/components/RewardsPanel";
 import { GmLoginPanel, CreateGmPanel } from "@/components/GmAuthPanels";
 
 import { Card, CardContent } from "@/components/ui/card";
@@ -92,7 +94,7 @@ type InventoryProfile = {
 
 type Stat = "STR" | "DEX" | "CON" | "INT" | "WIS" | "CHA";
 
-type TabId = "craft" | "available" | "recipes" | "materials" | "characters" | "advancement" | "attributes" | "looting" | "craftingRules" | "lootingRules" | "admin";
+type TabId = "craft" | "available" | "recipes" | "materials" | "characters" | "advancement" | "attributes" | "rewards" | "looting" | "craftingRules" | "lootingRules" | "admin";
 
 const tabs = [
   ["craft", "Craft", Hammer],
@@ -102,6 +104,7 @@ const tabs = [
   ["characters", "Characters", UserRound],
   ["advancement", "PP Improvements", Wrench],
   ["attributes", "Attributes", BookOpen],
+  ["rewards", "Rewards", Gift],
   ["looting", "Looting", Package],
   ["craftingRules", "Crafting Rules", ScrollText],
   ["lootingRules", "Looting Rules", Dice5],
@@ -3459,6 +3462,14 @@ export default function ArcaneCraftingCodexPage() {
 
         {activeTab === "attributes" && (
           <AttributeCardsPanel
+            campaignId={activeInventoryId}
+            characters={characters}
+            adminUnlocked={adminUnlocked}
+          />
+        )}
+
+        {activeTab === "rewards" && (
+          <RewardsPanel
             campaignId={activeInventoryId}
             characters={characters}
             adminUnlocked={adminUnlocked}
