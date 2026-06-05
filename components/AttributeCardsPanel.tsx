@@ -7,83 +7,436 @@ export type AttributeCardData = {
   id: number;
   name: string;
   tags: string[];
+  rarity: AttributeRarity;
   score: number;
   desc: string;
 };
 
+type AttributeRarity = "Common" | "Uncommon" | "Rare" | "Epic" | "Legendary";
+
+const ATTRIBUTE_RARITY_WEIGHTS: Record<AttributeRarity, number> = {
+  Common: 14,
+  Uncommon: 12,
+  Rare: 10,
+  Epic: 7,
+  Legendary: 3,
+};
+
 const ATTRIBUTE_CARDS: AttributeCardData[] = [
-  // Season 2 unique cards (not duplicated in S3)
-  { id: 1183, name: "Ageless", tags: ["Cursed","Passive"], score: -8, desc: "You do not need air, food, or water to survive. You do not age. You are immune to death as long as your skull remains intact. You are an Undead creature for the purposes of spells and effects." },
-  { id: 1184, name: "Valkyrie", tags: ["Cursed","Passive"], score: 8, desc: "Your character must be female. You have wings which grant you a fly speed of 30 ft. while falling, you may glide and take no fall damage." },
-  { id: 1185, name: "Lycanthrope", tags: ["Cursed","Passive"], score: 4, desc: "Draw 3 Beast Companions and choose one. At midnight, while outside under the moon, or upon taking a Critical Hit, you shapeshift into your Beast form and gain access to its abilities. Your HP does not change and you retain access to your other abilities." },
-  { id: 1186, name: "Medusa", tags: ["Cursed","Passive"], score: -4, desc: "You can attempt to dominate the minds of others with your gaze. On a Critical Hit, the target must succeed on a Wisdom saving throw (DC 15) or become your Charmed Companion for life." },
-  { id: 1187, name: "Vampire", tags: ["Cursed","Passive"], score: 5, desc: "You are in constant search for your soulmate. You have advantage on Insight and Perception checks to see through disguises and detect lies." },
-  // Season 3 cards (definitive versions)
-  { id: 3661, name: "Strong", tags: ["Passive"], score: 5, desc: "Your character has powerful muscles and is naturally athletic. Your unarmed strikes and basic weapon attacks always deal at least 10 damage. Kobolds may redraw this Attribute." },
-  { id: 3662, name: "Believer", tags: ["Passive"], score: 3, desc: "You are not who you believe you are — you are instead living out the story of someone else entirely. You lack the ability of self-awareness and cannot be convinced otherwise." },
-  { id: 3663, name: "Intelligent", tags: ["Passive"], score: -3, desc: "You have studied all your life in the arcane arts. Your character may start with any non-Legendary spell in the game added to their spellbook or spell slots at character creation." },
-  { id: 3664, name: "Quick", tags: ["Passive"], score: 1, desc: "You speak quickly and move even quicker. You can move up to 10 additional spaces (50 ft.) using your Movement Action each turn." },
-  { id: 3665, name: "Eccentric", tags: ["Passive"], score: -8, desc: "You speak with a posh accent and come from considerable wealth. You have 500 extra gold to spend at character creation, but you have disadvantage on Constitution saving throws and suffer terribly from emotional distress." },
-  { id: 3666, name: "Charismatic", tags: ["Passive"], score: 4, desc: "You are irresistibly attractive to races and genders of your choosing. Outside of combat, you may attempt to beguile any NPC into becoming your Companion with a Charisma (Persuasion) check. You must have the appropriate Companion slot available." },
-  { id: 3667, name: "Durable", tags: ["Passive"], score: 10, desc: "You never cut or shave your hair. Your Armor Class, regardless of whether you wear armor or not, always grants at least 40 temporary hit points at the start of each long rest." },
-  { id: 3668, name: "Psychic", tags: ["Passive"], score: -8, desc: "You can read the minds of others. The Dungeon Master must reveal the surface thoughts of any creature on the battlefield whenever you ask for them as a bonus action." },
-  { id: 3669, name: "Seadog", tags: ["Passive"], score: 8, desc: "You are a natural sailor who longs for the waves. You have a swim speed equal to your walking speed and automatically succeed on Athletics checks to swim or dive." },
-  { id: 3670, name: "Cursed", tags: ["Passive"], score: -4, desc: "You are deeply superstitious and paranoid of others. Whenever another party member makes a Death Saving Throw, you immediately take 50 damage." },
-  { id: 3671, name: "Beastmaster", tags: ["Passive"], score: 5, desc: "You have a deep bond with animals and are a gifted handler of wild creatures. Once per campaign, you may permanently charm a Beast creature to become your Companion without a roll." },
-  { id: 3672, name: "Doomed", tags: ["Passive"], score: -10, desc: "Death calls to your character. Whenever you roll a Critical Failure (natural 1), you must immediately make a Death Saving Throw. If drawn at character creation, you may redraw." },
-  { id: 3673, name: "Klutz", tags: ["Passive"], score: -3, desc: "You are dangerously clumsy and your allies know it. Whenever you roll a Critical Hit (natural 20), roll 3 additional d20s. If any of them are a natural 1, the action becomes a Critical Failure instead." },
-  { id: 3674, name: "Overweight", tags: ["Passive"], score: 3, desc: "You are portly and sluggish in battle. Your movement speed is reduced to 15 ft. and you may only move up to 3 spaces with your Movement Action." },
-  { id: 3675, name: "Halfwit", tags: ["Passive"], score: 7, desc: "You are easily fooled and blissfully dim. The Dungeon Master may veto any action in combat that would be too tactically clever for your character, at their discretion." },
-  { id: 3676, name: "Peasant", tags: ["Passive"], score: 10, desc: "You are untrained in weapons and magic, having lived a humble commoner's life until now. Replace your Class with the Peasant Class, which has no purchasable items or abilities. Draw 8 random Companion Abilities and add them to your character instead." },
-  { id: 3677, name: "Patient", tags: ["Passive"], score: 1, desc: "You remain calm and composed even in the most chaotic situations. Once per campaign, you may restore all expended Reactions and bonus actions in a single turn." },
-  { id: 3678, name: "Blasphemous", tags: ["Passive"], score: -3, desc: "You do not believe in gods, divine beings, or draconic patrons. You cannot cast spells of the Divination or Evocation schools, nor any spell with the Divine descriptor." },
-  { id: 3679, name: "Cackling", tags: ["Passive"], score: -4, desc: "You possess an unmistakably villainous laugh that you deploy constantly. Whenever you suffer the effects of a Critical Failure, you may force one willing or unwilling Ally to take the consequences in your place." },
-  { id: 3680, name: "Drunk", tags: ["Passive"], score: -1, desc: "Your character is perpetually intoxicated and slurs their speech. In combat, you may only move diagonally. Despite this, you have advantage on saving throws against being Frightened." },
-  { id: 3681, name: "Blind", tags: ["Passive"], score: -2, desc: "Your character is blind and permanently has the Blinded condition. However, you do not miss with basic attacks or abilities as long as you did not move last round, having learned to fight by sound and instinct." },
-  { id: 3682, name: "Chatterbox", tags: ["Passive"], score: 3, desc: "You talk endlessly about things of no consequence. You are Immune to the Silenced condition. Whenever a creature attempts to Silence you, you gain a Bonus Action immediately." },
-  { id: 3683, name: "Adopted", tags: ["Passive"], score: -3, desc: "You were raised by another race entirely. Draw three Backgrounds and choose one to replace your original Background. You must replace your original because your birth parents abandoned you." },
-  { id: 3684, name: "Colossal", tags: ["Passive"], score: 5, desc: "You are enormous in height and build. You now occupy a Large creature space. Gnomes and Halflings gain all benefits of the Large size category while still appearing as a stout Dwarf in height." },
-  { id: 3685, name: "Insane", tags: ["Passive"], score: 7, desc: "You are demented and twisted to your core. Whenever you roll a Critical Failure, you become Charmed by the nearest enemy creature until you take damage or fall below half hit points." },
-  { id: 3686, name: "Criminal", tags: ["Passive"], score: -4, desc: "You have deep ties to criminal organisations across the realm. At character creation, draw 3 random Treasure cards and add them to your inventory. You may sell them to other players at any price you name." },
-  { id: 3687, name: "Deformed", tags: ["Passive"], score: 8, desc: "Your appearance is deeply unsettling due to a severe physical abnormality. You cannot be Charmed and are Immune to the Charmed condition. You also cannot benefit from Persuasion checks based on attraction." },
-  { id: 3688, name: "Alpha", tags: ["Passive"], score: 3, desc: "You are a natural leader who commands respect in battle. At the start of combat, you may grant your entire party a Bonus Action on their first turn." },
-  { id: 3689, name: "Beta", tags: ["Passive"], score: -3, desc: "You are a follower who lacks conviction. At character creation, you may not begin building your character until all other players have finished theirs." },
-  { id: 3690, name: "Filthy", tags: ["Passive"], score: 10, desc: "You are perpetually unwashed and reek of decay. At the start of every round, all creatures adjacent to you must succeed on a Constitution saving throw (DC 12) or gain the Poisoned condition until the start of their next turn." },
-  { id: 3691, name: "Melodick", tags: ["Passive"], score: -2, desc: "You express all passive aggression through unsolicited song. Whenever you are about to take damage, you may teleport an adjacent Ally into your space and have them take the damage instead, without their consent." },
-  { id: 3692, name: "Creepy", tags: ["Passive"], score: -5, desc: "Others find your presence deeply unsettling. At character creation, draw 2 random Dark or Necromancy spells and add them to your inventory." },
-  { id: 3693, name: "Daredevil", tags: ["Passive"], score: -3, desc: "You are recklessly fearless and throw yourself at danger. Once per campaign, you may declare your next used ability or attack an automatic Critical Hit before you roll." },
-  { id: 3694, name: "Narcissistic", tags: ["Passive"], score: 2, desc: "You are obsessed with your own greatness and cannot bear watching others succeed. Whenever an Ally reduces an enemy to 0 hit points, you immediately gain a Bonus Action." },
-  { id: 3695, name: "Devout", tags: ["Passive"], score: 1, desc: "You are a true and unwavering believer in the gods and divine powers. Once per campaign, you may choose to ignore one Critical Failure you roll or one Critical Hit you receive." },
-  { id: 3696, name: "Romantic", tags: ["Passive"], score: -2, desc: "You are a hopeless romantic who falls deeply and completely. Once per campaign, you may cause a hostile creature to fall in love with you and become your Companion, until one of you dies." },
-  { id: 3697, name: "Bookworm", tags: ["Passive"], score: -4, desc: "You are perpetually absorbed in tomes and scrolls. At character creation, draw 12 random Spell Scrolls and stack them in a single inventory slot. You may only cast them in the order the Dungeon Master stacks them." },
-  { id: 3698, name: "Alchemist", tags: ["Passive"], score: -1, desc: "You are somber and deeply sarcastic in conversation. At character creation, draw 8 random Potions and add them to your inventory." },
-  { id: 3699, name: "Famous", tags: ["Passive"], score: -3, desc: "Almost everyone in the realm knows your name. The Dungeon Master and other players may invent facts about your character's past at any time, and those facts become true." },
-  { id: 3700, name: "Artistic", tags: ["Passive"], score: -5, desc: "You are deeply creative across many art forms, which is tragically useless in the life of an adventurer. The DM may call upon this talent at dramatically inopportune moments." },
-  { id: 3701, name: "Hoarder", tags: ["Passive"], score: -6, desc: "You cannot resist collecting things, useful or otherwise. You cannot use Consumable items unless your own life is in immediate danger. Draw 4 random Consumables and add them to your inventory." },
-  { id: 3702, name: "Liar", tags: ["Passive"], score: 1, desc: "You are a notorious deceiver who rarely tells the truth. At the end of character creation, remove one Ability from your character. You must claim to possess this ability for the entire campaign." },
-  { id: 3703, name: "Gullible", tags: ["Passive"], score: 2, desc: "You will believe almost anything told to you. Your character has no critical thinking skills whatsoever and never questions information given to them by any source." },
-  { id: 3704, name: "Greedy", tags: ["Passive"], score: -3, desc: "You care only for gold and treasure above all else. At the end of character creation you must have at least 200 gold remaining or this Attribute becomes Doomed. You start with an additional 200 gold." },
-  { id: 3705, name: "Nature Warden", tags: ["Passive"], score: 4, desc: "You are one with nature and care deeply for all living things. At character creation, draw 2 random Druid or Earth spells and add them to your inventory." },
-  { id: 3706, name: "Pyromaniac", tags: ["Passive"], score: -5, desc: "You are obsessed with fire in a way that makes others uncomfortable. At character creation, draw 2 random Fire spells and add them to your inventory." },
-  { id: 3707, name: "Ancient", tags: ["Passive"], score: -10, desc: "You have lived since the age of the world's hatching and have witnessed all of recorded history. Draw the Elf Race card and place it over your Race. You are now an Elf but gain the benefits of both Race cards." },
-  { id: 3708, name: "Follower of the Light", tags: ["Passive"], score: 5, desc: "You are a devoted servant of a god of light and radiance. At character creation, add the Divine Favor spell to your character. You may cast it once per long rest without expending a spell slot." },
-  { id: 3709, name: "Sigil of Flame", tags: ["Passive"], score: 5, desc: "You carry the brand of a god of fire and destruction. Your basic attacks deal triple damage instead of double on a Critical Hit." },
-  { id: 3710, name: "Child of Rokesh", tags: ["Passive"], score: 5, desc: "You are blessed by a god of tenacity and brotherhood. While all other party members are alive and conscious, you are Immune to Death Saving Throws and cannot be reduced below 1 HP." },
-  { id: 3711, name: "Frostborn", tags: ["Passive"], score: 5, desc: "You carry the blessing of a god of ice and stillness. High rolls (15+) on basic attack rolls cause the target to be Restrained by ice until the start of their next turn." },
-  { id: 3712, name: "Seeker of Knowledge", tags: ["Passive"], score: 5, desc: "You are devoted to a god of arcane secrets and forbidden lore. At character creation, draw one Legendary Spell Scroll and add it to your character." },
-  { id: 3713, name: "Herald of Bones", tags: ["Passive"], score: 5, desc: "You serve a god of death and undeath. Whenever you score a Critical Hit against a target, that target must immediately make a Death Saving Throw." },
-  { id: 3714, name: "Heart of Gold", tags: ["Passive"], score: 5, desc: "You are genuinely, unconditionally generous. At character creation, receive 300 extra gold. You must distribute all of it to other players however you choose. You may keep none of it." },
-  { id: 3715, name: "Coward", tags: ["Passive"], score: -1, desc: "You are deeply afraid of violence and conflict. You cannot attack any creature that attacked you during the previous round." },
-  { id: 3716, name: "Lucky", tags: ["Passive"], score: 7, desc: "Fortune favours you more than most. You now score a Critical Hit on any High Roll (18, 19, or 20)." },
-  { id: 3717, name: "Unlucky", tags: ["Passive"], score: -7, desc: "Nothing ever seems to go your way. You now suffer a Critical Failure on any Low Roll (1, 2, or 3)." },
-  { id: 3718, name: "Illiterate", tags: ["Passive"], score: -2, desc: "You cannot read. You are unable to use Spell Scrolls or decipher any written text. The rest of this card is unreadable to you: ajdsid ale kfsdlkw jsiuw sslshw ksjwla lianra lair fsdm." },
-  { id: 3719, name: "Narcoleptic", tags: ["Passive"], score: 3, desc: "You are prone to sudden, uncontrollable sleep. At the start of every round, roll a d20. On a roll of 5 or lower, you are Stunned for the remainder of that round." },
-  { id: 3720, name: "Honorable", tags: ["Passive"], score: 4, desc: "You seek justice and fairness even against your enemies. You cannot attack any creature that is not aware of your presence or is not facing you." },
-  { id: 3721, name: "Well Endowed", tags: ["Passive"], score: 10, desc: "Your defining physical characteristics are remarkably large and pronounced. No further mechanical benefit is required from a card such as this." },
-  { id: 3722, name: "Emo", tags: ["Passive"], score: 1, desc: "You are burdened by a deep melancholy and believe life holds little joy. Gain 200 gold, draw 2 random spells, 1 random Treasure, and 1 random Companion, all added to your inventory — thanks to the privilege you refuse to acknowledge." },
-  { id: 2844, name: "Demonic Possession", tags: ["Legendary","Cursed","Passive"], score: 0, desc: "A demon shares your body. Each turn roll a d20 — on a 5 or lower the demon seizes control. While possessed, the demon uses Pyromancer spells (Fireball, Heat Wave, Lava Pool). The demon may use your class abilities, but doing so costs you 5 HP and requires a DC 13 Wisdom saving throw to regain control." },
-  { id: 3016, name: "Ironclad Arm", tags: ["Armor"], score: 10, desc: "When you were young you lost your arm and had it replaced by a mechanical construct. Your unarmed strikes deal at least 5 damage. This arm can be damaged by Critical Failures and must be repaired by a skilled artisan." },
-  { id: 3018, name: "Bloodthirsty", tags: ["Cursed"], score: 5, desc: "You are always seeking battle and revel in carnage. The sight of blood fills you with savage energy. Whenever any creature (ally or enemy) takes damage that causes bleeding, you regain 1 HP." },
+  // Generated from the uploaded rarity documents. Flavor lines are intentionally omitted.
+  { id: 3661, name: "Strong", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: 5, desc: "Your character has powerful muscles and is naturally athletic. Your melee attacks deal an extra 5 damage." },
+  { id: 7301, name: "Quick", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: 1, desc: "You speak quickly and move even quicker. You can move up to 10 additional spaces (50 ft.) using your Movement Action each turn." },
+  { id: 7302, name: "Overweight", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: 3, desc: "You are portly and sluggish in battle. Your movement speed is reduced to 15 ft. and you may only move up to 3 spaces with your Movement Action." },
+  { id: 7303, name: "Halfwit", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: 7, desc: "You are easily fooled and blissfully dim. The Dungeon Master may veto any action in combat that would be too tactically clever for your character, at their discretion." },
+  { id: 7304, name: "Patient", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: 1, desc: "You remain calm and composed even in the most chaotic situations. Once per campaign, you may restore all expended Reactions and bonus actions in a single turn." },
+  { id: 7305, name: "Drunk", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: -1, desc: "Your character is perpetually intoxicated and slurs their speech. In combat, you may only move diagonally. Despite this, you have advantage on saving throws against being Frightened." },
+  { id: 7306, name: "Chatterbox", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: 3, desc: "You talk endlessly about things of no consequence. You are Immune to the Silenced condition. Whenever a creature attempts to Silence you, you gain a Bonus Action immediately." },
+  { id: 7307, name: "Narcissistic", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: 2, desc: "You are obsessed with your own greatness and cannot bear watching others succeed. Whenever an Ally reduces an enemy to 0 hit points, you immediately gain a Bonus Action." },
+  { id: 7308, name: "Devout", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: 1, desc: "You are a true and unwavering believer in the gods and divine powers. Once per campaign, you may choose to ignore one Critical Failure you roll or one Critical Hit you receive." },
+  { id: 7309, name: "Romantic", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: -2, desc: "You are a hopeless romantic who falls deeply and completely. Once per campaign, you may cause a hostile creature to fall in love with you and become your Companion, until one of you dies." },
+  { id: 7310, name: "Coward", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: -1, desc: "You are deeply afraid of violence and conflict. You cannot attack any creature that attacked you during the previous round." },
+  { id: 7311, name: "Liar", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: 1, desc: "You are a notorious deceiver who rarely tells the truth. At the end of character creation, remove one Ability from your character. You must claim to possess this ability for the entire campaign." },
+  { id: 7312, name: "Gullible", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: 2, desc: "You will believe almost anything told to you. Your character has no critical thinking skills whatsoever and never questions information given to them by any source." },
+  { id: 7313, name: "Illiterate", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: -2, desc: "You cannot read. You are unable to use Spell Scrolls or decipher any written text." },
+  { id: 7314, name: "Narcoleptic", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: 3, desc: "You are prone to sudden, uncontrollable sleep. At the start of every round, roll a d20. On a roll of 5 or lower, you are Stunned for the remainder of that round." },
+  { id: 7315, name: "Well Endowed", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: 10, desc: "Your defining physical characteristics are remarkably large and pronounced. No further mechanical benefit is required from a card such as this." },
+  { id: 7316, name: "Gambler", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: 0, desc: "Whenever you roll a natural 20, gain Inspiration. Whenever you roll a natural 1, lose Inspiration if you have it." },
+  { id: 7317, name: "Beta", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: -3, desc: "You are a follower who lacks conviction. At character creation, you may not begin building your character until all other players have finished theirs." },
+  { id: 7318, name: "Believer", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: 3, desc: "You are not who you believe you are — you are instead living out the story of someone else entirely. You lack the ability of self-awareness and cannot be convinced otherwise." },
+  { id: 7319, name: "Honorable", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: 4, desc: "You seek justice and fairness even against your enemies. You cannot attack any creature that is not aware of your presence or is not facing you." },
+  { id: 7320, name: "Artistic", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: -5, desc: "You are deeply creative across many art forms, which is tragically useless in the life of an adventurer. The DM may call upon this talent at dramatically inopportune moments." },
+  { id: 7321, name: "Heart of Gold", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: -1, desc: "You are genuinely, unconditionally generous. At character creation, receive 300 extra gold. You must distribute all of it to other players however you choose. You may keep none of it." },
+  { id: 7322, name: "Famous", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: -3, desc: "Almost everyone in the realm knows your name. The Dungeon Master and other players may invent facts about your character's past at any time, and those facts become true." },
+  { id: 7323, name: "Greedy", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: -3, desc: "You care only for gold and treasure above all else. At the end of character creation you must have at least 200 gold remaining or this Attribute becomes Doomed. You start with an additional 200 gold." },
+  { id: 7324, name: "Cook", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: 0, desc: "During a Long Rest, prepare enough food for up to 6 creatures. Those creatures gain temporary hit points equal to your proficiency bonus." },
+  { id: 7325, name: "Daredevil", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: -3, desc: "You are recklessly fearless and throw yourself at danger. Once per campaign, you may declare your next used ability or attack an automatic Critical Hit before you roll." },
+  { id: 7326, name: "Blind", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: -2, desc: "Your character is blind and permanently has the Blinded condition. However, you do not miss with basic attacks or abilities as long as you did not move last round, having learned to fight by sound and instinct." },
+  { id: 7327, name: "Durable", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 10, desc: "You never cut or shave your hair. Your Armor Class, regardless of whether you wear armor or not, always grants at least 40 temporary hit points at the start of each long rest." },
+  { id: 7328, name: "Charismatic", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 4, desc: "You are irresistibly attractive to races and genders of your choosing. Outside of combat, you may attempt to beguile any NPC into becoming your Companion with a Charisma (Persuasion) check. You must have the appropriate Companion slot available." },
+  { id: 7329, name: "Beastmaster", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 5, desc: "You have a deep bond with animals and are a gifted handler of wild creatures. Once per campaign, you may permanently charm a Beast creature to become your Companion without a roll." },
+  { id: 7330, name: "Giant", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 10, desc: "You were born unnaturally large for your species. Your melee attacks deal an extra 4 damage and your character is one size category larger than normal for your species." },
+  { id: 7331, name: "Arcane-Touched", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 3, desc: "Magic seems drawn to you. Choose one cantrip from any spell list. You may cast it at will. Intelligence, Wisdom, or Charisma (your choice) is your spellcasting ability for this spell." },
+  { id: 7332, name: "Stormborn", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 4, desc: "Lightning refuses to harm you. You have Resistance to Lightning damage. Once per Long Rest, when you take Lightning damage, you may instead take no damage and regain HP equal to your proficiency bonus." },
+  { id: 7333, name: "Duelist", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 3, desc: "You thrive in single combat. Once per Long Rest, when attacking a creature with no allies within 5 feet of it, you may gain Advantage on the attack roll." },
+  { id: 7334, name: "Silver Tongue", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 4, desc: "Words come naturally to you. Once per Long Rest, you may treat a Persuasion, Deception, or Performance check as though you rolled a 15 before modifiers." },
+  { id: 7335, name: "Tracker", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 2, desc: "You are exceptionally skilled at following signs and trails. Gain proficiency in Survival. If already proficient, gain Expertise." },
+  { id: 7336, name: "Blessed", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 4, desc: "Fate seems to intervene on your behalf. Once per Long Rest, add 1d6 to any attack roll, ability check, or saving throw after seeing the result but before knowing the outcome." },
+  { id: 7337, name: "Night Watcher", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: -2, desc: "Years of vigilance have sharpened your senses. Gain Darkvision 60 feet. If you already have Darkvision, increase its range by 30 feet." },
+  { id: 7338, name: "Dungeon Delver", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 3, desc: "You have spent years exploring ruins and forgotten places. Gain proficiency in Investigation. If already proficient, gain Expertise." },
+  { id: 7339, name: "Dragonblooded", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 5, desc: "Choose one damage type: Fire, Cold, Lightning, Poison, or Acid. You gain Resistance to that damage type." },
+  { id: 7340, name: "Alpha", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 3, desc: "You are a natural leader who commands respect in battle. At the start of combat, you may grant your entire party a Bonus Action on their first turn." },
+  { id: 7341, name: "Ironclad Arm", tags: ["Passive", "Armor", "Basic", "Uncommon"], rarity: "Uncommon", score: 10, desc: "When you were young you lost your arm and had it replaced by a mechanical construct. Your unarmed strikes deal at least 5 damage. This arm can be damaged by Critical Failures and must be repaired by a skilled artisan." },
+  { id: 7342, name: "Bloodthirsty", tags: ["Cursed", "Basic", "Uncommon"], rarity: "Uncommon", score: 5, desc: "You are always seeking battle and revel in carnage. The sight of blood fills you with savage energy. Whenever any creature (ally or enemy) takes damage that causes bleeding, you regain 1 HP." },
+  { id: 7343, name: "Seadog", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 8, desc: "You are a natural sailor who longs for the waves. You have a swim speed equal to your walking speed and automatically succeed on Athletics checks to swim or dive." },
+  { id: 7344, name: "Bookworm", tags: ["Passive", "Basic", "Uncommon", "DM Granted"], rarity: "Uncommon", score: -4, desc: "You are perpetually absorbed in tomes and scrolls. At character creation, gain 12 random spell scrolls selected by the DM and place them in a single inventory slot. You may only cast them in the order determined by the DM." },
+  { id: 7345, name: "Alchemist", tags: ["Passive", "Basic", "Uncommon", "DM Granted"], rarity: "Uncommon", score: -1, desc: "You are somber and deeply sarcastic in conversation. At character creation, gain 8 random potions selected by the DM and add them to your inventory." },
+  { id: 7346, name: "Herbalist", tags: ["Passive", "Basic", "Uncommon", "DM Granted"], rarity: "Uncommon", score: 2, desc: "You have extensive knowledge of plants and natural remedies. At the end of each Long Rest, gain 1 random common potion selected by the DM." },
+  { id: 7347, name: "Lucky Find", tags: ["Passive", "Basic", "Uncommon", "DM Granted"], rarity: "Uncommon", score: 2, desc: "Fortune smiles upon you. At the start of each adventure or dungeon, gain 1 random common treasure selected by the DM." },
+  { id: 7348, name: "Tinkerer", tags: ["Passive", "Basic", "Uncommon", "DM Granted"], rarity: "Uncommon", score: 2, desc: "You are constantly building strange devices. During a Long Rest, create one of the following: Smoke Bomb, Flash Bomb, or Grappling Device. The item lasts until your next Long Rest." },
+  { id: 7349, name: "Treasure Hunter", tags: ["Passive", "Basic", "Uncommon", "DM Granted"], rarity: "Uncommon", score: -2, desc: "You cannot resist investigating valuables. Whenever the party discovers treasure, you must immediately inspect it. Gain 2 random treasures selected by the DM at character creation." },
+  { id: 7350, name: "Collector", tags: ["Passive", "Basic", "Uncommon", "DM Granted"], rarity: "Uncommon", score: 2, desc: "Gain 3 random treasures selected by the DM. You may never willingly sell a treasure you own." },
+  { id: 7351, name: "Emo", tags: ["Passive", "Basic", "Uncommon", "DM Granted"], rarity: "Uncommon", score: 1, desc: "You are burdened by a deep melancholy and believe life holds little joy. Gain 200 gold, 2 random cantrips or 1st-level spells, 1 random treasure, and 1 random companion selected by the DM." },
+  { id: 7352, name: "Arcane Apprentice", tags: ["Passive", "Basic", "Uncommon", "DM Granted"], rarity: "Uncommon", score: 3, desc: "Gain 1 random Arcane cantrip or 1st-level spell selected by the DM. The spell may be cast once per Long Rest without expending a spell slot." },
+  { id: 7353, name: "Nature Warden", tags: ["Passive", "Basic", "Uncommon", "DM Granted"], rarity: "Uncommon", score: 4, desc: "You are one with nature and care deeply for all living things. At character creation, gain 2 random Druid or Earth cantrips or 1st-level spells selected by the DM. Each spell may be cast once per Long Rest." },
+  { id: 7354, name: "Pyromaniac", tags: ["Passive", "Basic", "Uncommon", "DM Granted"], rarity: "Uncommon", score: -5, desc: "You are obsessed with fire in a way that makes others uncomfortable. At character creation, gain 2 random Fire cantrips or 1st-level spells selected by the DM. Each spell may be cast once per Long Rest." },
+  { id: 7355, name: "Creepy", tags: ["Passive", "Basic", "Uncommon", "DM Granted"], rarity: "Uncommon", score: -5, desc: "Others find your presence deeply unsettling. At character creation, gain 2 random Dark or Necromancy cantrips or 1st-level spells selected by the DM. Each spell may be cast once per Long Rest." },
+  { id: 7356, name: "Peasant", tags: ["Passive", "Basic", "Uncommon", "DM Granted"], rarity: "Uncommon", score: 10, desc: "You are untrained in weapons and magic, having lived a humble commoner's life until now. Replace your Class with the Peasant Class, which has no purchasable items or abilities. Gain 8 random companion abilities selected by the DM instead." },
+  { id: 7357, name: "Intelligent", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: -3, desc: "You have studied the arcane arts extensively. Choose one spell of 3rd level or lower. You may cast this spell once per Long Rest without expending a spell slot. The spell is cast at 3rd level when applicable. Intelligence is your spellcasting ability for this spell." },
+  { id: 3716, name: "Lucky", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: 7, desc: "Fortune favours you more than most. You now score a Critical Hit on any High Roll (18, 19, or 20)." },
+  { id: 7358, name: "Unlucky", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: -7, desc: "Nothing ever seems to go your way. You now suffer a Critical Failure on any Low Roll (1, 2, or 3)." },
+  { id: 7359, name: "Doomed", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: -10, desc: "Death calls to your character. Whenever you roll a Critical Failure (natural 1), you must immediately make a Death Saving Throw." },
+  { id: 7360, name: "Klutz", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: -3, desc: "You are dangerously clumsy and your allies know it. Whenever you roll a Critical Hit (natural 20), roll 3 additional d20s. If any of them are a natural 1, the action becomes a Critical Failure instead." },
+  { id: 7361, name: "Valkyrie", tags: ["Cursed", "Passive", "Basic", "Rare"], rarity: "Rare", score: 8, desc: "Your character must be female. You have wings which grant you a fly speed of 30 ft. While falling, you may glide and take no fall damage." },
+  { id: 7362, name: "Medusa", tags: ["Cursed", "Passive", "Basic", "Rare"], rarity: "Rare", score: -4, desc: "You can attempt to dominate the minds of others with your gaze. On a Critical Hit, the target must succeed on a Wisdom saving throw (DC 15) or become your Charmed Companion for life." },
+  { id: 1187, name: "Vampire", tags: ["Cursed", "Passive", "Basic", "Rare"], rarity: "Rare", score: 5, desc: "You are in constant search for your soulmate. You have advantage on Insight and Perception checks to see through disguises and detect lies." },
+  { id: 7363, name: "Eccentric", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: -8, desc: "You speak with a posh accent and come from considerable wealth. You have 500 extra gold to spend at character creation, but you have disadvantage on Constitution saving throws and suffer terribly from emotional distress." },
+  { id: 7364, name: "Psychic", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: -8, desc: "You can read the minds of others. The Dungeon Master must reveal the surface thoughts of any creature on the battlefield whenever you ask for them as a bonus action." },
+  { id: 7365, name: "Cursed", tags: ["Cursed", "Passive", "Basic", "Rare"], rarity: "Rare", score: -4, desc: "You are deeply superstitious and paranoid of others. Whenever another party member makes a Death Saving Throw, you immediately take 50 damage." },
+  { id: 7366, name: "Cackling", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: -4, desc: "You possess an unmistakably villainous laugh that you deploy constantly. Whenever you suffer the effects of a Critical Failure, you may force one willing or unwilling Ally to take the consequences in your place." },
+  { id: 7367, name: "Insane", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: 7, desc: "You are demented and twisted to your core. Whenever you roll a Critical Failure, you become Charmed by the nearest enemy creature until you take damage or fall below half hit points." },
+  { id: 7368, name: "Haunted", tags: ["Cursed", "Passive", "Basic", "Rare", "DM Granted"], rarity: "Rare", score: -4, desc: "A spirit follows you wherever you go. The DM may occasionally provide cryptic warnings, visions, or information. The spirit is not always helpful." },
+  { id: 7369, name: "Ancient", tags: ["Passive", "Basic", "Rare", "DM Granted"], rarity: "Rare", score: -10, desc: "You have lived since the age of the world's hatching and have witnessed all of recorded history. Gain the Elf ancestry change as determined by the DM. You are now an Elf but gain the benefits of both ancestry cards." },
+  { id: 7370, name: "Lycanthrope", tags: ["Cursed", "Passive", "Basic", "Rare", "DM Granted"], rarity: "Rare", score: 4, desc: "Gain 3 random beast companion options selected by the DM and choose one. At midnight, while outside under the moon, or upon taking a Critical Hit, you shapeshift into your Beast form and gain access to its abilities. Your HP does not change and you retain access to your other abilities." },
+  { id: 7371, name: "Blasphemous", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: -3, desc: "You do not believe in gods, divine beings, or draconic patrons. You cannot cast spells of the Divination or Evocation schools, nor any spell with the Divine descriptor." },
+  { id: 7372, name: "Superstitious", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: -2, desc: "You carry countless charms and rituals. Whenever a natural 1 is rolled within 30 feet of you, gain Inspiration." },
+  { id: 7373, name: "Arcane Scarred", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: -1, desc: "A magical accident left permanent marks upon your body. Gain Resistance to Force damage. Whenever you cast a spell, roll 1d20. On a 1, sparks and strange magical effects briefly erupt around you." },
+  { id: 7374, name: "Deformed", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: 8, desc: "Your appearance is deeply unsettling due to a severe physical abnormality. You cannot be Charmed and are Immune to the Charmed condition. You also cannot benefit from Persuasion checks based on attraction." },
+  { id: 7375, name: "Pyrophobic", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: -2, desc: "Fire terrifies you. You have disadvantage on saving throws against being Frightened by creatures dealing Fire damage." },
+  { id: 7376, name: "Sigil of Flame", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: 5, desc: "You carry the brand of a god of fire and destruction. Your basic attacks deal triple damage instead of double on a Critical Hit." },
+  { id: 7377, name: "Child of Rokesh", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: 5, desc: "You are blessed by a god of tenacity and brotherhood. While all other party members are alive and conscious, you are Immune to Death Saving Throws and cannot be reduced below 1 HP." },
+  { id: 7378, name: "Frostborn", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: 5, desc: "You carry the blessing of a god of ice and stillness. High rolls (15+) on basic attack rolls cause the target to be Restrained by ice until the start of their next turn." },
+  { id: 7379, name: "Herald of Bones", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: 5, desc: "You serve a god of death and undeath. Whenever you score a Critical Hit against a target, that target must immediately make a Death Saving Throw." },
+  { id: 7380, name: "Follower of the Light", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: 5, desc: "You are a devoted servant of a god of light and radiance. At character creation, add the Divine Favor spell to your character. You may cast it once per long rest without expending a spell slot." },
+  { id: 7381, name: "Seeker of Knowledge", tags: ["Passive", "Basic", "Rare", "DM Granted"], rarity: "Rare", score: 5, desc: "You are devoted to a god of arcane secrets and forbidden lore. At character creation, gain 1 random Legendary Spell Scroll selected by the DM and add it to your inventory." },
+  { id: 7382, name: "Gifted", tags: ["Passive", "Arcane School", "Rare"], rarity: "Rare", score: 3, desc: "Learn one Cantrip from any class. It uses your choice of INT, WIS, or CHA." },
+  { id: 7383, name: "Scholar", tags: ["Passive", "Arcane School", "Rare"], rarity: "Rare", score: 2, desc: "Gain proficiency in Arcana. If already proficient, gain Expertise." },
+  { id: 7384, name: "Arcane Memory", tags: ["Passive", "Arcane School", "Rare"], rarity: "Rare", score: 4, desc: "Once per Long Rest, reroll a failed Arcana check." },
+  { id: 7385, name: "Apprentice's Spark", tags: ["Passive", "Arcane School", "Rare"], rarity: "Rare", score: 3, desc: "Learn one Level 1 spell. You may cast it once per Long Rest." },
+  { id: 7386, name: "Graduate", tags: ["Passive", "Arcane School", "Rare"], rarity: "Rare", score: 5, desc: "Choose one Level 3 or lower spell. Cast it once per Long Rest at Level 3. It uses your choice of INT, WIS, or CHA." },
+  { id: 7387, name: "Sea Legs", tags: ["Passive", "Sea", "Rare"], rarity: "Rare", score: 2, desc: "You cannot be knocked prone by non-magical effects." },
+  { id: 7388, name: "Salt-Blooded", tags: ["Passive", "Sea", "Rare"], rarity: "Rare", score: 3, desc: "Gain a Swim Speed equal to your movement speed." },
+  { id: 7389, name: "Boarding Veteran", tags: ["Passive", "Sea", "Rare"], rarity: "Rare", score: 3, desc: "The first melee attack you make after moving 15+ feet deals +1d6 damage." },
+  { id: 7390, name: "Buccaneer's Luck", tags: ["Passive", "Sea", "Rare"], rarity: "Rare", score: 4, desc: "Once per Long Rest, reroll any d20 roll. You must use the new result." },
+  { id: 7391, name: "Rum-Fueled Courage", tags: ["Passive", "Sea", "Rare"], rarity: "Rare", score: 2, desc: "You have Advantage against Fear." },
+  { id: 7392, name: "Officer's Presence", tags: ["Passive", "Navy", "Rare"], rarity: "Rare", score: 3, desc: "Once per combat, choose an ally within 30 feet. They gain Advantage on their next attack." },
+  { id: 7393, name: "Iron Discipline", tags: ["Passive", "Navy", "Rare"], rarity: "Rare", score: 4, desc: "You have Advantage against Charm." },
+  { id: 7394, name: "Hold The Line", tags: ["Passive", "Navy", "Rare"], rarity: "Rare", score: 5, desc: "While within 10 feet of an ally, gain +1 AC." },
+  { id: 7395, name: "Veteran Sailor", tags: ["Passive", "Navy", "Rare"], rarity: "Rare", score: 3, desc: "Ignore difficult terrain caused by ships, docks, ropes, debris, or rigging." },
+  { id: 7396, name: "Black Flag Survivor", tags: ["Passive", "Armada", "Rare"], rarity: "Rare", score: 3, desc: "You have Advantage against Intimidation." },
+  { id: 7397, name: "Fog Walker", tags: ["Passive", "Armada", "Rare"], rarity: "Rare", score: 4, desc: "Lightly obscured terrain never imposes disadvantage on you." },
+  { id: 7398, name: "Unseen Hunter", tags: ["Passive", "Armada", "Rare"], rarity: "Rare", score: 5, desc: "Once per Long Rest, become Invisible until the end of your next turn." },
+  { id: 7399, name: "Pathfinder", tags: ["Passive", "Romley", "Rare"], rarity: "Rare", score: 3, desc: "Gain proficiency in Survival. If already proficient, gain Expertise." },
+  { id: 7400, name: "Cartographer", tags: ["Passive", "Romley", "Rare"], rarity: "Rare", score: 2, desc: "Gain Advantage on Investigation checks involving maps, ruins, navigation, or exploration." },
+  { id: 7401, name: "Explorer's Resolve", tags: ["Passive", "Romley", "Rare"], rarity: "Rare", score: 4, desc: "Ignore one level of Exhaustion. Refreshes after a Long Rest." },
+  { id: 7402, name: "First Footsteps", tags: ["Passive", "Romley", "Rare"], rarity: "Rare", score: 5, desc: "Once per Long Rest, automatically succeed on one exploration-related ability check." },
+  { id: 7403, name: "Draconic Resilience", tags: ["Passive", "Dragon", "Rare"], rarity: "Rare", score: 3, desc: "Choose Lightning, Poison, or Cold. Gain Resistance to that damage type." },
+  { id: 7404, name: "Dragon's Presence", tags: ["Passive", "Dragon", "Rare"], rarity: "Rare", score: 4, desc: "Gain proficiency in Intimidation. If already proficient, gain Expertise." },
+  { id: 7405, name: "Scaled Soul", tags: ["Passive", "Dragon", "Rare"], rarity: "Rare", score: 5, desc: "Once per Long Rest, gain temporary HP equal to 3 × your level." },
+  { id: 7406, name: "Draconic Fury", tags: ["Passive", "Dragon", "Rare"], rarity: "Rare", score: 4, desc: "When below half HP, gain +2 damage on weapon attacks." },
+  { id: 7407, name: "Deep Walker", tags: ["Passive", "Leviathan", "Rare"], rarity: "Rare", score: 5, desc: "Gain Darkvision 120 feet. If you already have Darkvision, increase its range by 60 feet." },
+  { id: 7408, name: "Pressure Born", tags: ["Passive", "Leviathan", "Rare"], rarity: "Rare", score: 4, desc: "Gain Resistance to Cold Damage." },
+  { id: 7409, name: "Abyssal Awareness", tags: ["Passive", "Leviathan", "Rare"], rarity: "Rare", score: 5, desc: "You cannot be surprised." },
+  { id: 7410, name: "Leviathan's Gaze", tags: ["Passive", "Leviathan", "Rare"], rarity: "Rare", score: 5, desc: "Once per Long Rest, gain Advantage on all Wisdom checks for 1 minute." },
+  { id: 7411, name: "Grave Survivor", tags: ["Passive", "Undead", "Rare"], rarity: "Rare", score: 3, desc: "You have Advantage against Disease." },
+  { id: 7412, name: "Death-Touched", tags: ["Passive", "Undead", "Rare"], rarity: "Rare", score: 4, desc: "Gain Resistance to Necrotic Damage." },
+  { id: 7413, name: "Soul's Defiance", tags: ["Passive", "Undead", "Rare"], rarity: "Rare", score: 5, desc: "Gain Advantage on Death Saves." },
+  { id: 7414, name: "Returned", tags: ["Passive", "Undead", "Rare"], rarity: "Rare", score: 5, desc: "Once per Long Rest, when reduced to 0 HP, drop to 1 HP instead." },
+  { id: 7415, name: "Witness of the Grave", tags: ["Passive", "Undead", "Rare"], rarity: "Rare", score: 3, desc: "You can instinctively recognize other undead hiding among the living. You have Advantage on Insight checks to determine if a creature is undead. Once per Long Rest, automatically know whether a creature within 30 feet is living or undead." },
+  { id: 7416, name: "Borrowed Flesh", tags: ["Passive", "Undead", "Rare"], rarity: "Rare", score: 2, desc: "Your Perfect Disguise has become easier to maintain. You have Advantage on Deception checks involving your identity. Magical attempts to reveal your undead nature are made with disadvantage." },
+  { id: 7417, name: "Forgotten Death", tags: ["Passive", "Undead", "Rare"], rarity: "Rare", score: 4, desc: "You no longer remember the moment of your death. Once per Long Rest, reroll a failed Wisdom, Intelligence, or Charisma saving throw." },
+  { id: 7418, name: "Echoes of the Tomb", tags: ["Passive", "Undead", "Rare"], rarity: "Rare", score: 3, desc: "The dead occasionally whisper useful knowledge. Once per Long Rest, gain Advantage on one Arcana, History, Investigation, or Religion check." },
+  { id: 7419, name: "Unfinished Purpose", tags: ["Passive", "Undead", "Rare"], rarity: "Rare", score: 5, desc: "Something still ties you to the world. Choose a personal goal, oath, or mission. Whenever acting directly toward that purpose, gain +1 on attack rolls, ability checks, and saving throws related to that goal." },
+  { id: 7420, name: "The Kindled", tags: ["Passive", "Verath", "Epic"], rarity: "Epic", score: 2, desc: "When reduced to 0 HP for the first time each Long Rest, drop to 1 HP instead." },
+  { id: 7421, name: "The Steadfast", tags: ["Passive", "Verath", "Epic"], rarity: "Epic", score: 3, desc: "Gain Advantage on the first Death Save you make." },
+  { id: 7422, name: "The Tempered", tags: ["Passive", "Verath", "Epic"], rarity: "Epic", score: 4, desc: "Whenever you fail a saving throw, gain 1 Tempered Charge, maximum 1 charge. Spend the charge to reroll any failed save. Refreshes after a Long Rest." },
+  { id: 7423, name: "The Unwavering", tags: ["Passive", "Verath", "Epic"], rarity: "Epic", score: 5, desc: "Allies within 10 feet gain +1 on Death Saves." },
+  { id: 7424, name: "Emberbound", tags: ["Passive", "Verath", "Epic"], rarity: "Epic", score: 3, desc: "Once per Long Rest, as a Reaction when an ally within 30 feet takes damage, reduce that damage by 2d8. You take half the prevented damage." },
+  { id: 7425, name: "Last Wall", tags: ["Passive", "Verath", "Epic"], rarity: "Epic", score: 4, desc: "Once per Long Rest, when an ally within 30 feet is reduced to 0 HP, move up to your speed toward them as a Free Action. This movement does not trigger opportunity attacks." },
+  { id: 7426, name: "The Vigil's Flame", tags: ["Passive", "Verath", "Epic"], rarity: "Epic", score: 5, desc: "Gain one Cleric spell of 3rd level or lower, chosen by the player. Cast it at 3rd level once per Long Rest." },
+  { id: 7427, name: "The Named", tags: ["Passive", "Verath", "Epic"], rarity: "Epic", score: 3, desc: "Choose one deceased NPC ally, mentor, crew member, or family member. Once per Long Rest, gain Advantage on one attack roll, saving throw, or ability check of your choice." },
+  { id: 7428, name: "Dawn Standing", tags: ["Passive", "Verath", "Epic"], rarity: "Epic", score: 2, desc: "After finishing a Long Rest, choose one: +10 movement, +1 AC, or Advantage on Initiative. The benefit lasts until your next Long Rest." },
+  { id: 7429, name: "Witnessed", tags: ["Passive", "Verath", "Epic"], rarity: "Epic", score: 4, desc: "You are immune to the Frightened condition." },
+  { id: 7430, name: "Undying Ember", tags: ["Passive", "Verath", "Epic"], rarity: "Epic", score: 5, desc: "Once per combat, when you succeed on a Death Save, recover HP equal to 1d6 + your Proficiency Bonus." },
+  { id: 7431, name: "Shared Flame", tags: ["Passive", "Verath", "Epic"], rarity: "Epic", score: 3, desc: "Whenever you receive healing, one ally within 30 feet heals HP equal to your Proficiency Bonus." },
+  { id: 7432, name: "Refusal", tags: ["Passive", "Verath", "Epic"], rarity: "Epic", score: 5, desc: "Once per Long Rest, when you fail a saving throw, choose to succeed instead. Afterward, gain 1 level of Exhaustion." },
+  { id: 7433, name: "Against the Darkness", tags: ["Passive", "Verath", "Epic"], rarity: "Epic", score: 4, desc: "Gain Resistance to Necrotic Damage. If you already have Resistance, gain Advantage against Necrotic effects." },
+  { id: 7434, name: "The Last Light", tags: ["Passive", "Verath", "Epic"], rarity: "Epic", score: 5, desc: "If you are the last conscious party member, gain Advantage on attacks, Advantage on saving throws, and +10 movement until another ally is revived." },
+  { id: 7435, name: "Chosen by Fate", tags: ["Passive", "Destiny", "Epic"], rarity: "Epic", score: 5, desc: "Once per Long Rest, treat any d20 roll as a Natural 20. Declare this before rolling." },
+  { id: 7436, name: "Hero of the Sea", tags: ["Passive", "Destiny", "Epic"], rarity: "Epic", score: 5, desc: "Gain one additional Inspiration at the start of each session." },
+  { id: 7437, name: "Unbreakable", tags: ["Passive", "Destiny", "Epic"], rarity: "Epic", score: 5, desc: "You are immune to the Frightened condition." },
+  { id: 7438, name: "Legend in the Making", tags: ["Passive", "Destiny", "Epic"], rarity: "Epic", score: 5, desc: "Choose one permanent benefit: +10 Movement, +1 AC, or +2 Initiative." },
+  { id: 1183, name: "Ageless", tags: ["Cursed", "Passive", "Undead", "Legendary"], rarity: "Legendary", score: -10, desc: "You do not require air, food, or water. You do not age and cannot die from old age. You are considered an Undead creature for the purposes of spells and effects. Your consciousness is anchored within your skull — destruction of your body does not kill you, provided your skull remains intact. Perfect Disguise: Your undead nature is hidden beneath a flawless recreation of your former living appearance. You appear alive in every way. This disguise cannot be detected through ordinary observation, medicine checks, or most magical means. Members of the Order of the Undying Vigil may perceive the truth at the DM's discretion." },
+  { id: 7439, name: "Demonic Possession", tags: ["Legendary", "Cursed", "Passive"], rarity: "Legendary", score: 0, desc: "A demon shares your body. Each turn roll a d20 — on a 5 or lower the demon seizes control. While possessed, the demon uses Pyromancer spells (Fireball, Heat Wave, Lava Pool). The demon may use your class abilities, but doing so costs you 5 HP and requires a DC 13 Wisdom saving throw to regain control." },
+  { id: 7440, name: "The First Grave", tags: ["Passive", "Undead", "Legendary"], rarity: "Legendary", score: -15, desc: "Ancient Persistence: Immune to Disease and Poison. Do not require air, food, water, or sleep. Forgotten by Death: Once per Long Rest, when reduced to 0 HP, remain conscious until the end of your next turn. You still make Death Saving Throws normally. Primordial Undeath: Undead creatures automatically begin with a Friendly disposition toward you unless controlled by another creature." },
+  { id: 7441, name: "The King Beneath", tags: ["Passive", "Undead", "Legendary"], rarity: "Legendary", score: -15, desc: "Sovereign of Bones: Gain proficiency in Persuasion and Intimidation — Expertise if already proficient. Command the Fallen: Once per Long Rest, choose an Undead creature within 60 feet. It must succeed on a WIS save (DC 8 + PB + CHA) or become Charmed by you for 1 minute. Fails automatically against Legendary creatures. The Silent Court: Whenever you enter a place of death, the DM must provide one useful piece of information about the area." },
+  { id: 6213, name: "The Last Witness", tags: ["Passive", "Undead", "Legendary"], rarity: "Legendary", score: -20, desc: "Before Kingdoms: Gain proficiency in Arcana, History, and Religion — Expertise if already proficient. Echoes of Ages: Once per Long Rest, ask the DM one question about a location, artifact, historical event, or creature. The answer must be truthful, though it may be cryptic. Burden of Memory: You can never be surprised." },
+  { id: 6214, name: "Death Refused", tags: ["Cursed", "Passive", "Undead", "Legendary"], rarity: "Legendary", score: -20, desc: "The Rejected Soul: You have Advantage on Death Saving Throws. Not Yet: Once per Long Rest, when you fail your third Death Save, instead reset your Death Saves to zero. You remain unconscious. Death's Mark: Clerics, paladins, undead, and celestial creatures can instinctively sense that something about you is wrong." },
+  { id: 6215, name: "The Hollow Emperor", tags: ["Cursed", "Passive", "Undead", "Legendary"], rarity: "Legendary", score: -25, desc: "Perfect Disguise: Gain all benefits of Ageless' Perfect Disguise. Majesty of the Damned: Gain proficiency in Persuasion, Deception, and Intimidation — Expertise if already proficient. Crown of Forgotten Bones: Once per Long Rest, as an Action, all creatures of your choice within 30 feet must make a Wisdom Saving Throw or be Charmed for 1 minute. Ancient Authority: Undead creatures with CR less than your level automatically begin one attitude step friendlier toward you." },
+  { id: 7007, name: "Snorer", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: 0, desc: "Your snoring is legendary. During any Long Rest taken in a shared space, all other creatures must succeed on a DC 11 Constitution saving throw or gain one level of Exhaustion from poor sleep. You yourself always sleep soundly and gain full Long Rest benefits regardless of conditions." },
+  { id: 7008, name: "Incredibly Average", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: 5, desc: "You are, in every measurable way, perfectly unremarkable. You are immune to the Frightened condition caused by your own appearance, and witnesses rarely remember describing you accurately." },
+  { id: 7442, name: "Chronically Late", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: 7, desc: "However, at the start of every combat you may not act on the first round — you arrive just slightly behind the moment. This delay is absolute and cannot be circumvented by any ability or readied action." },
+  { id: 7009, name: "Chronic Complainer", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: 8, desc: "The DM must describe at least one minor inconvenience per session that affects only you — the weather, the mattress, the soup temperature. You must acknowledge it aloud." },
+  { id: 7010, name: "Unnaturally Warm", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: 8, desc: "You radiate gentle heat at all times. You are immune to the effects of environmental cold. Allies who begin their turn adjacent to you may remove the Chilled condition if they have it." },
+  { id: 7011, name: "Light Sleeper", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: 6, desc: "You cannot be surprised while asleep. You always wake at the slightest disturbance and are never considered to be in a Resting state for the purposes of enemy stealth." },
+  { id: 7012, name: "Tragically Hapless", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: 14, desc: "Once per session, the DM may declare that something minor goes wrong for you at an inopportune moment — a buckle breaks, a torch falls, a very important item drops into a river. This is non-negotiable." },
+  { id: 7013, name: "Opinionated", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: 8, desc: "You must vocally weigh in on every major party decision before any action is taken, whether or not your input is useful. The party may still proceed — but they must hear you first." },
+  { id: 7014, name: "Terrifyingly Cheerful", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: 8, desc: "You are immune to the Frightened and Shaken conditions. Your relentless optimism is deeply unsettling — creatures you Persuade with a High Roll are also Unnerved for 1 minute." },
+  { id: 7029, name: "Loud", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: 6, desc: "Your voice carries further than most people are comfortable with. You cannot whisper. You are immune to the Silenced condition. Stealth checks that involve staying quiet automatically fail." },
+  { id: 7016, name: "Insomniac", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: 4, desc: "You do not sleep. You still benefit from Long Rests by remaining still and quiet for 8 hours. You are always considered alert during night watch and cannot be surprised while on watch. Allies sleeping near you gain advantage on saving throws against the Frightened condition." },
+  { id: 7017, name: "Conspiracy Theorist", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: 3, desc: "Once per session, you may declare that something suspicious is happening before there is any evidence of it. The DM must confirm or deny whether you are correct. If you are correct, gain Inspiration." },
+  { id: 7018, name: "Seasick", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: 6, desc: "While aboard any waterborne vessel, you suffer disadvantage on attack rolls and ability checks. On land, you gain advantage on Constitution saving throws — your system has become aggressively stable in compensation." },
+  { id: 7019, name: "Pathologically Honest", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: 0, desc: "You cannot knowingly speak a false statement. You may stay silent, deflect, or decline to answer — but an outright lie is physically impossible. You have advantage on Insight checks to detect deception in others." },
+  { id: 7020, name: "Natural Mimic", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: 5, desc: "You can perfectly replicate any voice, accent, or speech pattern you have heard for at least 10 minutes. Once per session, a Deception check involving mimicry automatically succeeds without a roll." },
+  { id: 7021, name: "Town Crier", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: 3, desc: "Once per session, in any settlement, you may spend 30 minutes talking to people and learn one piece of current local information — a rumour, a recent event, a person of interest, or something someone badly wants kept quiet. The DM determines what you learn. It is always accurate." },
+  { id: 7025, name: "Self-Narrator", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: 5, desc: "You narrate your reasoning aloud without noticing. You have advantage on all Intelligence checks made to solve puzzles, recall information, or plan. Stealth checks that require silence automatically fail unless you succeed on a DC 13 Wisdom saving throw." },
+  { id: 7026, name: "Dramatic", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: 4, desc: "Once per session, you may declare a moment Dramatic. The DM must pause the scene and give you uninterrupted time to deliver a speech, make an entrance, or otherwise perform. Any Persuasion, Intimidation, or Deception check made during or immediately after this moment has advantage." },
+  { id: 3701, name: "Hoarder", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: 0, desc: "Your carrying capacity is doubled. You always have a mundane item that could plausibly be useful in any non-combat situation. The DM determines what you have; you may not always have the right thing, but you always have something." },
+  { id: 7027, name: "Iron Stomach", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: 5, desc: "You are immune to the Poisoned condition caused by ingested substances. Poisons delivered via injury or contact still affect you normally. Once per Long Rest, you may consume something of dubious origin and gain a minor beneficial effect — the DM determines what it does." },
+  { id: 7028, name: "Compulsive Reader", tags: ["Passive", "Basic", "Common"], rarity: "Common", score: 4, desc: "You can read any language you have encountered at least one written sample of, given enough time. You have proficiency in History. Whenever you find a written document of any kind, you must attempt to read it before doing anything else." },
+  { id: 3684, name: "Colossal", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 15, desc: "You are two size categories larger than normal for your species. Your melee attacks deal an extra 6 damage and roll one additional damage die on every attack. You cannot fit through standard doorways, ride most mounts, or wear armour not specifically crafted for your size." },
+  { id: 7002, name: "Very Tall", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 10, desc: "You are notably taller than others of your species without being a full size category larger. You have a reach of 10 ft. with melee attacks instead of 5 ft. You have disadvantage on Stealth checks in any environment where height is a liability." },
+  { id: 7015, name: "Suspiciously Healthy", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 8, desc: "You are immune to the Poisoned and Diseased conditions. Healers who examine you become visibly uncomfortable and cannot explain why." },
+  { id: 7005, name: "Extremely Punctual", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 5, desc: "You always act first in the first round of any combat, regardless of initiative roll. This applies once per combat and does not stack with other initiative-granting abilities." },
+  { id: 7006, name: "Restless", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 6, desc: "Your movement speed increases by 10 ft. If you make an attack on a turn in which you have not moved at least 1 ft., you have disadvantage on that attack. If you move 10 ft. or more before attacking on the same turn, you have advantage instead." },
+  { id: 7003, name: "Born Lucky", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 7, desc: "Once per Long Rest, after any d20 roll is made but before the result is announced, you may declare it Lucky. Reroll the die and take the higher result. This applies to any roll — attack, save, skill check, or death save." },
+  { id: 7023, name: "Nobody", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 6, desc: "You are supernaturally difficult to remember. After any interaction, NPCs must succeed on a DC 14 Wisdom saving throw to recall your face, name, or presence after 10 minutes have passed. Wanted posters of you are always wrong." },
+  { id: 7022, name: "Striking", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 6, desc: "People remember you as more impressive than the encounter warranted. After any social interaction, NPCs recall you as one attitude step more favourable. Wanted posters of you are noticeably more flattering than accurate." },
+  { id: 7024, name: "Unnervingly Quiet", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 4, desc: "You have advantage on Stealth checks. Creatures that fail a Perception check to notice you must succeed on a DC 12 Wisdom saving throw when you do announce your presence or gain the Frightened condition until the end of their next turn." },
+  { id: 7030, name: "Beastfriends", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 4, desc: "Animals are instinctively calm around you. You have advantage on all Animal Handling checks and can attempt to calm hostile beasts as a bonus action. Once per Long Rest, you may ask a non-intelligent animal a single yes or no question — the animal cannot lie, but it can be wrong." },
+  { id: 7031, name: "Beastfriends Forever", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 12, desc: "With DM approval, one non-hybrid animal of your choice becomes your permanent companion. It acts on your initiative, obeys your commands, and gains HP equal to your level each time you level up. You have all benefits of Beastfriends in addition to this." },
+  { id: 7032, name: "Mana Sensitivity", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 3, desc: "Whenever you are targeted by a spell — friendly or hostile — you immediately begin sneezing and cannot take Reactions until the start of your next turn. You have Resistance to all spell damage, as your body rejects it violently." },
+  { id: 7033, name: "Cat Allergy", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 6, desc: "Within 10 feet of any feline creature, you suffer disadvantage on Perception and Concentration checks. Familiars of the cat variety actively seek you out at the worst possible moments, at the DM's discretion." },
+  { id: 7034, name: "Floral Allergy", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 8, desc: "Within 10 feet of flowering plants, pollen, or spores, you gain the Poisoned condition until you move away and spend a bonus action clearing your airways." },
+  { id: 7035, name: "Dust Allergy", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 5, desc: "Whenever you enter a location described as dusty or long-abandoned, you must succeed on a DC 10 Constitution saving throw or be Incapacitated for 1 round." },
+  { id: 7036, name: "Shellfish Allergy", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 8, desc: "Consuming any seafood of the crustacean or mollusc variety immediately causes the Poisoned condition for 1 hour and deals 1d10 damage. Aquatic creatures with shells or carapaces deal an additional 2 damage on any attack that hits you." },
+  { id: 7039, name: "Peanut Allergy", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 4, desc: "Consuming any food containing ground nuts immediately deals 1d10 damage and causes the Poisoned condition for 1 hour. You have learned to ask. Nobody ever tells you the truth the first time." },
+  { id: 7037, name: "Bee Sting Allergy", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 5, desc: "Any attack from a bee, wasp, or insectoid creature that deals piercing damage immediately deals an additional 1d10 damage and causes the Stunned condition until the end of your next turn." },
+  { id: 7038, name: "Sun Allergy", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 5, desc: "After 1 hour of unprotected sun exposure, you gain the Poisoned condition until you are out of direct sunlight for 10 minutes. You have Superior Darkvision — you see in darkness as if it were bright light out to 60 ft., and dim light as if it were bright light for a further 30 ft." },
+  { id: 7040, name: "Wheat Allergy", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 4, desc: "Consuming any food made from wheat or grain causes 1d6 damage and the Poisoned condition for 1 hour. You have proficiency in Nature checks related to identifying plants and foodstuffs." },
+  { id: 7041, name: "Alcohol Allergy", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 4, desc: "Consuming any alcoholic beverage deals 1d8 damage and causes the Poisoned condition for 1 hour. You have advantage on all Wisdom saving throws." },
+  { id: 7042, name: "Fur Allergy", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 3, desc: "Within 10 feet of any creature with significant fur or thick animal hair, you suffer disadvantage on Perception checks and Concentration saves. Creatures of the Beast type that are fur-bearing trigger this automatically." },
+  { id: 7044, name: "Cold Allergy", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 4, desc: "You have vulnerability to Cold damage. In exchange, you have Resistance to Fire damage — your body runs hot in constant compensation." },
+  { id: 7043, name: "Ink Allergy", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: 4, desc: "Direct contact with standard writing ink causes your skin to blister and swell. You cannot write with conventional ink without taking 1 damage per round of contact. Magical inks and scroll-casting materials deal 1d6 damage on contact and cause the Poisoned condition for 10 minutes." },
+  { id: 7048, name: "Crusade Survivor", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: 20, desc: "You lived through the Crimson Crusade. You have proficiency in all weapons regardless of class restrictions. However, you suffer the Frightened condition automatically whenever you encounter a swarm of undead creatures of 5 or more." },
+  { id: 7049, name: "Child of the Ashen Interior", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: 4, desc: "You have Resistance to Necrotic damage and cannot be Frightened by undead creatures of CR 3 or lower. You are deeply mistrusted on sight by religious institutions." },
+  { id: 7055, name: "Compact Deserter", tags: ["Passive", "Basic", "Rare", "DM Granted"], rarity: "Rare", score: 15, desc: "Proficiency with Heavy Armour. You cannot enter any Compact garrison or controlled territory without risking immediate arrest. Compact soldiers recognise your insignia on a Perception check of 14 or higher." },
+  { id: 7058, name: "Surath Fugitive", tags: ["Passive", "Basic", "Rare", "DM Granted"], rarity: "Rare", score: -4, desc: "You are a named fugitive in the Surath Dominion. Gain 200 gold and 1 random treasure selected by the DM. Eternal Flame clergy, Ardent soldiers, and Dominion officials have standing orders regarding your arrest. The nature of your crime is decided at character creation with the DM." },
+  { id: 7050, name: "Dead God's Mark", tags: ["Passive", "Basic", "Rare", "DM Granted"], rarity: "Rare", score: -2, desc: "You carry a brand, scar, or symbol connected to one of the gods who died in the Crimson Crusade. Gain proficiency in Religion. Once per Long Rest, you may commune with the residual divine presence — the DM will describe what you receive. The Order of the Undying Vigil and the Eternal Flame's senior clergy will notice the mark immediately." },
+  { id: 7051, name: "Crusade Orphan", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: 3, desc: "Your family was destroyed in the Crimson Crusade. Choose one: proficiency in Survival, Medicine, or Persuasion. You cannot be Charmed by any creature that openly serves an institution connected to the Crusade's aftermath until they have earned your trust." },
+  { id: 7052, name: "Pilgrim Road Walker", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: 5, desc: "You have proficiency in Religion. When you encounter a dead god's ruin, artefact, or residual divine energy, you automatically sense its presence within 30 ft. and know which god it belonged to." },
+  { id: 7054, name: "Veil Crossing Survivor", tags: ["Passive", "Basic", "Rare", "DM Granted"], rarity: "Rare", score: 7, desc: "You can understand — but not speak — one dead language of the DM's choosing. You have advantage on saving throws against fear effects caused by supernatural or divine sources. Once per campaign, you may recall something you heard in the fog — the DM will tell you what." },
+  { id: 7053, name: "Sunken Archives Scholar", tags: ["Passive", "Basic", "Rare", "DM Granted"], rarity: "Rare", score: 5, desc: "You have proficiency in History and Arcana. Once per Long Rest, you may recall a piece of pre-Crusade knowledge relevant to the current situation. The things that live in those ruins remember your face." },
+  { id: 7056, name: "Wall-Born", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: 7, desc: "You have proficiency in Perception and Athletics. You have advantage on saving throws against the Frightened condition caused by undead and on checks to identify undead by type." },
+  { id: 7057, name: "Interior Scout", tags: ["Passive", "Basic", "Rare", "DM Granted"], rarity: "Rare", score: 5, desc: "You have proficiency in Stealth and Survival. You have Resistance to Necrotic damage and advantage on checks to navigate blighted terrain. The DM knows what you saw in there." },
+  { id: 7059, name: "Romley Islander", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: 5, desc: "You have proficiency in Water Vehicles and advantage on checks to navigate the southern hemisphere. Navy officers treat you as a local problem. Buccaneers treat you as one of their own." },
+  { id: 7060, name: "Buccaneer Born", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: 4, desc: "You have proficiency in Water Vehicles, Sleight of Hand, and one weapon of your choice. You know at least three safe harbours the Navy's charts don't show." },
+  { id: 7061, name: "Maelstrom Survivor", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: 6, desc: "You have advantage on all saving throws made while aboard a vessel in combat or storm conditions. Once per Long Rest, when your ship would take structural damage, you may reduce that damage by half." },
+  { id: 7062, name: "The Sea Owes You Nothing", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: -3, desc: "You have suffered a catastrophic loss at sea — player-decided at character creation. You have advantage on all checks related to maritime survival and navigation. However, you have disadvantage on Wisdom saving throws when the option to pursue or avenge what you lost becomes available." },
+  { id: 7063, name: "Fog-Reader", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: 5, desc: "You ignore disadvantage on Perception and attack rolls that fog and heavy obscurement normally impose. Once per Long Rest, while in fog, you may identify the direction and approximate number of ships within 500 feet without a roll." },
+  { id: 7070, name: "Armada Marked", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: -4, desc: "The Shadowy Armada has designated you a named target — player-decided. You have advantage on checks to identify Armada ships, signals, and tactics. Armada agents in any port will eventually learn you are present." },
+  { id: 7077, name: "League Factor", tags: ["Passive", "Basic", "Rare", "DM Granted"], rarity: "Rare", score: 6, desc: "Once per session, you may call upon your League contacts to learn the current market value of any item, the last known location of any named ship, or one piece of intelligence about any named faction or port. In return, the League occasionally asks you for things." },
+  { id: 7089, name: "Aethros Navy Enlisted", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: 5, desc: "You have proficiency in Water Vehicles, Navigator's Tools, and one weapon of your choice. Navy officers recognise your service manner. You can be recalled to active service in a declared emergency — at the DM's discretion." },
+  { id: 7069, name: "Shadowy Armada Defector", tags: ["Passive", "Basic", "Rare", "DM Granted"], rarity: "Rare", score: 4, desc: "You have proficiency in Stealth and Intimidation. You know the Armada's signals, codes, and basic operational doctrine — enough to pass as a current member on a Deception check of 14 or lower. The Armada has not forgotten you exist." },
+  { id: 7078, name: "Spiritwood-Born", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: 8, desc: "You have advantage on Perception and Survival checks in forested environments. Once per Long Rest, you may ask the local flora or fauna a yes or no question — the answer comes as a feeling, not words, and is always accurate." },
+  { id: 7072, name: "Abyssal Survivor", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: 4, desc: "You have advantage on Constitution saving throws made underwater. You have Darkvision 120 ft. that functions even in magical darkness. You have disadvantage on Charisma checks when people ask you what you saw down there." },
+  { id: 7071, name: "Marked by the Deep", tags: ["Passive", "Basic", "Rare", "DM Granted"], rarity: "Rare", score: -6, desc: "The Leviathan is aware of your existence. You have advantage on saving throws against effects from creatures of the Monstrosity or Titan type. Once per campaign, the Leviathan acts in a way that incidentally protects or assists you — the DM determines when and how." },
+  { id: 7073, name: "Merfolk Pact", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: 5, desc: "You have entered into a binding agreement with a merfolk community — terms are player-decided. Merfolk will not attack you unprovoked. Once per Long Rest, you may call on the pact: a merfolk within 1 mile will surface to deliver a message or one piece of information." },
+  { id: 7074, name: "Tide-Speaker", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: 3, desc: "You can speak and understand Aquan. You have advantage on Persuasion checks when interacting with aquatic creatures willing to communicate. Merfolk who encounter you underwater treat you as a curiosity on first contact." },
+  { id: 7086, name: "Ashvael's Last", tags: ["Passive", "Basic", "Rare", "DM Granted"], rarity: "Rare", score: 5, desc: "You have proficiency in Religion and Insight. Your weapon attacks deal an additional 1d4 Radiant damage. The Order of the Undying Vigil will recognise your heritage immediately." },
+  { id: 7067, name: "Ruin Reader", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: 5, desc: "You can identify the approximate age of any constructed ruin within 250 years and recognise when a ruin predates the Crimson Crusade. Once per Long Rest, in any Romley Archipelago ruin, you may find one detail others missed — the DM must confirm it is genuinely present." },
+  { id: 7068, name: "Romley's Cartographer", tags: ["Passive", "Basic", "Rare", "DM Granted"], rarity: "Rare", score: 4, desc: "You know the location of one site in the Romley Archipelago not on Navy charts. You have proficiency in Navigator's Tools and advantage on checks to navigate the Romley Sea." },
+  { id: 7064, name: "Lower Docks Regular", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: 5, desc: "Once per session, you may call on a Lower Docks contact for a favour — information, shelter, a black-market item, or a rumour. The contact expects something in return eventually." },
+  { id: 7065, name: "Silent Vault Clearance", tags: ["Passive", "Basic", "Rare", "DM Granted"], rarity: "Rare", score: 6, desc: "You have proficiency in Arcana and History. You have read at least one document within the Silent Vault — the DM determines which one. The Grand Admiralty is aware of this." },
+  { id: 7066, name: "Star-Sextant Initiate", tags: ["Passive", "Basic", "Rare", "DM Granted"], rarity: "Rare", score: 4, desc: "You have proficiency in Navigator's Tools and History. You know that several of Romley's original markings refer to locations not on any current Navy chart. You know where three of them are." },
+  { id: 7075, name: "Port God's Favour", tags: ["Passive", "Religion — Minor Sea Gods", "Rare", "DM Granted"], rarity: "Rare", score: 3, desc: "In the port city of your chosen god, you always find lodging and merchants extend slightly better prices. Once per campaign, that port-god may intervene in a minor way on your behalf." },
+  { id: 7076, name: "Tide-Caller's Rite", tags: ["Passive", "Religion — Minor Sea Gods", "Rare"], rarity: "Rare", score: 4, desc: "You have advantage on all saving throws made in or on the water. Once per Long Rest, difficult terrain created by water does not affect you for 1 hour." },
+  { id: 7087, name: "Triad-Faithful", tags: ["Passive", "Religion — The Vaelthari Triad", "Rare"], rarity: "Rare", score: 4, desc: "You have proficiency in Religion. Once per Long Rest, you may invoke one of the three aspects of the Triad for a minor boon — the DM determines its form." },
+  { id: 7088, name: "Remnant Order Faithful", tags: ["Passive", "Religion — Remnant Orders", "Rare", "DM Granted"], rarity: "Rare", score: 3, desc: "You have proficiency in Religion and History. Once per session, the residual divine energy of your dead god provides one piece of relevant information or a minor boon. Most governments tolerate this. The Eternal Flame does not." },
+  { id: 7079, name: "Spirit-Touched", tags: ["Passive", "Religion — Khevarai Nature Spirits", "Rare"], rarity: "Rare", score: 5, desc: "You have proficiency in Nature and Animal Handling. Once per Long Rest, in any natural environment, you may call on a Khevarai spirit for guidance — the DM will answer one question truthfully." },
+  { id: 7080, name: "Thornkeeper's Student", tags: ["Passive", "Religion — Khevarai Nature Spirits", "Rare", "DM Granted"], rarity: "Rare", score: 4, desc: "You have proficiency in Survival and Nature. Beasts will not attack you without provocation. Once per Long Rest, you may pass through any natural terrain without leaving any trace for 1 hour." },
+  { id: 7083, name: "Draconic Heritage", tags: ["Passive", "Basic", "Rare"], rarity: "Rare", score: 6, desc: "Choose one: Lightning, Fire, Cold, Acid, or Poison. You have Resistance to that damage type. Once per Long Rest, exhale a breath weapon: 15 ft. cone dealing 2d6 damage of that type." },
+  { id: 7090, name: "Ardent-Blooded", tags: ["Passive", "Religion — Eternal Flame", "Rare"], rarity: "Rare", score: 5, desc: "Your melee and unarmed attacks deal an additional 1d4 Fire damage. Once per Long Rest, when you are reduced to 0 HP, the flame briefly asserts itself — you regain 1 HP and may immediately make one attack." },
+  { id: 7091, name: "Tested by Fire", tags: ["Passive", "Religion — Eternal Flame", "Rare"], rarity: "Rare", score: 5, desc: "You have Immunity to the Frightened condition and Resistance to Fire damage. The Eternal Flame's clergy treat you with formal recognition." },
+  { id: 7092, name: "Purifier", tags: ["Passive", "Religion — Eternal Flame", "Rare"], rarity: "Rare", score: 3, desc: "Your attacks against undead creatures deal an additional 1d6 Fire damage. Whenever you reduce an undead creature to 0 HP, it cannot be raised or reanimated by any means for 24 hours." },
+  { id: 7093, name: "Flame Legion Veteran", tags: ["Passive", "Religion — Eternal Flame", "Rare"], rarity: "Rare", score: 4, desc: "You have proficiency in Heavy Armour and two martial weapons of your choice. Dominion soldiers recognise your service bearing." },
+  { id: 7094, name: "Ordeal-Marked", tags: ["Passive", "Religion — Eternal Flame", "Rare"], rarity: "Rare", score: 5, desc: "You have Immunity to Fire damage from non-magical sources. Flamekeepers treat you with specific respect — you have been tested and found worthy by the god's own mechanism." },
+  { id: 7095, name: "Salt-Sworn", tags: ["Passive", "Religion — The Deep Current", "Rare"], rarity: "Rare", score: -3, desc: "You have advantage on Navigation, Weather-reading, and Survival checks at sea. If you break your oath, you gain the Cursed condition until you return to open water and make recompense — determined by the DM." },
+  { id: 7096, name: "Acknowledged", tags: ["Passive", "Religion — The Deep Current", "Rare"], rarity: "Rare", score: 4, desc: "Once per session, the DM must give you one piece of information via the behaviour of water, weather, or sea creatures. This information is accurate but will not always be immediately interpretable." },
+  { id: 7097, name: "Drowned Choir Initiate", tags: ["Passive", "Religion — The Deep Current", "Rare", "DM Granted"], rarity: "Rare", score: 2, desc: "Once per Long Rest, spend 10 minutes in contact with salt water and attempt a DC 15 Wisdom check. On a success, the DM will share one piece of information about a recent death connected to the current location." },
+  { id: 7098, name: "Storm-Read", tags: ["Passive", "Religion — The Deep Current", "Rare"], rarity: "Rare", score: 5, desc: "You have advantage on all checks to predict, navigate through, or survive storms at sea. Once per Long Rest, you may ask the DM whether the weather in the next 24 hours will be safe or dangerous." },
+  { id: 7099, name: "The Below Watches", tags: ["Passive", "Religion — The Deep Current", "Rare"], rarity: "Rare", score: 4, desc: "Aquatic creatures of CR 3 or lower will not attack you unless commanded. Once per Long Rest, if you are submerged in salt water, you may sense the direction of the nearest significant threat within 1 mile." },
+  { id: 7100, name: "Ember-Touched", tags: ["Passive", "Religion — Order of the Undying Vigil", "Rare"], rarity: "Rare", score: 5, desc: "You have Resistance to Necrotic damage. Undead creatures of CR 2 or lower will not willingly approach within 10 feet of you unless commanded. Members of the Order treat you as a person of established character." },
+  { id: 7101, name: "Warden-Trained", tags: ["Passive", "Religion — Order of the Undying Vigil", "Rare"], rarity: "Rare", score: 4, desc: "You have advantage on all checks to track, identify, and locate undead. While actively hunting a designated undead target, that creature cannot use supernatural senses to detect your presence." },
+  { id: 7102, name: "Ember Holder", tags: ["Passive", "Religion — Order of the Undying Vigil", "Rare"], rarity: "Rare", score: 15, desc: "Once per Long Rest, when an ally within 30 feet of you would be reduced to 0 HP, you may use your Reaction to have them instead drop to 1 HP. This does not require line of sight." },
+  { id: 7103, name: "The Final Patrol", tags: ["Passive", "Religion — Order of the Undying Vigil", "Rare"], rarity: "Rare", score: 6, desc: "Any undead creature you reduce to 0 HP cannot be raised, reanimated, or restored by any means. This includes Ageless — if their skull is subsequently destroyed." },
+  { id: 7104, name: "Warden's Discipline", tags: ["Passive", "Religion — Order of the Undying Vigil", "Rare"], rarity: "Rare", score: 4, desc: "At the start of every combat, gain temporary HP equal to your proficiency bonus. You have advantage on saving throws against the Frightened and Charmed conditions when the source is an undead creature." },
+  { id: 7105, name: "Oath-Bound", tags: ["Passive", "Religion — The Ironbound", "Rare"], rarity: "Rare", score: 5, desc: "You have entered into a formal oath with the Ironbound — terms set with the DM at character creation. While you honour your oath, you cannot be Charmed or Frightened, and attacks made against you while fulfilling a sworn duty deal 2 less damage." },
+  { id: 7106, name: "Honourable End", tags: ["Passive", "Religion — The Ironbound", "Rare"], rarity: "Rare", score: 4, desc: "You have Resistance to damage from undead creatures. When you reach 0 HP for the first time in any combat, you may choose the manner of your incapacitation." },
+  { id: 7107, name: "Compact Sworn", tags: ["Passive", "Religion — The Ironbound", "Rare"], rarity: "Rare", score: 6, desc: "You have Resistance to Necrotic damage and advantage on saving throws against the Frightened condition when facing undead. Compact soldiers recognise your oath-mark and will treat you as a fellow soldier." },
+  { id: 7108, name: "Last Rites", tags: ["Passive", "Religion — The Ironbound", "Rare"], rarity: "Rare", score: 3, desc: "When you perform last rites over a fallen creature, that creature cannot be raised as undead by any means for 7 days. This takes 10 minutes and requires the body to be sufficiently intact." },
+  { id: 7109, name: "Word as Iron", tags: ["Passive", "Religion — The Ironbound", "Rare"], rarity: "Rare", score: 4, desc: "When you make a spoken promise in front of at least one witness, you are magically compelled to fulfil it. You cannot be magically compelled to break a promise. You gain advantage on all Persuasion checks." },
+  { id: 7110, name: "Thread-Reader", tags: ["Passive", "Religion — The Weaver", "Rare", "DM Granted"], rarity: "Rare", score: 5, desc: "Once per Long Rest, you may ask the DM a yes/no question about the future of a current situation. The answer reflects what the Weaver has recorded of fate's current thread. This is not prophecy. The thread can be cut." },
+  { id: 7111, name: "Memory-Keeper", tags: ["Passive", "Religion — The Weaver", "Rare"], rarity: "Rare", score: 3, desc: "You have a perfect and indelible memory for everything you have personally witnessed. You cannot be magically compelled to forget. Illusions that attempt to overwrite your memories automatically fail against you." },
+  { id: 7112, name: "Hidden Congregation", tags: ["Passive", "Religion — The Weaver", "Rare"], rarity: "Rare", score: 4, desc: "You know the signs and safe-house codes that Weaver faithful use across all three continents. Once per session, in any settlement of 500 people or more, you may attempt a DC 12 Investigation check to locate a Weaver contact." },
+  { id: 7113, name: "The Pattern Shifts", tags: ["Passive", "Religion — The Weaver", "Rare", "DM Granted"], rarity: "Rare", score: 5, desc: "Once per campaign, the Weaver shows you a moment where fate's current thread has been severed and replaced with something new. The DM will describe what you perceive — not the cause, but the before and after." },
+  { id: 7081, name: "Arcane Fusion Subject", tags: ["Passive", "Basic", "Epic", "DM Granted"], rarity: "Epic", score: -8, desc: "You were subjected to Arcane Fusion and survived with your identity intact. Choose one: Resistance to Lightning, Cold, or Poison damage. You have visible mutations that mark you as a hybrid and cannot easily hide this." },
+  { id: 7082, name: "Blackspire Survivor", tags: ["Passive", "Basic", "Epic", "DM Granted"], rarity: "Epic", score: -6, desc: "You have proficiency in Arcana and advantage on checks to identify hybrid creatures and Arcane Fusion signatures. You cannot be Charmed by creatures wearing an Arcane Dominator Collar." },
+  { id: 7084, name: "Phase-Touched", tags: ["Passive", "Basic", "Epic", "DM Granted"], rarity: "Epic", score: 5, desc: "Once per Long Rest, as a bonus action, you may shift partially out of phase: you become invisible and can move through solid objects until the start of your next turn. You may not end your turn inside solid matter. Each time you use this ability, the DM rolls a d20 privately. On a 1, the instability advances." },
+  { id: 7085, name: "Half-Dragon", tags: ["Passive", "Basic", "Epic", "DM Granted"], rarity: "Epic", score: -6, desc: "You are one of the Blue Alchemist's creations — a magically unstable blue half-dragon. You have Resistance to Lightning damage and a breath weapon: a 15 ft. line dealing 3d6 Lightning damage (DC 13 DEX save for half), usable once per Short Rest. Your draconic appearance cannot be concealed through mundane means." },
+  { id: 7047, name: "Remnant Paladin", tags: ["Passive", "Undead", "Basic", "Epic", "DM Granted"], rarity: "Epic", score: -5, desc: "You are one of the undead paladins raised at the Battle of the Final Spire. You retain full intelligence, identity, and your paladin abilities. You do not age and do not require food, water, or air. You have been walking the world for over two centuries." },
+  { id: 7045, name: "Shedding-Born", tags: ["Passive", "Undead", "The Waking", "Epic", "DM Granted"], rarity: "Epic", score: -10, desc: "You were identified as a candidate through the Shedding process and underwent the transformation willingly. You are Ageless — gain all benefits and conditions of the Ageless attribute card. Varek is aware of your existence." },
+  { id: 7046, name: "Forced Ageless", tags: ["Passive", "Undead", "The Waking", "Epic", "DM Granted"], rarity: "Epic", score: -6, desc: "You were made Ageless without consent — by Varek or another member of the Waking. You carry all the mechanical properties of the Ageless condition. You are not integrated into the Waking faction and may be actively hostile to it." },
+  { id: 7115, name: "Varreth's Echo", tags: ["Passive", "Undead", "The Waking", "Legendary", "DM Granted"], rarity: "Legendary", score: -15, desc: "You are one of the original breath-survivors — present when Varreth exhaled before the sealing, and among the vanishingly few who did not become Brainless. You are Ageless — gain all benefits and conditions of the Ageless attribute card. You carry enough of Varreth's breath to replicate it in part: once per Long Rest, as an Action, you may exhale. Any target struck that is reduced to 10 HP or fewer must succeed on a DC 14 Constitution saving throw or immediately become a Brainless under your command. The Order of the Undying Vigil would consider you their highest-priority target on Aethros if they knew." },
+  { id: 7443, name: "Deaf", tags: ["Passive", "Basic", "Uncommon"], rarity: "Uncommon", score: -6, desc: "Your character is permanently Deafened and cannot hear. You cannot be affected by any ability, spell, or effect that requires hearing — including Thunder damage, which deals 0 damage to you. You are also immune to the Charmed condition caused by auditory means — bardic magic, sweet-talking, and verbal enchantments slide off you entirely. In exchange, your remaining senses have sharpened to compensate. All melee attacks made against you are made at disadvantage — your body reads the vibration, movement, and displacement of air before the strike arrives. Ranged attacks are unaffected." },
+  { id: 7444, name: "Tortle — Base Score", tags: ["Race Base Score", "Tanky", "Rare", "CCO"], rarity: "Rare", score: 60, desc: "Base survivability score: +60. Stat bonuses: +2 STR, +1 WIS (standard). No additional stat modifier — Natural Armour AC 17 and Shell Defence already make Tortles among the most durable creatures in the world." },
+  { id: 7445, name: "Goliath — Base Score", tags: ["Race Base Score", "Tanky", "Rare", "CCO"], rarity: "Rare", score: 55, desc: "Base survivability score: +55. Stat bonuses: +2 STR, +1 CON (standard). No additional stat modifier — Stone's Endurance and Powerful Build already represent exceptional physical resilience." },
+  { id: 7446, name: "Dwarf — Base Score", tags: ["Race Base Score", "Tanky", "Rare", "CCO"], rarity: "Rare", score: 50, desc: "Base survivability score: +50. Stat bonuses: +2 CON (standard), plus subrace — Hill Dwarf +1 WIS, Mountain Dwarf +2 STR. No additional stat modifier." },
+  { id: 7447, name: "Lizardfolk — Base Score", tags: ["Race Base Score", "Tanky", "Rare", "CCO"], rarity: "Rare", score: 50, desc: "Base survivability score: +50. Stat bonuses: +2 CON, +1 WIS (standard). No additional stat modifier — Natural Armour, Hold Breath, and Hunter's Lore reflect a species that has outlasted most of what tried to kill it." },
+  { id: 7448, name: "Half-Orc — Base Score", tags: ["Race Base Score", "Tanky", "Rare", "CCO"], rarity: "Rare", score: 50, desc: "Base survivability score: +50. Stat bonuses: +2 STR, +1 CON (standard). No additional stat modifier — Relentless Endurance alone justifies the classification." },
+  { id: 7449, name: "Firbolg — Base Score", tags: ["Race Base Score", "Tanky", "Rare", "CCO"], rarity: "Rare", score: 50, desc: "Base survivability score: +50. Stat bonuses: +2 WIS, +1 STR (standard). No additional stat modifier — Powerful Build, Hidden Step, and size make Firbolg exceptionally resilient." },
+  { id: 7450, name: "Dragonborn — Base Score", tags: ["Race Base Score", "Normal", "Rare", "CCO"], rarity: "Rare", score: 35, desc: "Base survivability score: +35. Stat bonuses: +2 STR, +2 CHA (standard +2/+1 with secondary stat boost applied)." },
+  { id: 7451, name: "Aasimar — Base Score", tags: ["Race Base Score", "Normal", "Rare", "CCO"], rarity: "Rare", score: 35, desc: "Base survivability score: +35. Stat bonuses: +2 CHA (standard). Subrace adds +1 WIS (Protector), +1 CON (Scourge), or +1 STR (Fallen) as normal — no secondary boost applied to subrace stat." },
+  { id: 7452, name: "Half-Elf — Base Score", tags: ["Race Base Score", "Normal", "Rare", "CCO"], rarity: "Rare", score: 30, desc: "Base survivability score: +30. Stat bonuses: +2 CHA, +2 to one other ability score of your choice (standard +2 CHA, +1 to two others — secondary boost applies to one chosen stat)." },
+  { id: 7453, name: "Human — Base Score", tags: ["Race Base Score", "Normal", "Rare", "CCO"], rarity: "Rare", score: 30, desc: "Base survivability score: +30. Stat bonuses: +1 to all six ability scores, plus an additional +1 to any 3 ability scores of your choice." },
+  { id: 7454, name: "Tabaxi — Base Score", tags: ["Race Base Score", "Normal", "Rare", "CCO"], rarity: "Rare", score: 25, desc: "Base survivability score: +25. Stat bonuses: +2 DEX, +2 CHA (standard +2/+1 with secondary stat boost)." },
+  { id: 7455, name: "Elf — Base Score", tags: ["Race Base Score", "Normal", "Rare", "CCO"], rarity: "Rare", score: 25, desc: "Base survivability score: +25. Stat bonuses: +2 DEX, plus subrace secondary boosted — High Elf +2 INT, Wood Elf +2 WIS, Drow +2 CHA." },
+  { id: 7456, name: "Tiefling — Base Score", tags: ["Race Base Score", "Normal", "Rare", "CCO"], rarity: "Rare", score: 25, desc: "Base survivability score: +25. Stat bonuses: +2 CHA, +2 INT (standard +2/+1 with secondary stat boost)." },
+  { id: 7457, name: "Dolphinfolk — Base Score", tags: ["Race Base Score", "Normal", "Rare", "Aethros", "CCO"], rarity: "Rare", score: 25, desc: "Base survivability score: +25. Stat bonuses: +2 DEX, +2 INT (standard +2/+1 with secondary stat boost)." },
+  { id: 7458, name: "Gnome — Base Score", tags: ["Race Base Score", "Weak", "Rare", "CCO"], rarity: "Rare", score: 15, desc: "Base survivability score: +15. Stat bonuses: +3 INT, +2 CON (standard +2/+1 with all bonuses increased by 1)." },
+  { id: 7459, name: "Halfling — Base Score", tags: ["Race Base Score", "Weak", "Rare", "CCO"], rarity: "Rare", score: 12, desc: "Base survivability score: +12. Stat bonuses: +3 DEX (standard +2 with bonus increased by 1)." },
+  { id: 7460, name: "Kenku — Base Score", tags: ["Race Base Score", "Weak", "Rare", "CCO"], rarity: "Rare", score: 12, desc: "Base survivability score: +12. Stat bonuses: +3 DEX, +2 WIS (standard +2/+1 with all bonuses increased by 1)." },
+  { id: 7461, name: "Kobold — Base Score", tags: ["Race Base Score", "Weak", "Rare", "CCO"], rarity: "Rare", score: 5, desc: "Base survivability score: +5. Stat bonuses: +3 CON, +2 STR (compensatory — Kobold has no standard racial stat bonuses)." },
+  { id: 7462, name: "Adopted by Tortles", tags: ["Passive", "Adopted", "Uncommon", "CCO"], rarity: "Uncommon", score: -8, desc: "You retain all your own racial traits. Shell Training: as an action, withdraw into a defensive stance granting +3 AC until the start of your next turn. You cannot move or take reactions while in this stance but have advantage on STR and CON saving throws. Once per Short Rest." },
+  { id: 7463, name: "Adopted by Goliaths", tags: ["Passive", "Adopted", "Uncommon", "CCO"], rarity: "Uncommon", score: -8, desc: "You retain all your own racial traits. Stone's Endurance: once per Short or Long Rest, use your Reaction to reduce damage taken by 1d12 + your CON modifier. You also count as one size larger for carrying capacity, push, drag, and lift." },
+  { id: 7464, name: "Adopted by Dwarves", tags: ["Passive", "Adopted", "Uncommon", "CCO"], rarity: "Uncommon", score: -7, desc: "You retain all your own racial traits. Dwarven Resilience: advantage on saving throws against poison and resistance to poison damage. Proficiency with one weapon group of your choice: handaxe, battleaxe, light hammer, or warhammer. Hill Dwarf adoptees also gain +1 max HP per level." },
+  { id: 7465, name: "Adopted by Lizardfolk", tags: ["Passive", "Adopted", "Uncommon", "CCO"], rarity: "Uncommon", score: -7, desc: "You retain all your own racial traits. Cunning Artisan: during a Short Rest, craft a shield, club, javelin, or 1d4 darts or blowgun needles from a slain creature without tools. Bite unarmed strike dealing 1d6 piercing damage. Hold Breath for up to 15 minutes." },
+  { id: 7466, name: "Adopted by Half-Orcs", tags: ["Passive", "Adopted", "Uncommon", "CCO"], rarity: "Uncommon", score: -7, desc: "You retain all your own racial traits. Relentless Endurance: once per Long Rest, when reduced to 0 HP, drop to 1 HP instead. Savage Attacks: on a critical hit with a melee weapon, roll one additional weapon damage die." },
+  { id: 7467, name: "Adopted by Firbolg", tags: ["Passive", "Adopted", "Uncommon", "CCO"], rarity: "Uncommon", score: -7, desc: "You retain all your own racial traits. Hidden Step: once per Short or Long Rest, turn invisible as a bonus action until the start of your next turn or until you attack, force a saving throw, or deal damage. Speech of Beast and Leaf: communicate simple concepts to beasts and plants." },
+  { id: 7468, name: "Adopted by Dragonborn", tags: ["Passive", "Adopted", "Uncommon", "CCO"], rarity: "Uncommon", score: -6, desc: "You retain all your own racial traits. Choose a draconic ancestry from your adoptive family's lineage. Breath Weapon: 15 ft cone or 30 ft line dealing 2d6 of that damage type (DEX or CON save DC 8 + CON + proficiency for half). Once per Short Rest. Resistance to that damage type." },
+  { id: 7469, name: "Adopted by Aasimar", tags: ["Passive", "Adopted", "Uncommon", "CCO"], rarity: "Uncommon", score: -6, desc: "You retain all your own racial traits. Healing Hands: touch a creature to restore HP equal to your level, once per Long Rest. Celestial Resistance: resistance to Necrotic and Radiant damage. Light cantrip — CHA is your spellcasting ability." },
+  { id: 7470, name: "Adopted by Half-Elves", tags: ["Passive", "Adopted", "Uncommon", "CCO"], rarity: "Uncommon", score: -5, desc: "You retain all your own racial traits. Skill Versatility: proficiency in two skills of your choice. Fey Ancestry: advantage on saving throws against being Charmed and you cannot be magically put to sleep." },
+  { id: 7471, name: "Adopted by Humans", tags: ["Passive", "Adopted", "Uncommon", "CCO"], rarity: "Uncommon", score: -5, desc: "You retain all your own racial traits. Human Adaptability: proficiency in two skills and one tool of your choice. One feat of your choice that you meet the prerequisites for — your human family's emphasis on versatility gave you an early start." },
+  { id: 7472, name: "Adopted by Tabaxi", tags: ["Passive", "Adopted", "Uncommon", "CCO"], rarity: "Uncommon", score: -5, desc: "You retain all your own racial traits. Feline Agility: once per turn when you move, double your speed for that movement — you must move 0 ft on your next turn before using this again. Cat's Talent: proficiency in Perception and Stealth." },
+  { id: 7473, name: "Adopted by Elves", tags: ["Passive", "Adopted", "Uncommon", "CCO"], rarity: "Uncommon", score: -5, desc: "You retain all your own racial traits. Fey Ancestry: advantage on saving throws against being Charmed, cannot be magically put to sleep. Trance: only 4 hours of meditation needed for a Long Rest. Subrace influence — High Elf: one wizard cantrip (INT). Wood Elf: Mask of the Wild. Drow: Dancing Lights cantrip." },
+  { id: 7474, name: "Adopted by Tieflings", tags: ["Passive", "Adopted", "Uncommon", "CCO"], rarity: "Uncommon", score: -5, desc: "You retain all your own racial traits. Infernal Legacy: Thaumaturgy cantrip. At 3rd level cast Hellish Rebuke once per Long Rest. At 5th level cast Darkness once per Long Rest. CHA is your spellcasting ability. Hellish Resistance: resistance to Fire damage." },
+  { id: 7475, name: "Adopted by Dolphinfolk", tags: ["Passive", "Adopted", "Uncommon", "Aethros", "CCO"], rarity: "Uncommon", score: -5, desc: "You retain all your own racial traits. Echolocation: sense surroundings within 30 ft even in complete darkness, or 60 ft underwater, unless Deafened. Hold Breath for up to 15 minutes. Shape Water cantrip — INT is your spellcasting ability." },
+  { id: 7476, name: "Adopted by Gnomes", tags: ["Passive", "Adopted", "Uncommon", "CCO"], rarity: "Uncommon", score: -4, desc: "You retain all your own racial traits. Gnome Cunning: advantage on all INT, WIS, and CHA saving throws against magic. Subrace influence — Rock Gnome: Artificer's Lore and Tinker. Forest Gnome: Minor Illusion cantrip and Speak with Small Beasts." },
+  { id: 7477, name: "Adopted by Halflings", tags: ["Passive", "Adopted", "Uncommon", "CCO"], rarity: "Uncommon", score: -4, desc: "You retain all your own racial traits. Lucky: when you roll a 1 on an attack roll, ability check, or saving throw, reroll and use the new result. Brave: advantage on saving throws against being Frightened. Subrace influence — Lightfoot: hide behind creatures one size larger. Stout: advantage vs poison, resistance to poison damage." },
+  { id: 7478, name: "Adopted by Kenku", tags: ["Passive", "Adopted", "Uncommon", "CCO"], rarity: "Uncommon", score: -4, desc: "You retain all your own racial traits. Mimicry: precisely replicate any sound or voice heard — DC 14 Insight to identify as imitation. Expert Forgery: duplicate handwriting and crafted objects with advantage on checks to pass them as genuine." },
+  { id: 7479, name: "Adopted by Kobolds", tags: ["Passive", "Adopted", "Uncommon", "CCO"], rarity: "Uncommon", score: -3, desc: "You retain all your own racial traits. Pack Tactics: advantage on attack rolls against a creature if at least one non-incapacitated ally is within 5 ft. Grovel, Cower, and Beg: as an action, distract adjacent enemies — allies have advantage on attacks against those creatures until your next turn." },
+  { id: 7480, name: "Human", tags: ["Race", "Rare", "CCO"], rarity: "Rare", score: 0, desc: "+1 to all ability scores. One additional skill proficiency of your choice. One feat of your choice at 1st level." },
+  { id: 7481, name: "Elf", tags: ["Race", "Rare", "CCO"], rarity: "Rare", score: 0, desc: "+2 DEX. Darkvision 60 ft. Keen Senses: proficiency in Perception. Fey Ancestry: advantage vs Charmed, can't be magically put to sleep. Trance: 4 hours for Long Rest. Subrace — High Elf (+1 INT, one wizard cantrip, one language), Wood Elf (+1 WIS, 35 ft speed, Mask of the Wild), Drow (+1 CHA, Superior Darkvision 120 ft, sunlight sensitivity, Drow Magic)." },
+  { id: 7482, name: "Dwarf", tags: ["Race", "Rare", "CCO"], rarity: "Rare", score: 0, desc: "+2 CON. Speed 25 ft, not reduced by heavy armour. Darkvision 60 ft. Dwarven Resilience: advantage vs poison, resistance to poison damage. Dwarven Combat Training: proficiency with handaxe, battleaxe, light hammer, warhammer. Stonecunning: double proficiency on stonework History checks. Subrace — Hill (+1 WIS, +1 HP/level) or Mountain (+2 STR, light and medium armour proficiency)." },
+  { id: 7483, name: "Halfling", tags: ["Race", "Rare", "CCO"], rarity: "Rare", score: 0, desc: "+2 DEX. Speed 25 ft. Lucky: reroll any 1 on attack, ability check, or save. Brave: advantage vs Frightened. Halfling Nimbleness: move through spaces of larger creatures. Subrace — Lightfoot (+1 CHA, hide behind larger creatures) or Stout (+1 CON, advantage vs poison, poison resistance)." },
+  { id: 7484, name: "Gnome", tags: ["Race", "Rare", "CCO"], rarity: "Rare", score: 0, desc: "+2 INT. Small. Speed 25 ft. Darkvision 60 ft. Gnome Cunning: advantage on INT, WIS, CHA saves vs magic. Subrace — Rock (+1 CON, Artificer's Lore, Tinker) or Forest (+1 DEX, Minor Illusion, Speak with Small Beasts)." },
+  { id: 7485, name: "Half-Elf", tags: ["Race", "Rare", "CCO"], rarity: "Rare", score: 0, desc: "+2 CHA, +1 to two other ability scores of your choice. Darkvision 60 ft. Fey Ancestry: advantage vs Charmed, can't be magically put to sleep. Skill Versatility: proficiency in two skills of your choice." },
+  { id: 7486, name: "Half-Orc", tags: ["Race", "Rare", "CCO"], rarity: "Rare", score: 0, desc: "+2 STR, +1 CON. Darkvision 60 ft. Menacing: proficiency in Intimidation. Relentless Endurance: once per Long Rest, drop to 1 HP instead of 0. Savage Attacks: on a crit with a melee weapon, roll one additional damage die." },
+  { id: 7487, name: "Tiefling", tags: ["Race", "Rare", "CCO"], rarity: "Rare", score: 0, desc: "+2 CHA, +1 INT. Darkvision 60 ft. Hellish Resistance: Fire resistance. Infernal Legacy: Thaumaturgy cantrip, Hellish Rebuke at L3, Darkness at L5 (once per Long Rest each). CHA spellcasting ability." },
+  { id: 7488, name: "Dragonborn", tags: ["Race", "Rare", "CCO"], rarity: "Rare", score: 0, desc: "+2 STR, +1 CHA. Choose draconic ancestry. Breath Weapon: 15 ft cone or 30 ft line, 2d6 damage (scales), DEX or CON save. Damage Resistance: ancestry type." },
+  { id: 7489, name: "Aasimar", tags: ["Race", "Rare", "CCO"], rarity: "Rare", score: 0, desc: "+2 CHA. Darkvision 60 ft. Celestial Resistance: Necrotic and Radiant resistance. Healing Hands: restore HP equal to level, once per Long Rest. Light cantrip. Subrace — Protector (+1 WIS, Radiant Soul), Scourge (+1 CON, Radiant Consumption), or Fallen (+1 STR, Necrotic Shroud)." },
+  { id: 7490, name: "Tabaxi", tags: ["Race", "Rare", "CCO"], rarity: "Rare", score: 0, desc: "+2 DEX, +1 CHA. Speed 30 ft, climb 20 ft. Darkvision 60 ft. Feline Agility: double speed until end of turn (must move 0 ft next turn to reuse). Cat's Claws: 1d4 slashing unarmed. Cat's Talent: proficiency in Perception and Stealth." },
+  { id: 7491, name: "Kobold", tags: ["Race", "Rare", "CCO"], rarity: "Rare", score: 0, desc: "Small. Speed 30 ft. Darkvision 60 ft. Grovel, Cower, and Beg: distract adjacent foes as action — allies have advantage on attacks against them. Pack Tactics: advantage on attacks if an ally is adjacent to the target. Sunlight Sensitivity: disadvantage on attacks and Perception in direct sunlight." },
+  { id: 7492, name: "Lizardfolk", tags: ["Race", "Rare", "CCO"], rarity: "Rare", score: 0, desc: "+2 CON, +1 WIS. Speed 30 ft, swim 30 ft. Bite: 1d6 piercing unarmed. Cunning Artisan: craft basic weapons from creature materials during Short Rest. Hold Breath: 15 minutes. Hunter's Lore: proficiency in two of Animal Handling, Nature, Perception, Stealth, Survival. Natural Armour: AC 13 + DEX." },
+  { id: 7493, name: "Tortle", tags: ["Race", "Rare", "CCO"], rarity: "Rare", score: 0, desc: "+2 STR, +1 WIS. Speed 30 ft, swim 30 ft. Claws: 1d4 slashing. Hold Breath: 1 hour. Natural Armour: AC 17, no DEX modifier, can use shield. Shell Defence: withdraw as action for +4 AC, advantage STR/CON saves, disadvantage DEX saves, speed 0, no reactions." },
+  { id: 7494, name: "Goliath", tags: ["Race", "Rare", "CCO"], rarity: "Rare", score: 0, desc: "+2 STR, +1 CON. Speed 30 ft. Natural Athlete: Athletics proficiency. Stone's Endurance: 1d12 + CON damage reduction, once per Short Rest. Powerful Build: one size larger for carrying. Mountain Born: Cold resistance." },
+  { id: 7495, name: "Firbolg", tags: ["Race", "Rare", "CCO"], rarity: "Rare", score: 0, desc: "+2 WIS, +1 STR. Speed 30 ft. Firbolg Magic: Detect Magic and Disguise Self once per Short Rest. Hidden Step: invisible as bonus action once per Short Rest. Powerful Build. Speech of Beast and Leaf." },
+  { id: 7496, name: "Kenku", tags: ["Race", "Rare", "CCO"], rarity: "Rare", score: 0, desc: "+2 DEX, +1 WIS. Speed 30 ft. Expert Forgery: advantage duplicating handwriting and crafted objects. Kenku Training: proficiency in two of Acrobatics, Deception, Stealth, Sleight of Hand. Mimicry: perfectly replicate sounds and voices, DC 14 Insight to identify." },
+  { id: 7497, name: "Dolphinfolk", tags: ["Race", "Rare", "Aethros", "CCO"], rarity: "Rare", score: 0, desc: "+2 DEX, +1 INT. Speed 30 ft, Swim 30 ft. Hold Breath: 15 minutes. Ocean Magic: Shape Water cantrip, Ice Knife at L3 (once per Long Rest), Misty Step at L5 (once per Long Rest) — INT spellcasting. Echolocation: sense surroundings within 30 ft (60 ft underwater) even in darkness, unless Deafened." },
+  { id: 7498, name: "Barbarian", tags: ["Class", "Rare", "CCO"], rarity: "Rare", score: 0, desc: "Hit Die: d12. Saves: STR, CON. Proficiencies: all armour, shields, simple and martial weapons. Key Features: Rage (L1), Reckless Attack (L2), Danger Sense (L2), Extra Attack (L5), Fast Movement (L5), Feral Instinct (L7)." },
+  { id: 7499, name: "Bard", tags: ["Class", "Rare", "CCO"], rarity: "Rare", score: 0, desc: "Hit Die: d8. Saves: DEX, CHA. Proficiencies: light armour, simple weapons, hand crossbow, longsword, rapier, shortsword, 3 instruments. Key Features: Spellcasting CHA (L1), Bardic Inspiration d6 (L1), Jack of All Trades (L2), Song of Rest (L2), Expertise (L3), Font of Inspiration (L5), Countercharm (L6)." },
+  { id: 7500, name: "Cleric", tags: ["Class", "Rare", "CCO"], rarity: "Rare", score: 0, desc: "Hit Die: d8. Saves: WIS, CHA. Proficiencies: light and medium armour, shields, simple weapons. Key Features: Spellcasting WIS (L1), Divine Domain (L1), Channel Divinity (L2), Destroy Undead (L5)." },
+  { id: 7501, name: "Druid", tags: ["Class", "Rare", "CCO"], rarity: "Rare", score: 0, desc: "Hit Die: d8. Saves: INT, WIS. Proficiencies: light and medium non-metal armour, non-metal shields, druid weapon list. Key Features: Spellcasting WIS (L1), Druidic (L1), Wild Shape (L2, CR 1/4 → CR 1/2 at L4 → CR 1 at L8), Timeless Body (L18)." },
+  { id: 7502, name: "Fighter", tags: ["Class", "Rare", "CCO"], rarity: "Rare", score: 0, desc: "Hit Die: d10. Saves: STR, CON. Proficiencies: all armour, shields, simple and martial weapons. Key Features: Fighting Style (L1), Second Wind (L1), Action Surge (L2), Martial Archetype (L3), Extra Attack (L5), Indomitable (L9)." },
+  { id: 7503, name: "Monk", tags: ["Class", "Rare", "CCO"], rarity: "Rare", score: 0, desc: "Hit Die: d8. Saves: STR, DEX. Proficiencies: simple weapons, shortswords. Key Features: Unarmored Defense (L1), Martial Arts 1d4 (L1), Ki (L2), Unarmored Movement +10 ft (L2), Deflect Missiles (L3), Extra Attack (L5), Stunning Strike (L5), Ki-Empowered Strikes (L6)." },
+  { id: 7504, name: "Paladin", tags: ["Class", "Rare", "CCO"], rarity: "Rare", score: 0, desc: "Hit Die: d10. Saves: WIS, CHA. Proficiencies: all armour, shields, simple and martial weapons. Key Features: Divine Sense (L1), Lay on Hands (L1), Fighting Style (L2), Spellcasting CHA (L2), Divine Smite (L2), Sacred Oath (L3), Extra Attack (L5), Aura of Protection (L6)." },
+  { id: 7505, name: "Ranger", tags: ["Class", "Rare", "CCO"], rarity: "Rare", score: 0, desc: "Hit Die: d10. Saves: STR, DEX. Proficiencies: light and medium armour, shields, simple and martial weapons. Key Features: Favored Enemy (L1), Natural Explorer (L1), Fighting Style (L2), Spellcasting WIS (L2), Ranger Archetype (L3), Primeval Awareness (L3), Extra Attack (L5), Land's Stride (L8)." },
+  { id: 7506, name: "Rogue", tags: ["Class", "Rare", "CCO"], rarity: "Rare", score: 0, desc: "Hit Die: d8. Saves: DEX, INT. Proficiencies: light armour, simple weapons, hand crossbow, longsword, rapier, shortsword, thieves' tools. Key Features: Expertise (L1), Sneak Attack 1d6 (L1), Thieves' Cant (L1), Cunning Action (L2), Roguish Archetype (L3), Uncanny Dodge (L5), Expertise again (L6), Evasion (L7)." },
+  { id: 7507, name: "Sorcerer", tags: ["Class", "Rare", "CCO"], rarity: "Rare", score: 0, desc: "Hit Die: d6. Saves: CON, CHA. Proficiencies: daggers, darts, slings, quarterstaffs, light crossbows. Key Features: Spellcasting CHA (L1), Sorcerous Origin (L1), Font of Magic (L2), Metamagic (L3)." },
+  { id: 7508, name: "Warlock", tags: ["Class", "Rare", "CCO"], rarity: "Rare", score: 0, desc: "Hit Die: d8. Saves: WIS, CHA. Proficiencies: light armour, simple weapons. Key Features: Otherworldly Patron (L1), Pact Magic CHA (L1) — all slots same level, recharge Short Rest, Eldritch Invocations (L2), Pact Boon (L3)." },
+  { id: 7509, name: "Wizard", tags: ["Class", "Rare", "CCO"], rarity: "Rare", score: 0, desc: "Hit Die: d6. Saves: INT, WIS. Proficiencies: daggers, darts, slings, quarterstaffs, light crossbows. Key Features: Spellcasting INT spellbook (L1), Arcane Recovery (L1), Arcane Tradition (L2)." },
+  { id: 7510, name: "Path of the Undying Ember", tags: ["Class", "Epic", "Order of the Undying Vigil", "CCO"], rarity: "Epic", score: 0, desc: "Barbarian — Undying Vigil Subclass. L3: Ember Rage (Necrotic resistance while raging; +1d6 Radiant on next attack each time you're hit, refreshes), Refuse to Fall (CON DC 10 when reduced to 0 while raging — drop to 1 HP instead, once per Long Rest). L6: Vigil's Hunger (regain Ember Rage use on Short Rest; allies within 10 ft gain +1 to death saves while you rage). L10: Undying Momentum (Reckless Attack no longer imposes disadvantage on STR saves; Ember Rage increases to 2d6 Radiant). L14: The Ember Does Not Go Out (immune to Exhaustion while raging; a single death save success sets you to 1 HP)." },
+  { id: 7511, name: "Way of the Unbroken Spirit", tags: ["Class", "Epic", "Order of the Undying Vigil", "CCO"], rarity: "Epic", score: 0, desc: "Monk — Undying Vigil Subclass. L3: Suffer and Endure (Reaction on being hit — Resistance to that damage type, +1d8 Radiant on next unarmed strike; WIS modifier uses, recharges Short Rest), Ember's Warmth (advantage on death saves; Natural 20 on a death save returns you to 1 HP). L6: Consume the Strike (Suffer and Endure and ki abilities activate simultaneously). L11: Defiant Shell (critical hits reduced to normal; absorbing a strike with Suffer and Endure restores 1 ki). L17: Vigil of the Flesh (immune to Poison and Paralysis; single death save success sets you to 1 HP)." },
+  { id: 7512, name: "Warden of the Ashline", tags: ["Class", "Epic", "Order of the Undying Vigil", "CCO"], rarity: "Epic", score: 0, desc: "Ranger — Undying Vigil Subclass. L3: Marked for the Hunt (advantage tracking undead; undead can't detect you by scent or tremorsense), Ashline Stepping (move freely through undead-corrupted terrain). L7: Pale Hunter's Mark (radiant Hunter's Mark variant — target can't turn invisible; hidden undead within 30 ft revealed), Vigil's Eye (see through magical darkness; detect undead at will within 60 ft). L11: The Final Patrol (undead reduced to 0 HP by you cannot be raised by any means)." },
+  { id: 7513, name: "The Ashwalker", tags: ["Class", "Epic", "Order of the Undying Vigil", "CCO"], rarity: "Epic", score: 0, desc: "Rogue — Undying Vigil Subclass. L3: Ember Step (move through undead-corrupted terrain freely; Sneak Attack vs undead deals bonus Radiant equal to proficiency bonus), Vigil's Sight (see through magical darkness; detect undead within 30 ft at will). L9: Ghost Among the Dead (undead of CR ≤ your Rogue level cannot perceive you unless you attack). L13: Pale Strike (Sneak Attack against undead ignores Resistance and Immunity to Radiant). L17: Unseen Vigil (permanently invisible to undead in dim light or darkness, drops on attack, resumes next turn)." },
+  { id: 7514, name: "Vigil Domain", tags: ["Class", "Epic", "Order of the Undying Vigil", "CCO"], rarity: "Epic", score: 0, desc: "Cleric — Undying Vigil Subclass. Domain Spells: Bless, False Life (L1), Aid, Gentle Repose (L3), Beacon of Hope, Revivify (L5), Death Ward, Guardian of Faith (L7), Hallow, Mass Cure Wounds (L9). L1: Shared Vigil (healing/protective spells target one additional creature free). L2: Channel Divinity — The Ember Stands (stabilise all downed allies and break Frightened/Charmed simultaneously within 30 ft). L6: Warden's Blessing (Reaction — grant ally within 30 ft a reroll on failed save vs Necrotic or undead effect). L8: Divine Strike +1d8 Radiant." },
+  { id: 7515, name: "Oath of the Undying Vigil", tags: ["Class", "Epic", "Order of the Undying Vigil", "CCO"], rarity: "Epic", score: 0, desc: "Paladin — Undying Vigil Subclass. Oath Spells: False Life, Protection from Evil and Good (L3), Aid, Warding Bond (L5), Beacon of Hope, Revivify (L9). L3: Armour of the Ember (passive AC bonus = half CHA modifier, min +1, while armoured), Channel Divinity — Vigil's Defiance (choose: Refuse the Fall — next attack dropping you to 0 drops to 1 instead; or Undying Light — undead within 30 ft make WIS save or Frightened 1 min). L7: Aura of Endurance (allies within 10 ft have advantage on CON saves and death saves)." },
+  { id: 7516, name: "Vigil Warrior", tags: ["Class", "Epic", "Order of the Undying Vigil", "CCO"], rarity: "Epic", score: 0, desc: "Fighter — Undying Vigil Subclass. L3: Ember's Edge (+1d4 Radiant on weapon attacks; taking damage triggers +1d4 Radiant on next attack before end of turn, refreshes on each hit), Refuse the Wound (once per Short Rest, reduce incoming damage by 1d10 + CON as Reaction). L7: Hardened by the Vigil (Indomitable applies to death saves; critical hits against you deal only normal hit damage). L10: Vigil's Fury (below half HP — attacks deal an additional Radiant damage die). L15: The Last to Fall (cannot be reduced below 1 HP more than once per round)." },
+  { id: 7517, name: "Acolyte", tags: ["Background", "Uncommon", "CCO"], rarity: "Uncommon", score: 0, desc: "Skills: Insight, Religion. Languages: two of your choice. Equipment: holy symbol, prayer book, 5 incense, vestments, common clothes, 15gp. Feature — Shelter of the Faithful: free healing and care at temples of your faith; religious community may also make requests of you." },
+  { id: 7518, name: "Criminal", tags: ["Background", "Uncommon", "CCO"], rarity: "Uncommon", score: 0, desc: "Skills: Deception, Stealth. Tools: one gaming set, thieves' tools. Equipment: crowbar, dark clothes with hood, 15gp. Feature — Criminal Contact: reliable underworld contact who passes messages and obtains information for a price. Nature of crimes is player-decided." },
+  { id: 7519, name: "Folk Hero", tags: ["Background", "Uncommon", "CCO"], rarity: "Uncommon", score: 0, desc: "Skills: Animal Handling, Survival. Tools: one artisan's tool type, vehicles (land). Equipment: artisan's tools, shovel, iron pot, common clothes, 10gp. Feature — Rustic Hospitality: common folk will shelter, feed, and hide you — they won't risk their lives but won't turn you in." },
+  { id: 7520, name: "Noble", tags: ["Background", "Uncommon", "CCO"], rarity: "Uncommon", score: 0, desc: "Skills: History, Persuasion. Tools: one gaming set. Languages: one of your choice. Equipment: fine clothes, signet ring, scroll of pedigree, 25gp. Feature — Position of Privilege: welcomed in high society, can secure audience with local nobility. Noble house is player-decided." },
+  { id: 7521, name: "Sailor", tags: ["Background", "Uncommon", "CCO"], rarity: "Uncommon", score: 0, desc: "Skills: Athletics, Perception. Tools: navigator's tools, vehicles (water). Equipment: belaying pin, 50 ft silk rope, lucky charm, common clothes, 10gp. Feature — Ship's Passage: secure free passage on sailing ships for yourself and companions. Expected to work during passage." },
+  { id: 7522, name: "Soldier", tags: ["Background", "Uncommon", "CCO"], rarity: "Uncommon", score: 0, desc: "Skills: Athletics, Intimidation. Tools: one gaming set, vehicles (land). Equipment: rank insignia, trophy from fallen enemy, dice or cards, common clothes, 10gp. Feature — Military Rank: former soldiers defer to your rank, granting access to fortifications and supply lines where it is still respected." },
+  { id: 7523, name: "Outlander", tags: ["Background", "Uncommon", "CCO"], rarity: "Uncommon", score: 0, desc: "Skills: Athletics, Survival. Tools: one musical instrument. Languages: one of your choice. Equipment: staff, hunting trap, animal trophy, traveller's clothes, 10gp. Feature — Wanderer: perfect memory for terrain and geography; find food and fresh water for up to 6 people per day in the wild." },
+  { id: 7524, name: "Sage", tags: ["Background", "Uncommon", "CCO"], rarity: "Uncommon", score: 0, desc: "Skills: Arcana, History. Languages: two of your choice. Equipment: ink bottle, quill, small knife, letter from dead colleague with unanswered question, common clothes, 10gp. Feature — Researcher: if you don't know something you know where and from whom to find it." },
+  { id: 7525, name: "Charlatan", tags: ["Background", "Uncommon", "CCO"], rarity: "Uncommon", score: 0, desc: "Skills: Deception, Sleight of Hand. Tools: disguise kit, forgery kit. Equipment: fine clothes, disguise kit, tools of the con, 15gp. Feature — False Identity: second identity with documentation and established history — player-decided." },
+  { id: 7526, name: "Entertainer", tags: ["Background", "Uncommon", "CCO"], rarity: "Uncommon", score: 0, desc: "Skills: Acrobatics, Performance. Tools: disguise kit, one musical instrument. Equipment: instrument, admirer's favour, costume, 15gp. Feature — By Popular Demand: find a place to perform anywhere — receive free lodging and modest food while performing, become locally known within a week." },
+  { id: 7527, name: "Hermit", tags: ["Background", "Uncommon", "CCO"], rarity: "Uncommon", score: 0, desc: "Skills: Medicine, Religion. Tools: herbalism kit. Languages: one of your choice. Equipment: scroll case with notes, blanket, common clothes, herbalism kit, 5gp. Feature — Discovery: a unique revelation from your isolation — a great truth, hidden place, or cosmic secret. Player and DM decide together." },
+  { id: 7528, name: "Guild Artisan", tags: ["Background", "Uncommon", "CCO"], rarity: "Uncommon", score: 0, desc: "Skills: Insight, Persuasion. Tools: one artisan's tool type. Languages: one of your choice. Equipment: artisan's tools, guild introduction letter, traveller's clothes, 15gp. Feature — Guild Membership: food, lodging, and legal aid in guild cities. Dues: 5gp/month." },
+  { id: 7529, name: "Urchin", tags: ["Background", "Uncommon", "CCO"], rarity: "Uncommon", score: 0, desc: "Skills: Sleight of Hand, Stealth. Tools: disguise kit, thieves' tools. Equipment: small knife, city map, pet mouse, parent's token, common clothes, 10gp. Feature — City Secrets: move at twice normal pace through cities; always know the shortest or least-watched route between two locations." },
+  { id: 7530, name: "Pirate", tags: ["Background", "Uncommon", "CCO"], rarity: "Uncommon", score: 0, desc: "Skills: Athletics, Perception. Tools: navigator's tools, vehicles (water). Equipment: belaying pin, 50 ft silk rope, lucky charm, common clothes, 10gp. Feature — Bad Reputation: criminal elements show respect and deference; opens doors in ports and black markets that polite introductions wouldn't." },
+  { id: 7531, name: "Rage", tags: ["Class Feature", "Barbarian", "Rare"], rarity: "Rare", score: 6, desc: "Gain the Barbarian's Rage feature. Uses equal your proficiency bonus per Long Rest. While raging: advantage on STR checks and saves, +2 melee damage with STR weapons, resistance to Bludgeoning, Piercing, and Slashing damage. Rage ends if you haven't attacked or taken damage since your last turn, or fall unconscious." },
+  { id: 7532, name: "Reckless Attack", tags: ["Class Feature", "Barbarian", "Uncommon"], rarity: "Uncommon", score: 5, desc: "Gain the Barbarian's Reckless Attack feature. When you make your first attack on your turn, you may attack recklessly — advantage on all STR melee attacks until your next turn. Attackers also have advantage against you until then." },
+  { id: 7533, name: "Danger Sense", tags: ["Class Feature", "Barbarian", "Uncommon"], rarity: "Uncommon", score: 4, desc: "Gain the Barbarian's Danger Sense feature. Advantage on DEX saving throws against visible effects such as traps and spells. Does not apply while Blinded, Deafened, or Incapacitated." },
+  { id: 7534, name: "Bardic Inspiration", tags: ["Class Feature", "Bard", "Rare"], rarity: "Rare", score: 6, desc: "Gain the Bard's Bardic Inspiration feature. Bonus action — grant one creature within 60 ft a Bardic Inspiration die (d6, or d8 at level 5+). They add it to one ability check, attack, or save within 10 minutes. Uses equal your CHA modifier (minimum 1) per Long Rest." },
+  { id: 7535, name: "Jack of All Trades", tags: ["Class Feature", "Bard", "Uncommon"], rarity: "Uncommon", score: 5, desc: "Gain the Bard's Jack of All Trades feature. Add half your proficiency bonus (rounded down) to any ability check that doesn't already include your proficiency bonus." },
+  { id: 7536, name: "Turn Undead", tags: ["Class Feature", "Cleric", "Rare"], rarity: "Rare", score: 5, desc: "Gain Channel Divinity: Turn Undead. As an Action, present your holy symbol — each undead within 30 ft that can see or hear you must make a WIS save (DC 8 + WIS + proficiency). On a failure, Turned for 1 minute or until it takes damage. Turned creatures must flee and cannot willingly approach you. Once per Short or Long Rest." },
+  { id: 7537, name: "Healing Word", tags: ["Class Feature", "Cleric", "Uncommon"], rarity: "Uncommon", score: 4, desc: "Gain access to Healing Word as a bonus action spell, usable once per Short Rest without a spell slot — heals 1d4 + WIS modifier HP. If already a spellcaster, also prepare Healing Word as a known spell. WIS is the spellcasting ability." },
+  { id: 7538, name: "Wild Shape", tags: ["Class Feature", "Druid", "Rare"], rarity: "Rare", score: 7, desc: "Gain the Druid's Wild Shape feature. Twice per Short Rest, transform into a beast of CR 1/4 or lower (no fly or swim speed at L2; CR 1/2 + swim at L4+; CR 1 at L8+). Retain INT, WIS, CHA and mental features. Cannot cast spells while transformed. Duration: hours equal to half your level (rounded down)." },
+  { id: 7539, name: "Druidic", tags: ["Class Feature", "Druid", "Uncommon"], rarity: "Uncommon", score: 4, desc: "Gain the Druid's Druidic feature. Know the secret druid language. Can leave and read hidden messages (DC 15 Perception to spot, can't decipher without the language). Also gain Speak with Animals once per Long Rest without a spell slot." },
+  { id: 7540, name: "Second Wind", tags: ["Class Feature", "Fighter", "Uncommon"], rarity: "Uncommon", score: 5, desc: "Gain the Fighter's Second Wind feature. Bonus action — regain 1d10 + your level HP. Once per Short or Long Rest." },
+  { id: 7541, name: "Action Surge", tags: ["Class Feature", "Fighter", "Rare"], rarity: "Rare", score: 6, desc: "Gain the Fighter's Action Surge feature. Once per Short or Long Rest, on your turn take one additional Action on top of your regular Action and possible bonus action." },
+  { id: 7542, name: "Fighting Style", tags: ["Class Feature", "Fighter", "Uncommon"], rarity: "Uncommon", score: 4, desc: "Gain the Fighter's Fighting Style feature. Choose one: Archery (+2 ranged attack rolls), Defense (+1 AC while armoured), Dueling (+2 melee damage one-handed with no other melee weapon), Great Weapon Fighting (reroll 1s and 2s on damage with two-handed weapons), Protection (Reaction to impose disadvantage on attack against adjacent ally while you have a shield), Two-Weapon Fighting (add ability modifier to off-hand damage)." },
+  { id: 7543, name: "Ki", tags: ["Class Feature", "Monk", "Rare"], rarity: "Rare", score: 6, desc: "Gain the Monk's Ki feature. Ki points equal your proficiency bonus, recharge on Short or Long Rest. Spend on: Flurry of Blows (1 Ki — after Attack action, 2 bonus unarmed strikes), Patient Defense (1 Ki — Dodge as bonus action), Step of the Wind (1 Ki — Disengage or Dash as bonus action, jump distance doubled). Unarmed strikes deal 1d4 and use DEX or STR." },
+  { id: 7544, name: "Stunning Strike", tags: ["Class Feature", "Monk", "Uncommon"], rarity: "Uncommon", score: 4, desc: "Gain the Monk's Stunning Strike feature. Once per turn when you hit with a melee attack, spend 1 Ki — target makes CON save (DC 8 + proficiency + DEX or STR modifier) or is Stunned until end of your next turn." },
+  { id: 7545, name: "Divine Smite", tags: ["Class Feature", "Paladin", "Rare"], rarity: "Rare", score: 6, desc: "Gain the Paladin's Divine Smite feature. When you hit with a melee weapon attack, expend a spell slot to deal extra Radiant damage: 2d8 for a 1st-level slot, +1d8 per slot level above 1st, max 5d8. Against undead or fiends, damage increases by 1d8." },
+  { id: 7546, name: "Lay on Hands", tags: ["Class Feature", "Paladin", "Uncommon"], rarity: "Uncommon", score: 5, desc: "Gain the Paladin's Lay on Hands feature. HP pool equal to 5 × your level, recharges on Long Rest. As an action, touch a creature and restore any amount of HP from the pool. Alternatively, spend 5 HP to cure one disease or neutralise one poison." },
+  { id: 7547, name: "Aura of Protection", tags: ["Class Feature", "Paladin", "Uncommon"], rarity: "Uncommon", score: 4, desc: "Gain the Paladin's Aura of Protection feature. While conscious, you and friendly creatures within 10 ft add your CHA modifier (minimum +1) to all saving throws." },
+  { id: 7548, name: "Hunter's Mark", tags: ["Class Feature", "Ranger", "Uncommon"], rarity: "Uncommon", score: 5, desc: "Gain access to Hunter's Mark as a bonus action, once per Short Rest without a spell slot. While active: +1d6 damage to marked target, advantage on Perception and Survival checks to find it. If target drops to 0 HP, move the mark as a bonus action. WIS spellcasting ability." },
+  { id: 7549, name: "Natural Explorer", tags: ["Class Feature", "Ranger", "Uncommon"], rarity: "Uncommon", score: 4, desc: "Gain the Ranger's Natural Explorer feature. Choose one terrain type. In that terrain: difficult terrain doesn't slow group travel, group can't get lost except by magic, you stay alert while foraging or tracking, group moves stealthily at normal pace, you find twice as much food foraging, you know the number and size of groups that passed through in the last day." },
+  { id: 7550, name: "Sneak Attack", tags: ["Class Feature", "Rogue", "Rare"], rarity: "Rare", score: 7, desc: "Gain the Rogue's Sneak Attack feature. Once per turn, when you hit with a finesse or ranged weapon and have advantage (or an ally is adjacent to target and you have no disadvantage), deal bonus damage: 1d6 (L1-2), 2d6 (L3-4), 3d6 (L5-6), 4d6 (L7-8)." },
+  { id: 7551, name: "Cunning Action", tags: ["Class Feature", "Rogue", "Uncommon"], rarity: "Uncommon", score: 5, desc: "Gain the Rogue's Cunning Action feature. On each of your turns, take a Bonus Action to Dash, Disengage, or Hide." },
+  { id: 7552, name: "Uncanny Dodge", tags: ["Class Feature", "Rogue", "Uncommon"], rarity: "Uncommon", score: 4, desc: "Gain the Rogue's Uncanny Dodge feature. When an attacker you can see hits you, use your Reaction to halve that attack's damage." },
+  { id: 7553, name: "Metamagic", tags: ["Class Feature", "Sorcerer", "Rare"], rarity: "Rare", score: 6, desc: "Gain the Sorcerer's Metamagic feature and 3 Sorcery Points per Long Rest. Choose two Metamagic options: Careful (1 SP — chosen creatures auto-succeed your spell save), Distant (1 SP — double range), Empowered (1 SP — reroll up to CHA mod damage dice), Extended (1 SP — double concentration duration, max 24h), Quickened (2 SP — cast as Bonus Action), Subtle (1 SP — no verbal or somatic components). Must be a spellcaster to use." },
+  { id: 7554, name: "Eldritch Invocations", tags: ["Class Feature", "Warlock", "Uncommon"], rarity: "Uncommon", score: 5, desc: "Gain two Eldritch Invocations of your choice from the Warlock list, available at level 1-5, provided you meet their prerequisites. If already a Warlock, gain two additional invocations. Common picks: Agonising Blast, Armour of Shadows, Devil's Sight, Fiendish Vigour, Mask of Many Faces, Misty Visions." },
+  { id: 7555, name: "Eldritch Blast", tags: ["Class Feature", "Warlock", "Uncommon"], rarity: "Uncommon", score: 5, desc: "Gain the Eldritch Blast cantrip. Ranged spell attack, 120 ft range, 1 beam (+1 at L5, L11, L17), 1d10 Force damage per beam. CHA spellcasting ability. Eldritch Invocations that modify Eldritch Blast apply if you have them." },
+  { id: 7556, name: "Arcane Recovery", tags: ["Class Feature", "Wizard", "Uncommon"], rarity: "Uncommon", score: 5, desc: "Gain the Wizard's Arcane Recovery feature. Once per day during a Short Rest, recover expended spell slots with combined level equal to or less than half your level (rounded up, minimum 1). Slots of 6th level or higher cannot be recovered. Must be a spellcaster with spell slots." },
+  { id: 7557, name: "Spell Mastery", tags: ["Class Feature", "Wizard", "Uncommon"], rarity: "Uncommon", score: 4, desc: "Choose one 1st-level and one 2nd-level spell from any list you know or have in a spellbook. Cast each at lowest level without expending a spell slot, once per Short Rest each. Must be a spellcaster; spell must be one you can normally cast." },
+  { id: 7558, name: "Suffer and Endure", tags: ["Class Feature", "Order of the Undying Vigil — Monk", "Epic"], rarity: "Epic", score: 5, desc: "Gain the Unbroken Spirit's Suffer and Endure. Reaction on taking damage: gain Resistance to that damage type and your next unarmed strike before end of next turn deals +1d8 Radiant. Uses equal WIS modifier (min 1), recharge Short Rest. If you have no unarmed strike, you gain one (1d4) to use this bonus." },
+  { id: 7559, name: "Ember Rage", tags: ["Class Feature", "Order of the Undying Vigil — Barbarian", "Epic"], rarity: "Epic", score: 5, desc: "Gain the Path of the Undying Ember's Ember Rage. If you have Rage, enter Ember Rage instead — all Rage benefits plus Necrotic resistance and +1d6 Radiant on your next attack each time you're hit (refreshes, does not stack). Without Rage, once per Long Rest as a bonus action enter Ember Stance for 1 minute — same Necrotic resistance and Radiant trigger." },
+  { id: 7560, name: "Marked for the Hunt", tags: ["Class Feature", "Order of the Undying Vigil — Ranger", "Epic"], rarity: "Epic", score: 5, desc: "Gain the Warden of the Ashline's Marked for the Hunt. Advantage on all checks to track, identify, and locate undead. Undead cannot detect you by scent or tremorsense. Ashline Stepping: move through undead-corrupted terrain without speed penalty or required saving throws." },
+  { id: 7561, name: "Armour of the Ember", tags: ["Class Feature", "Order of the Undying Vigil — Paladin", "Epic"], rarity: "Epic", score: 5, desc: "Gain the Oath of the Undying Vigil's Armour of the Ember. While wearing armour and not Incapacitated, add half your CHA modifier (rounded down, min +1) to your AC. Applies to all armour types including spell-granted armour. Does not apply to Unarmored Defense." },
+  { id: 7562, name: "Shared Vigil", tags: ["Class Feature", "Order of the Undying Vigil — Cleric", "Epic"], rarity: "Epic", score: 4, desc: "Gain the Vigil Domain's Shared Vigil. When you cast a single-target healing or protective spell, choose one additional creature within range — they receive the same benefit at no extra cost. Applies to Cure Wounds, Bless, Shield of Faith, Protection from Evil and Good, and similar spells." },
+  { id: 7563, name: "Refuse to Fall", tags: ["Class Feature", "Order of the Undying Vigil — Barbarian", "Epic"], rarity: "Epic", score: 4, desc: "Gain the Path of the Undying Ember's Refuse to Fall. When reduced to 0 HP, make a CON saving throw (DC 10). On a success, drop to 1 HP instead. Once per Long Rest. If you also have Rage or Ember Rage, this triggers automatically while raging — no save required on a result of 10 or higher." },
+  { id: 7564, name: "Vigil's Defiance", tags: ["Class Feature", "Order of the Undying Vigil — Paladin", "Epic"], rarity: "Epic", score: 5, desc: "Gain the Oath of the Undying Vigil's Channel Divinity: Vigil's Defiance. Once per Short Rest, choose one: Refuse the Fall — until your next turn, an attack that would drop you to 0 HP drops you to 1 instead (triggers once); or Undying Light — undead within 30 ft that can see or hear you must pass WIS save (DC 8 + CHA + proficiency) or be Frightened for 1 minute." },
+  { id: 7201, name: "Keen Harvester", tags: ["Passive", "Crafting", "Rare"], rarity: "Rare", score: 8, desc: "Your Harvesting (WIS) checks have advantage. On a Natural 20 while harvesting, you gain an additional loot roll on top of the normal Critical Success result. Once per creature, the first failed Harvesting check does not cost a Harvest Attempt." },
+  { id: 7202, name: "Efficient Harvester", tags: ["Passive", "Crafting", "Rare"], rarity: "Rare", score: 6, desc: "Each time you succeed on a Harvesting check — including Great Successes and Critical Successes — you gain 1 additional loot roll beyond the normal result. When a loot roll would result in No Loot, you may treat it as a common-tier roll from that creature's loot table instead." },
+  { id: 7203, name: "Phase Extractor", tags: ["Passive", "Crafting", "Rare"], rarity: "Rare", score: 5, desc: "You have advantage on Harvesting checks against phase-touched or dimension-shifted creatures. When you roll a loot result on a phase-touched creature and the result would be a common-tier material, you may reroll once and take the higher tier. Phase materials you harvest retain their quality for twice as long before degrading." },
+  { id: 7204, name: "Dragon Sense", tags: ["Passive", "Crafting", "Rare"], rarity: "Rare", score: 4, desc: "You have advantage on Harvesting checks against any draconic or draconic-hybrid creature. When a draconic loot roll would produce a common-tier result, roll twice and take whichever you prefer. You can identify any draconic material's tier and tags by sight and touch alone — no check required." },
+  { id: 7205, name: "Critical Anatomy", tags: ["Passive", "Crafting", "Rare"], rarity: "Rare", score: 5, desc: "Before making your first Harvesting check on any creature, you may spend 1 minute examining the body. If you do, the DC for all Harvesting checks on that creature is reduced by 2 for the entire session. This stacks with other DC modifiers but the DC cannot be reduced below 8." },
+  { id: 7206, name: "Scavenger's Eye", tags: ["Passive", "Crafting", "Rare"], rarity: "Rare", score: 3, desc: "After all Harvest Attempts on a creature are depleted, you may make one final bonus Harvesting check at DC 10, regardless of the creature's tier. On a success, gain one common-tier loot roll. On a Natural 20, gain one rare-tier roll instead." },
+  { id: 7207, name: "Can't Leave It", tags: ["Passive", "Crafting", "Rare"], rarity: "Rare", score: -3, desc: "Whenever a harvestable creature is present, you must attempt at least one Harvesting check before the party moves on. In exchange, a Natural 1 on any Harvesting check is treated as a standard failure for you — you lose 1 Harvest Attempt as normal but materials are not further penalised." },
+  { id: 7208, name: "Masterwork Instinct", tags: ["Passive", "Crafting", "Rare"], rarity: "Rare", score: 6, desc: "Once per Long Rest, when you succeed on a crafting check by meeting the DC (Normal result), you may choose to count it as a success by 5 or more and produce a Superior item instead — without rolling again. Materials are consumed normally. Cannot be used more than once on the same item type per day." },
+  { id: 7209, name: "Material Memory", tags: ["Passive", "Crafting", "Rare"], rarity: "Rare", score: 5, desc: "The first craft of each item type per session reduces your DC by 2. The first-time-item-type +1 bonus PP applies to you even if you have crafted that item type before — you find new angles every time. Your proficiency bonus applies to any check to identify the tier or quality of a crafted item or raw material." },
+  { id: 7210, name: "Salvager", tags: ["Passive", "Crafting", "Rare"], rarity: "Rare", score: 4, desc: "When a crafting check fails by less than 5 and produces a Flawed item, you may instead choose to recover half the materials used (rounded down) and produce nothing — treating the attempt as abandoned rather than failed. When a Natural 1 would destroy all materials, the single rarest material used is automatically preserved." },
+  { id: 7211, name: "Hybrid Intuition", tags: ["Passive", "Crafting", "Rare"], rarity: "Rare", score: 5, desc: "The +2 DC penalty for hybrid crafting does not apply to you. The reduced damage dice penalty on hybrid crafted weapons and poisons also does not apply — your results use full dice as though crafting a single-material item. This mirrors the Hybrid Infusion Expert, Adaptive Skin Crafter, Composite Forge Master, and Hybrid Ballistics Engineer specialisation passives, but applies at all times without requiring a specialisation." },
+  { id: 7212, name: "Quick Hands", tags: ["Passive", "Crafting", "Rare"], rarity: "Rare", score: 4, desc: "The time required for all your crafting is halved, to a minimum of 10 minutes. During a Long Rest you may complete two separate crafting projects. This does not affect material consumption, tool requirements, or the PP daily category limit — only the time." },
+  { id: 7213, name: "Nat Twenty Frugal", tags: ["Passive", "Crafting", "Rare"], rarity: "Rare", score: 3, desc: "When you roll a Natural 20 on a crafting check, you recover one additional material beyond the standard rarest-material-not-consumed result. The additional recovered material is the second-rarest material used in that craft, chosen by you." },
+  { id: 7214, name: "Mastery Fast-Track", tags: ["Passive", "Crafting", "Rare"], rarity: "Rare", score: 5, desc: "You gain +1 additional PP on every crafting success, including successes made after you have hit the 5-craft daily PP cap for a category — the advantage-only mode still gives you PP. Your first Specialisation or Mastery milestone is reached at 20 PP rather than 25. Subsequent milestones remain at every 25 PP beyond that." },
+  { id: 7215, name: "Perfectionist", tags: ["Passive", "Crafting", "Rare"], rarity: "Rare", score: -3, desc: "When you produce a Normal result on a crafting check, you must immediately spend additional time equal to half the original craft time and attempt to improve it — rolling again against the same DC. If the second roll also produces Normal, you accept it. You gain +2 PP on every Superior result you produce instead of the standard +2, for a total of +3." },
+  { id: 7216, name: "Close Enough", tags: ["Passive", "Crafting", "Rare"], rarity: "Rare", score: 4, desc: "Permanently and passively, failures within 2 of the DC are treated as Normal successes for you — producing a Normal item rather than a Flawed one. This is equivalent to always having the Mastery option 'treat failures within 2 of DC as Normal' active, without spending a Mastery slot on it." },
+  { id: 7217, name: "Battlefield Crafter", tags: ["Passive", "Crafting", "Rare"], rarity: "Rare", score: 5, desc: "You may craft during Short Rests without disadvantage — the normal penalty for rushing does not apply to you. During a Short Rest you may complete any recipe with a time of 45 minutes or less. Once per Long Rest, you may craft any common-rarity item from memory without a written recipe, provided you have the required materials and tools." },
+  { id: 7218, name: "Forge-Born", tags: ["Passive", "Crafting — Smith", "Rare"], rarity: "Rare", score: 6, desc: "You begin play with proficiency in Smith's Tools and 10 PP already accumulated — placing you at the proficiency threshold immediately. Your Smith crafting checks have advantage when working with any blue dragon or reinforced material (tags: blue-dragon, reinforced). You can identify any metal or bone material's tier and quality without a check." },
+  { id: 7219, name: "Alchemical Bloodline", tags: ["Passive", "Crafting — Alchemist", "Rare"], rarity: "Rare", score: 5, desc: "You begin play with proficiency in both Alchemist's Supplies and Poisoner's Kit, with 10 PP accumulated for each. When a potion or poison crafting check meets the DC (Normal result), roll 1d6 — on a 5 or 6, the item is Superior at no extra cost. You can identify any potion, poison, or alchemical substance by smell alone." },
+  { id: 7220, name: "Leatherworker's Hands", tags: ["Passive", "Crafting — Leatherworker", "Rare"], rarity: "Rare", score: 5, desc: "You begin play with proficiency in Leatherworker's Tools and 10 PP. When working with any material tagged spider, blue-dragon hide, or creature-derived, your crafting DC is reduced by 1. Armour you personally craft grants its wearer +1 max HP while worn, stacking with any other properties." },
+  { id: 7221, name: "The Tinker's Gift", tags: ["Passive", "Crafting — Tinker", "Rare"], rarity: "Rare", score: 5, desc: "You begin play with proficiency in Tinker's Tools and 10 PP. When crafting firearms, upgrades, or mechanisms, any failure within 2 of the DC is treated as a Normal success rather than Flawed — equivalent to the 'fail-within-2-normal' mastery option, but only for Tinker recipes. You may perform basic repairs on any mechanical item during a Short Rest without consuming materials." },
+  { id: 7222, name: "Threadborne", tags: ["Passive", "Crafting — Weaver", "Rare"], rarity: "Rare", score: 5, desc: "You begin play with proficiency in Weaver's Tools and 10 PP. Phase-touched textile materials you work with never degrade in quality during the crafting process. Items you craft that include at least one phase-touched material always produce the correct Phase-Touched effect for their item category — Phase Strike for weapons, Phase Deflection for armour, Phase Slip Draught for potions, Phase Venom for poisons." },
+  { id: 7223, name: "Venom Wise", tags: ["Passive", "Crafting", "Rare"], rarity: "Rare", score: 4, desc: "When crafting with any venom component, the poison's save DC is treated as 1 higher than the recipe states. You can identify the tier and potency of any venom material by sight and smell — no check required." },
+  { id: 7224, name: "Phase Stable", tags: ["Passive", "Crafting", "Rare"], rarity: "Rare", score: 4, desc: "When you use a phase-touched material in a crafting recipe, the phase-touched effect applied to the finished item is always the highest-tier effect available for that item category — for accessories this means you choose from the full list of Phase Anchor accessory effects rather than rolling." },
+  { id: 7225, name: "Storm Reader", tags: ["Passive", "Crafting", "Rare"], rarity: "Rare", score: 5, desc: "When crafting with any material tagged blue-dragon, you have advantage on the crafting check. When a blue-dragon recipe produces a Superior result, any Lightning damage listed in the outcome that uses a d4 is doubled — 1d4 becomes 2d4. This applies once per recipe." },
+  { id: 7226, name: "Chitin Craft", tags: ["Passive", "Crafting", "Rare"], rarity: "Rare", score: 3, desc: "When crafting any item whose primary material is tagged chitin or spider, your crafting DC is reduced by 2. Armour crafted using a chitin primary component by you grants its wearer +1 AC beyond the item's normal value — this is a property of your craftsmanship and applies permanently." },
+  { id: 7227, name: "Silk Smith", tags: ["Passive", "Crafting", "Rare"], rarity: "Rare", score: 4, desc: "Items you craft using any material tagged spider-silk have their weight treated as negligible for encumbrance. Woven items from your silk work grant the wearer advantage on checks and saves to escape grapples or the Restrained condition. On a Natural 1 crafting check involving silk materials, those silk materials are preserved — they are not lost with the rest." },
+  { id: 7228, name: "Daily Grind", tags: ["Passive", "Crafting", "Rare"], rarity: "Rare", score: 3, desc: "When you reach the 5-craft daily PP cap for a category and enter advantage-only mode, you continue gaining +1 PP per successful craft in that category for the rest of the day — ignoring the normal PP lockout. The advantage from the daily cap still applies as normal." },
 ];
 
 type CharacterLike = {
@@ -105,12 +458,110 @@ type VisibilityRow = {
   is_visible: boolean;
 };
 
-const TAG_COLORS: Record<string, string> = {
-  Cursed: "#8B0000",
-  Passive: "#2d4a2d",
-  Legendary: "#7B5800",
-  Armor: "#1a3a5c",
+type VetoRow = {
+  campaign_id: string;
+  character_id: string;
+  used: boolean;
 };
+
+const TAG_COLORS: Record<string, string> = {
+  Adopted: "#4b153f",
+  Aethros: "#105b63",
+  "Arcane School": "#4f3b8f",
+  Armada: "#2f2a4f",
+  Armor: "#1a3a5c",
+  Background: "#5b4a2c",
+  Barbarian: "#333",
+  Bard: "#333",
+  Basic: "#3d5a3d",
+  CCO: "#7b4a12",
+  Class: "#4f3b8f",
+  "Class Feature": "#333",
+  Cleric: "#333",
+  Common: "#2f4f2f",
+  Crafting: "#29411e",
+  "Crafting — Alchemist": "#183f4a",
+  "Crafting — Leatherworker": "#384313",
+  "Crafting — Smith": "#5b3a16",
+  "Crafting — Tinker": "#163d3b",
+  "Crafting — Weaver": "#4b153f",
+  Cursed: "#8B0000",
+  "DM Granted": "#5b3b8c",
+  Destiny: "#a67c00",
+  Dragon: "#7b2f24",
+  Druid: "#333",
+  Epic: "#5b2f8f",
+  Feature: "#23524d",
+  Fighter: "#333",
+  Legendary: "#9b6b16",
+  Leviathan: "#105b63",
+  Monk: "#333",
+  Navy: "#25466b",
+  Normal: "#3d5a3d",
+  "Order of the Undying Vigil": "#333",
+  "Order of the Undying Vigil — Barbarian": "#333",
+  "Order of the Undying Vigil — Cleric": "#333",
+  "Order of the Undying Vigil — Monk": "#333",
+  "Order of the Undying Vigil — Paladin": "#333",
+  "Order of the Undying Vigil — Ranger": "#333",
+  Paladin: "#333",
+  Passive: "#2d4a2d",
+  Race: "#35405c",
+  "Race Base Score": "#35405c",
+  Ranger: "#333",
+  Rare: "#1f4f8f",
+  "Religion — Eternal Flame": "#333",
+  "Religion — Khevarai Nature Spirits": "#315c38",
+  "Religion — Minor Sea Gods": "#333",
+  "Religion — Order of the Undying Vigil": "#7a4f19",
+  "Religion — Remnant Orders": "#333",
+  "Religion — The Deep Current": "#105b63",
+  "Religion — The Eternal Flame": "#9b3a16",
+  "Religion — The Ironbound": "#59616b",
+  "Religion — The Vaelthari Triad": "#333",
+  "Religion — The Weaver": "#534489",
+  Rogue: "#333",
+  Romley: "#6b5b2a",
+  Sea: "#1f6f8b",
+  Sorcerer: "#333",
+  Tanky: "#5a3b2c",
+  "The Waking": "#3d234d",
+  Uncommon: "#1f5f3a",
+  Undead: "#4a5a4a",
+  Verath: "#9b5c2e",
+  Warlock: "#333",
+  Weak: "#5c4b3a",
+  Wizard: "#333",
+};
+
+
+function rollAttributeRarity(): AttributeRarity {
+  const entries = Object.entries(ATTRIBUTE_RARITY_WEIGHTS) as [AttributeRarity, number][];
+  const totalWeight = entries.reduce((sum, [, weight]) => sum + weight, 0);
+  let roll = Math.random() * totalWeight;
+
+  for (const [rarity, weight] of entries) {
+    roll -= weight;
+    if (roll <= 0) return rarity;
+  }
+
+  return "Common";
+}
+
+function pickWeightedAttributeCard(pool: AttributeCardData[]): AttributeCardData | null {
+  if (pool.length === 0) return null;
+
+  for (let attempt = 0; attempt < 10; attempt += 1) {
+    const rarity = rollAttributeRarity();
+    const rarityPool = pool.filter((card) => card.rarity === rarity);
+    if (rarityPool.length > 0) {
+      return rarityPool[Math.floor(Math.random() * rarityPool.length)];
+    }
+  }
+
+  return pool[Math.floor(Math.random() * pool.length)];
+}
+
 
 function scoreColor(score: number) {
   if (score > 5) return "#4caf7a";
@@ -197,8 +648,11 @@ export default function AttributeCardsPanel({
   const [tag, setTag] = useState("All");
   const [visibility, setVisibility] = useState<Record<number, boolean>>({});
   const [assignments, setAssignments] = useState<AttributeAssignment[]>([]);
+  const [vetoRows, setVetoRows] = useState<VetoRow[]>([]);
   const [selectedCharacterId, setSelectedCharacterId] = useState("");
   const [drawPool, setDrawPool] = useState<AttributeCardData[]>([]);
+  const [manualAssignCharacterId, setManualAssignCharacterId] = useState("");
+  const [manualAssignCardId, setManualAssignCardId] = useState("");
   const [message, setMessage] = useState("");
 
   const activeCharacters = useMemo(
@@ -210,18 +664,26 @@ export default function AttributeCardsPanel({
     if (!selectedCharacterId && activeCharacters[0]?.id) {
       setSelectedCharacterId(activeCharacters[0].id);
     }
-  }, [activeCharacters, selectedCharacterId]);
+    if (!manualAssignCharacterId && activeCharacters[0]?.id) {
+      setManualAssignCharacterId(activeCharacters[0].id);
+    }
+  }, [activeCharacters, selectedCharacterId, manualAssignCharacterId]);
 
   async function loadAttributeData() {
     if (!campaignId) return;
 
-    const [{ data: visibilityRows, error: visibilityError }, { data: assignmentRows, error: assignmentError }] = await Promise.all([
+    const [
+      { data: visibilityRows, error: visibilityError },
+      { data: assignmentRows, error: assignmentError },
+      { data: vetoData, error: vetoError },
+    ] = await Promise.all([
       supabase.from("campaign_attribute_visibility").select("campaign_id, card_id, is_visible").eq("campaign_id", campaignId),
       supabase.from("campaign_character_attributes").select("id, campaign_id, character_id, card_id").eq("campaign_id", campaignId),
+      supabase.from("campaign_character_attribute_vetoes").select("campaign_id, character_id, used").eq("campaign_id", campaignId),
     ]);
 
-    if (visibilityError || assignmentError) {
-      setMessage(visibilityError?.message || assignmentError?.message || "Failed to load attributes.");
+    if (visibilityError || assignmentError || vetoError) {
+      setMessage(visibilityError?.message || assignmentError?.message || vetoError?.message || "Failed to load attributes.");
       return;
     }
 
@@ -232,6 +694,7 @@ export default function AttributeCardsPanel({
 
     setVisibility(nextVisibility);
     setAssignments((assignmentRows as AttributeAssignment[] | null) || []);
+    setVetoRows((vetoData as VetoRow[] | null) || []);
   }
 
   useEffect(() => {
@@ -243,6 +706,7 @@ export default function AttributeCardsPanel({
       .channel(`campaign-attributes-${campaignId}`)
       .on("postgres_changes", { event: "*", schema: "public", table: "campaign_attribute_visibility", filter: `campaign_id=eq.${campaignId}` }, loadAttributeData)
       .on("postgres_changes", { event: "*", schema: "public", table: "campaign_character_attributes", filter: `campaign_id=eq.${campaignId}` }, loadAttributeData)
+      .on("postgres_changes", { event: "*", schema: "public", table: "campaign_character_attribute_vetoes", filter: `campaign_id=eq.${campaignId}` }, loadAttributeData)
       .subscribe();
 
     return () => {
@@ -292,7 +756,56 @@ export default function AttributeCardsPanel({
     }
   }
 
-  function drawOne() {
+  function tagVisibilityStats(tagName: string) {
+    const taggedCards = ATTRIBUTE_CARDS.filter((card) => card.tags.includes(tagName));
+    const visibleCount = taggedCards.filter((card) => isCardVisible(card.id, visibility)).length;
+
+    return {
+      total: taggedCards.length,
+      visible: visibleCount,
+      hidden: taggedCards.length - visibleCount,
+      allVisible: taggedCards.length > 0 && visibleCount === taggedCards.length,
+    };
+  }
+
+  async function setTagVisibility(tagName: string, isVisible: boolean) {
+    if (!adminUnlocked || !campaignId) return;
+
+    const taggedCards = ATTRIBUTE_CARDS.filter((card) => card.tags.includes(tagName));
+    if (taggedCards.length === 0) return;
+
+    const rows = taggedCards.map((card) => ({
+      campaign_id: campaignId,
+      card_id: card.id,
+      is_visible: isVisible,
+    }));
+
+    setVisibility((current) => {
+      const next = { ...current };
+      taggedCards.forEach((card) => {
+        next[card.id] = isVisible;
+      });
+      return next;
+    });
+
+    const { error } = await supabase
+      .from("campaign_attribute_visibility")
+      .upsert(rows, { onConflict: "campaign_id,card_id" });
+
+    if (error) {
+      setMessage(error.message);
+      loadAttributeData();
+      return;
+    }
+
+    setMessage(`${tagName} attributes are now ${isVisible ? "visible" : "hidden"}.`);
+  }
+
+  function hasVetoUsed(characterId: string) {
+    return vetoRows.some((row) => row.character_id === characterId && row.used);
+  }
+
+  function drawOne(excludeCardIds: number[] = []) {
     setMessage("");
     if (!selectedCharacterId) {
       setMessage("Choose a character first.");
@@ -306,9 +819,66 @@ export default function AttributeCardsPanel({
       return;
     }
 
-    const pool = ATTRIBUTE_CARDS.filter((card) => isCardVisible(card.id, visibility) && !owned.includes(card.id));
-    const shuffled = [...pool].sort(() => Math.random() - 0.5);
-    setDrawPool(shuffled.slice(0, 1));
+    const pool = ATTRIBUTE_CARDS.filter(
+      (card) =>
+        isCardVisible(card.id, visibility) &&
+        !owned.includes(card.id) &&
+        !excludeCardIds.includes(card.id)
+    );
+
+    if (pool.length === 0) {
+      setMessage("No visible attribute cards are available to draw.");
+      setDrawPool([]);
+      return;
+    }
+
+    const drawn = pickWeightedAttributeCard(pool);
+    if (!drawn) {
+      setMessage("No visible attribute cards are available to draw.");
+      setDrawPool([]);
+      return;
+    }
+
+    setDrawPool([drawn]);
+  }
+
+  async function vetoDrawnCard() {
+    if (!campaignId || !selectedCharacterId || drawPool.length === 0) return;
+
+    const selectedCharacter = activeCharacters.find((character) => character.id === selectedCharacterId);
+    if (!selectedCharacter) {
+      setMessage("Choose a valid campaign character before vetoing.");
+      setSelectedCharacterId(activeCharacters[0]?.id || "");
+      return;
+    }
+
+    if (hasVetoUsed(selectedCharacter.id)) {
+      setMessage("This character has already used their one attribute veto.");
+      return;
+    }
+
+    const vetoedCardId = drawPool[0].id;
+
+    const { error } = await supabase.from("campaign_character_attribute_vetoes").upsert(
+      {
+        campaign_id: campaignId,
+        character_id: selectedCharacter.id,
+        used: true,
+      },
+      { onConflict: "campaign_id,character_id" }
+    );
+
+    if (error) {
+      setMessage(error.message);
+      return;
+    }
+
+    setVetoRows((current) => [
+      ...current.filter((row) => row.character_id !== selectedCharacter.id),
+      { campaign_id: campaignId, character_id: selectedCharacter.id, used: true },
+    ]);
+
+    drawOne([vetoedCardId]);
   }
 
   async function assignCard(card: AttributeCardData) {
@@ -341,6 +911,43 @@ export default function AttributeCardsPanel({
     loadAttributeData();
   }
 
+  async function assignSpecificCard() {
+    if (!adminUnlocked || !campaignId || !manualAssignCharacterId || !manualAssignCardId) return;
+
+    const cardId = Number(manualAssignCardId);
+    const card = ATTRIBUTE_CARDS.find((entry) => entry.id === cardId);
+    if (!card) {
+      setMessage("Choose an attribute card first.");
+      return;
+    }
+
+    const owned = assignments.filter((assignment) => assignment.character_id === manualAssignCharacterId);
+    if (owned.length >= 2) {
+      setMessage("That character already has the maximum of 2 attribute cards.");
+      return;
+    }
+
+    if (owned.some((assignment) => assignment.card_id === cardId)) {
+      setMessage("That character already has this attribute.");
+      return;
+    }
+
+    const { error } = await supabase.from("campaign_character_attributes").insert({
+      campaign_id: campaignId,
+      character_id: manualAssignCharacterId,
+      card_id: cardId,
+    });
+
+    if (error) {
+      setMessage(error.message);
+      return;
+    }
+
+    setManualAssignCardId("");
+    setMessage(`${card.name} assigned by GM.`);
+    loadAttributeData();
+  }
+
   async function removeAssignment(characterId: string, cardId: number) {
     if (!adminUnlocked) return;
 
@@ -365,7 +972,7 @@ export default function AttributeCardsPanel({
         <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="font-serif text-3xl font-bold">Attributes</h2>
-            <p className="text-sm">Browse attributes, choose which character is drawing, draw visible cards, and track up to 2 cards per character.</p>
+            <p className="text-sm">Browse attributes, draw one visible card at a time, and track up to 2 cards per character. Each character has one veto.</p>
           </div>
           <div className="flex flex-wrap gap-2">
             {(["browse", "draw", "characters"] as const).map((tab) => (
@@ -385,6 +992,41 @@ export default function AttributeCardsPanel({
 
       {subTab === "browse" && (
         <div className="space-y-4">
+          {adminUnlocked && (
+            <div className="rounded-xl border border-[#9a7b45] bg-[#f2dfb9] p-4 text-[#251b10]">
+              <div className="mb-3">
+                <h3 className="font-serif text-xl font-bold">GM Tag Visibility</h3>
+                <p className="text-sm">Toggle entire attribute groups on or off without opening each card.</p>
+              </div>
+
+              <div className="flex flex-wrap gap-2">
+                {allTags.filter((tagName) => tagName !== "All").map((tagName) => {
+                  const stats = tagVisibilityStats(tagName);
+
+                  return (
+                    <div key={tagName} className="flex items-center gap-2 rounded-lg border border-[#9a7b45] bg-[#fff0c7] px-3 py-2">
+                      <span
+                        className="rounded border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#e8d5a3]"
+                        style={{ background: TAG_COLORS[tagName] || "#333", borderColor: "rgba(200,170,100,0.3)" }}
+                      >
+                        {tagName}
+                      </span>
+                      <span className="text-xs">
+                        {stats.visible}/{stats.total} visible
+                      </span>
+                      <button
+                        onClick={() => setTagVisibility(tagName, !stats.allVisible)}
+                        className={`rounded px-2 py-1 text-xs font-bold ${stats.allVisible ? "bg-[#5b1f1f] text-[#fff0c7]" : "bg-[#1f4d2e] text-[#fff0c7]"}`}
+                      >
+                        {stats.allVisible ? "Hide Tag" : "Show Tag"}
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
           <div className="flex flex-col gap-3 rounded-xl border border-[#9a7b45] bg-[#f2dfb9] p-4 text-[#251b10] md:flex-row">
             <input
               className="min-w-0 flex-1 rounded border border-[#9a7b45] bg-[#fff0c7] p-2"
@@ -422,29 +1064,80 @@ export default function AttributeCardsPanel({
         <div className="space-y-4">
           <div className="rounded-xl border border-[#9a7b45] bg-[#f2dfb9] p-4 text-[#251b10]">
             <label className="block space-y-1">
-              <strong>Drawing Character</strong>
+              <strong>Character</strong>
               <select className="w-full rounded border border-[#9a7b45] bg-[#fff0c7] p-2" value={selectedCharacterId} onChange={(event) => setSelectedCharacterId(event.target.value)}>
                 {activeCharacters.map((character) => (
                   <option key={character.id} value={character.id}>{character.name} ({characterCards(character.id).length}/2)</option>
                 ))}
               </select>
             </label>
-            <p className="mt-2 text-sm italic">
-              Players choose which character they are drawing for. The card is drawn only from currently visible attributes.
-            </p>
-            <button onClick={drawOne} className="mt-3 rounded bg-[#4b3115] px-4 py-2 font-serif text-[#fff0c7]">
+            <button onClick={() => drawOne()} className="mt-3 rounded bg-[#4b3115] px-4 py-2 font-serif text-[#fff0c7]">
               Draw 1 Visible Card
             </button>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-            {drawPool.map((card) => <Card key={card.id} card={card} onClick={() => assignCard(card)} />)}
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            {drawPool.map((card) => (
+              <div key={card.id} className="space-y-3">
+                <Card card={card} />
+                <div className="flex flex-wrap gap-2">
+                  <button onClick={() => assignCard(card)} className="rounded bg-[#4b3115] px-4 py-2 font-serif text-[#fff0c7]">
+                    Keep Attribute
+                  </button>
+                  <button
+                    onClick={vetoDrawnCard}
+                    disabled={hasVetoUsed(selectedCharacterId)}
+                    className="rounded bg-[#7a3f00] px-4 py-2 font-serif text-[#fff0c7] disabled:opacity-50"
+                  >
+                    Veto & Draw Again
+                  </button>
+                </div>
+                <p className="text-sm text-[#251b10]">
+                  Veto: {hasVetoUsed(selectedCharacterId) ? "Used" : "Available"}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       )}
 
       {subTab === "characters" && (
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+        <div className="space-y-4">
+          {adminUnlocked && (
+            <div className="rounded-xl border border-[#9a7b45] bg-[#f2dfb9] p-4 text-[#251b10]">
+              <h3 className="mb-3 text-xl font-bold">GM: Assign Attribute</h3>
+              <div className="grid grid-cols-1 gap-3 md:grid-cols-[1fr_1fr_auto]">
+                <select
+                  className="rounded border border-[#9a7b45] bg-[#fff0c7] p-2"
+                  value={manualAssignCharacterId}
+                  onChange={(event) => setManualAssignCharacterId(event.target.value)}
+                >
+                  {activeCharacters.map((character) => (
+                    <option key={character.id} value={character.id}>
+                      {character.name} ({characterCards(character.id, true).length}/2)
+                    </option>
+                  ))}
+                </select>
+                <select
+                  className="rounded border border-[#9a7b45] bg-[#fff0c7] p-2"
+                  value={manualAssignCardId}
+                  onChange={(event) => setManualAssignCardId(event.target.value)}
+                >
+                  <option value="">Choose attribute...</option>
+                  {ATTRIBUTE_CARDS.map((card) => (
+                    <option key={card.id} value={card.id}>
+                      {card.name} {isCardVisible(card.id, visibility) ? "" : "(hidden)"}
+                    </option>
+                  ))}
+                </select>
+                <button onClick={assignSpecificCard} className="rounded bg-[#4b3115] px-4 py-2 font-serif text-[#fff0c7]">
+                  Assign
+                </button>
+              </div>
+            </div>
+          )}
+
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
           {activeCharacters.map((character) => {
             const cards = characterCards(character.id, adminUnlocked);
             return (
@@ -475,6 +1168,7 @@ export default function AttributeCardsPanel({
               </div>
             );
           })}
+          </div>
         </div>
       )}
     </div>
