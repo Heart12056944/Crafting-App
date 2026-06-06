@@ -19,6 +19,8 @@ export type CompanionDefinition = {
   rarity: CompanionRarity;
   valueGp: number;
   requiresAttunement?: boolean;
+  action?: string;
+  usedBy?: string[];
   tags: string[];
   description: string;
   originalText?: string;

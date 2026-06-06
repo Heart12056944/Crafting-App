@@ -3501,7 +3501,7 @@
     "source": "URLive Season 3 - Card By: URLive Official"
   },
   {
-    "id": "item-3885-breath-of-golestandt",
+    "id": "item-3885-breath-of-Varreth",
     "sourceId": "3885",
     "name": "Breath of Golestandt",
     "category": "Item",
@@ -3516,8 +3516,8 @@
       "URLive Season 3",
       "Potion"
     ],
-    "description": "The bottled up breath of Dragon Aspect Golestandt, the lord of Dark Magic. Throw this bottle at an Area causing all Targets hit to Death Roll.",
-    "originalText": "The bottled up breath of Dragon Aspect Golestandt, the lord of Dark Magic. Throw this bottle at an Area causing all Targets hit to Death Roll.",
+    "description": "The bottled up breath of Dragon Varreth, the lord of Death. Throw this bottle at an Area causing all Targets hit to Death Roll.",
+    "originalText": "The bottled up breath of Dragon  Varreth, the lord of Death. Throw this bottle at an Area causing all Targets hit to Death Roll.",
     "source": "URLive Season 3 - Card By: URLive Official"
   },
   {
@@ -6882,8 +6882,8 @@
       "URLive Season 3",
       "Spell Scroll"
     ],
-    "description": "Begin meditating with the ancient tree Dragon Aspect Rokesh attuning your spirit to his. Rokesh may give you insight and advice that may help you in solving problems.",
-    "originalText": "Begin meditating with the ancient tree Dragon Aspect Rokesh attuning your spirit to his. Rokesh may give you insight and advice that may help you in solving problems.",
+    "description": "Begin meditating with the ancient tree Rokesh attuning your spirit to his. Rokesh may give you insight and advice that may help you in solving problems.",
+    "originalText": "Begin meditating with the ancient tree Rokesh attuning your spirit to his. Rokesh may give you insight and advice that may help you in solving problems.",
     "source": "URLive Season 3 - Card By: URLive Official"
   },
   {
@@ -9354,8 +9354,8 @@
       "URLive Season 3",
       "Spell Scroll"
     ],
-    "description": "Receive a gift from Dragon Aspect Rokesh and completely restore your HP. When you purchase this Ability, you may give it to other Players as well for free.",
-    "originalText": "Receive a gift from Dragon Aspect Rokesh and completely restore your Stamina. When you purchase this Ability, you may give it to other Players as well for free.",
+    "description": "Receive a gift from Rokesh and completely restore your HP. When you purchase this Ability, you may give it to other Players as well for free.",
+    "originalText": "Receive a gift from Rokesh and completely restore your Stamina. When you purchase this Ability, you may give it to other Players as well for free.",
     "source": "URLive Season 3 - Card By: URLive Official"
   },
   {
@@ -9928,8 +9928,8 @@
       "URLive Season 3",
       "Spell Scroll"
     ],
-    "description": "Grab a recently deceased body and rip their spirit apart destroying it forever. If there is no body nearby, you reap your own spirit which disconnects your connection to the Dragon Aspects making you unable to cast magic forever.",
-    "originalText": "Grab a recently deceased body and rip their spirit apart destroying it forever. If there is no body nearby, you reap your own spirit which disconnects your connection to the Dragon Aspects making you unable to cast magic forever.",
+    "description": "Grab a recently deceased body and rip their spirit apart destroying it forever. If there is no body nearby, you reap your own spirit which disconnects your connection to the gods and the magical realm making you unable to cast magic forever.",
+    "originalText": "Grab a recently deceased body and rip their spirit apart destroying it forever. If there is no body nearby, you reap your own spirit which disconnects your connection to the gods and the magical realm making you unable to cast magic forever.",
     "source": "URLive Season 3 - Card By: URLive Official"
   },
   {
@@ -14908,8 +14908,8 @@
       "URLive Season 3",
       "Spell Scroll"
     ],
-    "description": "Receive a gift from Dragon Aspect Rokesh and completely restore your HP.",
-    "originalText": "Receive a gift from Dragon Aspect Rokesh and completely restore your Stamina.",
+    "description": "Receive a gift from Rokesh and completely restore your HP.",
+    "originalText": "Receive a gift from Rokesh and completely restore your Stamina.",
     "source": "URLive Season 3 - Card By: URLive Official"
   },
   {
@@ -16318,5 +16318,2548 @@
     "description": "A heavy duty crossbow made by the Azveltarians. Upon hitting an enemy with a bolt from this crossbow, they must make a DC:13 Strength Saving throw or be pushed back 10ft. Properties: Two-handed, Range, Loading, Heavy, Ammunition Range:100ft/400ft",
     "originalText": "A heavy duty crossbow made by the Azveltarians. Upon hitting an enemy with a bolt from this crossbow, they must make a DC:13 Strength Saving throw or be pushed back 10ft. Properties: Two-handed, Range, Loading, Heavy, Ammunition Range:100ft/400ft",
     "source": "Unnassigned - Card By: Cole Yu"
+  },
+  {
+    "id": "legendary-slimey-tunnel-shovel-1691",
+    "sourceId": "1691",
+    "name": "Slimey Tunnel Shovel",
+    "category": "Weapon",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Weapon",
+      "Companion",
+      "Slime",
+      "Temporary HP",
+      "HP",
+      "Reaction",
+      "Legendary"
+    ],
+    "description": "Deals 9 damage with weapon attacks. You and your Companion may now move through Walled Terrain made of Slime. As a Reaction you move through Walled Terrain made of Slime, you may consume it and gain 6 Temporary HP. As a Reaction you knock a hostile creature into Walled Terrain made of Slime, they take an additional 10 damage.",
+    "originalText": "Deals 9 Damage with Basic Attacks. You and your Companion may now move through Walled Terrain made of Slime. Anytime you move through Walled Terrain made of Slime, you may consume it and gain 6 Shield. Anytime you knock a Foe into Walled Terrain made of Slime, they take an additional 10 Damage.",
+    "source": "URLive Season 2 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-the-cowgirl-gunstaff-1716",
+    "sourceId": "1716",
+    "name": "The Cowgirl Gunstaff",
+    "category": "Weapon",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Weapon",
+      "Teleport",
+      "Reaction",
+      "Legendary"
+    ],
+    "description": "Deals 8 damage with weapon attacks. As a Reaction you Teleport from an Ability or Passive, you gain 100 gold. You may learn and unlearn any Ability from the Witch Class while out of combat by meditating for a few moments.",
+    "originalText": "Deals 8 Damage with Basic Attacks. Anytime you Teleport from an Ability or Passive, you gain 100 gold. You may learn and unlearn any Ability from the Witch Class while out of combat by meditating for a few moments.",
+    "source": "URLive Season 2 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-wormhole-1717",
+    "sourceId": "1717",
+    "name": "Wormhole",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item"
+    ],
+    "description": "Summon a Wormhole which deals 10 damage in an Area and pulls all targets into the center of the Area. Allies may roll to grab onto something to avoid the damage and pull.",
+    "originalText": "Summon a Wormhole which deals 10 Damage in an Area and pulls all Targets into the center of the Area. Allies may roll to grab onto something to avoid the damage and pull.",
+    "source": "URLive Season 2 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-holding-bottle-ale-shield-1745",
+    "sourceId": "1745",
+    "name": "Holding Bottle Ale Shield",
+    "category": "Armour",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Armour",
+      "Temporary HP",
+      "HP",
+      "Legendary"
+    ],
+    "description": "At any time, you may destroy a Treasure Card to grant you or an Ally 10 Temporary HP. When using your Poncho of holding, you may veto up to 5 Treasures and draw new ones. At the end of Combat, you may keep or give to an Ally one of the items from your Poncho of Holding.",
+    "originalText": "At any time, you may destroy a Treasure Card to grant you or an Ally 10 Shield. When using your Poncho of holding, you may veto up to 5 Treasures and draw new ones. At the end of Combat, you may keep or give to an Ally one of the items from your Poncho of Holding.",
+    "source": "URLive Season 2 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-hidden-power-1746",
+    "sourceId": "1746",
+    "name": "Hidden Power",
+    "category": "Armour",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Armour",
+      "Temporary HP",
+      "HP",
+      "Reaction",
+      "Bonus Action",
+      "Legendary"
+    ],
+    "description": "You deal 5 damage melee weapon attacks. You deal double damage with melee weapon attacks. Increase your melee weapon attack damage by 1 for every empty Weapon, Armor, Temporary HP, and Roleplay Slot. As a Reaction you weapon attack, you may use Coin of Providence as an Bonus Action.",
+    "originalText": "You deal 5 Damage melee Basic Attacks. You deal double damage with melee Basic Attacks. Increase your melee Basic Attack damage by 1 for every empty Weapon, Armor, Shield, and Roleplay Slot. Anytime you Basic Attack, you may use Coin of Providence as an Immediate Bonus Action.",
+    "source": "URLive Season 2 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-tinderflame-1747",
+    "sourceId": "1747",
+    "name": "Tinderflame",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Fire",
+      "Spell",
+      "Legendary"
+    ],
+    "description": "You deal 7 damage with weapon attacks. critical hits with weapon attacks and Spellslinger Abilities cause you to cast Fireball on targets",
+    "originalText": "You deal 7 Damage with Basic Attacks. Critical Hits with Basic Attacks and Spellslinger Abilities cause you to cast Fireball on Targets",
+    "source": "URLive Season 2 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-gandiva-2091",
+    "sourceId": "2091",
+    "name": "Gandiva",
+    "category": "Weapon",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Weapon",
+      "Legendary"
+    ],
+    "description": "this lute is attached to a longbow basic attacks deal 7 damage allows you to pick 2 ranger abilities",
+    "originalText": "this lute is attached to a longbow basic attacks deal 7 damage allows you to pick 2 ranger abilities",
+    "source": "Unnassigned - Card By: kevin dorreman"
+  },
+  {
+    "id": "legendary-p-c-d-2092",
+    "sourceId": "2092",
+    "name": "P.C.D.",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Companion",
+      "Ice",
+      "Legendary"
+    ],
+    "description": "This pocket capturing device allows you to convert a target into a companion. most enemies cannot resist and as such a roll might not be necessary.",
+    "originalText": "This pocket capturing device allows you to convert a target into a companion. most enemies cannot resist and as such a roll might not be necessary.",
+    "source": "Unnassigned - Card By: kevin dorreman"
+  },
+  {
+    "id": "legendary-cloak-of-intangiblity-2635",
+    "sourceId": "2635",
+    "name": "Cloak of Intangiblity",
+    "category": "Armour",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Armour",
+      "Legendary"
+    ],
+    "description": "This cloak protects you from taking any damage for three rounds of combat, as long you don't roll a natural 1 any of those rounds. If the cloak comes off, all damage dealt by enemies this round is dealt to you.",
+    "originalText": "This cloak protects you from taking any damage for three rounds of combat, as long you don't roll a Critical Fail any of those rounds. If the cloak comes off, all damage dealt by enemies this round is dealt to you.",
+    "source": "Unnassigned - Card By: Stephen Brennan"
+  },
+  {
+    "id": "legendary-spell-rifle-2636",
+    "sourceId": "2636",
+    "name": "Spell Rifle",
+    "category": "Weapon",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Weapon",
+      "Spell",
+      "Reaction",
+      "Legendary"
+    ],
+    "description": "This rifle is guaranteed to hit, as long as you don't roll a natural 1. Whenever you use this rifle, that is the end of your turn. You may not use anymore abilities that round, and you may not use any As a Reactions.",
+    "originalText": "This rifle is guaranteed to hit, as long as you don't roll a Critical Fail. Whenever you use this rifle, that is the end of your turn. You may not use anymore abilities that round, and you may not use any Anytimes.",
+    "source": "Unnassigned - Card By: Stephen Brennan"
+  },
+  {
+    "id": "legendary-nature-s-blessing-2637",
+    "sourceId": "2637",
+    "name": "Nature's Blessing",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "HP",
+      "Legendary"
+    ],
+    "description": "For one Turn, All Damage taken by be reduced by half of your Maximum HP and Dealt to all Enemies",
+    "originalText": "For one Turn, All Damage taken by be reduced by half of your Maximum Stamina and Dealt to all Enemies",
+    "source": "Unnassigned - Card By: Stephen Brennan"
+  },
+  {
+    "id": "legendary-maple-wood-juice-2638",
+    "sourceId": "2638",
+    "name": "Maple Wood Juice",
+    "category": "Potion",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Potion",
+      "Ice",
+      "HP"
+    ],
+    "description": "You Drink Of The Juice Of The Holy Maple Tree Stump Fully Restoring Both Shild And HP.",
+    "originalText": "You Drink Of The Juice Of The Holy Maple Tree Stump Fully Restoring Both Shild And Stamina.",
+    "source": "Unnassigned - Card By: Bake"
+  },
+  {
+    "id": "legendary-arcane-particle-cannon-2650",
+    "sourceId": "2650",
+    "name": "Arcane Particle Cannon",
+    "category": "Weapon",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Weapon",
+      "Fire",
+      "Arcane",
+      "Legendary"
+    ],
+    "description": "A giant Gnomish cannon that fires a beam of pure Arcane Energy that deals 50 damage in a line. The cannon has a long cooldown period which means this Ability can only be used every other round of combat.",
+    "originalText": "A giant Gnomish cannon that fires a beam of pure Arcane Energy that deals 50 Damage in a line. The cannon has a long cooldown period which means this Ability can only be used every other round of combat.",
+    "source": "URLive Season 2 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-master-tamers-handbook-2651",
+    "sourceId": "2651",
+    "name": "Master Tamers Handbook",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Companion",
+      "Legendary"
+    ],
+    "description": "Double the damage your Companion does with their Abilities. You may use a Regular Action once per combat to teach your Companion a new random Companion Ability. As long as your Companion is Conscious, your character cannot go Unconscious.",
+    "originalText": "Double the damage your Companion does with their Abilities. You may use a Regular Action once per combat to teach your Companion a new random Companion Ability. As long as your Companion is Conscious, your character cannot go Unconscious.",
+    "source": "URLive Season 2 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-spoon-of-bent-realities-2688",
+    "sourceId": "2688",
+    "name": "Spoon of Bent Realities",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Legendary"
+    ],
+    "description": "This Legendary can transform into any other Legendary Item in the game. Once transformed, it will transform back only after you Critically Fail.",
+    "originalText": "This Legendary can transform into any other Legendary Item in the game. Once transformed, it will transform back only after you Critically Fail.",
+    "source": "URLive Season 2 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-dragon-egg-2689",
+    "sourceId": "2689",
+    "name": "Dragon Egg",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Dragon",
+      "Legendary"
+    ],
+    "description": "A stolen egg from the brood of Vlurunga. It's value is worth more than a Dragon's weight in gold. Taking care of this Egg until it hatches will allow this creature to become a Dragon Master, a Legendary Class.",
+    "originalText": "A stolen egg from the brood of Vlurunga. It's value is worth more than a Dragon's weight in gold. Taking care of this Egg until it hatches will allow this Character to become a Dragon Master, a Legendary Class.",
+    "source": "URLive Season 2 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-dragon-warrior-helmet-2690",
+    "sourceId": "2690",
+    "name": "Dragon Warrior Helmet",
+    "category": "Armour",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Armour",
+      "Dragon",
+      "Legendary"
+    ],
+    "description": "Meditating out of combat, allows you attune yourself to one of the six elements. You are healed by damage taken from this element, rather than damaged.",
+    "originalText": "Meditating out of combat, allows you attune yourself to one of the six elements. You are healed by damage taken from this element, rather than damaged.",
+    "source": "URLive Season 2 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-dragonhammer-staff-2691",
+    "sourceId": "2691",
+    "name": "Dragonhammer Staff",
+    "category": "Weapon",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Weapon",
+      "Dragon",
+      "Legendary"
+    ],
+    "description": "Deals 5 damage with weapon attacks. Whenever you successfully land a weapon attack, you may also have the Dragonhammer Staff cast any Ability of the Wizard Class at the same target without rolling.",
+    "originalText": "Deals 5 Damage with Basic Attacks. Whenever you successfully land a Basic Attack, you may also have the Dragonhammer Staff cast any Ability of the Wizard Class at the same Target without rolling.",
+    "source": "URLive Season 2 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-dragon-glass-shield-2692",
+    "sourceId": "2692",
+    "name": "Dragon Glass Shield",
+    "category": "Armour",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Armour",
+      "Dragon",
+      "HP",
+      "Reaction",
+      "Legendary"
+    ],
+    "description": "Increases your HP by 25. As a Reaction you or an Ally within 3 5-foot 5-foot spaces are attacked by a melee or projectile attack, you may roll to attempt to deflect the attack back at the attacker.",
+    "originalText": "Increases your Stamina by 25. Anytime you or an Ally within 3 spaces are attacked by a melee or projectile attack, you may roll to attempt to deflect the attack back at the attacker.",
+    "source": "URLive Season 2 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-susurflame-2693",
+    "sourceId": "2693",
+    "name": "Susurflame",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Fire",
+      "Legendary"
+    ],
+    "description": "Deal 10 damage with weapon attacks. You and adjacent targets are immune to the element of Fire. weapon attacks for the first time each round do not use up an Action.",
+    "originalText": "Deal 10 Damage with Basic Attacks. You and adjacent Targets are immune to the element of Fire. Basic Attacks for the first time each round do not use up an Action.",
+    "source": "URLive Season 2 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-greater-lay-on-hands-2694",
+    "sourceId": "2694",
+    "name": "Greater Lay on Hands",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Temporary HP",
+      "HP"
+    ],
+    "description": "Release a wave of light onto all non-hostile creature Charatcers on the Battlefield that restores all of a their HP and Temporary HPs. natural 1s count as natural 20s with this Ability. This ability does not cost an Action.",
+    "originalText": "Release a wave of light onto all non-Foe Charatcers on the Battlefield that restores all of a their Stamina and Shields. Critical Fails count as Critical Successes with this Ability. This ability does not cost an Action.",
+    "source": ""
+  },
+  {
+    "id": "legendary-thornblade-s-katana-2721",
+    "sourceId": "2721",
+    "name": "Thornblade's Katana",
+    "category": "Weapon",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Weapon",
+      "Reaction",
+      "Legendary"
+    ],
+    "description": "You deal 6 damage with weapon attacks. As a Reaction you successfully land a weapon attack on a target, you may move up to 2 5-foot 5-foot spaces and attack a second target with a No-Roll weapon attack. You may repeat this process as long as you keep attacking different targets.",
+    "originalText": "You deal 6 Damage with Basic Attacks. Anytime you successfully land a Basic Attack on a Target, you may move up to 2 spaces and attack a second Target with a No-Roll Basic Attack. You may repeat this process as long as you keep attacking different Targets.",
+    "source": "URLive Season 2 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-dynamite-stick-2722",
+    "sourceId": "2722",
+    "name": "Dynamite Stick",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Legendary"
+    ],
+    "description": "This stick of dynamite is can be lit and tossed to do devastating damage. It can be thrown at a target to deal 99 damage in a Area or can be used to access hidden areas in the abandoned mine.",
+    "originalText": "This stick of dynamite is can be lit and tossed to do devastating damage. It can be thrown at a Target to deal 99 Damage in a Area or can be used to access hidden areas in the abandoned mine.",
+    "source": "URLive Season 2 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-grand-stonescaler-2736",
+    "sourceId": "2736",
+    "name": "Grand Stonescaler",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Temporary HP",
+      "HP",
+      "Reaction",
+      "Minion",
+      "Legendary"
+    ],
+    "description": "As a Reaction you use Cleric Sticks, your skin grows a scale made of Stone that increases your Temporary HP and HP by 5 permanently. While you have a Snake Minion on the Battlefield, you may see through their eyes.",
+    "originalText": "Anytime you use Cleric Sticks, your skin grows a scale made of Stone that increases your Shield and Stamina by 5 permanently. While you have a Snake Minion on the Battlefield, you may see through their eyes.",
+    "source": ""
+  },
+  {
+    "id": "legendary-behemoth-berserker-2768",
+    "sourceId": "2768",
+    "name": "Behemoth Berserker",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "HP",
+      "Legendary"
+    ],
+    "description": "Bearserk now causes you transform into a Massive Tile. Seismic Toss no longer drains HP and is no longer Limited.",
+    "originalText": "Bearserk now causes you transform into a Massive Tile. Seismic Toss no longer drains Stamina and is no longer Limited.",
+    "source": "URLive Season 2 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-scrolls-of-the-sandbold-2769",
+    "sourceId": "2769",
+    "name": "Scrolls of the Sandbold",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Legendary"
+    ],
+    "description": "Reading these rare scrolls causes time to grind to a Halt for a few moments consuming the scrolls in the process. All creatures on the Battlefield are frozen in time stunning them for the rest of the round.",
+    "originalText": "Reading these rare scrolls causes time to grind to a Halt for a few moments consuming the scrolls in the process. All Characters on the Battlefield are frozen in time stunning them for the rest of the round.",
+    "source": "URLive Season 2 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-thereseesa-2770",
+    "sourceId": "2770",
+    "name": "Thereseesa",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Spell",
+      "Temporary HP",
+      "HP",
+      "Legendary"
+    ],
+    "description": "Deals 5 damage with weapon attacks. You may drain your own Temporary HP and HP when using a weapon attack to deal an additional 2 damage per HP spent. Should you drain all of your HP with this attack, cast the Legendary Spell called Empahvesion.",
+    "originalText": "Deals 5 Damage with Basic Attacks. You may drain your own Shield and Stamina when using a Basic Attack to deal an additional 2 Damage per Stamina spent. Should you drain all of your Stamina with this attack, cast the Legendary Spell called Empahvesion.",
+    "source": "URLive Season 2 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-empahvesion-2771",
+    "sourceId": "2771",
+    "name": "Empahvesion",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Death"
+    ],
+    "description": "Blast a target with all of your Lifeforce shooting forth pure Light energies that deal 9999 damage in a Line. After using this Ability, you must Death Roll and then fall to the ground either Unconscious or Dead.",
+    "originalText": "Blast a Target with all of your Lifeforce shooting forth pure Light energies that deal 9999 Damage in a Line. After using this Ability, you must Death Roll and then fall to the ground either Unconscious or Dead.",
+    "source": "URLive Season 2 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-blessed-shard-2943",
+    "sourceId": "2943",
+    "name": "Blessed Shard",
+    "category": "Treasure",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Treasure",
+      "Legendary"
+    ],
+    "description": "Slay the skeleton king",
+    "originalText": "Slay the skeleton king",
+    "source": "Unnassigned - Card By: Dale Conrad"
+  },
+  {
+    "id": "legendary-sparrows-bow-of-the-moon-3132",
+    "sourceId": "3132",
+    "name": "Sparrows Bow of the moon",
+    "category": "Weapon",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Weapon"
+    ],
+    "description": "A Sentient Bow that never misses as long you can convise it to hit your target.Tons of gems emeded into it it has the name sparrow carved into it its string is made of black silk.",
+    "originalText": "A Sentient Bow that never misses as long you can convise it to hit your target.Tons of gems emeded into it it has the name sparrow carved into it its string is made of black silk.",
+    "source": "Unnassigned - Card By: Tom Mooney"
+  },
+  {
+    "id": "legendary-final-gift-3858",
+    "sourceId": "3858",
+    "name": "Final Gift",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Spell",
+      "HP",
+      "Bonus Action",
+      "Legendary"
+    ],
+    "description": "In a final single prayer, you give up your life to the Light to fuse spirits with an Ally transforming into what is known as a Valkyrie. You may add your HP to your Allies then double it after fusing together. Whenever this creature uses an Action, you may cast a Spell as a Bonus Action. Your physical appearance will slowly change over time as you grow into a creature that defines both. This transformation cannot be undone.",
+    "originalText": "In a final single prayer, you give up your life to the Light to fuse spirits with an Ally transforming into what is known as a Valkyrie. You may add your Stamina to your Allies then double it after fusing together. Whenever this Character uses an Action, you may cast a Spell as a Bonus Action. Your physical appearance will slowly change over time as you grow into a Character that defines both. This transformation cannot be undone.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-greater-lay-on-hands-3859",
+    "sourceId": "3859",
+    "name": "Greater Lay on Hands",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "HP",
+      "Reaction",
+      "Legendary"
+    ],
+    "description": "Pray to the light and then release a wave of light onto all non-hostile creature creatures on the Battlefield that restores all HP and Reactions. If a creature was Killed very recently, you may bring them back to life with this Ability. Bringing creatures back to life may cause unexpected consequences.",
+    "originalText": "Pray to the light and then release a wave of light onto all non-Foe Characters on the Battlefield that restores all Stamina and Anytime Actions. If a Character was Killed very recently, you may bring them back to life with this Ability. Bringing Characters back to life may cause unexpected consequences.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-empahvision-3860",
+    "sourceId": "3860",
+    "name": "Empahvision",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "HP",
+      "Legendary"
+    ],
+    "description": "Blast a target with all of your Lifeforce shooting forth pure Light energies that deal 9999 damage in a Line. After using this Ability, your HP is fully drained and you are put in Danger.",
+    "originalText": "Blast a Target with all of your Lifeforce shooting forth pure Light energies that deal 9999 Damage in a Line. After using this Ability, your Stamina is fully drained and you are put in Danger.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-greater-pyroblast-3861",
+    "sourceId": "3861",
+    "name": "Greater Pyroblast",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Fire",
+      "Spell",
+      "Death",
+      "Legendary"
+    ],
+    "description": "Channel all of your energies into a mountain size fireball and launch it forward forcing a Death Roll on every target it passes through. This Spell is powerful enough to kill even a Divine Being.",
+    "originalText": "Channel all of your energies into a mountain size fireball and launch it forward forcing a Death Roll on every Target it passes through. This Spell is powerful enough to kill even a Divine Being.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-rebirth-3862",
+    "sourceId": "3862",
+    "name": "Rebirth",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Fire",
+      "Spell",
+      "Legendary"
+    ],
+    "description": "Place your hand on a target and in a flash of orange fire, burn yourself and the target alive leaving only a large black egg behind which instantly kills you both. At the start of the next round, you are reborn in the body of the target killed by this Spell.",
+    "originalText": "Place your hand on a Target and in a flash of orange fire, burn yourself and the Target alive leaving only a large black egg behind which instantly kills you both. At the start of the next round, you are reborn in the body of the Target killed by this Spell.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-the-forbidden-spell-3863",
+    "sourceId": "3863",
+    "name": "The Forbidden Spell",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Spell",
+      "Death",
+      "Legendary"
+    ],
+    "description": "Create an air pocket around the head of a target that sucks all of the air out of their lungs forcing a Death Roll as they suffocate. This Spell is so extremely simple to cast that it is almost impossible to fail with, but is so deadly that most consider it forbidden magic. The casting of this magic is deemed pure evil by some and once casted once, can be replicated by most Mages fairly easily.",
+    "originalText": "Create an air pocket around the head of a Target that sucks all of the air out of their lungs forcing a Death Roll as they suffocate. This Spell is so extremely simple to cast that it is almost impossible to fail with, but is so deadly that most consider it forbidden magic. The casting of this magic is deemed pure evil by some and once casted once, can be replicated by most Mages fairly easily.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-curse-of-medusa-3864",
+    "sourceId": "3864",
+    "name": "Curse of Medusa",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Death",
+      "Ice",
+      "Charm",
+      "Legendary"
+    ],
+    "description": "Transform yourself into a Medusa, an almost godlike creature that causes any target you lock eyes with to be Charmed permanently until your Death or you formally relieve them of service. targets are Charmed in the literal sense meaning that they absolutely adore you, some even after you release them which makes the temporary uses of these magics far greater. This curse cannot be reversed by ordinary magic.",
+    "originalText": "Transform yourself into a Medusa, an almost godlike creature that causes any Target you lock eyes with to be Charmed permanently until your Death or you formally relieve them of service. Targets are Charmed in the literal sense meaning that they absolutely adore you, some even after you release them which makes the temporary uses of these magics far greater. This curse cannot be reversed by ordinary magic.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-erase-3865",
+    "sourceId": "3865",
+    "name": "Erase",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Spell",
+      "Arcane",
+      "Death",
+      "Legendary"
+    ],
+    "description": "At the edge of the magical spectrums, Earth and Arcane can both create life and destroy it. The target you touch with this Spell must Death Roll higher than this roll or else in a single swipe of your hand you completely erase all trace of them.",
+    "originalText": "At the edge of the magical spectrums, Earth and Arcane can both create life and destroy it. The Target you touch with this Spell must Death Roll higher than this roll or else in a single swipe of your hand you completely erase all trace of them.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-hydroflame-3866",
+    "sourceId": "3866",
+    "name": "Hydroflame",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Fire",
+      "Death",
+      "Legendary"
+    ],
+    "description": "Fire a beam of swirling water and fire that steams together down the middle that forces a Death Roll on targets even clipped by this beam. For every Ally currently in Danger, you may select an additional target and fire another beam.",
+    "originalText": "Fire a beam of swirling water and fire that steams together down the middle that forces a Death Roll on Targets even clipped by this beam. For every Ally currently in Danger, you may select an additional Target and fire another beam.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-ray-of-omega-frost-cannon-3867",
+    "sourceId": "3867",
+    "name": "Ray of Omega Frost Cannon",
+    "category": "Weapon",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Weapon",
+      "Frost",
+      "Legendary"
+    ],
+    "description": "Blast a target with a ray of omega frost from your fists like a cannon dealing 99 damage. After hitting a target you may turn the beam ninety degrees in any direction and continue this long as you keep hitting new targets.",
+    "originalText": "Blast a Target with a ray of omega frost from your fists like a cannon dealing 99 Damage. After hitting a Target you may turn the beam ninety degrees in any direction and continue this long as you keep hitting new Targets.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-carbonite-3868",
+    "sourceId": "3868",
+    "name": "Carbonite",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Fire",
+      "Ice",
+      "Legendary"
+    ],
+    "description": "Form a box with your hands around a target or an Area and with the flick of your wrist, encase the target or Area in a thick black ice that is almost impossible to break. All targets inside are frozen in a cryogenic state which makes them Immune to aging and the general passage of time. This block of black ice will never melt unless powerful Fire Magic is used against it.",
+    "originalText": "Form a box with your hands around a Target or an Area and with the flick of your wrist, encase the Target or Area in a thick black ice that is almost impossible to break. All Targets inside are frozen in a cryogenic state which makes them Immune to aging and the general passage of time. This block of black ice will never melt unless powerful Fire Magic is used against it.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-wormhole-3869",
+    "sourceId": "3869",
+    "name": "Wormhole",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Legendary"
+    ],
+    "description": "Summon a Wormhole which deals 99 damage in an Area and pulls all targets into the center of the Area. Allies may roll to grab onto something. Low Rolls when trying to hold on will negate the Damage, but will pull you to the center.",
+    "originalText": "Summon a Wormhole which deals 99 Damage in an Area and pulls all Targets into the center of the Area. Allies may roll to grab onto something. Low Rolls when trying to hold on will negate the Damage, but will pull you to the center.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-optical-illusions-3870",
+    "sourceId": "3870",
+    "name": "Optical Illusions",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Spell",
+      "Bonus Action",
+      "Minion",
+      "Legendary"
+    ],
+    "description": "Summon 2 Optical Illusions as Minions linked to you that look identical to you in every way and mimic the Spells you cast. These Illusions cannot be destroyed as they are just magical projections, however they only last until end of combat. Whenever you cast a Spell, these Illusions cast a copy of that Spell as a No-Roll Bonus Action, you may select different targets for the Illusions Spells.",
+    "originalText": "Summon 2 Optical Illusions as Minions linked to you that look identical to you in every way and mimic the Spells you cast. These Illusions cannot be destroyed as they are just magical projections, however they only last until end of combat. Whenever you cast a Spell, these Illusions cast a copy of that Spell as a No-Roll Bonus Action, you may select different Targets for the Illusions Spells.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-blanket-of-death-3871",
+    "sourceId": "3871",
+    "name": "Blanket of Death",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Dragon",
+      "Spell",
+      "Death",
+      "Minion",
+      "Legendary"
+    ],
+    "description": "Envelope the entire Battlefield in a dark fog made up of Dragon God Phanto's ashes, also known as Moondust. All targets Deathroll 3 times and if they are killed by this Ability become an Ageless Thrall Minion linked to you. The casting of this Spell will instantly kill the creature who casts it unless they are an Ageless.",
+    "originalText": "Envelope the entire Battlefield in a dark fog made up of Dragon God Phanto's ashes, also known as Moondust. All Targets Deathroll 3 times and if they are killed by this Ability become an Ageless Thrall Minion linked to you. The casting of this Spell will instantly kill the Character who casts it unless they are an Ageless.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-siggneeos-3872",
+    "sourceId": "3872",
+    "name": "Siggneeos",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Spell",
+      "Bonus Action",
+      "Legendary"
+    ],
+    "description": "Prepare all of your mental energy into casting Siggneeos, the Spell of Multiplication. Cast a Spell as a Bonus Action and then cast additional copies of this Spell as a No-Roll Bonus Action equal to your roll. All of these Spells critical hit as long as you do not roll a natural 1ure.",
+    "originalText": "Prepare all of your mental energy into casting Siggneeos, the Spell of Multiplication. Cast a Spell as a Bonus Action and then cast additional copies of this Spell as a No-Roll Bonus Action equal to your roll. All of these Spells Critical Hit as long as you do not roll a Critical Failure.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-shard-of-perversion-3873",
+    "sourceId": "3873",
+    "name": "Shard of Perversion",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Death",
+      "Legendary"
+    ],
+    "description": "Grab a target by the head and attempt to melt away their inner spirit completely by destroying it with mind melting death magic. The target Death Rolls 3 times and if they die, you release your own corporeal form and phase into theirs, taking control of their body.",
+    "originalText": "Grab a Target by the head and attempt to melt away their inner spirit completely by destroying it with mind melting death magic. The Target Death Rolls 3 times and if they die, you release your own corporeal form and phase into theirs, taking control of their body.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-whelpling-4085",
+    "sourceId": "4085",
+    "name": "Whelpling",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Dragon",
+      "Companion",
+      "Legendary"
+    ],
+    "description": "Whelplings are young Dragons that have yet to grow into their full potential. While they are not divine creatures initially, a Whelplings magic grows overtime as they slowly learn the unbounded power of creation magic. Whelplings are Legendary Companions that require the Inventory 5-foot space that two full Companions would have. They have access to the Fierce Talons, Tail Swipe, Feast, Dragon Flames, Mammoth, Divine Scales, and Enrage Cards.",
+    "originalText": "Whelplings are young Dragons that have yet to grow into their full potential. While they are not divine creatures initially, a Whelplings magic grows overtime as they slowly learn the unbounded power of creation magic. Whelplings are Legendary Companions that require the Inventory space that two full Companions would have. They have access to the Fierce Talons, Tail Swipe, Feast, Dragon Flames, Mammoth, Divine Scales, and Enrage Cards.",
+    "source": ""
+  },
+  {
+    "id": "legendary-fierce-talons-4086",
+    "sourceId": "4086",
+    "name": "Fierce Talons",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Companion"
+    ],
+    "description": "Slash a target with your claws or talons dealing 25 damage. If your target was attempting to use an Action and this Ability is used as a response, interrupt the targets Action causing it to natural 1.",
+    "originalText": "Slash a Target with your claws or talons dealing 25 Damage. If your Target was attempting to use an Action and this Ability is used as a response, interrupt the Targets Action causing it to Critical Fail.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-tail-swipe-4087",
+    "sourceId": "4087",
+    "name": "Tail Swipe",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Companion"
+    ],
+    "description": "Spin your body in a circle swiping all adjacent targets with your tail dealing 20 damage and knocking them back 10 5-foot 5-foot spaces.",
+    "originalText": "Spin your body in a circle swiping all adjacent Targets with your tail dealing 20 Damage and knocking them back 10 spaces.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-feast-4088",
+    "sourceId": "4088",
+    "name": "Feast",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Companion",
+      "Death",
+      "HP"
+    ],
+    "description": "Swallow a target in Danger forcing them to Death Roll 3 more times. If the target is killed or was already dead, restore all of your HP.",
+    "originalText": "Swallow a Target in Danger forcing them to Death Roll 3 more times. If the Target is killed or was already dead, restore all of your Stamina.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-dragon-flames-4089",
+    "sourceId": "4089",
+    "name": "Dragon Flames",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Fire",
+      "Dragon",
+      "Companion"
+    ],
+    "description": "Breath forward a massive stream of fire that deals 99 damage. Attempting to dodge or interrupt this Ability with anything lower then a High Roll will cause a natural 1.",
+    "originalText": "Breath forward a massive stream of fire that deals 99 Damage. Attempting to dodge or interrupt this Ability with anything lower then a High Roll will cause a Critical Fail.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-divine-scales-4090",
+    "sourceId": "4090",
+    "name": "Divine Scales",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Spell",
+      "Companion",
+      "Bonus Action"
+    ],
+    "description": "You are covered in scales of a divine being which causes you to never grow older than the peak of your own maturity. Whenever you are struck by an Attack or Spell that rolled Low, roar loudly and grant yourself a Bonus Action.",
+    "originalText": "You are covered in scales of a divine being which causes you to never grow older than the peak of your own maturity. Whenever you are struck by an Attack or Spell that rolled Low, roar loudly and grant yourself a Bonus Action.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-enrage-4092",
+    "sourceId": "4092",
+    "name": "Enrage",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Companion",
+      "Death"
+    ],
+    "description": "You hold your master in such high regard that his Death will only make you more powerful. If your Master is killed in Combat, you may continue to play as this Companion and gain the ability to Speak.",
+    "originalText": "You hold your master in such high regard that his Death will only make you more powerful. If your Master is killed in Combat, you may continue to play as this Companion and gain the ability to Speak.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-ogre-4093",
+    "sourceId": "4093",
+    "name": "Ogre",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Spell",
+      "Companion",
+      "Legendary"
+    ],
+    "description": "Ogres are two headed monsters that wield enormous power, but often suffer due to the inability to work together as one. Ogres are Legendary Companions that require the Inventory 5-foot space that two full Companions would have. Ogres have access to the Mighty Club, Mighty Squeeze, Double Spell, Ogre Magic, Dual Personality, Doom Clock, and Spellproof Companion abilities.",
+    "originalText": "Ogres are two headed monsters that wield enormous power, but often suffer due to the inability to work together as one. Ogres are Legendary Companions that require the Inventory space that two full Companions would have. Ogres have access to the Mighty Club, Mighty Squeeze, Double Spell, Ogre Magic, Dual Personality, Doom Clock, and Spellproof Companion abilities.",
+    "source": ""
+  },
+  {
+    "id": "legendary-mighty-club-4094",
+    "sourceId": "4094",
+    "name": "Mighty Club",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Companion"
+    ],
+    "description": "Bash a target with a Club you crafted yourself that deals 25 damage to a target and creates a Rough Terrain 5-foot space where they are standing. If the target is already standing on Rough Terrain, this Ability critical hits as long as you do not roll a natural 1.",
+    "originalText": "Bash a Target with a Club you crafted yourself that deals 25 Damage to a Target and creates a Rough Terrain space where they are standing. If the Target is already standing on Rough Terrain, this Ability Critical Hits as long as you do not roll a Critical Fail.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-mighty-squeeze-4095",
+    "sourceId": "4095",
+    "name": "Mighty Squeeze",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Companion"
+    ],
+    "description": "Grab a target with just your hand and squeeze them in your palm dealing 20 damage and Stunning them. You cannot use this Ability on targets of equal or greater size.",
+    "originalText": "Grab a Target with just your hand and squeeze them in your palm dealing 20 Damage and Stunning them. You cannot use this Ability on Targets of equal or greater size.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-double-spell-4096",
+    "sourceId": "4096",
+    "name": "Double Spell",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Spell",
+      "Companion",
+      "Bonus Action"
+    ],
+    "description": "You have mastered a singular Spell that you can cast with both hands at up to two different targets. The first time you use this Spell, choose an Element and draw 5 random Spells and pick 1 to cast as a Bonus Action. For all subsequent uses of this Spell, cast the same Spell you first drew.",
+    "originalText": "You have mastered a singular Spell that you can cast with both hands at up to two different Targets. The first time you use this Spell, choose an Element and draw 5 random Spells and pick 1 to cast as a Bonus Action. For all subsequent uses of this Spell, cast the same Spell you first drew.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-ogre-magic-4097",
+    "sourceId": "4097",
+    "name": "Ogre Magic",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Spell",
+      "Companion",
+      "Bonus Action",
+      "Legendary"
+    ],
+    "description": "Using a hidden power deep within you, draw forth on a wildly powerful spell. The first time you use this Spell, draw a random Legendary Spell to cast as a Bonus Action. For all subsequent uses of this Spell, cast the same Spell you first drew.",
+    "originalText": "Using a hidden power deep within you, draw forth on a wildly powerful spell. The first time you use this Spell, draw a random Legendary Spell to cast as a Bonus Action. For all subsequent uses of this Spell, cast the same Spell you first drew.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-dual-personality-4098",
+    "sourceId": "4098",
+    "name": "Dual Personality",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Spell",
+      "Companion"
+    ],
+    "description": "You have two heads which causes you to sometimes argue with yourself. Choose another Player to act as your second head who may also spend Actions to cast any Spells this Companion knows. Your Master however, cannot cast the Spells this Companion knows.",
+    "originalText": "You have two heads which causes you to sometimes argue with yourself. Choose another Player to act as your second head who may also spend Actions to cast any Spells this Companion knows. Your Master however, cannot cast the Spells this Companion knows.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-doom-clock-4099",
+    "sourceId": "4099",
+    "name": "Doom Clock",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Companion",
+      "Death"
+    ],
+    "description": "Your power grows the longer you battle which causes you to become extremely dangerous when deep in combat. After the 5th round of Combat, all of your Attacks and Abilities cause Death Rolls.",
+    "originalText": "Your power grows the longer you battle which causes you to become extremely dangerous when deep in combat. After the 5th round of Combat, all of your Attacks and Abilities cause Death Rolls.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-spellproof-4100",
+    "sourceId": "4100",
+    "name": "Spellproof",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Spell",
+      "Companion",
+      "Ice"
+    ],
+    "description": "You project a powerful magical aura around the skin of your body that negates magic. You are Immune to all Magic. After the 5th round of Combat, you are no longer Immune to Magic and instead take twice as much Damage from Spells.",
+    "originalText": "You project a powerful magical aura around the skin of your body that negates magic. You are Immune to all Magic. After the 5th round of Combat, you are no longer Immune to Magic and instead take twice as much Damage from Spells.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-gumioh-4101",
+    "sourceId": "4101",
+    "name": "Gumioh",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Fire",
+      "Spell",
+      "Companion",
+      "Legendary"
+    ],
+    "description": "Gumiohs are very rare creatures that can appear as both a colorful fox or a young, beautiful elven woman that they can freely shapeshift between their two forms at any moment. Gumiohs are Legendary Companions that require the Inventory 5-foot space that two full Companions would have. Gumiohs have access to the Spellfury, Lucky Fox, Celestial Faith, Dejavu, Woodlinn Mantra, Glowing Heart Mantra, and Foxfire Mantra Companion abilities.",
+    "originalText": "Gumiohs are very rare creatures that can appear as both a colorful fox or a young, beautiful elven woman that they can freely shapeshift between their two forms at any moment. Gumiohs are Legendary Companions that require the Inventory space that two full Companions would have. Gumiohs have access to the Spellfury, Lucky Fox, Celestial Faith, Dejavu, Woodlinn Mantra, Glowing Heart Mantra, and Foxfire Mantra Companion abilities.",
+    "source": ""
+  },
+  {
+    "id": "legendary-spellfury-4102",
+    "sourceId": "4102",
+    "name": "Spellfury",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Spell",
+      "Companion"
+    ],
+    "description": "Empower a target with massive surge of mana that causes them to cast an additional copy, at the same target, of every Spell they cast for the rest of the round. After casting this Spell, you are put in Danger.",
+    "originalText": "Empower a Target with massive surge of mana that causes them to cast an additional copy, at the same Target, of every Spell they cast for the rest of the round. After casting this Spell, you are put in Danger.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-lucky-fox-4103",
+    "sourceId": "4103",
+    "name": "Lucky Fox",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Spell",
+      "Companion"
+    ],
+    "description": "Show off a small charm or necklace to your Allies, claiming that luck is on your side for a brief moment. For the rest of the round, whenever an Ally rolls a 8, they critical hit while gold rains down from the sky as they complete their action. After casting this Spell, you are put in Danger.",
+    "originalText": "Show off a small charm or necklace to your Allies, claiming that luck is on your side for a brief moment. For the rest of the round, whenever an Ally rolls a 8, they Critical Hit while gold rains down from the sky as they complete their action. After casting this Spell, you are put in Danger.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-celestial-faith-4104",
+    "sourceId": "4104",
+    "name": "Celestial Faith",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Spell",
+      "Companion",
+      "Death"
+    ],
+    "description": "Destiny has decreed that you shall defend others at your own health, preventing a Death Roll a target is about to roll then making them immune to Damage for the rest of the round. After casting this Spell, you are put in Danger.",
+    "originalText": "Destiny has decreed that you shall defend others at your own health, preventing a Death Roll a Target is about to roll then making them immune to Damage for the rest of the round. After casting this Spell, you are put in Danger.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-dejavu-4105",
+    "sourceId": "4105",
+    "name": "Dejavu",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Spell",
+      "Companion"
+    ],
+    "description": "A vision of events that have yet you transpire flowers through your mind and the minds of your Allies. Completely restart combat as if nothing had happened with the exception of this Spellcast. This Ability can only be used in the first round of combat or else the vision you and your Allies see is more or less a replay of events rather then a premonition.",
+    "originalText": "A vision of events that have yet you transpire flowers through your mind and the minds of your Allies. Completely restart combat as if nothing had happened with the exception of this Spellcast. This Ability can only be used in the first round of combat or else the vision you and your Allies see is more or less a replay of events rather then a premonition.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-woodlinn-mantra-4106",
+    "sourceId": "4106",
+    "name": "Woodlinn Mantra",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Spell",
+      "Companion"
+    ],
+    "description": "You empower your Masters magics with the element of Earth that makes them more likely to Critically Hit in battle. High Rolls count as critical hits for your Masters Spells.",
+    "originalText": "You empower your Masters magics with the element of Earth that makes them more likely to Critically Hit in battle. High Rolls count as Critical Hits for your Masters Spells.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-glowing-heart-mantra-4107",
+    "sourceId": "4107",
+    "name": "Glowing Heart Mantra",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Spell",
+      "Companion",
+      "HP"
+    ],
+    "description": "You enchant your Masters magics with the Element of Light that gives them the power to heal your Master as they spend mana to cast Spells. Your Masters Spells also now restore HP equal to the Damage dealt.",
+    "originalText": "You enchant your Masters magics with the Element of Light that gives them the power to heal your Master as they spend mana to cast Spells. Your Masters Spells also now restore Stamina equal to the Damage dealt.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-foxfire-mantra-4108",
+    "sourceId": "4108",
+    "name": "Foxfire Mantra",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Fire",
+      "Spell",
+      "Companion"
+    ],
+    "description": "You empower your Masters magics with the Element of Fire that makes them almost always successful and effective. Cards that claim they can reduce, negate, dodge, or block Spells are not applied to your Masters Spells. Your Master can only miss with their Spells on natural 1ures.",
+    "originalText": "You empower your Masters magics with the Element of Fire that makes them almost always successful and effective. Cards that claim they can reduce, negate, dodge, or block Spells are not applied to your Masters Spells. Your Master can only miss with their Spells on Critical Failures.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-elemech-4109",
+    "sourceId": "4109",
+    "name": "Elemech",
+    "category": "Weapon",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Weapon",
+      "Arcane",
+      "Companion",
+      "Legendary"
+    ],
+    "description": "Elemechs are ancient war machines created from the times before the birth of Magic. Elemechs are Legendary Companions that require the Inventory 5-foot space that two full Companions would have. Elemechs have access to the Arcane Particle Cannon, Telegrab, Wall of Thunder, Arcane Overload, Defensive Matrix, Mechwarrior, and Self Destruct Companion abilities.",
+    "originalText": "Elemechs are ancient war machines created from the times before the birth of Magic. Elemechs are Legendary Companions that require the Inventory space that two full Companions would have. Elemechs have access to the Arcane Particle Cannon, Telegrab, Wall of Thunder, Arcane Overload, Defensive Matrix, Mechwarrior, and Self Destruct Companion abilities.",
+    "source": ""
+  },
+  {
+    "id": "legendary-arcane-particle-cannon-4110",
+    "sourceId": "4110",
+    "name": "Arcane Particle Cannon",
+    "category": "Weapon",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Weapon",
+      "Fire",
+      "Arcane",
+      "Companion"
+    ],
+    "description": "A giant mechanical cannon that fires a beam of pure Arcane energy that deals 50 damage. The cannon has a long cooldown period after firing which means this Ability can only be used every other round of combat.",
+    "originalText": "A giant mechanical cannon that fires a beam of pure Arcane energy that deals 50 Damage. The cannon has a long cooldown period after firing which means this Ability can only be used every other round of combat.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-telegrab-4111",
+    "sourceId": "4111",
+    "name": "Telegrab",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Companion"
+    ],
+    "description": "Grab hold of a target with a kinetic hand and squeeze them dealing 10 damage and Stunning them. Kinetic hands must recharge after each use which means this Ability can only be used every other round of combat.",
+    "originalText": "Grab hold of a Target with a kinetic hand and squeeze them dealing 10 Damage and Stunning them. Kinetic hands must recharge after each use which means this Ability can only be used every other round of combat.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-wall-of-thunder-4112",
+    "sourceId": "4112",
+    "name": "Wall of Thunder",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Fire",
+      "Companion",
+      "Ice"
+    ],
+    "description": "Fire a small mechanical device at an empty 5-foot space that transforms it and up to 4 other 5-foot 5-foot spaces in a line into Dangerous Terrain. Reloading this weapon takes a while which means this Ability can only be used every other round of combat.",
+    "originalText": "Fire a small mechanical device at an empty space that transforms it and up to 4 other spaces in a line into Dangerous Terrain. Reloading this weapon takes a while which means this Ability can only be used every other round of combat.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-arcane-overload-4113",
+    "sourceId": "4113",
+    "name": "Arcane Overload",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Spell",
+      "Arcane",
+      "Companion",
+      "Death"
+    ],
+    "description": "Overload yourself with Arcane energy that you causes you to release bolts of electricity in all directions dealing 25 damage to all targets in range. The damage of this Spell is increased by 25 for every Ability that is currently recharging. Living beings that attempt to cast this Spell that are not skilled Arcane Mages electrocute themselves causing a Death Roll.",
+    "originalText": "Overload yourself with Arcane energy that you causes you to release bolts of electricity in all directions dealing 25 Damage to all Targets in range. The damage of this Spell is increased by 25 for every Ability that is currently recharging. Living beings that attempt to cast this Spell that are not skilled Arcane Mages electrocute themselves causing a Death Roll.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-defensive-matrix-4114",
+    "sourceId": "4114",
+    "name": "Defensive Matrix",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Companion"
+    ],
+    "description": "You project a defensive matrix that can greatly protect you from powerful weapon attacks and Abilities. You can never take more then 20 damage from a single source of Damage.",
+    "originalText": "You project a defensive matrix that can greatly protect you from powerful Basic Attacks and Abilities. You can never take more then 20 Damage from a single source of Damage.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-mechwarrior-4115",
+    "sourceId": "4115",
+    "name": "Mechwarrior",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Spell",
+      "Companion"
+    ],
+    "description": "You may host another character inside of your machine body. While out of combat, an Ally may enter or exit this Companion. While inside, they may still attack and cast Spells as normal, but cannot move. Some exceptions may need to be made by the Gamemaster depending on the Abilities used. If put in Danger, this Ally is ejected from you and may move up to 3 5-foot 5-foot spaces.",
+    "originalText": "You may host another character inside of your machine body. While out of combat, an Ally may enter or exit this Companion. While inside, they may still attack and cast Spells as normal, but cannot move. Some exceptions may need to be made by the Gamemaster depending on the Abilities used. If put in Danger, this Ally is ejected from you and may move up to 3 spaces.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-self-destruct-4116",
+    "sourceId": "4116",
+    "name": "Self Destruct",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Companion",
+      "Death"
+    ],
+    "description": "You always go out with a bang. Whenever you fail a Death Roll, detonate yourself in a massive explosion dealing 99 damage in an Area.",
+    "originalText": "You always go out with a bang. Whenever you fail a Death Roll, detonate yourself in a massive explosion dealing 99 Damage in an Area.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-highbear-4117",
+    "sourceId": "4117",
+    "name": "Highbear",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Companion",
+      "Legendary"
+    ],
+    "description": "Highbears themselves would never be your Companion, but this disgraced Lowbear will serve you better either way. Highbears are Legendary Companions that require the Inventory 5-foot space that two full Companions would have. Highbears have access to the Honorless Maul, Ungrateful Ride, High Kings Roar, Touch of Kallisto, Archduke, The Highbear Dance, and Divinity Companion abilities.",
+    "originalText": "Highbears themselves would never be your Companion, but this disgraced Lowbear will serve you better either way. Highbears are Legendary Companions that require the Inventory space that two full Companions would have. Highbears have access to the Honorless Maul, Ungrateful Ride, High Kings Roar, Touch of Kallisto, Archduke, The Highbear Dance, and Divinity Companion abilities.",
+    "source": ""
+  },
+  {
+    "id": "legendary-honorless-maul-4118",
+    "sourceId": "4118",
+    "name": "Honorless Maul",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Companion",
+      "Ice"
+    ],
+    "description": "Swipe with your claws dealing 25 damage in an Area. Roll 3 dice when using this Ability and ignore all natural 1ures.",
+    "originalText": "Swipe with your claws dealing 25 Damage in an Area. Roll 3 dice when using this Ability and ignore all Critical Failures.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-ungrateful-ride-4119",
+    "sourceId": "4119",
+    "name": "Ungrateful Ride",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Companion"
+    ],
+    "description": "Charge forward as many 5-foot 5-foot spaces as you like in a Line, dealing 20 damage to targets you trample through. targets hit are pinned to you and pushing them along with you. If you push a target into a Wall, they take an additional 10 damage.",
+    "originalText": "Charge forward as many spaces as you like in a Line, dealing 20 Damage to Targets you trample through. Targets hit are pinned to you and pushing them along with you. If you push a Target into a Wall, they take an additional 10 Damage.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-high-kings-roar-4120",
+    "sourceId": "4120",
+    "name": "High Kings Roar",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Companion"
+    ],
+    "description": "Let loose a massive roar that causes all hostile creatures who hear it to potentially quake in fear. Weak, wounded, or cowardly hostile creatures will surrender or run away when hearing this roar.",
+    "originalText": "Let loose a massive roar that causes all Foes who hear it to potentially quake in fear. Weak, wounded, or cowardly Foes will surrender or run away when hearing this roar.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-archduke-4122",
+    "sourceId": "4122",
+    "name": "Archduke",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Spell",
+      "Arcane",
+      "Companion",
+      "Bonus Action"
+    ],
+    "description": "You are an archduke in the arcane arts which means you have a wide range of magical potential. You may replace any of your Companion Abilities with a random Spell from a selection of 3. Whenever you cast a Spell, you may cast a second copy as a No-Roll Bonus Action. You select another target when using this Bonus Action.",
+    "originalText": "You are an archduke in the arcane arts which means you have a wide range of magical potential. You may replace any of your Companion Abilities with a random Spell from a selection of 3. Whenever you cast a Spell, you may cast a second copy as a No-Roll Bonus Action. You select another Target when using this Bonus Action.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-the-highbear-dance-4123",
+    "sourceId": "4123",
+    "name": "The Highbear Dance",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Companion"
+    ],
+    "description": "You have mastered the art of the Highbear Dance, an ancient battle style that allows you to evasively move in battle. Whenever a hostile creature uses a Move Action, you may move up to 5 5-foot 5-foot spaces afterwards.",
+    "originalText": "You have mastered the art of the Highbear Dance, an ancient battle style that allows you to evasively move in battle. Whenever a Foe uses a Move Action, you may move up to 5 spaces afterwards.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-divinity-4124",
+    "sourceId": "4124",
+    "name": "Divinity",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Dragon",
+      "Companion",
+      "Death",
+      "Bonus Action"
+    ],
+    "description": "You were personally blessed by Kallisto, Dragon Sun God. Whenever you Death Roll and survive, you gain a No-Roll Bonus Action. This Bonus Action is always a natural 20.",
+    "originalText": "You were personally blessed by Kallisto, Dragon Sun God. Whenever you Death Roll and survive, you gain a No-Roll Bonus Action. This Bonus Action is always a Critical Success.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-wormhole-4807",
+    "sourceId": "4807",
+    "name": "Wormhole",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Legendary"
+    ],
+    "description": "Summon a Wormhole which deals 99 damage in an Area and pulls all targets into the center of the Area. Allies may roll to grab onto something. Low Rolls when trying to hold on will negate the Damage, but will pull you to the center.",
+    "originalText": "Summon a Wormhole which deals 99 Damage in an Area and pulls all Targets into the center of the Area. Allies may roll to grab onto something. Low Rolls when trying to hold on will negate the Damage, but will pull you to the center.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-krystalshire-lightstorm-4836",
+    "sourceId": "4836",
+    "name": "Krystalshire Lightstorm",
+    "category": "Weapon",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Weapon",
+      "Death",
+      "Legendary"
+    ],
+    "description": "A large crystal mace that weighs thousands of pounds, but is enchanted to be as light as a wooden sword. Whenever another Ally would die from a failed Death Roll, you run to their aid and take the hit for them and then flip a coin. Heads, you are Defeated. Tails, you are Killed.",
+    "originalText": "A large crystal mace that weighs thousands of pounds, but is enchanted to be as light as a wooden sword. Whenever another Ally would die from a failed Death Roll, you run to their aid and take the hit for them and then flip a coin. Heads, you are Defeated. Tails, you are Killed.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-mysterious-dwarven-object-4837",
+    "sourceId": "4837",
+    "name": "Mysterious Dwarven Object",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Legendary"
+    ],
+    "description": "A strange and mysterious dwarven object that when fiddled with causes the user to experience a calmness with the universe. Choose one of your Limited Abilities, this Ability can now be used as both a Limited or as a Regular Action. This card was part of the \"The Grand Paladin Order\" campaign and is not included in the base decks.",
+    "originalText": "A strange and mysterious dwarven object that when fiddled with causes the user to experience a calmness with the universe. Choose one of your Limited Abilities, this Ability can now be used as both a Limited or as a Regular Action. This card was part of the \"The Grand Paladin Order\" campaign and is not included in the base decks.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-zahkar-s-pocket-watch-4838",
+    "sourceId": "4838",
+    "name": "Zahkar's Pocket Watch",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Death",
+      "Reaction",
+      "Charm",
+      "Legendary"
+    ],
+    "description": "A small watch used by Zahkar to ensure his subjects were always on time. Once per game, you may destroy this card and become Charmed for the rest of combat as you are thrown into a vicious bloodlust from having gone insane. Refresh all As a Reactions and Limited Abilities at the end of the round if you killed a target that round. Whenever you Death Roll, you die if you roll lower than 10. This card was part of the \"The Grand Paladin Order\" campaign and is not included in the base decks.",
+    "originalText": "A small watch used by Zahkar to ensure his subjects were always on time. Once per game, you may destroy this card and become Charmed for the rest of combat as you are thrown into a vicious bloodlust from having gone insane. Refresh all Anytimes and Limited Abilities at the end of the round if you killed a Target that round. Whenever you Death Roll, you die if you roll lower than 10. This card was part of the \"The Grand Paladin Order\" campaign and is not included in the base decks.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-indria-vemtari-4839",
+    "sourceId": "4839",
+    "name": "Indria Vemtari",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Companion",
+      "Legendary"
+    ],
+    "description": "The Warrior daughter of Wolster Vemtari the Seeker. Indria Vemtari has access to Taunting Blow EX, Second Wind EX, and Personality Companion Abilities. Whenever Indria uses Taunting Blow EX, add a copy of it and stack it on top of itself. Taunting Blow EX deals 10 additional Damage for every stack of Taunting Blow EX in her Inventory.",
+    "originalText": "The Warrior daughter of Wolster Vemtari the Seeker. Indria Vemtari has access to Taunting Blow EX, Second Wind EX, and Personality Companion Abilities. Whenever Indria uses Taunting Blow EX, add a copy of it and stack it on top of itself. Taunting Blow EX deals 10 additional Damage for every stack of Taunting Blow EX in her Inventory.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-quinn-vemtari-4840",
+    "sourceId": "4840",
+    "name": "Quinn Vemtari",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Companion",
+      "Bonus Action",
+      "Legendary"
+    ],
+    "description": "The Magician daughter of Wolster Vemtari the Seeker. Quinn Vemtari has access to the Card Trick EX, Round of Applause EX, and Personality Companion Abilities. Whenever you use a Companion Ability, Quinn Vemtari may use one of her Companion Abilities as a No-Roll Bonus Action.",
+    "originalText": "The Magician daughter of Wolster Vemtari the Seeker. Quinn Vemtari has access to the Card Trick EX, Round of Applause EX, and Personality Companion Abilities. Whenever you use a Companion Ability, Quinn Vemtari may use one of her Companion Abilities as a No-Roll Bonus Action.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-siffiran-puzzle-box-4841",
+    "sourceId": "4841",
+    "name": "Siffiran Puzzle Box",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Fire",
+      "Spell",
+      "Arcane",
+      "Bonus Action",
+      "Legendary"
+    ],
+    "description": "This unlocked puzzle box reveals a small magical source that allows one to better understand the relationships between the Fire and Arcane elements. Whenever you use a Spell as a non-Bonus Action and this Spell is both Fire and Arcane Elements, all numbers on that Spell's card are tripled.",
+    "originalText": "This unlocked puzzle box reveals a small magical source that allows one to better understand the relationships between the Fire and Arcane elements. Whenever you use a Spell as a non-Bonus Action and this Spell is both Fire and Arcane Elements, all numbers on that Spell's card are tripled.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-the-magic-conch-4848",
+    "sourceId": "4848",
+    "name": "The Magic Conch",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Legendary"
+    ],
+    "description": "A magical conch that when you put it to your ear and listen, you are given a perfect argument. Once per campaign you may roll to convince a creature to change their point of view on any subject to your own point of view using the power of this conch.",
+    "originalText": "A magical conch that when you put it to your ear and listen, you are given a perfect argument. Once per campaign you may roll to convince a Character to change their point of view on any subject to your own point of view using the power of this conch.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-diplomatic-superiority-4849",
+    "sourceId": "4849",
+    "name": "Diplomatic Superiority",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Legendary"
+    ],
+    "description": "You have become a master diplomat. Whenever you vote on a motion in the Senate of Deadlantis, your vote counts for two. If you are killed while this card is in your Inventory, you may continue playing for the rest of the campaign as one of the Senators of Deadlantis.",
+    "originalText": "You have become a master diplomat. Whenever you vote on a motion in the Senate of Deadlantis, your vote counts for two. If you are killed while this card is in your Inventory, you may continue playing for the rest of the campaign as one of the Senators of Deadlantis.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-ladrian-s-truth-4850",
+    "sourceId": "4850",
+    "name": "Ladrian's Truth",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Spell",
+      "Ice",
+      "Reaction",
+      "Legendary"
+    ],
+    "description": "You have been awoken to a truth about the realm you exist in. You can now cast Spells regardless of any other cards in your Inventory and may also cast random Spells of any element of your choice as Regular or Reaction. Whenever you cast a Spell, you may cast it an additional two times even if it is a Limited Ability. This Legendary causes a Sin of the Unforgotten to occur.",
+    "originalText": "You have been awoken to a truth about the realm you exist in. You can now cast Spells regardless of any other cards in your Inventory and may also cast random Spells of any element of your choice as Regular or Anytime Action. Whenever you cast a Spell, you may cast it an additional two times even if it is a Limited Ability. This Legendary causes a Sin of the Unforgotten to occur.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-coin-of-fate-4851",
+    "sourceId": "4851",
+    "name": "Coin of Fate",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Dragon",
+      "Death",
+      "Legendary"
+    ],
+    "description": "A small coin that belonged to Phanto the Sun Dragon God. Once per game you may force a reroll for you, Allies, or hostile creatures, but instead of rolling, you flip a coin. Heads counts as a Critical hit and Tails counts as a natural 1. You may use this ability to reroll a critical hit, natural 1, or even a Death Roll. If this reroll saves a creature's life or ultimately causes the death of a creature, you as a Player are awarded 10,000 XP.",
+    "originalText": "A small coin that belonged to Phanto the Sun Dragon God. Once per game you may force a reroll for you, Allies, or Foes, but instead of rolling, you flip a coin. Heads counts as a Critical hit and Tails counts as a Critical Fail. You may use this ability to reroll a Critical Hit, Critical Fail, or even a Death Roll. If this reroll saves a Character's life or ultimately causes the death of a Character, you as a Player are awarded 10,000 XP.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-dagger-of-an-elven-divine-4854",
+    "sourceId": "4854",
+    "name": "Dagger of an Elven Divine",
+    "category": "Weapon",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Weapon"
+    ],
+    "description": "A small dagger with the blood of an Old God stained onto the blade. Elven Divine empower you, the Old Gods, by granting the party a bonus 50% XP at the end of each campaign while they are alive in the realm. The Old Gods also gain the power to gift their levels to Players to inflate their egos while this O.G.D. is alive in the realm.",
+    "originalText": "A small dagger with the blood of an Old God stained onto the blade. Elven Divine empower you, the Old Gods, by granting the party a bonus 50% XP at the end of each campaign while they are alive in the realm. The Old Gods also gain the power to gift their levels to Players to inflate their egos while this O.G.D. is alive in the realm.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-spark-of-inspiration-4857",
+    "sourceId": "4857",
+    "name": "Spark of Inspiration",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Death",
+      "Legendary"
+    ],
+    "description": "Gain a deep understanding of the secrets and dangerous powers of your Gauntlet. You are now a skilled Mage in all Elements and may choose the element of your Elemental Mage Gauntlet. Whenever you deal damage with your Elemental Mage Gauntlet, you may choose cause a Death Roll as well.",
+    "originalText": "Gain a deep understanding of the secrets and dangerous powers of your Gauntlet. You are now a skilled Mage in all Elements and may choose the element of your Elemental Mage Gauntlet. Whenever you deal damage with your Elemental Mage Gauntlet, you may choose cause a Death Roll as well.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-destiny-calls-4858",
+    "sourceId": "4858",
+    "name": "Destiny Calls",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Spell",
+      "Ice",
+      "Bonus Action",
+      "Legendary"
+    ],
+    "description": "A greater destiny calls to you. A destiny beyond this realm. Your Seek Destiny card is now a regular action. Whenever you use Seek Destiny, you roll only 1 dice and High rolls cause you to cast a random Spell at a target of your choice as a No-Roll Bonus Action.",
+    "originalText": "A greater destiny calls to you. A destiny beyond this realm. Your Seek Destiny card is now a regular action. Whenever you use Seek Destiny, you roll only 1 dice and High rolls cause you to cast a random Spell at a Target of your choice as a No-Roll Bonus Action.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-key-to-the-city-4859",
+    "sourceId": "4859",
+    "name": "Key to the City",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Legendary"
+    ],
+    "description": "The large ceremonial key to the city of Reldawin. Instantly end combat with a diplomatic solution that is successful unless you roll a natural 1ure.",
+    "originalText": "The large ceremonial key to the city of Reldawin. Instantly end combat with a diplomatic solution that is successful unless you roll a Critical Failure.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-blood-stained-blade-4860",
+    "sourceId": "4860",
+    "name": "Blood Stained Blade",
+    "category": "Weapon",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Weapon",
+      "Death",
+      "Ice",
+      "Legendary"
+    ],
+    "description": "The blood stained blade your own father used during his infamous killing spree during the birth of magic. If you fail a Death Roll, you may force a Brutal Death Roll on any creature of your choice before dying.",
+    "originalText": "The blood stained blade your own father used during his infamous killing spree during the birth of magic. If you fail a Death Roll, you may force a Brutal Death Roll on any Character of your choice before dying.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-malignant-4861",
+    "sourceId": "4861",
+    "name": "Malignant",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Spell",
+      "Death",
+      "Slime",
+      "Legendary"
+    ],
+    "description": "A slimey ancient two-handed axe that seems to have been crafted before the birth of magic. At the start of combat summon 3 Hat Rats that will cast random Spells at the closest hostile creature whenever you perform your Regular Action. This weapon must be wielded by whoever slayed the Rat Queen or else that person must Brutal Death Roll to attempt break the curse. Wielding this Weapon causes you to become Ageless.",
+    "originalText": "A slimey ancient two-handed axe that seems to have been crafted before the birth of magic. At the start of combat summon 3 Hat Rats that will cast random Spells at the closest Foe whenever you perform your Regular Action. This weapon must be wielded by whoever slayed the Rat Queen or else that person must Brutal Death Roll to attempt break the curse. Wielding this Weapon causes you to become Ageless.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-goblet-of-mysteries-4862",
+    "sourceId": "4862",
+    "name": "Goblet of Mysteries",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Legendary"
+    ],
+    "description": "Shake the Goblin of Mysteries in an attempt to understand it's true power. Rolling a Natural natural 20 in combat with the Goblet of Mysteries will cause it to transform into a new Legendary while any other number will cause it to do nothing.",
+    "originalText": "Shake the Goblin of Mysteries in an attempt to understand it's true power. Rolling a Natural Critical Success in combat with the Goblet of Mysteries will cause it to transform into a new Legendary while any other number will cause it to do nothing.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-blood-of-the-old-gods-4863",
+    "sourceId": "4863",
+    "name": "Blood of the Old Gods",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Legendary"
+    ],
+    "description": "A goblet filled with the mysterious blood of the Old Gods. A creature who has been recently killed that drinks from this goblet will be brought back to life. Bringing creatures back to life may cause unexpected consequences.",
+    "originalText": "A goblet filled with the mysterious blood of the Old Gods. A Character who has been recently killed that drinks from this goblet will be brought back to life. Bringing Characters back to life may cause unexpected consequences.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-danzen-s-gilded-skin-4864",
+    "sourceId": "4864",
+    "name": "Danzen's Gilded Skin",
+    "category": "Armour",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Armour",
+      "Spell",
+      "Death",
+      "Legendary"
+    ],
+    "description": "Although gold is usually a terrible material to build a suit of armor around, Danzen has trained her body to be able to absorb some of the gold into her skin when hit by powerful attacks and spells to negate the impact of that damage. Whenever Danzen takes more then 15 damage, reduce that Damage to 15. If Danzen fails a Deathroll, destroy this card and prevent the Death Roll.",
+    "originalText": "Although gold is usually a terrible material to build a suit of armor around, Danzen has trained her body to be able to absorb some of the gold into her skin when hit by powerful attacks and spells to negate the impact of that damage. Whenever Danzen takes more then 15 Damage, reduce that Damage to 15. If Danzen fails a Deathroll, destroy this card and prevent the Death Roll.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-talee-s-earth-striker-4865",
+    "sourceId": "4865",
+    "name": "Talee's Earth Striker",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Spell",
+      "Legendary"
+    ],
+    "description": "A powerful spell that summons a spike made of sand from a kick that deals 30 damage. Once per game, you may charge up this Spell for a round of combat to have it deal 99 damage if used in the following round of combat. This attack always critical hits if charged up.",
+    "originalText": "A powerful spell that summons a spike made of sand from a kick that deals 30 Damage. Once per game, you may charge up this Spell for a round of combat to have it deal 99 Damage if used in the following round of combat. This attack always Critical Hits if charged up.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-mccarrot-s-vorpal-slayer-4866",
+    "sourceId": "4866",
+    "name": "McCarrot's Vorpal Slayer",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Dragon",
+      "Death",
+      "Legendary"
+    ],
+    "description": "Sharpened using the strongest diamonds he could create, McCarrot's vorpal slayer can pierce through almost any hide, except maybe a Dragons. critical hits with weapon attacks cause Brutal Death Rolls.",
+    "originalText": "Sharpened using the strongest diamonds he could create, McCarrot's vorpal slayer can pierce through almost any hide, except maybe a Dragons. Critical Hits with Basic Attacks cause Brutal Death Rolls.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-tien-s-sand-shots-4867",
+    "sourceId": "4867",
+    "name": "Tien's Sand Shots",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Legendary"
+    ],
+    "description": "Attune your ranged Weapons and kobold claws with Earth magic that cause them to shoot bolts of flaming sand that cause you to deal Octuple Damage for the rest of combat. You can only be attuned to one element with your Weapons.",
+    "originalText": "Attune your ranged Weapons and kobold claws with Earth magic that cause them to shoot bolts of flaming sand that cause you to deal Octuple Damage for the rest of combat. You can only be attuned to one element with your Weapons.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-quintara-s-ether-ring-4877",
+    "sourceId": "4877",
+    "name": "Quintara's Ether Ring",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Dragon",
+      "Legendary"
+    ],
+    "description": "A powerful ether ring given to you by Soleth that when sucked on intoxicates the Player. Your weapon attacks with the Leather Whip now deal 2d10 + 10 damage. Once per combat, you may drink directly from the ring to Triple your weapon attack Damage for the rest of combat, but must use a coin instead of rolling with these attacks. Heads counts as a critical hit and Tails counts as a natural 1.",
+    "originalText": "A powerful ether ring given to you by Soleth that when sucked on intoxicates the Player. Your Basic Attacks with the Leather Whip now deal 2d10 + 10 Damage. Once per combat, you may drink directly from the ring to Triple your Basic Attack Damage for the rest of combat, but must use a coin instead of rolling with these attacks. Heads counts as a Critical Hit and Tails counts as a Critical Fail.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-dragonfist-gauntlets-4878",
+    "sourceId": "4878",
+    "name": "Dragonfist Gauntlets",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Dragon",
+      "Legendary"
+    ],
+    "description": "An old pair of worn Dragonfit Gauntlets crafted by Rokesh before the birth of magic. Your weapon attacks can damage Divines.",
+    "originalText": "An old pair of worn Dragonfit Gauntlets crafted by Rokesh before the birth of magic. Your Basic Attacks can damage Divines.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-chaotic-wisdom-4879",
+    "sourceId": "4879",
+    "name": "Chaotic Wisdom",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Spell",
+      "Arcane",
+      "Legendary"
+    ],
+    "description": "Quintara imparts the wisdom and randomness of Arcane magic to be locked away inside your mind until you are ready to awaken it. Whenever you Low Roll with a Spell, it transforms into an pure Arcane Spell and you cast an additional copy of the spell the target nearest to you. This passive is only active after your character proclaims \"chaos reigns supreme!\" during the campaign.",
+    "originalText": "Quintara imparts the wisdom and randomness of Arcane magic to be locked away inside your mind until you are ready to awaken it. Whenever you Low Roll with a Spell, it transforms into an pure Arcane Spell and you cast an additional copy of the spell the Target nearest to you. This passive is only active after your character proclaims \"chaos reigns supreme!\" during the campaign.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-jeweled-ramster-cloth-4880",
+    "sourceId": "4880",
+    "name": "Jeweled Ramster Cloth",
+    "category": "Armour",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Armour",
+      "Dragon",
+      "Spell",
+      "Companion",
+      "Ice",
+      "HP",
+      "Legendary"
+    ],
+    "description": "A set of ramster armor that was quickly conjured up by Soleth. Triple the HP of your Companion. Your companion can take Damage on your behalf, use Abilities and Spells you know, and talks in a funny voice. Your Companion may also no Burp to cast random Spells as a Regular Action. Access to these new Abilities and Spells are considered Companion Abilities.",
+    "originalText": "A set of ramster armor that was quickly conjured up by Soleth. Triple the Stamina of your Companion. Your companion can take Damage on your behalf, use Abilities and Spells you know, and talks in a funny voice. Your Companion may also no Burp to cast random Spells as a Regular Action. Access to these new Abilities and Spells are considered Companion Abilities.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-miles-blooding-holding-spell-4881",
+    "sourceId": "4881",
+    "name": "Miles' Blooding Holding Spell",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Spell",
+      "Legendary"
+    ],
+    "description": "A modified version of the Legendary Holding Spell that Miles created himself. It allows him to open up a small portal to the Realm of Holding where he stores dead bodies and limbs for future fleshweaving. Whenever you Kill a creature, you may put their body into this Realm. If you have 5 bodies stored, you're next Fleshweaver Golem will be a 3x3 Tile. If you have 20 bodies stored, you're next Fleshweaver Golem will be a 5x5 Tile.",
+    "originalText": "A modified version of the Legendary Holding Spell that Miles created himself. It allows him to open up a small portal to the Realm of Holding where he stores dead bodies and limbs for future fleshweaving. Whenever you Kill a Character, you may put their body into this Realm. If you have 5 bodies stored, you're next Fleshweaver Golem will be a 3x3 Tile. If you have 20 bodies stored, you're next Fleshweaver Golem will be a 5x5 Tile.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-master-escape-artist-4882",
+    "sourceId": "4882",
+    "name": "Master Escape Artist",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Death",
+      "Legendary"
+    ],
+    "description": "Your talent to get out of the hairest of situations has started to become that of legends. If your creature fails a Death Roll, instead of dying they will elaborately somehow escape instead, but no longer be a part of the campaign.",
+    "originalText": "Your talent to get out of the hairest of situations has started to become that of legends. If your Character fails a Death Roll, instead of dying they will elaborately somehow escape instead, but no longer be a part of the campaign.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-meowzer-instrument-of-destruction-4883",
+    "sourceId": "4883",
+    "name": "Meowzer, Instrument of Destruction",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Spell",
+      "Legendary"
+    ],
+    "description": "The musical instrument you have been using for all these years bares the power of the Wowzer which, when harnessed correctly, can slay even the immortal beings of this realm. Your Spells now Damage and can even kill Divine creatures when being played with your musical instrument. Place this card on top of your Musical Instrument card.",
+    "originalText": "The musical instrument you have been using for all these years bares the power of the Wowzer which, when harnessed correctly, can slay even the immortal beings of this realm. Your Spells now Damage and can even kill Divine Characters when being played with your musical instrument. Place this card on top of your Musical Instrument card.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-gherkin-s-big-betty-4884",
+    "sourceId": "4884",
+    "name": "Gherkin's Big Betty",
+    "category": "Weapon",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Weapon",
+      "Legendary"
+    ],
+    "description": "A powerful state of the art gnomish weapon crafted by Alistar Kachingmen. This is model 47 of Alistar Kachingmen's gas operated assault rifle that shoots 10 small pebbles per second. The technology for this weapon comes from our world which makes it powerful enough to Damage or even Kill Divine creatures.",
+    "originalText": "A powerful state of the art gnomish weapon crafted by Alistar Kachingmen. This is model 47 of Alistar Kachingmen's gas operated assault rifle that shoots 10 small pebbles per second. The technology for this weapon comes from our world which makes it powerful enough to Damage or even Kill Divine Characters.",
+    "source": "URLive Season 3 - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-poop-5729",
+    "sourceId": "5729",
+    "name": "Poop",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Legendary"
+    ],
+    "description": "This is a test of Legendary Card thingy poopoo",
+    "originalText": "This is a test of Legendary Card thingy poopoo",
+    "source": "Unnassigned - Card By: Joshua Coote"
+  },
+  {
+    "id": "legendary-contains-the-coordinates-to-the-weapon-of-ultimate-5733",
+    "sourceId": "5733",
+    "name": "contains the coordinates to the weapon of ultimate",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Dragon"
+    ],
+    "description": "This map leads mortal Souls to the four pieces of the Dragon God's throne. They'll call the throne it is actually a weapon of unmeasurable power capable of even bringing Gods to their knees. It is said that whoever is chosen to reassemble this weapon can wield it and thus Crush any foe regardless of their strength.",
+    "originalText": "This map leads mortal Souls to the four pieces of the Dragon God's throne. They'll call the throne it is actually a weapon of unmeasurable power capable of even bringing Gods to their knees. It is said that whoever is chosen to reassemble this weapon can wield it and thus Crush any foe regardless of their strength.",
+    "source": "Unnassigned - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-sedf-5734",
+    "sourceId": "5734",
+    "name": "SEDF",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Legendary"
+    ],
+    "description": "SEF",
+    "originalText": "SEF",
+    "source": "Unnassigned - Card By: TrueHippy"
+  },
+  {
+    "id": "legendary-artificer-chain-sword-5910",
+    "sourceId": "5910",
+    "name": "Artificer Chain Sword",
+    "category": "Weapon",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Weapon",
+      "Ice",
+      "Legendary"
+    ],
+    "description": "The prized project of Niko Varian, the artificer Chain Sword was crafted over many years. Thought up after Niko witnessed an adventurer utilizing a common chainsaw to defeat a beast. With it's rotating blades and powerful engine, the sharp teeth will sunder the armor of any enemy hit, causing them to lose some of their defense. Though critical hits will get quite messy, and could gunk up the blade.",
+    "originalText": "The prized project of Niko Varian, the artificer Chain Sword was crafted over many years. Thought up after Niko witnessed an adventurer utilizing a common chainsaw to defeat a beast. With it's rotating blades and powerful engine, the sharp teeth will sunder the armor of any enemy hit, causing them to lose some of their defense. Though critical hits will get quite messy, and could gunk up the blade.",
+    "source": "Unnassigned - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-vertical-grappling-gear-6082",
+    "sourceId": "6082",
+    "name": "Vertical Grappling Gear",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Ice",
+      "Legendary"
+    ],
+    "description": "This suit uses pressurized air to launch grappling hooks, allowing seamless movement across any terrain. You move twice as far with your Move Action and can move up any surface. If you grapple onto a Large target and move towards it with your full Move Action, your next weapon attack deals quadruple damage.",
+    "originalText": "This suit uses pressurized air to launch grappling hooks, allowing seamless movement across any terrain. You move twice as far with your Move Action and can move up any surface. If you grapple onto a Large target and move towards it with your full Move Action, your next Basic Attack deals quadruple damage.",
+    "source": "Unnassigned - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-pseudo-creation-6700",
+    "sourceId": "6700",
+    "name": "Pseudo-Creation",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Legendary"
+    ],
+    "description": ".",
+    "originalText": ".",
+    "source": "Unnassigned - Card By: URLive Official"
+  },
+  {
+    "id": "legendary-worn-grenade-launcher-6707",
+    "sourceId": "6707",
+    "name": "Worn Grenade Launcher",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item"
+    ],
+    "description": "This weapon seems to have a lot of use, with the barrel nearly falling off. Whenever you deal Damage to a foe, deal damage to ALL foes on battlefield.",
+    "originalText": "This weapon seems to have a lot of use, with the barrel nearly falling off. Whenever you deal Damage to a foe, deal damage to ALL foes on battlefield.",
+    "source": "Unnassigned - Card By: Stuart S"
+  },
+  {
+    "id": "legendary-mana-work-6727",
+    "sourceId": "6727",
+    "name": "Mana Work",
+    "category": "Item",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Item",
+      "Legendary"
+    ],
+    "description": "The signature ability of the dwarven King Midas, Mana Work allows the user to turn any matter into raw gold energy.",
+    "originalText": "The signature ability of the dwarven King Midas, Mana Work allows the user to turn any matter into raw gold energy.",
+    "source": "Unnassigned - Card By: Craig Boone"
+  },
+  {
+    "id": "legendary-staff-of-judgement-6799",
+    "sourceId": "6799",
+    "name": "Staff of judgement",
+    "category": "Weapon",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Weapon",
+      "Spell",
+      "Legendary"
+    ],
+    "description": "Contains the soul of your past rival. Murdered unfairly, they chose to forigve you and they now posses this Staff. Whenever you cast a spell, after you roll you may choose to cast a different spell instead with the same roll. Your rival may cast a copy of your spell as a no-roll action if he likes.",
+    "originalText": "Contains the soul of your past rival. Murdered unfairly, they chose to forigve you and they now posses this Staff. Whenever you cast a spell, after you roll you may choose to cast a different spell instead with the same roll. Your rival may cast a copy of your spell as a no-roll action if he likes.",
+    "source": "Unnassigned - Card By: Yuval Mano"
+  },
+  {
+    "id": "legendary-cartel-boss-s-sheath-6803",
+    "sourceId": "6803",
+    "name": "Cartel Boss's Sheath",
+    "category": "Weapon",
+    "rarity": "Legendary",
+    "valueGp": 2000,
+    "requiresAttunement": true,
+    "tags": [
+      "D&D 5e",
+      "Converted",
+      "Legendary Reward",
+      "Weapon",
+      "Legendary"
+    ],
+    "description": "The Sheath of a famous drug cartel's boss defeted by the legendary swordmaster \"\". You are immune to poison and overdose. Once per combat, when you draw One's sword from this sheath, you gain the strength of \"\" gaining 3 move actions and 3 regular actions, during this turn you deal triple damage and can even damage divine beings.",
+    "originalText": "The Sheath of a famous drug cartel's boss defeted by the legendary swordmaster \"\". You are immune to poison and overdose. Once per combat, when you draw One's sword from this sheath, you gain the strength of \"\" gaining 3 move actions and 3 regular actions, during this turn you deal triple damage and can even damage divine beings.",
+    "source": "Unnassigned - Card By: Yuval Mano"
   }
 ]
