@@ -1,8 +1,37 @@
 [
   {
+    "id": "material-arcane-absorption-membrane",
+    "name": "Arcane Absorption Membrane",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0"
+    ],
+    "source": "ORIG",
+    "notes": "Skin tissue that absorbs and neutralises magical energy. Unique.",
+    "appearsIn": [
+      {
+        "creature": "ARCANE DEVOURER",
+        "pool": "Common",
+        "weight": 14
+      },
+      {
+        "creature": "TEMPEST TYRANT",
+        "pool": "Common",
+        "weight": 14
+      }
+    ]
+  },
+  {
     "id": "material-arcane-rejection-residue",
     "name": "Arcane Rejection Residue",
-    "tier": "T0",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0"
+    ],
     "source": "ORIG",
     "notes": "Unstable magical runoff from failed arcane binding. Glows faintly. Warm to the touch.",
     "appearsIn": [
@@ -14,151 +43,170 @@
     ]
   },
   {
-    "id": "material-fractured-cortical-tissue",
-    "name": "Fractured Cortical Tissue",
-    "tier": "T0",
-    "source": "ORIG",
-    "notes": "Dense organic matter laced with failed binding energy. Crumbles at the edges.",
+    "id": "material-brittle-ice-bone-shard",
+    "name": "Brittle Ice Bone Shard",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0"
+    ],
+    "source": "WD",
+    "notes": "New WD T0. Bone fragment reinforced with ice crystal growth.",
     "appearsIn": [
       {
-        "creature": "FAILED HYBRID",
-        "pool": "Common",
-        "weight": 24
-      },
-      {
-        "creature": "FAILED HYBRID",
-        "pool": "Rare",
-        "weight": 32
-      }
-    ]
-  },
-  {
-    "id": "material-unstable-binding-fiber",
-    "name": "Unstable Binding Fiber",
-    "tier": "T1",
-    "source": "ORIG",
-    "notes": "Stringy bio-material threaded with partial phase energy. Still partially fused to itself.",
-    "appearsIn": [
-      {
-        "creature": "FAILED HYBRID",
+        "creature": "FROSTCLAW PROWLER",
         "pool": "Common",
         "weight": 22
-      },
-      {
-        "creature": "FAILED HYBRID",
-        "pool": "Rare",
-        "weight": 26
       }
     ]
   },
   {
-    "id": "material-suppressed-arcane-nodule",
-    "name": "Suppressed Arcane Nodule",
-    "tier": "T1",
+    "id": "material-camouflage-skin-scraps",
+    "name": "Camouflage Skin Scraps",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0"
+    ],
     "source": "ORIG",
-    "notes": "Calcified mass where dragon essence attempted to anchor. The transformation failed here.",
+    "notes": "Skin with chromatophore cells that shift colour. Unique.",
     "appearsIn": [
       {
-        "creature": "FAILED HYBRID",
+        "creature": "VENOMFANG STALKER",
         "pool": "Common",
-        "weight": 16
+        "weight": 12
       }
     ]
   },
   {
-    "id": "material-fused-mutation-core",
-    "name": "Fused Mutation Core",
-    "tier": "T2",
-    "source": "ORIG",
-    "notes": "One of the few stable points in the creature's body. Dense and warm.",
+    "id": "material-charged-dragonhide-scraps",
+    "name": "Charged Dragonhide Scraps",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "blue dragon"
+    ],
+    "source": "BD",
+    "notes": "Existing BD T0.",
     "appearsIn": [
       {
-        "creature": "FAILED HYBRID",
+        "creature": "MUTATED CHIMERA HOUND",
+        "pool": "Common",
+        "weight": 15
+      }
+    ]
+  },
+  {
+    "id": "material-charged-tendon-strips",
+    "name": "Charged Tendon Strips",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "blue dragon"
+    ],
+    "source": "BD",
+    "notes": "Existing BD T0. Primary flight tendon strips, electrically charged.",
+    "appearsIn": [
+      {
+        "creature": "SPARKWING STALKER",
+        "pool": "Common",
+        "weight": 17
+      }
+    ]
+  },
+  {
+    "id": "material-coarse-cold-hide",
+    "name": "Coarse Cold Hide",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0"
+    ],
+    "source": "ORIG",
+    "notes": "Thick outer hide adapted for cold environments. Unique.",
+    "appearsIn": [
+      {
+        "creature": "FROSTCLAW PROWLER",
         "pool": "Common",
         "weight": 10
-      },
-      {
-        "creature": "FAILED HYBRID",
-        "pool": "Rare",
-        "weight": 20
-      },
-      {
-        "creature": "FAILED HYBRID",
-        "pool": "Epic",
-        "weight": 30
       }
     ]
   },
   {
-    "id": "material-preserved-memory-fragment",
-    "name": "Preserved Memory Fragment",
-    "tier": "T2",
+    "id": "material-coarse-hound-hide",
+    "name": "Coarse Hound Hide",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0"
+    ],
     "source": "ORIG",
-    "notes": "Crystallised fragment of arcane soul matter. Warm to the touch. Occasionally pulses.",
+    "notes": "Thick outer hide — lightning resistant but not dragon-scale. Unique.",
     "appearsIn": [
       {
-        "creature": "FAILED HYBRID",
-        "pool": "Rare",
+        "creature": "DRAGONHOUND",
+        "pool": "Common",
         "weight": 14
-      },
-      {
-        "creature": "FAILED HYBRID",
-        "pool": "Epic",
-        "weight": 25
       }
     ]
   },
   {
-    "id": "material-resonant-soul-shard",
-    "name": "Resonant Soul Shard",
-    "tier": "T3",
+    "id": "material-cold-thermal-skin",
+    "name": "Cold Thermal Skin",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0"
+    ],
     "source": "ORIG",
-    "notes": "Rare stable formation of compressed arcane soul energy. Only forms from high magical aptitude subjects.",
+    "notes": "Outer skin that absorbs and radiates cold. Unique.",
     "appearsIn": [
       {
-        "creature": "FAILED HYBRID",
-        "pool": "Rare",
-        "weight": 8
-      },
-      {
-        "creature": "FAILED HYBRID",
-        "pool": "Epic",
-        "weight": 22
-      }
-    ]
-  },
-  {
-    "id": "material-fractured-soul-lattice",
-    "name": "Fractured Soul Lattice",
-    "tier": "T3",
-    "source": "ORIG",
-    "notes": "Rare formation where multiple memory fragments partially fused together. TERMINAL — no refinement.",
-    "appearsIn": [
-      {
-        "creature": "FAILED HYBRID",
-        "pool": "Epic",
-        "weight": 13
-      }
-    ]
-  },
-  {
-    "id": "material-shattered-essence-crystal",
-    "name": "Shattered Essence Crystal",
-    "tier": "T3",
-    "source": "FUSED",
-    "notes": "FUSED TERMINAL. Crystallised fusion of arcane soul energy and failed dragon essence. The transformation nearly worked here.",
-    "appearsIn": [
-      {
-        "creature": "FAILED HYBRID",
-        "pool": "Epic",
+        "creature": "GLACIER WING PREDATOR",
+        "pool": "Common",
         "weight": 10
+      }
+    ]
+  },
+  {
+    "id": "material-conductive-blood-droplets",
+    "name": "Conductive Blood Droplets",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "blue dragon"
+    ],
+    "source": "BD",
+    "notes": "Existing BD T0. Blood with high electrical conductivity.",
+    "appearsIn": [
+      {
+        "creature": "ARCANE DEVOURER",
+        "pool": "Common",
+        "weight": 15
       }
     ]
   },
   {
     "id": "material-crackling-scale-fragments",
     "name": "Crackling Scale Fragments",
-    "tier": "T0",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "blue dragon"
+    ],
     "source": "BD",
     "notes": "Existing BD T0. Feeds into Drake Scales refinement chain.",
     "appearsIn": [
@@ -185,23 +233,212 @@
     ]
   },
   {
-    "id": "material-static-charged-hide-scraps",
-    "name": "Static-Charged Hide Scraps",
-    "tier": "T0",
-    "source": "BD",
-    "notes": "Existing BD T0. Feeds into Storm Hide Layer chain.",
+    "id": "material-dimensional-membrane-scraps",
+    "name": "Dimensional Membrane Scraps",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0"
+    ],
+    "source": "SP",
+    "notes": "Existing SP T0. Tissue from the phase-transition zone of the creature's body.",
     "appearsIn": [
       {
-        "creature": "DRAGONHOUND",
+        "creature": "RIFTCLAW SPIDER",
+        "pool": "Common",
+        "weight": 16
+      }
+    ]
+  },
+  {
+    "id": "material-dimensional-tendon-coil",
+    "name": "Dimensional Tendon Coil",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0"
+    ],
+    "source": "SP",
+    "notes": "Existing SP T0. Spatially-anchored tendon. Feeds Phase Silk chain.",
+    "appearsIn": [
+      {
+        "creature": "RIFTCLAW SPIDER",
+        "pool": "Rare",
+        "weight": 14
+      }
+    ]
+  },
+  {
+    "id": "material-distortion-webbing-fragment",
+    "name": "Distortion Webbing Fragment",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "spider"
+    ],
+    "source": "SP",
+    "notes": "Existing SP T0 phase variant. Partially phased silk webbing.",
+    "appearsIn": [
+      {
+        "creature": "RIFTCLAW SPIDER",
         "pool": "Common",
         "weight": 20
       }
     ]
   },
   {
+    "id": "material-dragonbone-splinters",
+    "name": "Dragonbone Splinters",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "blue dragon"
+    ],
+    "source": "BD",
+    "notes": "Existing BD T0. Feeds into Dense Dragonbone Splinters chain.",
+    "appearsIn": [
+      {
+        "creature": "DRAGONHOUND",
+        "pool": "Common",
+        "weight": 16
+      }
+    ]
+  },
+  {
+    "id": "material-dried-venom-trace",
+    "name": "Dried Venom Trace",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "venom"
+    ],
+    "source": "SP",
+    "notes": "Existing SP T0.",
+    "appearsIn": [
+      {
+        "creature": "VENOMFANG STALKER",
+        "pool": "Common",
+        "weight": 8
+      }
+    ]
+  },
+  {
+    "id": "material-fractured-cortical-tissue",
+    "name": "Fractured Cortical Tissue",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0"
+    ],
+    "source": "ORIG",
+    "notes": "Dense organic matter laced with failed binding energy. Crumbles at the edges.",
+    "appearsIn": [
+      {
+        "creature": "FAILED HYBRID",
+        "pool": "Common",
+        "weight": 24
+      },
+      {
+        "creature": "FAILED HYBRID",
+        "pool": "Rare",
+        "weight": 32
+      }
+    ]
+  },
+  {
+    "id": "material-frigid-feather-cluster",
+    "name": "Frigid Feather Cluster",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0"
+    ],
+    "source": "ORIG",
+    "notes": "Dense feathers from the wing edge, coated in ice crystal. Unique.",
+    "appearsIn": [
+      {
+        "creature": "GLACIER WING PREDATOR",
+        "pool": "Common",
+        "weight": 14
+      }
+    ]
+  },
+  {
+    "id": "material-frost-crusted-fur-scraps",
+    "name": "Frost-Crusted Fur Scraps",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0"
+    ],
+    "source": "WD",
+    "notes": "New WD T0. Frozen outer fur, partially crystallised with ice growth.",
+    "appearsIn": [
+      {
+        "creature": "FROSTCLAW PROWLER",
+        "pool": "Common",
+        "weight": 26
+      }
+    ]
+  },
+  {
+    "id": "material-frozen-claw-fragment",
+    "name": "Frozen Claw Fragment",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0"
+    ],
+    "source": "WD",
+    "notes": "New WD T0. Claw tip that maintains sub-zero temperature post-mortem.",
+    "appearsIn": [
+      {
+        "creature": "FROSTCLAW PROWLER",
+        "pool": "Common",
+        "weight": 16
+      }
+    ]
+  },
+  {
+    "id": "material-hollow-wing-bone",
+    "name": "Hollow Wing Bone",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0"
+    ],
+    "source": "ORIG",
+    "notes": "Lightweight hollow bone from the wing structure. Unique.",
+    "appearsIn": [
+      {
+        "creature": "SPARKWING STALKER",
+        "pool": "Common",
+        "weight": 16
+      }
+    ]
+  },
+  {
     "id": "material-hound-muscle-fibre",
     "name": "Hound Muscle Fibre",
-    "tier": "T0",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0"
+    ],
     "source": "ORIG",
     "notes": "Dense fast-twitch muscle from the hound's legs. Unique to this creature.",
     "appearsIn": [
@@ -218,37 +455,191 @@
     ]
   },
   {
-    "id": "material-dragonbone-splinters",
-    "name": "Dragonbone Splinters",
-    "tier": "T0",
-    "source": "BD",
-    "notes": "Existing BD T0. Feeds into Dense Dragonbone Splinters chain.",
+    "id": "material-ice-crystal-dust",
+    "name": "Ice Crystal Dust",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0"
+    ],
+    "source": "WD",
+    "notes": "New WD T0. Fine crystalline material shed from scales and hide.",
     "appearsIn": [
       {
-        "creature": "DRAGONHOUND",
+        "creature": "FROSTCLAW PROWLER",
+        "pool": "Common",
+        "weight": 8
+      }
+    ]
+  },
+  {
+    "id": "material-ionized-nerve-threads",
+    "name": "Ionized Nerve Threads",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "blue dragon"
+    ],
+    "source": "BD",
+    "notes": "Existing BD T0. Wing membrane nerve fibres with persistent electrical signal.",
+    "appearsIn": [
+      {
+        "creature": "SPARKWING STALKER",
+        "pool": "Common",
+        "weight": 19
+      }
+    ]
+  },
+  {
+    "id": "material-lightweight-leg-segments",
+    "name": "Lightweight Leg Segments",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0"
+    ],
+    "source": "SP",
+    "notes": "Existing SP T0.",
+    "appearsIn": [
+      {
+        "creature": "VENOMFANG STALKER",
         "pool": "Common",
         "weight": 16
       }
     ]
   },
   {
-    "id": "material-coarse-hound-hide",
-    "name": "Coarse Hound Hide",
-    "tier": "T0",
+    "id": "material-mana-sense-filament",
+    "name": "Mana Sense Filament",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0"
+    ],
     "source": "ORIG",
-    "notes": "Thick outer hide — lightning resistant but not dragon-scale. Unique.",
+    "notes": "Fine neural filament from the arcane detection system. Unique.",
     "appearsIn": [
       {
-        "creature": "DRAGONHOUND",
+        "creature": "ARCANE DEVOURER",
         "pool": "Common",
-        "weight": 14
+        "weight": 17
+      }
+    ]
+  },
+  {
+    "id": "material-minor-venom-residue",
+    "name": "Minor Venom Residue",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "venom"
+    ],
+    "source": "SP",
+    "notes": "Existing SP T0.",
+    "appearsIn": [
+      {
+        "creature": "VENOMFANG STALKER",
+        "pool": "Common",
+        "weight": 24
+      }
+    ]
+  },
+  {
+    "id": "material-multi-element-bone-shard",
+    "name": "Multi-Element Bone Shard",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0"
+    ],
+    "source": "ORIG",
+    "notes": "Bone showing evidence of multiple elemental adaptations simultaneously. Unique.",
+    "appearsIn": [
+      {
+        "creature": "MUTATED CHIMERA HOUND",
+        "pool": "Common",
+        "weight": 16
+      }
+    ]
+  },
+  {
+    "id": "material-mutation-residue-scraps",
+    "name": "Mutation Residue Scraps",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0"
+    ],
+    "source": "ORIG",
+    "notes": "Unstable biological waste from constant mutation cycling. Changes colour over time. Unique.",
+    "appearsIn": [
+      {
+        "creature": "MUTATED CHIMERA HOUND",
+        "pool": "Common",
+        "weight": 18
+      }
+    ]
+  },
+  {
+    "id": "material-phase-shifted-chitin-shard",
+    "name": "Phase-Shifted Chitin Shard",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "phase",
+      "phase-touched",
+      "spider"
+    ],
+    "source": "ORIG",
+    "notes": "Chitin from the phase-transition surface of the creature's outer body. Unique.",
+    "appearsIn": [
+      {
+        "creature": "RIFTCLAW SPIDER",
+        "pool": "Common",
+        "weight": 10
+      }
+    ]
+  },
+  {
+    "id": "material-raptor-feather-cluster",
+    "name": "Raptor Feather Cluster",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0"
+    ],
+    "source": "ORIG",
+    "notes": "Dense feathers from the wing edge carrying static buildup. Unique.",
+    "appearsIn": [
+      {
+        "creature": "SPARKWING STALKER",
+        "pool": "Common",
+        "weight": 13
       }
     ]
   },
   {
     "id": "material-residual-lightning-gland",
     "name": "Residual Lightning Gland",
-    "tier": "T0",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "blue dragon"
+    ],
     "source": "BD",
     "notes": "Existing BD T0. Feeds into Charged Lightning Gland chain.",
     "appearsIn": [
@@ -265,33 +656,294 @@
     ]
   },
   {
-    "id": "material-drake-scales",
-    "name": "Drake Scales",
-    "tier": "T1",
+    "id": "material-residual-phase-essence",
+    "name": "Residual Phase Essence",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "phase",
+      "phase-touched"
+    ],
+    "source": "SP",
+    "notes": "Existing SP T0. Wisp of phase energy — evaporates quickly if not stored.",
+    "appearsIn": [
+      {
+        "creature": "RIFTCLAW SPIDER",
+        "pool": "Common",
+        "weight": 18
+      }
+    ]
+  },
+  {
+    "id": "material-rift-claw-fragment",
+    "name": "Rift Claw Fragment",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0"
+    ],
+    "source": "ORIG",
+    "notes": "Claw tip that flickers between dimensions. Unique.",
+    "appearsIn": [
+      {
+        "creature": "RIFTCLAW SPIDER",
+        "pool": "Common",
+        "weight": 14
+      }
+    ]
+  },
+  {
+    "id": "material-scaled-membrane-strips",
+    "name": "Scaled Membrane Strips",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "blue dragon"
+    ],
     "source": "BD",
-    "notes": "Existing BD T1. Refined from Crackling Scale Fragments.",
+    "notes": "Existing BD T0. Body membrane strips, electrically active.",
+    "appearsIn": [
+      {
+        "creature": "ARCANE DEVOURER",
+        "pool": "Common",
+        "weight": 20
+      }
+    ]
+  },
+  {
+    "id": "material-silk-fragments",
+    "name": "Silk Fragments",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "spider"
+    ],
+    "source": "SP",
+    "notes": "Existing SP T0.",
+    "appearsIn": [
+      {
+        "creature": "VENOMFANG STALKER",
+        "pool": "Common",
+        "weight": 18
+      }
+    ]
+  },
+  {
+    "id": "material-small-chitin-fragments",
+    "name": "Small Chitin Fragments",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "spider"
+    ],
+    "source": "SP",
+    "notes": "Existing SP T0.",
+    "appearsIn": [
+      {
+        "creature": "VENOMFANG STALKER",
+        "pool": "Common",
+        "weight": 22
+      }
+    ]
+  },
+  {
+    "id": "material-static-charged-hide-scraps",
+    "name": "Static-Charged Hide Scraps",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "blue dragon"
+    ],
+    "source": "BD",
+    "notes": "Existing BD T0. Feeds into Storm Hide Layer chain.",
     "appearsIn": [
       {
         "creature": "DRAGONHOUND",
-        "pool": "Rare",
-        "weight": 24
-      },
+        "pool": "Common",
+        "weight": 20
+      }
+    ]
+  },
+  {
+    "id": "material-storm-touched-hide-scraps",
+    "name": "Storm-Touched Hide Scraps",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "blue dragon"
+    ],
+    "source": "BD",
+    "notes": "Existing BD T0. Wing membrane hide with embedded charge nodes.",
+    "appearsIn": [
       {
         "creature": "SPARKWING STALKER",
-        "pool": "Rare",
+        "pool": "Common",
+        "weight": 15
+      }
+    ]
+  },
+  {
+    "id": "material-unstable-silk-threads",
+    "name": "Unstable Silk Threads",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "spider"
+    ],
+    "source": "SP",
+    "notes": "Existing SP T0 phase variant. Phase-unstable silk.",
+    "appearsIn": [
+      {
+        "creature": "RIFTCLAW SPIDER",
+        "pool": "Common",
         "weight": 22
       },
       {
         "creature": "MUTATED CHIMERA HOUND",
+        "pool": "Common",
+        "weight": 16
+      }
+    ]
+  },
+  {
+    "id": "material-wing-bone-strut",
+    "name": "Wing Bone Strut",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0"
+    ],
+    "source": "ORIG",
+    "notes": "Hollow structural bone from the flight surface. Unique.",
+    "appearsIn": [
+      {
+        "creature": "GLACIER WING PREDATOR",
+        "pool": "Common",
+        "weight": 16
+      }
+    ]
+  },
+  {
+    "id": "material-wing-membrane-scraps",
+    "name": "Wing Membrane Scraps",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0"
+    ],
+    "source": "ORIG",
+    "notes": "Torn membrane from the creature's flight surface. Unique.",
+    "appearsIn": [
+      {
+        "creature": "MIREWING HUNTER",
+        "pool": "Common",
+        "weight": 16
+      }
+    ]
+  },
+  {
+    "id": "material-adaptive-biology-tissue",
+    "name": "Adaptive Biology Tissue",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1"
+    ],
+    "source": "ORIG",
+    "notes": "Tissue instinctively resisting repeated damage sources. Source of Adaptive Biology trait. Unique.",
+    "appearsIn": [
+      {
+        "creature": "MUTATED CHIMERA HOUND",
+        "pool": "Common",
+        "weight": 15
+      }
+    ]
+  },
+  {
+    "id": "material-ambush-muscle-coil",
+    "name": "Ambush Muscle Coil",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1"
+    ],
+    "source": "ORIG",
+    "notes": "Coiled fast-twitch muscle from the creature's pounce system. Unique.",
+    "appearsIn": [
+      {
+        "creature": "VENOMFANG STALKER",
         "pool": "Rare",
-        "weight": 20
+        "weight": 8
+      }
+    ]
+  },
+  {
+    "id": "material-arcane-wire-coil",
+    "name": "Arcane Wire Coil",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1"
+    ],
+    "source": "ORIG",
+    "notes": "Standard arcane-conductive wire from the Sentinel's suppression system.",
+    "appearsIn": [
+      {
+        "creature": "COLLAR SENTINEL",
+        "pool": "Common",
+        "weight": 26
+      }
+    ]
+  },
+  {
+    "id": "material-blood-coagulation-mass",
+    "name": "Blood Coagulation Mass",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1"
+    ],
+    "source": "ORIG",
+    "notes": "Semi-solidified blood mass with arcane binding properties.",
+    "appearsIn": [
+      {
+        "creature": "SANGUINE WARDEN",
+        "pool": "Common",
+        "weight": 18
       }
     ]
   },
   {
     "id": "material-charged-lightning-gland",
     "name": "Charged Lightning Gland",
-    "tier": "T1",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "blue dragon"
+    ],
     "source": "BD",
     "notes": "Existing BD T1. Refined from Residual Lightning Gland.",
     "appearsIn": [
@@ -313,56 +965,54 @@
     ]
   },
   {
-    "id": "material-storm-hide-layer",
-    "name": "Storm Hide Layer",
-    "tier": "T1",
+    "id": "material-composite-flesh-shard",
+    "name": "Composite Flesh Shard",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1"
+    ],
+    "source": "ORIG",
+    "notes": "Dense layered material from the outer body. Mechanically the source of the Composite Flesh trait.",
+    "appearsIn": [
+      {
+        "creature": "SANGUINE WARDEN",
+        "pool": "Common",
+        "weight": 22
+      }
+    ]
+  },
+  {
+    "id": "material-conductive-blood-crystal",
+    "name": "Conductive Blood Crystal",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "blue dragon"
+    ],
     "source": "BD",
-    "notes": "Existing BD T1. Refined from Static-Charged Hide Scraps.",
+    "notes": "Existing BD T1. Blood crystallised post-mortem due to electrical charge.",
     "appearsIn": [
       {
         "creature": "DRAGONHOUND",
-        "pool": "Rare",
-        "weight": 18
-      },
-      {
-        "creature": "SPARKWING STALKER",
-        "pool": "Rare",
-        "weight": 17
-      }
-    ]
-  },
-  {
-    "id": "material-tensile-hound-sinew",
-    "name": "Tensile Hound Sinew",
-    "tier": "T1",
-    "source": "ORIG",
-    "notes": "Processed sinew from the primary chase muscles. Holds tension well. Unique.",
-    "appearsIn": [
-      {
-        "creature": "DRAGONHOUND",
-        "pool": "Rare",
-        "weight": 17
-      }
-    ]
-  },
-  {
-    "id": "material-reinforced-hound-fang",
-    "name": "Reinforced Hound Fang",
-    "tier": "T1",
-    "source": "ORIG",
-    "notes": "Extracted fang reinforced with minor draconic calcification. Unique.",
-    "appearsIn": [
-      {
-        "creature": "DRAGONHOUND",
-        "pool": "Rare",
-        "weight": 12
+        "pool": "Epic",
+        "weight": 16
       }
     ]
   },
   {
     "id": "material-conductive-nerve-bundle",
     "name": "Conductive Nerve Bundle",
-    "tier": "T1",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "blue dragon"
+    ],
     "source": "BD",
     "notes": "Existing BD T1. Extracted from the lightning-adapted nervous system.",
     "appearsIn": [
@@ -379,169 +1029,134 @@
     ]
   },
   {
-    "id": "material-reinforced-drake-scale",
-    "name": "Reinforced Drake Scale",
-    "tier": "T2",
-    "source": "BD",
-    "notes": "Existing BD T2. Best scale extraction from this creature tier.",
+    "id": "material-control-chip-fragment",
+    "name": "Control Chip Fragment",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1"
+    ],
+    "source": "ORIG",
+    "notes": "Broken fragment of a control directive chip.",
     "appearsIn": [
       {
-        "creature": "DRAGONHOUND",
-        "pool": "Epic",
-        "weight": 26
-      },
+        "creature": "COLLAR SENTINEL",
+        "pool": "Common",
+        "weight": 18
+      }
+    ]
+  },
+  {
+    "id": "material-corrosive-blood-droplets",
+    "name": "Corrosive Blood Droplets",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1"
+    ],
+    "source": "ORIG",
+    "notes": "The creature's mildly acidic blood. Requires sealed glass storage. Unique.",
+    "appearsIn": [
       {
-        "creature": "SPARKWING STALKER",
-        "pool": "Epic",
-        "weight": 20
-      },
+        "creature": "MIREWING HUNTER",
+        "pool": "Common",
+        "weight": 14
+      }
+    ]
+  },
+  {
+    "id": "material-cryogenic-gland",
+    "name": "Cryogenic Gland",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1"
+    ],
+    "source": "WD",
+    "notes": "New WD T1. Small gland generating and storing cold energy.",
+    "appearsIn": [
       {
-        "creature": "ARCANE DEVOURER",
+        "creature": "FROSTCLAW PROWLER",
         "pool": "Rare",
-        "weight": 17
-      }
-    ]
-  },
-  {
-    "id": "material-stormbound-tendon-coil",
-    "name": "Stormbound Tendon Coil",
-    "tier": "T2",
-    "source": "BD",
-    "notes": "Existing BD T2. From the creature's primary sprint tendons, storm-saturated.",
-    "appearsIn": [
-      {
-        "creature": "DRAGONHOUND",
-        "pool": "Epic",
-        "weight": 22
-      },
-      {
-        "creature": "SPARKWING STALKER",
-        "pool": "Epic",
-        "weight": 24
-      },
-      {
-        "creature": "MUTATED CHIMERA HOUND",
-        "pool": "Epic",
-        "weight": 22
-      }
-    ]
-  },
-  {
-    "id": "material-apex-hound-sprint-core",
-    "name": "Apex Hound Sprint Core",
-    "tier": "T2",
-    "source": "ORIG",
-    "notes": "Dense biological core from the haunches — source of 50ft speed. TERMINAL. Unique.",
-    "appearsIn": [
-      {
-        "creature": "DRAGONHOUND",
-        "pool": "Epic",
-        "weight": 18
-      }
-    ]
-  },
-  {
-    "id": "material-conductive-blood-crystal",
-    "name": "Conductive Blood Crystal",
-    "tier": "T1",
-    "source": "BD",
-    "notes": "Existing BD T1. Blood crystallised post-mortem due to electrical charge.",
-    "appearsIn": [
-      {
-        "creature": "DRAGONHOUND",
-        "pool": "Epic",
         "weight": 16
-      }
-    ]
-  },
-  {
-    "id": "material-storm-fused-hound-sinew",
-    "name": "Storm-Fused Hound Sinew",
-    "tier": "T2",
-    "source": "FUSED",
-    "notes": "FUSED TERMINAL. Hound sinew where BD lightning has permanently fused with the original muscle tissue. Neither pure dragon nor pure hound.",
-    "appearsIn": [
+      },
       {
-        "creature": "DRAGONHOUND",
-        "pool": "Epic",
+        "creature": "GLACIER WING PREDATOR",
+        "pool": "Common",
         "weight": 18
       }
     ]
   },
   {
-    "id": "material-ionized-nerve-threads",
-    "name": "Ionized Nerve Threads",
-    "tier": "T0",
-    "source": "BD",
-    "notes": "Existing BD T0. Wing membrane nerve fibres with persistent electrical signal.",
-    "appearsIn": [
-      {
-        "creature": "SPARKWING STALKER",
-        "pool": "Common",
-        "weight": 19
-      }
-    ]
-  },
-  {
-    "id": "material-charged-tendon-strips",
-    "name": "Charged Tendon Strips",
-    "tier": "T0",
-    "source": "BD",
-    "notes": "Existing BD T0. Primary flight tendon strips, electrically charged.",
-    "appearsIn": [
-      {
-        "creature": "SPARKWING STALKER",
-        "pool": "Common",
-        "weight": 17
-      }
-    ]
-  },
-  {
-    "id": "material-hollow-wing-bone",
-    "name": "Hollow Wing Bone",
-    "tier": "T0",
+    "id": "material-deflection-rune-shard",
+    "name": "Deflection Rune Shard",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1"
+    ],
     "source": "ORIG",
-    "notes": "Lightweight hollow bone from the wing structure. Unique.",
+    "notes": "Fragment of the arcane deflection rune array.",
     "appearsIn": [
       {
-        "creature": "SPARKWING STALKER",
+        "creature": "COLLAR SENTINEL",
         "pool": "Common",
         "weight": 16
       }
     ]
   },
   {
-    "id": "material-storm-touched-hide-scraps",
-    "name": "Storm-Touched Hide Scraps",
-    "tier": "T0",
-    "source": "BD",
-    "notes": "Existing BD T0. Wing membrane hide with embedded charge nodes.",
+    "id": "material-dense-cold-marrow",
+    "name": "Dense Cold Marrow",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1"
+    ],
+    "source": "ORIG",
+    "notes": "Compressed marrow from the large bones. Unique.",
     "appearsIn": [
       {
-        "creature": "SPARKWING STALKER",
+        "creature": "WINTERFANG BEHEMOTH",
         "pool": "Common",
-        "weight": 15
+        "weight": 10
       }
     ]
   },
   {
-    "id": "material-raptor-feather-cluster",
-    "name": "Raptor Feather Cluster",
-    "tier": "T0",
-    "source": "ORIG",
-    "notes": "Dense feathers from the wing edge carrying static buildup. Unique.",
+    "id": "material-dense-frostbone-shard",
+    "name": "Dense Frostbone Shard",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1"
+    ],
+    "source": "WD",
+    "notes": "New WD T1. Dense cold-hardened bone material.",
     "appearsIn": [
       {
-        "creature": "SPARKWING STALKER",
-        "pool": "Common",
-        "weight": 13
+        "creature": "FROSTCLAW PROWLER",
+        "pool": "Rare",
+        "weight": 20
       }
     ]
   },
   {
     "id": "material-distilled-lightning-essence",
     "name": "Distilled Lightning Essence",
-    "tier": "T1",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "blue dragon"
+    ],
     "source": "BD",
     "notes": "Existing BD T1. Extracted from wing gland clusters.",
     "appearsIn": [
@@ -563,975 +1178,63 @@
     ]
   },
   {
-    "id": "material-reinforced-membrane-layer",
-    "name": "Reinforced Membrane Layer",
-    "tier": "T1",
+    "id": "material-drake-scales",
+    "name": "Drake Scales",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "blue dragon"
+    ],
     "source": "BD",
-    "notes": "Existing BD T1. From the flight membrane, processed.",
+    "notes": "Existing BD T1. Refined from Crackling Scale Fragments.",
     "appearsIn": [
       {
-        "creature": "SPARKWING STALKER",
+        "creature": "DRAGONHOUND",
         "pool": "Rare",
-        "weight": 15
-      }
-    ]
-  },
-  {
-    "id": "material-sharpened-raptor-talon",
-    "name": "Sharpened Raptor Talon",
-    "tier": "T1",
-    "source": "ORIG",
-    "notes": "Primary hunting talon, hardened by draconic calcification. Unique.",
-    "appearsIn": [
-      {
-        "creature": "SPARKWING STALKER",
-        "pool": "Rare",
-        "weight": 14
-      }
-    ]
-  },
-  {
-    "id": "material-lightweight-wing-frame",
-    "name": "Lightweight Wing Frame",
-    "tier": "T1",
-    "source": "ORIG",
-    "notes": "Processed hollow bone framework from the wing. Unique.",
-    "appearsIn": [
-      {
-        "creature": "SPARKWING STALKER",
-        "pool": "Rare",
-        "weight": 13
-      }
-    ]
-  },
-  {
-    "id": "material-draconic-energy-node",
-    "name": "Draconic Energy Node",
-    "tier": "T2",
-    "source": "BD",
-    "notes": "Existing BD T2. A node where dragon essence has fully integrated.",
-    "appearsIn": [
-      {
-        "creature": "SPARKWING STALKER",
-        "pool": "Epic",
-        "weight": 19
-      }
-    ]
-  },
-  {
-    "id": "material-apex-talon-core",
-    "name": "Apex Talon Core",
-    "tier": "T2",
-    "source": "ORIG",
-    "notes": "The primary hunting talon at full development. TERMINAL. Unique.",
-    "appearsIn": [
-      {
-        "creature": "SPARKWING STALKER",
-        "pool": "Epic",
-        "weight": 15
-      }
-    ]
-  },
-  {
-    "id": "material-arc-feathered-wing-membrane",
-    "name": "Arc-Feathered Wing Membrane",
-    "tier": "T2",
-    "source": "FUSED",
-    "notes": "FUSED TERMINAL. Wing membrane where raptor feather structure and BD arc energy have fully merged. Lightweight yet conductive.",
-    "appearsIn": [
-      {
-        "creature": "SPARKWING STALKER",
-        "pool": "Epic",
-        "weight": 22
-      }
-    ]
-  },
-  {
-    "id": "material-scaled-membrane-strips",
-    "name": "Scaled Membrane Strips",
-    "tier": "T0",
-    "source": "BD",
-    "notes": "Existing BD T0. Body membrane strips, electrically active.",
-    "appearsIn": [
-      {
-        "creature": "ARCANE DEVOURER",
-        "pool": "Common",
-        "weight": 20
-      }
-    ]
-  },
-  {
-    "id": "material-mana-sense-filament",
-    "name": "Mana Sense Filament",
-    "tier": "T0",
-    "source": "ORIG",
-    "notes": "Fine neural filament from the arcane detection system. Unique.",
-    "appearsIn": [
-      {
-        "creature": "ARCANE DEVOURER",
-        "pool": "Common",
-        "weight": 17
-      }
-    ]
-  },
-  {
-    "id": "material-conductive-blood-droplets",
-    "name": "Conductive Blood Droplets",
-    "tier": "T0",
-    "source": "BD",
-    "notes": "Existing BD T0. Blood with high electrical conductivity.",
-    "appearsIn": [
-      {
-        "creature": "ARCANE DEVOURER",
-        "pool": "Common",
-        "weight": 15
-      }
-    ]
-  },
-  {
-    "id": "material-arcane-absorption-membrane",
-    "name": "Arcane Absorption Membrane",
-    "tier": "T0",
-    "source": "ORIG",
-    "notes": "Skin tissue that absorbs and neutralises magical energy. Unique.",
-    "appearsIn": [
-      {
-        "creature": "ARCANE DEVOURER",
-        "pool": "Common",
-        "weight": 14
-      },
-      {
-        "creature": "TEMPEST TYRANT",
-        "pool": "Common",
-        "weight": 14
-      }
-    ]
-  },
-  {
-    "id": "material-mana-predator-neural-core",
-    "name": "Mana Predator Neural Core",
-    "tier": "T1",
-    "source": "ORIG",
-    "notes": "Dense neural cluster governing the Mana Predator trait. Unique.",
-    "appearsIn": [
-      {
-        "creature": "ARCANE DEVOURER",
-        "pool": "Rare",
-        "weight": 15
-      }
-    ]
-  },
-  {
-    "id": "material-spell-eater-organ-fragment",
-    "name": "Spell-Eater Organ Fragment",
-    "tier": "T2",
-    "source": "ORIG",
-    "notes": "Fragment of the organ responsible for the Spell-Eater ability. Unique.",
-    "appearsIn": [
-      {
-        "creature": "ARCANE DEVOURER",
-        "pool": "Rare",
-        "weight": 14
-      }
-    ]
-  },
-  {
-    "id": "material-stormcall-scale-cluster",
-    "name": "Stormcall Scale Cluster",
-    "tier": "T2",
-    "source": "BD",
-    "notes": "Existing BD T2. Resonant scales that hum near active spells.",
-    "appearsIn": [
-      {
-        "creature": "ARCANE DEVOURER",
-        "pool": "Epic",
-        "weight": 23
-      },
-      {
-        "creature": "TEMPEST TYRANT",
-        "pool": "Common",
-        "weight": 20
-      }
-    ]
-  },
-  {
-    "id": "material-apex-lightning-gland",
-    "name": "Apex Lightning Gland",
-    "tier": "T3",
-    "source": "BD",
-    "notes": "Existing BD T3. Primary mana-processing organ at advanced development.",
-    "appearsIn": [
-      {
-        "creature": "ARCANE DEVOURER",
-        "pool": "Epic",
-        "weight": 20
-      },
-      {
-        "creature": "TEMPEST TYRANT",
-        "pool": "Rare",
-        "weight": 19
-      }
-    ]
-  },
-  {
-    "id": "material-neural-conduit-core",
-    "name": "Neural Conduit Core",
-    "tier": "T3",
-    "source": "BD",
-    "notes": "Existing BD T3. Neural structure processing both arcane and physical stimuli.",
-    "appearsIn": [
-      {
-        "creature": "ARCANE DEVOURER",
-        "pool": "Epic",
-        "weight": 18
-      },
-      {
-        "creature": "TEMPEST TYRANT",
-        "pool": "Rare",
-        "weight": 17
-      }
-    ]
-  },
-  {
-    "id": "material-mana-void-core",
-    "name": "Mana Void Core",
-    "tier": "T3",
-    "source": "ORIG",
-    "notes": "The primary arcane absorption organ at full development. TERMINAL. Unique.",
-    "appearsIn": [
-      {
-        "creature": "ARCANE DEVOURER",
-        "pool": "Epic",
-        "weight": 17
-      }
-    ]
-  },
-  {
-    "id": "material-spell-fused-scale-matrix",
-    "name": "Spell-Fused Scale Matrix",
-    "tier": "T3",
-    "source": "FUSED",
-    "notes": "FUSED TERMINAL. Scales where arcane absorption ability permanently merged with BD lightning conductivity. Absorbs spells and channels energy as lightning.",
-    "appearsIn": [
-      {
-        "creature": "ARCANE DEVOURER",
-        "pool": "Epic",
-        "weight": 22
-      }
-    ]
-  },
-  {
-    "id": "material-minor-venom-residue",
-    "name": "Minor Venom Residue",
-    "tier": "T0",
-    "source": "SP",
-    "notes": "Existing SP T0.",
-    "appearsIn": [
-      {
-        "creature": "VENOMFANG STALKER",
-        "pool": "Common",
-        "weight": 24
-      }
-    ]
-  },
-  {
-    "id": "material-small-chitin-fragments",
-    "name": "Small Chitin Fragments",
-    "tier": "T0",
-    "source": "SP",
-    "notes": "Existing SP T0.",
-    "appearsIn": [
-      {
-        "creature": "VENOMFANG STALKER",
-        "pool": "Common",
-        "weight": 22
-      }
-    ]
-  },
-  {
-    "id": "material-silk-fragments",
-    "name": "Silk Fragments",
-    "tier": "T0",
-    "source": "SP",
-    "notes": "Existing SP T0.",
-    "appearsIn": [
-      {
-        "creature": "VENOMFANG STALKER",
-        "pool": "Common",
-        "weight": 18
-      }
-    ]
-  },
-  {
-    "id": "material-lightweight-leg-segments",
-    "name": "Lightweight Leg Segments",
-    "tier": "T0",
-    "source": "SP",
-    "notes": "Existing SP T0.",
-    "appearsIn": [
-      {
-        "creature": "VENOMFANG STALKER",
-        "pool": "Common",
-        "weight": 16
-      }
-    ]
-  },
-  {
-    "id": "material-camouflage-skin-scraps",
-    "name": "Camouflage Skin Scraps",
-    "tier": "T0",
-    "source": "ORIG",
-    "notes": "Skin with chromatophore cells that shift colour. Unique.",
-    "appearsIn": [
-      {
-        "creature": "VENOMFANG STALKER",
-        "pool": "Common",
-        "weight": 12
-      }
-    ]
-  },
-  {
-    "id": "material-dried-venom-trace",
-    "name": "Dried Venom Trace",
-    "tier": "T0",
-    "source": "SP",
-    "notes": "Existing SP T0.",
-    "appearsIn": [
-      {
-        "creature": "VENOMFANG STALKER",
-        "pool": "Common",
-        "weight": 8
-      }
-    ]
-  },
-  {
-    "id": "material-residual-venom-gland",
-    "name": "Residual Venom Gland",
-    "tier": "T1",
-    "source": "SP",
-    "notes": "Existing SP T1.",
-    "appearsIn": [
-      {
-        "creature": "VENOMFANG STALKER",
-        "pool": "Rare",
-        "weight": 26
-      }
-    ]
-  },
-  {
-    "id": "material-thin-chitin-plate",
-    "name": "Thin Chitin Plate",
-    "tier": "T1",
-    "source": "SP",
-    "notes": "Existing SP T1.",
-    "appearsIn": [
-      {
-        "creature": "VENOMFANG STALKER",
-        "pool": "Rare",
-        "weight": 22
-      }
-    ]
-  },
-  {
-    "id": "material-thin-webbing-bundle",
-    "name": "Thin Webbing Bundle",
-    "tier": "T1",
-    "source": "SP",
-    "notes": "Existing SP T1.",
-    "appearsIn": [
-      {
-        "creature": "VENOMFANG STALKER",
-        "pool": "Rare",
-        "weight": 18
-      }
-    ]
-  },
-  {
-    "id": "material-spider-legs",
-    "name": "Spider Legs",
-    "tier": "T1",
-    "source": "SP",
-    "notes": "Existing SP T1.",
-    "appearsIn": [
-      {
-        "creature": "VENOMFANG STALKER",
-        "pool": "Rare",
-        "weight": 16
-      }
-    ]
-  },
-  {
-    "id": "material-predator-skin-layer",
-    "name": "Predator Skin Layer",
-    "tier": "T1",
-    "source": "ORIG",
-    "notes": "Processed camouflage skin — more stable than scraps. Unique.",
-    "appearsIn": [
-      {
-        "creature": "VENOMFANG STALKER",
-        "pool": "Rare",
-        "weight": 10
-      }
-    ]
-  },
-  {
-    "id": "material-ambush-muscle-coil",
-    "name": "Ambush Muscle Coil",
-    "tier": "T1",
-    "source": "ORIG",
-    "notes": "Coiled fast-twitch muscle from the creature's pounce system. Unique.",
-    "appearsIn": [
-      {
-        "creature": "VENOMFANG STALKER",
-        "pool": "Rare",
-        "weight": 8
-      }
-    ]
-  },
-  {
-    "id": "material-basic-venom-sac",
-    "name": "Basic Venom Sac",
-    "tier": "T2",
-    "source": "SP",
-    "notes": "Existing SP T2.",
-    "appearsIn": [
-      {
-        "creature": "VENOMFANG STALKER",
-        "pool": "Epic",
-        "weight": 28
-      },
-      {
-        "creature": "MIREWING HUNTER",
-        "pool": "Common",
-        "weight": 22
-      }
-    ]
-  },
-  {
-    "id": "material-chitin-plate",
-    "name": "Chitin Plate",
-    "tier": "T2",
-    "source": "SP",
-    "notes": "Existing SP T2.",
-    "appearsIn": [
-      {
-        "creature": "VENOMFANG STALKER",
-        "pool": "Epic",
         "weight": 24
       },
       {
-        "creature": "MIREWING HUNTER",
-        "pool": "Common",
-        "weight": 20
-      }
-    ]
-  },
-  {
-    "id": "material-webbing-bundle",
-    "name": "Webbing Bundle",
-    "tier": "T2",
-    "source": "SP",
-    "notes": "Existing SP T2.",
-    "appearsIn": [
-      {
-        "creature": "VENOMFANG STALKER",
-        "pool": "Epic",
-        "weight": 18
-      },
-      {
-        "creature": "MIREWING HUNTER",
-        "pool": "Common",
-        "weight": 18
-      }
-    ]
-  },
-  {
-    "id": "material-predator-instinct-core",
-    "name": "Predator Instinct Core",
-    "tier": "T2",
-    "source": "ORIG",
-    "notes": "Neural cluster governing ambush behaviour. TERMINAL. Unique.",
-    "appearsIn": [
-      {
-        "creature": "VENOMFANG STALKER",
-        "pool": "Epic",
-        "weight": 14
-      },
-      {
-        "creature": "PLAGUE MAW RAVAGER",
-        "pool": "Epic",
+        "creature": "SPARKWING STALKER",
+        "pool": "Rare",
         "weight": 22
       },
       {
         "creature": "MUTATED CHIMERA HOUND",
         "pool": "Rare",
-        "weight": 16
-      }
-    ]
-  },
-  {
-    "id": "material-venom-laced-chitin-shard",
-    "name": "Venom-Laced Chitin Shard",
-    "tier": "T2",
-    "source": "FUSED",
-    "notes": "FUSED TERMINAL. Chitin where venom chemistry has permanently fused with spider silk binding — cuts and poisons simultaneously.",
-    "appearsIn": [
-      {
-        "creature": "VENOMFANG STALKER",
-        "pool": "Epic",
-        "weight": 16
-      }
-    ]
-  },
-  {
-    "id": "material-wing-membrane-scraps",
-    "name": "Wing Membrane Scraps",
-    "tier": "T0",
-    "source": "ORIG",
-    "notes": "Torn membrane from the creature's flight surface. Unique.",
-    "appearsIn": [
-      {
-        "creature": "MIREWING HUNTER",
-        "pool": "Common",
-        "weight": 16
-      }
-    ]
-  },
-  {
-    "id": "material-corrosive-blood-droplets",
-    "name": "Corrosive Blood Droplets",
-    "tier": "T1",
-    "source": "ORIG",
-    "notes": "The creature's mildly acidic blood. Requires sealed glass storage. Unique.",
-    "appearsIn": [
-      {
-        "creature": "MIREWING HUNTER",
-        "pool": "Common",
-        "weight": 14
-      }
-    ]
-  },
-  {
-    "id": "material-toxic-throat-lining",
-    "name": "Toxic Throat Lining",
-    "tier": "T1",
-    "source": "ORIG",
-    "notes": "Tissue lining from the toxic breath passage. Unique.",
-    "appearsIn": [
-      {
-        "creature": "MIREWING HUNTER",
-        "pool": "Common",
-        "weight": 10
-      }
-    ]
-  },
-  {
-    "id": "material-concentrated-venom-sac",
-    "name": "Concentrated Venom Sac",
-    "tier": "T3",
-    "source": "SP",
-    "notes": "Existing SP T3.",
-    "appearsIn": [
-      {
-        "creature": "MIREWING HUNTER",
-        "pool": "Rare",
-        "weight": 24
-      },
-      {
-        "creature": "MIREWING HUNTER",
-        "pool": "Epic",
-        "weight": 25
-      },
-      {
-        "creature": "PLAGUE MAW RAVAGER",
-        "pool": "Common",
-        "weight": 22
-      }
-    ]
-  },
-  {
-    "id": "material-reinforced-leg-segment",
-    "name": "Reinforced Leg Segment",
-    "tier": "T2",
-    "source": "SP",
-    "notes": "Existing SP T2. Mirewing limb joints, processed.",
-    "appearsIn": [
-      {
-        "creature": "MIREWING HUNTER",
-        "pool": "Rare",
         "weight": 20
       }
     ]
   },
   {
-    "id": "material-thick-webbing-bundle",
-    "name": "Thick Webbing Bundle",
-    "tier": "T3",
-    "source": "SP",
-    "notes": "Existing SP T3. Mirewing's larger glands produce denser silk.",
+    "id": "material-frost-claw-shard",
+    "name": "Frost Claw Shard",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1"
+    ],
+    "source": "ORIG",
+    "notes": "Claw fragment maintaining sub-zero temperature indefinitely post-mortem. Unique.",
     "appearsIn": [
       {
-        "creature": "MIREWING HUNTER",
-        "pool": "Rare",
-        "weight": 17
-      },
-      {
-        "creature": "PLAGUE MAW RAVAGER",
+        "creature": "CRYOMANTIC HORROR",
         "pool": "Common",
         "weight": 18
-      }
-    ]
-  },
-  {
-    "id": "material-processed-wing-membrane",
-    "name": "Processed Wing Membrane",
-    "tier": "T2",
-    "source": "ORIG",
-    "notes": "Stabilised flight membrane with thermal-dispersing properties. Unique.",
-    "appearsIn": [
-      {
-        "creature": "MIREWING HUNTER",
-        "pool": "Rare",
-        "weight": 16
-      }
-    ]
-  },
-  {
-    "id": "material-corrosive-blood-vial",
-    "name": "Corrosive Blood Vial",
-    "tier": "T2",
-    "source": "ORIG",
-    "notes": "Concentrated acid blood, properly preserved. Unique.",
-    "appearsIn": [
-      {
-        "creature": "MIREWING HUNTER",
-        "pool": "Rare",
-        "weight": 13
-      }
-    ]
-  },
-  {
-    "id": "material-toxic-bile-gland",
-    "name": "Toxic Bile Gland",
-    "tier": "T2",
-    "source": "ORIG",
-    "notes": "Secondary gland for area-denial spewing. Volatile — handle with care. Unique.",
-    "appearsIn": [
-      {
-        "creature": "MIREWING HUNTER",
-        "pool": "Rare",
-        "weight": 10
-      }
-    ]
-  },
-  {
-    "id": "material-hardened-chitin-plate",
-    "name": "Hardened Chitin Plate",
-    "tier": "T3",
-    "source": "SP",
-    "notes": "Existing SP T3. Mirewing body plating.",
-    "appearsIn": [
-      {
-        "creature": "MIREWING HUNTER",
-        "pool": "Epic",
-        "weight": 20
-      },
-      {
-        "creature": "PLAGUE MAW RAVAGER",
-        "pool": "Common",
-        "weight": 20
-      }
-    ]
-  },
-  {
-    "id": "material-apex-venom-core",
-    "name": "Apex Venom Core",
-    "tier": "T4",
-    "source": "SP",
-    "notes": "Existing SP T4. Primary venom production organ at max development.",
-    "appearsIn": [
-      {
-        "creature": "MIREWING HUNTER",
-        "pool": "Epic",
-        "weight": 18
-      },
-      {
-        "creature": "PLAGUE MAW RAVAGER",
-        "pool": "Rare",
-        "weight": 22
-      }
-    ]
-  },
-  {
-    "id": "material-apex-wing-predator-core",
-    "name": "Apex Wing Predator Core",
-    "tier": "T3",
-    "source": "ORIG",
-    "notes": "Neural core governing aerial hunting patterns. TERMINAL. Unique.",
-    "appearsIn": [
-      {
-        "creature": "MIREWING HUNTER",
-        "pool": "Epic",
-        "weight": 15
-      }
-    ]
-  },
-  {
-    "id": "material-toxic-winged-membrane",
-    "name": "Toxic-Winged Membrane",
-    "tier": "T3",
-    "source": "FUSED",
-    "notes": "FUSED TERMINAL. Wing membrane permanently saturated with the creature's toxic aura. Releases toxins when impacted.",
-    "appearsIn": [
-      {
-        "creature": "MIREWING HUNTER",
-        "pool": "Epic",
-        "weight": 22
-      }
-    ]
-  },
-  {
-    "id": "material-plague-gland-fragment",
-    "name": "Plague Gland Fragment",
-    "tier": "T2",
-    "source": "ORIG",
-    "notes": "Fragment of the primary contamination organ. Highly toxic — handle with protection. Unique.",
-    "appearsIn": [
-      {
-        "creature": "PLAGUE MAW RAVAGER",
-        "pool": "Common",
-        "weight": 17
-      }
-    ]
-  },
-  {
-    "id": "material-corrosive-marrow-extract",
-    "name": "Corrosive Marrow Extract",
-    "tier": "T2",
-    "source": "ORIG",
-    "notes": "Extracted from the Ravager's partially self-dissolved bones. Extremely acidic. Unique.",
-    "appearsIn": [
-      {
-        "creature": "PLAGUE MAW RAVAGER",
-        "pool": "Common",
-        "weight": 13
-      }
-    ]
-  },
-  {
-    "id": "material-contamination-skin-layer",
-    "name": "Contamination Skin Layer",
-    "tier": "T2",
-    "source": "ORIG",
-    "notes": "Outer hide saturated with persistent toxins. Unique.",
-    "appearsIn": [
-      {
-        "creature": "PLAGUE MAW RAVAGER",
-        "pool": "Common",
-        "weight": 10
-      }
-    ]
-  },
-  {
-    "id": "material-dense-web-cluster",
-    "name": "Dense Web Cluster",
-    "tier": "T3",
-    "source": "SP",
-    "notes": "Existing SP T3.",
-    "appearsIn": [
-      {
-        "creature": "PLAGUE MAW RAVAGER",
-        "pool": "Rare",
-        "weight": 19
-      }
-    ]
-  },
-  {
-    "id": "material-plague-essence-nodule",
-    "name": "Plague Essence Nodule",
-    "tier": "T3",
-    "source": "ORIG",
-    "notes": "Biological node continuously generating plague toxins. Source of the Toxic Aura trait. Unique.",
-    "appearsIn": [
-      {
-        "creature": "PLAGUE MAW RAVAGER",
-        "pool": "Rare",
-        "weight": 17
-      }
-    ]
-  },
-  {
-    "id": "material-contamination-sac",
-    "name": "Contamination Sac",
-    "tier": "T3",
-    "source": "ORIG",
-    "notes": "Large secondary toxin storage organ. Unique.",
-    "appearsIn": [
-      {
-        "creature": "PLAGUE MAW RAVAGER",
-        "pool": "Rare",
-        "weight": 16
-      }
-    ]
-  },
-  {
-    "id": "material-virulent-venom-gland",
-    "name": "Virulent Venom Gland",
-    "tier": "T3",
-    "source": "ORIG",
-    "notes": "Primary venom gland at max Plague Maw development. Unique.",
-    "appearsIn": [
-      {
-        "creature": "PLAGUE MAW RAVAGER",
-        "pool": "Rare",
-        "weight": 14
-      }
-    ]
-  },
-  {
-    "id": "material-acid-blood-reservoir",
-    "name": "Acid Blood Reservoir",
-    "tier": "T3",
-    "source": "ORIG",
-    "notes": "Large-volume acid blood storage organ. Unique.",
-    "appearsIn": [
-      {
-        "creature": "PLAGUE MAW RAVAGER",
-        "pool": "Rare",
-        "weight": 12
-      }
-    ]
-  },
-  {
-    "id": "material-brood-essence-sac",
-    "name": "Brood Essence Sac",
-    "tier": "T4",
-    "source": "SP",
-    "notes": "Existing SP T4.",
-    "appearsIn": [
-      {
-        "creature": "PLAGUE MAW RAVAGER",
-        "pool": "Epic",
-        "weight": 20
-      }
-    ]
-  },
-  {
-    "id": "material-virulent-spore-cluster",
-    "name": "Virulent Spore Cluster",
-    "tier": "T4",
-    "source": "ORIG",
-    "notes": "Self-replicating spore organ — source of Living Contamination trait. TERMINAL. Unique.",
-    "appearsIn": [
-      {
-        "creature": "PLAGUE MAW RAVAGER",
-        "pool": "Epic",
-        "weight": 18
-      }
-    ]
-  },
-  {
-    "id": "material-plague-sovereign-core",
-    "name": "Plague Sovereign Core",
-    "tier": "T4",
-    "source": "ORIG",
-    "notes": "The central contamination engine at full development. TERMINAL. Unique.",
-    "appearsIn": [
-      {
-        "creature": "PLAGUE MAW RAVAGER",
-        "pool": "Epic",
-        "weight": 16
-      }
-    ]
-  },
-  {
-    "id": "material-plague-fused-chitin-plate",
-    "name": "Plague-Fused Chitin Plate",
-    "tier": "T4",
-    "source": "FUSED",
-    "notes": "FUSED TERMINAL. Body chitin where plague chemistry has permanently fused into the structural material. Releases toxins on impact.",
-    "appearsIn": [
-      {
-        "creature": "PLAGUE MAW RAVAGER",
-        "pool": "Epic",
-        "weight": 24
-      }
-    ]
-  },
-  {
-    "id": "material-frost-crusted-fur-scraps",
-    "name": "Frost-Crusted Fur Scraps",
-    "tier": "T0",
-    "source": "WD",
-    "notes": "New WD T0. Frozen outer fur, partially crystallised with ice growth.",
-    "appearsIn": [
-      {
-        "creature": "FROSTCLAW PROWLER",
-        "pool": "Common",
-        "weight": 26
-      }
-    ]
-  },
-  {
-    "id": "material-brittle-ice-bone-shard",
-    "name": "Brittle Ice Bone Shard",
-    "tier": "T0",
-    "source": "WD",
-    "notes": "New WD T0. Bone fragment reinforced with ice crystal growth.",
-    "appearsIn": [
-      {
-        "creature": "FROSTCLAW PROWLER",
-        "pool": "Common",
-        "weight": 22
-      }
-    ]
-  },
-  {
-    "id": "material-frozen-claw-fragment",
-    "name": "Frozen Claw Fragment",
-    "tier": "T0",
-    "source": "WD",
-    "notes": "New WD T0. Claw tip that maintains sub-zero temperature post-mortem.",
-    "appearsIn": [
-      {
-        "creature": "FROSTCLAW PROWLER",
-        "pool": "Common",
-        "weight": 16
-      }
-    ]
-  },
-  {
-    "id": "material-coarse-cold-hide",
-    "name": "Coarse Cold Hide",
-    "tier": "T0",
-    "source": "ORIG",
-    "notes": "Thick outer hide adapted for cold environments. Unique.",
-    "appearsIn": [
-      {
-        "creature": "FROSTCLAW PROWLER",
-        "pool": "Common",
-        "weight": 10
-      }
-    ]
-  },
-  {
-    "id": "material-ice-crystal-dust",
-    "name": "Ice Crystal Dust",
-    "tier": "T0",
-    "source": "WD",
-    "notes": "New WD T0. Fine crystalline material shed from scales and hide.",
-    "appearsIn": [
-      {
-        "creature": "FROSTCLAW PROWLER",
-        "pool": "Common",
-        "weight": 8
       }
     ]
   },
   {
     "id": "material-frost-hide-layer",
     "name": "Frost Hide Layer",
-    "tier": "T1",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1"
+    ],
     "source": "WD",
     "notes": "New WD T1. Flexible hide with ice-crystal microstructure.",
     "appearsIn": [
@@ -1548,23 +1251,14 @@
     ]
   },
   {
-    "id": "material-dense-frostbone-shard",
-    "name": "Dense Frostbone Shard",
-    "tier": "T1",
-    "source": "WD",
-    "notes": "New WD T1. Dense cold-hardened bone material.",
-    "appearsIn": [
-      {
-        "creature": "FROSTCLAW PROWLER",
-        "pool": "Rare",
-        "weight": 20
-      }
-    ]
-  },
-  {
     "id": "material-frozen-muscle-coil",
     "name": "Frozen Muscle Coil",
-    "tier": "T1",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1"
+    ],
     "source": "WD",
     "notes": "New WD T1. Coiled muscle maintaining tension at extreme cold.",
     "appearsIn": [
@@ -1581,42 +1275,246 @@
     ]
   },
   {
-    "id": "material-cryogenic-gland",
-    "name": "Cryogenic Gland",
-    "tier": "T1",
-    "source": "WD",
-    "notes": "New WD T1. Small gland generating and storing cold energy.",
+    "id": "material-lightweight-wing-frame",
+    "name": "Lightweight Wing Frame",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1"
+    ],
+    "source": "ORIG",
+    "notes": "Processed hollow bone framework from the wing. Unique.",
     "appearsIn": [
       {
-        "creature": "FROSTCLAW PROWLER",
+        "creature": "SPARKWING STALKER",
         "pool": "Rare",
-        "weight": 16
-      },
-      {
-        "creature": "GLACIER WING PREDATOR",
-        "pool": "Common",
-        "weight": 18
+        "weight": 13
       }
     ]
   },
   {
-    "id": "material-tensile-hunt-sinew",
-    "name": "Tensile Hunt Sinew",
-    "tier": "T1",
+    "id": "material-living-frost-skin-scrap",
+    "name": "Living Frost Skin Scrap",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1"
+    ],
     "source": "ORIG",
-    "notes": "Processed endurance sinew from the pursuit system. Unique.",
+    "notes": "Skin that actively generates cold — continues to do so even post-mortem. Unique.",
     "appearsIn": [
       {
-        "creature": "FROSTCLAW PROWLER",
+        "creature": "CRYOMANTIC HORROR",
+        "pool": "Common",
+        "weight": 17
+      }
+    ]
+  },
+  {
+    "id": "material-mana-predator-neural-core",
+    "name": "Mana Predator Neural Core",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1"
+    ],
+    "source": "ORIG",
+    "notes": "Dense neural cluster governing the Mana Predator trait. Unique.",
+    "appearsIn": [
+      {
+        "creature": "ARCANE DEVOURER",
+        "pool": "Rare",
+        "weight": 15
+      }
+    ]
+  },
+  {
+    "id": "material-mutation-residue-crystal",
+    "name": "Mutation Residue Crystal",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1"
+    ],
+    "source": "ORIG",
+    "notes": "Crystallised residue from the creature's ongoing mutation process. Unique.",
+    "appearsIn": [
+      {
+        "creature": "CRYOMANTIC HORROR",
+        "pool": "Common",
+        "weight": 10
+      }
+    ]
+  },
+  {
+    "id": "material-necrotic-blood-residue",
+    "name": "Necrotic Blood Residue",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1"
+    ],
+    "source": "ORIG",
+    "notes": "The creature's blood, thick with stolen life force. Degrades within hours if unpreserved.",
+    "appearsIn": [
+      {
+        "creature": "SANGUINE WARDEN",
+        "pool": "Common",
+        "weight": 26
+      }
+    ]
+  },
+  {
+    "id": "material-necrotic-skin-layer",
+    "name": "Necrotic Skin Layer",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1"
+    ],
+    "source": "ORIG",
+    "notes": "Outer skin saturated with necrotic energy.",
+    "appearsIn": [
+      {
+        "creature": "SANGUINE WARDEN",
+        "pool": "Common",
+        "weight": 14
+      }
+    ]
+  },
+  {
+    "id": "material-phase-anchor-tissue",
+    "name": "Phase Anchor Tissue",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "phase",
+      "phase-touched"
+    ],
+    "source": "ORIG",
+    "notes": "Tissue that anchors the creature to the material plane. Unique.",
+    "appearsIn": [
+      {
+        "creature": "RIFTCLAW SPIDER",
+        "pool": "Rare",
+        "weight": 14
+      }
+    ]
+  },
+  {
+    "id": "material-predator-skin-layer",
+    "name": "Predator Skin Layer",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1"
+    ],
+    "source": "ORIG",
+    "notes": "Processed camouflage skin — more stable than scraps. Unique.",
+    "appearsIn": [
+      {
+        "creature": "VENOMFANG STALKER",
+        "pool": "Rare",
+        "weight": 10
+      }
+    ]
+  },
+  {
+    "id": "material-processed-wing-strut",
+    "name": "Processed Wing Strut",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1"
+    ],
+    "source": "ORIG",
+    "notes": "Treated hollow bone framework from the wing structure. Unique.",
+    "appearsIn": [
+      {
+        "creature": "GLACIER WING PREDATOR",
+        "pool": "Rare",
+        "weight": 15
+      }
+    ]
+  },
+  {
+    "id": "material-reinforced-hound-fang",
+    "name": "Reinforced Hound Fang",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1"
+    ],
+    "source": "ORIG",
+    "notes": "Extracted fang reinforced with minor draconic calcification. Unique.",
+    "appearsIn": [
+      {
+        "creature": "DRAGONHOUND",
         "pool": "Rare",
         "weight": 12
       }
     ]
   },
   {
+    "id": "material-reinforced-membrane-layer",
+    "name": "Reinforced Membrane Layer",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "blue dragon"
+    ],
+    "source": "BD",
+    "notes": "Existing BD T1. From the flight membrane, processed.",
+    "appearsIn": [
+      {
+        "creature": "SPARKWING STALKER",
+        "pool": "Rare",
+        "weight": 15
+      }
+    ]
+  },
+  {
+    "id": "material-residual-venom-gland",
+    "name": "Residual Venom Gland",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "venom"
+    ],
+    "source": "SP",
+    "notes": "Existing SP T1.",
+    "appearsIn": [
+      {
+        "creature": "VENOMFANG STALKER",
+        "pool": "Rare",
+        "weight": 26
+      }
+    ]
+  },
+  {
     "id": "material-sharpened-frost-claw",
     "name": "Sharpened Frost Claw",
-    "tier": "T1",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1"
+    ],
     "source": "ORIG",
     "notes": "Primary claw, full extraction, calcified. Unique.",
     "appearsIn": [
@@ -1628,33 +1526,693 @@
     ]
   },
   {
-    "id": "material-reinforced-ice-bone",
-    "name": "Reinforced Ice Bone",
-    "tier": "T2",
-    "source": "WD",
-    "notes": "New WD T2. Densely layered bone with ice-crystal reinforcement.",
+    "id": "material-sharpened-raptor-talon",
+    "name": "Sharpened Raptor Talon",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1"
+    ],
+    "source": "ORIG",
+    "notes": "Primary hunting talon, hardened by draconic calcification. Unique.",
+    "appearsIn": [
+      {
+        "creature": "SPARKWING STALKER",
+        "pool": "Rare",
+        "weight": 14
+      }
+    ]
+  },
+  {
+    "id": "material-spider-legs",
+    "name": "Spider Legs",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "spider"
+    ],
+    "source": "SP",
+    "notes": "Existing SP T1.",
+    "appearsIn": [
+      {
+        "creature": "VENOMFANG STALKER",
+        "pool": "Rare",
+        "weight": 16
+      }
+    ]
+  },
+  {
+    "id": "material-stolen-vitality-residue",
+    "name": "Stolen Vitality Residue",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1"
+    ],
+    "source": "ORIG",
+    "notes": "Diluted life force that leaked during extraction. Unstable.",
+    "appearsIn": [
+      {
+        "creature": "SANGUINE WARDEN",
+        "pool": "Common",
+        "weight": 20
+      }
+    ]
+  },
+  {
+    "id": "material-storm-hide-layer",
+    "name": "Storm Hide Layer",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "blue dragon"
+    ],
+    "source": "BD",
+    "notes": "Existing BD T1. Refined from Static-Charged Hide Scraps.",
+    "appearsIn": [
+      {
+        "creature": "DRAGONHOUND",
+        "pool": "Rare",
+        "weight": 18
+      },
+      {
+        "creature": "SPARKWING STALKER",
+        "pool": "Rare",
+        "weight": 17
+      }
+    ]
+  },
+  {
+    "id": "material-structural-chassis-plate",
+    "name": "Structural Chassis Plate",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1"
+    ],
+    "source": "ORIG",
+    "notes": "Standard structural plating from the Sentinel's body.",
+    "appearsIn": [
+      {
+        "creature": "COLLAR SENTINEL",
+        "pool": "Common",
+        "weight": 18
+      }
+    ]
+  },
+  {
+    "id": "material-suppressed-arcane-nodule",
+    "name": "Suppressed Arcane Nodule",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1"
+    ],
+    "source": "ORIG",
+    "notes": "Calcified mass where dragon essence attempted to anchor. The transformation failed here.",
+    "appearsIn": [
+      {
+        "creature": "FAILED HYBRID",
+        "pool": "Common",
+        "weight": 16
+      }
+    ]
+  },
+  {
+    "id": "material-tensile-hound-sinew",
+    "name": "Tensile Hound Sinew",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1"
+    ],
+    "source": "ORIG",
+    "notes": "Processed sinew from the primary chase muscles. Holds tension well. Unique.",
+    "appearsIn": [
+      {
+        "creature": "DRAGONHOUND",
+        "pool": "Rare",
+        "weight": 17
+      }
+    ]
+  },
+  {
+    "id": "material-tensile-hunt-sinew",
+    "name": "Tensile Hunt Sinew",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1"
+    ],
+    "source": "ORIG",
+    "notes": "Processed endurance sinew from the pursuit system. Unique.",
     "appearsIn": [
       {
         "creature": "FROSTCLAW PROWLER",
-        "pool": "Epic",
-        "weight": 26
+        "pool": "Rare",
+        "weight": 12
+      }
+    ]
+  },
+  {
+    "id": "material-thin-chitin-plate",
+    "name": "Thin Chitin Plate",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "spider"
+    ],
+    "source": "SP",
+    "notes": "Existing SP T1.",
+    "appearsIn": [
+      {
+        "creature": "VENOMFANG STALKER",
+        "pool": "Rare",
+        "weight": 22
+      }
+    ]
+  },
+  {
+    "id": "material-thin-webbing-bundle",
+    "name": "Thin Webbing Bundle",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "spider"
+    ],
+    "source": "SP",
+    "notes": "Existing SP T1.",
+    "appearsIn": [
+      {
+        "creature": "VENOMFANG STALKER",
+        "pool": "Rare",
+        "weight": 18
+      }
+    ]
+  },
+  {
+    "id": "material-toxic-throat-lining",
+    "name": "Toxic Throat Lining",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1"
+    ],
+    "source": "ORIG",
+    "notes": "Tissue lining from the toxic breath passage. Unique.",
+    "appearsIn": [
+      {
+        "creature": "MIREWING HUNTER",
+        "pool": "Common",
+        "weight": 10
+      }
+    ]
+  },
+  {
+    "id": "material-unstable-binding-fiber",
+    "name": "Unstable Binding Fiber",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1"
+    ],
+    "source": "ORIG",
+    "notes": "Stringy bio-material threaded with partial phase energy. Still partially fused to itself.",
+    "appearsIn": [
+      {
+        "creature": "FAILED HYBRID",
+        "pool": "Common",
+        "weight": 22
       },
+      {
+        "creature": "FAILED HYBRID",
+        "pool": "Rare",
+        "weight": 26
+      }
+    ]
+  },
+  {
+    "id": "material-active-mutation-core",
+    "name": "Active Mutation Core",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
+    "source": "ORIG",
+    "notes": "MUTATION-DEPENDENT: website assigns variant based on dominant mutation at death. Storm / Venom / Frost / Phase variant. Unique per variant.",
+    "appearsIn": [
+      {
+        "creature": "MUTATED CHIMERA HOUND",
+        "pool": "Rare",
+        "weight": 15
+      }
+    ]
+  },
+  {
+    "id": "material-apex-cold-gland",
+    "name": "Apex Cold Gland",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
+    "source": "WD",
+    "notes": "New WD T2. Fully developed cold generation organ.",
+    "appearsIn": [
       {
         "creature": "GLACIER WING PREDATOR",
         "pool": "Rare",
-        "weight": 23
+        "weight": 14
+      },
+      {
+        "creature": "GLACIER WING PREDATOR",
+        "pool": "Epic",
+        "weight": 25
       },
       {
         "creature": "WINTERFANG BEHEMOTH",
+        "pool": "Common",
+        "weight": 18
+      },
+      {
+        "creature": "CRYOMANTIC HORROR",
+        "pool": "Common",
+        "weight": 20
+      }
+    ]
+  },
+  {
+    "id": "material-apex-hound-sprint-core",
+    "name": "Apex Hound Sprint Core",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
+    "source": "ORIG",
+    "notes": "Dense biological core from the haunches — source of 50ft speed. TERMINAL. Unique.",
+    "appearsIn": [
+      {
+        "creature": "DRAGONHOUND",
+        "pool": "Epic",
+        "weight": 18
+      }
+    ]
+  },
+  {
+    "id": "material-apex-predator-bone",
+    "name": "Apex Predator Bone",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
+    "source": "ORIG",
+    "notes": "Dense bone from the aquatic apex predator component. Unique.",
+    "appearsIn": [
+      {
+        "creature": "TEMPEST TYRANT",
+        "pool": "Common",
+        "weight": 16
+      }
+    ]
+  },
+  {
+    "id": "material-apex-talon-core",
+    "name": "Apex Talon Core",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
+    "source": "ORIG",
+    "notes": "The primary hunting talon at full development. TERMINAL. Unique.",
+    "appearsIn": [
+      {
+        "creature": "SPARKWING STALKER",
+        "pool": "Epic",
+        "weight": 15
+      }
+    ]
+  },
+  {
+    "id": "material-arc-feathered-wing-membrane",
+    "name": "Arc-Feathered Wing Membrane",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
+    "source": "FUSED",
+    "notes": "FUSED TERMINAL. Wing membrane where raptor feather structure and BD arc energy have fully merged. Lightweight yet conductive.",
+    "appearsIn": [
+      {
+        "creature": "SPARKWING STALKER",
+        "pool": "Epic",
+        "weight": 22
+      }
+    ]
+  },
+  {
+    "id": "material-arcane-deflection-plate",
+    "name": "Arcane Deflection Plate",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
+    "source": "ORIG",
+    "notes": "Full deflection plate, intact. Source of the Arcane Deflection reaction ability.",
+    "appearsIn": [
+      {
+        "creature": "COLLAR SENTINEL",
+        "pool": "Rare",
+        "weight": 24
+      }
+    ]
+  },
+  {
+    "id": "material-basic-venom-sac",
+    "name": "Basic Venom Sac",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "venom"
+    ],
+    "source": "SP",
+    "notes": "Existing SP T2.",
+    "appearsIn": [
+      {
+        "creature": "VENOMFANG STALKER",
+        "pool": "Epic",
+        "weight": 28
+      },
+      {
+        "creature": "MIREWING HUNTER",
         "pool": "Common",
         "weight": 22
       }
     ]
   },
   {
+    "id": "material-blood-burst-gland",
+    "name": "Blood Burst Gland",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
+    "source": "ORIG",
+    "notes": "The organ responsible for Blood Burst. Will detonate if not carefully extracted.",
+    "appearsIn": [
+      {
+        "creature": "SANGUINE WARDEN",
+        "pool": "Rare",
+        "weight": 21
+      }
+    ]
+  },
+  {
+    "id": "material-chitin-plate",
+    "name": "Chitin Plate",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "spider"
+    ],
+    "source": "SP",
+    "notes": "Existing SP T2.",
+    "appearsIn": [
+      {
+        "creature": "VENOMFANG STALKER",
+        "pool": "Epic",
+        "weight": 24
+      },
+      {
+        "creature": "MIREWING HUNTER",
+        "pool": "Common",
+        "weight": 20
+      }
+    ]
+  },
+  {
+    "id": "material-collar-control-module",
+    "name": "Collar Control Module",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
+    "source": "ORIG",
+    "notes": "Intact control module — monitors and directs collared creatures.",
+    "appearsIn": [
+      {
+        "creature": "COLLAR SENTINEL",
+        "pool": "Rare",
+        "weight": 21
+      }
+    ]
+  },
+  {
+    "id": "material-composite-flesh-core",
+    "name": "Composite Flesh Core",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
+    "source": "ORIG",
+    "notes": "Dense inner core of layered biological material.",
+    "appearsIn": [
+      {
+        "creature": "SANGUINE WARDEN",
+        "pool": "Rare",
+        "weight": 18
+      }
+    ]
+  },
+  {
+    "id": "material-contamination-skin-layer",
+    "name": "Contamination Skin Layer",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
+    "source": "ORIG",
+    "notes": "Outer hide saturated with persistent toxins. Unique.",
+    "appearsIn": [
+      {
+        "creature": "PLAGUE MAW RAVAGER",
+        "pool": "Common",
+        "weight": 10
+      }
+    ]
+  },
+  {
+    "id": "material-corrosive-blood-vial",
+    "name": "Corrosive Blood Vial",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
+    "source": "ORIG",
+    "notes": "Concentrated acid blood, properly preserved. Unique.",
+    "appearsIn": [
+      {
+        "creature": "MIREWING HUNTER",
+        "pool": "Rare",
+        "weight": 13
+      }
+    ]
+  },
+  {
+    "id": "material-corrosive-marrow-extract",
+    "name": "Corrosive Marrow Extract",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
+    "source": "ORIG",
+    "notes": "Extracted from the Ravager's partially self-dissolved bones. Extremely acidic. Unique.",
+    "appearsIn": [
+      {
+        "creature": "PLAGUE MAW RAVAGER",
+        "pool": "Common",
+        "weight": 13
+      }
+    ]
+  },
+  {
+    "id": "material-cryogenic-gland-refined",
+    "name": "Cryogenic Gland (Refined)",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
+    "source": "WD",
+    "notes": "New WD T2. Fully developed cold generation organ.",
+    "appearsIn": [
+      {
+        "creature": "FROSTCLAW PROWLER",
+        "pool": "Epic",
+        "weight": 19
+      }
+    ]
+  },
+  {
+    "id": "material-draconic-energy-node",
+    "name": "Draconic Energy Node",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "blue dragon"
+    ],
+    "source": "BD",
+    "notes": "Existing BD T2. A node where dragon essence has fully integrated.",
+    "appearsIn": [
+      {
+        "creature": "SPARKWING STALKER",
+        "pool": "Epic",
+        "weight": 19
+      }
+    ]
+  },
+  {
+    "id": "material-frigid-membrane-sheet",
+    "name": "Frigid Membrane Sheet",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
+    "source": "WD",
+    "notes": "New WD T2. Wing membrane with thermal-dispersing properties.",
+    "appearsIn": [
+      {
+        "creature": "GLACIER WING PREDATOR",
+        "pool": "Rare",
+        "weight": 16
+      }
+    ]
+  },
+  {
+    "id": "material-frost-bonded-muscle-coil",
+    "name": "Frost-Bonded Muscle Coil",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
+    "source": "FUSED",
+    "notes": "FUSED TERMINAL. Endurance muscle where WD cold energy has permanently crystallised inside the tissue. Contracts with cold force.",
+    "appearsIn": [
+      {
+        "creature": "FROSTCLAW PROWLER",
+        "pool": "Epic",
+        "weight": 18
+      }
+    ]
+  },
+  {
+    "id": "material-frozen-carapace-shard",
+    "name": "Frozen Carapace Shard",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
+    "source": "ORIG",
+    "notes": "Exterior plate from the Frozen Carapace — absorbs the first impact. Unique.",
+    "appearsIn": [
+      {
+        "creature": "WINTERFANG BEHEMOTH",
+        "pool": "Common",
+        "weight": 17
+      }
+    ]
+  },
+  {
+    "id": "material-fused-mutation-core",
+    "name": "Fused Mutation Core",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
+    "source": "ORIG",
+    "notes": "One of the few stable points in the creature's body. Dense and warm.",
+    "appearsIn": [
+      {
+        "creature": "FAILED HYBRID",
+        "pool": "Common",
+        "weight": 10
+      },
+      {
+        "creature": "FAILED HYBRID",
+        "pool": "Rare",
+        "weight": 20
+      },
+      {
+        "creature": "FAILED HYBRID",
+        "pool": "Epic",
+        "weight": 30
+      }
+    ]
+  },
+  {
     "id": "material-glacial-marrow-crystal",
     "name": "Glacial Marrow Crystal",
-    "tier": "T2",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
     "source": "WD",
     "notes": "New WD T2. Crystalline formation inside the creature's primary bones.",
     "appearsIn": [
@@ -1681,23 +2239,337 @@
     ]
   },
   {
-    "id": "material-cryogenic-gland-refined",
-    "name": "Cryogenic Gland (Refined)",
-    "tier": "T2",
+    "id": "material-ice-crystal-formation",
+    "name": "Ice Crystal Formation",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
     "source": "WD",
-    "notes": "New WD T2. Fully developed cold generation organ.",
+    "notes": "WD T2 formation from the creature's body surface.",
+    "appearsIn": [
+      {
+        "creature": "CRYOMANTIC HORROR",
+        "pool": "Common",
+        "weight": 13
+      }
+    ]
+  },
+  {
+    "id": "material-life-leech-sinew",
+    "name": "Life Leech Sinew",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
+    "source": "ORIG",
+    "notes": "Tendon tissue that absorbs vitality on contact with wounded creatures.",
+    "appearsIn": [
+      {
+        "creature": "SANGUINE WARDEN",
+        "pool": "Rare",
+        "weight": 19
+      },
+      {
+        "creature": "SANGUINE WARDEN",
+        "pool": "Epic",
+        "weight": 26
+      }
+    ]
+  },
+  {
+    "id": "material-necrotic-blood-crystal",
+    "name": "Necrotic Blood Crystal",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
+    "source": "ORIG",
+    "notes": "Blood that crystallised post-mortem — necrotic energy made stable.",
+    "appearsIn": [
+      {
+        "creature": "SANGUINE WARDEN",
+        "pool": "Rare",
+        "weight": 18
+      }
+    ]
+  },
+  {
+    "id": "material-phase-residue-cluster",
+    "name": "Phase Residue Cluster",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "phase",
+      "phase-touched"
+    ],
+    "source": "SP",
+    "notes": "Existing SP T2 phase material.",
+    "appearsIn": [
+      {
+        "creature": "RIFTCLAW SPIDER",
+        "pool": "Rare",
+        "weight": 19
+      }
+    ]
+  },
+  {
+    "id": "material-phase-silk-strand",
+    "name": "Phase Silk Strand",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "phase",
+      "phase-touched",
+      "spider"
+    ],
+    "source": "SP",
+    "notes": "Existing SP T2 phase material.",
+    "appearsIn": [
+      {
+        "creature": "RIFTCLAW SPIDER",
+        "pool": "Rare",
+        "weight": 22
+      },
+      {
+        "creature": "MUTATED CHIMERA HOUND",
+        "pool": "Rare",
+        "weight": 16
+      }
+    ]
+  },
+  {
+    "id": "material-phase-touched-chitin-plate",
+    "name": "Phase-Touched Chitin Plate",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "phase",
+      "phase-touched",
+      "spider"
+    ],
+    "source": "SP",
+    "notes": "Existing SP T2 phase material.",
+    "appearsIn": [
+      {
+        "creature": "RIFTCLAW SPIDER",
+        "pool": "Rare",
+        "weight": 16
+      }
+    ]
+  },
+  {
+    "id": "material-phase-touched-webbing-bundle",
+    "name": "Phase-Touched Webbing Bundle",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "phase",
+      "phase-touched",
+      "spider"
+    ],
+    "source": "SP",
+    "notes": "Existing SP T2 phase material.",
+    "appearsIn": [
+      {
+        "creature": "RIFTCLAW SPIDER",
+        "pool": "Rare",
+        "weight": 15
+      }
+    ]
+  },
+  {
+    "id": "material-plague-gland-fragment",
+    "name": "Plague Gland Fragment",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
+    "source": "ORIG",
+    "notes": "Fragment of the primary contamination organ. Highly toxic — handle with protection. Unique.",
+    "appearsIn": [
+      {
+        "creature": "PLAGUE MAW RAVAGER",
+        "pool": "Common",
+        "weight": 17
+      }
+    ]
+  },
+  {
+    "id": "material-predator-instinct-core",
+    "name": "Predator Instinct Core",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
+    "source": "ORIG",
+    "notes": "Neural cluster governing ambush behaviour. TERMINAL. Unique.",
+    "appearsIn": [
+      {
+        "creature": "VENOMFANG STALKER",
+        "pool": "Epic",
+        "weight": 14
+      },
+      {
+        "creature": "PLAGUE MAW RAVAGER",
+        "pool": "Epic",
+        "weight": 22
+      },
+      {
+        "creature": "MUTATED CHIMERA HOUND",
+        "pool": "Rare",
+        "weight": 16
+      }
+    ]
+  },
+  {
+    "id": "material-preserved-memory-fragment",
+    "name": "Preserved Memory Fragment",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
+    "source": "ORIG",
+    "notes": "Crystallised fragment of arcane soul matter. Warm to the touch. Occasionally pulses.",
+    "appearsIn": [
+      {
+        "creature": "FAILED HYBRID",
+        "pool": "Rare",
+        "weight": 14
+      },
+      {
+        "creature": "FAILED HYBRID",
+        "pool": "Epic",
+        "weight": 25
+      }
+    ]
+  },
+  {
+    "id": "material-processed-wing-membrane",
+    "name": "Processed Wing Membrane",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
+    "source": "ORIG",
+    "notes": "Stabilised flight membrane with thermal-dispersing properties. Unique.",
+    "appearsIn": [
+      {
+        "creature": "MIREWING HUNTER",
+        "pool": "Rare",
+        "weight": 16
+      }
+    ]
+  },
+  {
+    "id": "material-reinforced-drake-scale",
+    "name": "Reinforced Drake Scale",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "blue dragon"
+    ],
+    "source": "BD",
+    "notes": "Existing BD T2. Best scale extraction from this creature tier.",
+    "appearsIn": [
+      {
+        "creature": "DRAGONHOUND",
+        "pool": "Epic",
+        "weight": 26
+      },
+      {
+        "creature": "SPARKWING STALKER",
+        "pool": "Epic",
+        "weight": 20
+      },
+      {
+        "creature": "ARCANE DEVOURER",
+        "pool": "Rare",
+        "weight": 17
+      }
+    ]
+  },
+  {
+    "id": "material-reinforced-ice-bone",
+    "name": "Reinforced Ice Bone",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
+    "source": "WD",
+    "notes": "New WD T2. Densely layered bone with ice-crystal reinforcement.",
     "appearsIn": [
       {
         "creature": "FROSTCLAW PROWLER",
         "pool": "Epic",
-        "weight": 19
+        "weight": 26
+      },
+      {
+        "creature": "GLACIER WING PREDATOR",
+        "pool": "Rare",
+        "weight": 23
+      },
+      {
+        "creature": "WINTERFANG BEHEMOTH",
+        "pool": "Common",
+        "weight": 22
+      }
+    ]
+  },
+  {
+    "id": "material-reinforced-leg-segment",
+    "name": "Reinforced Leg Segment",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
+    "source": "SP",
+    "notes": "Existing SP T2. Mirewing limb joints, processed.",
+    "appearsIn": [
+      {
+        "creature": "MIREWING HUNTER",
+        "pool": "Rare",
+        "weight": 20
       }
     ]
   },
   {
     "id": "material-relentless-hunt-core",
     "name": "Relentless Hunt Core",
-    "tier": "T2",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
     "source": "ORIG",
     "notes": "Neural cluster governing the Relentless Hunter trait. TERMINAL. Unique.",
     "appearsIn": [
@@ -1709,122 +2581,202 @@
     ]
   },
   {
-    "id": "material-frost-bonded-muscle-coil",
-    "name": "Frost-Bonded Muscle Coil",
-    "tier": "T2",
-    "source": "FUSED",
-    "notes": "FUSED TERMINAL. Endurance muscle where WD cold energy has permanently crystallised inside the tissue. Contracts with cold force.",
-    "appearsIn": [
-      {
-        "creature": "FROSTCLAW PROWLER",
-        "pool": "Epic",
-        "weight": 18
-      }
-    ]
-  },
-  {
-    "id": "material-wing-bone-strut",
-    "name": "Wing Bone Strut",
-    "tier": "T0",
+    "id": "material-sentinel-chassis-fragment",
+    "name": "Sentinel Chassis Fragment",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
     "source": "ORIG",
-    "notes": "Hollow structural bone from the flight surface. Unique.",
+    "notes": "Dense arcane-infused structural plating, intact larger section.",
     "appearsIn": [
       {
-        "creature": "GLACIER WING PREDATOR",
-        "pool": "Common",
-        "weight": 16
-      }
-    ]
-  },
-  {
-    "id": "material-frigid-feather-cluster",
-    "name": "Frigid Feather Cluster",
-    "tier": "T0",
-    "source": "ORIG",
-    "notes": "Dense feathers from the wing edge, coated in ice crystal. Unique.",
-    "appearsIn": [
-      {
-        "creature": "GLACIER WING PREDATOR",
-        "pool": "Common",
-        "weight": 14
-      }
-    ]
-  },
-  {
-    "id": "material-cold-thermal-skin",
-    "name": "Cold Thermal Skin",
-    "tier": "T0",
-    "source": "ORIG",
-    "notes": "Outer skin that absorbs and radiates cold. Unique.",
-    "appearsIn": [
-      {
-        "creature": "GLACIER WING PREDATOR",
-        "pool": "Common",
-        "weight": 10
-      }
-    ]
-  },
-  {
-    "id": "material-frigid-membrane-sheet",
-    "name": "Frigid Membrane Sheet",
-    "tier": "T2",
-    "source": "WD",
-    "notes": "New WD T2. Wing membrane with thermal-dispersing properties.",
-    "appearsIn": [
-      {
-        "creature": "GLACIER WING PREDATOR",
+        "creature": "COLLAR SENTINEL",
         "pool": "Rare",
-        "weight": 16
+        "weight": 20
       }
     ]
   },
   {
-    "id": "material-processed-wing-strut",
-    "name": "Processed Wing Strut",
-    "tier": "T1",
+    "id": "material-siege-muscle-mass",
+    "name": "Siege Muscle Mass",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
     "source": "ORIG",
-    "notes": "Treated hollow bone framework from the wing structure. Unique.",
+    "notes": "Enormous fast-twitch muscle from the charge system. Unique.",
     "appearsIn": [
-      {
-        "creature": "GLACIER WING PREDATOR",
-        "pool": "Rare",
-        "weight": 15
-      }
-    ]
-  },
-  {
-    "id": "material-apex-cold-gland",
-    "name": "Apex Cold Gland",
-    "tier": "T2",
-    "source": "WD",
-    "notes": "New WD T2. Fully developed cold generation organ.",
-    "appearsIn": [
-      {
-        "creature": "GLACIER WING PREDATOR",
-        "pool": "Rare",
-        "weight": 14
-      },
-      {
-        "creature": "GLACIER WING PREDATOR",
-        "pool": "Epic",
-        "weight": 25
-      },
       {
         "creature": "WINTERFANG BEHEMOTH",
         "pool": "Common",
+        "weight": 13
+      }
+    ]
+  },
+  {
+    "id": "material-spell-eater-organ-fragment",
+    "name": "Spell-Eater Organ Fragment",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
+    "source": "ORIG",
+    "notes": "Fragment of the organ responsible for the Spell-Eater ability. Unique.",
+    "appearsIn": [
+      {
+        "creature": "ARCANE DEVOURER",
+        "pool": "Rare",
+        "weight": 14
+      }
+    ]
+  },
+  {
+    "id": "material-stolen-vitality-sac",
+    "name": "Stolen Vitality Sac",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
+    "source": "ORIG",
+    "notes": "Biological sac storing absorbed life force. Source of Blood Fueled Regeneration.",
+    "appearsIn": [
+      {
+        "creature": "SANGUINE WARDEN",
+        "pool": "Rare",
+        "weight": 24
+      }
+    ]
+  },
+  {
+    "id": "material-storm-fused-hound-sinew",
+    "name": "Storm-Fused Hound Sinew",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
+    "source": "FUSED",
+    "notes": "FUSED TERMINAL. Hound sinew where BD lightning has permanently fused with the original muscle tissue. Neither pure dragon nor pure hound.",
+    "appearsIn": [
+      {
+        "creature": "DRAGONHOUND",
+        "pool": "Epic",
         "weight": 18
+      }
+    ]
+  },
+  {
+    "id": "material-stormbound-tendon-coil",
+    "name": "Stormbound Tendon Coil",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "blue dragon"
+    ],
+    "source": "BD",
+    "notes": "Existing BD T2. From the creature's primary sprint tendons, storm-saturated.",
+    "appearsIn": [
+      {
+        "creature": "DRAGONHOUND",
+        "pool": "Epic",
+        "weight": 22
       },
       {
-        "creature": "CRYOMANTIC HORROR",
+        "creature": "SPARKWING STALKER",
+        "pool": "Epic",
+        "weight": 24
+      },
+      {
+        "creature": "MUTATED CHIMERA HOUND",
+        "pool": "Epic",
+        "weight": 22
+      }
+    ]
+  },
+  {
+    "id": "material-stormcall-scale-cluster",
+    "name": "Stormcall Scale Cluster",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "blue dragon"
+    ],
+    "source": "BD",
+    "notes": "Existing BD T2. Resonant scales that hum near active spells.",
+    "appearsIn": [
+      {
+        "creature": "ARCANE DEVOURER",
+        "pool": "Epic",
+        "weight": 23
+      },
+      {
+        "creature": "TEMPEST TYRANT",
         "pool": "Common",
         "weight": 20
       }
     ]
   },
   {
+    "id": "material-suppression-emitter-array",
+    "name": "Suppression Emitter Array",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
+    "source": "ORIG",
+    "notes": "The full emitter array for the suppression field. Intact.",
+    "appearsIn": [
+      {
+        "creature": "COLLAR SENTINEL",
+        "pool": "Rare",
+        "weight": 17
+      }
+    ]
+  },
+  {
+    "id": "material-suppression-field-coil",
+    "name": "Suppression Field Coil",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
+    "source": "ORIG",
+    "notes": "Coil of arcane wire generating suppressive force fields. Core component.",
+    "appearsIn": [
+      {
+        "creature": "COLLAR SENTINEL",
+        "pool": "Common",
+        "weight": 22
+      }
+    ]
+  },
+  {
     "id": "material-thermal-predator-hide",
     "name": "Thermal Predator Hide",
-    "tier": "T2",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
     "source": "ORIG",
     "notes": "Processed cold-dispersing outer skin. Unique.",
     "appearsIn": [
@@ -1836,28 +2788,368 @@
     ]
   },
   {
-    "id": "material-glacial-marrow-crystal-dense",
-    "name": "Glacial Marrow Crystal Dense",
-    "tier": "T3",
-    "source": "WD",
-    "notes": "New WD T3. Denser and more stable than the T2 variant.",
+    "id": "material-toxic-bile-gland",
+    "name": "Toxic Bile Gland",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2"
+    ],
+    "source": "ORIG",
+    "notes": "Secondary gland for area-denial spewing. Volatile — handle with care. Unique.",
+    "appearsIn": [
+      {
+        "creature": "MIREWING HUNTER",
+        "pool": "Rare",
+        "weight": 10
+      }
+    ]
+  },
+  {
+    "id": "material-venom-laced-chitin-shard",
+    "name": "Venom-Laced Chitin Shard",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "spider",
+      "venom"
+    ],
+    "source": "FUSED",
+    "notes": "FUSED TERMINAL. Chitin where venom chemistry has permanently fused with spider silk binding — cuts and poisons simultaneously.",
+    "appearsIn": [
+      {
+        "creature": "VENOMFANG STALKER",
+        "pool": "Epic",
+        "weight": 16
+      }
+    ]
+  },
+  {
+    "id": "material-webbing-bundle",
+    "name": "Webbing Bundle",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "spider"
+    ],
+    "source": "SP",
+    "notes": "Existing SP T2.",
+    "appearsIn": [
+      {
+        "creature": "VENOMFANG STALKER",
+        "pool": "Epic",
+        "weight": 18
+      },
+      {
+        "creature": "MIREWING HUNTER",
+        "pool": "Common",
+        "weight": 18
+      }
+    ]
+  },
+  {
+    "id": "material-acid-blood-reservoir",
+    "name": "Acid Blood Reservoir",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3"
+    ],
+    "source": "ORIG",
+    "notes": "Large-volume acid blood storage organ. Unique.",
+    "appearsIn": [
+      {
+        "creature": "PLAGUE MAW RAVAGER",
+        "pool": "Rare",
+        "weight": 12
+      }
+    ]
+  },
+  {
+    "id": "material-apex-lightning-gland",
+    "name": "Apex Lightning Gland",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "blue dragon"
+    ],
+    "source": "BD",
+    "notes": "Existing BD T3. Primary mana-processing organ at advanced development.",
+    "appearsIn": [
+      {
+        "creature": "ARCANE DEVOURER",
+        "pool": "Epic",
+        "weight": 20
+      },
+      {
+        "creature": "TEMPEST TYRANT",
+        "pool": "Rare",
+        "weight": 19
+      }
+    ]
+  },
+  {
+    "id": "material-apex-wing-predator-core",
+    "name": "Apex Wing Predator Core",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3"
+    ],
+    "source": "ORIG",
+    "notes": "Neural core governing aerial hunting patterns. TERMINAL. Unique.",
+    "appearsIn": [
+      {
+        "creature": "MIREWING HUNTER",
+        "pool": "Epic",
+        "weight": 15
+      }
+    ]
+  },
+  {
+    "id": "material-chimera-breath-gland",
+    "name": "Chimera Breath Gland",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3"
+    ],
+    "source": "ORIG",
+    "notes": "Organ responsible for Chimera Breath. Contains residue of all four damage types simultaneously. Unique.",
+    "appearsIn": [
+      {
+        "creature": "MUTATED CHIMERA HOUND",
+        "pool": "Rare",
+        "weight": 15
+      }
+    ]
+  },
+  {
+    "id": "material-cold-fused-wing-membrane",
+    "name": "Cold-Fused Wing Membrane",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3"
+    ],
+    "source": "FUSED",
+    "notes": "FUSED TERMINAL. Flight membrane permanently saturated with Frigid Presence. Radiates cold passively even after extraction.",
     "appearsIn": [
       {
         "creature": "GLACIER WING PREDATOR",
         "pool": "Epic",
-        "weight": 21
+        "weight": 22
+      }
+    ]
+  },
+  {
+    "id": "material-collar-fabrication-matrix",
+    "name": "Collar Fabrication Matrix",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3"
+    ],
+    "source": "ORIG",
+    "notes": "The component responsible for collar signal transmission. Rare to extract intact.",
+    "appearsIn": [
+      {
+        "creature": "COLLAR SENTINEL",
+        "pool": "Epic",
+        "weight": 20
+      }
+    ]
+  },
+  {
+    "id": "material-concentrated-venom-sac",
+    "name": "Concentrated Venom Sac",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "venom"
+    ],
+    "source": "SP",
+    "notes": "Existing SP T3.",
+    "appearsIn": [
+      {
+        "creature": "MIREWING HUNTER",
+        "pool": "Rare",
+        "weight": 24
       },
+      {
+        "creature": "MIREWING HUNTER",
+        "pool": "Epic",
+        "weight": 25
+      },
+      {
+        "creature": "PLAGUE MAW RAVAGER",
+        "pool": "Common",
+        "weight": 22
+      }
+    ]
+  },
+  {
+    "id": "material-contamination-sac",
+    "name": "Contamination Sac",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3"
+    ],
+    "source": "ORIG",
+    "notes": "Large secondary toxin storage organ. Unique.",
+    "appearsIn": [
+      {
+        "creature": "PLAGUE MAW RAVAGER",
+        "pool": "Rare",
+        "weight": 16
+      }
+    ]
+  },
+  {
+    "id": "material-crimson-core",
+    "name": "Crimson Core",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3"
+    ],
+    "source": "ORIG",
+    "notes": "Dense core of compressed life force at the centre of the creature's body.",
+    "appearsIn": [
+      {
+        "creature": "SANGUINE WARDEN",
+        "pool": "Epic",
+        "weight": 22
+      }
+    ]
+  },
+  {
+    "id": "material-cryomantic-core",
+    "name": "Cryomantic Core",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3"
+    ],
+    "source": "ORIG",
+    "notes": "Self-sustaining cold energy core. Source of the Arcane Ice Core trait. Unique.",
+    "appearsIn": [
+      {
+        "creature": "CRYOMANTIC HORROR",
+        "pool": "Rare",
+        "weight": 11
+      }
+    ]
+  },
+  {
+    "id": "material-dense-web-cluster",
+    "name": "Dense Web Cluster",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "spider"
+    ],
+    "source": "SP",
+    "notes": "Existing SP T3.",
+    "appearsIn": [
+      {
+        "creature": "PLAGUE MAW RAVAGER",
+        "pool": "Rare",
+        "weight": 19
+      }
+    ]
+  },
+  {
+    "id": "material-distortion-core-fragment",
+    "name": "Distortion Core Fragment",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3"
+    ],
+    "source": "SP",
+    "notes": "Existing SP T3 phase material. Dense stable phase matter.",
+    "appearsIn": [
+      {
+        "creature": "RIFTCLAW SPIDER",
+        "pool": "Epic",
+        "weight": 24
+      },
+      {
+        "creature": "MUTATED CHIMERA HOUND",
+        "pool": "Epic",
+        "weight": 18
+      }
+    ]
+  },
+  {
+    "id": "material-fractured-soul-lattice",
+    "name": "Fractured Soul Lattice",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3"
+    ],
+    "source": "ORIG",
+    "notes": "Rare formation where multiple memory fragments partially fused together. TERMINAL — no refinement.",
+    "appearsIn": [
+      {
+        "creature": "FAILED HYBRID",
+        "pool": "Epic",
+        "weight": 13
+      }
+    ]
+  },
+  {
+    "id": "material-frozen-carapace-plate",
+    "name": "Frozen Carapace Plate",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3"
+    ],
+    "source": "ORIG",
+    "notes": "Full plate from the outer carapace — larger intact section. Unique.",
+    "appearsIn": [
       {
         "creature": "WINTERFANG BEHEMOTH",
         "pool": "Rare",
-        "weight": 22
+        "weight": 14
       }
     ]
   },
   {
     "id": "material-frozen-wing-membrane",
     "name": "Frozen Wing Membrane",
-    "tier": "T3",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3"
+    ],
     "source": "WD",
     "notes": "New WD T3. Primary flight membrane — flexible yet cold-impenetrable.",
     "appearsIn": [
@@ -1874,9 +3166,76 @@
     ]
   },
   {
+    "id": "material-glacial-burst-core",
+    "name": "Glacial Burst Core",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3"
+    ],
+    "source": "ORIG",
+    "notes": "Organ responsible for Glacial Burst. Violently explosive if punctured during extraction. Unique.",
+    "appearsIn": [
+      {
+        "creature": "CRYOMANTIC HORROR",
+        "pool": "Rare",
+        "weight": 19
+      }
+    ]
+  },
+  {
+    "id": "material-glacial-impact-core",
+    "name": "Glacial Impact Core",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3"
+    ],
+    "source": "ORIG",
+    "notes": "Biological mass storing kinetic energy in frozen form — source of Avalanche Charge damage. Unique.",
+    "appearsIn": [
+      {
+        "creature": "WINTERFANG BEHEMOTH",
+        "pool": "Rare",
+        "weight": 16
+      }
+    ]
+  },
+  {
+    "id": "material-glacial-marrow-crystal-dense",
+    "name": "Glacial Marrow Crystal Dense",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3"
+    ],
+    "source": "WD",
+    "notes": "New WD T3. Denser and more stable than the T2 variant.",
+    "appearsIn": [
+      {
+        "creature": "GLACIER WING PREDATOR",
+        "pool": "Epic",
+        "weight": 21
+      },
+      {
+        "creature": "WINTERFANG BEHEMOTH",
+        "pool": "Rare",
+        "weight": 22
+      }
+    ]
+  },
+  {
     "id": "material-glacier-apex-hunt-core",
     "name": "Glacier Apex Hunt Core",
-    "tier": "T3",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3"
+    ],
     "source": "ORIG",
     "notes": "Neural core governing aerial isolation hunting. TERMINAL. Unique.",
     "appearsIn": [
@@ -1888,65 +3247,160 @@
     ]
   },
   {
-    "id": "material-cold-fused-wing-membrane",
-    "name": "Cold-Fused Wing Membrane",
-    "tier": "T3",
-    "source": "FUSED",
-    "notes": "FUSED TERMINAL. Flight membrane permanently saturated with Frigid Presence. Radiates cold passively even after extraction.",
+    "id": "material-hardened-chitin-plate",
+    "name": "Hardened Chitin Plate",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "spider"
+    ],
+    "source": "SP",
+    "notes": "Existing SP T3. Mirewing body plating.",
     "appearsIn": [
       {
-        "creature": "GLACIER WING PREDATOR",
+        "creature": "MIREWING HUNTER",
         "pool": "Epic",
-        "weight": 22
+        "weight": 20
+      },
+      {
+        "creature": "PLAGUE MAW RAVAGER",
+        "pool": "Common",
+        "weight": 20
       }
     ]
   },
   {
-    "id": "material-frozen-carapace-shard",
-    "name": "Frozen Carapace Shard",
-    "tier": "T2",
+    "id": "material-ice-prison-matrix",
+    "name": "Ice Prison Matrix",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3"
+    ],
     "source": "ORIG",
-    "notes": "Exterior plate from the Frozen Carapace — absorbs the first impact. Unique.",
+    "notes": "Crystalline structure from the creature's chest cavity. Source of the Ice Prison ability. Unique.",
     "appearsIn": [
       {
-        "creature": "WINTERFANG BEHEMOTH",
-        "pool": "Common",
+        "creature": "CRYOMANTIC HORROR",
+        "pool": "Rare",
         "weight": 17
       }
     ]
   },
   {
-    "id": "material-siege-muscle-mass",
-    "name": "Siege Muscle Mass",
-    "tier": "T2",
+    "id": "material-living-frost-membrane",
+    "name": "Living Frost Membrane",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3"
+    ],
     "source": "ORIG",
-    "notes": "Enormous fast-twitch muscle from the charge system. Unique.",
+    "notes": "Skin that actively generates cold. Full membrane extraction. Unique.",
     "appearsIn": [
       {
-        "creature": "WINTERFANG BEHEMOTH",
-        "pool": "Common",
-        "weight": 13
+        "creature": "CRYOMANTIC HORROR",
+        "pool": "Rare",
+        "weight": 16
       }
     ]
   },
   {
-    "id": "material-dense-cold-marrow",
-    "name": "Dense Cold Marrow",
-    "tier": "T1",
-    "source": "ORIG",
-    "notes": "Compressed marrow from the large bones. Unique.",
+    "id": "material-living-storm-essence",
+    "name": "Living Storm Essence",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "blue dragon"
+    ],
+    "source": "BD",
+    "notes": "Existing BD T3.",
     "appearsIn": [
       {
-        "creature": "WINTERFANG BEHEMOTH",
-        "pool": "Common",
-        "weight": 10
+        "creature": "TEMPEST TYRANT",
+        "pool": "Rare",
+        "weight": 22
+      }
+    ]
+  },
+  {
+    "id": "material-lockdown-protocol-chip",
+    "name": "Lockdown Protocol Chip",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3"
+    ],
+    "source": "ORIG",
+    "notes": "Intact encoded chip — contains the full Lockdown Protocol directive.",
+    "appearsIn": [
+      {
+        "creature": "COLLAR SENTINEL",
+        "pool": "Epic",
+        "weight": 24
+      }
+    ]
+  },
+  {
+    "id": "material-mana-void-core",
+    "name": "Mana Void Core",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3"
+    ],
+    "source": "ORIG",
+    "notes": "The primary arcane absorption organ at full development. TERMINAL. Unique.",
+    "appearsIn": [
+      {
+        "creature": "ARCANE DEVOURER",
+        "pool": "Epic",
+        "weight": 17
+      }
+    ]
+  },
+  {
+    "id": "material-neural-conduit-core",
+    "name": "Neural Conduit Core",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "blue dragon"
+    ],
+    "source": "BD",
+    "notes": "Existing BD T3. Neural structure processing both arcane and physical stimuli.",
+    "appearsIn": [
+      {
+        "creature": "ARCANE DEVOURER",
+        "pool": "Epic",
+        "weight": 18
+      },
+      {
+        "creature": "TEMPEST TYRANT",
+        "pool": "Rare",
+        "weight": 17
       }
     ]
   },
   {
     "id": "material-permafrost-bone-core",
     "name": "Permafrost Bone Core",
-    "tier": "T3",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3"
+    ],
     "source": "WD",
     "notes": "New WD T3. Structural core material — near indestructible under normal conditions.",
     "appearsIn": [
@@ -1968,37 +3422,192 @@
     ]
   },
   {
-    "id": "material-glacial-impact-core",
-    "name": "Glacial Impact Core",
-    "tier": "T3",
-    "source": "ORIG",
-    "notes": "Biological mass storing kinetic energy in frozen form — source of Avalanche Charge damage. Unique.",
+    "id": "material-phase-silk-bundle",
+    "name": "Phase Silk Bundle",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "phase",
+      "phase-touched",
+      "spider"
+    ],
+    "source": "SP",
+    "notes": "Existing SP T3 phase material.",
     "appearsIn": [
       {
-        "creature": "WINTERFANG BEHEMOTH",
-        "pool": "Rare",
-        "weight": 16
+        "creature": "RIFTCLAW SPIDER",
+        "pool": "Epic",
+        "weight": 20
+      },
+      {
+        "creature": "TEMPEST TYRANT",
+        "pool": "Common",
+        "weight": 18
       }
     ]
   },
   {
-    "id": "material-frozen-carapace-plate",
-    "name": "Frozen Carapace Plate",
-    "tier": "T3",
-    "source": "ORIG",
-    "notes": "Full plate from the outer carapace — larger intact section. Unique.",
+    "id": "material-phase-touched-thick-webbing",
+    "name": "Phase-Touched Thick Webbing",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "phase",
+      "phase-touched",
+      "spider"
+    ],
+    "source": "SP",
+    "notes": "Existing SP T3 phase material.",
     "appearsIn": [
       {
-        "creature": "WINTERFANG BEHEMOTH",
+        "creature": "RIFTCLAW SPIDER",
+        "pool": "Epic",
+        "weight": 18
+      },
+      {
+        "creature": "TEMPEST TYRANT",
+        "pool": "Common",
+        "weight": 10
+      }
+    ]
+  },
+  {
+    "id": "material-plague-essence-nodule",
+    "name": "Plague Essence Nodule",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3"
+    ],
+    "source": "ORIG",
+    "notes": "Biological node continuously generating plague toxins. Source of the Toxic Aura trait. Unique.",
+    "appearsIn": [
+      {
+        "creature": "PLAGUE MAW RAVAGER",
         "pool": "Rare",
-        "weight": 14
+        "weight": 17
+      }
+    ]
+  },
+  {
+    "id": "material-resonant-soul-shard",
+    "name": "Resonant Soul Shard",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3"
+    ],
+    "source": "ORIG",
+    "notes": "Rare stable formation of compressed arcane soul energy. Only forms from high magical aptitude subjects.",
+    "appearsIn": [
+      {
+        "creature": "FAILED HYBRID",
+        "pool": "Rare",
+        "weight": 8
+      },
+      {
+        "creature": "FAILED HYBRID",
+        "pool": "Epic",
+        "weight": 22
+      }
+    ]
+  },
+  {
+    "id": "material-restraint-pulse-core",
+    "name": "Restraint Pulse Core",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3"
+    ],
+    "source": "ORIG",
+    "notes": "Mechanism generating Restraint Pulse. Intact extraction.",
+    "appearsIn": [
+      {
+        "creature": "COLLAR SENTINEL",
+        "pool": "Rare",
+        "weight": 18
+      },
+      {
+        "creature": "COLLAR SENTINEL",
+        "pool": "Epic",
+        "weight": 28
+      }
+    ]
+  },
+  {
+    "id": "material-rift-fused-claw-matrix",
+    "name": "Rift-Fused Claw Matrix",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3"
+    ],
+    "source": "FUSED",
+    "notes": "FUSED TERMINAL. Dimensional instability fused with spider silk chemistry. Phases briefly through barriers on impact.",
+    "appearsIn": [
+      {
+        "creature": "RIFTCLAW SPIDER",
+        "pool": "Epic",
+        "weight": 23
+      }
+    ]
+  },
+  {
+    "id": "material-shattered-essence-crystal",
+    "name": "Shattered Essence Crystal",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3"
+    ],
+    "source": "FUSED",
+    "notes": "FUSED TERMINAL. Crystallised fusion of arcane soul energy and failed dragon essence. The transformation nearly worked here.",
+    "appearsIn": [
+      {
+        "creature": "FAILED HYBRID",
+        "pool": "Epic",
+        "weight": 10
+      }
+    ]
+  },
+  {
+    "id": "material-siege-predator-sinew",
+    "name": "Siege Predator Sinew",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3"
+    ],
+    "source": "ORIG",
+    "notes": "Sinew from the aquatic apex predator body — enormous tensile strength. Unique.",
+    "appearsIn": [
+      {
+        "creature": "TEMPEST TYRANT",
+        "pool": "Rare",
+        "weight": 13
       }
     ]
   },
   {
     "id": "material-siege-sinew-bundle",
     "name": "Siege Sinew Bundle",
-    "tier": "T3",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3"
+    ],
     "source": "ORIG",
     "notes": "Primary siege-motion sinew, processed and bundled. Unique.",
     "appearsIn": [
@@ -2010,9 +3619,390 @@
     ]
   },
   {
+    "id": "material-spell-fused-scale-matrix",
+    "name": "Spell-Fused Scale Matrix",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3"
+    ],
+    "source": "FUSED",
+    "notes": "FUSED TERMINAL. Scales where arcane absorption ability permanently merged with BD lightning conductivity. Absorbs spells and channels energy as lightning.",
+    "appearsIn": [
+      {
+        "creature": "ARCANE DEVOURER",
+        "pool": "Epic",
+        "weight": 22
+      }
+    ]
+  },
+  {
+    "id": "material-thick-webbing-bundle",
+    "name": "Thick Webbing Bundle",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "spider"
+    ],
+    "source": "SP",
+    "notes": "Existing SP T3. Mirewing's larger glands produce denser silk.",
+    "appearsIn": [
+      {
+        "creature": "MIREWING HUNTER",
+        "pool": "Rare",
+        "weight": 17
+      },
+      {
+        "creature": "PLAGUE MAW RAVAGER",
+        "pool": "Common",
+        "weight": 18
+      }
+    ]
+  },
+  {
+    "id": "material-toxic-winged-membrane",
+    "name": "Toxic-Winged Membrane",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3"
+    ],
+    "source": "FUSED",
+    "notes": "FUSED TERMINAL. Wing membrane permanently saturated with the creature's toxic aura. Releases toxins when impacted.",
+    "appearsIn": [
+      {
+        "creature": "MIREWING HUNTER",
+        "pool": "Epic",
+        "weight": 22
+      }
+    ]
+  },
+  {
+    "id": "material-virulent-venom-gland",
+    "name": "Virulent Venom Gland",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "venom"
+    ],
+    "source": "ORIG",
+    "notes": "Primary venom gland at max Plague Maw development. Unique.",
+    "appearsIn": [
+      {
+        "creature": "PLAGUE MAW RAVAGER",
+        "pool": "Rare",
+        "weight": 14
+      }
+    ]
+  },
+  {
+    "id": "material-absolute-zero-gland",
+    "name": "Absolute Zero Gland",
+    "tier": 4,
+    "tierLabel": "Tier 4 – Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4"
+    ],
+    "source": "ORIG",
+    "notes": "Apex cold generation organ — source of Absolute Zero enhancement. Elder only. TERMINAL. Unique.",
+    "appearsIn": [
+      {
+        "creature": "CRYOMANTIC HORROR",
+        "pool": "Epic",
+        "weight": 20
+      }
+    ]
+  },
+  {
+    "id": "material-apex-endurance-core",
+    "name": "Apex Endurance Core",
+    "tier": 4,
+    "tierLabel": "Tier 4 – Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4"
+    ],
+    "source": "ORIG",
+    "notes": "Governs Frozen Carapace and Siege Beast traits simultaneously. TERMINAL. Unique.",
+    "appearsIn": [
+      {
+        "creature": "WINTERFANG BEHEMOTH",
+        "pool": "Epic",
+        "weight": 15
+      }
+    ]
+  },
+  {
+    "id": "material-apex-stormscale-plating",
+    "name": "Apex Stormscale Plating",
+    "tier": 4,
+    "tierLabel": "Tier 4 – Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4",
+      "blue dragon"
+    ],
+    "source": "BD",
+    "notes": "Existing BD T5. Outer armour plating resistant to lightning and force.",
+    "appearsIn": [
+      {
+        "creature": "TEMPEST TYRANT",
+        "pool": "Epic",
+        "weight": 14
+      }
+    ]
+  },
+  {
+    "id": "material-apex-venom-core",
+    "name": "Apex Venom Core",
+    "tier": 4,
+    "tierLabel": "Tier 4 – Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4",
+      "venom"
+    ],
+    "source": "SP",
+    "notes": "Existing SP T4. Primary venom production organ at max development.",
+    "appearsIn": [
+      {
+        "creature": "MIREWING HUNTER",
+        "pool": "Epic",
+        "weight": 18
+      },
+      {
+        "creature": "PLAGUE MAW RAVAGER",
+        "pool": "Rare",
+        "weight": 22
+      }
+    ]
+  },
+  {
+    "id": "material-arcane-domination-crystal",
+    "name": "Arcane Domination Crystal",
+    "tier": 4,
+    "tierLabel": "Tier 4 – Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4"
+    ],
+    "source": "ORIG",
+    "notes": "Crystal at the heart of the collar-control system. Overseer variant only. Terminal — no refinement.",
+    "appearsIn": [
+      {
+        "creature": "COLLAR SENTINEL",
+        "pool": "Epic",
+        "weight": 12
+      }
+    ]
+  },
+  {
+    "id": "material-arcane-soul-matrix-fragment",
+    "name": "Arcane Soul Matrix Fragment",
+    "tier": 4,
+    "tierLabel": "Tier 4 – Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4"
+    ],
+    "source": "ORIG",
+    "notes": "Fragment of dozens of compressed stolen souls. Warm to the touch. TERMINAL. Unique.",
+    "appearsIn": [
+      {
+        "creature": "TEMPEST TYRANT",
+        "pool": "Epic",
+        "weight": 12
+      }
+    ]
+  },
+  {
+    "id": "material-ascendant-storm-core",
+    "name": "Ascendant Storm Core",
+    "tier": 4,
+    "tierLabel": "Tier 4 – Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4",
+      "blue dragon"
+    ],
+    "source": "BD",
+    "notes": "Existing BD T4/T5. Self-sustaining storm-phase matrix.",
+    "appearsIn": [
+      {
+        "creature": "TEMPEST TYRANT",
+        "pool": "Epic",
+        "weight": 16
+      }
+    ]
+  },
+  {
+    "id": "material-blood-sovereign-essence",
+    "name": "Blood Sovereign Essence",
+    "tier": 4,
+    "tierLabel": "Tier 4 – Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4"
+    ],
+    "source": "ORIG",
+    "notes": "The most refined life-force material available. Rare even from Greater variant.",
+    "appearsIn": [
+      {
+        "creature": "SANGUINE WARDEN",
+        "pool": "Epic",
+        "weight": 16
+      }
+    ]
+  },
+  {
+    "id": "material-blood-fused-soul-matrix",
+    "name": "Blood-Fused Soul Matrix",
+    "tier": 4,
+    "tierLabel": "Tier 4 – Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4"
+    ],
+    "source": "FUSED",
+    "notes": "FUSED TERMINAL. Blood magic and stolen soul energy have crystallised together. Simultaneously life-giving and life-draining.",
+    "appearsIn": [
+      {
+        "creature": "SANGUINE WARDEN",
+        "pool": "Epic",
+        "weight": 18
+      }
+    ]
+  },
+  {
+    "id": "material-brood-essence-sac",
+    "name": "Brood Essence Sac",
+    "tier": 4,
+    "tierLabel": "Tier 4 – Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4"
+    ],
+    "source": "SP",
+    "notes": "Existing SP T4.",
+    "appearsIn": [
+      {
+        "creature": "PLAGUE MAW RAVAGER",
+        "pool": "Epic",
+        "weight": 20
+      }
+    ]
+  },
+  {
+    "id": "material-chimera-fusion-core",
+    "name": "Chimera Fusion Core",
+    "tier": 4,
+    "tierLabel": "Tier 4 – Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4"
+    ],
+    "source": "ORIG",
+    "notes": "Stable multi-element core. Prime only. Extremely rare. TERMINAL. Unique.",
+    "appearsIn": [
+      {
+        "creature": "MUTATED CHIMERA HOUND",
+        "pool": "Epic",
+        "weight": 16
+      }
+    ]
+  },
+  {
+    "id": "material-elder-frost-soul",
+    "name": "Elder Frost Soul",
+    "tier": 4,
+    "tierLabel": "Tier 4 – Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4"
+    ],
+    "source": "ORIG",
+    "notes": "Crystallised cold arcane energy that formed in the Elder's spine over years of mutation. Extremely rare. TERMINAL. Unique.",
+    "appearsIn": [
+      {
+        "creature": "CRYOMANTIC HORROR",
+        "pool": "Epic",
+        "weight": 15
+      }
+    ]
+  },
+  {
+    "id": "material-frost-fused-mutation-core",
+    "name": "Frost-Fused Mutation Core",
+    "tier": 4,
+    "tierLabel": "Tier 4 – Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4"
+    ],
+    "source": "FUSED",
+    "notes": "FUSED TERMINAL. Self-mutation biology permanently fused with cold generation system. Continues to generate cold and mutate even after extraction.",
+    "appearsIn": [
+      {
+        "creature": "CRYOMANTIC HORROR",
+        "pool": "Epic",
+        "weight": 23
+      }
+    ]
+  },
+  {
+    "id": "material-harvest-vitality-matrix",
+    "name": "Harvest Vitality Matrix",
+    "tier": 4,
+    "tierLabel": "Tier 4 – Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4"
+    ],
+    "source": "ORIG",
+    "notes": "Primary life-force absorption organ. Generates Temporary HP from nearby deaths.",
+    "appearsIn": [
+      {
+        "creature": "SANGUINE WARDEN",
+        "pool": "Epic",
+        "weight": 18
+      }
+    ]
+  },
+  {
+    "id": "material-living-blizzard-essence",
+    "name": "Living Blizzard Essence",
+    "tier": 4,
+    "tierLabel": "Tier 4 – Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4"
+    ],
+    "source": "ORIG",
+    "notes": "Self-sustaining cold matrix more powerful than anything in the WD chain. Elder only. TERMINAL. Unique.",
+    "appearsIn": [
+      {
+        "creature": "CRYOMANTIC HORROR",
+        "pool": "Epic",
+        "weight": 18
+      }
+    ]
+  },
+  {
     "id": "material-permafrost-essence",
     "name": "Permafrost Essence",
-    "tier": "T4",
+    "tier": 4,
+    "tierLabel": "Tier 4 – Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4"
+    ],
     "source": "WD",
     "notes": "New WD T4. A self-sustaining cold energy matrix.",
     "appearsIn": [
@@ -2034,37 +4024,14 @@
     ]
   },
   {
-    "id": "material-winterfang-siege-core",
-    "name": "Winterfang Siege Core",
-    "tier": "T4",
-    "source": "ORIG",
-    "notes": "Biological core channelling both cold and kinetic energy simultaneously. TERMINAL. Unique.",
-    "appearsIn": [
-      {
-        "creature": "WINTERFANG BEHEMOTH",
-        "pool": "Epic",
-        "weight": 18
-      }
-    ]
-  },
-  {
-    "id": "material-apex-endurance-core",
-    "name": "Apex Endurance Core",
-    "tier": "T4",
-    "source": "ORIG",
-    "notes": "Governs Frozen Carapace and Siege Beast traits simultaneously. TERMINAL. Unique.",
-    "appearsIn": [
-      {
-        "creature": "WINTERFANG BEHEMOTH",
-        "pool": "Epic",
-        "weight": 15
-      }
-    ]
-  },
-  {
     "id": "material-permafrost-fused-carapace",
     "name": "Permafrost-Fused Carapace",
-    "tier": "T4",
+    "tier": 4,
+    "tierLabel": "Tier 4 – Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4"
+    ],
     "source": "FUSED",
     "notes": "FUSED TERMINAL. Carapace plating where Permafrost Essence has crystallised permanently into the bone structure. Absorbs kinetic energy as cold.",
     "appearsIn": [
@@ -2076,244 +4043,16 @@
     ]
   },
   {
-    "id": "material-unstable-silk-threads",
-    "name": "Unstable Silk Threads",
-    "tier": "T0",
-    "source": "SP",
-    "notes": "Existing SP T0 phase variant. Phase-unstable silk.",
-    "appearsIn": [
-      {
-        "creature": "RIFTCLAW SPIDER",
-        "pool": "Common",
-        "weight": 22
-      },
-      {
-        "creature": "MUTATED CHIMERA HOUND",
-        "pool": "Common",
-        "weight": 16
-      }
-    ]
-  },
-  {
-    "id": "material-distortion-webbing-fragment",
-    "name": "Distortion Webbing Fragment",
-    "tier": "T0",
-    "source": "SP",
-    "notes": "Existing SP T0 phase variant. Partially phased silk webbing.",
-    "appearsIn": [
-      {
-        "creature": "RIFTCLAW SPIDER",
-        "pool": "Common",
-        "weight": 20
-      }
-    ]
-  },
-  {
-    "id": "material-residual-phase-essence",
-    "name": "Residual Phase Essence",
-    "tier": "T0",
-    "source": "SP",
-    "notes": "Existing SP T0. Wisp of phase energy — evaporates quickly if not stored.",
-    "appearsIn": [
-      {
-        "creature": "RIFTCLAW SPIDER",
-        "pool": "Common",
-        "weight": 18
-      }
-    ]
-  },
-  {
-    "id": "material-dimensional-membrane-scraps",
-    "name": "Dimensional Membrane Scraps",
-    "tier": "T0",
-    "source": "SP",
-    "notes": "Existing SP T0. Tissue from the phase-transition zone of the creature's body.",
-    "appearsIn": [
-      {
-        "creature": "RIFTCLAW SPIDER",
-        "pool": "Common",
-        "weight": 16
-      }
-    ]
-  },
-  {
-    "id": "material-rift-claw-fragment",
-    "name": "Rift Claw Fragment",
-    "tier": "T0",
-    "source": "ORIG",
-    "notes": "Claw tip that flickers between dimensions. Unique.",
-    "appearsIn": [
-      {
-        "creature": "RIFTCLAW SPIDER",
-        "pool": "Common",
-        "weight": 14
-      }
-    ]
-  },
-  {
-    "id": "material-phase-shifted-chitin-shard",
-    "name": "Phase-Shifted Chitin Shard",
-    "tier": "T0",
-    "source": "ORIG",
-    "notes": "Chitin from the phase-transition surface of the creature's outer body. Unique.",
-    "appearsIn": [
-      {
-        "creature": "RIFTCLAW SPIDER",
-        "pool": "Common",
-        "weight": 10
-      }
-    ]
-  },
-  {
-    "id": "material-phase-silk-strand",
-    "name": "Phase Silk Strand",
-    "tier": "T2",
-    "source": "SP",
-    "notes": "Existing SP T2 phase material.",
-    "appearsIn": [
-      {
-        "creature": "RIFTCLAW SPIDER",
-        "pool": "Rare",
-        "weight": 22
-      },
-      {
-        "creature": "MUTATED CHIMERA HOUND",
-        "pool": "Rare",
-        "weight": 16
-      }
-    ]
-  },
-  {
-    "id": "material-phase-residue-cluster",
-    "name": "Phase Residue Cluster",
-    "tier": "T2",
-    "source": "SP",
-    "notes": "Existing SP T2 phase material.",
-    "appearsIn": [
-      {
-        "creature": "RIFTCLAW SPIDER",
-        "pool": "Rare",
-        "weight": 19
-      }
-    ]
-  },
-  {
-    "id": "material-phase-touched-chitin-plate",
-    "name": "Phase-Touched Chitin Plate",
-    "tier": "T2",
-    "source": "SP",
-    "notes": "Existing SP T2 phase material.",
-    "appearsIn": [
-      {
-        "creature": "RIFTCLAW SPIDER",
-        "pool": "Rare",
-        "weight": 16
-      }
-    ]
-  },
-  {
-    "id": "material-phase-touched-webbing-bundle",
-    "name": "Phase-Touched Webbing Bundle",
-    "tier": "T2",
-    "source": "SP",
-    "notes": "Existing SP T2 phase material.",
-    "appearsIn": [
-      {
-        "creature": "RIFTCLAW SPIDER",
-        "pool": "Rare",
-        "weight": 15
-      }
-    ]
-  },
-  {
-    "id": "material-dimensional-tendon-coil",
-    "name": "Dimensional Tendon Coil",
-    "tier": "T0",
-    "source": "SP",
-    "notes": "Existing SP T0. Spatially-anchored tendon. Feeds Phase Silk chain.",
-    "appearsIn": [
-      {
-        "creature": "RIFTCLAW SPIDER",
-        "pool": "Rare",
-        "weight": 14
-      }
-    ]
-  },
-  {
-    "id": "material-phase-anchor-tissue",
-    "name": "Phase Anchor Tissue",
-    "tier": "T1",
-    "source": "ORIG",
-    "notes": "Tissue that anchors the creature to the material plane. Unique.",
-    "appearsIn": [
-      {
-        "creature": "RIFTCLAW SPIDER",
-        "pool": "Rare",
-        "weight": 14
-      }
-    ]
-  },
-  {
-    "id": "material-distortion-core-fragment",
-    "name": "Distortion Core Fragment",
-    "tier": "T3",
-    "source": "SP",
-    "notes": "Existing SP T3 phase material. Dense stable phase matter.",
-    "appearsIn": [
-      {
-        "creature": "RIFTCLAW SPIDER",
-        "pool": "Epic",
-        "weight": 24
-      },
-      {
-        "creature": "MUTATED CHIMERA HOUND",
-        "pool": "Epic",
-        "weight": 18
-      }
-    ]
-  },
-  {
-    "id": "material-phase-silk-bundle",
-    "name": "Phase Silk Bundle",
-    "tier": "T3",
-    "source": "SP",
-    "notes": "Existing SP T3 phase material.",
-    "appearsIn": [
-      {
-        "creature": "RIFTCLAW SPIDER",
-        "pool": "Epic",
-        "weight": 20
-      },
-      {
-        "creature": "TEMPEST TYRANT",
-        "pool": "Common",
-        "weight": 18
-      }
-    ]
-  },
-  {
-    "id": "material-phase-touched-thick-webbing",
-    "name": "Phase-Touched Thick Webbing",
-    "tier": "T3",
-    "source": "SP",
-    "notes": "Existing SP T3 phase material.",
-    "appearsIn": [
-      {
-        "creature": "RIFTCLAW SPIDER",
-        "pool": "Epic",
-        "weight": 18
-      },
-      {
-        "creature": "TEMPEST TYRANT",
-        "pool": "Common",
-        "weight": 10
-      }
-    ]
-  },
-  {
     "id": "material-phase-core",
     "name": "Phase Core",
-    "tier": "T4",
+    "tier": 4,
+    "tierLabel": "Tier 4 – Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4",
+      "phase",
+      "phase-touched"
+    ],
     "source": "SP",
     "notes": "Existing SP T4. Primary phase anchor organ.",
     "appearsIn": [
@@ -2330,196 +4069,53 @@
     ]
   },
   {
-    "id": "material-rift-fused-claw-matrix",
-    "name": "Rift-Fused Claw Matrix",
-    "tier": "T3",
-    "source": "FUSED",
-    "notes": "FUSED TERMINAL. Dimensional instability fused with spider silk chemistry. Phases briefly through barriers on impact.",
+    "id": "material-plague-sovereign-core",
+    "name": "Plague Sovereign Core",
+    "tier": 4,
+    "tierLabel": "Tier 4 – Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4"
+    ],
+    "source": "ORIG",
+    "notes": "The central contamination engine at full development. TERMINAL. Unique.",
     "appearsIn": [
       {
-        "creature": "RIFTCLAW SPIDER",
+        "creature": "PLAGUE MAW RAVAGER",
         "pool": "Epic",
-        "weight": 23
-      }
-    ]
-  },
-  {
-    "id": "material-arcane-wire-coil",
-    "name": "Arcane Wire Coil",
-    "tier": "T1",
-    "source": "ORIG",
-    "notes": "Standard arcane-conductive wire from the Sentinel's suppression system.",
-    "appearsIn": [
-      {
-        "creature": "COLLAR SENTINEL",
-        "pool": "Common",
-        "weight": 26
-      }
-    ]
-  },
-  {
-    "id": "material-suppression-field-coil",
-    "name": "Suppression Field Coil",
-    "tier": "T2",
-    "source": "ORIG",
-    "notes": "Coil of arcane wire generating suppressive force fields. Core component.",
-    "appearsIn": [
-      {
-        "creature": "COLLAR SENTINEL",
-        "pool": "Common",
-        "weight": 22
-      }
-    ]
-  },
-  {
-    "id": "material-control-chip-fragment",
-    "name": "Control Chip Fragment",
-    "tier": "T1",
-    "source": "ORIG",
-    "notes": "Broken fragment of a control directive chip.",
-    "appearsIn": [
-      {
-        "creature": "COLLAR SENTINEL",
-        "pool": "Common",
-        "weight": 18
-      }
-    ]
-  },
-  {
-    "id": "material-structural-chassis-plate",
-    "name": "Structural Chassis Plate",
-    "tier": "T1",
-    "source": "ORIG",
-    "notes": "Standard structural plating from the Sentinel's body.",
-    "appearsIn": [
-      {
-        "creature": "COLLAR SENTINEL",
-        "pool": "Common",
-        "weight": 18
-      }
-    ]
-  },
-  {
-    "id": "material-deflection-rune-shard",
-    "name": "Deflection Rune Shard",
-    "tier": "T1",
-    "source": "ORIG",
-    "notes": "Fragment of the arcane deflection rune array.",
-    "appearsIn": [
-      {
-        "creature": "COLLAR SENTINEL",
-        "pool": "Common",
         "weight": 16
       }
     ]
   },
   {
-    "id": "material-arcane-deflection-plate",
-    "name": "Arcane Deflection Plate",
-    "tier": "T2",
-    "source": "ORIG",
-    "notes": "Full deflection plate, intact. Source of the Arcane Deflection reaction ability.",
+    "id": "material-plague-fused-chitin-plate",
+    "name": "Plague-Fused Chitin Plate",
+    "tier": 4,
+    "tierLabel": "Tier 4 – Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4",
+      "spider"
+    ],
+    "source": "FUSED",
+    "notes": "FUSED TERMINAL. Body chitin where plague chemistry has permanently fused into the structural material. Releases toxins on impact.",
     "appearsIn": [
       {
-        "creature": "COLLAR SENTINEL",
-        "pool": "Rare",
-        "weight": 24
-      }
-    ]
-  },
-  {
-    "id": "material-collar-control-module",
-    "name": "Collar Control Module",
-    "tier": "T2",
-    "source": "ORIG",
-    "notes": "Intact control module — monitors and directs collared creatures.",
-    "appearsIn": [
-      {
-        "creature": "COLLAR SENTINEL",
-        "pool": "Rare",
-        "weight": 21
-      }
-    ]
-  },
-  {
-    "id": "material-restraint-pulse-core",
-    "name": "Restraint Pulse Core",
-    "tier": "T3",
-    "source": "ORIG",
-    "notes": "Mechanism generating Restraint Pulse. Intact extraction.",
-    "appearsIn": [
-      {
-        "creature": "COLLAR SENTINEL",
-        "pool": "Rare",
-        "weight": 18
-      },
-      {
-        "creature": "COLLAR SENTINEL",
-        "pool": "Epic",
-        "weight": 28
-      }
-    ]
-  },
-  {
-    "id": "material-sentinel-chassis-fragment",
-    "name": "Sentinel Chassis Fragment",
-    "tier": "T2",
-    "source": "ORIG",
-    "notes": "Dense arcane-infused structural plating, intact larger section.",
-    "appearsIn": [
-      {
-        "creature": "COLLAR SENTINEL",
-        "pool": "Rare",
-        "weight": 20
-      }
-    ]
-  },
-  {
-    "id": "material-suppression-emitter-array",
-    "name": "Suppression Emitter Array",
-    "tier": "T2",
-    "source": "ORIG",
-    "notes": "The full emitter array for the suppression field. Intact.",
-    "appearsIn": [
-      {
-        "creature": "COLLAR SENTINEL",
-        "pool": "Rare",
-        "weight": 17
-      }
-    ]
-  },
-  {
-    "id": "material-lockdown-protocol-chip",
-    "name": "Lockdown Protocol Chip",
-    "tier": "T3",
-    "source": "ORIG",
-    "notes": "Intact encoded chip — contains the full Lockdown Protocol directive.",
-    "appearsIn": [
-      {
-        "creature": "COLLAR SENTINEL",
+        "creature": "PLAGUE MAW RAVAGER",
         "pool": "Epic",
         "weight": 24
-      }
-    ]
-  },
-  {
-    "id": "material-collar-fabrication-matrix",
-    "name": "Collar Fabrication Matrix",
-    "tier": "T3",
-    "source": "ORIG",
-    "notes": "The component responsible for collar signal transmission. Rare to extract intact.",
-    "appearsIn": [
-      {
-        "creature": "COLLAR SENTINEL",
-        "pool": "Epic",
-        "weight": 20
       }
     ]
   },
   {
     "id": "material-sentinel-command-core",
     "name": "Sentinel Command Core",
-    "tier": "T4",
+    "tier": 4,
+    "tierLabel": "Tier 4 – Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4"
+    ],
     "source": "ORIG",
     "notes": "The Sentinel's central command organ. Source of superior battlefield awareness. Extremely rare.",
     "appearsIn": [
@@ -2531,504 +4127,16 @@
     ]
   },
   {
-    "id": "material-arcane-domination-crystal",
-    "name": "Arcane Domination Crystal",
-    "tier": "T4",
-    "source": "ORIG",
-    "notes": "Crystal at the heart of the collar-control system. Overseer variant only. Terminal — no refinement.",
-    "appearsIn": [
-      {
-        "creature": "COLLAR SENTINEL",
-        "pool": "Epic",
-        "weight": 12
-      }
-    ]
-  },
-  {
-    "id": "material-necrotic-blood-residue",
-    "name": "Necrotic Blood Residue",
-    "tier": "T1",
-    "source": "ORIG",
-    "notes": "The creature's blood, thick with stolen life force. Degrades within hours if unpreserved.",
-    "appearsIn": [
-      {
-        "creature": "SANGUINE WARDEN",
-        "pool": "Common",
-        "weight": 26
-      }
-    ]
-  },
-  {
-    "id": "material-composite-flesh-shard",
-    "name": "Composite Flesh Shard",
-    "tier": "T1",
-    "source": "ORIG",
-    "notes": "Dense layered material from the outer body. Mechanically the source of the Composite Flesh trait.",
-    "appearsIn": [
-      {
-        "creature": "SANGUINE WARDEN",
-        "pool": "Common",
-        "weight": 22
-      }
-    ]
-  },
-  {
-    "id": "material-stolen-vitality-residue",
-    "name": "Stolen Vitality Residue",
-    "tier": "T1",
-    "source": "ORIG",
-    "notes": "Diluted life force that leaked during extraction. Unstable.",
-    "appearsIn": [
-      {
-        "creature": "SANGUINE WARDEN",
-        "pool": "Common",
-        "weight": 20
-      }
-    ]
-  },
-  {
-    "id": "material-blood-coagulation-mass",
-    "name": "Blood Coagulation Mass",
-    "tier": "T1",
-    "source": "ORIG",
-    "notes": "Semi-solidified blood mass with arcane binding properties.",
-    "appearsIn": [
-      {
-        "creature": "SANGUINE WARDEN",
-        "pool": "Common",
-        "weight": 18
-      }
-    ]
-  },
-  {
-    "id": "material-necrotic-skin-layer",
-    "name": "Necrotic Skin Layer",
-    "tier": "T1",
-    "source": "ORIG",
-    "notes": "Outer skin saturated with necrotic energy.",
-    "appearsIn": [
-      {
-        "creature": "SANGUINE WARDEN",
-        "pool": "Common",
-        "weight": 14
-      }
-    ]
-  },
-  {
-    "id": "material-stolen-vitality-sac",
-    "name": "Stolen Vitality Sac",
-    "tier": "T2",
-    "source": "ORIG",
-    "notes": "Biological sac storing absorbed life force. Source of Blood Fueled Regeneration.",
-    "appearsIn": [
-      {
-        "creature": "SANGUINE WARDEN",
-        "pool": "Rare",
-        "weight": 24
-      }
-    ]
-  },
-  {
-    "id": "material-blood-burst-gland",
-    "name": "Blood Burst Gland",
-    "tier": "T2",
-    "source": "ORIG",
-    "notes": "The organ responsible for Blood Burst. Will detonate if not carefully extracted.",
-    "appearsIn": [
-      {
-        "creature": "SANGUINE WARDEN",
-        "pool": "Rare",
-        "weight": 21
-      }
-    ]
-  },
-  {
-    "id": "material-composite-flesh-core",
-    "name": "Composite Flesh Core",
-    "tier": "T2",
-    "source": "ORIG",
-    "notes": "Dense inner core of layered biological material.",
-    "appearsIn": [
-      {
-        "creature": "SANGUINE WARDEN",
-        "pool": "Rare",
-        "weight": 18
-      }
-    ]
-  },
-  {
-    "id": "material-life-leech-sinew",
-    "name": "Life Leech Sinew",
-    "tier": "T2",
-    "source": "ORIG",
-    "notes": "Tendon tissue that absorbs vitality on contact with wounded creatures.",
-    "appearsIn": [
-      {
-        "creature": "SANGUINE WARDEN",
-        "pool": "Rare",
-        "weight": 19
-      },
-      {
-        "creature": "SANGUINE WARDEN",
-        "pool": "Epic",
-        "weight": 26
-      }
-    ]
-  },
-  {
-    "id": "material-necrotic-blood-crystal",
-    "name": "Necrotic Blood Crystal",
-    "tier": "T2",
-    "source": "ORIG",
-    "notes": "Blood that crystallised post-mortem — necrotic energy made stable.",
-    "appearsIn": [
-      {
-        "creature": "SANGUINE WARDEN",
-        "pool": "Rare",
-        "weight": 18
-      }
-    ]
-  },
-  {
-    "id": "material-crimson-core",
-    "name": "Crimson Core",
-    "tier": "T3",
-    "source": "ORIG",
-    "notes": "Dense core of compressed life force at the centre of the creature's body.",
-    "appearsIn": [
-      {
-        "creature": "SANGUINE WARDEN",
-        "pool": "Epic",
-        "weight": 22
-      }
-    ]
-  },
-  {
-    "id": "material-harvest-vitality-matrix",
-    "name": "Harvest Vitality Matrix",
-    "tier": "T4",
-    "source": "ORIG",
-    "notes": "Primary life-force absorption organ. Generates Temporary HP from nearby deaths.",
-    "appearsIn": [
-      {
-        "creature": "SANGUINE WARDEN",
-        "pool": "Epic",
-        "weight": 18
-      }
-    ]
-  },
-  {
-    "id": "material-blood-sovereign-essence",
-    "name": "Blood Sovereign Essence",
-    "tier": "T4",
-    "source": "ORIG",
-    "notes": "The most refined life-force material available. Rare even from Greater variant.",
-    "appearsIn": [
-      {
-        "creature": "SANGUINE WARDEN",
-        "pool": "Epic",
-        "weight": 16
-      }
-    ]
-  },
-  {
-    "id": "material-blood-fused-soul-matrix",
-    "name": "Blood-Fused Soul Matrix",
-    "tier": "T4",
-    "source": "FUSED",
-    "notes": "FUSED TERMINAL. Blood magic and stolen soul energy have crystallised together. Simultaneously life-giving and life-draining.",
-    "appearsIn": [
-      {
-        "creature": "SANGUINE WARDEN",
-        "pool": "Epic",
-        "weight": 18
-      }
-    ]
-  },
-  {
-    "id": "material-frost-claw-shard",
-    "name": "Frost Claw Shard",
-    "tier": "T1",
-    "source": "ORIG",
-    "notes": "Claw fragment maintaining sub-zero temperature indefinitely post-mortem. Unique.",
-    "appearsIn": [
-      {
-        "creature": "CRYOMANTIC HORROR",
-        "pool": "Common",
-        "weight": 18
-      }
-    ]
-  },
-  {
-    "id": "material-living-frost-skin-scrap",
-    "name": "Living Frost Skin Scrap",
-    "tier": "T1",
-    "source": "ORIG",
-    "notes": "Skin that actively generates cold — continues to do so even post-mortem. Unique.",
-    "appearsIn": [
-      {
-        "creature": "CRYOMANTIC HORROR",
-        "pool": "Common",
-        "weight": 17
-      }
-    ]
-  },
-  {
-    "id": "material-ice-crystal-formation",
-    "name": "Ice Crystal Formation",
-    "tier": "T2",
-    "source": "WD",
-    "notes": "WD T2 formation from the creature's body surface.",
-    "appearsIn": [
-      {
-        "creature": "CRYOMANTIC HORROR",
-        "pool": "Common",
-        "weight": 13
-      }
-    ]
-  },
-  {
-    "id": "material-mutation-residue-crystal",
-    "name": "Mutation Residue Crystal",
-    "tier": "T1",
-    "source": "ORIG",
-    "notes": "Crystallised residue from the creature's ongoing mutation process. Unique.",
-    "appearsIn": [
-      {
-        "creature": "CRYOMANTIC HORROR",
-        "pool": "Common",
-        "weight": 10
-      }
-    ]
-  },
-  {
-    "id": "material-glacial-burst-core",
-    "name": "Glacial Burst Core",
-    "tier": "T3",
-    "source": "ORIG",
-    "notes": "Organ responsible for Glacial Burst. Violently explosive if punctured during extraction. Unique.",
-    "appearsIn": [
-      {
-        "creature": "CRYOMANTIC HORROR",
-        "pool": "Rare",
-        "weight": 19
-      }
-    ]
-  },
-  {
-    "id": "material-ice-prison-matrix",
-    "name": "Ice Prison Matrix",
-    "tier": "T3",
-    "source": "ORIG",
-    "notes": "Crystalline structure from the creature's chest cavity. Source of the Ice Prison ability. Unique.",
-    "appearsIn": [
-      {
-        "creature": "CRYOMANTIC HORROR",
-        "pool": "Rare",
-        "weight": 17
-      }
-    ]
-  },
-  {
-    "id": "material-living-frost-membrane",
-    "name": "Living Frost Membrane",
-    "tier": "T3",
-    "source": "ORIG",
-    "notes": "Skin that actively generates cold. Full membrane extraction. Unique.",
-    "appearsIn": [
-      {
-        "creature": "CRYOMANTIC HORROR",
-        "pool": "Rare",
-        "weight": 16
-      }
-    ]
-  },
-  {
-    "id": "material-cryomantic-core",
-    "name": "Cryomantic Core",
-    "tier": "T3",
-    "source": "ORIG",
-    "notes": "Self-sustaining cold energy core. Source of the Arcane Ice Core trait. Unique.",
-    "appearsIn": [
-      {
-        "creature": "CRYOMANTIC HORROR",
-        "pool": "Rare",
-        "weight": 11
-      }
-    ]
-  },
-  {
-    "id": "material-absolute-zero-gland",
-    "name": "Absolute Zero Gland",
-    "tier": "T4",
-    "source": "ORIG",
-    "notes": "Apex cold generation organ — source of Absolute Zero enhancement. Elder only. TERMINAL. Unique.",
-    "appearsIn": [
-      {
-        "creature": "CRYOMANTIC HORROR",
-        "pool": "Epic",
-        "weight": 20
-      }
-    ]
-  },
-  {
-    "id": "material-living-blizzard-essence",
-    "name": "Living Blizzard Essence",
-    "tier": "T4",
-    "source": "ORIG",
-    "notes": "Self-sustaining cold matrix more powerful than anything in the WD chain. Elder only. TERMINAL. Unique.",
-    "appearsIn": [
-      {
-        "creature": "CRYOMANTIC HORROR",
-        "pool": "Epic",
-        "weight": 18
-      }
-    ]
-  },
-  {
-    "id": "material-elder-frost-soul",
-    "name": "Elder Frost Soul",
-    "tier": "T4",
-    "source": "ORIG",
-    "notes": "Crystallised cold arcane energy that formed in the Elder's spine over years of mutation. Extremely rare. TERMINAL. Unique.",
-    "appearsIn": [
-      {
-        "creature": "CRYOMANTIC HORROR",
-        "pool": "Epic",
-        "weight": 15
-      }
-    ]
-  },
-  {
-    "id": "material-frost-fused-mutation-core",
-    "name": "Frost-Fused Mutation Core",
-    "tier": "T4",
-    "source": "FUSED",
-    "notes": "FUSED TERMINAL. Self-mutation biology permanently fused with cold generation system. Continues to generate cold and mutate even after extraction.",
-    "appearsIn": [
-      {
-        "creature": "CRYOMANTIC HORROR",
-        "pool": "Epic",
-        "weight": 23
-      }
-    ]
-  },
-  {
-    "id": "material-mutation-residue-scraps",
-    "name": "Mutation Residue Scraps",
-    "tier": "T0",
-    "source": "ORIG",
-    "notes": "Unstable biological waste from constant mutation cycling. Changes colour over time. Unique.",
-    "appearsIn": [
-      {
-        "creature": "MUTATED CHIMERA HOUND",
-        "pool": "Common",
-        "weight": 18
-      }
-    ]
-  },
-  {
-    "id": "material-charged-dragonhide-scraps",
-    "name": "Charged Dragonhide Scraps",
-    "tier": "T0",
-    "source": "BD",
-    "notes": "Existing BD T0.",
-    "appearsIn": [
-      {
-        "creature": "MUTATED CHIMERA HOUND",
-        "pool": "Common",
-        "weight": 15
-      }
-    ]
-  },
-  {
-    "id": "material-multi-element-bone-shard",
-    "name": "Multi-Element Bone Shard",
-    "tier": "T0",
-    "source": "ORIG",
-    "notes": "Bone showing evidence of multiple elemental adaptations simultaneously. Unique.",
-    "appearsIn": [
-      {
-        "creature": "MUTATED CHIMERA HOUND",
-        "pool": "Common",
-        "weight": 16
-      }
-    ]
-  },
-  {
-    "id": "material-adaptive-biology-tissue",
-    "name": "Adaptive Biology Tissue",
-    "tier": "T1",
-    "source": "ORIG",
-    "notes": "Tissue instinctively resisting repeated damage sources. Source of Adaptive Biology trait. Unique.",
-    "appearsIn": [
-      {
-        "creature": "MUTATED CHIMERA HOUND",
-        "pool": "Common",
-        "weight": 15
-      }
-    ]
-  },
-  {
-    "id": "material-chimera-breath-gland",
-    "name": "Chimera Breath Gland",
-    "tier": "T3",
-    "source": "ORIG",
-    "notes": "Organ responsible for Chimera Breath. Contains residue of all four damage types simultaneously. Unique.",
-    "appearsIn": [
-      {
-        "creature": "MUTATED CHIMERA HOUND",
-        "pool": "Rare",
-        "weight": 15
-      }
-    ]
-  },
-  {
-    "id": "material-active-mutation-core",
-    "name": "Active Mutation Core",
-    "tier": "T2",
-    "source": "ORIG",
-    "notes": "MUTATION-DEPENDENT: website assigns variant based on dominant mutation at death. Storm / Venom / Frost / Phase variant. Unique per variant.",
-    "appearsIn": [
-      {
-        "creature": "MUTATED CHIMERA HOUND",
-        "pool": "Rare",
-        "weight": 15
-      }
-    ]
-  },
-  {
-    "id": "material-unstable-evolution-organ",
-    "name": "Unstable Evolution Organ",
-    "tier": "T4",
-    "source": "ORIG",
-    "notes": "The organ governing Unstable Evolution. Constantly cycling between states. Prime only. TERMINAL. Unique.",
-    "appearsIn": [
-      {
-        "creature": "MUTATED CHIMERA HOUND",
-        "pool": "Epic",
-        "weight": 17
-      }
-    ]
-  },
-  {
-    "id": "material-chimera-fusion-core",
-    "name": "Chimera Fusion Core",
-    "tier": "T4",
-    "source": "ORIG",
-    "notes": "Stable multi-element core. Prime only. Extremely rare. TERMINAL. Unique.",
-    "appearsIn": [
-      {
-        "creature": "MUTATED CHIMERA HOUND",
-        "pool": "Epic",
-        "weight": 16
-      }
-    ]
-  },
-  {
     "id": "material-storm-phase-chimera-core",
     "name": "Storm-Phase Chimera Core",
-    "tier": "T4",
+    "tier": 4,
+    "tierLabel": "Tier 4 – Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4",
+      "phase",
+      "phase-touched"
+    ],
     "source": "FUSED",
     "notes": "FUSED TERMINAL. BD lightning and SP phase energy fused into a single material that simultaneously conducts electricity and phases through matter.",
     "appearsIn": [
@@ -3040,65 +4148,36 @@
     ]
   },
   {
-    "id": "material-apex-predator-bone",
-    "name": "Apex Predator Bone",
-    "tier": "T2",
-    "source": "ORIG",
-    "notes": "Dense bone from the aquatic apex predator component. Unique.",
+    "id": "material-storm-phase-sovereign-core",
+    "name": "Storm-Phase Sovereign Core",
+    "tier": 4,
+    "tierLabel": "Tier 4 – Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4",
+      "phase",
+      "phase-touched"
+    ],
+    "source": "FUSED",
+    "notes": "FUSED TERMINAL. BD lightning and SP phase biology fused at the deepest structural level. Generates storm energy and exists between dimensions simultaneously. The pinnacle of Vael's work.",
     "appearsIn": [
       {
         "creature": "TEMPEST TYRANT",
-        "pool": "Common",
-        "weight": 16
-      }
-    ]
-  },
-  {
-    "id": "material-living-storm-essence",
-    "name": "Living Storm Essence",
-    "tier": "T3",
-    "source": "BD",
-    "notes": "Existing BD T3.",
-    "appearsIn": [
-      {
-        "creature": "TEMPEST TYRANT",
-        "pool": "Rare",
-        "weight": 22
-      }
-    ]
-  },
-  {
-    "id": "material-stormheart-fragment",
-    "name": "Stormheart Fragment",
-    "tier": "T4",
-    "source": "BD",
-    "notes": "Existing BD T4. Compressed storm energy core fragment.",
-    "appearsIn": [
-      {
-        "creature": "TEMPEST TYRANT",
-        "pool": "Rare",
-        "weight": 14
-      }
-    ]
-  },
-  {
-    "id": "material-siege-predator-sinew",
-    "name": "Siege Predator Sinew",
-    "tier": "T3",
-    "source": "ORIG",
-    "notes": "Sinew from the aquatic apex predator body — enormous tensile strength. Unique.",
-    "appearsIn": [
-      {
-        "creature": "TEMPEST TYRANT",
-        "pool": "Rare",
-        "weight": 13
+        "pool": "Epic",
+        "weight": 20
       }
     ]
   },
   {
     "id": "material-stormheart-core",
     "name": "Stormheart Core",
-    "tier": "T4",
+    "tier": 4,
+    "tierLabel": "Tier 4 – Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4",
+      "blue dragon"
+    ],
     "source": "BD",
     "notes": "Existing BD T4/T5. Powers the Tyrant's storm regeneration.",
     "appearsIn": [
@@ -3110,9 +4189,35 @@
     ]
   },
   {
+    "id": "material-stormheart-fragment",
+    "name": "Stormheart Fragment",
+    "tier": 4,
+    "tierLabel": "Tier 4 – Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4",
+      "blue dragon"
+    ],
+    "source": "BD",
+    "notes": "Existing BD T4. Compressed storm energy core fragment.",
+    "appearsIn": [
+      {
+        "creature": "TEMPEST TYRANT",
+        "pool": "Rare",
+        "weight": 14
+      }
+    ]
+  },
+  {
     "id": "material-tempest-anchor-node",
     "name": "Tempest Anchor Node",
-    "tier": "T4",
+    "tier": 4,
+    "tierLabel": "Tier 4 – Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4",
+      "blue dragon"
+    ],
     "source": "BD",
     "notes": "Existing BD T4. Stabilises the Phase Instability trait.",
     "appearsIn": [
@@ -3124,58 +4229,59 @@
     ]
   },
   {
-    "id": "material-ascendant-storm-core",
-    "name": "Ascendant Storm Core",
-    "tier": "T4",
-    "source": "BD",
-    "notes": "Existing BD T4/T5. Self-sustaining storm-phase matrix.",
-    "appearsIn": [
-      {
-        "creature": "TEMPEST TYRANT",
-        "pool": "Epic",
-        "weight": 16
-      }
-    ]
-  },
-  {
-    "id": "material-apex-stormscale-plating",
-    "name": "Apex Stormscale Plating",
-    "tier": "T4",
-    "source": "BD",
-    "notes": "Existing BD T5. Outer armour plating resistant to lightning and force.",
-    "appearsIn": [
-      {
-        "creature": "TEMPEST TYRANT",
-        "pool": "Epic",
-        "weight": 14
-      }
-    ]
-  },
-  {
-    "id": "material-arcane-soul-matrix-fragment",
-    "name": "Arcane Soul Matrix Fragment",
-    "tier": "T4",
+    "id": "material-unstable-evolution-organ",
+    "name": "Unstable Evolution Organ",
+    "tier": 4,
+    "tierLabel": "Tier 4 – Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4"
+    ],
     "source": "ORIG",
-    "notes": "Fragment of dozens of compressed stolen souls. Warm to the touch. TERMINAL. Unique.",
+    "notes": "The organ governing Unstable Evolution. Constantly cycling between states. Prime only. TERMINAL. Unique.",
     "appearsIn": [
       {
-        "creature": "TEMPEST TYRANT",
+        "creature": "MUTATED CHIMERA HOUND",
         "pool": "Epic",
-        "weight": 12
+        "weight": 17
       }
     ]
   },
   {
-    "id": "material-storm-phase-sovereign-core",
-    "name": "Storm-Phase Sovereign Core",
-    "tier": "T4",
-    "source": "FUSED",
-    "notes": "FUSED TERMINAL. BD lightning and SP phase biology fused at the deepest structural level. Generates storm energy and exists between dimensions simultaneously. The pinnacle of Vael's work.",
+    "id": "material-virulent-spore-cluster",
+    "name": "Virulent Spore Cluster",
+    "tier": 4,
+    "tierLabel": "Tier 4 – Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4"
+    ],
+    "source": "ORIG",
+    "notes": "Self-replicating spore organ — source of Living Contamination trait. TERMINAL. Unique.",
     "appearsIn": [
       {
-        "creature": "TEMPEST TYRANT",
+        "creature": "PLAGUE MAW RAVAGER",
         "pool": "Epic",
-        "weight": 20
+        "weight": 18
+      }
+    ]
+  },
+  {
+    "id": "material-winterfang-siege-core",
+    "name": "Winterfang Siege Core",
+    "tier": 4,
+    "tierLabel": "Tier 4 – Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4"
+    ],
+    "source": "ORIG",
+    "notes": "Biological core channelling both cold and kinetic energy simultaneously. TERMINAL. Unique.",
+    "appearsIn": [
+      {
+        "creature": "WINTERFANG BEHEMOTH",
+        "pool": "Epic",
+        "weight": 18
       }
     ]
   }

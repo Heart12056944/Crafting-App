@@ -10,6 +10,7 @@ export type CraftingRarity =
   | "artifact";
 
 export type MaterialTierEntry = {
+  id?: string;
   name: string;
   tier: number;
   tierLabel: string;
@@ -28,19 +29,6 @@ export type MaterialTierGroup = {
   tier: number;
   label: string;
   names: string[];
-};
-
-type JsonMaterial = {
-  id: string;
-  name: string;
-  tier: string;
-  source: string;
-  notes: string;
-  appearsIn: {
-    creature: string;
-    pool: string;
-    weight: number;
-  }[];
 };
 
 export const tierToCraftingRarity: Record<number, CraftingRarity> = {
@@ -65,16 +53,6 @@ export const materialTierLabels: Record<number, string> = {
   7: "Tier 7 – Artifact Materials",
 };
 
-function tierNumber(tier: string | number | undefined): number {
-  if (typeof tier === "number") return tier;
-  const match = String(tier || "").match(/\d+/);
-  return match ? Number(match[0]) : 0;
-}
-
-function tagify(value: string) {
-  return value.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
-}
-
 export function normalizeMaterialName(value: string) {
   return value
     .toLowerCase()
@@ -84,41 +62,13 @@ export function normalizeMaterialName(value: string) {
     .trim();
 }
 
-const rawMaterials = materialsJson as JsonMaterial[];
-
-export const materialTierEntries: MaterialTierEntry[] = rawMaterials
-  .map((material) => {
-    const tier = tierNumber(material.tier);
-    const tags = new Set<string>([
-      `tier-${tier}`,
-      tagify(material.source || "material"),
-    ]);
-
-    for (const use of material.appearsIn || []) {
-      tags.add(tagify(use.creature));
-      tags.add(tagify(use.pool));
-    }
-
-    const lowerName = material.name.toLowerCase();
-    if (lowerName.includes("phase")) tags.add("phase");
-    if (lowerName.includes("dragon")) tags.add("dragon");
-    if (lowerName.includes("storm") || lowerName.includes("lightning")) tags.add("storm");
-    if (lowerName.includes("spider") || lowerName.includes("silk") || lowerName.includes("web")) tags.add("spider");
-    if (lowerName.includes("frost") || lowerName.includes("ice") || lowerName.includes("cryo")) tags.add("frost");
-    if (lowerName.includes("venom") || lowerName.includes("toxin") || lowerName.includes("poison")) tags.add("venom");
-
-    return {
-      name: material.name,
-      tier,
-      tierLabel: materialTierLabels[tier] || `Tier ${tier}`,
-      rarity: tierToCraftingRarity[tier],
-      tags: Array.from(tags).filter(Boolean),
-      source: material.source,
-      notes: material.notes,
-      appearsIn: material.appearsIn || [],
-    };
-  })
-  .sort((a, b) => a.tier - b.tier || a.name.localeCompare(b.name));
+export const materialTierEntries = (materialsJson as MaterialTierEntry[]).map((entry) => ({
+  ...entry,
+  tier: Number(entry.tier ?? 0),
+  tierLabel: entry.tierLabel || materialTierLabels[Number(entry.tier ?? 0)] || `Tier ${Number(entry.tier ?? 0)}`,
+  rarity: entry.rarity || tierToCraftingRarity[Number(entry.tier ?? 0)] || "common",
+  tags: Array.from(new Set([...(entry.tags || []), `tier-${Number(entry.tier ?? 0)}`])),
+}));
 
 const materialByName = new Map(
   materialTierEntries.map((entry) => [normalizeMaterialName(entry.name), entry])
@@ -143,19 +93,23 @@ export function getMaterialTier(name: string): number {
   return materialByName.get(normalizeMaterialName(name))?.tier ?? 0;
 }
 
-export function getMaterialsByTag(tag: string): MaterialTierEntry[] {
-  const normalizedTag = tagify(tag);
+function normalizeTag(value: string) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+}
 
-  return materialTierEntries.filter((entry) => {
-    return entry.tags.some((entryTag) => {
-      const normalizedEntryTag = tagify(entryTag);
+export function getMaterialsByTag(tag: string): MaterialTierEntry[] {
+  const normalizedTag = normalizeTag(tag);
+
+  return materialTierEntries.filter((entry) =>
+    (entry.tags || []).some((entryTag) => {
+      const normalizedEntryTag = normalizeTag(entryTag);
       return (
         normalizedEntryTag === normalizedTag ||
         normalizedEntryTag.includes(normalizedTag) ||
         normalizedTag.includes(normalizedEntryTag)
       );
-    });
-  });
+    })
+  );
 }
 
 export function getPhaseTouchedCounterpart(name: string): string {

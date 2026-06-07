@@ -58,8 +58,8 @@
     "sourceId": "companions_dnd5e-4",
     "name": "Sunhound",
     "category": "Companion",
-    "rarity": "Uncommon",
-    "valueGp": 200,
+    "rarity": "Epic",
+    "valueGp": 1000,
     "requiresAttunement": false,
     "tags": [
       "D&D 5e",
@@ -68,7 +68,7 @@
       "Beast",
       "Medium"
     ],
-    "description": "Armor Class 13 Hit Points 60 (8d8+24) Speed 50 ft.\nSTR 16 (+3) DEX 16 (+3) CON 16 (+3) INT 6 (-2) WIS 14 (+2) CHA 10 (+0)\nSolar Precision. While in direct sunlight, the Sunhound's attacks cannot miss unless it rolls a natural 1. Its attack rolls automatically hit on any other result.\nACTIONS\nBite. Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 2d6+3 piercing damage. If this attack hits, the Sunhound may make one additional Companion ability action as a bonus action.\nThrow. The Sunhound grabs a creature within 5 ft. (Strength DC 14) and hurls it up to 25 ft. If it lands adjacent to an ally, that ally can immediately make one weapon attack against the thrown creature as a reaction.\nSunlight (1/Day, Direct Sunlight Only). The Sunhound channels solar energy, fully restoring its own hit points and restoring 15 hit points to its bonded companion.\nCompanion Note: Loyalty is unconditional. Effectiveness in caves is less so.",
+    "description": "Armor Class 13 Hit Points 60 (8d8+24) Speed 50 ft.\nSTR 16 (+3) DEX 16 (+3) CON 16 (+3) INT 6 (-2) WIS 14 (+2) CHA 10 (+0)\nSolar Precision. While in direct sunlight, the Sunhound's attacks cannot miss unless it rolls a natural 1. Its attack rolls automatically hit on any other result.\nSunbathed (Passive). While in direct sunlight at the start of its turn, the Sunhound regains 3 hit points and its next attack deals an additional 1d6 radiant damage.\nACTIONS\nBite. Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 2d6+3 piercing damage. If this attack hits, the Sunhound may make one additional Companion ability action as a bonus action.\nThrow. The Sunhound grabs a creature within 5 ft. (Strength DC 14) and hurls it up to 25 ft. If it lands adjacent to an ally, that ally can immediately make one weapon attack against the thrown creature as a reaction.\nSunlight (1/Day, Direct Sunlight Only). The Sunhound channels solar energy, fully restoring its own hit points and restoring 15 hit points to its bonded companion.\nCompanion Note: Loyalty is unconditional. Effectiveness in caves is less so.",
     "originalText": "Sunhound — Beast Companion Medium Beast, lawful neutral"
   },
   {
@@ -86,7 +86,7 @@
       "Beast",
       "Medium"
     ],
-    "description": "Armor Class 13 Hit Points 60 (8d8+24) Speed 50 ft.\nSTR 16 (+3) DEX 16 (+3) CON 16 (+3) INT 7 (-2) WIS 14 (+2) CHA 10 (+0)\nMoonlit Vigor. While in direct moonlight, whenever the Moonwolf uses a companion ability, it regains 5 hit points.\nACTIONS\nSwipe. Melee Weapon Attack: +6 to hit, reach 5 ft., up to 4 targets in a line. Hit: 1d8+3 slashing damage. Each target hit may be pushed 5 ft. in any direction of your choice.\nHowl. The Moonwolf howls. All hostile creatures within 30 ft. that can hear it must succeed on a DC 13 Wisdom saving throw or have disadvantage on attack rolls against targets other than the Moonwolf until the end of their next turn.\nMoonlight (1/Day, Moonlight Only). The Moonwolf grants you or one ally within 30 ft. two additional bonus actions to use before the end of their next turn.",
+    "description": "Armor Class 13 Hit Points 60 (8d8+24) Speed 50 ft.\nSTR 16 (+3) DEX 16 (+3) CON 16 (+3) INT 7 (-2) WIS 14 (+2) CHA 10 (+0)\nMoonlit Vigor. While in direct moonlight, whenever the Moonwolf uses a companion ability, it regains 5 hit points.\nACTIONS\nCrunch. Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 2d10+3 piercing damage. On a roll of 18 or higher, the target is grappled (escape DC 14). On a critical hit, damage doubles.\nThrow. The Moonwolf grabs a creature within 5 ft. (Strength DC 13) and hurls it up to 25 ft. If it lands adjacent to an ally, that ally can immediately make one weapon attack against the thrown creature as a reaction.\nMoonlight (1/Day, Moonlight Only). The Moonwolf grants you or one ally within 30 ft. two additional bonus actions to use before the end of their next turn.",
     "originalText": "Moonwolf — Beast Companion Medium Beast, neutral"
   },
   {
@@ -1073,6 +1073,7 @@
       "Whisper Snake",
       "Blood Snake",
       "Blood Cobra",
+      "Brood Snake",
       "Donkey",
       "High Bear",
       "Goblin",
@@ -1089,6 +1090,7 @@
       "Whisper Snake",
       "Blood Snake",
       "Blood Cobra",
+      "Brood Snake",
       "Donkey",
       "High Bear",
       "Goblin",
@@ -1098,7 +1100,7 @@
       "Bonus Action"
     ],
     "description": "Melee Weapon Attack: move up to 15 ft. and attack. +STR/DEX to hit, reach 5 ft., one target. Hit: 1d8 + mod piercing damage. On a hit, gain a bonus action to use one other companion ability (not Bite).",
-    "originalText": "Action: Action | Used By: Sunhound, Whisper Snake, Blood Snake, Blood Cobra, Donkey, High Bear, Goblin, Funk, Hellhound, Kobold",
+    "originalText": "Action: Action | Used By: Sunhound, Whisper Snake, Blood Snake, Blood Cobra, Brood Snake, Donkey, High Bear, Goblin, Funk, Hellhound, Kobold",
     "source": "abilities_v2_dnd5e.docx"
   },
   {
@@ -1112,7 +1114,7 @@
     "action": "Action",
     "usedBy": [
       "Clockodile",
-      "Moonwolf",
+      "Moonwolf (S2)",
       "Hellhound"
     ],
     "tags": [
@@ -1121,11 +1123,11 @@
       "Companion Ability",
       "Action",
       "Clockodile",
-      "Moonwolf",
+      "Moonwolf (S2)",
       "Hellhound"
     ],
     "description": "Melee Weapon Attack: +STR to hit, reach 5 ft., one target. Hit: 2d10 + mod piercing damage. On a roll of 18+, the target is grappled (escape DC = 8 + prof + STR). On a critical hit, damage doubles.",
-    "originalText": "Action: Action | Used By: Clockodile, Moonwolf, Hellhound",
+    "originalText": "Action: Action | Used By: Clockodile, Moonwolf (S2), Hellhound",
     "source": "abilities_v2_dnd5e.docx"
   },
   {
@@ -1165,6 +1167,7 @@
     "action": "Action",
     "usedBy": [
       "Goblin (S3)",
+      "Harpy",
       "Harpy (S3)"
     ],
     "tags": [
@@ -1173,11 +1176,12 @@
       "Companion Ability",
       "Action",
       "Goblin (S3)",
+      "Harpy",
       "Harpy (S3)",
       "Bonus Action"
     ],
     "description": "Melee Weapon Attack: +STR/DEX to hit, reach 5 ft., one target. Hit: 2d8 + mod damage. On a hit, all allies adjacent to the target may make one weapon attack against it as a bonus action.",
-    "originalText": "Action: Action | Used By: Goblin (S3), Harpy (S3)",
+    "originalText": "Action: Action | Used By: Goblin (S3), Harpy, Harpy (S3)",
     "source": "abilities_v2_dnd5e.docx"
   },
   {
@@ -1216,7 +1220,6 @@
     "requiresAttunement": false,
     "action": "Action",
     "usedBy": [
-      "Harpy",
       "Scrooge",
       "Owlrat"
     ],
@@ -1225,13 +1228,11 @@
       "Converted",
       "Companion Ability",
       "Action",
-      "Harpy",
       "Scrooge",
-      "Owlrat",
-      "Bonus Action"
+      "Owlrat"
     ],
     "description": "Melee Weapon Attack: +DEX to hit, reach 5 ft., one target. Hit: 2d4 + mod piercing damage plus blind (DC 13 Con negates). On a critical hit, gain a bonus action to use another companion ability.",
-    "originalText": "Action: Action | Used By: Harpy, Scrooge, Owlrat",
+    "originalText": "Action: Action | Used By: Scrooge, Owlrat",
     "source": "abilities_v2_dnd5e.docx"
   },
   {
@@ -1293,7 +1294,6 @@
     "action": "Action",
     "usedBy": [
       "Eaglebear",
-      "Moonwolf (S2)",
       "High Bear"
     ],
     "tags": [
@@ -1302,11 +1302,10 @@
       "Companion Ability",
       "Action",
       "Eaglebear",
-      "Moonwolf (S2)",
       "High Bear"
     ],
     "description": "Melee Weapon Attack: +STR to hit, reach 5 ft., up to 4 targets in a line. Hit: 2d6 + mod slashing damage. Each target may be pushed 5 ft.",
-    "originalText": "Action: Action | Used By: Eaglebear, Moonwolf (S2), High Bear",
+    "originalText": "Action: Action | Used By: Eaglebear, High Bear",
     "source": "abilities_v2_dnd5e.docx"
   },
   {
@@ -1862,7 +1861,6 @@
     "requiresAttunement": false,
     "action": "Action",
     "usedBy": [
-      "Moonwolf (S2)",
       "Monkeyfish",
       "Kobold"
     ],
@@ -1871,12 +1869,11 @@
       "Converted",
       "Companion Ability",
       "Action",
-      "Moonwolf (S2)",
       "Monkeyfish",
       "Kobold"
     ],
     "description": "All hostile creatures within 30 ft. have disadvantage on attacks against targets other than this companion until the start of its next turn.",
-    "originalText": "Action: Action | Used By: Moonwolf (S2), Monkeyfish, Kobold",
+    "originalText": "Action: Action | Used By: Monkeyfish, Kobold",
     "source": "abilities_v2_dnd5e.docx"
   },
   {
@@ -2114,7 +2111,7 @@
       "Harpy",
       "Catapult Turtle (S2)",
       "Sunhound",
-      "Moonwolf (S3)"
+      "Moonwolf"
     ],
     "tags": [
       "D&D 5e",
@@ -2125,11 +2122,11 @@
       "Harpy",
       "Catapult Turtle (S2)",
       "Sunhound",
-      "Moonwolf (S3)",
+      "Moonwolf",
       "Bonus Action"
     ],
     "description": "Grab a creature within 5 ft. (Str DC 13) and hurl it up to 25 ft. If it lands adjacent to an ally, that ally may make one weapon attack as a bonus action.",
-    "originalText": "Action: Action | Used By: Dwarf, Harpy, Catapult Turtle (S2), Sunhound, Moonwolf (S3)",
+    "originalText": "Action: Action | Used By: Dwarf, Harpy, Catapult Turtle (S2), Sunhound, Moonwolf",
     "source": "abilities_v2_dnd5e.docx"
   },
   {

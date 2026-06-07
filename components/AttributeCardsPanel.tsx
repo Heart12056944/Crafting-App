@@ -8,8 +8,19 @@ export type AttributeCardData = {
   id: number;
   name: string;
   tags: string[];
+  rarity: AttributeRarity;
   score: number;
   desc: string;
+};
+
+type AttributeRarity = "Common" | "Uncommon" | "Rare" | "Epic" | "Legendary";
+
+const ATTRIBUTE_RARITY_WEIGHTS: Record<AttributeRarity, number> = {
+  Common: 14,
+  Uncommon: 12,
+  Rare: 10,
+  Epic: 7,
+  Legendary: 3,
 };
 
 const ATTRIBUTE_CARDS = attributeCardsJson as AttributeCardData[];
@@ -27,24 +38,116 @@ type AttributeAssignment = {
   card_id: number;
 };
 
-type AttributeRollLimit = {
-  campaign_id: string;
-  character_id: string;
-  max_rolls: number;
-};
-
 type VisibilityRow = {
   campaign_id: string;
   card_id: number;
   is_visible: boolean;
 };
 
-const TAG_COLORS: Record<string, string> = {
-  Cursed: "#8B0000",
-  Passive: "#2d4a2d",
-  Legendary: "#7B5800",
-  Armor: "#1a3a5c",
+type VetoRow = {
+  campaign_id: string;
+  character_id: string;
+  used: boolean;
 };
+
+const TAG_COLORS: Record<string, string> = {
+  Adopted: "#4b153f",
+  Aethros: "#105b63",
+  "Arcane School": "#4f3b8f",
+  Armada: "#2f2a4f",
+  Armor: "#1a3a5c",
+  Background: "#5b4a2c",
+  Barbarian: "#333",
+  Bard: "#333",
+  Basic: "#3d5a3d",
+  CCO: "#7b4a12",
+  Class: "#4f3b8f",
+  "Class Feature": "#333",
+  Cleric: "#333",
+  Common: "#2f4f2f",
+  Crafting: "#29411e",
+  "Crafting — Alchemist": "#183f4a",
+  "Crafting — Leatherworker": "#384313",
+  "Crafting — Smith": "#5b3a16",
+  "Crafting — Tinker": "#163d3b",
+  "Crafting — Weaver": "#4b153f",
+  Cursed: "#8B0000",
+  "DM Granted": "#5b3b8c",
+  Destiny: "#a67c00",
+  Dragon: "#7b2f24",
+  Druid: "#333",
+  Epic: "#5b2f8f",
+  Feature: "#23524d",
+  Fighter: "#333",
+  Legendary: "#9b6b16",
+  Leviathan: "#105b63",
+  Monk: "#333",
+  Navy: "#25466b",
+  Normal: "#3d5a3d",
+  "Order of the Undying Vigil": "#333",
+  "Order of the Undying Vigil — Barbarian": "#333",
+  "Order of the Undying Vigil — Cleric": "#333",
+  "Order of the Undying Vigil — Monk": "#333",
+  "Order of the Undying Vigil — Paladin": "#333",
+  "Order of the Undying Vigil — Ranger": "#333",
+  Paladin: "#333",
+  Passive: "#2d4a2d",
+  Race: "#35405c",
+  "Race Base Score": "#35405c",
+  Ranger: "#333",
+  Rare: "#1f4f8f",
+  "Religion — Eternal Flame": "#333",
+  "Religion — Khevarai Nature Spirits": "#315c38",
+  "Religion — Minor Sea Gods": "#333",
+  "Religion — Order of the Undying Vigil": "#7a4f19",
+  "Religion — Remnant Orders": "#333",
+  "Religion — The Deep Current": "#105b63",
+  "Religion — The Eternal Flame": "#9b3a16",
+  "Religion — The Ironbound": "#59616b",
+  "Religion — The Vaelthari Triad": "#333",
+  "Religion — The Weaver": "#534489",
+  Rogue: "#333",
+  Romley: "#6b5b2a",
+  Sea: "#1f6f8b",
+  Sorcerer: "#333",
+  Tanky: "#5a3b2c",
+  "The Waking": "#3d234d",
+  Uncommon: "#1f5f3a",
+  Undead: "#4a5a4a",
+  Verath: "#9b5c2e",
+  Warlock: "#333",
+  Weak: "#5c4b3a",
+  Wizard: "#333",
+};
+
+
+function rollAttributeRarity(): AttributeRarity {
+  const entries = Object.entries(ATTRIBUTE_RARITY_WEIGHTS) as [AttributeRarity, number][];
+  const totalWeight = entries.reduce((sum, [, weight]) => sum + weight, 0);
+  let roll = Math.random() * totalWeight;
+
+  for (const [rarity, weight] of entries) {
+    roll -= weight;
+    if (roll <= 0) return rarity;
+  }
+
+  return "Common";
+}
+
+function pickWeightedAttributeCard(pool: AttributeCardData[]): AttributeCardData | null {
+  if (pool.length === 0) return null;
+
+  for (let attempt = 0; attempt < 10; attempt += 1) {
+    const rarity = rollAttributeRarity();
+    const rarityPool = pool.filter((card) => card.rarity === rarity);
+    if (rarityPool.length > 0) {
+      return rarityPool[Math.floor(Math.random() * rarityPool.length)];
+    }
+  }
+
+  return pool[Math.floor(Math.random() * pool.length)];
+}
+
 
 function scoreColor(score: number) {
   if (score > 5) return "#4caf7a";
@@ -131,9 +234,11 @@ export default function AttributeCardsPanel({
   const [tag, setTag] = useState("All");
   const [visibility, setVisibility] = useState<Record<number, boolean>>({});
   const [assignments, setAssignments] = useState<AttributeAssignment[]>([]);
-  const [rollLimits, setRollLimits] = useState<Record<string, number>>({});
+  const [vetoRows, setVetoRows] = useState<VetoRow[]>([]);
   const [selectedCharacterId, setSelectedCharacterId] = useState("");
   const [drawPool, setDrawPool] = useState<AttributeCardData[]>([]);
+  const [manualAssignCharacterId, setManualAssignCharacterId] = useState("");
+  const [manualAssignCardId, setManualAssignCardId] = useState("");
   const [message, setMessage] = useState("");
 
   const activeCharacters = useMemo(
@@ -145,7 +250,10 @@ export default function AttributeCardsPanel({
     if (!selectedCharacterId && activeCharacters[0]?.id) {
       setSelectedCharacterId(activeCharacters[0].id);
     }
-  }, [activeCharacters, selectedCharacterId]);
+    if (!manualAssignCharacterId && activeCharacters[0]?.id) {
+      setManualAssignCharacterId(activeCharacters[0].id);
+    }
+  }, [activeCharacters, selectedCharacterId, manualAssignCharacterId]);
 
   async function loadAttributeData() {
     if (!campaignId) return;
@@ -153,15 +261,15 @@ export default function AttributeCardsPanel({
     const [
       { data: visibilityRows, error: visibilityError },
       { data: assignmentRows, error: assignmentError },
-      { data: limitRows, error: limitError },
+      { data: vetoData, error: vetoError },
     ] = await Promise.all([
       supabase.from("campaign_attribute_visibility").select("campaign_id, card_id, is_visible").eq("campaign_id", campaignId),
       supabase.from("campaign_character_attributes").select("id, campaign_id, character_id, card_id").eq("campaign_id", campaignId),
-      supabase.from("campaign_character_attribute_roll_limits").select("campaign_id, character_id, max_rolls").eq("campaign_id", campaignId),
+      supabase.from("campaign_character_attribute_vetoes").select("campaign_id, character_id, used").eq("campaign_id", campaignId),
     ]);
 
-    if (visibilityError || assignmentError || limitError) {
-      setMessage(visibilityError?.message || assignmentError?.message || limitError?.message || "Failed to load attributes.");
+    if (visibilityError || assignmentError || vetoError) {
+      setMessage(visibilityError?.message || assignmentError?.message || vetoError?.message || "Failed to load attributes.");
       return;
     }
 
@@ -170,14 +278,9 @@ export default function AttributeCardsPanel({
       nextVisibility[row.card_id] = row.is_visible;
     });
 
-    const nextRollLimits: Record<string, number> = {};
-    (limitRows as AttributeRollLimit[] | null)?.forEach((row) => {
-      nextRollLimits[row.character_id] = row.max_rolls;
-    });
-
     setVisibility(nextVisibility);
     setAssignments((assignmentRows as AttributeAssignment[] | null) || []);
-    setRollLimits(nextRollLimits);
+    setVetoRows((vetoData as VetoRow[] | null) || []);
   }
 
   useEffect(() => {
@@ -189,7 +292,7 @@ export default function AttributeCardsPanel({
       .channel(`campaign-attributes-${campaignId}`)
       .on("postgres_changes", { event: "*", schema: "public", table: "campaign_attribute_visibility", filter: `campaign_id=eq.${campaignId}` }, loadAttributeData)
       .on("postgres_changes", { event: "*", schema: "public", table: "campaign_character_attributes", filter: `campaign_id=eq.${campaignId}` }, loadAttributeData)
-      .on("postgres_changes", { event: "*", schema: "public", table: "campaign_character_attribute_roll_limits", filter: `campaign_id=eq.${campaignId}` }, loadAttributeData)
+      .on("postgres_changes", { event: "*", schema: "public", table: "campaign_character_attribute_vetoes", filter: `campaign_id=eq.${campaignId}` }, loadAttributeData)
       .subscribe();
 
     return () => {
@@ -218,31 +321,6 @@ export default function AttributeCardsPanel({
       .filter((card) => includeHidden || isCardVisible(card.id, visibility));
   }
 
-  function characterRollLimit(characterId: string) {
-    return rollLimits[characterId] ?? 2;
-  }
-
-  async function updateCharacterRollLimit(characterId: string, nextLimit: number) {
-    if (!adminUnlocked || !campaignId) return;
-
-    const safeLimit = Math.max(0, nextLimit);
-    setRollLimits((current) => ({ ...current, [characterId]: safeLimit }));
-
-    const { error } = await supabase.from("campaign_character_attribute_roll_limits").upsert(
-      {
-        campaign_id: campaignId,
-        character_id: characterId,
-        max_rolls: safeLimit,
-      },
-      { onConflict: "campaign_id,character_id" }
-    );
-
-    if (error) {
-      setMessage(error.message);
-      loadAttributeData();
-    }
-  }
-
   async function toggleVisibility(card: AttributeCardData) {
     if (!adminUnlocked || !campaignId) return;
 
@@ -264,7 +342,56 @@ export default function AttributeCardsPanel({
     }
   }
 
-  function drawOne() {
+  function tagVisibilityStats(tagName: string) {
+    const taggedCards = ATTRIBUTE_CARDS.filter((card) => card.tags.includes(tagName));
+    const visibleCount = taggedCards.filter((card) => isCardVisible(card.id, visibility)).length;
+
+    return {
+      total: taggedCards.length,
+      visible: visibleCount,
+      hidden: taggedCards.length - visibleCount,
+      allVisible: taggedCards.length > 0 && visibleCount === taggedCards.length,
+    };
+  }
+
+  async function setTagVisibility(tagName: string, isVisible: boolean) {
+    if (!adminUnlocked || !campaignId) return;
+
+    const taggedCards = ATTRIBUTE_CARDS.filter((card) => card.tags.includes(tagName));
+    if (taggedCards.length === 0) return;
+
+    const rows = taggedCards.map((card) => ({
+      campaign_id: campaignId,
+      card_id: card.id,
+      is_visible: isVisible,
+    }));
+
+    setVisibility((current) => {
+      const next = { ...current };
+      taggedCards.forEach((card) => {
+        next[card.id] = isVisible;
+      });
+      return next;
+    });
+
+    const { error } = await supabase
+      .from("campaign_attribute_visibility")
+      .upsert(rows, { onConflict: "campaign_id,card_id" });
+
+    if (error) {
+      setMessage(error.message);
+      loadAttributeData();
+      return;
+    }
+
+    setMessage(`${tagName} attributes are now ${isVisible ? "visible" : "hidden"}.`);
+  }
+
+  function hasVetoUsed(characterId: string) {
+    return vetoRows.some((row) => row.character_id === characterId && row.used);
+  }
+
+  function drawOne(excludeCardIds: number[] = []) {
     setMessage("");
     if (!selectedCharacterId) {
       setMessage("Choose a character first.");
@@ -272,25 +399,80 @@ export default function AttributeCardsPanel({
     }
 
     const owned = assignments.filter((assignment) => assignment.character_id === selectedCharacterId).map((assignment) => assignment.card_id);
-    const maxRolls = characterRollLimit(selectedCharacterId);
-    if (owned.length >= maxRolls) {
-      setMessage(`This character has already rolled their current maximum of ${maxRolls} attribute card${maxRolls === 1 ? "" : "s"}.`);
+    if (owned.length >= 2) {
+      setMessage("This character already has the maximum of 2 attribute cards.");
       setDrawPool([]);
       return;
     }
 
-    const pool = ATTRIBUTE_CARDS.filter((card) => isCardVisible(card.id, visibility) && !owned.includes(card.id));
-    const shuffled = [...pool].sort(() => Math.random() - 0.5);
-    setDrawPool(shuffled.slice(0, 1));
+    const pool = ATTRIBUTE_CARDS.filter(
+      (card) =>
+        isCardVisible(card.id, visibility) &&
+        !owned.includes(card.id) &&
+        !excludeCardIds.includes(card.id)
+    );
+
+    if (pool.length === 0) {
+      setMessage("No visible attribute cards are available to draw.");
+      setDrawPool([]);
+      return;
+    }
+
+    const drawn = pickWeightedAttributeCard(pool);
+    if (!drawn) {
+      setMessage("No visible attribute cards are available to draw.");
+      setDrawPool([]);
+      return;
+    }
+
+    setDrawPool([drawn]);
+  }
+
+  async function vetoDrawnCard() {
+    if (!campaignId || !selectedCharacterId || drawPool.length === 0) return;
+
+    const selectedCharacter = activeCharacters.find((character) => character.id === selectedCharacterId);
+    if (!selectedCharacter) {
+      setMessage("Choose a valid campaign character before vetoing.");
+      setSelectedCharacterId(activeCharacters[0]?.id || "");
+      return;
+    }
+
+    if (hasVetoUsed(selectedCharacter.id)) {
+      setMessage("This character has already used their one attribute veto.");
+      return;
+    }
+
+    const vetoedCardId = drawPool[0].id;
+
+    const { error } = await supabase.from("campaign_character_attribute_vetoes").upsert(
+      {
+        campaign_id: campaignId,
+        character_id: selectedCharacter.id,
+        used: true,
+      },
+      { onConflict: "campaign_id,character_id" }
+    );
+
+    if (error) {
+      setMessage(error.message);
+      return;
+    }
+
+    setVetoRows((current) => [
+      ...current.filter((row) => row.character_id !== selectedCharacter.id),
+      { campaign_id: campaignId, character_id: selectedCharacter.id, used: true },
+    ]);
+
+    drawOne([vetoedCardId]);
   }
 
   async function assignCard(card: AttributeCardData) {
     if (!campaignId || !selectedCharacterId) return;
 
     const owned = assignments.filter((assignment) => assignment.character_id === selectedCharacterId);
-    const maxRolls = characterRollLimit(selectedCharacterId);
-    if (owned.length >= maxRolls) {
-      setMessage(`This character has already rolled their current maximum of ${maxRolls} attribute card${maxRolls === 1 ? "" : "s"}.`);
+    if (owned.length >= 2) {
+      setMessage("This character already has the maximum of 2 attribute cards.");
       return;
     }
 
@@ -312,6 +494,43 @@ export default function AttributeCardsPanel({
 
     setMessage(`${card.name} assigned.`);
     setDrawPool([]);
+    loadAttributeData();
+  }
+
+  async function assignSpecificCard() {
+    if (!adminUnlocked || !campaignId || !manualAssignCharacterId || !manualAssignCardId) return;
+
+    const cardId = Number(manualAssignCardId);
+    const card = ATTRIBUTE_CARDS.find((entry) => entry.id === cardId);
+    if (!card) {
+      setMessage("Choose an attribute card first.");
+      return;
+    }
+
+    const owned = assignments.filter((assignment) => assignment.character_id === manualAssignCharacterId);
+    if (owned.length >= 2) {
+      setMessage("That character already has the maximum of 2 attribute cards.");
+      return;
+    }
+
+    if (owned.some((assignment) => assignment.card_id === cardId)) {
+      setMessage("That character already has this attribute.");
+      return;
+    }
+
+    const { error } = await supabase.from("campaign_character_attributes").insert({
+      campaign_id: campaignId,
+      character_id: manualAssignCharacterId,
+      card_id: cardId,
+    });
+
+    if (error) {
+      setMessage(error.message);
+      return;
+    }
+
+    setManualAssignCardId("");
+    setMessage(`${card.name} assigned by GM.`);
     loadAttributeData();
   }
 
@@ -339,7 +558,7 @@ export default function AttributeCardsPanel({
         <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="font-serif text-3xl font-bold">Attributes</h2>
-            <p className="text-sm">Browse attributes, choose which character is drawing, and permanently track each character’s rolled attributes.</p>
+            <p className="text-sm">Browse attributes, draw one visible card at a time, and track up to 2 cards per character. Each character has one veto.</p>
           </div>
           <div className="flex flex-wrap gap-2">
             {(["browse", "draw", "characters"] as const).map((tab) => (
@@ -359,6 +578,41 @@ export default function AttributeCardsPanel({
 
       {subTab === "browse" && (
         <div className="space-y-4">
+          {adminUnlocked && (
+            <div className="rounded-xl border border-[#9a7b45] bg-[#f2dfb9] p-4 text-[#251b10]">
+              <div className="mb-3">
+                <h3 className="font-serif text-xl font-bold">GM Tag Visibility</h3>
+                <p className="text-sm">Toggle entire attribute groups on or off without opening each card.</p>
+              </div>
+
+              <div className="flex flex-wrap gap-2">
+                {allTags.filter((tagName) => tagName !== "All").map((tagName) => {
+                  const stats = tagVisibilityStats(tagName);
+
+                  return (
+                    <div key={tagName} className="flex items-center gap-2 rounded-lg border border-[#9a7b45] bg-[#fff0c7] px-3 py-2">
+                      <span
+                        className="rounded border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#e8d5a3]"
+                        style={{ background: TAG_COLORS[tagName] || "#333", borderColor: "rgba(200,170,100,0.3)" }}
+                      >
+                        {tagName}
+                      </span>
+                      <span className="text-xs">
+                        {stats.visible}/{stats.total} visible
+                      </span>
+                      <button
+                        onClick={() => setTagVisibility(tagName, !stats.allVisible)}
+                        className={`rounded px-2 py-1 text-xs font-bold ${stats.allVisible ? "bg-[#5b1f1f] text-[#fff0c7]" : "bg-[#1f4d2e] text-[#fff0c7]"}`}
+                      >
+                        {stats.allVisible ? "Hide Tag" : "Show Tag"}
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
           <div className="flex flex-col gap-3 rounded-xl border border-[#9a7b45] bg-[#f2dfb9] p-4 text-[#251b10] md:flex-row">
             <input
               className="min-w-0 flex-1 rounded border border-[#9a7b45] bg-[#fff0c7] p-2"
@@ -396,77 +650,85 @@ export default function AttributeCardsPanel({
         <div className="space-y-4">
           <div className="rounded-xl border border-[#9a7b45] bg-[#f2dfb9] p-4 text-[#251b10]">
             <label className="block space-y-1">
-              <strong>Drawing Character</strong>
+              <strong>Character</strong>
               <select className="w-full rounded border border-[#9a7b45] bg-[#fff0c7] p-2" value={selectedCharacterId} onChange={(event) => setSelectedCharacterId(event.target.value)}>
                 {activeCharacters.map((character) => (
-                  <option key={character.id} value={character.id}>{character.name} ({characterCards(character.id).length}/{characterRollLimit(character.id)})</option>
+                  <option key={character.id} value={character.id}>{character.name} ({characterCards(character.id).length}/2)</option>
                 ))}
               </select>
             </label>
-
-            {adminUnlocked && selectedCharacterId && (
-              <div className="mt-3 rounded border border-[#9a7b45] bg-[#fff0c7] p-3">
-                <div className="flex flex-wrap items-center gap-3">
-                  <strong>Roll Limit</strong>
-                  <button
-                    onClick={() => updateCharacterRollLimit(selectedCharacterId, characterRollLimit(selectedCharacterId) - 1)}
-                    className="rounded bg-[#5b1f1f] px-3 py-1 text-[#fff0c7]"
-                  >
-                    -
-                  </button>
-                  <span className="min-w-8 text-center font-bold">{characterRollLimit(selectedCharacterId)}</span>
-                  <button
-                    onClick={() => updateCharacterRollLimit(selectedCharacterId, characterRollLimit(selectedCharacterId) + 1)}
-                    className="rounded bg-[#1f4d2e] px-3 py-1 text-[#fff0c7]"
-                  >
-                    +
-                  </button>
-                  <span className="text-sm italic">GM can increase/decrease how many attributes this character may roll.</span>
-                </div>
-              </div>
-            )}
-
-            <p className="mt-2 text-sm italic">
-              Players choose which character they are drawing for. The card is drawn only from currently visible attributes.
-            </p>
-            <button onClick={drawOne} className="mt-3 rounded bg-[#4b3115] px-4 py-2 font-serif text-[#fff0c7]">
+            <button onClick={() => drawOne()} className="mt-3 rounded bg-[#4b3115] px-4 py-2 font-serif text-[#fff0c7]">
               Draw 1 Visible Card
             </button>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-            {drawPool.map((card) => <Card key={card.id} card={card} onClick={() => assignCard(card)} />)}
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            {drawPool.map((card) => (
+              <div key={card.id} className="space-y-3">
+                <Card card={card} />
+                <div className="flex flex-wrap gap-2">
+                  <button onClick={() => assignCard(card)} className="rounded bg-[#4b3115] px-4 py-2 font-serif text-[#fff0c7]">
+                    Keep Attribute
+                  </button>
+                  <button
+                    onClick={vetoDrawnCard}
+                    disabled={hasVetoUsed(selectedCharacterId)}
+                    className="rounded bg-[#7a3f00] px-4 py-2 font-serif text-[#fff0c7] disabled:opacity-50"
+                  >
+                    Veto & Draw Again
+                  </button>
+                </div>
+                <p className="text-sm text-[#251b10]">
+                  Veto: {hasVetoUsed(selectedCharacterId) ? "Used" : "Available"}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       )}
 
       {subTab === "characters" && (
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+        <div className="space-y-4">
+          {adminUnlocked && (
+            <div className="rounded-xl border border-[#9a7b45] bg-[#f2dfb9] p-4 text-[#251b10]">
+              <h3 className="mb-3 text-xl font-bold">GM: Assign Attribute</h3>
+              <div className="grid grid-cols-1 gap-3 md:grid-cols-[1fr_1fr_auto]">
+                <select
+                  className="rounded border border-[#9a7b45] bg-[#fff0c7] p-2"
+                  value={manualAssignCharacterId}
+                  onChange={(event) => setManualAssignCharacterId(event.target.value)}
+                >
+                  {activeCharacters.map((character) => (
+                    <option key={character.id} value={character.id}>
+                      {character.name} ({characterCards(character.id, true).length}/2)
+                    </option>
+                  ))}
+                </select>
+                <select
+                  className="rounded border border-[#9a7b45] bg-[#fff0c7] p-2"
+                  value={manualAssignCardId}
+                  onChange={(event) => setManualAssignCardId(event.target.value)}
+                >
+                  <option value="">Choose attribute...</option>
+                  {ATTRIBUTE_CARDS.map((card) => (
+                    <option key={card.id} value={card.id}>
+                      {card.name} {isCardVisible(card.id, visibility) ? "" : "(hidden)"}
+                    </option>
+                  ))}
+                </select>
+                <button onClick={assignSpecificCard} className="rounded bg-[#4b3115] px-4 py-2 font-serif text-[#fff0c7]">
+                  Assign
+                </button>
+              </div>
+            </div>
+          )}
+
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
           {activeCharacters.map((character) => {
             const cards = characterCards(character.id, adminUnlocked);
             return (
               <div key={character.id} className="rounded-xl border border-[#9a7b45] bg-[#f2dfb9] p-4 text-[#251b10]">
-                <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
-                  <h3 className="text-xl font-bold">{character.name} <span className="text-sm font-normal">({cards.length}/{characterRollLimit(character.id)})</span></h3>
-                  {adminUnlocked && (
-                    <div className="flex items-center gap-2 text-sm">
-                      <span className="font-bold">Roll limit</span>
-                      <button
-                        onClick={() => updateCharacterRollLimit(character.id, characterRollLimit(character.id) - 1)}
-                        className="rounded bg-[#5b1f1f] px-2 py-1 text-[#fff0c7]"
-                      >
-                        -
-                      </button>
-                      <span className="min-w-6 text-center font-bold">{characterRollLimit(character.id)}</span>
-                      <button
-                        onClick={() => updateCharacterRollLimit(character.id, characterRollLimit(character.id) + 1)}
-                        className="rounded bg-[#1f4d2e] px-2 py-1 text-[#fff0c7]"
-                      >
-                        +
-                      </button>
-                    </div>
-                  )}
-                </div>
+                <h3 className="mb-3 text-xl font-bold">{character.name} <span className="text-sm font-normal">({cards.length}/2)</span></h3>
                 {cards.length === 0 ? (
                   <p className="text-sm italic">No attributes assigned.</p>
                 ) : (
@@ -492,6 +754,7 @@ export default function AttributeCardsPanel({
               </div>
             );
           })}
+          </div>
         </div>
       )}
     </div>
