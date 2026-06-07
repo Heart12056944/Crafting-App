@@ -5287,5 +5287,537 @@
     ],
     "score": 3,
     "desc": "You have gotten sand in exactly one boot too many and you have reached your limit.\n\nBENEFITS: You ignore difficult terrain caused by sand, dirt, gravel, or loose earth entirely. You are immune to the Blinded condition caused by dust, sand, or thrown particulate matter. You always know the location of the nearest solid stone or wooden surface — your body seeks it constantly. You have Resistance to Earth and Bludgeoning damage from earthen sources. DRAWBACKS: You must stop to complain about sand whenever you encounter it in an inconvenient location — which is always. Walking on a beach deals 1 psychic damage per minute from sustained irritation. Desert-adjacent cultures, coastal settlements, and anyone who finds the beach relaxing think you are deeply exhausting. You instinctively kick sand dunes, which has consequences."
+  },
+  {
+    "id": 3723,
+    "name": "Old Money",
+    "tags": ["Passive", "Background", "DM Granted", "Aethros"],
+    "score": 0,
+    "desc": "Your family's wealth is older than the debts it created. Begin the campaign with 800 gold. You gain advantage on Charisma checks when dealing with noble families, merchants, or institutions that recognise your family name. You owe someone a favour — the DM decides who."
+  },
+  {
+    "id": 3724,
+    "name": "Well Off",
+    "tags": ["Passive", "Background", "DM Granted", "Aethros"],
+    "score": 0,
+    "desc": "You have never had to think about the price of dinner. Begin the campaign with 500 gold. You start with one Common or Uncommon item of your choice from the item list, subject to DM approval. People of lower station are inclined to trust your intentions."
+  },
+  {
+    "id": 3725,
+    "name": "Comfortable",
+    "tags": ["Passive", "Background", "Aethros"],
+    "score": 0,
+    "desc": "You grew up with enough. You know what enough looks like. Begin the campaign with 300 gold. Once per long rest, you may declare that you know a contact in the current settlement — a merchant, a tavern-keeper, a guild member. They owe you nothing. They will, however, talk."
+  },
+  {
+    "id": 3726,
+    "name": "Working Class",
+    "tags": ["Passive", "Background", "Aethros"],
+    "score": 0,
+    "desc": "You have been tired before. It has not stopped you yet. Begin the campaign with 150 gold. You have proficiency in one additional tool of your choice — the trade your family worked. You have advantage on Constitution saving throws against exhaustion from labour, travel, or hardship."
+  },
+  {
+    "id": 3727,
+    "name": "Struggling",
+    "tags": ["Passive", "Background", "Aethros"],
+    "score": 0,
+    "desc": "You know exactly how much a loaf of bread costs. Down to the copper. Begin the campaign with 50 gold. You have advantage on Perception checks in markets, docks, and working-class districts — you know what normal looks like here. You can subsist on significantly less food and water than most without penalty."
+  },
+  {
+    "id": 3728,
+    "name": "Destitute",
+    "tags": ["Passive", "Background", "DM Granted", "Aethros"],
+    "score": 0,
+    "desc": "You have nothing. You have learned that nothing is surprisingly portable. Begin the campaign with 10 gold and one item worth 25 gold or less — everything you own. Once per session, you may find something useful in a location others have overlooked: discarded equipment, overlooked coins, forgotten supplies. The DM determines what and how much."
+  },
+  {
+    "id": 3729,
+    "name": "Disgraced Noble",
+    "tags": ["Passive", "Background", "DM Granted", "Aethros"],
+    "score": 0,
+    "desc": "You were someone once. The court has not forgotten. Neither have you. Begin the campaign with 100 gold but no equipment beyond basics — your former assets are frozen, seized, or simply gone. Noble families still recognise your bearing. Some will help you. Some will not. You have advantage on Insight checks against nobility and social institutions."
+  },
+  {
+    "id": 3730,
+    "name": "Self-Made",
+    "tags": ["Passive", "Background", "Aethros"],
+    "score": 0,
+    "desc": "Every coin you have, you earned. This is a statement of principle. Begin the campaign with 250 gold. Once per long rest, when you succeed on a Persuasion or Deception check involving commerce, trade, or employment, you gain an additional 1d10 x 10 gold from the interaction through some form of commercial opportunity the DM describes."
+  },
+  {
+    "id": 3731,
+    "name": "Sailor-Born",
+    "tags": ["Passive", "Background", "Aethros"],
+    "score": 0,
+    "desc": "You were raised on a deck. The sea is not a setting for you. It is a home. Begin the campaign with 100 gold and a sailor's kit. You have advantage on Athletics and Acrobatics checks aboard any vessel. You cannot become seasick. You always know which direction is north when outdoors."
+  },
+  {
+    "id": 3732,
+    "name": "Orphan of the Sea",
+    "tags": ["Passive", "Background", "DM Granted", "Aethros"],
+    "score": 0,
+    "desc": "You remember the ship. You do not remember the port they sailed from. Begin the campaign with 75 gold. The crew or community that raised you still recognises you — once per campaign, you may call on this network for shelter, information, or passage on a ship without payment. The DM determines the network's reach."
+  },
+  {
+    "id": 3733,
+    "name": "House Aldovar",
+    "tags": ["Passive", "Lineage", "DM Granted", "Aethros", "Valdren"],
+    "score": 0,
+    "desc": "Blood of the tower. The weight of two centuries of continuity. You are a minor member of Valdren's royal house — a cadet cousin, a lateral branch, no claim to succession. You gain advantage on Persuasion checks with Valdren nobles and officials. Once per session the DM may have an NPC recognise your family name in a way that opens an unexpected door."
+  },
+  {
+    "id": 3734,
+    "name": "House Thornwall",
+    "tags": ["Passive", "Lineage", "Aethros", "Valdren"],
+    "score": 0,
+    "desc": "The wall holds because someone holds it. You were raised knowing that someone. You are from the Thornwall extended military family. You gain proficiency in one martial weapon of your choice if you don't already have it. When making death saving throws, you succeed on a 9 or higher instead of 10."
+  },
+  {
+    "id": 3735,
+    "name": "House Drey",
+    "tags": ["Passive", "Lineage", "DM Granted", "Aethros", "Valdren"],
+    "score": 0,
+    "desc": "Every debt is an asset. Every favour is an investment. You are from the Drey extended family — raised in the culture of political intelligence. Once per session you may ask the DM one question about an NPC's motivations or allegiances and receive a truthful answer from your character's contextual knowledge."
+  },
+  {
+    "id": 3736,
+    "name": "House Cassade",
+    "tags": ["Passive", "Lineage", "Aethros", "Valdren"],
+    "score": 0,
+    "desc": "Salt water and silver — the Cassade family has always moved between them. You are from the Cassade maritime trade family. You gain advantage on Persuasion checks with merchants, harbour officials, and commercial operators. You begin each session knowing the current going price for one significant commodity in the current port or settlement."
+  },
+  {
+    "id": 3737,
+    "name": "House Morvane",
+    "tags": ["Passive", "Lineage", "DM Granted", "Aethros", "Valdren"],
+    "score": 0,
+    "desc": "The temple library is three centuries deep. You grew up in it. You are from the Morvane family, custodians of a Triad temple library. You gain advantage on History and Religion checks. Once per long rest you may declare that your family archive contains relevant information — the DM provides one true fact about a subject you're researching."
+  },
+  {
+    "id": 3738,
+    "name": "House Ashfen",
+    "tags": ["Passive", "Lineage", "Aethros", "Valdren"],
+    "score": 0,
+    "desc": "The law does not care who you are. You know the law better than most. You are from the Ashfen legal dynasty. You gain proficiency in Persuasion and the Forgery Kit. When a legal or contractual ambiguity arises, the DM must acknowledge your character's legal analysis before ruling — you may argue the point."
+  },
+  {
+    "id": 3739,
+    "name": "House Selt",
+    "tags": ["Passive", "Lineage", "Aethros", "Valdren"],
+    "score": 0,
+    "desc": "New money still spends. Faster, sometimes. You are from the Selt trading family. You begin the campaign with 150 additional gold. You gain advantage on checks involving commercial negotiation, price assessment, or identifying counterfeit goods."
+  },
+  {
+    "id": 3740,
+    "name": "House Quellar",
+    "tags": ["Passive", "Lineage", "DM Granted", "Aethros", "Valdren"],
+    "score": 0,
+    "desc": "We know. We choose carefully what to do with it. You are connected to the Quellar intelligence family. Once per session the DM may pass you a secret note with information your character has learned through family channels — information other players don't have. You decide whether to share it."
+  },
+  {
+    "id": 3741,
+    "name": "House Davan",
+    "tags": ["Passive", "Lineage", "Aethros", "Valdren"],
+    "score": 0,
+    "desc": "The wall is not background to you. It is everything. You are from the Davan northern border family. You gain advantage on Survival checks in cold or rugged terrain and on checks to identify undead by type or origin. You do not suffer the first level of Frightened when encountering undead."
+  },
+  {
+    "id": 3742,
+    "name": "House Irenne",
+    "tags": ["Passive", "Lineage", "DM Granted", "Aethros", "Valdren"],
+    "score": 0,
+    "desc": "The map is not complete yet. It never is. That is the point. You are from the Irenne cartography family. You can never become lost while outdoors. You gain advantage on checks to recall geographic information about any region you have travelled through. Once per campaign you may request one true geographic secret from the DM."
+  },
+  {
+    "id": 3743,
+    "name": "House Vane",
+    "tags": ["Passive", "Lineage", "Aethros", "Valdren"],
+    "score": 0,
+    "desc": "Something older than memory runs in this blood. You have never been able to explain it. Your attacks and spells deal an additional 1d6 radiant damage. This damage cannot be suppressed, redirected, or explained — it simply happens. Members of certain religious orders may react to you in unexpected ways."
+  },
+  {
+    "id": 3744,
+    "name": "House Tal",
+    "tags": ["Passive", "Lineage", "DM Granted", "Aethros", "Surath"],
+    "score": 0,
+    "desc": "The Eternal Voice's name opens every door in the Dominion and a few outside it. You are from the Tal provincial family — the Eternal Voice's extended lineage, raised in the eastern provinces rather than the Citadel. Dominion officials treat you with deference. Non-Dominion NPCs may react with unease, respect, or hostility depending on their own relationship with the Dominion."
+  },
+  {
+    "id": 3745,
+    "name": "House Sonn",
+    "tags": ["Passive", "Lineage", "DM Granted", "Aethros", "Surath"],
+    "score": 0,
+    "desc": "Fifty years of theological architecture. You studied in its shadow. You are a graduate of the Sonn Seminary — the Dominion's premier theological institution. You gain advantage on Religion checks. Once per long rest you may identify whether a creature, object, or location has a divine connection and roughly which tradition it belongs to."
+  },
+  {
+    "id": 3746,
+    "name": "House Velira",
+    "tags": ["Passive", "Lineage", "Aethros", "Surath"],
+    "score": 0,
+    "desc": "Desert faith. The real kind — tested by conditions the Citadel never sees. You are from the western Velira flame-keeping family. You are immune to extreme heat environments and gain advantage on Survival checks in arid terrain. Once per long rest you may cast Purify Food and Drink without expending a spell slot."
+  },
+  {
+    "id": 3747,
+    "name": "House Dur-Kaen",
+    "tags": ["Passive", "Lineage", "Aethros", "Surath"],
+    "score": 0,
+    "desc": "Eight generations of Flame Legion training. It is in the stance before anything else. You are from the Dur-Kaen military lineage's extended corps. You gain proficiency in heavy armour if you don't already have it. When you make an attack roll of 20, your next attack this turn has advantage."
+  },
+  {
+    "id": 3748,
+    "name": "House Sunn",
+    "tags": ["Passive", "Lineage", "Aethros", "Surath"],
+    "score": 0,
+    "desc": "The sea is a divine domain. You were raised by people who believe this completely. You are from the Sunn naval family. You gain advantage on all checks made aboard or related to naval vessels. Once per long rest you may cast Fog Cloud without expending a spell slot."
+  },
+  {
+    "id": 3749,
+    "name": "House Vael",
+    "tags": ["Passive", "Lineage", "DM Granted", "Aethros", "Surath"],
+    "score": 0,
+    "desc": "The Inquisition does not make people nervous. Knowing someone from the Inquisition does. You are from the Vael Inquisition family's auxiliary network. You gain advantage on Insight checks. Once per session you may ask the DM whether a specific NPC is lying to you — the DM answers truthfully from your character's trained observational context."
+  },
+  {
+    "id": 3750,
+    "name": "House Morthis",
+    "tags": ["Passive", "Lineage", "DM Granted", "Aethros", "Surath"],
+    "score": 0,
+    "desc": "The Eastern Rainforest teaches you that doctrine and daily life are rarely the same thing. You are from the Morthis provincial administration family. You gain advantage on checks to understand or navigate bureaucratic systems. Once per long rest you may declare that you know the relevant administrative procedure for any Dominion-adjacent institution — the DM must honour this."
+  },
+  {
+    "id": 3751,
+    "name": "House Serath-Kael",
+    "tags": ["Passive", "Lineage", "DM Granted", "Aethros", "Surath"],
+    "score": 0,
+    "desc": "You grew up surrounded by history that the official record doesn't contain. You are from the Serath-Kael Memory Hall family. You gain advantage on History checks regarding the Crimson Crusade era. Once per campaign the DM must answer one historical question your character poses as if they had access to the complete — not official — historical record."
+  },
+  {
+    "id": 3752,
+    "name": "House Davan-Surath",
+    "tags": ["Passive", "Lineage", "Aethros", "Surath"],
+    "score": 0,
+    "desc": "Two shores in the blood. Neither fully claimed. You are from the Davan-Surath converted Vaelthari family — raised in the Dominion but carrying older cultural memory. You gain advantage on Persuasion checks when dealing with both Dominion officials and Vaelthari parties. Once per session you may reroll a failed social check."
+  },
+  {
+    "id": 3753,
+    "name": "House Thenvar",
+    "tags": ["Passive", "Lineage", "Aethros", "Surath"],
+    "score": 0,
+    "desc": "The Flame-Proven title was earned. Every day it is kept is earned again. You are from the Thenvar Flame-Proven extended community. You gain advantage on saving throws against the Frightened condition. When you reduce a creature to 0 hit points, you may immediately make one additional weapon attack as a bonus action."
+  },
+  {
+    "id": 3754,
+    "name": "House Aldric",
+    "tags": ["Passive", "Lineage", "Aethros", "Ossara"],
+    "score": 0,
+    "desc": "The Consul's name carries weight. Even on the cadet branch. You are from the Aldric commercial family. You gain advantage on Persuasion checks in commercial contexts and Insight checks when evaluating trade offers. Once per long rest you may consult your family's commercial network to learn one current fact about trade conditions, prices, or commercial rumours in the current region."
+  },
+  {
+    "id": 3755,
+    "name": "House Morveth",
+    "tags": ["Passive", "Lineage", "Aethros", "Ossara"],
+    "score": 0,
+    "desc": "Four generations of fleet command. The sea does not surprise you. You are from the Morveth fleet family. You gain proficiency with Navigator's Tools and advantage on Perception checks while aboard vessels. You cannot be disoriented, nauseated, or disadvantaged by ship movement or rough seas."
+  },
+  {
+    "id": 3756,
+    "name": "House Hault",
+    "tags": ["Passive", "Lineage", "DM Granted", "Aethros", "Ossara"],
+    "score": 0,
+    "desc": "Old money speaks quietly. You have learned to listen for it. You are from the Hault Assembly family. You gain advantage on Persuasion and Insight checks in political or formal negotiation contexts. Once per session the DM must tell you the general allegiance or agenda of one NPC you are currently in conversation with."
+  },
+  {
+    "id": 3757,
+    "name": "House Cassel",
+    "tags": ["Passive", "Lineage", "DM Granted", "Aethros", "Ossara"],
+    "score": 0,
+    "desc": "You grew up knowing what the manifests say and what the ships actually carry. You are from the Cassel harbour family. You gain advantage on Perception and Investigation checks in port environments. Once per long rest you may identify whether a cargo, vessel, or commercial operation is concealing something — the DM confirms or denies concealment only, not contents."
+  },
+  {
+    "id": 3758,
+    "name": "House Daven-Ossara",
+    "tags": ["Passive", "Lineage", "Aethros", "Ossara"],
+    "score": 0,
+    "desc": "Two commercial cultures. You speak both. The translation work never stops. You are from the Daven-Ossara cross-cultural brokerage family. You gain advantage on Persuasion checks when facilitating disagreements between two parties and on checks to understand cultural norms of unfamiliar communities. You may reroll failed Communication checks once per long rest."
+  },
+  {
+    "id": 3759,
+    "name": "House Mael",
+    "tags": ["Passive", "Lineage", "Aethros", "Ossara"],
+    "score": 0,
+    "desc": "You see patterns in numbers that others miss entirely. You are from the Mael financial family. You gain advantage on all checks related to financial assessment, gambling, or detecting financial fraud. Once per session you may ask the DM how much something is truly worth versus its stated value."
+  },
+  {
+    "id": 3760,
+    "name": "House Thessara",
+    "tags": ["Passive", "Lineage", "Aethros", "Ossara"],
+    "score": 0,
+    "desc": "The Thessara curriculum. Every navigator in the Ossaran fleet went through it. You are from the Thessara navigation family. You gain proficiency with Cartographer's Tools and cannot become lost at sea. You have advantage on checks related to weather prediction, current reading, and navigating by stars."
+  },
+  {
+    "id": 3761,
+    "name": "House Voss",
+    "tags": ["Passive", "Lineage", "DM Granted", "Aethros", "Ossara"],
+    "score": 0,
+    "desc": "Commercial intelligence. The unofficial kind. You are from the Voss commercial intelligence family. Once per session the DM will pass you one piece of information about the current location, situation, or NPCs that your character has gathered through the family's network — information not yet available to the party."
+  },
+  {
+    "id": 3762,
+    "name": "House Orenne",
+    "tags": ["Passive", "Lineage", "Aethros", "Ossara"],
+    "score": 0,
+    "desc": "Maritime law is the skeleton under every commercial relationship at sea. You are from the Orenne maritime law family. In any legal, commercial, or contractual dispute, you may argue that a specific provision applies — the DM must either confirm it applies or provide a legal reason it does not. You gain advantage on Persuasion checks in formal proceedings."
+  },
+  {
+    "id": 3763,
+    "name": "House Carath",
+    "tags": ["Passive", "Lineage", "DM Granted", "Aethros", "Ossara"],
+    "score": 0,
+    "desc": "The League's neutrality is a product. You grew up knowing the product. You are League-adjacent through the Carath factor family. You gain advantage on Deception and Persuasion checks in commercial contexts. Once per session the DM must tell you whether a commercial or political arrangement in the current scene has a hidden third-party interest involved."
+  },
+  {
+    "id": 3764,
+    "name": "House Orath",
+    "tags": ["Passive", "Lineage", "DM Granted", "Aethros", "Valdenmere"],
+    "score": 0,
+    "desc": "The Lord Admiral's extended family. The Navy notices. You are from the Orath naval family. Serving Navy officers treat you with professional respect. Once per session you may invoke the family name to request access to restricted naval information or facilities — the DM determines whether rank grants it."
+  },
+  {
+    "id": 3765,
+    "name": "House Cael",
+    "tags": ["Passive", "Lineage", "DM Granted", "Aethros", "Valdenmere"],
+    "score": 0,
+    "desc": "Strategy is what you were raised on. Every situation is a problem to be solved. You are from the Cael strategic planning family. You have advantage on Intelligence checks when assessing tactical situations. Once per long rest you may ask the DM for the most tactically significant fact about the current situation that your character's training would identify."
+  },
+  {
+    "id": 3766,
+    "name": "House Mahn",
+    "tags": ["Passive", "Lineage", "Aethros", "Valdenmere"],
+    "score": 0,
+    "desc": "Senate culture. The art of getting fifty people to do what one person decided. You are from the Mahn political dynasty. You gain advantage on Persuasion checks in group settings and when addressing organisations rather than individuals. Once per session you may make a Persuasion check to shift the general attitude of a group of NPCs one step in your favour."
+  },
+  {
+    "id": 3767,
+    "name": "House Kaan",
+    "tags": ["Passive", "Lineage", "Aethros", "Valdenmere"],
+    "score": 0,
+    "desc": "Numbers tell the truth even when people don't. You are from the Kaan financial oversight family. You automatically succeed on checks to detect discrepancies in financial records, contracts, or claimed inventories if the discrepancy is present. You gain advantage on Investigation checks involving documentation."
+  },
+  {
+    "id": 3768,
+    "name": "House Doss",
+    "tags": ["Passive", "Lineage", "DM Granted", "Aethros", "Valdenmere"],
+    "score": 0,
+    "desc": "The Chart House knows where everything is. You grew up there. You are from the Doss cartographic intelligence family. You cannot become lost. You have advantage on checks to gather intelligence through observation rather than direct inquiry. Once per campaign the DM must tell you one geographic or navigational secret relevant to your current region."
+  },
+  {
+    "id": 3769,
+    "name": "House Ashrun",
+    "tags": ["Passive", "Lineage", "Aethros", "Valdenmere"],
+    "score": 0,
+    "desc": "You know how things are built. Which means you know how they come down. You are from the Ashrun shipbuilding and engineering family. You gain proficiency with Tinker's Tools and Mason's Tools. You gain advantage on checks to assess structural integrity — of buildings, vessels, or fortifications — and to identify modifications or damage."
+  },
+  {
+    "id": 3770,
+    "name": "House Ullin",
+    "tags": ["Passive", "Lineage", "DM Granted", "Aethros", "Valdenmere"],
+    "score": 0,
+    "desc": "You were raised to understand what people actually want. Not what they say they want. You are from the Ullin recruitment and communications family. You gain advantage on Insight and Persuasion checks when first meeting an NPC. Once per long rest you may identify one NPC's primary motivation with a successful Insight check (DC 12)."
+  },
+  {
+    "id": 3771,
+    "name": "House Voss-Carath",
+    "tags": ["Passive", "Lineage", "Aethros", "Valdenmere"],
+    "score": 0,
+    "desc": "You connect people who need to talk without official record. This has value. You are from the Voss-Carath commercial facilitation family. Once per session you may declare that you know a contact in the current location who owes you a facilitation favour — they will arrange one discreet meeting or pass one piece of information. The DM determines who they are."
+  },
+  {
+    "id": 3772,
+    "name": "House Teva",
+    "tags": ["Passive", "Lineage", "DM Granted", "Aethros", "Valdenmere"],
+    "score": 0,
+    "desc": "The founding family. Old enough to remember what was there before. You are from the Teva founding-era family. You gain advantage on all History checks related to the Thalassic Republic and Valdenmere's founding era. Once per campaign you may access a piece of founding-era knowledge that contradicts the official record — the DM provides one true historical fact not in public documents."
+  },
+  {
+    "id": 3773,
+    "name": "House Serath-Valdenmere",
+    "tags": ["Passive", "Lineage", "Aethros", "Valdenmere"],
+    "score": 0,
+    "desc": "The voyage oath is a serious thing. You have kept more than most. You are from the Serath-Valdenmere Ironbound clergy family. Once per long rest you may take a Voyage Oath — declare a specific goal for the session. If you achieve it, you regain 2d6 hit points and have advantage on your first attack roll next session. The oath cannot be abandoned without consequence."
+  },
+  {
+    "id": 3774,
+    "name": "House Hael",
+    "tags": ["Passive", "Lineage", "Aethros", "Khevara"],
+    "score": 0,
+    "desc": "Ashen Shore. The last port before the southern sea. You know it like your own heartbeat. You are from the Hael port family. You gain advantage on Persuasion checks with independent mariners, island communities, and southern hemisphere traders. You always know the relative prices and availability of ships, passage, and maritime supplies in any port."
+  },
+  {
+    "id": 3775,
+    "name": "House Morn",
+    "tags": ["Passive", "Lineage", "Aethros", "Khevara"],
+    "score": 0,
+    "desc": "The Port Militia has no offensive mandate. Its veterans know exactly what to do with that. You are from the Morn defensive fleet family. You gain advantage on checks to assess the defensive capability of a location and on saving throws against being grappled or restrained. Once per combat, when an ally within 30 feet would take damage that would reduce them to 0 hit points, you may use your reaction to reduce that damage by 2d10."
+  },
+  {
+    "id": 3776,
+    "name": "Vel-Ashen Clan",
+    "tags": ["Passive", "Lineage", "DM Granted", "Aethros", "Khevara"],
+    "score": 0,
+    "desc": "The shore remembers things the sea would rather forget. You are from the Vel-Ashen coastal druid clan. You are proficient in Nature and Animal Handling. Once per long rest you may ask the DM one question about the natural environment, weather, or ocean conditions in the current region — the answer reflects what the natural world itself would report if it could speak."
+  },
+  {
+    "id": 3777,
+    "name": "House Davan-Khevara",
+    "tags": ["Passive", "Lineage", "Aethros", "Khevara"],
+    "score": 0,
+    "desc": "Six generations of the Pale Ocean. The routes are in the blood. You are from the Davan-Khevara elven trade family. You gain advantage on Persuasion checks with elven NPCs and on navigation checks across open ocean. You age at a slower apparent rate — NPCs frequently underestimate how long you have been doing what you do."
+  },
+  {
+    "id": 3778,
+    "name": "Spiritwood Contact",
+    "tags": ["Passive", "Lineage", "DM Granted", "Aethros", "Khevara"],
+    "score": 0,
+    "desc": "The forest does not forget those who have walked in it with respect. You are connected to the Spiritwood intermediary network. Nature spirits are aware of your presence and will not actively harm you. Once per campaign you may receive a message from the Thornkeeper's network — the DM delivers a piece of information or guidance from the Spiritwood's perspective on current events."
+  },
+  {
+    "id": 3779,
+    "name": "House Pale-Deep",
+    "tags": ["Passive", "Lineage", "Aethros", "Khevara"],
+    "score": 0,
+    "desc": "Gnomish precision applied to everything. Especially things that don't obviously require it. You are from the Pale-Deep gnomish engineering family. You gain proficiency with Tinker's Tools and have advantage on checks to assess depth, structural integrity, or underground features. You can estimate the depth of any body of water within 10% accuracy using only observation."
+  },
+  {
+    "id": 3780,
+    "name": "Ashen-Navigator Clan",
+    "tags": ["Passive", "Lineage", "Aethros", "Khevara"],
+    "score": 0,
+    "desc": "You navigate by how the sea moves, not by what the chart says it should do. You are from the Ashen-Navigator coastal pilot clan. You can navigate any sea route you have sailed before perfectly without charts. In unfamiliar waters, your navigation checks have advantage and failure never results in being completely lost — only temporarily uncertain."
+  },
+  {
+    "id": 3781,
+    "name": "House Carath-Khevara",
+    "tags": ["Passive", "Lineage", "DM Granted", "Aethros", "Khevara"],
+    "score": 0,
+    "desc": "League-adjacent. The neutrality is commercial, not personal. You are connected to the Carath-Khevara League-adjacent family. You gain advantage on Deception checks and on checks to identify when you are being deceived. Once per session you may ask the DM whether any party in the current scene has an undisclosed commercial or political agenda — the DM confirms or denies presence of hidden agenda only."
+  },
+  {
+    "id": 3782,
+    "name": "House Spiritkin",
+    "tags": ["Passive", "Lineage", "DM Granted", "Aethros", "Khevara"],
+    "score": 0,
+    "desc": "Four hundred years in the same place. The land has started to know you back. You are from the Spiritkin far-continent heritage family. You have advantage on checks related to ancient or pre-Crusade knowledge. Once per long rest you may invoke the far-continent tradition — the DM provides one piece of information about a feature, object, or entity that the far-continent tradition would classify and recognise."
+  },
+  {
+    "id": 3783,
+    "name": "House Stone-and-Root",
+    "tags": ["Passive", "Lineage", "Aethros", "Khevara"],
+    "score": 0,
+    "desc": "Dwarven survey tradition. If it exists, you can measure it. If you can measure it, you understand it. You are from the Stone-and-Root dwarven survey family. You have advantage on checks to assess the construction, age, or origin of any built structure. You can identify whether a structure is naturally formed or constructed with a successful DC 10 Investigation check. You can estimate the age of any stone construction within a century."
+  },
+  {
+    "id": 3784,
+    "name": "House Caeth",
+    "tags": ["Passive", "Lineage", "DM Granted", "Aethros", "Romley"],
+    "score": 0,
+    "desc": "The Star-Sextant Tower. Two generations of knowing where everything is. You have access to navigational knowledge that public charts don't contain. Once per session you may ask the DM one navigational question — a route, a location, an approach — and receive an accurate answer based on the Tower's records."
+  },
+  {
+    "id": 3785,
+    "name": "House Vel-Meridian",
+    "tags": ["Passive", "Lineage", "Aethros", "Romley"],
+    "score": 0,
+    "desc": "Port Meridian runs because someone makes it run. Your family makes it run. You are from the Vel-Meridian civil administration family. You gain advantage on Persuasion checks with civilian NPCs and local authorities. You always know who the relevant official is for any administrative problem in any city, and you have a credible reason to approach them."
+  },
+  {
+    "id": 3786,
+    "name": "House Ashe",
+    "tags": ["Passive", "Lineage", "DM Granted", "Aethros", "Romley"],
+    "score": 0,
+    "desc": "The harbour knows everything. You grew up in the harbour. In any port, you automatically know the names and general nature of all vessels currently docked. Once per session the DM will tell you one fact about current harbour traffic that is not publicly known."
+  },
+  {
+    "id": 3787,
+    "name": "House Sovna",
+    "tags": ["Passive", "Lineage", "Aethros", "Romley"],
+    "score": 0,
+    "desc": "The islands were here before the Navy. You have not forgotten this. You are from the Sovna island community family. Island communities treat you with immediate trust rather than caution. You gain advantage on Persuasion checks with independent, non-institutional NPCs and on checks to find shelter or passage in the outer islands."
+  },
+  {
+    "id": 3788,
+    "name": "House Romley",
+    "tags": ["Passive", "Lineage", "DM Granted", "Aethros", "Romley"],
+    "score": 0,
+    "desc": "The explorer's name. The whole Archipelago is named after your family. Your name is immediately recognised throughout the Archipelago and opens social doors everywhere. Once per campaign the DM must reveal one true fact about Jaimen Romley's original expedition that is not publicly known."
+  },
+  {
+    "id": 3789,
+    "name": "House Desh-Mave",
+    "tags": ["Passive", "Lineage", "Aethros", "Romley"],
+    "score": 0,
+    "desc": "Southern fleet. The whole of the campaign's sea is your family's professional domain. You are from the Desh-Mave southern fleet family. You gain advantage on checks related to naval tactics and fleet positioning. When you are aboard a Navy vessel or working directly alongside Navy forces, you may re-roll one failed attack roll or ability check per long rest."
+  },
+  {
+    "id": 3790,
+    "name": "House Vael-Torris",
+    "tags": ["Passive", "Lineage", "DM Granted", "Aethros", "Romley"],
+    "score": 0,
+    "desc": "You are related to the Blue Alchemist. This is not comfortable. It is useful. You are from the Vael-Torris alchemical family. You gain advantage on checks to understand or identify arcane hybrid creatures and experimental magic. Once per long rest you may recognise the intent behind an arcane effect you have observed — the DM tells you what the effect was designed to do."
+  },
+  {
+    "id": 3791,
+    "name": "House Bat-Erden",
+    "tags": ["Passive", "Lineage", "DM Granted", "Aethros", "Romley"],
+    "score": 0,
+    "desc": "Port Meridian born. The Grand Admiral's family. Three generations of this sea. You are from the Bat-Erden Grand Admiralty family. You are trusted by both the Navy command structure and Port Meridian's island community population. Once per session you may invoke the family name to request a private audience with any Navy officer of Commander rank or below."
+  },
+  {
+    "id": 3792,
+    "name": "House Goren",
+    "tags": ["Passive", "Lineage", "DM Granted", "Aethros", "Romley"],
+    "score": 0,
+    "desc": "The Barnacle's Belly. Everyone comes through eventually. You are from the Goren Lower Docks community family. You always know where the nearest working-class tavern or gathering point is and are immediately welcomed there. Once per session the DM will tell you one rumour currently circulating in Port Meridian's Lower Docks that has not reached official ears."
+  },
+  {
+    "id": 3793,
+    "name": "House Crimson-Tide",
+    "tags": ["Passive", "Lineage", "Aethros", "Romley"],
+    "score": 0,
+    "desc": "Free captain's blood. The sea was never a career to your family. It was a choice. You are from the Crimson-Tide independent captain family. You are never treated as a threat or outsider by buccaneer crews, independent mariners, or outer island communities. You gain advantage on checks to navigate by natural observation — stars, currents, birds — rather than charts."
+  },
+  {
+    "id": 3794,
+    "name": "Vel-Shadow Lineage",
+    "tags": ["Passive", "Lineage", "DM Granted", "Aethros", "Armada"],
+    "score": 0,
+    "desc": "You carry the founding generation's purpose. Not their doctrine. Their purpose. You retain the pre-Sonn Eternal Flame theological knowledge that the Armada's founding generation preserved. Once per long rest you may identify whether any divine effect, object, or location is connected to the Eternal Flame's original tradition versus its revised institutional form."
+  },
+  {
+    "id": 3795,
+    "name": "Deep-Toll Lineage",
+    "tags": ["Passive", "Lineage", "Aethros", "Armada"],
+    "score": 0,
+    "desc": "Navigation is not a skill in your family. It is a mother tongue. You have advantage on all navigation checks and can navigate by ocean current patterns and bioluminescence as accurately as by stars. You always know your precise location when at sea."
+  },
+  {
+    "id": 3796,
+    "name": "Ashvael-Remnant",
+    "tags": ["Passive", "Lineage", "DM Granted", "Aethros", "Armada"],
+    "score": 0,
+    "desc": "Ash-[your name]-Vael. The name is the oath. The oath is still kept. You carry the naming tradition of the Order of the Ashvael Blade's surviving community. You gain advantage on Religion checks regarding the dead gods of the Crusade era. You can sense when you are in the presence of a weapon that belonged to the Ashvael order — a faint resonance, felt not heard. The DM will signal this when relevant."
+  },
+  {
+    "id": 3797,
+    "name": "Storm-Born Lineage",
+    "tags": ["Passive", "Lineage", "Aethros", "Armada"],
+    "score": 0,
+    "desc": "Combat is not a last resort for your family. It is a craft. When you score a critical hit, the target must make a DC 13 Constitution saving throw or be Stunned until the end of their next turn. You gain advantage on Intimidation checks against creatures that have seen you fight."
+  },
+  {
+    "id": 3798,
+    "name": "Sea-Quiet Lineage",
+    "tags": ["Passive", "Lineage", "DM Granted", "Aethros", "Armada"],
+    "score": 0,
+    "desc": "You have been where others have not. You came back different. Not worse. Different. You gain advantage on saving throws against being Frightened or Charmed by supernatural or divine effects. Once per long rest you may sense whether a location has been the site of a significant supernatural event within the last year — the DM confirms or denies presence only."
   }
 ]
