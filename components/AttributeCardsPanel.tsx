@@ -2,7 +2,7 @@
 
 import React, { useEffect, useMemo, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
-import attributeCardsJson from "@/data/attributeCards.json";
+import attributeCardsJson from "@/data/attributes/attributeCards.json";
 
 export type AttributeCardData = {
   id: number;

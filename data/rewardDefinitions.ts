@@ -1,4 +1,4 @@
-import rewardDefinitionsJson from "./rewardDefinitions.json";
+import rewardDefinitionsJson from "./rewards/rewardDefinitions.json";
 
 export type RewardRarity =
   | "Common"
@@ -12,34 +12,23 @@ export type RewardCategory =
   | "Item"
   | "Potion"
   | "Weapon"
-  | "Armour"
-  | "Companion"
-  | "Companion Ability";
+  | "Armour";
 
 export type RewardDefinition = {
   id: string;
   sourceId?: string;
-
   name: string;
-
   category: RewardCategory;
   rarity: RewardRarity;
-
   valueGp: number;
-
   requiresAttunement?: boolean;
-
   tags: string[];
-
   description: string;
-
   originalText?: string;
+  source?: string;
 };
 
-export const REWARD_RARITY_WEIGHTS: Record<
-  RewardRarity,
-  number
-> = {
+export const REWARD_RARITY_WEIGHTS: Record<RewardRarity, number> = {
   Common: 14,
   Uncommon: 12,
   Rare: 10,
@@ -53,8 +42,6 @@ export const REWARD_CATEGORIES: RewardCategory[] = [
   "Potion",
   "Weapon",
   "Armour",
-  "Companion",
-  "Companion Ability",
 ];
 
 export const REWARD_DEFINITIONS =

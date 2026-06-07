@@ -1,4 +1,4 @@
-import companionDefinitionsJson from "./companionDefinitions.json";
+import companionDefinitionsJson from "./companions/companionDefinitions.json";
 
 export type CompanionRarity =
   | "Common"

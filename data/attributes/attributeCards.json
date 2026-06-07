@@ -1,0 +1,864 @@
+[
+  {
+    "id": 1183,
+    "name": "Ageless",
+    "tags": [
+      "Cursed",
+      "Passive"
+    ],
+    "score": -8,
+    "desc": "You do not need air, food, or water to survive. You do not age. You are immune to death as long as your skull remains intact. You are an Undead creature for the purposes of spells and effects."
+  },
+  {
+    "id": 1184,
+    "name": "Valkyrie",
+    "tags": [
+      "Cursed",
+      "Passive"
+    ],
+    "score": 8,
+    "desc": "Your character must be female. You have wings which grant you a fly speed of 30 ft. while falling, you may glide and take no fall damage."
+  },
+  {
+    "id": 1185,
+    "name": "Lycanthrope",
+    "tags": [
+      "Cursed",
+      "Passive"
+    ],
+    "score": 4,
+    "desc": "Draw 3 Beast Companions and choose one. At midnight, while outside under the moon, or upon taking a Critical Hit, you shapeshift into your Beast form and gain access to its abilities. Your HP does not change and you retain access to your other abilities."
+  },
+  {
+    "id": 1186,
+    "name": "Medusa",
+    "tags": [
+      "Cursed",
+      "Passive"
+    ],
+    "score": -4,
+    "desc": "You can attempt to dominate the minds of others with your gaze. On a Critical Hit, the target must succeed on a Wisdom saving throw (DC 15) or become your Charmed Companion for life."
+  },
+  {
+    "id": 1187,
+    "name": "Vampire",
+    "tags": [
+      "Cursed",
+      "Passive"
+    ],
+    "score": 5,
+    "desc": "You are in constant search for your soulmate. You have advantage on Insight and Perception checks to see through disguises and detect lies."
+  },
+  {
+    "id": 3661,
+    "name": "Strong",
+    "tags": [
+      "Passive"
+    ],
+    "score": 5,
+    "desc": "Your character has powerful muscles and is naturally athletic. Your unarmed strikes and basic weapon attacks always deal at least 10 damage. Kobolds may redraw this Attribute."
+  },
+  {
+    "id": 3662,
+    "name": "Believer",
+    "tags": [
+      "Passive"
+    ],
+    "score": 3,
+    "desc": "You are not who you believe you are — you are instead living out the story of someone else entirely. You lack the ability of self-awareness and cannot be convinced otherwise."
+  },
+  {
+    "id": 3663,
+    "name": "Intelligent",
+    "tags": [
+      "Passive"
+    ],
+    "score": -3,
+    "desc": "You have studied all your life in the arcane arts. Your character may start with any non-Legendary spell in the game added to their spellbook or spell slots at character creation."
+  },
+  {
+    "id": 3664,
+    "name": "Quick",
+    "tags": [
+      "Passive"
+    ],
+    "score": 1,
+    "desc": "You speak quickly and move even quicker. You can move up to 10 additional spaces (50 ft.) using your Movement Action each turn."
+  },
+  {
+    "id": 3665,
+    "name": "Eccentric",
+    "tags": [
+      "Passive"
+    ],
+    "score": -8,
+    "desc": "You speak with a posh accent and come from considerable wealth. You have 500 extra gold to spend at character creation, but you have disadvantage on Constitution saving throws and suffer terribly from emotional distress."
+  },
+  {
+    "id": 3666,
+    "name": "Charismatic",
+    "tags": [
+      "Passive"
+    ],
+    "score": 4,
+    "desc": "You are irresistibly attractive to races and genders of your choosing. Outside of combat, you may attempt to beguile any NPC into becoming your Companion with a Charisma (Persuasion) check. You must have the appropriate Companion slot available."
+  },
+  {
+    "id": 3667,
+    "name": "Durable",
+    "tags": [
+      "Passive"
+    ],
+    "score": 10,
+    "desc": "You never cut or shave your hair. Your Armor Class, regardless of whether you wear armor or not, always grants at least 40 temporary hit points at the start of each long rest."
+  },
+  {
+    "id": 3668,
+    "name": "Psychic",
+    "tags": [
+      "Passive"
+    ],
+    "score": -8,
+    "desc": "You can read the minds of others. The Dungeon Master must reveal the surface thoughts of any creature on the battlefield whenever you ask for them as a bonus action."
+  },
+  {
+    "id": 3669,
+    "name": "Seadog",
+    "tags": [
+      "Passive"
+    ],
+    "score": 8,
+    "desc": "You are a natural sailor who longs for the waves. You have a swim speed equal to your walking speed and automatically succeed on Athletics checks to swim or dive."
+  },
+  {
+    "id": 3670,
+    "name": "Cursed",
+    "tags": [
+      "Passive"
+    ],
+    "score": -4,
+    "desc": "You are deeply superstitious and paranoid of others. Whenever another party member makes a Death Saving Throw, you immediately take 50 damage."
+  },
+  {
+    "id": 3671,
+    "name": "Beastmaster",
+    "tags": [
+      "Passive"
+    ],
+    "score": 5,
+    "desc": "You have a deep bond with animals and are a gifted handler of wild creatures. Once per campaign, you may permanently charm a Beast creature to become your Companion without a roll."
+  },
+  {
+    "id": 3672,
+    "name": "Doomed",
+    "tags": [
+      "Passive"
+    ],
+    "score": -10,
+    "desc": "Death calls to your character. Whenever you roll a Critical Failure (natural 1), you must immediately make a Death Saving Throw. If drawn at character creation, you may redraw."
+  },
+  {
+    "id": 3673,
+    "name": "Klutz",
+    "tags": [
+      "Passive"
+    ],
+    "score": -3,
+    "desc": "You are dangerously clumsy and your allies know it. Whenever you roll a Critical Hit (natural 20), roll 3 additional d20s. If any of them are a natural 1, the action becomes a Critical Failure instead."
+  },
+  {
+    "id": 3674,
+    "name": "Overweight",
+    "tags": [
+      "Passive"
+    ],
+    "score": 3,
+    "desc": "You are portly and sluggish in battle. Your movement speed is reduced to 15 ft. and you may only move up to 3 spaces with your Movement Action."
+  },
+  {
+    "id": 3675,
+    "name": "Halfwit",
+    "tags": [
+      "Passive"
+    ],
+    "score": 7,
+    "desc": "You are easily fooled and blissfully dim. The Dungeon Master may veto any action in combat that would be too tactically clever for your character, at their discretion."
+  },
+  {
+    "id": 3676,
+    "name": "Peasant",
+    "tags": [
+      "Passive"
+    ],
+    "score": 10,
+    "desc": "You are untrained in weapons and magic, having lived a humble commoner's life until now. Replace your Class with the Peasant Class, which has no purchasable items or abilities. Draw 8 random Companion Abilities and add them to your character instead."
+  },
+  {
+    "id": 3677,
+    "name": "Patient",
+    "tags": [
+      "Passive"
+    ],
+    "score": 1,
+    "desc": "You remain calm and composed even in the most chaotic situations. Once per campaign, you may restore all expended Reactions and bonus actions in a single turn."
+  },
+  {
+    "id": 3678,
+    "name": "Blasphemous",
+    "tags": [
+      "Passive"
+    ],
+    "score": -3,
+    "desc": "You do not believe in gods, divine beings, or draconic patrons. You cannot cast spells of the Divination or Evocation schools, nor any spell with the Divine descriptor."
+  },
+  {
+    "id": 3679,
+    "name": "Cackling",
+    "tags": [
+      "Passive"
+    ],
+    "score": -4,
+    "desc": "You possess an unmistakably villainous laugh that you deploy constantly. Whenever you suffer the effects of a Critical Failure, you may force one willing or unwilling Ally to take the consequences in your place."
+  },
+  {
+    "id": 3680,
+    "name": "Drunk",
+    "tags": [
+      "Passive"
+    ],
+    "score": -1,
+    "desc": "Your character is perpetually intoxicated and slurs their speech. In combat, you may only move diagonally. Despite this, you have advantage on saving throws against being Frightened."
+  },
+  {
+    "id": 3681,
+    "name": "Blind",
+    "tags": [
+      "Passive"
+    ],
+    "score": -2,
+    "desc": "Your character is blind and permanently has the Blinded condition. However, you do not miss with basic attacks or abilities as long as you did not move last round, having learned to fight by sound and instinct."
+  },
+  {
+    "id": 3682,
+    "name": "Chatterbox",
+    "tags": [
+      "Passive"
+    ],
+    "score": 3,
+    "desc": "You talk endlessly about things of no consequence. You are Immune to the Silenced condition. Whenever a creature attempts to Silence you, you gain a Bonus Action immediately."
+  },
+  {
+    "id": 3683,
+    "name": "Adopted",
+    "tags": [
+      "Passive"
+    ],
+    "score": -3,
+    "desc": "You were raised by another race entirely. Draw three Backgrounds and choose one to replace your original Background. You must replace your original because your birth parents abandoned you."
+  },
+  {
+    "id": 3684,
+    "name": "Colossal",
+    "tags": [
+      "Passive"
+    ],
+    "score": 5,
+    "desc": "You are enormous in height and build. You now occupy a Large creature space. Gnomes and Halflings gain all benefits of the Large size category while still appearing as a stout Dwarf in height."
+  },
+  {
+    "id": 3685,
+    "name": "Insane",
+    "tags": [
+      "Passive"
+    ],
+    "score": 7,
+    "desc": "You are demented and twisted to your core. Whenever you roll a Critical Failure, you become Charmed by the nearest enemy creature until you take damage or fall below half hit points."
+  },
+  {
+    "id": 3686,
+    "name": "Criminal",
+    "tags": [
+      "Passive"
+    ],
+    "score": -4,
+    "desc": "You have deep ties to criminal organisations across the realm. At character creation, draw 3 random Treasure cards and add them to your inventory. You may sell them to other players at any price you name."
+  },
+  {
+    "id": 3687,
+    "name": "Deformed",
+    "tags": [
+      "Passive"
+    ],
+    "score": 8,
+    "desc": "Your appearance is deeply unsettling due to a severe physical abnormality. You cannot be Charmed and are Immune to the Charmed condition. You also cannot benefit from Persuasion checks based on attraction."
+  },
+  {
+    "id": 3688,
+    "name": "Alpha",
+    "tags": [
+      "Passive"
+    ],
+    "score": 3,
+    "desc": "You are a natural leader who commands respect in battle. At the start of combat, you may grant your entire party a Bonus Action on their first turn."
+  },
+  {
+    "id": 3689,
+    "name": "Beta",
+    "tags": [
+      "Passive"
+    ],
+    "score": -3,
+    "desc": "You are a follower who lacks conviction. At character creation, you may not begin building your character until all other players have finished theirs."
+  },
+  {
+    "id": 3690,
+    "name": "Filthy",
+    "tags": [
+      "Passive"
+    ],
+    "score": 10,
+    "desc": "You are perpetually unwashed and reek of decay. At the start of every round, all creatures adjacent to you must succeed on a Constitution saving throw (DC 12) or gain the Poisoned condition until the start of their next turn."
+  },
+  {
+    "id": 3691,
+    "name": "Melodick",
+    "tags": [
+      "Passive"
+    ],
+    "score": -2,
+    "desc": "You express all passive aggression through unsolicited song. Whenever you are about to take damage, you may teleport an adjacent Ally into your space and have them take the damage instead, without their consent."
+  },
+  {
+    "id": 3692,
+    "name": "Creepy",
+    "tags": [
+      "Passive"
+    ],
+    "score": -5,
+    "desc": "Others find your presence deeply unsettling. At character creation, draw 2 random Dark or Necromancy spells and add them to your inventory."
+  },
+  {
+    "id": 3693,
+    "name": "Daredevil",
+    "tags": [
+      "Passive"
+    ],
+    "score": -3,
+    "desc": "You are recklessly fearless and throw yourself at danger. Once per campaign, you may declare your next used ability or attack an automatic Critical Hit before you roll."
+  },
+  {
+    "id": 3694,
+    "name": "Narcissistic",
+    "tags": [
+      "Passive"
+    ],
+    "score": 2,
+    "desc": "You are obsessed with your own greatness and cannot bear watching others succeed. Whenever an Ally reduces an enemy to 0 hit points, you immediately gain a Bonus Action."
+  },
+  {
+    "id": 3695,
+    "name": "Devout",
+    "tags": [
+      "Passive"
+    ],
+    "score": 1,
+    "desc": "You are a true and unwavering believer in the gods and divine powers. Once per campaign, you may choose to ignore one Critical Failure you roll or one Critical Hit you receive."
+  },
+  {
+    "id": 3696,
+    "name": "Romantic",
+    "tags": [
+      "Passive"
+    ],
+    "score": -2,
+    "desc": "You are a hopeless romantic who falls deeply and completely. Once per campaign, you may cause a hostile creature to fall in love with you and become your Companion, until one of you dies."
+  },
+  {
+    "id": 3697,
+    "name": "Bookworm",
+    "tags": [
+      "Passive"
+    ],
+    "score": -4,
+    "desc": "You are perpetually absorbed in tomes and scrolls. At character creation, draw 12 random Spell Scrolls and stack them in a single inventory slot. You may only cast them in the order the Dungeon Master stacks them."
+  },
+  {
+    "id": 3698,
+    "name": "Alchemist",
+    "tags": [
+      "Passive"
+    ],
+    "score": -1,
+    "desc": "You are somber and deeply sarcastic in conversation. At character creation, draw 8 random Potions and add them to your inventory."
+  },
+  {
+    "id": 3699,
+    "name": "Famous",
+    "tags": [
+      "Passive"
+    ],
+    "score": -3,
+    "desc": "Almost everyone in the realm knows your name. The Dungeon Master and other players may invent facts about your character's past at any time, and those facts become true."
+  },
+  {
+    "id": 3700,
+    "name": "Artistic",
+    "tags": [
+      "Passive"
+    ],
+    "score": -5,
+    "desc": "You are deeply creative across many art forms, which is tragically useless in the life of an adventurer. The DM may call upon this talent at dramatically inopportune moments."
+  },
+  {
+    "id": 3701,
+    "name": "Hoarder",
+    "tags": [
+      "Passive"
+    ],
+    "score": -6,
+    "desc": "You cannot resist collecting things, useful or otherwise. You cannot use Consumable items unless your own life is in immediate danger. Draw 4 random Consumables and add them to your inventory."
+  },
+  {
+    "id": 3702,
+    "name": "Liar",
+    "tags": [
+      "Passive"
+    ],
+    "score": 1,
+    "desc": "You are a notorious deceiver who rarely tells the truth. At the end of character creation, remove one Ability from your character. You must claim to possess this ability for the entire campaign."
+  },
+  {
+    "id": 3703,
+    "name": "Gullible",
+    "tags": [
+      "Passive"
+    ],
+    "score": 2,
+    "desc": "You will believe almost anything told to you. Your character has no critical thinking skills whatsoever and never questions information given to them by any source."
+  },
+  {
+    "id": 3704,
+    "name": "Greedy",
+    "tags": [
+      "Passive"
+    ],
+    "score": -3,
+    "desc": "You care only for gold and treasure above all else. At the end of character creation you must have at least 200 gold remaining or this Attribute becomes Doomed. You start with an additional 200 gold."
+  },
+  {
+    "id": 3705,
+    "name": "Nature Warden",
+    "tags": [
+      "Passive"
+    ],
+    "score": 4,
+    "desc": "You are one with nature and care deeply for all living things. At character creation, draw 2 random Druid or Earth spells and add them to your inventory."
+  },
+  {
+    "id": 3706,
+    "name": "Pyromaniac",
+    "tags": [
+      "Passive"
+    ],
+    "score": -5,
+    "desc": "You are obsessed with fire in a way that makes others uncomfortable. At character creation, draw 2 random Fire spells and add them to your inventory."
+  },
+  {
+    "id": 3707,
+    "name": "Ancient",
+    "tags": [
+      "Passive"
+    ],
+    "score": -10,
+    "desc": "You have lived since the age of the world's hatching and have witnessed all of recorded history. Draw the Elf Race card and place it over your Race. You are now an Elf but gain the benefits of both Race cards."
+  },
+  {
+    "id": 3708,
+    "name": "Follower of the Light",
+    "tags": [
+      "Passive"
+    ],
+    "score": 5,
+    "desc": "You are a devoted servant of a god of light and radiance. At character creation, add the Divine Favor spell to your character. You may cast it once per long rest without expending a spell slot."
+  },
+  {
+    "id": 3709,
+    "name": "Sigil of Flame",
+    "tags": [
+      "Passive"
+    ],
+    "score": 5,
+    "desc": "You carry the brand of a god of fire and destruction. Your basic attacks deal triple damage instead of double on a Critical Hit."
+  },
+  {
+    "id": 3710,
+    "name": "Child of Rokesh",
+    "tags": [
+      "Passive"
+    ],
+    "score": 5,
+    "desc": "You are blessed by a god of tenacity and brotherhood. While all other party members are alive and conscious, you are Immune to Death Saving Throws and cannot be reduced below 1 HP."
+  },
+  {
+    "id": 3711,
+    "name": "Frostborn",
+    "tags": [
+      "Passive"
+    ],
+    "score": 5,
+    "desc": "You carry the blessing of a god of ice and stillness. High rolls (15+) on basic attack rolls cause the target to be Restrained by ice until the start of their next turn."
+  },
+  {
+    "id": 3712,
+    "name": "Seeker of Knowledge",
+    "tags": [
+      "Passive"
+    ],
+    "score": 5,
+    "desc": "You are devoted to a god of arcane secrets and forbidden lore. At character creation, draw one Legendary Spell Scroll and add it to your character."
+  },
+  {
+    "id": 3713,
+    "name": "Herald of Bones",
+    "tags": [
+      "Passive"
+    ],
+    "score": 5,
+    "desc": "You serve a god of death and undeath. Whenever you score a Critical Hit against a target, that target must immediately make a Death Saving Throw."
+  },
+  {
+    "id": 3714,
+    "name": "Heart of Gold",
+    "tags": [
+      "Passive"
+    ],
+    "score": 5,
+    "desc": "You are genuinely, unconditionally generous. At character creation, receive 300 extra gold. You must distribute all of it to other players however you choose. You may keep none of it."
+  },
+  {
+    "id": 3715,
+    "name": "Coward",
+    "tags": [
+      "Passive"
+    ],
+    "score": -1,
+    "desc": "You are deeply afraid of violence and conflict. You cannot attack any creature that attacked you during the previous round."
+  },
+  {
+    "id": 3716,
+    "name": "Lucky",
+    "tags": [
+      "Passive"
+    ],
+    "score": 7,
+    "desc": "Fortune favours you more than most. You now score a Critical Hit on any High Roll (18, 19, or 20)."
+  },
+  {
+    "id": 3717,
+    "name": "Unlucky",
+    "tags": [
+      "Passive"
+    ],
+    "score": -7,
+    "desc": "Nothing ever seems to go your way. You now suffer a Critical Failure on any Low Roll (1, 2, or 3)."
+  },
+  {
+    "id": 3718,
+    "name": "Illiterate",
+    "tags": [
+      "Passive"
+    ],
+    "score": -2,
+    "desc": "You cannot read. You are unable to use Spell Scrolls or decipher any written text. The rest of this card is unreadable to you: ajdsid ale kfsdlkw jsiuw sslshw ksjwla lianra lair fsdm."
+  },
+  {
+    "id": 3719,
+    "name": "Narcoleptic",
+    "tags": [
+      "Passive"
+    ],
+    "score": 3,
+    "desc": "You are prone to sudden, uncontrollable sleep. At the start of every round, roll a d20. On a roll of 5 or lower, you are Stunned for the remainder of that round."
+  },
+  {
+    "id": 3720,
+    "name": "Honorable",
+    "tags": [
+      "Passive"
+    ],
+    "score": 4,
+    "desc": "You seek justice and fairness even against your enemies. You cannot attack any creature that is not aware of your presence or is not facing you."
+  },
+  {
+    "id": 3721,
+    "name": "Well Endowed",
+    "tags": [
+      "Passive"
+    ],
+    "score": 10,
+    "desc": "Your defining physical characteristics are remarkably large and pronounced. No further mechanical benefit is required from a card such as this."
+  },
+  {
+    "id": 3722,
+    "name": "Emo",
+    "tags": [
+      "Passive"
+    ],
+    "score": 1,
+    "desc": "You are burdened by a deep melancholy and believe life holds little joy. Gain 200 gold, draw 2 random spells, 1 random Treasure, and 1 random Companion, all added to your inventory — thanks to the privilege you refuse to acknowledge."
+  },
+  {
+    "id": 2844,
+    "name": "Demonic Possession",
+    "tags": [
+      "Legendary",
+      "Cursed",
+      "Passive"
+    ],
+    "score": 0,
+    "desc": "A demon shares your body. Each turn roll a d20 — on a 5 or lower the demon seizes control. While possessed, the demon uses Pyromancer spells (Fireball, Heat Wave, Lava Pool). The demon may use your class abilities, but doing so costs you 5 HP and requires a DC 13 Wisdom saving throw to regain control."
+  },
+  {
+    "id": 3016,
+    "name": "Ironclad Arm",
+    "tags": [
+      "Armor"
+    ],
+    "score": 10,
+    "desc": "When you were young you lost your arm and had it replaced by a mechanical construct. Your unarmed strikes deal at least 5 damage. This arm can be damaged by Critical Failures and must be repaired by a skilled artisan."
+  },
+  {
+    "id": 3018,
+    "name": "Bloodthirsty",
+    "tags": [
+      "Cursed"
+    ],
+    "score": 5,
+    "desc": "You are always seeking battle and revel in carnage. The sight of blood fills you with savage energy. Whenever any creature (ally or enemy) takes damage that causes bleeding, you regain 1 HP."
+  },
+  {
+    "id": 900000,
+    "name": "Magic Denier",
+    "tags": [
+      "Passive",
+      "Hater",
+      "Legendary"
+    ],
+    "score": -30,
+    "desc": "You have decided, through careful reasoning and absolutely zero evidence, that magic is a shared delusion. Unfortunately, your body took this so seriously that it forgot to stay alert to everything else.\n\nYou have concluded that magic does not exist. Your body agrees so thoroughly that all magical effects — beneficial and harmful alike — simply stop working on you. Spells cannot target you. Magical healing does not reach you. Enchantments, curses, and divine effects slide off entirely. You must be a fully martial class with no magical ability whatsoever — Fighter, Barbarian, Ranger, Rogue, or Monk only. Any multiclass into a spellcasting class immediately voids this card. The catch: while your mind was busy not believing in magic, it forgot to believe in self-preservation either. You take +2 damage from all physical sources — Bludgeoning, Piercing, and Slashing — because you were absolutely not paying attention."
+  },
+  {
+    "id": 900001,
+    "name": "Magic Hater",
+    "tags": [
+      "Passive",
+      "Hater",
+      "Uncommon",
+      "Basic"
+    ],
+    "score": 0,
+    "desc": "It's fake. You've said it a hundred times. Nobody listens. Fine. You'll prove it.\n\nYou despise magic with a fervour that borders on religion — the irony of which is completely lost on you. BENEFITS: You have Advantage on saving throws against all spells and magical effects. You can identify any spell being cast within 30 feet by name and school — because you have studied the enemy. You are immune to the Charmed condition caused by magical means. DRAWBACKS: You must verbally object whenever a party member casts a spell. You cannot willingly enter a location described as 'magical' or 'arcane' without first making a DC 12 WIS save. Any time you benefit from a magical effect, you must spend the next turn loudly insisting it was a coincidence."
+  },
+  {
+    "id": 900002,
+    "name": "Last Word",
+    "tags": [
+      "Passive",
+      "Hater",
+      "Uncommon",
+      "Basic"
+    ],
+    "score": 2,
+    "desc": "You physically cannot let someone else have the last word. This is not a choice. This is a medical condition.\n\nBENEFITS: Advantage on Persuasion, Intimidation, and Deception checks whenever you are responding to something someone else said. You are immune to magical Silence and Charm effects — you simply refuse to stop talking long enough for them to take hold. Whenever an NPC tries to dismiss or end a conversation, you may extend it by one additional exchange, no roll required. DRAWBACKS: If a creature speaks to you — friend or foe — you must respond before doing anything else. You cannot benefit from Stealth if a conversation is occurring within 30 feet of you. Villains, interrogators, and very patient merchants can bait you into revealing information simply by making a statement and waiting."
+  },
+  {
+    "id": 900003,
+    "name": "Professional Hater",
+    "tags": [
+      "Passive",
+      "Hater",
+      "Uncommon",
+      "Basic"
+    ],
+    "score": 2,
+    "desc": "You have identified a target for your considerable energies. This is not personal. Actually, it is entirely personal.\n\nAt character creation, choose one creature type, faction, or specific concept (dragons, undead, the Ironwall Compact, magic, Tuesday, etc). BENEFITS: You have Advantage on all attack rolls, ability checks, and saving throws directly involving your chosen target. You can automatically identify members, symbols, disguises, and tactics associated with your chosen target — no roll required. You deal +2 damage on all attacks against your chosen target. DRAWBACKS: You cannot remain calm around your chosen target — any encounter requires a DC 13 WIS save to avoid immediately prioritising them over all other objectives. Diplomacy involving your chosen target is conducted at Disadvantage. If your chosen target is present and you have not engaged with them yet, the DM may impose a -1 to all unrelated checks as your attention drifts."
+  },
+  {
+    "id": 900004,
+    "name": "Dragon Hater",
+    "tags": [
+      "Passive",
+      "Hater",
+      "Uncommon",
+      "Basic"
+    ],
+    "score": 3,
+    "desc": "You have concluded that dragons are just oversized lizards with a marketing department.\n\nBENEFITS: You are immune to the Frightened condition caused by dragon presence or abilities. You have Advantage on all checks and saving throws against dragons and draconic hybrid creatures. Dragon breath attacks deal half damage to you. You always know the direction of the nearest dragon within 5 miles. DRAWBACKS: You always know the direction of the nearest dragon within 5 miles. You must make a DC 13 WIS save to avoid pursuing or confronting a dragon you know is nearby. You cannot willingly retreat from a dragon — fleeing requires a DC 15 WIS save. Every dragon on Aethros somehow learns your name and begins your relationship at Hostile disposition. In this world, that category includes Dragonhounds, Failed Hybrids, and every creature Vael Torris has ever made."
+  },
+  {
+    "id": 900005,
+    "name": "Moisture Hater",
+    "tags": [
+      "Passive",
+      "Hater",
+      "Uncommon",
+      "Basic"
+    ],
+    "score": 2,
+    "desc": "Things should pick a state and stick with it.\n\nBENEFITS: You never become wet under any natural circumstances. Rain, mud, seawater, and condensation slide off you as if offended. You have Resistance to Cold and Water damage. You are immune to diseases spread through water or aquatic contact. DRAWBACKS: Soups, stews, broths, and any food with excessive liquid content are deeply unpleasant to you — consuming them causes mild psychic damage (1 point) and requires a DC 10 WIS save to finish. You have Disadvantage on all checks involving swimming. Humid environments impose a constant -1 to all WIS checks from sustained irritation. Rain follows you specifically — the DM may declare that it begins raining whenever you are outdoors and least want it to."
+  },
+  {
+    "id": 900006,
+    "name": "Tuesday Hater",
+    "tags": [
+      "Passive",
+      "Hater",
+      "Uncommon",
+      "Basic"
+    ],
+    "score": 4,
+    "desc": "Of all the days in existence, Tuesday is the worst. You have data.\n\nBENEFITS: On Tuesdays, all your ability scores increase by 2 and you have Advantage on all d20 rolls. You always know whether it is Tuesday — this cannot be obscured by magic, illusion, or time manipulation. DRAWBACKS: You always know whether it is Tuesday. If it is Tuesday, you must complain about it at least once per scene — this is not negotiable. On Tuesdays, you cannot willingly avoid mentioning that it is Tuesday to anyone you speak to. Your hatred of Tuesday is immediately obvious to anyone who interacts with you for more than one minute, and some NPCs will use this information."
+  },
+  {
+    "id": 900007,
+    "name": "Rock Hater",
+    "tags": [
+      "Passive",
+      "Hater",
+      "Uncommon",
+      "Basic"
+    ],
+    "score": 3,
+    "desc": "You have tripped over one too many rocks and now it is personal.\n\nBENEFITS: You have Tremorsense out to 30 feet — a direct result of spending years watching the ground for ambushes. You ignore difficult terrain caused by stone, rubble, and rocky ground. You have Advantage on all attack rolls and checks against earth elementals, stone constructs, and creatures with a stone or rock descriptor. You can instantly identify unstable stonework, poorly mortared walls, and structurally compromised floors by sight. DRAWBACKS: When you encounter a suspicious rock — loose, oddly placed, or simply present — you must kick it. You cannot help this. Gravel roads fill you with unreasonable but visible annoyance. You cannot resist commenting on poorly placed rocks, which causes problems in dungeons, caves, and the Ashen Interior. Earth elementals and stone golems recognise your hostility immediately and prioritise you in combat."
+  },
+  {
+    "id": 900008,
+    "name": "Spoon Hater",
+    "tags": [
+      "Passive",
+      "Hater",
+      "Uncommon",
+      "Basic"
+    ],
+    "score": 2,
+    "desc": "Forks solved this problem centuries ago.\n\nBENEFITS: You never require utensils to eat and have developed extraordinary manual dexterity as a result — Advantage on Sleight of Hand checks. You are immune to poison delivered through food or drink, having long ago learned to consume carefully. You can safely eat nearly any organic material without suffering ill effects. You have Advantage on Constitution saves involving food, drink, or ingested substances. DRAWBACKS: Seeing a spoon causes irrational irritation that the DM may impose at any time. You must insult anyone using a spoon within eyeline — this is instinctive and cannot be suppressed. Fine dining establishments, noble banquets, and any event involving formal tableware will involve at least one incident. You will not use a spoon under any circumstances, including circumstances where a spoon would genuinely help."
+  },
+  {
+    "id": 900009,
+    "name": "Chair Hater",
+    "tags": [
+      "Passive",
+      "Hater",
+      "Uncommon",
+      "Basic"
+    ],
+    "score": 3,
+    "desc": "Chairs are a conspiracy designed to weaken the legs. You refuse to participate.\n\nBENEFITS: You never suffer Exhaustion from standing or marching, having trained your body beyond the need for rest that chairs supposedly provide. You are immune to the Prone condition and to any effect that forces you to sit or kneel. You have Advantage on saving throws against all forced movement effects. While standing and not wearing heavy armour, you gain +1 AC — your legs are in a constant state of readiness. DRAWBACKS: You cannot willingly sit in a chair. Sitting in a chair, throne, or seat of any kind deals 2 psychic damage per round — your body protests physically. Thrones count as chairs. The chairs of kings count as chairs. The Hollow Emperor's throne counts as a chair. People frequently mistake your condition for stubbornness, which is accurate."
+  },
+  {
+    "id": 900010,
+    "name": "Moon Hater",
+    "tags": [
+      "Passive",
+      "Hater",
+      "Uncommon",
+      "Basic"
+    ],
+    "score": 3,
+    "desc": "The moon contributes nothing and receives far too much credit.\n\nBENEFITS: You are immune to lycanthropy and all moon-based curses and transformations. You are immune to spells and effects that specifically invoke lunar power. You always know the moon's location, phase, and visibility — even through solid objects, magical darkness, and heavy cloud cover. You have Advantage on all attack rolls and checks against werewolves and lunar creatures. DRAWBACKS: You always know the moon's location. Whenever the moon is visible, you feel compelled to insult it aloud — DC 13 WIS save to resist, and failure means a full sentence directed at the sky. Werewolves and lunar clergy begin with a Hostile disposition toward you — they can smell the contempt. Priests of moon-adjacent faiths consider your condition offensive on a theological level."
+  },
+  {
+    "id": 900011,
+    "name": "Beard Hater",
+    "tags": [
+      "Passive",
+      "Hater",
+      "Uncommon",
+      "Basic"
+    ],
+    "score": 2,
+    "desc": "Your face is trying to escape and everyone around you is encouraging it.\n\nBENEFITS: You are immune to facial hair-based disguises and can immediately identify a creature regardless of changes to their beard, stubble, or facial hair. You have Advantage on Insight checks to see through physical disguises of any kind — your obsessive attention to faces has trained you well. You can identify a person you have met before through any disguise that does not change their face structure. DRAWBACKS: You must comment on notable beards — exceptional, terrible, or otherwise — within two rounds of noticing them. Bearded NPCs begin one attitude step less friendly toward you by default; they can tell. Dwarves are a specific and recurring problem. The Ironwall Compact's garrison culture means that approximately half the Compact soldiers you meet will take this personally."
+  },
+  {
+    "id": 900012,
+    "name": "Cloud Hater",
+    "tags": [
+      "Passive",
+      "Hater",
+      "Uncommon",
+      "Basic"
+    ],
+    "score": 2,
+    "desc": "The sky was perfectly fine before they showed up.\n\nBENEFITS: You always know tomorrow's weather to a high degree of accuracy — your obsessive cloud monitoring has made you an excellent meteorologist. You have Immunity to Lightning damage. You can see clearly through fog, mist, and magical cloud effects that would normally obscure vision. DRAWBACKS: You constantly monitor cloud activity and will announce cloud formations, movements, and suspicious behaviour to the party without being asked. You must comment on particularly offensive clouds. Druids, weather mages, and anyone with the Storm-Read attribute finds you deeply annoying. The DM may have clouds follow you at inopportune moments — this is canon."
+  },
+  {
+    "id": 900013,
+    "name": "Fish Hater",
+    "tags": [
+      "Passive",
+      "Hater",
+      "Uncommon",
+      "Basic"
+    ],
+    "score": 3,
+    "desc": "They know what they did.\n\nBENEFITS: You can breathe underwater — your body developed this ability out of sheer spite, to confront fish on their home ground. You are immune to aquatic diseases, parasites, and poisons delivered by aquatic creatures. You have Advantage on all attack rolls and checks against aquatic creatures. Merfolk, sea serpents, and intelligent aquatic beings register your hostility immediately and take it personally. DRAWBACKS: You must insult any fish you encounter — this includes fish on a plate, fish used as currency, and decorative fish motifs. Fishing villages, ports, and coastal settlements regard you with varying degrees of suspicion — word travels. Fish appear to recognise you somehow; the DM may have fish react to your presence in ways that are technically impossible."
+  },
+  {
+    "id": 900014,
+    "name": "Tree Hater",
+    "tags": [
+      "Passive",
+      "Hater",
+      "Uncommon",
+      "Basic"
+    ],
+    "score": 3,
+    "desc": "Trees have been standing around acting important for far too long and no one is saying anything.\n\nBENEFITS: You can always determine true north — years of staring at trees in resentment have given you an intimate understanding of their relationship to the sun. You move through forests and dense woodland at full speed without penalty. You have Advantage on all attack rolls against plant creatures, Blights, Myconids, and anything with a plant descriptor. You can instantly identify whether any tree or plant growth is magical — it glows faintly wrong to you. DRAWBACKS: You must insult notable trees — old ones, famous ones, ones the Druids are clearly fond of. You cannot willingly express admiration for a tree or forest, even tactically. Druids begin one attitude step worse toward you. Squirrels instinctively distrust you and the DM may use this at any moment."
+  },
+  {
+    "id": 900015,
+    "name": "Bridge Hater",
+    "tags": [
+      "Passive",
+      "Hater",
+      "Uncommon",
+      "Basic"
+    ],
+    "score": 2,
+    "desc": "If the gap wanted crossing, it would not be a gap.\n\nBENEFITS: Your jumping distance is doubled — you have spent years finding alternative routes and your legs have noticed. You have Advantage on all climbing checks. You always know of an alternate route around any obstacle, crossing, or chokepoint — the DM must acknowledge one exists even if they don't describe it. DRAWBACKS: You cannot willingly use a bridge, walkway, or constructed crossing of any kind. If forced onto a bridge, you take 1 psychic damage per round from the indignity. You must find another way across every gap, river, and ravine — the party may or may not wait for you. Engineers, architects, and anyone who built a bridge considers your philosophy a personal attack."
+  },
+  {
+    "id": 900016,
+    "name": "Clock Hater",
+    "tags": [
+      "Passive",
+      "Hater",
+      "Uncommon",
+      "Basic"
+    ],
+    "score": 3,
+    "desc": "Time does not need supervision and you resent the implication that it does.\n\nBENEFITS: You always know the exact time — to the minute — at all times, without any external reference. You cannot be magically aged, slowed, or have your perception of time altered by any effect. You have Advantage on Initiative rolls — your awareness of temporal flow is impeccable. DRAWBACKS: You must criticise any clock, sundial, or timekeeping device you encounter. Clock towers cause you visible irritation that you cannot conceal. You become irrationally angry when someone says they are 'running late' — you know exactly how late they are and it compounds the problem. Artificers, tinkerers, and the Tinker's Gift attribute holders find your position philosophically offensive."
+  },
+  {
+    "id": 900017,
+    "name": "Sand Hater",
+    "tags": [
+      "Passive",
+      "Hater",
+      "Uncommon",
+      "Basic"
+    ],
+    "score": 3,
+    "desc": "You have gotten sand in exactly one boot too many and you have reached your limit.\n\nBENEFITS: You ignore difficult terrain caused by sand, dirt, gravel, or loose earth entirely. You are immune to the Blinded condition caused by dust, sand, or thrown particulate matter. You always know the location of the nearest solid stone or wooden surface — your body seeks it constantly. You have Resistance to Earth and Bludgeoning damage from earthen sources. DRAWBACKS: You must stop to complain about sand whenever you encounter it in an inconvenient location — which is always. Walking on a beach deals 1 psychic damage per minute from sustained irritation. Desert-adjacent cultures, coastal settlements, and anyone who finds the beach relaxing think you are deeply exhausting. You instinctively kick sand dunes, which has consequences."
+  },
+  {
+    "id": 910000,
+    "name": "Love Struck",
+    "tags": [
+      "Passive",
+      "Legendary"
+    ],
+    "score": 0,
+    "desc": "You are madly in love with the first Gnome you lay your eyes on. Your character will sacrifice everything to keep them out of harms way reguardless if she returns the love back to you."
+  }
+]

@@ -1,3 +1,18 @@
+import craftingRulesJson from "./crafting/craftingRules.json";
+
+export type CraftingRulesContent = {
+  basicCrafting: string[];
+  assistedCrafting: string[];
+  npcCrafting: string[];
+  materialQualityInfluence: string[];
+  craftingOutcomes: string[];
+  phaseTouchedCrafting: string[];
+  progressPoints: string[];
+  proficiencyAdvancement: string[];
+  masteryOptions: string[];
+  training: string[];
+};
+
 export type CraftOutcomeQuality = "Superior" | "Normal" | "Flawed" | "Failed";
 
 export type CraftResultType =
@@ -38,71 +53,7 @@ export type ToolProgress = {
 
 export const regularTrainingCosts = [10, 15, 20, 25, 30] as const;
 
-export const craftingRules = {
-  basicCrafting: [
-    "When crafting an item, make a tool-based ability check using the listed tool and associated stat.",
-    "If proficient with the tool, add your proficiency bonus.",
-    "If not proficient, still roll using the stat with no proficiency bonus.",
-  ],
-  assistedCrafting: [
-    "Another character can assist with crafting if they are proficient with the required tool.",
-    "The assistant may grant Advantage on the crafting roll or provide a +2 bonus.",
-    "Only one assistant can provide this benefit per crafting attempt.",
-  ],
-  npcCrafting: [
-    "Players may choose to have a shop NPC or specialist craft an item for them.",
-    "The item is always crafted as a Normal version.",
-    "No roll is required.",
-    "Materials are still consumed as normal.",
-    "Additional labour costs may apply by DM discretion or shop pricing.",
-  ],
-  materialQualityInfluence: [
-    "Only one quality modifier applies per craft.",
-    "Superior material/item: DC -2 and on success the result cannot be Flawed.",
-    "Flawed material/item: DC +2 and on failure the result cannot be Normal.",
-    "Normal materials: no change.",
-  ],
-  craftingOutcomes: [
-    "Success by 5 or more: create a Superior version.",
-    "Success by meeting the DC: create a Normal version.",
-    "Failure below DC by less than 5: create a Flawed version.",
-    "Failure by 5 or more: no item is created; lose some common materials by DM discretion or about 50%.",
-    "Natural 1: critical failure; lose all materials used and tools may break.",
-    "Natural 20: critical success; the rarest material used is not consumed.",
-  ],
-  phaseTouchedCrafting: [
-    "If a crafted item uses at least one Phase-Touched material, the finished item gains one Phase-Touched effect based on the item type.",
-    "Weapons gain Phase Strike.",
-    "Armour gains Phase Deflection.",
-    "Accessories gain Phase Anchor or another approved Phase-Touched accessory effect.",
-    "A crafted item may only gain one Phase-Touched effect unless the recipe specifically allows multiple effects.",
-  ],
-  progressPoints: [
-    "Success: +1 PP.",
-    "Success by 5 or more: +2 PP.",
-    "Failure: 0 PP.",
-    "Critical Failure: -2 PP.",
-    "First time crafting a new item type grants +1 bonus PP.",
-    "Players only gain PP for the first 5 items crafted per category per day.",
-    "After 5 crafts of the same category, further crafts of that category gain Advantage but no longer gain PP.",
-  ],
-  proficiencyAdvancement: [
-    "10 PP: gain proficiency.",
-    "25 PP: choose Specialization or Mastery.",
-    "Every additional 25 PP: choose another Specialization or Mastery if not already chosen.",
-  ],
-  masteryOptions: [
-    "Advantage on crafting rolls.",
-    "Reduce crafting DC by 1.",
-    "Treat failures within 2 of DC as Normal.",
-  ],
-  training: [
-    "Regular Training: +2 PP per session, max 5 sessions, total max +10 PP.",
-    "Regular Training cost increases each time: 10, 15, 20, 25, then 30 gp.",
-    "Expert Training: +3 PP per session, max 5 sessions, total max +15 PP.",
-    "Expert Training cost: 50 gp per session.",
-  ],
-};
+export const craftingRules = craftingRulesJson as unknown as CraftingRulesContent;
 
 export function calculatePpGain({ naturalRoll, total, dc, isFirstTimeItemType = false, categoryCraftsToday = 0 }: PpGainInput): number {
   if (categoryCraftsToday >= 5) return 0;
