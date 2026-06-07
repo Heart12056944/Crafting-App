@@ -9255,8 +9255,8 @@
       "Dragon",
       "Legendary"
     ],
-    "description": "A powerful ether ring given to you by Dragon Aspect Quintara Lotus that when sucked on intoxicates the Player. Your weapon attacks with the Leather Whip now deal 20 damage. Once per combat, you may drink directly from the ring to Triple your weapon attack Damage for the rest of combat, but must use a coin instead of rolling with these attacks. Heads counts as a critical hit and Tails counts as a natural 1.",
-    "originalText": "A powerful ether ring given to you by Dragon Aspect Quintara Lotus that when sucked on intoxicates the Player. Your Basic Attacks with the Leather Whip now deal 20 Damage. Once per combat, you may drink directly from the ring to Triple your Basic Attack Damage for the rest of combat, but must use a coin instead of rolling with these attacks. Heads counts as a Critical Hit and Tails counts as a Critical Fail.",
+    "description": "A powerful ether ring given to you by Soleth that when sucked on intoxicates the Player. Your weapon attacks with the Leather Whip now deal 20 damage. Once per combat, you may drink directly from the ring to Triple your weapon attack Damage for the rest of combat, but must use a coin instead of rolling with these attacks. Heads counts as a critical hit and Tails counts as a natural 1.",
+    "originalText": "A powerful ether ring given to you by Soleth that when sucked on intoxicates the Player. Your Basic Attacks with the Leather Whip now deal 20 Damage. Once per combat, you may drink directly from the ring to Triple your Basic Attack Damage for the rest of combat, but must use a coin instead of rolling with these attacks. Heads counts as a Critical Hit and Tails counts as a Critical Fail.",
     "source": "URLive Season 3 - Card By: URLive Official"
   },
   {
@@ -9275,8 +9275,8 @@
       "Dragon",
       "Legendary"
     ],
-    "description": "An old pair of worn Dragonfit Gauntlets crafted by Dragon Aspect Vlaurunga before the birth of magic. Your weapon attacks can damage Divines.",
-    "originalText": "An old pair of worn Dragonfit Gauntlets crafted by Dragon Aspect Vlaurunga before the birth of magic. Your Basic Attacks can damage Divines.",
+    "description": "An old pair of worn Dragonfit Gauntlets crafted by Vael before the birth of magic. Your weapon attacks can damage Divines.",
+    "originalText": "An old pair of worn Dragonfit Gauntlets crafted by Vael before the birth of magic. Your Basic Attacks can damage Divines.",
     "source": "URLive Season 3 - Card By: URLive Official"
   },
   {
@@ -9320,8 +9320,8 @@
       "HP",
       "Legendary"
     ],
-    "description": "A set of ramster armor that was quickly conjured up by Dragon Aspect Quintara Lotus. Triple the HP of your Companion. Your companion can take Damage on your behalf, use Abilities and Spells you know, and talks in a funny voice. Your Companion may also no Burp to cast random Spells as a Regular Action. Access to these new Abilities and Spells are considered Companion Abilities.",
-    "originalText": "A set of ramster armor that was quickly conjured up by Dragon Aspect Quintara Lotus. Triple the Stamina of your Companion. Your companion can take Damage on your behalf, use Abilities and Spells you know, and talks in a funny voice. Your Companion may also no Burp to cast random Spells as a Regular Action. Access to these new Abilities and Spells are considered Companion Abilities.",
+    "description": "A set of ramster armor that was quickly conjured up by Soleth. Triple the HP of your Companion. Your companion can take Damage on your behalf, use Abilities and Spells you know, and talks in a funny voice. Your Companion may also no Burp to cast random Spells as a Regular Action. Access to these new Abilities and Spells are considered Companion Abilities.",
+    "originalText": "A set of ramster armor that was quickly conjured up by Soleth. Triple the Stamina of your Companion. Your companion can take Damage on your behalf, use Abilities and Spells you know, and talks in a funny voice. Your Companion may also no Burp to cast random Spells as a Regular Action. Access to these new Abilities and Spells are considered Companion Abilities.",
     "source": "URLive Season 3 - Card By: URLive Official"
   },
   {
@@ -9575,27 +9575,6 @@
     "description": "Contains the soul of your past rival. Murdered unfairly, they chose to forigve you and they now posses this Staff. Whenever you cast a spell, after you roll you may choose to cast a different spell instead with the same roll. Your rival may cast a copy of your spell as a no-roll action if he likes.",
     "originalText": "Contains the soul of your past rival. Murdered unfairly, they chose to forigve you and they now posses this Staff. Whenever you cast a spell, after you roll you may choose to cast a different spell instead with the same roll. Your rival may cast a copy of your spell as a no-roll action if he likes.",
     "source": "Unnassigned - Card By: Yuval Mano"
-  },
-  {
-    "id": "legendary-armor-of-pash-ta-6802",
-    "sourceId": "6802",
-    "name": "Armor of Pash'ta",
-    "category": "Armour",
-    "rarity": "Legendary",
-    "valueGp": 2000,
-    "requiresAttunement": true,
-    "tags": [
-      "D&D 5e",
-      "Converted",
-      "Legendary Reward",
-      "Armour",
-      "Dragon",
-      "Bonus Action",
-      "Legendary"
-    ],
-    "description": "Pash'ta, the divine being is said to have worn this armor to charm the Dragon Aspect Quintara Lotus herself. Whenever an enemy attacks you and rolls low, you can roll to charm them as a bonus action. you cannot critical fail on this roll. Divine beings are not immune to this effect, but are harder to charm.",
-    "originalText": "Pash'ta, the divine being is said to have worn this armor to charm the Dragon Aspect Quintara Lotus herself. Whenever an enemy attacks you and rolls low, you can roll to charm them as a bonus action. you cannot critical fail on this roll. Divine beings are not immune to this effect, but are harder to charm.",
-    "source": ""
   },
   {
     "id": "legendary-cartel-boss-s-sheath-6803",
