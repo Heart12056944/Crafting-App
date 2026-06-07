@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
-import { Gift, RefreshCw, Upload } from "lucide-react";
+import { Gift, Pencil, RefreshCw, Save, Trash2, Upload, X } from "lucide-react";
 
 import { supabase } from "@/lib/supabaseClient";
 import {
@@ -37,6 +37,16 @@ type CampaignRewardRow = {
   quantity: number;
   created_at: string;
   reward_definitions?: DbRewardDefinition | null;
+};
+
+type EditRewardForm = {
+  id: string;
+  name: string;
+  category: RewardCategory;
+  rarity: RewardRarity;
+  value_gp: string;
+  description: string;
+  tagsText: string;
 };
 
 const RARITIES: RewardRarity[] = ["Common", "Uncommon", "Rare", "Epic", "Legendary"];
@@ -91,6 +101,33 @@ function rarityBadgeClass(rarity: string) {
   }
 }
 
+function tagsToText(tags: string[] | null | undefined) {
+  return (tags || []).join(", ");
+}
+
+function textToTags(text: string) {
+  return Array.from(
+    new Set(
+      text
+        .split(/,|\n/)
+        .map((tag) => tag.trim())
+        .filter(Boolean)
+    )
+  );
+}
+
+function rewardToEditForm(reward: DbRewardDefinition): EditRewardForm {
+  return {
+    id: reward.id,
+    name: reward.name || "",
+    category: reward.category || "Item",
+    rarity: reward.rarity || "Common",
+    value_gp: String(reward.value_gp ?? 0),
+    description: reward.description || "",
+    tagsText: tagsToText(reward.tags),
+  };
+}
+
 export default function RewardsPanel({
   campaignId,
   characters,
@@ -113,6 +150,10 @@ export default function RewardsPanel({
   const [message, setMessage] = useState("");
   const [isSyncing, setIsSyncing] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isSavingReward, setIsSavingReward] = useState(false);
+  const [isWipingRewards, setIsWipingRewards] = useState(false);
+  const [editForm, setEditForm] = useState<EditRewardForm | null>(null);
+  const [wipeConfirmText, setWipeConfirmText] = useState("");
 
   const activeCharacters = useMemo(
     () => characters.filter((character) => adminUnlocked || character.isActive !== false),
@@ -210,6 +251,53 @@ export default function RewardsPanel({
     loadRewards();
   }
 
+  async function wipeRewardItemsClean() {
+    if (!adminUnlocked || isWipingRewards) return;
+
+    if (wipeConfirmText.trim() !== "WIPE REWARDS") {
+      setMessage("Type WIPE REWARDS before wiping reward items clean.");
+      return;
+    }
+
+    const confirmed = window.confirm(
+      "This will delete all assigned campaign rewards for this campaign and delete all rows from reward_definitions. This cannot be undone. Continue?"
+    );
+
+    if (!confirmed) return;
+
+    setIsWipingRewards(true);
+    setMessage("Wiping reward items clean...");
+
+    const { error: campaignDeleteError } = await supabase
+      .from("campaign_rewards")
+      .delete()
+      .eq("campaign_id", campaignId);
+
+    if (campaignDeleteError) {
+      setIsWipingRewards(false);
+      setMessage(`Could not delete assigned campaign rewards: ${campaignDeleteError.message}`);
+      return;
+    }
+
+    const { error: definitionDeleteError } = await supabase
+      .from("reward_definitions")
+      .delete()
+      .not("id", "is", null);
+
+    if (definitionDeleteError) {
+      setIsWipingRewards(false);
+      setMessage(`Could not delete reward definitions: ${definitionDeleteError.message}`);
+      return;
+    }
+
+    setEditForm(null);
+    setRolledRewards([]);
+    setWipeConfirmText("");
+    setIsWipingRewards(false);
+    setMessage("Reward items wiped clean. You can now sync fresh reward definitions.");
+    loadRewards();
+  }
+
   function rollRewards() {
     const pool = definitions.filter((reward) => {
       const categoryMatch = category === "Any" || reward.category === category;
@@ -271,6 +359,85 @@ export default function RewardsPanel({
     loadRewards();
   }
 
+  function startEditingReward(reward: DbRewardDefinition) {
+    if (!adminUnlocked) return;
+    setEditForm(rewardToEditForm(reward));
+    setMessage(`Editing ${reward.name}.`);
+  }
+
+  async function saveEditedReward() {
+    if (!adminUnlocked || !editForm) return;
+
+    const valueGp = Number(editForm.value_gp);
+    if (!editForm.name.trim()) {
+      setMessage("Reward name is required.");
+      return;
+    }
+
+    if (!Number.isFinite(valueGp) || valueGp < 0) {
+      setMessage("GP value must be 0 or higher.");
+      return;
+    }
+
+    setIsSavingReward(true);
+    const { error } = await supabase
+      .from("reward_definitions")
+      .update({
+        name: editForm.name.trim(),
+        category: editForm.category,
+        rarity: editForm.rarity,
+        value_gp: Math.floor(valueGp),
+        description: editForm.description.trim(),
+        tags: textToTags(editForm.tagsText),
+      })
+      .eq("id", editForm.id);
+
+    setIsSavingReward(false);
+
+    if (error) {
+      setMessage(`Save failed: ${error.message}`);
+      return;
+    }
+
+    setMessage(`${editForm.name} saved.`);
+    setEditForm(null);
+    loadRewards();
+  }
+
+  async function deleteRewardDefinition(reward: DbRewardDefinition) {
+    if (!adminUnlocked) return;
+
+    const confirmed = window.confirm(
+      `Delete ${reward.name}? This will also remove assigned copies of this reward from the campaign.`
+    );
+
+    if (!confirmed) return;
+
+    const { error: campaignDeleteError } = await supabase
+      .from("campaign_rewards")
+      .delete()
+      .eq("reward_definition_id", reward.id);
+
+    if (campaignDeleteError) {
+      setMessage(`Could not remove assigned copies: ${campaignDeleteError.message}`);
+      return;
+    }
+
+    const { error: definitionDeleteError } = await supabase
+      .from("reward_definitions")
+      .delete()
+      .eq("id", reward.id);
+
+    if (definitionDeleteError) {
+      setMessage(`Delete failed: ${definitionDeleteError.message}`);
+      return;
+    }
+
+    if (editForm?.id === reward.id) setEditForm(null);
+    setMessage(`${reward.name} deleted.`);
+    loadRewards();
+  }
+
   const categoryCounts = useMemo(() => {
     return definitions.reduce<Record<string, number>>((acc, reward) => {
       acc[reward.category] = (acc[reward.category] || 0) + 1;
@@ -315,6 +482,144 @@ export default function RewardsPanel({
 
         {message && <div className="mb-4 rounded-xl border border-[#9a7b45] bg-[#fff0c7] p-3 text-sm">{message}</div>}
 
+        {adminUnlocked && (
+          <div className="mb-5 rounded-xl border border-[#9a7b45] bg-[#fff0c7] p-4">
+            <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <p className="font-bold">GM Reward Tools</p>
+                <p className="text-xs">Edit database reward rows, sync JSON definitions, or wipe reward items clean.</p>
+              </div>
+              <button
+                onClick={loadRewards}
+                className="inline-flex items-center gap-2 rounded border border-[#9a7b45] bg-[#ead6ad] px-3 py-1 text-sm font-bold"
+              >
+                <RefreshCw className="h-4 w-4" />
+                Refresh
+              </button>
+            </div>
+
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+              <button
+                onClick={syncRewardDefinitions}
+                disabled={isSyncing}
+                className="inline-flex items-center justify-center gap-2 rounded bg-[#4b3115] px-4 py-2 font-bold text-[#fff0c7] disabled:opacity-60"
+              >
+                <Upload className="h-4 w-4" />
+                {isSyncing ? "Syncing..." : "Sync Reward Definitions"}
+              </button>
+
+              <div className="rounded border border-[#9a7b45] bg-[#ead6ad] p-3">
+                <p className="mb-2 text-sm font-bold text-red-800">Danger Zone</p>
+                <input
+                  className="mb-2 w-full rounded border border-[#9a7b45] bg-[#f2dfb9] p-2 text-sm"
+                  placeholder="Type WIPE REWARDS"
+                  value={wipeConfirmText}
+                  onChange={(event) => setWipeConfirmText(event.target.value)}
+                />
+                <button
+                  onClick={wipeRewardItemsClean}
+                  disabled={isWipingRewards || wipeConfirmText.trim() !== "WIPE REWARDS"}
+                  className="inline-flex w-full items-center justify-center gap-2 rounded bg-red-800 px-4 py-2 font-bold text-white disabled:opacity-50"
+                >
+                  <Trash2 className="h-4 w-4" />
+                  {isWipingRewards ? "Wiping..." : "Wipe Reward Items Clean"}
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {editForm && adminUnlocked && (
+          <div className="mb-5 rounded-xl border-2 border-[#4b3115] bg-[#fff0c7] p-4">
+            <div className="mb-3 flex items-center justify-between gap-3">
+              <h3 className="font-serif text-2xl font-bold">Edit Reward</h3>
+              <button
+                onClick={() => setEditForm(null)}
+                className="inline-flex items-center gap-1 rounded border border-[#9a7b45] bg-[#ead6ad] px-3 py-1 text-sm font-bold"
+              >
+                <X className="h-4 w-4" />
+                Close
+              </button>
+            </div>
+
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+              <label className="space-y-1 md:col-span-2">
+                <span className="text-sm font-bold">Name</span>
+                <input
+                  className="w-full rounded border border-[#9a7b45] bg-[#f2dfb9] p-2"
+                  value={editForm.name}
+                  onChange={(event) => setEditForm({ ...editForm, name: event.target.value })}
+                />
+              </label>
+
+              <label className="space-y-1">
+                <span className="text-sm font-bold">Category</span>
+                <select
+                  className="w-full rounded border border-[#9a7b45] bg-[#f2dfb9] p-2"
+                  value={editForm.category}
+                  onChange={(event) => setEditForm({ ...editForm, category: event.target.value as RewardCategory })}
+                >
+                  {REWARD_CATEGORIES.map((entry) => (
+                    <option key={entry} value={entry}>{entry}</option>
+                  ))}
+                </select>
+              </label>
+
+              <label className="space-y-1">
+                <span className="text-sm font-bold">Rarity</span>
+                <select
+                  className="w-full rounded border border-[#9a7b45] bg-[#f2dfb9] p-2"
+                  value={editForm.rarity}
+                  onChange={(event) => setEditForm({ ...editForm, rarity: event.target.value as RewardRarity })}
+                >
+                  {RARITIES.map((entry) => (
+                    <option key={entry} value={entry}>{entry}</option>
+                  ))}
+                </select>
+              </label>
+
+              <label className="space-y-1">
+                <span className="text-sm font-bold">Value GP</span>
+                <input
+                  type="number"
+                  min={0}
+                  className="w-full rounded border border-[#9a7b45] bg-[#f2dfb9] p-2"
+                  value={editForm.value_gp}
+                  onChange={(event) => setEditForm({ ...editForm, value_gp: event.target.value })}
+                />
+              </label>
+
+              <label className="space-y-1">
+                <span className="text-sm font-bold">Tags</span>
+                <input
+                  className="w-full rounded border border-[#9a7b45] bg-[#f2dfb9] p-2"
+                  placeholder="tag one, tag two"
+                  value={editForm.tagsText}
+                  onChange={(event) => setEditForm({ ...editForm, tagsText: event.target.value })}
+                />
+              </label>
+
+              <label className="space-y-1 md:col-span-2">
+                <span className="text-sm font-bold">Description</span>
+                <textarea
+                  className="min-h-[180px] w-full rounded border border-[#9a7b45] bg-[#f2dfb9] p-2"
+                  value={editForm.description}
+                  onChange={(event) => setEditForm({ ...editForm, description: event.target.value })}
+                />
+              </label>
+            </div>
+
+            <button
+              onClick={saveEditedReward}
+              disabled={isSavingReward}
+              className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded bg-[#1f4d2e] px-4 py-2 font-bold text-[#fff0c7] disabled:opacity-60"
+            >
+              <Save className="h-4 w-4" />
+              {isSavingReward ? "Saving..." : "Save Reward"}
+            </button>
+          </div>
+        )}
+
         {definitions.length === 0 && adminUnlocked && (
           <div className="mb-5 rounded-xl border border-[#9a7b45] bg-[#fff0c7] p-4">
             <p className="mb-3 font-bold">No reward definitions found.</p>
@@ -333,13 +638,6 @@ export default function RewardsPanel({
           <div className="mb-5 rounded-xl border border-[#9a7b45] bg-[#fff0c7] p-4">
             <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
               <p className="font-bold">Reward Generator</p>
-              <button
-                onClick={loadRewards}
-                className="inline-flex items-center gap-2 rounded border border-[#9a7b45] bg-[#ead6ad] px-3 py-1 text-sm font-bold"
-              >
-                <RefreshCw className="h-4 w-4" />
-                Refresh
-              </button>
             </div>
 
             <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
@@ -401,6 +699,8 @@ export default function RewardsPanel({
               adminUnlocked={adminUnlocked}
               onAssign={() => assignReward(reward, selectedCharacterId)}
               onAddToCampaign={() => assignReward(reward, null)}
+              onEdit={() => startEditingReward(reward)}
+              onDelete={() => deleteRewardDefinition(reward)}
             />
           ))}
         </div>
@@ -408,7 +708,7 @@ export default function RewardsPanel({
         <div className="mt-6 rounded-xl border border-[#9a7b45] bg-[#fff0c7] p-4">
           <h3 className="mb-3 font-serif text-2xl font-bold">Reward Codex</h3>
           <p className="mb-3 text-sm">
-            Browse every reward that exists in the campaign. Rarity is shown here for reference, but random rolls still happen behind the scenes.
+            Browse every reward that exists in the campaign. GM mode can edit database reward rows directly.
           </p>
 
           <div className="mb-4 grid grid-cols-1 gap-3 md:grid-cols-3">
@@ -446,9 +746,11 @@ export default function RewardsPanel({
                 <RewardCard
                   key={reward.id}
                   reward={reward}
-                  adminUnlocked={false}
-                  onAssign={() => undefined}
-                  onAddToCampaign={() => undefined}
+                  adminUnlocked={adminUnlocked}
+                  onAssign={() => assignReward(reward, selectedCharacterId)}
+                  onAddToCampaign={() => assignReward(reward, null)}
+                  onEdit={() => startEditingReward(reward)}
+                  onDelete={() => deleteRewardDefinition(reward)}
                 />
               ))}
             </div>
@@ -536,11 +838,15 @@ function RewardCard({
   adminUnlocked,
   onAssign,
   onAddToCampaign,
+  onEdit,
+  onDelete,
 }: {
   reward: DbRewardDefinition;
   adminUnlocked: boolean;
   onAssign: () => void;
   onAddToCampaign: () => void;
+  onEdit: () => void;
+  onDelete: () => void;
 }) {
   return (
     <div className="rounded-2xl border border-[#9a7b45] bg-[#fff0c7] p-4">
@@ -574,6 +880,14 @@ function RewardCard({
           </button>
           <button onClick={onAddToCampaign} className="rounded bg-[#4b3115] px-3 py-2 text-sm font-bold text-[#fff0c7]">
             Add To Campaign
+          </button>
+          <button onClick={onEdit} className="inline-flex items-center justify-center gap-2 rounded bg-[#5b4630] px-3 py-2 text-sm font-bold text-[#fff0c7]">
+            <Pencil className="h-4 w-4" />
+            Edit Reward
+          </button>
+          <button onClick={onDelete} className="inline-flex items-center justify-center gap-2 rounded bg-red-800 px-3 py-2 text-sm font-bold text-white">
+            <Trash2 className="h-4 w-4" />
+            Delete Reward
           </button>
         </div>
       )}
