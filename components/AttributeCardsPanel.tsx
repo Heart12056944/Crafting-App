@@ -220,6 +220,148 @@ function Card({
   );
 }
 
+const ASSIGN_RESULT_LIMIT = 40;
+
+// Base number of attribute cards per character. The GM can raise or lower it
+// per character; overrides live in campaign_character_attribute_roll_limits.
+const DEFAULT_CARD_LIMIT = 2;
+
+// Searchable card picker for the GM "Assign Attribute" box. Every word typed
+// must appear in the card's name, effect text, tags or ID.
+function AssignAttributePicker({
+  characters,
+  characterId,
+  setCharacterId,
+  cardCount,
+  cardLimit,
+  ownedCardIds,
+  selectedCardId,
+  setSelectedCardId,
+  search,
+  setSearch,
+  isHidden,
+  onAssign,
+}: {
+  characters: CharacterLike[];
+  characterId: string;
+  setCharacterId: (id: string) => void;
+  cardCount: (characterId: string) => number;
+  cardLimit: (characterId: string) => number;
+  ownedCardIds: number[];
+  selectedCardId: string;
+  setSelectedCardId: (id: string) => void;
+  search: string;
+  setSearch: (value: string) => void;
+  isHidden: (cardId: number) => boolean;
+  onAssign: () => void;
+}) {
+  const words = search.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  const query = words.join(" ");
+  const matches = ATTRIBUTE_CARDS.filter((card) => {
+    if (words.length === 0) return true;
+    const haystack = `${card.name} ${card.desc} ${(card.tags || []).join(" ")} ${card.id}`.toLowerCase();
+    return words.every((word) => haystack.includes(word));
+  }).sort((a, b) => {
+    // Name matches first, then tag matches, then matches only in the effect text.
+    const rank = (card: AttributeCardData) => {
+      if (!query) return 3;
+      const lower = card.name.toLowerCase();
+      if (lower.startsWith(query)) return 0;
+      if (lower.includes(query)) return 1;
+      if ((card.tags || []).some((tag) => tag.toLowerCase().includes(query))) return 2;
+      return 3;
+    };
+    return rank(a) - rank(b) || a.name.localeCompare(b.name);
+  });
+  const shown = matches.slice(0, ASSIGN_RESULT_LIMIT);
+  const owned = new Set(ownedCardIds.map(Number));
+  const selected = ATTRIBUTE_CARDS.find((card) => String(card.id) === selectedCardId);
+  const selectedCharacter = characters.find((character) => character.id === characterId);
+
+  return (
+    <div className="space-y-3">
+      <div className="grid grid-cols-1 gap-3 md:grid-cols-[1fr_auto]">
+        <select
+          className="rounded border border-[#9a7b45] bg-[#fff0c7] p-2"
+          value={characterId}
+          onChange={(event) => setCharacterId(event.target.value)}
+        >
+          {characters.map((character) => (
+            <option key={character.id} value={character.id}>
+              {character.name} ({cardCount(character.id)}/{cardLimit(character.id)})
+            </option>
+          ))}
+        </select>
+        <button
+          onClick={onAssign}
+          disabled={!selected}
+          className="rounded bg-[#4b3115] px-4 py-2 font-serif text-[#fff0c7] disabled:opacity-50"
+        >
+          Assign{selected ? ` ${selected.name}` : ""}
+        </button>
+      </div>
+
+      <input
+        className="w-full rounded border border-[#9a7b45] bg-[#fff0c7] p-2"
+        placeholder="Search by name, effect, tag or ID (e.g. goliath, harvest, mining, 7240)..."
+        value={search}
+        onChange={(event) => setSearch(event.target.value)}
+        onKeyDown={(event) => {
+          if (event.key === "Enter") {
+            const first = shown.find((card) => !owned.has(card.id));
+            if (first) setSelectedCardId(String(first.id));
+          }
+        }}
+      />
+
+      <div className="max-h-80 overflow-y-auto rounded border border-[#9a7b45] bg-[#fff0c7]">
+        {shown.length === 0 && <p className="p-3 text-sm italic">No cards match that search.</p>}
+        {shown.map((card) => {
+          const alreadyHas = owned.has(card.id);
+          const isSelected = String(card.id) === selectedCardId;
+          return (
+            <button
+              key={card.id}
+              type="button"
+              disabled={alreadyHas}
+              onClick={() => setSelectedCardId(isSelected ? "" : String(card.id))}
+              className={`block w-full border-b border-[#e0c392] px-3 py-2 text-left disabled:opacity-50 ${
+                isSelected ? "bg-[#4b3115] text-[#fff0c7]" : "hover:bg-[#f2dfb9]"
+              }`}
+            >
+              <span className="flex flex-wrap items-baseline justify-between gap-2">
+                <strong>{card.name}</strong>
+                <span className="text-xs">
+                  {card.rarity || "No rarity"} · score {card.score}
+                  {isHidden(card.id) ? " · hidden" : ""}
+                  {alreadyHas ? " · already assigned" : ""}
+                </span>
+              </span>
+              <span className="block text-xs opacity-80 line-clamp-2">{card.desc}</span>
+            </button>
+          );
+        })}
+      </div>
+
+      <p className="text-xs">
+        {matches.length === ATTRIBUTE_CARDS.length
+          ? `${matches.length} cards. Type to narrow the list; Enter picks the top result.`
+          : `${matches.length} match${matches.length === 1 ? "" : "es"}${matches.length > shown.length ? `, showing the first ${shown.length}. Keep typing to narrow` : ""}.`}
+      </p>
+
+      {selected && (
+        <div className="rounded-lg border-2 border-[#4b3115] bg-[#fff0c7] p-3">
+          <p className="font-bold">
+            {selected.name} → {selectedCharacter?.name || "choose a character"}
+          </p>
+          <p className="text-xs">{(selected.tags || []).join(" · ")}</p>
+          <p className="mt-1 text-sm">{selected.desc}</p>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function AttributeCardsPanel({
   campaignId,
   characters,
@@ -239,6 +381,8 @@ export default function AttributeCardsPanel({
   const [drawPool, setDrawPool] = useState<AttributeCardData[]>([]);
   const [manualAssignCharacterId, setManualAssignCharacterId] = useState("");
   const [manualAssignCardId, setManualAssignCardId] = useState("");
+  const [assignSearch, setAssignSearch] = useState("");
+  const [cardLimits, setCardLimits] = useState<Record<string, number>>({});
   const [message, setMessage] = useState("");
 
   const activeCharacters = useMemo(
@@ -262,10 +406,12 @@ export default function AttributeCardsPanel({
       { data: visibilityRows, error: visibilityError },
       { data: assignmentRows, error: assignmentError },
       { data: vetoData, error: vetoError },
+      { data: limitRows, error: limitError },
     ] = await Promise.all([
       supabase.from("campaign_attribute_visibility").select("campaign_id, card_id, is_visible").eq("campaign_id", campaignId),
       supabase.from("campaign_character_attributes").select("id, campaign_id, character_id, card_id").eq("campaign_id", campaignId),
       supabase.from("campaign_character_attribute_vetoes").select("campaign_id, character_id, used").eq("campaign_id", campaignId),
+      supabase.from("campaign_character_attribute_roll_limits").select("character_id, max_rolls").eq("campaign_id", campaignId),
     ]);
 
     if (visibilityError || assignmentError || vetoError) {
@@ -281,6 +427,38 @@ export default function AttributeCardsPanel({
     setVisibility(nextVisibility);
     setAssignments((assignmentRows as AttributeAssignment[] | null) || []);
     setVetoRows((vetoData as VetoRow[] | null) || []);
+
+    // A missing limits table shouldn't break the panel; everyone just gets the default.
+    if (limitError) {
+      console.warn("Could not load attribute card limits; using the default.", limitError);
+    }
+    const nextLimits: Record<string, number> = {};
+    ((limitRows as { character_id: string; max_rolls: number }[] | null) || []).forEach((row) => {
+      nextLimits[row.character_id] = row.max_rolls;
+    });
+    setCardLimits(nextLimits);
+  }
+
+  function cardLimit(characterId: string) {
+    return cardLimits[characterId] ?? DEFAULT_CARD_LIMIT;
+  }
+
+  async function setCardLimit(characterId: string, value: number) {
+    if (!adminUnlocked || !campaignId) return;
+    const next = Math.max(0, Math.min(20, Math.round(value)));
+    setCardLimits((current) => ({ ...current, [characterId]: next }));
+
+    const { error } = await supabase
+      .from("campaign_character_attribute_roll_limits")
+      .upsert(
+        { campaign_id: campaignId, character_id: characterId, max_rolls: next },
+        { onConflict: "campaign_id,character_id" }
+      );
+
+    if (error) {
+      setMessage(`Could not save the card limit: ${error.message}`);
+      loadAttributeData();
+    }
   }
 
   useEffect(() => {
@@ -293,6 +471,7 @@ export default function AttributeCardsPanel({
       .on("postgres_changes", { event: "*", schema: "public", table: "campaign_attribute_visibility", filter: `campaign_id=eq.${campaignId}` }, loadAttributeData)
       .on("postgres_changes", { event: "*", schema: "public", table: "campaign_character_attributes", filter: `campaign_id=eq.${campaignId}` }, loadAttributeData)
       .on("postgres_changes", { event: "*", schema: "public", table: "campaign_character_attribute_vetoes", filter: `campaign_id=eq.${campaignId}` }, loadAttributeData)
+      .on("postgres_changes", { event: "*", schema: "public", table: "campaign_character_attribute_roll_limits", filter: `campaign_id=eq.${campaignId}` }, loadAttributeData)
       .subscribe();
 
     return () => {
@@ -399,8 +578,8 @@ export default function AttributeCardsPanel({
     }
 
     const owned = assignments.filter((assignment) => assignment.character_id === selectedCharacterId).map((assignment) => assignment.card_id);
-    if (owned.length >= 2) {
-      setMessage("This character already has the maximum of 2 attribute cards.");
+    if (owned.length >= cardLimit(selectedCharacterId)) {
+      setMessage(`This character already has their maximum of ${cardLimit(selectedCharacterId)} attribute cards.`);
       setDrawPool([]);
       return;
     }
@@ -471,8 +650,8 @@ export default function AttributeCardsPanel({
     if (!campaignId || !selectedCharacterId) return;
 
     const owned = assignments.filter((assignment) => assignment.character_id === selectedCharacterId);
-    if (owned.length >= 2) {
-      setMessage("This character already has the maximum of 2 attribute cards.");
+    if (owned.length >= cardLimit(selectedCharacterId)) {
+      setMessage(`This character already has their maximum of ${cardLimit(selectedCharacterId)} attribute cards.`);
       return;
     }
 
@@ -508,8 +687,8 @@ export default function AttributeCardsPanel({
     }
 
     const owned = assignments.filter((assignment) => assignment.character_id === manualAssignCharacterId);
-    if (owned.length >= 2) {
-      setMessage("That character already has the maximum of 2 attribute cards.");
+    if (owned.length >= cardLimit(manualAssignCharacterId)) {
+      setMessage(`That character already has their maximum of ${cardLimit(manualAssignCharacterId)} attribute cards. Raise their card limit below to add more.`);
       return;
     }
 
@@ -530,6 +709,7 @@ export default function AttributeCardsPanel({
     }
 
     setManualAssignCardId("");
+    setAssignSearch("");
     setMessage(`${card.name} assigned by GM.`);
     loadAttributeData();
   }
@@ -558,7 +738,7 @@ export default function AttributeCardsPanel({
         <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="font-serif text-3xl font-bold">Attributes</h2>
-            <p className="text-sm">Browse attributes, draw one visible card at a time, and track up to 2 cards per character. Each character has one veto.</p>
+            <p className="text-sm">Browse attributes, draw one visible card at a time, and track up to {DEFAULT_CARD_LIMIT} cards per character (the GM can change this per character). Each character has one veto.</p>
           </div>
           <div className="flex flex-wrap gap-2">
             {(["browse", "draw", "characters"] as const).map((tab) => (
@@ -653,7 +833,7 @@ export default function AttributeCardsPanel({
               <strong>Character</strong>
               <select className="w-full rounded border border-[#9a7b45] bg-[#fff0c7] p-2" value={selectedCharacterId} onChange={(event) => setSelectedCharacterId(event.target.value)}>
                 {activeCharacters.map((character) => (
-                  <option key={character.id} value={character.id}>{character.name} ({characterCards(character.id).length}/2)</option>
+                  <option key={character.id} value={character.id}>{character.name} ({characterCards(character.id).length}/{cardLimit(character.id)})</option>
                 ))}
               </select>
             </label>
@@ -692,34 +872,20 @@ export default function AttributeCardsPanel({
           {adminUnlocked && (
             <div className="rounded-xl border border-[#9a7b45] bg-[#f2dfb9] p-4 text-[#251b10]">
               <h3 className="mb-3 text-xl font-bold">GM: Assign Attribute</h3>
-              <div className="grid grid-cols-1 gap-3 md:grid-cols-[1fr_1fr_auto]">
-                <select
-                  className="rounded border border-[#9a7b45] bg-[#fff0c7] p-2"
-                  value={manualAssignCharacterId}
-                  onChange={(event) => setManualAssignCharacterId(event.target.value)}
-                >
-                  {activeCharacters.map((character) => (
-                    <option key={character.id} value={character.id}>
-                      {character.name} ({characterCards(character.id, true).length}/2)
-                    </option>
-                  ))}
-                </select>
-                <select
-                  className="rounded border border-[#9a7b45] bg-[#fff0c7] p-2"
-                  value={manualAssignCardId}
-                  onChange={(event) => setManualAssignCardId(event.target.value)}
-                >
-                  <option value="">Choose attribute...</option>
-                  {ATTRIBUTE_CARDS.map((card) => (
-                    <option key={card.id} value={card.id}>
-                      {card.name} {isCardVisible(card.id, visibility) ? "" : "(hidden)"}
-                    </option>
-                  ))}
-                </select>
-                <button onClick={assignSpecificCard} className="rounded bg-[#4b3115] px-4 py-2 font-serif text-[#fff0c7]">
-                  Assign
-                </button>
-              </div>
+              <AssignAttributePicker
+                characters={activeCharacters}
+                characterId={manualAssignCharacterId}
+                setCharacterId={setManualAssignCharacterId}
+                cardCount={(id) => characterCards(id, true).length}
+                cardLimit={cardLimit}
+                ownedCardIds={assignments.filter((assignment) => assignment.character_id === manualAssignCharacterId).map((assignment) => assignment.card_id)}
+                selectedCardId={manualAssignCardId}
+                setSelectedCardId={setManualAssignCardId}
+                search={assignSearch}
+                setSearch={setAssignSearch}
+                isHidden={(cardId) => !isCardVisible(cardId, visibility)}
+                onAssign={assignSpecificCard}
+              />
             </div>
           )}
 
@@ -728,7 +894,43 @@ export default function AttributeCardsPanel({
             const cards = characterCards(character.id, adminUnlocked);
             return (
               <div key={character.id} className="rounded-xl border border-[#9a7b45] bg-[#f2dfb9] p-4 text-[#251b10]">
-                <h3 className="mb-3 text-xl font-bold">{character.name} <span className="text-sm font-normal">({cards.length}/2)</span></h3>
+                <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+                  <h3 className="text-xl font-bold">
+                    {character.name} <span className="text-sm font-normal">({cards.length}/{cardLimit(character.id)})</span>
+                  </h3>
+                  {adminUnlocked && (
+                    <div className="flex items-center gap-1 text-sm">
+                      <span>Card limit</span>
+                      <button
+                        onClick={() => setCardLimit(character.id, cardLimit(character.id) - 1)}
+                        disabled={cardLimit(character.id) <= 0}
+                        className="rounded border border-[#9a7b45] bg-[#fff0c7] px-2 font-bold disabled:opacity-40"
+                        aria-label={`Lower ${character.name}'s card limit`}
+                      >
+                        −
+                      </button>
+                      <strong className="w-6 text-center">{cardLimit(character.id)}</strong>
+                      <button
+                        onClick={() => setCardLimit(character.id, cardLimit(character.id) + 1)}
+                        className="rounded border border-[#9a7b45] bg-[#fff0c7] px-2 font-bold"
+                        aria-label={`Raise ${character.name}'s card limit`}
+                      >
+                        +
+                      </button>
+                      {cardLimit(character.id) !== DEFAULT_CARD_LIMIT && (
+                        <button
+                          onClick={() => setCardLimit(character.id, DEFAULT_CARD_LIMIT)}
+                          className="ml-1 text-xs underline"
+                        >
+                          reset
+                        </button>
+                      )}
+                    </div>
+                  )}
+                </div>
+                {cards.length > cardLimit(character.id) && (
+                  <p className="mb-2 text-xs font-bold text-[#7a3f00]">Over the limit: remove a card or raise the limit.</p>
+                )}
                 {cards.length === 0 ? (
                   <p className="text-sm italic">No attributes assigned.</p>
                 ) : (

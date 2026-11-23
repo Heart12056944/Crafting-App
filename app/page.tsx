@@ -534,7 +534,14 @@ const TOOL_OPTIONS = [
   "Jeweler",
   "Fletcher",
   "Tattoo Artist Needles",
+  "Herbalism Kit",
+  "Brewer's Supplies",
 ];
+
+// "Smith" -> "Smith's Tools", but kits and supplies keep their own name.
+function toolLabel(tool: string) {
+  return /kit|supplies|needles|rod|axe|pickaxe/i.test(tool) ? tool : `${tool}'s Tools`;
+}
 
 const PROFICIENCY_BONUS: Record<ProficiencyLevel, number> = {
   none: 0,
@@ -741,6 +748,8 @@ const SPECIALIZATIONS = [
   "Smith: Bonebreaker, Armoursmith, Edgecrafter, Forgeheart Smith, Composite Forge Master.",
   "Leatherworker: Tracker Gearwright, Venom Ward Crafter, Beastskin Crafter, Lifewoven Crafter, Adaptive Skin Crafter.",
   "Tattoo Artist Needles: Inkbinder, Runic Skinworker, Living Mark Specialist, Oceanic Tattooist.",
+  "Herbalism Kit: Field Healer, Rootwise, Wildcrafter, Tonic Maker.",
+  "Brewer's Supplies: Cellar Keeper, Spirit Distiller, Festival Brewer.",
 ];
 
 const TOOL_IMPROVEMENT_OPTIONS: Record<string, string[]> = {
@@ -791,6 +800,17 @@ const TOOL_IMPROVEMENT_OPTIONS: Record<string, string[]> = {
     "Specialization: Runic Skinworker",
     "Specialization: Living Mark Specialist",
     "Specialization: Oceanic Tattooist",
+  ],
+  "Herbalism Kit": [
+    "Specialization: Field Healer",
+    "Specialization: Rootwise",
+    "Specialization: Wildcrafter",
+    "Specialization: Tonic Maker",
+  ],
+  "Brewer's Supplies": [
+    "Specialization: Cellar Keeper",
+    "Specialization: Spirit Distiller",
+    "Specialization: Festival Brewer",
   ],
 };
 
@@ -3396,7 +3416,7 @@ export default function ArcaneCraftingCodexPage() {
         quality: "Failed",
         ppGained: 0,
         title: "Missing Tool",
-        message: `${selectedCharacter.name} does not own ${recipe.tool}'s Tools and cannot craft ${recipe.name}.`,
+        message: `${selectedCharacter.name} does not own ${toolLabel(recipe.tool)} and cannot craft ${recipe.name}.`,
       });
       return;
     }
@@ -3409,7 +3429,7 @@ export default function ArcaneCraftingCodexPage() {
         quality: "Failed",
         ppGained: 0,
         title: "Broken Tool",
-        message: `${selectedCharacter.name}'s ${recipe.tool}'s Tools are broken and must be repaired or replaced before crafting.`,
+        message: `${selectedCharacter.name}'s ${toolLabel(recipe.tool)} are broken and must be repaired or replaced before crafting.`,
       });
       return;
     }
@@ -3800,7 +3820,7 @@ export default function ArcaneCraftingCodexPage() {
       title: craftResult.title,
       result: craftResult as CraftResultSummary,
       phaseTouchedEffect: phaseEffect?.name,
-      message: `${craftResult.message}${brokeToolOnNatOne ? ` Natural 1: ${recipe.tool}'s Tools broke.` : ""}${dailyAdvantage ? " Daily category limit reached: advantage applied." : ""}${baseAttributeDcReduction ? ` Attribute DC reduction applied: -${baseAttributeDcReduction}.` : ""}${hasToolAffinity ? ` Tool Affinity applied: ${recipe.tool} treated as proficient with at least 10 PP.` : ""}${hasStormReaderAdvantage ? " Storm Reader applied: advantage on this crafting roll." : ""}${materialRecipe && createdMaterials.length > 0 ? ` Added material output to inventory: ${createdMaterials.map((m) => `${m.qty}× ${m.name}`).join(", ")}.` : ""}`,
+      message: `${craftResult.message}${brokeToolOnNatOne ? ` Natural 1: ${toolLabel(recipe.tool)} broke.` : ""}${dailyAdvantage ? " Daily category limit reached: advantage applied." : ""}${baseAttributeDcReduction ? ` Attribute DC reduction applied: -${baseAttributeDcReduction}.` : ""}${hasToolAffinity ? ` Tool Affinity applied: ${recipe.tool} treated as proficient with at least 10 PP.` : ""}${hasStormReaderAdvantage ? " Storm Reader applied: advantage on this crafting roll." : ""}${materialRecipe && createdMaterials.length > 0 ? ` Added material output to inventory: ${createdMaterials.map((m) => `${m.qty}× ${m.name}`).join(", ")}.` : ""}`,
     });
   }
 
@@ -4408,11 +4428,11 @@ function CraftPanel(props: {
           )}
 
           {!hasRequiredTool && (
-            <p className="text-red-800 font-bold">Missing Tool: {selectedRecipe.tool}'s Tools</p>
+            <p className="text-red-800 font-bold">Missing Tool: {toolLabel(selectedRecipe.tool)}</p>
           )}
 
           {hasRequiredTool && requiredToolBroken && (
-            <p className="text-red-800 font-bold">Broken Tool: {selectedRecipe.tool}'s Tools</p>
+            <p className="text-red-800 font-bold">Broken Tool: {toolLabel(selectedRecipe.tool)}</p>
           )}
 
           {!materialsAvailable && missing.length > 0 && (
@@ -4450,9 +4470,9 @@ function CraftPanel(props: {
         {!available && (
           <p className="text-lg">
             {!hasRequiredTool
-              ? `Missing required tool: ${selectedRecipe.tool}'s Tools.`
+              ? `Missing required tool: ${toolLabel(selectedRecipe.tool)}.`
               : requiredToolBroken
-                ? `Required tool is broken: ${selectedRecipe.tool}'s Tools.`
+                ? `Required tool is broken: ${toolLabel(selectedRecipe.tool)}.`
                 : "Not enough materials to craft this item."}
           </p>
         )}

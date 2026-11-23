@@ -6561,5 +6561,680 @@
     "section": "Rare Recipes",
     "source": "Undying_Vigil_Crafting",
     "set": "explosives-and-traps"
+  },
+  {
+    "id": "vigil-recipe-bitterleaf-poultice",
+    "name": "Bitterleaf Poultice",
+    "type": "Potion",
+    "dc": 10,
+    "time": "30 min",
+    "tool": "Herbalism Kit (WIS)",
+    "materials": [
+      {
+        "name": "Bitterleaf",
+        "quantity": 3
+      },
+      {
+        "name": "Moss Wadding",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "3x Bitterleaf, 1x Moss Wadding",
+    "outcomes": {
+      "superior": "Apply as an action: heal 2d4+4 and stop any bleeding.",
+      "normal": "Apply as an action: heal 2d4+2 and stop any bleeding.",
+      "flawed": "Apply as an action: heal 1d4."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "HERBALISM — Vigil Recipes",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-sleepmoss-draught",
+    "name": "Sleepmoss Draught",
+    "type": "Potion",
+    "dc": 11,
+    "time": "30 min",
+    "tool": "Herbalism Kit (WIS)",
+    "materials": [
+      {
+        "name": "Crag Moss",
+        "quantity": 2
+      },
+      {
+        "name": "Bitterleaf",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Crag Moss, 1x Bitterleaf",
+    "outcomes": {
+      "superior": "You fall into a deep, dreamless sleep: a short rest takes only 20 minutes, and you regain 1 extra Hit Die.",
+      "normal": "You fall into a deep, dreamless sleep: a short rest takes only 30 minutes.",
+      "flawed": "You sleep badly. No benefit."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "HERBALISM — Vigil Recipes",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-hollowcap-antidote",
+    "name": "Hollowcap Antidote",
+    "type": "Potion",
+    "dc": 12,
+    "time": "30 min",
+    "tool": "Herbalism Kit (WIS)",
+    "materials": [
+      {
+        "name": "Hollowcap",
+        "quantity": 2
+      },
+      {
+        "name": "Bitterleaf Extract",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Hollowcap, 1x Bitterleaf Extract",
+    "outcomes": {
+      "superior": "Ends the poisoned condition and grants resistance to poison damage and advantage on saves against poison for 8 hours.",
+      "normal": "Ends the poisoned condition and grants advantage on saves against poison for 1 hour.",
+      "flawed": "Ends hollowcap poisoning only."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "HERBALISM — Vigil Recipes",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-antitoxin-tea",
+    "name": "Antitoxin Tea",
+    "type": "Potion",
+    "dc": 12,
+    "time": "30 min",
+    "tool": "Herbalism Kit (WIS)",
+    "materials": [
+      {
+        "name": "Bitterleaf Extract",
+        "quantity": 1
+      },
+      {
+        "name": "Pale Thistle",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Bitterleaf Extract, 1x Pale Thistle",
+    "outcomes": {
+      "superior": "For 8 hours, advantage on saves against poison and disease.",
+      "normal": "For 1 hour, advantage on saves against poison.",
+      "flawed": "For 10 minutes, advantage on saves against poison."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "HERBALISM — Vigil Recipes",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-graveroot-smudge-bundle",
+    "name": "Graveroot Smudge Bundle",
+    "type": "Utility",
+    "dc": 12,
+    "time": "30 min",
+    "tool": "Herbalism Kit (WIS)",
+    "materials": [
+      {
+        "name": "Graveroot",
+        "quantity": 2
+      },
+      {
+        "name": "Pine Pitch",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Graveroot, 1x Pine Pitch",
+    "outcomes": {
+      "superior": "Burns for 1 hour. Undead have disadvantage on Perception checks to notice anyone within 15 ft of the smoke.",
+      "normal": "Burns for 10 minutes. Undead have disadvantage on Perception checks to notice anyone within 10 ft of the smoke.",
+      "flawed": "Smoulders and goes out. Smells awful."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "HERBALISM — Vigil Recipes",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-thistle-frost-balm",
+    "name": "Thistle Frost Balm",
+    "type": "Potion",
+    "dc": 12,
+    "time": "1 hour",
+    "tool": "Herbalism Kit (WIS)",
+    "materials": [
+      {
+        "name": "Thistle Salve Base",
+        "quantity": 1
+      },
+      {
+        "name": "Rendered Tallow",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Thistle Salve Base, 1x Rendered Tallow",
+    "outcomes": {
+      "superior": "Resistance to cold damage for 8 hours. Removes one level of exhaustion caused by cold.",
+      "normal": "Resistance to cold damage for 8 hours.",
+      "flawed": "Advantage on saves against extreme cold for 1 hour."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "HERBALISM — Vigil Recipes",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-feverbreak-tisane",
+    "name": "Feverbreak Tisane",
+    "type": "Potion",
+    "dc": 13,
+    "time": "1 hour",
+    "tool": "Herbalism Kit (WIS)",
+    "materials": [
+      {
+        "name": "Pale Thistle",
+        "quantity": 1
+      },
+      {
+        "name": "Graveroot Tincture",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Pale Thistle, 1x Graveroot Tincture",
+    "outcomes": {
+      "superior": "Ends one disease and grants immunity to disease for 24 hours.",
+      "normal": "Ends one disease and grants advantage on saves against disease for 24 hours.",
+      "flawed": "Advantage on your next save against a disease."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "HERBALISM — Vigil Recipes",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-herbalist-s-field-kit",
+    "name": "Herbalist's Field Kit",
+    "type": "Accessory",
+    "dc": 13,
+    "time": "2 hours",
+    "tool": "Herbalism Kit (WIS)",
+    "materials": [
+      {
+        "name": "Bitterleaf Extract",
+        "quantity": 2
+      },
+      {
+        "name": "Moss Wadding",
+        "quantity": 2
+      },
+      {
+        "name": "Cloth",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Bitterleaf Extract, 2x Moss Wadding, 1x Cloth",
+    "outcomes": {
+      "superior": "12 uses. As an action, stabilise a dying creature and heal it 1d6.",
+      "normal": "10 uses. As an action, stabilise a dying creature and heal it 1d4.",
+      "flawed": "5 uses. Stabilise only."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "HERBALISM — Vigil Recipes",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-embersnap-chew",
+    "name": "Embersnap Chew",
+    "type": "Potion",
+    "dc": 14,
+    "time": "30 min",
+    "tool": "Herbalism Kit (WIS)",
+    "materials": [
+      {
+        "name": "Emberleaf",
+        "quantity": 1
+      },
+      {
+        "name": "Bitterleaf",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "1x Emberleaf, 2x Bitterleaf",
+    "outcomes": {
+      "superior": "For 8 hours, ignore two levels of exhaustion and you don't need sleep. Afterwards, gain one level of exhaustion.",
+      "normal": "For 8 hours, ignore one level of exhaustion and you don't need sleep. Afterwards, gain one level of exhaustion.",
+      "flawed": "For 1 hour, ignore one level of exhaustion."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "HERBALISM — Vigil Recipes",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-emberleaf-rub",
+    "name": "Emberleaf Rub",
+    "type": "Potion",
+    "dc": 14,
+    "time": "1 hour",
+    "tool": "Herbalism Kit (WIS)",
+    "materials": [
+      {
+        "name": "Emberleaf Oil",
+        "quantity": 1
+      },
+      {
+        "name": "Rendered Tallow",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Emberleaf Oil, 1x Rendered Tallow",
+    "outcomes": {
+      "superior": "For 8 hours, immune to extreme cold, and cold damage you take is reduced by 1d8.",
+      "normal": "For 8 hours, immune to extreme cold, and cold damage you take is reduced by 1d4.",
+      "flawed": "For 1 hour, immune to extreme cold."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "HERBALISM — Vigil Recipes",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-hollowcap-dreamdust",
+    "name": "Hollowcap Dreamdust",
+    "type": "Throwable",
+    "dc": 15,
+    "time": "1 hour",
+    "tool": "Herbalism Kit (WIS)",
+    "materials": [
+      {
+        "name": "Hollowcap Toxin",
+        "quantity": 1
+      },
+      {
+        "name": "Crag Moss",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "1x Hollowcap Toxin, 2x Crag Moss",
+    "outcomes": {
+      "superior": "Blown or thrown at a creature within 10 ft: DC 15 CON save or fall unconscious for 1 minute (or until it takes damage or is shaken awake). Undead and constructs are immune.",
+      "normal": "Blown or thrown at a creature within 10 ft: DC 14 CON save or poisoned for 1 minute; failing by 5 or more, it falls unconscious instead. Undead and constructs are immune.",
+      "flawed": "DC 11 CON save or poisoned for 1 round."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "HERBALISM — Vigil Recipes",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-wardensbloom-charm",
+    "name": "Wardensbloom Charm",
+    "type": "Accessory",
+    "dc": 17,
+    "time": "4 hours",
+    "tool": "Herbalism Kit (WIS)",
+    "materials": [
+      {
+        "name": "Wardensbloom",
+        "quantity": 1
+      },
+      {
+        "name": "Pale Thistle",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "1x Wardensbloom, 2x Pale Thistle",
+    "outcomes": {
+      "superior": "Worn dried flower charm. Twice per long rest, when you would fail a death saving throw, you succeed instead.",
+      "normal": "Worn dried flower charm. Once per long rest, when you would fail a death saving throw, you succeed instead.",
+      "flawed": "Advantage on your next death saving throw. Then it crumbles."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "HERBALISM — Vigil Recipes",
+    "section": "Epic Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-reedbrew",
+    "name": "Reedbrew",
+    "type": "Potion",
+    "dc": 10,
+    "time": "8 hours",
+    "tool": "Brewer's Supplies (INT)",
+    "materials": [
+      {
+        "name": "Hollowreed Mash",
+        "quantity": 1
+      },
+      {
+        "name": "Bitterleaf",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Hollowreed Mash, 1x Bitterleaf",
+    "outcomes": {
+      "superior": "A cask of 6 servings. Thin, sour and filling. Each serving: 1d6 temporary HP.",
+      "normal": "A cask of 4 servings. Thin, sour and filling. Each serving: 1d4 temporary HP.",
+      "flawed": "2 servings. Flat. 1 temporary HP."
+    },
+    "chapter": "BREWING",
+    "group": "BREWING — Brews & Spirits",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "brewing"
+  },
+  {
+    "id": "vigil-recipe-wallman-s-ration",
+    "name": "Wallman's Ration",
+    "type": "Potion",
+    "dc": 11,
+    "time": "8 hours",
+    "tool": "Brewer's Supplies (INT)",
+    "materials": [
+      {
+        "name": "Hollowreed Mash",
+        "quantity": 2
+      },
+      {
+        "name": "Pine Pitch",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Hollowreed Mash, 1x Pine Pitch",
+    "outcomes": {
+      "superior": "4 servings of the cheap, resinous drink issued on the Wall. Each: 2d6 temporary HP and advantage on saves against being frightened for 1 hour. Disadvantage on DEX checks for 1 hour.",
+      "normal": "4 servings. Each: 2d4 temporary HP and advantage on saves against being frightened for 1 hour. Disadvantage on DEX checks for 1 hour.",
+      "flawed": "2 servings. Each: 1d4 temporary HP. Tastes like a fencepost."
+    },
+    "chapter": "BREWING",
+    "group": "BREWING — Brews & Spirits",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "brewing"
+  },
+  {
+    "id": "vigil-recipe-bramble-sour",
+    "name": "Bramble Sour",
+    "type": "Potion",
+    "dc": 10,
+    "time": "8 hours",
+    "tool": "Brewer's Supplies (INT)",
+    "materials": [
+      {
+        "name": "Bramblesweet",
+        "quantity": 3
+      },
+      {
+        "name": "Hollowreed Mash",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "3x Bramblesweet, 1x Hollowreed Mash",
+    "outcomes": {
+      "superior": "6 servings of a sharp, dark fruit brew. Each: advantage on CHA checks for 1 hour.",
+      "normal": "4 servings. Each: advantage on Persuasion checks for 1 hour.",
+      "flawed": "2 servings. Too sour to enjoy. No effect."
+    },
+    "chapter": "BREWING",
+    "group": "BREWING — Brews & Spirits",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "brewing"
+  },
+  {
+    "id": "vigil-recipe-bitterdark",
+    "name": "Bitterdark",
+    "type": "Potion",
+    "dc": 12,
+    "time": "8 hours",
+    "tool": "Brewer's Supplies (INT)",
+    "materials": [
+      {
+        "name": "Hollowreed Mash",
+        "quantity": 2
+      },
+      {
+        "name": "Bitterleaf Extract",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Hollowreed Mash, 1x Bitterleaf Extract",
+    "outcomes": {
+      "superior": "4 servings of a black, bitter herbal brew. Each: heal 1d8 and resistance to poison damage for 1 hour.",
+      "normal": "4 servings. Each: heal 1d6 and advantage on saves against poison for 1 hour.",
+      "flawed": "2 servings. Each: heal 1d4."
+    },
+    "chapter": "BREWING",
+    "group": "BREWING — Brews & Spirits",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "brewing"
+  },
+  {
+    "id": "vigil-recipe-combgold",
+    "name": "Combgold",
+    "type": "Potion",
+    "dc": 13,
+    "time": "1 day",
+    "tool": "Brewer's Supplies (INT)",
+    "materials": [
+      {
+        "name": "Cloudwasp Comb",
+        "quantity": 1
+      },
+      {
+        "name": "Hollowreed Mash",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Cloudwasp Comb, 1x Hollowreed Mash",
+    "outcomes": {
+      "superior": "4 servings of golden comb-wine. Each: 2d6 temporary HP and advantage on Persuasion and Performance checks for 1 hour. DC 10 CON save or poisoned (drunk) for 10 minutes.",
+      "normal": "3 servings. Each: 1d6 temporary HP and advantage on Persuasion checks for 1 hour. DC 11 CON save or poisoned (drunk) for 10 minutes.",
+      "flawed": "1 serving. Cloying. DC 12 CON save or poisoned (drunk) for 10 minutes."
+    },
+    "chapter": "BREWING",
+    "group": "BREWING — Brews & Spirits",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "brewing"
+  },
+  {
+    "id": "vigil-recipe-bilge-burner",
+    "name": "Bilge Burner",
+    "type": "Potion",
+    "dc": 12,
+    "time": "4 hours",
+    "tool": "Brewer's Supplies (INT)",
+    "materials": [
+      {
+        "name": "Distilled Alcohol",
+        "quantity": 1
+      },
+      {
+        "name": "Bramblesweet",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "1x Distilled Alcohol, 2x Bramblesweet",
+    "outcomes": {
+      "superior": "4 shots of rough, sailor-favoured spirit. Each: 1d6 temporary HP and advantage on CON saves against disease for 8 hours. DC 13 CON save or poisoned (drunk) for 1 hour.",
+      "normal": "4 shots. Each: 1d4 temporary HP and advantage on CON saves against disease for 8 hours. DC 14 CON save or poisoned (drunk) for 1 hour.",
+      "flawed": "2 shots. DC 15 CON save or poisoned (drunk) for 1 hour. No benefit."
+    },
+    "chapter": "BREWING",
+    "group": "BREWING — Brews & Spirits",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "brewing"
+  },
+  {
+    "id": "vigil-recipe-rimewater",
+    "name": "Rimewater",
+    "type": "Potion",
+    "dc": 13,
+    "time": "4 hours",
+    "tool": "Brewer's Supplies (INT)",
+    "materials": [
+      {
+        "name": "Distilled Alcohol",
+        "quantity": 1
+      },
+      {
+        "name": "Pale Thistle",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Distilled Alcohol, 1x Pale Thistle",
+    "outcomes": {
+      "superior": "3 servings of clear spirit chilled with thistle. Each: resistance to cold damage for 8 hours. DC 12 CON save or poisoned (drunk) for 1 hour.",
+      "normal": "3 servings. Each: resistance to cold damage for 4 hours. DC 13 CON save or poisoned (drunk) for 1 hour.",
+      "flawed": "1 serving. DC 13 CON save or poisoned (drunk) for 1 hour. No benefit."
+    },
+    "chapter": "BREWING",
+    "group": "BREWING — Brews & Spirits",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "brewing"
+  },
+  {
+    "id": "vigil-recipe-ashline-black",
+    "name": "Ashline Black",
+    "type": "Potion",
+    "dc": 14,
+    "time": "1 day",
+    "tool": "Brewer's Supplies (INT)",
+    "materials": [
+      {
+        "name": "Hollowreed Mash",
+        "quantity": 2
+      },
+      {
+        "name": "Graveroot Tincture",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Hollowreed Mash, 1x Graveroot Tincture",
+    "outcomes": {
+      "superior": "4 servings of the black brew Wardens drink before a patrol past the Wall. Each: for 1 hour, immunity to being frightened by undead and resistance to necrotic damage.",
+      "normal": "4 servings. Each: for 1 hour, advantage on saves against being frightened by undead and resistance to necrotic damage.",
+      "flawed": "2 servings. Each: advantage on one save against being frightened."
+    },
+    "chapter": "BREWING",
+    "group": "BREWING — Brews & Spirits",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "brewing"
+  },
+  {
+    "id": "vigil-recipe-emberdram",
+    "name": "Emberdram",
+    "type": "Potion",
+    "dc": 15,
+    "time": "1 day",
+    "tool": "Brewer's Supplies (INT)",
+    "materials": [
+      {
+        "name": "Distilled Alcohol",
+        "quantity": 1
+      },
+      {
+        "name": "Emberleaf",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Distilled Alcohol, 1x Emberleaf",
+    "outcomes": {
+      "superior": "3 drams of fiery red spirit. Each: immune to extreme cold for 8 hours, and your weapon attacks deal +1d4 fire for 10 minutes. DC 13 CON save or poisoned (drunk) for 1 hour.",
+      "normal": "3 drams. Each: immune to extreme cold for 8 hours. DC 14 CON save or poisoned (drunk) for 1 hour.",
+      "flawed": "1 dram. Burns going down. DC 15 CON save or poisoned (drunk) for 1 hour."
+    },
+    "chapter": "BREWING",
+    "group": "BREWING — Brews & Spirits",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "brewing"
+  },
+  {
+    "id": "vigil-recipe-lantern-liquor",
+    "name": "Lantern Liquor",
+    "type": "Potion",
+    "dc": 15,
+    "time": "1 day",
+    "tool": "Brewer's Supplies (INT)",
+    "materials": [
+      {
+        "name": "Distilled Alcohol",
+        "quantity": 1
+      },
+      {
+        "name": "Deeplight",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Distilled Alcohol, 1x Deeplight",
+    "outcomes": {
+      "superior": "3 servings of faintly glowing spirit. Each: darkvision 120 ft for 1 hour, and you shed dim light in a 5 ft radius. DC 13 CON save or poisoned (drunk) for 1 hour.",
+      "normal": "3 servings. Each: darkvision 60 ft for 1 hour, and you shed dim light in a 5 ft radius. DC 14 CON save or poisoned (drunk) for 1 hour.",
+      "flawed": "1 serving. You glow faintly for an hour. Nothing else."
+    },
+    "chapter": "BREWING",
+    "group": "BREWING — Brews & Spirits",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "brewing"
+  },
+  {
+    "id": "vigil-recipe-wardensbloom-cordial",
+    "name": "Wardensbloom Cordial",
+    "type": "Potion",
+    "dc": 17,
+    "time": "1 day",
+    "tool": "Brewer's Supplies (INT)",
+    "materials": [
+      {
+        "name": "Wardensbloom",
+        "quantity": 1
+      },
+      {
+        "name": "Cloudwasp Comb",
+        "quantity": 1
+      },
+      {
+        "name": "Distilled Alcohol",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Wardensbloom, 1x Cloudwasp Comb, 1x Distilled Alcohol",
+    "outcomes": {
+      "superior": "6 small glasses of a celebration cordial, poured when someone rises in the Order. Each: heal 4d4+4 and advantage on death saving throws for 24 hours.",
+      "normal": "4 small glasses. Each: heal 3d4+3 and advantage on death saving throws for 8 hours.",
+      "flawed": "2 small glasses. Each: heal 2d4."
+    },
+    "chapter": "BREWING",
+    "group": "BREWING — Brews & Spirits",
+    "section": "Epic Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "brewing"
   }
 ]

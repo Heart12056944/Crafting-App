@@ -329,6 +329,52 @@
     "region": "Thornspine Mountains — past the Wall"
   },
   {
+    "id": "tarnside-reedbeds",
+    "name": "Tarnside Reedbeds",
+    "activity": "foraging",
+    "tier": "common",
+    "dc": 10,
+    "description": "Reeds, brambles and moss crowding a quiet tarn shore. Wasps nest in the rocks above.",
+    "yields": {
+      "common": [
+        {
+          "name": "Hollowreed Seed",
+          "weight": 50,
+          "amount": "1d4"
+        },
+        {
+          "name": "Bramblesweet",
+          "weight": 30,
+          "amount": "1d3"
+        },
+        {
+          "name": "Crag Moss",
+          "weight": 20,
+          "amount": "1d4"
+        }
+      ],
+      "rare": [
+        {
+          "name": "Cloudwasp Comb",
+          "weight": 60
+        },
+        {
+          "name": "Graveroot",
+          "weight": 40,
+          "amount": "1d2"
+        }
+      ],
+      "epic": [
+        {
+          "name": "Pale Thistle",
+          "weight": 100
+        }
+      ]
+    },
+    "set": "undying-vigil",
+    "region": "Thornspine Mountains — past the Wall"
+  },
+  {
     "id": "old-battlefield-meadow",
     "name": "Old Battlefield Meadow",
     "activity": "foraging",
@@ -392,7 +438,11 @@
       "rare": [
         {
           "name": "Emberleaf",
-          "weight": 100
+          "weight": 70
+        },
+        {
+          "name": "Cloudwasp Comb",
+          "weight": 30
         }
       ],
       "epic": [

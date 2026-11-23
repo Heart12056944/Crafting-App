@@ -5941,6 +5941,54 @@
     "notes": "White crust scraped from deep, dry rock. The heart of any blast powder."
   },
   {
+    "id": "material-hollowreed-seed",
+    "name": "Hollowreed Seed",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "gathering",
+      "foraging",
+      "brewing"
+    ],
+    "source": "VIGIL",
+    "set": "brewing",
+    "notes": "Hard little seeds from reeds along tarn edges. Steeped and sprouted, they ferment readily."
+  },
+  {
+    "id": "material-bramblesweet",
+    "name": "Bramblesweet",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "gathering",
+      "foraging",
+      "brewing"
+    ],
+    "source": "VIGIL",
+    "set": "brewing",
+    "notes": "Dark, sticky clusters from a thorny mountain bramble. Too sweet to eat many of; perfect for fermenting."
+  },
+  {
+    "id": "material-cloudwasp-comb",
+    "name": "Cloudwasp Comb",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "gathering",
+      "foraging",
+      "brewing"
+    ],
+    "source": "VIGIL",
+    "set": "brewing",
+    "notes": "Pale wax comb from the nests of high-altitude wasps, heavy with golden syrup. Harvest it fast."
+  },
+  {
     "id": "material-grave-salt",
     "name": "Grave Salt",
     "tier": 1,
@@ -6403,5 +6451,35 @@
     "source": "VIGIL",
     "set": "explosives-and-traps",
     "notes": "Pitch-soaked cord packed with powder. Burns about a foot every few seconds."
+  },
+  {
+    "id": "material-hollowreed-mash",
+    "name": "Hollowreed Mash",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "refined",
+      "brewing"
+    ],
+    "source": "VIGIL",
+    "set": "brewing",
+    "notes": "Sprouted, crushed hollowreed seed left to sour. The base of most brews."
+  },
+  {
+    "id": "material-distilled-alcohol",
+    "name": "Distilled Alcohol",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "refined",
+      "brewing"
+    ],
+    "source": "VIGIL",
+    "set": "brewing",
+    "notes": "Clear, harsh spirit run off a still. Drinkable in a pinch; mostly used by alchemists."
   }
 ]

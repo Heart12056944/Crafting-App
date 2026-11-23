@@ -4228,5 +4228,49 @@
     "group": "UNDYING VIGIL — Refinement Chains",
     "source": "Undying_Vigil_Crafting",
     "set": "explosives-and-traps"
+  },
+  {
+    "id": "vigil-refine-hollowreed-seed-to-hollowreed-mash",
+    "inputMaterial": "Hollowreed Seed",
+    "inputTier": "T0",
+    "quantity": 4,
+    "outputMaterial": "Hollowreed Mash",
+    "outputTier": "T1",
+    "dc": 10,
+    "time": "8 hours",
+    "tool": "Brewer's Supplies (INT)",
+    "outcomes": {
+      "superior": "2x Hollowreed Mash",
+      "normal": "1x Hollowreed Mash",
+      "flawed": "Return 2x Hollowreed Seed"
+    },
+    "notes": "Sprout, crush and sour the seed overnight.",
+    "isTerminal": false,
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "UNDYING VIGIL — Refinement Chains",
+    "source": "Undying_Vigil_Crafting",
+    "set": "brewing"
+  },
+  {
+    "id": "vigil-refine-hollowreed-mash-to-distilled-alcohol",
+    "inputMaterial": "Hollowreed Mash",
+    "inputTier": "T1",
+    "quantity": 2,
+    "outputMaterial": "Distilled Alcohol",
+    "outputTier": "T2",
+    "dc": 12,
+    "time": "4 hours",
+    "tool": "Brewer's Supplies (INT)",
+    "outcomes": {
+      "superior": "2x Distilled Alcohol",
+      "normal": "1x Distilled Alcohol",
+      "flawed": "The run is spoiled. Nothing is recovered."
+    },
+    "notes": "Ferment the mash, then run it through a still.",
+    "isTerminal": false,
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "UNDYING VIGIL — Refinement Chains",
+    "source": "Undying_Vigil_Crafting",
+    "set": "brewing"
   }
 ]
