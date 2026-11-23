@@ -31,6 +31,10 @@ const COIN_COLORS: Record<CoinKey, string> = {
   cp: "#b06a35",
 };
 
+// Each listener gets its own channel name: Supabase throws if two subscribe
+// under the same name (e.g. the Inventory and Shops tabs both reading purses).
+let purseChannelCount = 0;
+
 // Live purses and coin log for a campaign. Used by the Inventory and Shops tabs.
 export function useCampaignPurses(campaignId: string) {
   const [purses, setPurses] = useState<PurseRow[]>([]);
@@ -56,7 +60,7 @@ export function useCampaignPurses(campaignId: string) {
     if (!campaignId) return;
     reload.current();
     const channel = supabase
-      .channel(`campaign-purses-${campaignId}`)
+      .channel(`campaign-purses-${campaignId}-${++purseChannelCount}`)
       .on("postgres_changes", { event: "*", schema: "public", table: "campaign_purses", filter: `campaign_id=eq.${campaignId}` }, () =>
         reload.current()
       )

@@ -5,6 +5,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import {
   Backpack,
+  BookMarked,
   Store,
   BookOpen,
   Boxes,
@@ -80,6 +81,7 @@ import CompanionPanel from "@/components/CompanionPanel";
 import GatheringPanel, { type GatheredItem } from "@/components/GatheringPanel";
 import InventoryPanel, { type InventoryRecipe } from "@/components/InventoryPanel";
 import ShopPanel, { useCampaignShops } from "@/components/ShopPanel";
+import PlayerGuidePanel from "@/components/PlayerGuidePanel";
 import { addInventoryItem } from "@/lib/supabaseInventory";
 import { consumableInfo } from "@/data/consumables";
 import {
@@ -125,7 +127,7 @@ type InventoryProfile = {
 
 type Stat = "STR" | "DEX" | "CON" | "INT" | "WIS" | "CHA";
 
-type TabId = "craft" | "available" | "recipes" | "materials" | "inventory" | "shops" | "characters" | "advancement" | "attributes" | "companions" | "rewards" | "looting" | "gathering" | "craftingRules" | "lootingRules" | "admin";
+type TabId = "craft" | "available" | "recipes" | "materials" | "inventory" | "shops" | "characters" | "advancement" | "attributes" | "companions" | "rewards" | "looting" | "gathering" | "craftingRules" | "lootingRules" | "guide" | "admin";
 
 const tabs = [
   ["craft", "Craft", Hammer],
@@ -143,6 +145,7 @@ const tabs = [
   ["gathering", "Gathering", Pickaxe],
   ["craftingRules", "Crafting Rules", ScrollText],
   ["lootingRules", "Looting Rules", Dice5],
+  ["guide", "Player Guide", BookMarked],
   ["admin", "GM", KeyRound],
 ] as const satisfies readonly (readonly [TabId, string, React.ComponentType<{ className?: string }>])[];
 
@@ -4286,6 +4289,8 @@ export default function ArcaneCraftingCodexPage() {
         {activeTab === "craftingRules" && <RulesPanel />}
 
         {activeTab === "lootingRules" && <LootingRulesPanel />}
+
+        {activeTab === "guide" && <PlayerGuidePanel />}
 
         {activeTab === "admin" && (
           <GMPanel

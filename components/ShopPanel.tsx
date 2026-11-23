@@ -61,6 +61,11 @@ export function itemSaleCp(row: InventoryRow) {
   return Math.max(1, Math.floor(value * SELL_RATE * fraction));
 }
 
+// Supabase hands back an already-subscribed channel when a topic name repeats,
+// and adding listeners to it throws. The page and the Shops tab both listen to
+// shops, so every listener gets its own channel name.
+let shopChannelCount = 0;
+
 // Live list of the campaign's shops. The page uses it to show the Shops tab
 // only while a shop is open.
 export function useCampaignShops(campaignId: string) {
@@ -87,7 +92,7 @@ export function useCampaignShops(campaignId: string) {
       })
       .catch((error) => console.warn("Could not load shops.", error));
     const channel = supabase
-      .channel(`campaign-shops-${campaignId}`)
+      .channel(`campaign-shops-${campaignId}-${++shopChannelCount}`)
       .on("postgres_changes", { event: "*", schema: "public", table: "campaign_shops", filter: `campaign_id=eq.${campaignId}` }, () =>
         reloadRef.current()
       )

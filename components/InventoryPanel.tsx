@@ -526,7 +526,7 @@ export default function InventoryPanel({
     ...visibleCharacters.filter((character) => character.id !== holderId).map((character) => ({ value: character.id, label: character.name })),
   ];
 
-  const recipeNames = recipes.filter((recipe) => recipe.category !== "material-refinement").map((recipe) => recipe.name);
+  const recipeNames = Array.from(new Set(recipes.filter((recipe) => recipe.category !== "material-refinement").map((recipe) => recipe.name)));
 
   return (
     <div className="space-y-6 font-serif">
