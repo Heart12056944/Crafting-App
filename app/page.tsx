@@ -13,6 +13,7 @@ import {
   Hammer,
   KeyRound,
   Package,
+  Pickaxe,
   Plus,
   ScrollText,
   Shield,
@@ -22,7 +23,7 @@ import {
   Wrench,
 } from "lucide-react";
 
-import { recipesRaw, rarityColors, type Recipe, type Rarity } from "@/data/recipesRaw";
+import { recipesRaw, recipeSetTags, rarityColors, type Recipe, type Rarity } from "@/data/recipesRaw";
 import { materialTiers, getMaterialTier, normalizeMaterialName, getMaterialsByTag, getPhaseTouchedCounterpart } from "@/data/materialTiers";
 import {
   calculateCraftResult,
@@ -41,8 +42,19 @@ import {
   recipeAlreadyPhaseTouched,
 } from "@/data/phaseEffects";
 
-import { fetchCampaigns, createCampaign, deleteCampaign } from "@/lib/supabaseCampaigns";
+import { fetchCampaigns, createCampaign, deleteCampaign, setActiveCampaign } from "@/lib/supabaseCampaigns";
 import { fetchCampaignMaterials, replaceCampaignMaterials } from "@/lib/supabaseMaterials";
+import {
+  fetchCampaignDiscoveries,
+  setCampaignDiscovery,
+  upsertCampaignDiscoveries,
+  clearCampaignDiscoveries,
+  fetchCampaignDisabledTags,
+  setCampaignTagDisabled,
+  replaceCampaignDisabledTags,
+  type CampaignDiscoveryRow,
+  type DiscoveryEntry,
+} from "@/lib/supabaseCampaignState";
 import { fetchCampaignCraftedItems, insertCraftedItem, deleteCraftedItem } from "@/lib/supabaseCraftedItems";
 import { fetchCampaignCharacters, replaceCampaignCharacters } from "@/lib/supabaseCharacters";
 import {
@@ -57,11 +69,22 @@ import {
   insertCampaignLootLog,
   type SupabaseLootLog,
 } from "@/lib/supabaseLootLog";
-import { creatureTierRules, lootTables, rollDiceExpression, rollWeightedLootQuality, getLootTable, type CreatureTier, type LootQuality } from "@/data/lootTables";
+import { creatureTierRules, lootTables, rollDiceExpression, rollWeightedLootQuality, getLootTable, pickWeightedLootEntry, type CreatureTier, type LootQuality } from "@/data/lootTables";
 import { supabase } from "@/lib/supabaseClient";
 import AttributeCardsPanel from "@/components/AttributeCardsPanel";
 import RewardsPanel from "@/components/RewardsPanel";
 import CompanionPanel from "@/components/CompanionPanel";
+import GatheringPanel, { type GatheredItem } from "@/components/GatheringPanel";
+import {
+  cardStatBonuses,
+  choiceKey,
+  statCardsFor as statCardsForDisplay,
+  emptyStats,
+  harvestingTotal,
+  scoreToModifier,
+  type AppliedStatCard,
+} from "@/data/abilityScores";
+import type { GatheringSpot } from "@/data/gatheringSpots";
 import { GmLoginPanel, CreateGmPanel } from "@/components/GmAuthPanels";
 
 import { Card, CardContent } from "@/components/ui/card";
@@ -95,7 +118,7 @@ type InventoryProfile = {
 
 type Stat = "STR" | "DEX" | "CON" | "INT" | "WIS" | "CHA";
 
-type TabId = "craft" | "available" | "recipes" | "materials" | "characters" | "advancement" | "attributes" | "companions" | "rewards" | "looting" | "craftingRules" | "lootingRules" | "admin";
+type TabId = "craft" | "available" | "recipes" | "materials" | "characters" | "advancement" | "attributes" | "companions" | "rewards" | "looting" | "gathering" | "craftingRules" | "lootingRules" | "admin";
 
 const tabs = [
   ["craft", "Craft", Hammer],
@@ -108,6 +131,7 @@ const tabs = [
   ["companions", "Companions", Boxes],
   ["rewards", "Rewards", Gift],
   ["looting", "Looting", Package],
+  ["gathering", "Gathering", Pickaxe],
   ["craftingRules", "Crafting Rules", ScrollText],
   ["lootingRules", "Looting Rules", Dice5],
   ["admin", "GM", KeyRound],
@@ -135,6 +159,16 @@ type Character = {
   brokenTools: Record<string, boolean>;
   progressPoints: Record<string, number>;
   toolProgress: Record<string, ToolProgress>;
+  // Gathering attempts used since the last Pass Day.
+  gatheringToday?: number;
+  // Base ability scores (before race cards). When present, `stats` are worked
+  // out from these; when absent, `stats` are typed-in modifiers (older characters).
+  abilityScores?: Record<Stat, number>;
+  // Choices on race cards (subrace, "+1 to two abilities"), keyed by card and choice.
+  statChoices?: Record<string, string[]>;
+  // Harvesting = WIS modifier + proficiency + this extra bonus.
+  harvestingProficiency?: ProficiencyLevel;
+  harvestingBonus?: number;
 };
 
 type CraftedItem = {
@@ -472,7 +506,8 @@ const WEAPON_RECIPE_TAGS = [
   "tattoo",
 ] as const;
 
-const MANAGED_RECIPE_TAGS = [...MAIN_RECIPE_TAGS, ...WEAPON_RECIPE_TAGS];
+// Recipe sets (blackspire, undying-vigil, ...) come first, straight from the data.
+const MANAGED_RECIPE_TAGS: string[] = [...recipeSetTags, ...MAIN_RECIPE_TAGS, ...WEAPON_RECIPE_TAGS];
 
 const MATERIALS_STORAGE_KEY = "artisan-codex-materials";
 const INVENTORY_PROFILES_STORAGE_KEY = "artisan-codex-inventory-profiles";
@@ -1158,6 +1193,60 @@ function normalizeCharacter(character: Partial<Character>): Character {
       ...buildToolProgress(false),
       ...(character.toolProgress || {}),
     },
+    gatheringToday: character.gatheringToday ?? 0,
+    abilityScores: character.abilityScores ? { ...emptyStats(10), ...character.abilityScores } : undefined,
+    statChoices: character.statChoices || {},
+    ...inferHarvesting(character),
+  };
+}
+
+// Older characters stored Harvesting as one typed-in number. Split it into WIS +
+// proficiency + an extra bonus so their total stays exactly the same.
+function inferHarvesting(character: Partial<Character>): { harvestingProficiency: ProficiencyLevel; harvestingBonus: number } {
+  if (character.harvestingProficiency) {
+    return { harvestingProficiency: character.harvestingProficiency, harvestingBonus: character.harvestingBonus ?? 0 };
+  }
+  const difference = (character.harvesting ?? 0) - (character.stats?.WIS ?? 0);
+  const harvestingProficiency: ProficiencyLevel = difference >= 4 ? "expertise" : difference >= 2 ? "proficient" : "none";
+  return { harvestingProficiency, harvestingBonus: difference - PROFICIENCY_BONUS[harvestingProficiency] };
+}
+
+type DerivedCharacterInfo = {
+  finalScores: Record<Stat, number> | null;
+  bonusTotals: Record<Stat, number>;
+  bonusLines: string[];
+  unmadeChoices: number;
+  statCards: AppliedStatCard[];
+};
+
+// Final stats used by every check: base ability scores + race card bonuses,
+// turned into modifiers, and Harvesting worked out from WIS.
+function deriveCharacter(character: Character, cardIds: number[]): { character: Character; info: DerivedCharacterInfo } {
+  const bonuses = cardStatBonuses(cardIds, character.statChoices);
+  const base = character.abilityScores;
+  const finalScores = base
+    ? (Object.fromEntries(STATS.map((stat) => [stat, (base[stat] ?? 10) + bonuses.total[stat]])) as Record<Stat, number>)
+    : null;
+  const stats = finalScores
+    ? (Object.fromEntries(STATS.map((stat) => [stat, scoreToModifier(finalScores[stat])])) as Record<Stat, number>)
+    : character.stats;
+  const { harvestingProficiency, harvestingBonus } = inferHarvesting(character);
+
+  return {
+    character: {
+      ...character,
+      stats,
+      harvesting: harvestingTotal(stats.WIS ?? 0, harvestingProficiency, harvestingBonus),
+      harvestingProficiency,
+      harvestingBonus,
+    },
+    info: {
+      finalScores,
+      bonusTotals: bonuses.total,
+      bonusLines: bonuses.lines,
+      unmadeChoices: bonuses.unmadeChoices,
+      statCards: statCardsForDisplay(cardIds),
+    },
   };
 }
 
@@ -1207,6 +1296,70 @@ function defaultCharacter(): Character {
     progressPoints: {},
     toolProgress: buildToolProgress(true),
   };
+}
+
+const LEGACY_DISCOVERIES_MIGRATED_KEY = "artisan-codex-shared-discoveries-migrated";
+const LEGACY_TAGS_MIGRATED_KEY_PREFIX = "artisan-codex-shared-tags-migrated-";
+
+function readLegacyStringArray(key: string): string[] {
+  try {
+    const parsed = JSON.parse(window.localStorage.getItem(key) || "[]");
+    return Array.isArray(parsed) ? parsed.filter((item): item is string => typeof item === "string") : [];
+  } catch {
+    return [];
+  }
+}
+
+// Discovery and tag visibility used to live only in the GM's browser.
+// The first time a signed-in GM opens a campaign with no shared data yet,
+// upload what this browser has so nothing set up before is lost.
+// Returns true if anything was uploaded.
+async function migrateLegacyVisibility(
+  campaignId: string,
+  remoteHasDiscoveries: boolean,
+  remoteHasTags: boolean,
+  legacyTags: string[]
+): Promise<boolean> {
+  let uploaded = false;
+
+  if (!window.localStorage.getItem(LEGACY_DISCOVERIES_MIGRATED_KEY)) {
+    if (!remoteHasDiscoveries) {
+      const entries: DiscoveryEntry[] = [
+        ...readLegacyStringArray("artisan-codex-discovered-materials").map((name) => ({
+          kind: "material" as const,
+          key: normalizeName(name),
+          state: "discovered" as const,
+        })),
+        ...readLegacyStringArray(DISCOVERED_RECIPES_STORAGE_KEY).map((id) => ({
+          kind: "recipe" as const,
+          key: id,
+          state: "discovered" as const,
+        })),
+        ...readLegacyStringArray(HIDDEN_RECIPES_STORAGE_KEY).map((id) => ({
+          kind: "recipe" as const,
+          key: id,
+          state: "hidden" as const,
+        })),
+      ];
+
+      if (entries.length > 0) {
+        await upsertCampaignDiscoveries(campaignId, entries);
+        uploaded = true;
+      }
+    }
+    window.localStorage.setItem(LEGACY_DISCOVERIES_MIGRATED_KEY, campaignId);
+  }
+
+  const tagsKey = `${LEGACY_TAGS_MIGRATED_KEY_PREFIX}${campaignId}`;
+  if (!window.localStorage.getItem(tagsKey)) {
+    if (!remoteHasTags && legacyTags.length > 0) {
+      await replaceCampaignDisabledTags(campaignId, legacyTags);
+      uploaded = true;
+    }
+    window.localStorage.setItem(tagsKey, "1");
+  }
+
+  return uploaded;
 }
 
 export default function ArcaneCraftingCodexPage() {
@@ -1262,6 +1415,10 @@ export default function ArcaneCraftingCodexPage() {
     brokenTools: buildToolOwnership(false),
     progressPoints: {},
     toolProgress: buildToolProgress(false),
+    abilityScores: emptyStats(10),
+    statChoices: {},
+    harvestingProficiency: "none",
+    harvestingBonus: 0,
   }));
 
   const [recipeSearch, setRecipeSearch] = useState("");
@@ -1275,6 +1432,7 @@ export default function ArcaneCraftingCodexPage() {
   const [manuallyDiscoveredMaterials, setManuallyDiscoveredMaterials] = useState<string[]>([]);
   const [manuallyDiscoveredRecipeIds, setManuallyDiscoveredRecipeIds] = useState<string[]>([]);
   const [manuallyHiddenRecipeIds, setManuallyHiddenRecipeIds] = useState<string[]>([]);
+  const [enabledGatheringSpotIds, setEnabledGatheringSpotIds] = useState<string[]>([]);
   const [lootTier, setLootTier] = useState<CreatureTier>("common");
   const [lootTableId, setLootTableId] = useState(lootTables[0]?.id || "skeleton");
   const [lootQuality, setLootQuality] = useState<LootQuality | "none" | "unrolled">("unrolled");
@@ -1302,6 +1460,18 @@ export default function ArcaneCraftingCodexPage() {
   const realtimeRefreshTimerRef = useRef<number | null>(null);
   const shouldSaveMaterialsRef = useRef(false);
   const shouldSaveCharactersRef = useRef(false);
+  // Latest values for realtime callbacks, which would otherwise see stale state.
+  const inventoryProfilesRef = useRef<InventoryProfile[]>([]);
+  const activeInventoryIdRef = useRef("");
+
+  useEffect(() => {
+    inventoryProfilesRef.current = inventoryProfiles;
+  }, [inventoryProfiles]);
+
+  useEffect(() => {
+    activeInventoryIdRef.current = activeInventoryId;
+  }, [activeInventoryId]);
+
   const [characterAttributeAssignments, setCharacterAttributeAssignments] = useState<CharacterAttributeAssignmentRow[]>([]);
   const [harvestAttributeFlags, setHarvestAttributeFlags] = useState({
     firstFailIgnored: false,
@@ -1394,9 +1564,12 @@ export default function ArcaneCraftingCodexPage() {
           });
         }
 
+        // The GM's shared active campaign wins; this browser's last choice is only a fallback.
+        const sharedActiveId = supabaseCampaigns.find((campaign) => campaign.is_active)?.id;
+
         const activeProfile =
+          profiles.find((profile) => profile.id === sharedActiveId) ||
           profiles.find((profile) => profile.id === savedActiveId) ||
-          profiles.find((profile) => profile.name === "Tales on The Sea") ||
           profiles[0];
 
         const [supabaseMaterials, supabaseCraftedRows, supabaseCharacterRows] = await Promise.all([
@@ -1737,41 +1910,101 @@ export default function ArcaneCraftingCodexPage() {
     }
   }, [creatureLootQueue, selectedCreatureQueueId]);
 
+  // Shared per-campaign visibility: discovered / hidden recipes, discovered materials
+  // and hidden recipe tags. Stored in Supabase by recipe id, material name and tag,
+  // so every player sees what the GM sets, and new recipes need no SQL changes.
   useEffect(() => {
-    try {
-      const saved = window.localStorage.getItem("artisan-codex-discovered-materials");
-      if (saved) setManuallyDiscoveredMaterials(JSON.parse(saved));
-    } catch {
-      setManuallyDiscoveredMaterials([]);
+    if (!materialsLoaded || !activeInventoryId) return;
+
+    const campaignId = activeInventoryId;
+    let cancelled = false;
+    let reloadTimer: number | null = null;
+
+    function applyDiscoveryRows(rows: CampaignDiscoveryRow[]) {
+      const discoveredMaterials: string[] = [];
+      const discoveredRecipes: string[] = [];
+      const hiddenRecipes: string[] = [];
+      const openSpots: string[] = [];
+
+      rows.forEach((row) => {
+        if (row.kind === "gathering-spot" && row.state === "discovered") openSpots.push(row.item_key);
+        if (row.kind === "material" && row.state === "discovered") discoveredMaterials.push(row.item_key);
+        if (row.kind === "recipe" && row.state === "discovered") discoveredRecipes.push(row.item_key);
+        if (row.kind === "recipe" && row.state === "hidden") hiddenRecipes.push(row.item_key);
+      });
+
+      setManuallyDiscoveredMaterials(discoveredMaterials);
+      setManuallyDiscoveredRecipeIds(discoveredRecipes);
+      setManuallyHiddenRecipeIds(hiddenRecipes);
+      setEnabledGatheringSpotIds(openSpots);
     }
-  }, []);
 
-  useEffect(() => {
-    window.localStorage.setItem(
-      "artisan-codex-discovered-materials",
-      JSON.stringify(manuallyDiscoveredMaterials)
-    );
-  }, [manuallyDiscoveredMaterials]);
+    async function loadSharedVisibility(allowMigration: boolean) {
+      try {
+        const [discoveryRows, tagRows] = await Promise.all([
+          fetchCampaignDiscoveries(campaignId),
+          fetchCampaignDisabledTags(campaignId),
+        ]);
+        if (cancelled) return;
 
-  useEffect(() => {
-    try {
-      const discovered = window.localStorage.getItem(DISCOVERED_RECIPES_STORAGE_KEY);
-      const hidden = window.localStorage.getItem(HIDDEN_RECIPES_STORAGE_KEY);
-      if (discovered) setManuallyDiscoveredRecipeIds(JSON.parse(discovered));
-      if (hidden) setManuallyHiddenRecipeIds(JSON.parse(hidden));
-    } catch {
-      setManuallyDiscoveredRecipeIds([]);
-      setManuallyHiddenRecipeIds([]);
+        if (allowMigration && adminUnlocked) {
+          const legacyTags =
+            inventoryProfilesRef.current.find((profile) => profile.id === campaignId)?.disabledTags || [];
+          const uploaded = await migrateLegacyVisibility(
+            campaignId,
+            discoveryRows.length > 0,
+            tagRows.length > 0,
+            legacyTags
+          );
+          if (cancelled) return;
+          if (uploaded) {
+            await loadSharedVisibility(false);
+            return;
+          }
+        }
+
+        applyDiscoveryRows(discoveryRows);
+        setDisabledTags(tagRows);
+      } catch (error) {
+        console.warn("Failed to load shared recipe/material visibility. Has the visibility SQL been run?", error);
+      }
     }
-  }, []);
 
-  useEffect(() => {
-    window.localStorage.setItem(DISCOVERED_RECIPES_STORAGE_KEY, JSON.stringify(manuallyDiscoveredRecipeIds));
-  }, [manuallyDiscoveredRecipeIds]);
+    function scheduleReload() {
+      if (reloadTimer) window.clearTimeout(reloadTimer);
+      reloadTimer = window.setTimeout(() => loadSharedVisibility(false), 400);
+    }
 
-  useEffect(() => {
-    window.localStorage.setItem(HIDDEN_RECIPES_STORAGE_KEY, JSON.stringify(manuallyHiddenRecipeIds));
-  }, [manuallyHiddenRecipeIds]);
+    loadSharedVisibility(true);
+
+    const channel = supabase
+      .channel(`artisan-codex-visibility-${campaignId}`)
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "campaign_discoveries", filter: `campaign_id=eq.${campaignId}` },
+        scheduleReload
+      )
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "campaign_disabled_tags", filter: `campaign_id=eq.${campaignId}` },
+        scheduleReload
+      )
+      .subscribe();
+
+    return () => {
+      cancelled = true;
+      if (reloadTimer) window.clearTimeout(reloadTimer);
+      supabase.removeChannel(channel);
+    };
+  }, [materialsLoaded, activeInventoryId, adminUnlocked]);
+
+  function saveDiscoveries(entries: DiscoveryEntry[]) {
+    if (!activeInventoryId || entries.length === 0) return;
+    upsertCampaignDiscoveries(activeInventoryId, entries).catch((error) => {
+      console.warn("Failed to save discoveries to Supabase.", error);
+      setImportLog("Warning: discovery saved on this screen only. Supabase sync failed.");
+    });
+  }
 
   useEffect(() => {
     try {
@@ -1837,6 +2070,12 @@ export default function ArcaneCraftingCodexPage() {
       }
       return current.filter((item) => normalizeName(item) !== normalized);
     });
+
+    if (activeInventoryId) {
+      setCampaignDiscovery(activeInventoryId, "material", normalized, discovered ? "discovered" : null).catch((error) => {
+        console.warn("Failed to save material discovery to Supabase.", error);
+      });
+    }
   }
 
   function markMaterialsDiscovered(names: string[]) {
@@ -1851,6 +2090,10 @@ export default function ArcaneCraftingCodexPage() {
       });
       return next;
     });
+
+    saveDiscoveries(
+      names.map((name) => ({ kind: "material" as const, key: normalizeName(name), state: "discovered" as const }))
+    );
   }
 
   function markRecipeDiscovered(recipeId: string, discovered: boolean) {
@@ -1869,11 +2112,33 @@ export default function ArcaneCraftingCodexPage() {
       else next.add(recipeId);
       return [...next];
     });
+
+    saveDiscoveries([{ kind: "recipe", key: recipeId, state: discovered ? "discovered" : "hidden" }]);
   }
+
+  // Characters with race-card bonuses and derived Harvesting applied. Every
+  // check (crafting, harvesting, gathering) reads these, not the raw entries.
+  const cardIdsByCharacter = useMemo(() => {
+    const map = new Map<string, number[]>();
+    characterAttributeAssignments.forEach((row) => {
+      map.set(row.character_id, [...(map.get(row.character_id) || []), Number(row.card_id)]);
+    });
+    return map;
+  }, [characterAttributeAssignments]);
+
+  const derivedCharacters = useMemo(
+    () => characters.map((character) => deriveCharacter(character, cardIdsByCharacter.get(character.id) || [])),
+    [characters, cardIdsByCharacter]
+  );
+  const effectiveCharacters = useMemo(() => derivedCharacters.map((entry) => entry.character), [derivedCharacters]);
+  const derivedInfoById = useMemo(
+    () => new Map(derivedCharacters.map((entry) => [entry.character.id, entry.info])),
+    [derivedCharacters]
+  );
 
   const selectedRecipe = recipes.find((recipe) => recipe.id === selectedRecipeId) || recipes[0];
   const selectedCharacter =
-    characters.find((character) => character.id === selectedCharacterId) || characters[0];
+    effectiveCharacters.find((character) => character.id === selectedCharacterId) || effectiveCharacters[0];
 
   const allTags = useMemo(() => {
     const set = new Set<string>();
@@ -2007,9 +2272,12 @@ export default function ArcaneCraftingCodexPage() {
     setManuallyDiscoveredMaterials([]);
     setManuallyDiscoveredRecipeIds([]);
     setManuallyHiddenRecipeIds([]);
-    window.localStorage.removeItem("artisan-codex-discovered-materials");
-    window.localStorage.removeItem(DISCOVERED_RECIPES_STORAGE_KEY);
-    window.localStorage.removeItem(HIDDEN_RECIPES_STORAGE_KEY);
+    if (activeInventoryId) {
+      clearCampaignDiscoveries(activeInventoryId).catch((error) => {
+        console.warn("Failed to clear discoveries in Supabase.", error);
+        setImportLog("Warning: discoveries cleared on this screen only. Supabase sync failed.");
+      });
+    }
     setImportLog("Current campaign inventory wiped and all materials/recipes marked undiscovered.");
   }
 
@@ -2027,12 +2295,45 @@ export default function ArcaneCraftingCodexPage() {
 
   async function switchInventoryProfile(profileId: string) {
     if (!adminUnlocked) return;
-    const profile = inventoryProfiles.find((item) => item.id === profileId);
-    if (!profile) return;
+    if (!inventoryProfilesRef.current.some((item) => item.id === profileId)) return;
 
+    await loadCampaignIntoView(profileId);
+
+    try {
+      await setActiveCampaign(profileId);
+    } catch (error) {
+      console.warn("Failed to set the shared active campaign.", error);
+      setImportLog("Switched on this screen, but players were not moved. Check that the shared active campaign SQL has been run.");
+    }
+  }
+
+  // Loads a campaign into this browser. No GM check: players use this to follow the GM.
+  async function loadCampaignIntoView(profileId: string) {
     setIsLoadingCampaignData(true);
 
     try {
+      let profile: InventoryProfile | undefined = inventoryProfilesRef.current.find((item) => item.id === profileId);
+
+      if (!profile) {
+        // Campaign was created after this browser loaded the list.
+        const campaign = (await fetchCampaigns()).find((item) => item.id === profileId);
+        if (!campaign) return;
+
+        const addedProfile: InventoryProfile = {
+          id: campaign.id,
+          name: campaign.name,
+          materials: [],
+          characters: [defaultCharacter()],
+          craftedItems: [],
+          disabledTags: [],
+        };
+        profile = addedProfile;
+        inventoryProfilesRef.current = [...inventoryProfilesRef.current, addedProfile];
+        setInventoryProfiles((current) =>
+          current.some((item) => item.id === addedProfile.id) ? current : [...current, addedProfile]
+        );
+      }
+
       const [supabaseMaterials, supabaseCraftedRows, supabaseCharacterRows] = await Promise.all([
         fetchCampaignMaterials(profile.id),
         fetchCampaignCraftedItems(profile.id),
@@ -2072,6 +2373,35 @@ export default function ArcaneCraftingCodexPage() {
       setIsLoadingCampaignData(false);
     }
   }
+
+  const loadCampaignIntoViewRef = useRef(loadCampaignIntoView);
+  useEffect(() => {
+    loadCampaignIntoViewRef.current = loadCampaignIntoView;
+  });
+
+  // Follow the GM: when the shared active campaign changes in Supabase,
+  // every open browser (players included) loads that campaign.
+  useEffect(() => {
+    if (!materialsLoaded) return;
+
+    const channel = supabase
+      .channel("artisan-codex-active-campaign")
+      .on(
+        "postgres_changes",
+        { event: "UPDATE", schema: "public", table: "campaigns" },
+        (payload) => {
+          const row = payload.new as { id?: string; is_active?: boolean };
+          if (row.id && row.is_active && row.id !== activeInventoryIdRef.current) {
+            loadCampaignIntoViewRef.current(row.id);
+          }
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [materialsLoaded]);
 
   async function createInventoryProfile(copyCurrent = false) {
     if (!adminUnlocked) return;
@@ -2126,6 +2456,25 @@ export default function ArcaneCraftingCodexPage() {
         profile.characters.map(characterToSupabasePayload)
       );
 
+      if (copyCurrent) {
+        try {
+          await replaceCampaignDisabledTags(profile.id, disabledTags);
+          await upsertCampaignDiscoveries(profile.id, [
+            ...manuallyDiscoveredMaterials.map((name) => ({ kind: "material" as const, key: normalizeName(name), state: "discovered" as const })),
+            ...manuallyDiscoveredRecipeIds.map((id) => ({ kind: "recipe" as const, key: id, state: "discovered" as const })),
+            ...manuallyHiddenRecipeIds.map((id) => ({ kind: "recipe" as const, key: id, state: "hidden" as const })),
+          ]);
+        } catch (error) {
+          console.warn("Failed to copy recipe visibility to the new campaign.", error);
+        }
+      }
+
+      try {
+        await setActiveCampaign(profile.id);
+      } catch (error) {
+        console.warn("Failed to set the shared active campaign.", error);
+      }
+
       setNewInventoryName("");
       setImportLog(`Created and opened ${name}.`);
     } catch (error) {
@@ -2145,6 +2494,9 @@ export default function ArcaneCraftingCodexPage() {
 
   async function deleteInventoryProfile(profileId: string) {
     if (!adminUnlocked || inventoryProfiles.length <= 1) return;
+
+    const remainingProfiles = inventoryProfiles.filter((profile) => profile.id !== profileId);
+    const nextActiveId = activeInventoryId === profileId ? remainingProfiles[0]?.id : activeInventoryId;
 
     try {
       await deleteCampaign(profileId);
@@ -2170,33 +2522,57 @@ export default function ArcaneCraftingCodexPage() {
       return remaining;
     });
     setImportLog("Campaign deleted.");
+
+    if (nextActiveId) {
+      setActiveCampaign(nextActiveId).catch((error) => {
+        console.warn("Failed to set the shared active campaign.", error);
+      });
+    }
+  }
+
+  function saveDisabledTagsError(error: unknown) {
+    console.warn("Failed to save recipe tag visibility to Supabase.", error);
+    setImportLog("Warning: tag visibility changed on this screen only. Supabase sync failed.");
   }
 
   function toggleDisabledTag(tag: string) {
     if (!adminUnlocked) return;
+    const nowDisabled = !disabledTags.includes(tag);
     setDisabledTags((current) =>
       current.includes(tag) ? current.filter((item) => item !== tag) : [...current, tag]
     );
+    if (activeInventoryId) {
+      setCampaignTagDisabled(activeInventoryId, tag, nowDisabled).catch(saveDisabledTagsError);
+    }
   }
 
   function enableAllTags() {
     if (!adminUnlocked) return;
     setDisabledTags([]);
+    if (activeInventoryId) replaceCampaignDisabledTags(activeInventoryId, []).catch(saveDisabledTagsError);
   }
 
   function disableAllTags() {
     if (!adminUnlocked) return;
     setDisabledTags(managedTags);
+    if (activeInventoryId) replaceCampaignDisabledTags(activeInventoryId, managedTags).catch(saveDisabledTagsError);
   }
 
   async function addCharacter() {
     if (!newCharacter.name.trim()) return;
 
+    const startingScores = newCharacter.abilityScores ?? emptyStats(10);
+    const startingStats = Object.fromEntries(
+      STATS.map((stat) => [stat, scoreToModifier(startingScores[stat])])
+    ) as Record<Stat, number>;
     const character = {
       ...newCharacter,
       id: crypto.randomUUID(),
       name: newCharacter.name.trim(),
       isActive: true,
+      abilityScores: startingScores,
+      stats: startingStats,
+      harvesting: harvestingTotal(startingStats.WIS, newCharacter.harvestingProficiency ?? "none", newCharacter.harvestingBonus ?? 0),
     };
 
     setCharacters((current) => [...current, character]);
@@ -2244,6 +2620,10 @@ export default function ArcaneCraftingCodexPage() {
       brokenTools: buildToolOwnership(false),
       progressPoints: {},
       toolProgress: buildToolProgress(false),
+      abilityScores: emptyStats(10),
+      statChoices: {},
+      harvestingProficiency: "none",
+      harvestingBonus: 0,
     });
   }
 
@@ -2329,12 +2709,73 @@ export default function ArcaneCraftingCodexPage() {
     );
   }
 
+  // Extra Harvesting bonus on top of WIS + proficiency (items, blessings, etc.).
   function updateCharacterHarvesting(characterId: string, value: number) {
     if (!adminUnlocked) return;
     markCharactersForSupabaseSave();
     setCharacters((current) =>
       current.map((character) =>
-        character.id === characterId ? { ...character, harvesting: value } : character
+        character.id === characterId
+          ? { ...character, ...inferHarvesting(character), harvestingBonus: value }
+          : character
+      )
+    );
+  }
+
+  function updateCharacterHarvestingProficiency(characterId: string, level: ProficiencyLevel) {
+    if (!adminUnlocked) return;
+    markCharactersForSupabaseSave();
+    setCharacters((current) =>
+      current.map((character) =>
+        character.id === characterId
+          ? { ...character, harvestingBonus: inferHarvesting(character).harvestingBonus, harvestingProficiency: level }
+          : character
+      )
+    );
+  }
+
+  function updateCharacterAbilityScore(characterId: string, stat: Stat, value: number) {
+    if (!adminUnlocked) return;
+    const score = Math.max(1, Math.min(30, Math.round(value)));
+    markCharactersForSupabaseSave();
+    setCharacters((current) =>
+      current.map((character) =>
+        character.id === characterId && character.abilityScores
+          ? {
+              ...character,
+              abilityScores: { ...character.abilityScores, [stat]: score },
+              stats: { ...character.stats, [stat]: scoreToModifier(score) },
+            }
+          : character
+      )
+    );
+  }
+
+  // Converts typed-in modifiers to base ability scores. Race card bonuses are
+  // subtracted so the character's final modifiers come out unchanged.
+  function switchToAbilityScores(characterId: string) {
+    if (!adminUnlocked) return;
+    markCharactersForSupabaseSave();
+    setCharacters((current) =>
+      current.map((character) => {
+        if (character.id !== characterId || character.abilityScores) return character;
+        const bonuses = cardStatBonuses(cardIdsByCharacter.get(characterId) || [], character.statChoices).total;
+        const abilityScores = Object.fromEntries(
+          STATS.map((stat) => [stat, 10 + 2 * (character.stats[stat] ?? 0) - bonuses[stat]])
+        ) as Record<Stat, number>;
+        return { ...character, ...inferHarvesting(character), abilityScores };
+      })
+    );
+  }
+
+  function updateCharacterStatChoice(characterId: string, key: string, values: string[]) {
+    if (!adminUnlocked) return;
+    markCharactersForSupabaseSave();
+    setCharacters((current) =>
+      current.map((character) =>
+        character.id === characterId
+          ? { ...character, statChoices: { ...(character.statChoices || {}), [key]: values } }
+          : character
       )
     );
   }
@@ -2615,7 +3056,7 @@ export default function ArcaneCraftingCodexPage() {
   function lootingAttempt() {
     if (!harvestStarted || harvestAttemptsRemaining <= 0 || harvestStep !== "attempt") return;
 
-    const character = characters.find((item) => item.id === lootCharacterId) || characters[0];
+    const character = effectiveCharacters.find((item) => item.id === lootCharacterId) || effectiveCharacters[0];
     const harvestingAttributeIds = CRAFTING_ATTRIBUTE_IDS;
     const hasKeenHarvester = characterHasAttribute(character?.id, harvestingAttributeIds.keenHarvester);
     const hasPhaseExtractor = characterHasAttribute(character?.id, harvestingAttributeIds.phaseExtractor) && currentLootTableLooksLike("phase", "dimensional");
@@ -2725,7 +3166,7 @@ export default function ArcaneCraftingCodexPage() {
   function rollLootQualityOnly() {
     if (!harvestStarted || harvestAttemptsRemaining <= 0 || harvestStep !== "quality" || pendingLootRolls <= 0) return;
 
-    const character = characters.find((item) => item.id === lootCharacterId) || characters[0];
+    const character = effectiveCharacters.find((item) => item.id === lootCharacterId) || effectiveCharacters[0];
     let quality = rollWeightedLootQuality(lootTier);
 
     if (quality === "none" && characterHasAttribute(character?.id, CRAFTING_ATTRIBUTE_IDS.efficientHarvester)) {
@@ -2767,7 +3208,7 @@ export default function ArcaneCraftingCodexPage() {
     if (!harvestStarted || harvestAttemptsRemaining <= 0 || harvestStep !== "loot" || pendingLootRolls <= 0) return;
 
     const table = getLootTable(lootTableId);
-    const character = characters.find((item) => item.id === lootCharacterId) || characters[0];
+    const character = effectiveCharacters.find((item) => item.id === lootCharacterId) || effectiveCharacters[0];
     let quality = lootQuality === "unrolled" ? rollWeightedLootQuality(lootTier) : lootQuality;
 
     if (quality === "none" && characterHasAttribute(character?.id, CRAFTING_ATTRIBUTE_IDS.efficientHarvester)) {
@@ -2812,7 +3253,7 @@ export default function ArcaneCraftingCodexPage() {
     const entry =
       targetSelection && targetSelection.quality === quality
         ? targetSelection.entry
-        : entries[Math.floor(Math.random() * entries.length)];
+        : pickWeightedLootEntry(entries);
 
     const baseQty = rollDiceExpression(entry.amount);
     const shouldDouble = doubleNextLoot;
@@ -2860,6 +3301,62 @@ export default function ArcaneCraftingCodexPage() {
     }
   }
 
+  function toggleGatheringSpot(spotId: string, enabled: boolean) {
+    if (!adminUnlocked) return;
+    setEnabledGatheringSpotIds((current) =>
+      enabled ? [...new Set([...current, spotId])] : current.filter((id) => id !== spotId)
+    );
+    if (activeInventoryId) {
+      setCampaignDiscovery(activeInventoryId, "gathering-spot", spotId, enabled ? "discovered" : null).catch((error) => {
+        console.warn("Failed to save gathering spot to Supabase.", error);
+        setImportLog("Warning: gathering spot changed on this screen only. Supabase sync failed.");
+      });
+    }
+  }
+
+  function spendGatheringAttempt(characterId: string) {
+    markCharactersForSupabaseSave();
+    setCharacters((current) =>
+      current.map((character) =>
+        character.id === characterId
+          ? { ...character, gatheringToday: (character.gatheringToday ?? 0) + 1 }
+          : character
+      )
+    );
+  }
+
+  function addGatheredMaterials(characterId: string, spot: GatheringSpot, items: GatheredItem[]) {
+    const gathered = items.filter((item) => item.qty > 0);
+    if (gathered.length === 0) return;
+
+    markMaterialsForSupabaseSave();
+    setMaterials((current) =>
+      upsertMaterialList(
+        current,
+        gathered.map((item) => ({ id: crypto.randomUUID(), name: item.name, qty: item.qty, tier: getMaterialTier(item.name) }))
+      )
+    );
+    markMaterialsDiscovered(gathered.map((item) => item.name));
+
+    if (!activeInventoryId) return;
+    gathered.forEach((item) => {
+      insertCampaignLootLog({
+        campaignId: activeInventoryId,
+        characterId,
+        creatureTableId: spot.id,
+        creatureLabel: spot.name,
+        creatureTier: spot.tier,
+        lootQuality: item.quality,
+        lootName: item.name,
+        qty: item.qty,
+        kind: "material",
+        rollText: item.rollText || null,
+      }).catch((error) => {
+        console.warn("Failed to log gathered material to Supabase.", error);
+      });
+    });
+  }
+
   function passDay() {
     if (!adminUnlocked) return;
 
@@ -2867,6 +3364,7 @@ export default function ArcaneCraftingCodexPage() {
     setCharacters((current) =>
       current.map((character) => ({
         ...character,
+        gatheringToday: 0,
         toolProgress: Object.fromEntries(
           TOOL_OPTIONS.map((tool) => {
             const progress = character.toolProgress?.[tool] ?? emptyToolProgress();
@@ -3370,7 +3868,7 @@ export default function ArcaneCraftingCodexPage() {
         {activeTab === "craft" && (
           <div className="grid grid-cols-1 xl:grid-cols-[1.2fr_0.8fr] gap-7">
             <CraftPanel
-              characters={characters}
+              characters={effectiveCharacters}
               recipes={recipes}
               materialMap={materialMap}
               selectedCharacterId={selectedCharacterId}
@@ -3446,6 +3944,11 @@ export default function ArcaneCraftingCodexPage() {
             applyTrainingToCharacter={applyTrainingToCharacter}
             updateCharacterStat={updateCharacterStat}
             updateCharacterHarvesting={updateCharacterHarvesting}
+            updateCharacterHarvestingProficiency={updateCharacterHarvestingProficiency}
+            updateCharacterAbilityScore={updateCharacterAbilityScore}
+            switchToAbilityScores={switchToAbilityScores}
+            updateCharacterStatChoice={updateCharacterStatChoice}
+            derivedInfoById={derivedInfoById}
             updateCharacterActive={updateCharacterActive}
             updateCharacterTool={updateCharacterTool}
             updateCharacterToolOwned={updateCharacterToolOwned}
@@ -3508,7 +4011,7 @@ export default function ArcaneCraftingCodexPage() {
             setNewLootCreatureQty={setNewLootCreatureQty}
             addCreatureToLootQueue={addCreatureToLootQueue}
             removeCreatureFromLootQueue={removeCreatureFromLootQueue}
-            characters={characters}
+            characters={effectiveCharacters}
             lootCharacterId={lootCharacterId}
             setLootCharacterId={setLootCharacterId}
             harvestStarted={harvestStarted}
@@ -3524,6 +4027,22 @@ export default function ArcaneCraftingCodexPage() {
             rollLootQualityOnly={rollLootQualityOnly}
             addLootToInventory={addLootToInventory}
             characterAttributeAssignments={characterAttributeAssignments}
+            disabledTags={disabledTags}
+          />
+        )}
+
+        {activeTab === "gathering" && (
+          <GatheringPanel
+            characters={effectiveCharacters}
+            adminUnlocked={adminUnlocked}
+            enabledSpotIds={enabledGatheringSpotIds}
+            disabledTags={disabledTags}
+            onToggleSpot={toggleGatheringSpot}
+            onSpendAttempt={spendGatheringAttempt}
+            onGathered={addGatheredMaterials}
+            updateCharacterToolOwned={updateCharacterToolOwned}
+            updateCharacterTool={updateCharacterTool}
+            characterAttributes={characterAttributeAssignments}
           />
         )}
 
@@ -4509,6 +5028,181 @@ function MaterialsPanel({
   );
 }
 
+function formatModifier(value: number) {
+  return `${value >= 0 ? "+" : ""}${value}`;
+}
+
+function CharacterStatsEditor({
+  character,
+  info,
+  adminUnlocked,
+  updateCharacterStat,
+  updateCharacterAbilityScore,
+  switchToAbilityScores,
+  updateCharacterHarvesting,
+  updateCharacterHarvestingProficiency,
+  updateCharacterStatChoice,
+}: {
+  character: Character;
+  info?: DerivedCharacterInfo;
+  adminUnlocked: boolean;
+  updateCharacterStat: (characterId: string, stat: Stat, value: number) => void;
+  updateCharacterAbilityScore: (characterId: string, stat: Stat, value: number) => void;
+  switchToAbilityScores: (characterId: string) => void;
+  updateCharacterHarvesting: (characterId: string, value: number) => void;
+  updateCharacterHarvestingProficiency: (characterId: string, level: ProficiencyLevel) => void;
+  updateCharacterStatChoice: (characterId: string, key: string, values: string[]) => void;
+}) {
+  const usesScores = Boolean(character.abilityScores);
+  const finalScores = info?.finalScores ?? null;
+  const modifiers = finalScores
+    ? (Object.fromEntries(STATS.map((stat) => [stat, scoreToModifier(finalScores[stat])])) as Record<Stat, number>)
+    : character.stats;
+  const { harvestingProficiency, harvestingBonus } = inferHarvesting(character);
+  const proficiencyBonus = PROFICIENCY_BONUS[harvestingProficiency];
+  const harvesting = harvestingTotal(modifiers.WIS ?? 0, harvestingProficiency, harvestingBonus);
+  const choiceCards = (info?.statCards || []).filter((entry) => !entry.ignored && (entry.card.statChoices || []).length > 0);
+  const hasCardBonuses = (info?.bonusLines.length ?? 0) > 0 || choiceCards.length > 0;
+
+  return (
+    <div className="space-y-3">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+        {STATS.map((stat) => (
+          <label key={stat} className="space-y-1">
+            <strong>{stat}</strong>
+            {usesScores ? (
+              <>
+                <FantasyInput
+                  type="number"
+                  value={character.abilityScores?.[stat] ?? 10}
+                  disabled={!adminUnlocked}
+                  onChange={(event) => updateCharacterAbilityScore(character.id, stat, numberValue(event.target.value, 10))}
+                />
+                <span className="block text-xs">
+                  {info?.bonusTotals[stat] ? `${formatModifier(info.bonusTotals[stat])} cards → ` : ""}
+                  {finalScores?.[stat]} ({formatModifier(modifiers[stat])})
+                </span>
+              </>
+            ) : (
+              <FantasyInput
+                type="number"
+                value={character.stats[stat]}
+                disabled={!adminUnlocked}
+                onChange={(event) => updateCharacterStat(character.id, stat, numberValue(event.target.value))}
+              />
+            )}
+          </label>
+        ))}
+      </div>
+
+      {!usesScores && (
+        <div className="rounded-lg border border-dashed border-[#9a7b45] bg-[#ead6ad] p-3 text-xs space-y-2">
+          <p>
+            These stats are typed-in modifiers, so race card bonuses aren&apos;t added. Switch to ability scores and the race bonuses and modifiers work themselves out. The current modifiers are kept.
+          </p>
+          {adminUnlocked && (
+            <Button size="sm" onClick={() => switchToAbilityScores(character.id)} className="bg-[#4b3115] hover:bg-[#62401c] text-[#fff0c7]">
+              Switch to Ability Scores
+            </Button>
+          )}
+        </div>
+      )}
+
+      {hasCardBonuses && (
+        <div className="rounded-lg border border-[#9a7b45] bg-[#fff0c7] p-3 space-y-2">
+          <p className="text-sm font-bold">Stat bonuses from attribute cards</p>
+          {info?.bonusLines.map((line) => (
+            <p key={line} className="text-xs">{line}</p>
+          ))}
+          {choiceCards.flatMap(({ card }) =>
+            (card.statChoices || []).map((choice, index) => {
+              const key = choiceKey(card.id, index);
+              const selected = character.statChoices?.[key] || [];
+              if (choice.options) {
+                return (
+                  <label key={key} className="flex flex-wrap items-center gap-2 text-xs">
+                    <span>{card.name}: {choice.label}</span>
+                    <select
+                      value={selected[0] || ""}
+                      disabled={!adminUnlocked}
+                      onChange={(event) => updateCharacterStatChoice(character.id, key, [event.target.value])}
+                      className="rounded border border-[#9a7b45] bg-[#f2dfb9] px-1 py-0.5"
+                    >
+                      <option value="">Choose...</option>
+                      {choice.options.map((option) => (
+                        <option key={option.label} value={option.label}>{option.label}</option>
+                      ))}
+                    </select>
+                  </label>
+                );
+              }
+              const allowed = STATS.filter((stat) => !(choice.exclude || []).includes(stat));
+              return (
+                <div key={key} className="flex flex-wrap items-center gap-2 text-xs">
+                  <span>{card.name}: {choice.label}</span>
+                  {Array.from({ length: choice.pick || 1 }).map((_, slot) => (
+                    <select
+                      key={slot}
+                      value={selected[slot] || ""}
+                      disabled={!adminUnlocked}
+                      onChange={(event) => {
+                        const next = [...selected];
+                        next[slot] = event.target.value;
+                        updateCharacterStatChoice(character.id, key, next);
+                      }}
+                      className="rounded border border-[#9a7b45] bg-[#f2dfb9] px-1 py-0.5"
+                    >
+                      <option value="">Choose...</option>
+                      {allowed
+                        .filter((stat) => stat === selected[slot] || !selected.includes(stat))
+                        .map((stat) => (
+                          <option key={stat} value={stat}>{stat}</option>
+                        ))}
+                    </select>
+                  ))}
+                </div>
+              );
+            })
+          )}
+          {(info?.unmadeChoices ?? 0) > 0 && (
+            <p className="text-xs font-bold text-[#7a3f00]">{info?.unmadeChoices} race choice{info?.unmadeChoices === 1 ? "" : "s"} still to make.</p>
+          )}
+          {!usesScores && <p className="text-xs italic">Not applied until this character switches to ability scores.</p>}
+        </div>
+      )}
+
+      <div className="rounded-lg border border-[#9a7b45] bg-[#ead6ad] p-3 space-y-2">
+        <p>
+          <strong>Harvesting {formatModifier(harvesting)}</strong>{" "}
+          <span className="text-xs">
+            = WIS {formatModifier(modifiers.WIS ?? 0)} + proficiency {formatModifier(proficiencyBonus)} + other {formatModifier(harvestingBonus)}
+          </span>
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 items-center">
+          <FantasySelect
+            value={harvestingProficiency}
+            disabled={!adminUnlocked}
+            onValueChange={(value) => updateCharacterHarvestingProficiency(character.id, value as ProficiencyLevel)}
+          >
+            <SelectItem value="none">Not proficient</SelectItem>
+            <SelectItem value="proficient">Proficient (+2)</SelectItem>
+            <SelectItem value="expertise">Expertise (+4)</SelectItem>
+          </FantasySelect>
+          <label className="flex items-center gap-2 text-sm">
+            <span className="whitespace-nowrap">Other bonus</span>
+            <FantasyInput
+              type="number"
+              value={harvestingBonus}
+              disabled={!adminUnlocked}
+              onChange={(event) => updateCharacterHarvesting(character.id, numberValue(event.target.value))}
+            />
+          </label>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function CharactersPanel({
   characters,
   newCharacter,
@@ -4519,6 +5213,11 @@ function CharactersPanel({
   applyTrainingToCharacter,
   updateCharacterStat,
   updateCharacterHarvesting,
+  updateCharacterHarvestingProficiency,
+  updateCharacterAbilityScore,
+  switchToAbilityScores,
+  updateCharacterStatChoice,
+  derivedInfoById,
   updateCharacterActive,
   updateCharacterTool,
   updateCharacterToolOwned,
@@ -4533,6 +5232,11 @@ function CharactersPanel({
   applyTrainingToCharacter: (characterId: string, tool: string, trainingType: "regular" | "expert") => void;
   updateCharacterStat: (characterId: string, stat: Stat, value: number) => void;
   updateCharacterHarvesting: (characterId: string, value: number) => void;
+  updateCharacterHarvestingProficiency: (characterId: string, level: ProficiencyLevel) => void;
+  updateCharacterAbilityScore: (characterId: string, stat: Stat, value: number) => void;
+  switchToAbilityScores: (characterId: string) => void;
+  updateCharacterStatChoice: (characterId: string, key: string, values: string[]) => void;
+  derivedInfoById: Map<string, DerivedCharacterInfo>;
   updateCharacterActive: (characterId: string, isActive: boolean) => void;
   updateCharacterTool: (characterId: string, tool: string, level: ProficiencyLevel) => void;
   updateCharacterToolOwned: (characterId: string, tool: string, owned: boolean) => void;
@@ -4556,32 +5260,43 @@ function CharactersPanel({
           />
 
           <label className="space-y-1 block">
-            <strong>Harvesting</strong>
-            <FantasyInput
-              type="number"
-              value={newCharacter.harvesting}
-              onChange={(event) =>
-                setNewCharacter((current) => ({ ...current, harvesting: numberValue(event.target.value) }))
+            <strong>Harvesting proficiency</strong>
+            <FantasySelect
+              value={newCharacter.harvestingProficiency ?? "none"}
+              onValueChange={(value) =>
+                setNewCharacter((current) => ({ ...current, harvestingProficiency: value as ProficiencyLevel }))
               }
-            />
+            >
+              <SelectItem value="none">Not proficient</SelectItem>
+              <SelectItem value="proficient">Proficient (+2)</SelectItem>
+              <SelectItem value="expertise">Expertise (+4)</SelectItem>
+            </FantasySelect>
+            <span className="block text-xs">Harvesting is worked out from WIS plus this proficiency.</span>
           </label>
 
+          <p className="text-sm">
+            <strong>Ability scores</strong> before race bonuses. Assign the race card in the Attributes tab and its bonuses are added automatically.
+          </p>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {STATS.map((stat) => (
-              <label key={stat} className="space-y-1">
-                <strong>{stat}</strong>
-                <FantasyInput
-                  type="number"
-                  value={newCharacter.stats[stat]}
-                  onChange={(event) =>
-                    setNewCharacter((current) => ({
-                      ...current,
-                      stats: { ...current.stats, [stat]: numberValue(event.target.value) },
-                    }))
-                  }
-                />
-              </label>
-            ))}
+            {STATS.map((stat) => {
+              const score = newCharacter.abilityScores?.[stat] ?? 10;
+              return (
+                <label key={stat} className="space-y-1">
+                  <strong>{stat}</strong>
+                  <FantasyInput
+                    type="number"
+                    value={score}
+                    onChange={(event) =>
+                      setNewCharacter((current) => ({
+                        ...current,
+                        abilityScores: { ...(current.abilityScores ?? emptyStats(10)), [stat]: numberValue(event.target.value, 10) },
+                      }))
+                    }
+                  />
+                  <span className="block text-xs">Modifier {formatModifier(scoreToModifier(score))}</span>
+                </label>
+              );
+            })}
           </div>
 
           <div className="rounded-xl border border-[#9a7b45] bg-[#e0c392] p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -4655,29 +5370,17 @@ function CharactersPanel({
                 </label>
               )}
 
-              <label className="space-y-1 block">
-                <strong>Harvesting</strong>
-                <FantasyInput
-                  type="number"
-                  value={character.harvesting}
-                  disabled={!adminUnlocked}
-                  onChange={(event) => updateCharacterHarvesting(character.id, numberValue(event.target.value))}
-                />
-              </label>
-
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                {STATS.map((stat) => (
-                  <label key={stat} className="space-y-1">
-                    <strong>{stat}</strong>
-                    <FantasyInput
-                      type="number"
-                      value={character.stats[stat]}
-                      disabled={!adminUnlocked}
-                      onChange={(event) => updateCharacterStat(character.id, stat, numberValue(event.target.value))}
-                    />
-                  </label>
-                ))}
-              </div>
+              <CharacterStatsEditor
+                character={character}
+                info={derivedInfoById.get(character.id)}
+                adminUnlocked={adminUnlocked}
+                updateCharacterStat={updateCharacterStat}
+                updateCharacterAbilityScore={updateCharacterAbilityScore}
+                switchToAbilityScores={switchToAbilityScores}
+                updateCharacterHarvesting={updateCharacterHarvesting}
+                updateCharacterHarvestingProficiency={updateCharacterHarvestingProficiency}
+                updateCharacterStatChoice={updateCharacterStatChoice}
+              />
 
               <div className="space-y-3 max-h-[520px] overflow-auto pr-1">
                 {TOOL_OPTIONS.map((tool) => {
@@ -4915,6 +5618,7 @@ function LootingPanel({
   rollLootQualityOnly,
   addLootToInventory,
   characterAttributeAssignments,
+  disabledTags,
 }: {
   lootTier: CreatureTier;
   setLootTier: (tier: CreatureTier) => void;
@@ -4956,6 +5660,7 @@ function LootingPanel({
   rollLootQualityOnly: () => void;
   addLootToInventory: () => void;
   characterAttributeAssignments: CharacterAttributeAssignmentRow[];
+  disabledTags: string[];
 }) {
   const selectedTable = getLootTable(lootTableId);
   const selectedQueueEntry = creatureLootQueue.find((entry) => entry.id === selectedCreatureQueueId);
@@ -5002,8 +5707,17 @@ function LootingPanel({
 
                 <label className="space-y-1">
                   <strong>Creature Table</strong>
-                  <FantasySelect value={newLootCreatureTableId} onValueChange={setNewLootCreatureTableId}>
-                    {lootTables.map((table) => (
+                  <FantasySelect
+                    value={newLootCreatureTableId}
+                    onValueChange={(id) => {
+                      setNewLootCreatureTableId(id);
+                      const table = getLootTable(id);
+                      if (table.defaultTier) setNewLootCreatureTier(table.defaultTier);
+                    }}
+                  >
+                    {lootTables
+                      .filter((table) => !table.set || !disabledTags.includes(table.set) || table.id === newLootCreatureTableId)
+                      .map((table) => (
                       <SelectItem key={table.id} value={table.id}>{table.label}</SelectItem>
                     ))}
                   </FantasySelect>

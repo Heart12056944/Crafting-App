@@ -17,6 +17,7 @@ export type MaterialTierEntry = {
   rarity?: CraftingRarity;
   tags: string[];
   source?: string;
+  set?: string;
   notes?: string;
   appearsIn?: {
     creature: string;

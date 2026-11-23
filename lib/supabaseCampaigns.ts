@@ -3,6 +3,7 @@ import { supabase } from "./supabaseClient";
 export type SupabaseCampaign = {
   id: string;
   name: string;
+  is_active?: boolean;
   created_at: string;
   updated_at: string;
 };
@@ -18,6 +19,16 @@ export async function fetchCampaigns(): Promise<SupabaseCampaign[]> {
   }
 
   return data || [];
+}
+
+// Makes one campaign the shared "live" campaign that every player's browser follows.
+// Uses the set_active_campaign SQL function so the switch happens in one statement.
+export async function setActiveCampaign(id: string): Promise<void> {
+  const { error } = await supabase.rpc("set_active_campaign", { target_id: id });
+
+  if (error) {
+    throw error;
+  }
 }
 
 export async function createCampaign(name: string): Promise<SupabaseCampaign> {

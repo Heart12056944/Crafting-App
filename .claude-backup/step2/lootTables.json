@@ -1,0 +1,2447 @@
+[
+  {
+    "id": "loot-failed-hybrid-common",
+    "creature": "FAILED HYBRID",
+    "creatureTier": "Common",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 28,
+        "materialName": "Arcane Rejection Residue",
+        "tier": "T0",
+        "source": "ORIG",
+        "notes": "Unstable magical runoff from failed arcane binding. Glows faintly. Warm to the touch."
+      },
+      {
+        "weight": 24,
+        "materialName": "Fractured Cortical Tissue",
+        "tier": "T0",
+        "source": "ORIG",
+        "notes": "Dense organic matter laced with failed binding energy. Crumbles at the edges."
+      },
+      {
+        "weight": 22,
+        "materialName": "Unstable Binding Fiber",
+        "tier": "T1",
+        "source": "ORIG",
+        "notes": "Stringy bio-material threaded with partial phase energy. Still partially fused to itself."
+      },
+      {
+        "weight": 16,
+        "materialName": "Suppressed Arcane Nodule",
+        "tier": "T1",
+        "source": "ORIG",
+        "notes": "Calcified mass where dragon essence attempted to anchor. The transformation failed here."
+      },
+      {
+        "weight": 10,
+        "materialName": "Fused Mutation Core",
+        "tier": "T2",
+        "source": "ORIG",
+        "notes": "One of the few stable points in the creature's body. Dense and warm."
+      }
+    ],
+    "chapter": "CHAPTER 3 — FAILED HYBRID",
+    "notes": "ORIG only — the transformation failed before dragon biology properly integrated. No BD/SP/WD drops. All materials are creature-unique and do not feed any other family chain. VAEL NOTATION FLAG: See companion DM document for true material names. 'Preserved Memory Fragment' = crystallisation of residual subject consciousness. 'Resonant Soul Shard' = recovered only from Spellcasting Grade 3+ subjects.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-failed-hybrid-rare",
+    "creature": "FAILED HYBRID",
+    "creatureTier": "Common",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 32,
+        "materialName": "Fractured Cortical Tissue",
+        "tier": "T0",
+        "source": "ORIG",
+        "notes": "Higher quality extraction — less crumbling, more intact than the common pool version."
+      },
+      {
+        "weight": 26,
+        "materialName": "Unstable Binding Fiber",
+        "tier": "T1",
+        "source": "ORIG",
+        "notes": "Better preserved sample from deeper tissue layers."
+      },
+      {
+        "weight": 20,
+        "materialName": "Fused Mutation Core",
+        "tier": "T2",
+        "source": "ORIG",
+        "notes": "Cleaner extraction. More stable than the common pool version."
+      },
+      {
+        "weight": 14,
+        "materialName": "Preserved Memory Fragment",
+        "tier": "T2",
+        "source": "ORIG",
+        "notes": "Crystallised fragment of arcane soul matter. Warm to the touch. Occasionally pulses."
+      },
+      {
+        "weight": 8,
+        "materialName": "Resonant Soul Shard",
+        "tier": "T3",
+        "source": "ORIG",
+        "notes": "Rare stable formation of compressed arcane soul energy. Only forms from high magical aptitude subjects."
+      }
+    ],
+    "chapter": "CHAPTER 3 — FAILED HYBRID",
+    "notes": "ORIG only — the transformation failed before dragon biology properly integrated. No BD/SP/WD drops. All materials are creature-unique and do not feed any other family chain. VAEL NOTATION FLAG: See companion DM document for true material names. 'Preserved Memory Fragment' = crystallisation of residual subject consciousness. 'Resonant Soul Shard' = recovered only from Spellcasting Grade 3+ subjects.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-failed-hybrid-epic",
+    "creature": "FAILED HYBRID",
+    "creatureTier": "Common",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 30,
+        "materialName": "Fused Mutation Core",
+        "tier": "T2",
+        "source": "ORIG",
+        "notes": "Best possible extraction from this creature tier."
+      },
+      {
+        "weight": 25,
+        "materialName": "Preserved Memory Fragment",
+        "tier": "T2",
+        "source": "ORIG",
+        "notes": "More intact than rare pool — the pulse is stronger and more regular."
+      },
+      {
+        "weight": 22,
+        "materialName": "Resonant Soul Shard",
+        "tier": "T3",
+        "source": "ORIG",
+        "notes": "Fully formed shard. More stable than rare pool version."
+      },
+      {
+        "weight": 13,
+        "materialName": "Fractured Soul Lattice",
+        "tier": "T3",
+        "source": "ORIG",
+        "notes": "Rare formation where multiple memory fragments partially fused together. TERMINAL — no refinement."
+      },
+      {
+        "weight": 10,
+        "materialName": "Shattered Essence Crystal",
+        "tier": "T3",
+        "source": "FUSED",
+        "notes": "FUSED TERMINAL. Crystallised fusion of arcane soul energy and failed dragon essence. The transformation nearly worked here."
+      }
+    ],
+    "chapter": "CHAPTER 3 — FAILED HYBRID",
+    "notes": "ORIG only — the transformation failed before dragon biology properly integrated. No BD/SP/WD drops. All materials are creature-unique and do not feed any other family chain. VAEL NOTATION FLAG: See companion DM document for true material names. 'Preserved Memory Fragment' = crystallisation of residual subject consciousness. 'Resonant Soul Shard' = recovered only from Spellcasting Grade 3+ subjects.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-dragonhound-common",
+    "creature": "DRAGONHOUND",
+    "creatureTier": "Uncommon",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 22,
+        "materialName": "Crackling Scale Fragments",
+        "tier": "T0",
+        "source": "BD",
+        "notes": "Existing BD T0. Feeds into Drake Scales refinement chain."
+      },
+      {
+        "weight": 20,
+        "materialName": "Static-Charged Hide Scraps",
+        "tier": "T0",
+        "source": "BD",
+        "notes": "Existing BD T0. Feeds into Storm Hide Layer chain."
+      },
+      {
+        "weight": 18,
+        "materialName": "Hound Muscle Fibre",
+        "tier": "T0",
+        "source": "ORIG",
+        "notes": "Dense fast-twitch muscle from the hound's legs. Unique to this creature."
+      },
+      {
+        "weight": 16,
+        "materialName": "Dragonbone Splinters",
+        "tier": "T0",
+        "source": "BD",
+        "notes": "Existing BD T0. Feeds into Dense Dragonbone Splinters chain."
+      },
+      {
+        "weight": 14,
+        "materialName": "Coarse Hound Hide",
+        "tier": "T0",
+        "source": "ORIG",
+        "notes": "Thick outer hide — lightning resistant but not dragon-scale. Unique."
+      },
+      {
+        "weight": 10,
+        "materialName": "Residual Lightning Gland",
+        "tier": "T0",
+        "source": "BD",
+        "notes": "Existing BD T0. Feeds into Charged Lightning Gland chain."
+      }
+    ],
+    "chapter": "CHAPTER 4 — BLUE DRAGON HYBRIDS",
+    "notes": "Two families: ORIG (wolf/hound biology — unique chain) and BD (Blue Dragon add-on — feeds shared BD chain using existing BD material names from Campaign_Arc).",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-dragonhound-rare",
+    "creature": "DRAGONHOUND",
+    "creatureTier": "Uncommon",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 24,
+        "materialName": "Drake Scales",
+        "tier": "T1",
+        "source": "BD",
+        "notes": "Existing BD T1. Refined from Crackling Scale Fragments."
+      },
+      {
+        "weight": 20,
+        "materialName": "Charged Lightning Gland",
+        "tier": "T1",
+        "source": "BD",
+        "notes": "Existing BD T1. Refined from Residual Lightning Gland."
+      },
+      {
+        "weight": 18,
+        "materialName": "Storm Hide Layer",
+        "tier": "T1",
+        "source": "BD",
+        "notes": "Existing BD T1. Refined from Static-Charged Hide Scraps."
+      },
+      {
+        "weight": 17,
+        "materialName": "Tensile Hound Sinew",
+        "tier": "T1",
+        "source": "ORIG",
+        "notes": "Processed sinew from the primary chase muscles. Holds tension well. Unique."
+      },
+      {
+        "weight": 12,
+        "materialName": "Reinforced Hound Fang",
+        "tier": "T1",
+        "source": "ORIG",
+        "notes": "Extracted fang reinforced with minor draconic calcification. Unique."
+      },
+      {
+        "weight": 9,
+        "materialName": "Conductive Nerve Bundle",
+        "tier": "T1",
+        "source": "BD",
+        "notes": "Existing BD T1. Extracted from the lightning-adapted nervous system."
+      }
+    ],
+    "chapter": "CHAPTER 4 — BLUE DRAGON HYBRIDS",
+    "notes": "Two families: ORIG (wolf/hound biology — unique chain) and BD (Blue Dragon add-on — feeds shared BD chain using existing BD material names from Campaign_Arc).",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-dragonhound-epic",
+    "creature": "DRAGONHOUND",
+    "creatureTier": "Uncommon",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 26,
+        "materialName": "Reinforced Drake Scale",
+        "tier": "T2",
+        "source": "BD",
+        "notes": "Existing BD T2. Best scale extraction from this creature tier."
+      },
+      {
+        "weight": 22,
+        "materialName": "Stormbound Tendon Coil",
+        "tier": "T2",
+        "source": "BD",
+        "notes": "Existing BD T2. From the creature's primary sprint tendons, storm-saturated."
+      },
+      {
+        "weight": 18,
+        "materialName": "Apex Hound Sprint Core",
+        "tier": "T2",
+        "source": "ORIG",
+        "notes": "Dense biological core from the haunches — source of 50ft speed. TERMINAL. Unique."
+      },
+      {
+        "weight": 16,
+        "materialName": "Conductive Blood Crystal",
+        "tier": "T1",
+        "source": "BD",
+        "notes": "Existing BD T1. Blood crystallised post-mortem due to electrical charge."
+      },
+      {
+        "weight": 18,
+        "materialName": "Storm-Fused Hound Sinew",
+        "tier": "T2",
+        "source": "FUSED",
+        "notes": "FUSED TERMINAL. Hound sinew where BD lightning has permanently fused with the original muscle tissue. Neither pure dragon nor pure hound."
+      }
+    ],
+    "chapter": "CHAPTER 4 — BLUE DRAGON HYBRIDS",
+    "notes": "Two families: ORIG (wolf/hound biology — unique chain) and BD (Blue Dragon add-on — feeds shared BD chain using existing BD material names from Campaign_Arc).",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-sparkwing-stalker-common",
+    "creature": "SPARKWING STALKER",
+    "creatureTier": "Rare",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 20,
+        "materialName": "Crackling Scale Fragments",
+        "tier": "T0",
+        "source": "BD",
+        "notes": "Existing BD T0. Lighter wing-scale variant."
+      },
+      {
+        "weight": 19,
+        "materialName": "Ionized Nerve Threads",
+        "tier": "T0",
+        "source": "BD",
+        "notes": "Existing BD T0. Wing membrane nerve fibres with persistent electrical signal."
+      },
+      {
+        "weight": 17,
+        "materialName": "Charged Tendon Strips",
+        "tier": "T0",
+        "source": "BD",
+        "notes": "Existing BD T0. Primary flight tendon strips, electrically charged."
+      },
+      {
+        "weight": 16,
+        "materialName": "Hollow Wing Bone",
+        "tier": "T0",
+        "source": "ORIG",
+        "notes": "Lightweight hollow bone from the wing structure. Unique."
+      },
+      {
+        "weight": 15,
+        "materialName": "Storm-Touched Hide Scraps",
+        "tier": "T0",
+        "source": "BD",
+        "notes": "Existing BD T0. Wing membrane hide with embedded charge nodes."
+      },
+      {
+        "weight": 13,
+        "materialName": "Raptor Feather Cluster",
+        "tier": "T0",
+        "source": "ORIG",
+        "notes": "Dense feathers from the wing edge carrying static buildup. Unique."
+      }
+    ],
+    "chapter": "CHAPTER 4 — BLUE DRAGON HYBRIDS",
+    "notes": "Two families: ORIG (raptor/bat biology) and BD. BD drops weighted toward higher BD tiers than Dragonhound — more successful dragon integration. Stormwing Alpha variant increases BD drop quality by one tier throughout.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-sparkwing-stalker-rare",
+    "creature": "SPARKWING STALKER",
+    "creatureTier": "Rare",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 22,
+        "materialName": "Drake Scales",
+        "tier": "T1",
+        "source": "BD",
+        "notes": "Existing BD T1. Sparkwing variant is thinner and lighter than Dragonhound."
+      },
+      {
+        "weight": 19,
+        "materialName": "Distilled Lightning Essence",
+        "tier": "T1",
+        "source": "BD",
+        "notes": "Existing BD T1. Extracted from wing gland clusters."
+      },
+      {
+        "weight": 17,
+        "materialName": "Storm Hide Layer",
+        "tier": "T1",
+        "source": "BD",
+        "notes": "Existing BD T1. Wing membrane hide, processed."
+      },
+      {
+        "weight": 15,
+        "materialName": "Reinforced Membrane Layer",
+        "tier": "T1",
+        "source": "BD",
+        "notes": "Existing BD T1. From the flight membrane, processed."
+      },
+      {
+        "weight": 14,
+        "materialName": "Sharpened Raptor Talon",
+        "tier": "T1",
+        "source": "ORIG",
+        "notes": "Primary hunting talon, hardened by draconic calcification. Unique."
+      },
+      {
+        "weight": 13,
+        "materialName": "Lightweight Wing Frame",
+        "tier": "T1",
+        "source": "ORIG",
+        "notes": "Processed hollow bone framework from the wing. Unique."
+      }
+    ],
+    "chapter": "CHAPTER 4 — BLUE DRAGON HYBRIDS",
+    "notes": "Two families: ORIG (raptor/bat biology) and BD. BD drops weighted toward higher BD tiers than Dragonhound — more successful dragon integration. Stormwing Alpha variant increases BD drop quality by one tier throughout.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-sparkwing-stalker-epic",
+    "creature": "SPARKWING STALKER",
+    "creatureTier": "Rare",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 24,
+        "materialName": "Stormbound Tendon Coil",
+        "tier": "T2",
+        "source": "BD",
+        "notes": "Existing BD T2. Primary flight tendons, fully storm-saturated."
+      },
+      {
+        "weight": 20,
+        "materialName": "Reinforced Drake Scale",
+        "tier": "T2",
+        "source": "BD",
+        "notes": "Existing BD T2. Sparkwing torso scales, dense and layered."
+      },
+      {
+        "weight": 19,
+        "materialName": "Draconic Energy Node",
+        "tier": "T2",
+        "source": "BD",
+        "notes": "Existing BD T2. A node where dragon essence has fully integrated."
+      },
+      {
+        "weight": 15,
+        "materialName": "Apex Talon Core",
+        "tier": "T2",
+        "source": "ORIG",
+        "notes": "The primary hunting talon at full development. TERMINAL. Unique."
+      },
+      {
+        "weight": 22,
+        "materialName": "Arc-Feathered Wing Membrane",
+        "tier": "T2",
+        "source": "FUSED",
+        "notes": "FUSED TERMINAL. Wing membrane where raptor feather structure and BD arc energy have fully merged. Lightweight yet conductive."
+      }
+    ],
+    "chapter": "CHAPTER 4 — BLUE DRAGON HYBRIDS",
+    "notes": "Two families: ORIG (raptor/bat biology) and BD. BD drops weighted toward higher BD tiers than Dragonhound — more successful dragon integration. Stormwing Alpha variant increases BD drop quality by one tier throughout.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-arcane-devourer-common",
+    "creature": "ARCANE DEVOURER",
+    "creatureTier": "Rare",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 20,
+        "materialName": "Scaled Membrane Strips",
+        "tier": "T0",
+        "source": "BD",
+        "notes": "Existing BD T0. Body membrane strips, electrically active."
+      },
+      {
+        "weight": 18,
+        "materialName": "Residual Lightning Gland",
+        "tier": "T0",
+        "source": "BD",
+        "notes": "Existing BD T0. Partially depleted gland."
+      },
+      {
+        "weight": 17,
+        "materialName": "Mana Sense Filament",
+        "tier": "T0",
+        "source": "ORIG",
+        "notes": "Fine neural filament from the arcane detection system. Unique."
+      },
+      {
+        "weight": 16,
+        "materialName": "Crackling Scale Fragments",
+        "tier": "T0",
+        "source": "BD",
+        "notes": "Existing BD T0. Carapace scale fragments."
+      },
+      {
+        "weight": 15,
+        "materialName": "Conductive Blood Droplets",
+        "tier": "T0",
+        "source": "BD",
+        "notes": "Existing BD T0. Blood with high electrical conductivity."
+      },
+      {
+        "weight": 14,
+        "materialName": "Arcane Absorption Membrane",
+        "tier": "T0",
+        "source": "ORIG",
+        "notes": "Skin tissue that absorbs and neutralises magical energy. Unique."
+      }
+    ],
+    "chapter": "CHAPTER 4 — BLUE DRAGON HYBRIDS",
+    "notes": "Two families: ORIG (magic-adapted predator biology — mana sense organs, arcane absorption tissue) and BD. Most advanced BD integration of any hybrid — BD drops start at higher tiers than Dragonhound or Sparkwing. Greater variant increases BD drop tier throughout.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-arcane-devourer-rare",
+    "creature": "ARCANE DEVOURER",
+    "creatureTier": "Rare",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 22,
+        "materialName": "Charged Lightning Gland",
+        "tier": "T1",
+        "source": "BD",
+        "notes": "Existing BD T1. Fully active — adapted for processing magical signals, not just electrical."
+      },
+      {
+        "weight": 19,
+        "materialName": "Conductive Nerve Bundle",
+        "tier": "T1",
+        "source": "BD",
+        "notes": "Existing BD T1. Devourer variant adapted for arcane signal processing."
+      },
+      {
+        "weight": 17,
+        "materialName": "Reinforced Drake Scale",
+        "tier": "T2",
+        "source": "BD",
+        "notes": "Existing BD T2. Carapace plating, dense."
+      },
+      {
+        "weight": 15,
+        "materialName": "Mana Predator Neural Core",
+        "tier": "T1",
+        "source": "ORIG",
+        "notes": "Dense neural cluster governing the Mana Predator trait. Unique."
+      },
+      {
+        "weight": 14,
+        "materialName": "Spell-Eater Organ Fragment",
+        "tier": "T2",
+        "source": "ORIG",
+        "notes": "Fragment of the organ responsible for the Spell-Eater ability. Unique."
+      },
+      {
+        "weight": 13,
+        "materialName": "Distilled Lightning Essence",
+        "tier": "T1",
+        "source": "BD",
+        "notes": "Existing BD T1. Extracted from gland clusters."
+      }
+    ],
+    "chapter": "CHAPTER 4 — BLUE DRAGON HYBRIDS",
+    "notes": "Two families: ORIG (magic-adapted predator biology — mana sense organs, arcane absorption tissue) and BD. Most advanced BD integration of any hybrid — BD drops start at higher tiers than Dragonhound or Sparkwing. Greater variant increases BD drop tier throughout.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-arcane-devourer-epic",
+    "creature": "ARCANE DEVOURER",
+    "creatureTier": "Rare",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 23,
+        "materialName": "Stormcall Scale Cluster",
+        "tier": "T2",
+        "source": "BD",
+        "notes": "Existing BD T2. Resonant scales that hum near active spells."
+      },
+      {
+        "weight": 20,
+        "materialName": "Apex Lightning Gland",
+        "tier": "T3",
+        "source": "BD",
+        "notes": "Existing BD T3. Primary mana-processing organ at advanced development."
+      },
+      {
+        "weight": 18,
+        "materialName": "Neural Conduit Core",
+        "tier": "T3",
+        "source": "BD",
+        "notes": "Existing BD T3. Neural structure processing both arcane and physical stimuli."
+      },
+      {
+        "weight": 17,
+        "materialName": "Mana Void Core",
+        "tier": "T3",
+        "source": "ORIG",
+        "notes": "The primary arcane absorption organ at full development. TERMINAL. Unique."
+      },
+      {
+        "weight": 22,
+        "materialName": "Spell-Fused Scale Matrix",
+        "tier": "T3",
+        "source": "FUSED",
+        "notes": "FUSED TERMINAL. Scales where arcane absorption ability permanently merged with BD lightning conductivity. Absorbs spells and channels energy as lightning."
+      }
+    ],
+    "chapter": "CHAPTER 4 — BLUE DRAGON HYBRIDS",
+    "notes": "Two families: ORIG (magic-adapted predator biology — mana sense organs, arcane absorption tissue) and BD. Most advanced BD integration of any hybrid — BD drops start at higher tiers than Dragonhound or Sparkwing. Greater variant increases BD drop tier throughout.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-venomfang-stalker-common",
+    "creature": "VENOMFANG STALKER",
+    "creatureTier": "Common",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 24,
+        "materialName": "Minor Venom Residue",
+        "tier": "T0",
+        "source": "SP",
+        "notes": "Existing SP T0."
+      },
+      {
+        "weight": 22,
+        "materialName": "Small Chitin Fragments",
+        "tier": "T0",
+        "source": "SP",
+        "notes": "Existing SP T0."
+      },
+      {
+        "weight": 18,
+        "materialName": "Silk Fragments",
+        "tier": "T0",
+        "source": "SP",
+        "notes": "Existing SP T0."
+      },
+      {
+        "weight": 16,
+        "materialName": "Lightweight Leg Segments",
+        "tier": "T0",
+        "source": "SP",
+        "notes": "Existing SP T0."
+      },
+      {
+        "weight": 12,
+        "materialName": "Camouflage Skin Scraps",
+        "tier": "T0",
+        "source": "ORIG",
+        "notes": "Skin with chromatophore cells that shift colour. Unique."
+      },
+      {
+        "weight": 8,
+        "materialName": "Dried Venom Trace",
+        "tier": "T0",
+        "source": "SP",
+        "notes": "Existing SP T0."
+      }
+    ],
+    "chapter": "CHAPTER 5 — GREEN DRAGON HYBRIDS",
+    "notes": "Two families: ORIG (spider/insect biology unique to this creature) and SP (Spider add-on — feeds shared SP chain). Green Dragon essence expressed via enhanced venom chemistry, not a separate GD material family.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-venomfang-stalker-rare",
+    "creature": "VENOMFANG STALKER",
+    "creatureTier": "Common",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 26,
+        "materialName": "Residual Venom Gland",
+        "tier": "T1",
+        "source": "SP",
+        "notes": "Existing SP T1."
+      },
+      {
+        "weight": 22,
+        "materialName": "Thin Chitin Plate",
+        "tier": "T1",
+        "source": "SP",
+        "notes": "Existing SP T1."
+      },
+      {
+        "weight": 18,
+        "materialName": "Thin Webbing Bundle",
+        "tier": "T1",
+        "source": "SP",
+        "notes": "Existing SP T1."
+      },
+      {
+        "weight": 16,
+        "materialName": "Spider Legs",
+        "tier": "T1",
+        "source": "SP",
+        "notes": "Existing SP T1."
+      },
+      {
+        "weight": 10,
+        "materialName": "Predator Skin Layer",
+        "tier": "T1",
+        "source": "ORIG",
+        "notes": "Processed camouflage skin — more stable than scraps. Unique."
+      },
+      {
+        "weight": 8,
+        "materialName": "Ambush Muscle Coil",
+        "tier": "T1",
+        "source": "ORIG",
+        "notes": "Coiled fast-twitch muscle from the creature's pounce system. Unique."
+      }
+    ],
+    "chapter": "CHAPTER 5 — GREEN DRAGON HYBRIDS",
+    "notes": "Two families: ORIG (spider/insect biology unique to this creature) and SP (Spider add-on — feeds shared SP chain). Green Dragon essence expressed via enhanced venom chemistry, not a separate GD material family.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-venomfang-stalker-epic",
+    "creature": "VENOMFANG STALKER",
+    "creatureTier": "Common",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 28,
+        "materialName": "Basic Venom Sac",
+        "tier": "T2",
+        "source": "SP",
+        "notes": "Existing SP T2."
+      },
+      {
+        "weight": 24,
+        "materialName": "Chitin Plate",
+        "tier": "T2",
+        "source": "SP",
+        "notes": "Existing SP T2."
+      },
+      {
+        "weight": 18,
+        "materialName": "Webbing Bundle",
+        "tier": "T2",
+        "source": "SP",
+        "notes": "Existing SP T2."
+      },
+      {
+        "weight": 14,
+        "materialName": "Predator Instinct Core",
+        "tier": "T2",
+        "source": "ORIG",
+        "notes": "Neural cluster governing ambush behaviour. TERMINAL. Unique."
+      },
+      {
+        "weight": 16,
+        "materialName": "Venom-Laced Chitin Shard",
+        "tier": "T2",
+        "source": "FUSED",
+        "notes": "FUSED TERMINAL. Chitin where venom chemistry has permanently fused with spider silk binding — cuts and poisons simultaneously."
+      }
+    ],
+    "chapter": "CHAPTER 5 — GREEN DRAGON HYBRIDS",
+    "notes": "Two families: ORIG (spider/insect biology unique to this creature) and SP (Spider add-on — feeds shared SP chain). Green Dragon essence expressed via enhanced venom chemistry, not a separate GD material family.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-mirewing-hunter-common",
+    "creature": "MIREWING HUNTER",
+    "creatureTier": "Uncommon",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 22,
+        "materialName": "Basic Venom Sac",
+        "tier": "T2",
+        "source": "SP",
+        "notes": "Existing SP T2 — Venomfang rare, now Mirewing common."
+      },
+      {
+        "weight": 20,
+        "materialName": "Chitin Plate",
+        "tier": "T2",
+        "source": "SP",
+        "notes": "Existing SP T2 — Venomfang rare, now Mirewing common."
+      },
+      {
+        "weight": 18,
+        "materialName": "Webbing Bundle",
+        "tier": "T2",
+        "source": "SP",
+        "notes": "Existing SP T2. Mirewing produces thicker silk than Venomfang."
+      },
+      {
+        "weight": 16,
+        "materialName": "Wing Membrane Scraps",
+        "tier": "T0",
+        "source": "ORIG",
+        "notes": "Torn membrane from the creature's flight surface. Unique."
+      },
+      {
+        "weight": 14,
+        "materialName": "Corrosive Blood Droplets",
+        "tier": "T1",
+        "source": "ORIG",
+        "notes": "The creature's mildly acidic blood. Requires sealed glass storage. Unique."
+      },
+      {
+        "weight": 10,
+        "materialName": "Toxic Throat Lining",
+        "tier": "T1",
+        "source": "ORIG",
+        "notes": "Tissue lining from the toxic breath passage. Unique."
+      }
+    ],
+    "chapter": "CHAPTER 5 — GREEN DRAGON HYBRIDS",
+    "notes": "Two families: ORIG (large reptilian flier biology) and SP. Common pool starts where Venomfang rare pool ended — SP T2 materials are now common here. Broodmother variant increases drop tier throughout.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-mirewing-hunter-rare",
+    "creature": "MIREWING HUNTER",
+    "creatureTier": "Uncommon",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 24,
+        "materialName": "Concentrated Venom Sac",
+        "tier": "T3",
+        "source": "SP",
+        "notes": "Existing SP T3."
+      },
+      {
+        "weight": 20,
+        "materialName": "Reinforced Leg Segment",
+        "tier": "T2",
+        "source": "SP",
+        "notes": "Existing SP T2. Mirewing limb joints, processed."
+      },
+      {
+        "weight": 17,
+        "materialName": "Thick Webbing Bundle",
+        "tier": "T3",
+        "source": "SP",
+        "notes": "Existing SP T3. Mirewing's larger glands produce denser silk."
+      },
+      {
+        "weight": 16,
+        "materialName": "Processed Wing Membrane",
+        "tier": "T2",
+        "source": "ORIG",
+        "notes": "Stabilised flight membrane with thermal-dispersing properties. Unique."
+      },
+      {
+        "weight": 13,
+        "materialName": "Corrosive Blood Vial",
+        "tier": "T2",
+        "source": "ORIG",
+        "notes": "Concentrated acid blood, properly preserved. Unique."
+      },
+      {
+        "weight": 10,
+        "materialName": "Toxic Bile Gland",
+        "tier": "T2",
+        "source": "ORIG",
+        "notes": "Secondary gland for area-denial spewing. Volatile — handle with care. Unique."
+      }
+    ],
+    "chapter": "CHAPTER 5 — GREEN DRAGON HYBRIDS",
+    "notes": "Two families: ORIG (large reptilian flier biology) and SP. Common pool starts where Venomfang rare pool ended — SP T2 materials are now common here. Broodmother variant increases drop tier throughout.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-mirewing-hunter-epic",
+    "creature": "MIREWING HUNTER",
+    "creatureTier": "Uncommon",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 25,
+        "materialName": "Concentrated Venom Sac",
+        "tier": "T3",
+        "source": "SP",
+        "notes": "Higher quality extraction than rare pool."
+      },
+      {
+        "weight": 20,
+        "materialName": "Hardened Chitin Plate",
+        "tier": "T3",
+        "source": "SP",
+        "notes": "Existing SP T3. Mirewing body plating."
+      },
+      {
+        "weight": 18,
+        "materialName": "Apex Venom Core",
+        "tier": "T4",
+        "source": "SP",
+        "notes": "Existing SP T4. Primary venom production organ at max development."
+      },
+      {
+        "weight": 15,
+        "materialName": "Apex Wing Predator Core",
+        "tier": "T3",
+        "source": "ORIG",
+        "notes": "Neural core governing aerial hunting patterns. TERMINAL. Unique."
+      },
+      {
+        "weight": 22,
+        "materialName": "Toxic-Winged Membrane",
+        "tier": "T3",
+        "source": "FUSED",
+        "notes": "FUSED TERMINAL. Wing membrane permanently saturated with the creature's toxic aura. Releases toxins when impacted."
+      }
+    ],
+    "chapter": "CHAPTER 5 — GREEN DRAGON HYBRIDS",
+    "notes": "Two families: ORIG (large reptilian flier biology) and SP. Common pool starts where Venomfang rare pool ended — SP T2 materials are now common here. Broodmother variant increases drop tier throughout.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-plague-maw-ravager-common",
+    "creature": "PLAGUE MAW RAVAGER",
+    "creatureTier": "Rare",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 22,
+        "materialName": "Concentrated Venom Sac",
+        "tier": "T3",
+        "source": "SP",
+        "notes": "Existing SP T3 — Mirewing rare, now Plague Maw common."
+      },
+      {
+        "weight": 20,
+        "materialName": "Hardened Chitin Plate",
+        "tier": "T3",
+        "source": "SP",
+        "notes": "Existing SP T3."
+      },
+      {
+        "weight": 18,
+        "materialName": "Thick Webbing Bundle",
+        "tier": "T3",
+        "source": "SP",
+        "notes": "Existing SP T3. Ravager variant is toxin-saturated."
+      },
+      {
+        "weight": 17,
+        "materialName": "Plague Gland Fragment",
+        "tier": "T2",
+        "source": "ORIG",
+        "notes": "Fragment of the primary contamination organ. Highly toxic — handle with protection. Unique."
+      },
+      {
+        "weight": 13,
+        "materialName": "Corrosive Marrow Extract",
+        "tier": "T2",
+        "source": "ORIG",
+        "notes": "Extracted from the Ravager's partially self-dissolved bones. Extremely acidic. Unique."
+      },
+      {
+        "weight": 10,
+        "materialName": "Contamination Skin Layer",
+        "tier": "T2",
+        "source": "ORIG",
+        "notes": "Outer hide saturated with persistent toxins. Unique."
+      }
+    ],
+    "chapter": "CHAPTER 5 — GREEN DRAGON HYBRIDS",
+    "notes": "Two families: ORIG (contamination biology — most toxic materials in the green chain) and SP at high tiers. Common pool starts where Mirewing rare pool ended. All ORIG materials are dangerous to handle without preparation. Alpha variant increases drop tier throughout.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-plague-maw-ravager-rare",
+    "creature": "PLAGUE MAW RAVAGER",
+    "creatureTier": "Rare",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 22,
+        "materialName": "Apex Venom Core",
+        "tier": "T4",
+        "source": "SP",
+        "notes": "Existing SP T4 — Mirewing epic, now Plague Maw rare."
+      },
+      {
+        "weight": 19,
+        "materialName": "Dense Web Cluster",
+        "tier": "T3",
+        "source": "SP",
+        "notes": "Existing SP T3."
+      },
+      {
+        "weight": 17,
+        "materialName": "Plague Essence Nodule",
+        "tier": "T3",
+        "source": "ORIG",
+        "notes": "Biological node continuously generating plague toxins. Source of the Toxic Aura trait. Unique."
+      },
+      {
+        "weight": 16,
+        "materialName": "Contamination Sac",
+        "tier": "T3",
+        "source": "ORIG",
+        "notes": "Large secondary toxin storage organ. Unique."
+      },
+      {
+        "weight": 14,
+        "materialName": "Virulent Venom Gland",
+        "tier": "T3",
+        "source": "ORIG",
+        "notes": "Primary venom gland at max Plague Maw development. Unique."
+      },
+      {
+        "weight": 12,
+        "materialName": "Acid Blood Reservoir",
+        "tier": "T3",
+        "source": "ORIG",
+        "notes": "Large-volume acid blood storage organ. Unique."
+      }
+    ],
+    "chapter": "CHAPTER 5 — GREEN DRAGON HYBRIDS",
+    "notes": "Two families: ORIG (contamination biology — most toxic materials in the green chain) and SP at high tiers. Common pool starts where Mirewing rare pool ended. All ORIG materials are dangerous to handle without preparation. Alpha variant increases drop tier throughout.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-plague-maw-ravager-epic",
+    "creature": "PLAGUE MAW RAVAGER",
+    "creatureTier": "Rare",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 22,
+        "materialName": "Predator Instinct Core",
+        "tier": "T4",
+        "source": "SP",
+        "notes": "Existing SP T4. Ravager version governs siege and contamination combat."
+      },
+      {
+        "weight": 20,
+        "materialName": "Brood Essence Sac",
+        "tier": "T4",
+        "source": "SP",
+        "notes": "Existing SP T4."
+      },
+      {
+        "weight": 18,
+        "materialName": "Virulent Spore Cluster",
+        "tier": "T4",
+        "source": "ORIG",
+        "notes": "Self-replicating spore organ — source of Living Contamination trait. TERMINAL. Unique."
+      },
+      {
+        "weight": 16,
+        "materialName": "Plague Sovereign Core",
+        "tier": "T4",
+        "source": "ORIG",
+        "notes": "The central contamination engine at full development. TERMINAL. Unique."
+      },
+      {
+        "weight": 24,
+        "materialName": "Plague-Fused Chitin Plate",
+        "tier": "T4",
+        "source": "FUSED",
+        "notes": "FUSED TERMINAL. Body chitin where plague chemistry has permanently fused into the structural material. Releases toxins on impact."
+      }
+    ],
+    "chapter": "CHAPTER 5 — GREEN DRAGON HYBRIDS",
+    "notes": "Two families: ORIG (contamination biology — most toxic materials in the green chain) and SP at high tiers. Common pool starts where Mirewing rare pool ended. All ORIG materials are dangerous to handle without preparation. Alpha variant increases drop tier throughout.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-frostclaw-prowler-common",
+    "creature": "FROSTCLAW PROWLER",
+    "creatureTier": "Common",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 26,
+        "materialName": "Frost-Crusted Fur Scraps",
+        "tier": "T0",
+        "source": "WD",
+        "notes": "New WD T0. Frozen outer fur, partially crystallised with ice growth."
+      },
+      {
+        "weight": 22,
+        "materialName": "Brittle Ice Bone Shard",
+        "tier": "T0",
+        "source": "WD",
+        "notes": "New WD T0. Bone fragment reinforced with ice crystal growth."
+      },
+      {
+        "weight": 18,
+        "materialName": "Hound Muscle Fibre",
+        "tier": "T0",
+        "source": "ORIG",
+        "notes": "Dense endurance muscle from the creature's haunches. Unique."
+      },
+      {
+        "weight": 16,
+        "materialName": "Frozen Claw Fragment",
+        "tier": "T0",
+        "source": "WD",
+        "notes": "New WD T0. Claw tip that maintains sub-zero temperature post-mortem."
+      },
+      {
+        "weight": 10,
+        "materialName": "Coarse Cold Hide",
+        "tier": "T0",
+        "source": "ORIG",
+        "notes": "Thick outer hide adapted for cold environments. Unique."
+      },
+      {
+        "weight": 8,
+        "materialName": "Ice Crystal Dust",
+        "tier": "T0",
+        "source": "WD",
+        "notes": "New WD T0. Fine crystalline material shed from scales and hide."
+      }
+    ],
+    "chapter": "CHAPTER 6 — WHITE DRAGON HYBRIDS",
+    "notes": "Two families: ORIG (bear/wolverine biology) and WD (White Dragon add-on — creates new WD material family with names consistent with BD/SP conventions). Frostclaw drops establish the base of the WD chain. Alpha variant increases drop tier throughout.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-frostclaw-prowler-rare",
+    "creature": "FROSTCLAW PROWLER",
+    "creatureTier": "Common",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 24,
+        "materialName": "Frost Hide Layer",
+        "tier": "T1",
+        "source": "WD",
+        "notes": "New WD T1. Flexible hide with ice-crystal microstructure."
+      },
+      {
+        "weight": 20,
+        "materialName": "Dense Frostbone Shard",
+        "tier": "T1",
+        "source": "WD",
+        "notes": "New WD T1. Dense cold-hardened bone material."
+      },
+      {
+        "weight": 18,
+        "materialName": "Frozen Muscle Coil",
+        "tier": "T1",
+        "source": "WD",
+        "notes": "New WD T1. Coiled muscle maintaining tension at extreme cold."
+      },
+      {
+        "weight": 16,
+        "materialName": "Cryogenic Gland",
+        "tier": "T1",
+        "source": "WD",
+        "notes": "New WD T1. Small gland generating and storing cold energy."
+      },
+      {
+        "weight": 12,
+        "materialName": "Tensile Hunt Sinew",
+        "tier": "T1",
+        "source": "ORIG",
+        "notes": "Processed endurance sinew from the pursuit system. Unique."
+      },
+      {
+        "weight": 10,
+        "materialName": "Sharpened Frost Claw",
+        "tier": "T1",
+        "source": "ORIG",
+        "notes": "Primary claw, full extraction, calcified. Unique."
+      }
+    ],
+    "chapter": "CHAPTER 6 — WHITE DRAGON HYBRIDS",
+    "notes": "Two families: ORIG (bear/wolverine biology) and WD (White Dragon add-on — creates new WD material family with names consistent with BD/SP conventions). Frostclaw drops establish the base of the WD chain. Alpha variant increases drop tier throughout.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-frostclaw-prowler-epic",
+    "creature": "FROSTCLAW PROWLER",
+    "creatureTier": "Common",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 26,
+        "materialName": "Reinforced Ice Bone",
+        "tier": "T2",
+        "source": "WD",
+        "notes": "New WD T2. Densely layered bone with ice-crystal reinforcement."
+      },
+      {
+        "weight": 22,
+        "materialName": "Glacial Marrow Crystal",
+        "tier": "T2",
+        "source": "WD",
+        "notes": "New WD T2. Crystalline formation inside the creature's primary bones."
+      },
+      {
+        "weight": 19,
+        "materialName": "Cryogenic Gland (Refined)",
+        "tier": "T2",
+        "source": "WD",
+        "notes": "New WD T2. Fully developed cold generation organ."
+      },
+      {
+        "weight": 15,
+        "materialName": "Relentless Hunt Core",
+        "tier": "T2",
+        "source": "ORIG",
+        "notes": "Neural cluster governing the Relentless Hunter trait. TERMINAL. Unique."
+      },
+      {
+        "weight": 18,
+        "materialName": "Frost-Bonded Muscle Coil",
+        "tier": "T2",
+        "source": "FUSED",
+        "notes": "FUSED TERMINAL. Endurance muscle where WD cold energy has permanently crystallised inside the tissue. Contracts with cold force."
+      }
+    ],
+    "chapter": "CHAPTER 6 — WHITE DRAGON HYBRIDS",
+    "notes": "Two families: ORIG (bear/wolverine biology) and WD (White Dragon add-on — creates new WD material family with names consistent with BD/SP conventions). Frostclaw drops establish the base of the WD chain. Alpha variant increases drop tier throughout.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-glacier-wing-predator-common",
+    "creature": "GLACIER WING PREDATOR",
+    "creatureTier": "Uncommon",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 22,
+        "materialName": "Frost Hide Layer",
+        "tier": "T1",
+        "source": "WD",
+        "notes": "WD T1 — Frostclaw rare, now Glacier Wing common."
+      },
+      {
+        "weight": 20,
+        "materialName": "Frozen Muscle Coil",
+        "tier": "T1",
+        "source": "WD",
+        "notes": "WD T1 — Frostclaw rare, now Glacier Wing common."
+      },
+      {
+        "weight": 18,
+        "materialName": "Cryogenic Gland",
+        "tier": "T1",
+        "source": "WD",
+        "notes": "WD T1 — Frostclaw rare, now Glacier Wing common."
+      },
+      {
+        "weight": 16,
+        "materialName": "Wing Bone Strut",
+        "tier": "T0",
+        "source": "ORIG",
+        "notes": "Hollow structural bone from the flight surface. Unique."
+      },
+      {
+        "weight": 14,
+        "materialName": "Frigid Feather Cluster",
+        "tier": "T0",
+        "source": "ORIG",
+        "notes": "Dense feathers from the wing edge, coated in ice crystal. Unique."
+      },
+      {
+        "weight": 10,
+        "materialName": "Cold Thermal Skin",
+        "tier": "T0",
+        "source": "ORIG",
+        "notes": "Outer skin that absorbs and radiates cold. Unique."
+      }
+    ],
+    "chapter": "CHAPTER 6 — WHITE DRAGON HYBRIDS",
+    "notes": "Two families: ORIG (aerial cold predator — condor/vulture) and WD. Common pool starts where Frostclaw rare pool ended — WD T1 materials are now common here. Elder variant increases drop tier throughout.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-glacier-wing-predator-rare",
+    "creature": "GLACIER WING PREDATOR",
+    "creatureTier": "Uncommon",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 23,
+        "materialName": "Reinforced Ice Bone",
+        "tier": "T2",
+        "source": "WD",
+        "notes": "WD T2. Glacier Wing variant is larger and denser than Frostclaw."
+      },
+      {
+        "weight": 19,
+        "materialName": "Glacial Marrow Crystal",
+        "tier": "T2",
+        "source": "WD",
+        "notes": "WD T2. Larger formation from the Glacier Wing's bigger bones."
+      },
+      {
+        "weight": 16,
+        "materialName": "Frigid Membrane Sheet",
+        "tier": "T2",
+        "source": "WD",
+        "notes": "New WD T2. Wing membrane with thermal-dispersing properties."
+      },
+      {
+        "weight": 15,
+        "materialName": "Processed Wing Strut",
+        "tier": "T1",
+        "source": "ORIG",
+        "notes": "Treated hollow bone framework from the wing structure. Unique."
+      },
+      {
+        "weight": 14,
+        "materialName": "Apex Cold Gland",
+        "tier": "T2",
+        "source": "WD",
+        "notes": "New WD T2. Fully developed cold generation organ."
+      },
+      {
+        "weight": 13,
+        "materialName": "Thermal Predator Hide",
+        "tier": "T2",
+        "source": "ORIG",
+        "notes": "Processed cold-dispersing outer skin. Unique."
+      }
+    ],
+    "chapter": "CHAPTER 6 — WHITE DRAGON HYBRIDS",
+    "notes": "Two families: ORIG (aerial cold predator — condor/vulture) and WD. Common pool starts where Frostclaw rare pool ended — WD T1 materials are now common here. Elder variant increases drop tier throughout.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-glacier-wing-predator-epic",
+    "creature": "GLACIER WING PREDATOR",
+    "creatureTier": "Uncommon",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 25,
+        "materialName": "Apex Cold Gland",
+        "tier": "T2",
+        "source": "WD",
+        "notes": "Better extraction than rare pool."
+      },
+      {
+        "weight": 21,
+        "materialName": "Glacial Marrow Crystal Dense",
+        "tier": "T3",
+        "source": "WD",
+        "notes": "New WD T3. Denser and more stable than the T2 variant."
+      },
+      {
+        "weight": 18,
+        "materialName": "Frozen Wing Membrane",
+        "tier": "T3",
+        "source": "WD",
+        "notes": "New WD T3. Primary flight membrane — flexible yet cold-impenetrable."
+      },
+      {
+        "weight": 14,
+        "materialName": "Glacier Apex Hunt Core",
+        "tier": "T3",
+        "source": "ORIG",
+        "notes": "Neural core governing aerial isolation hunting. TERMINAL. Unique."
+      },
+      {
+        "weight": 22,
+        "materialName": "Cold-Fused Wing Membrane",
+        "tier": "T3",
+        "source": "FUSED",
+        "notes": "FUSED TERMINAL. Flight membrane permanently saturated with Frigid Presence. Radiates cold passively even after extraction."
+      }
+    ],
+    "chapter": "CHAPTER 6 — WHITE DRAGON HYBRIDS",
+    "notes": "Two families: ORIG (aerial cold predator — condor/vulture) and WD. Common pool starts where Frostclaw rare pool ended — WD T1 materials are now common here. Elder variant increases drop tier throughout.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-winterfang-behemoth-common",
+    "creature": "WINTERFANG BEHEMOTH",
+    "creatureTier": "Rare",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 22,
+        "materialName": "Reinforced Ice Bone",
+        "tier": "T2",
+        "source": "WD",
+        "notes": "WD T2 — Glacier Wing rare, now Winterfang common."
+      },
+      {
+        "weight": 20,
+        "materialName": "Glacial Marrow Crystal",
+        "tier": "T2",
+        "source": "WD",
+        "notes": "WD T2 — Glacier Wing rare, now Winterfang common."
+      },
+      {
+        "weight": 18,
+        "materialName": "Apex Cold Gland",
+        "tier": "T2",
+        "source": "WD",
+        "notes": "WD T2 — Glacier Wing rare, now Winterfang common."
+      },
+      {
+        "weight": 17,
+        "materialName": "Frozen Carapace Shard",
+        "tier": "T2",
+        "source": "ORIG",
+        "notes": "Exterior plate from the Frozen Carapace — absorbs the first impact. Unique."
+      },
+      {
+        "weight": 13,
+        "materialName": "Siege Muscle Mass",
+        "tier": "T2",
+        "source": "ORIG",
+        "notes": "Enormous fast-twitch muscle from the charge system. Unique."
+      },
+      {
+        "weight": 10,
+        "materialName": "Dense Cold Marrow",
+        "tier": "T1",
+        "source": "ORIG",
+        "notes": "Compressed marrow from the large bones. Unique."
+      }
+    ],
+    "chapter": "CHAPTER 6 — WHITE DRAGON HYBRIDS",
+    "notes": "Two families: ORIG (siege predator biology — extremely dense, mass-oriented) and WD at high tiers. Common pool starts where Glacier Wing rare pool ended. The Winterfang's ORIG materials are the heaviest and most durable in the entire Blackspire bestiary.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-winterfang-behemoth-rare",
+    "creature": "WINTERFANG BEHEMOTH",
+    "creatureTier": "Rare",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 22,
+        "materialName": "Glacial Marrow Crystal Dense",
+        "tier": "T3",
+        "source": "WD",
+        "notes": "WD T3. Winterfang variant is the densest in the entire WD chain."
+      },
+      {
+        "weight": 19,
+        "materialName": "Frozen Wing Membrane",
+        "tier": "T3",
+        "source": "WD",
+        "notes": "WD T3 — repurposed as body membrane material in the Winterfang."
+      },
+      {
+        "weight": 17,
+        "materialName": "Permafrost Bone Core",
+        "tier": "T3",
+        "source": "WD",
+        "notes": "New WD T3. Structural core material — near indestructible under normal conditions."
+      },
+      {
+        "weight": 16,
+        "materialName": "Glacial Impact Core",
+        "tier": "T3",
+        "source": "ORIG",
+        "notes": "Biological mass storing kinetic energy in frozen form — source of Avalanche Charge damage. Unique."
+      },
+      {
+        "weight": 14,
+        "materialName": "Frozen Carapace Plate",
+        "tier": "T3",
+        "source": "ORIG",
+        "notes": "Full plate from the outer carapace — larger intact section. Unique."
+      },
+      {
+        "weight": 12,
+        "materialName": "Siege Sinew Bundle",
+        "tier": "T3",
+        "source": "ORIG",
+        "notes": "Primary siege-motion sinew, processed and bundled. Unique."
+      }
+    ],
+    "chapter": "CHAPTER 6 — WHITE DRAGON HYBRIDS",
+    "notes": "Two families: ORIG (siege predator biology — extremely dense, mass-oriented) and WD at high tiers. Common pool starts where Glacier Wing rare pool ended. The Winterfang's ORIG materials are the heaviest and most durable in the entire Blackspire bestiary.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-winterfang-behemoth-epic",
+    "creature": "WINTERFANG BEHEMOTH",
+    "creatureTier": "Rare",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 24,
+        "materialName": "Permafrost Bone Core",
+        "tier": "T3",
+        "source": "WD",
+        "notes": "Best extraction. Rare even for a Winterfang."
+      },
+      {
+        "weight": 20,
+        "materialName": "Permafrost Essence",
+        "tier": "T4",
+        "source": "WD",
+        "notes": "New WD T4. A self-sustaining cold energy matrix."
+      },
+      {
+        "weight": 18,
+        "materialName": "Winterfang Siege Core",
+        "tier": "T4",
+        "source": "ORIG",
+        "notes": "Biological core channelling both cold and kinetic energy simultaneously. TERMINAL. Unique."
+      },
+      {
+        "weight": 15,
+        "materialName": "Apex Endurance Core",
+        "tier": "T4",
+        "source": "ORIG",
+        "notes": "Governs Frozen Carapace and Siege Beast traits simultaneously. TERMINAL. Unique."
+      },
+      {
+        "weight": 23,
+        "materialName": "Permafrost-Fused Carapace",
+        "tier": "T4",
+        "source": "FUSED",
+        "notes": "FUSED TERMINAL. Carapace plating where Permafrost Essence has crystallised permanently into the bone structure. Absorbs kinetic energy as cold."
+      }
+    ],
+    "chapter": "CHAPTER 6 — WHITE DRAGON HYBRIDS",
+    "notes": "Two families: ORIG (siege predator biology — extremely dense, mass-oriented) and WD at high tiers. Common pool starts where Glacier Wing rare pool ended. The Winterfang's ORIG materials are the heaviest and most durable in the entire Blackspire bestiary.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-riftclaw-spider-common",
+    "creature": "RIFTCLAW SPIDER",
+    "creatureTier": "Rare",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 22,
+        "materialName": "Unstable Silk Threads",
+        "tier": "T0",
+        "source": "SP",
+        "notes": "Existing SP T0 phase variant. Phase-unstable silk."
+      },
+      {
+        "weight": 20,
+        "materialName": "Distortion Webbing Fragment",
+        "tier": "T0",
+        "source": "SP",
+        "notes": "Existing SP T0 phase variant. Partially phased silk webbing."
+      },
+      {
+        "weight": 18,
+        "materialName": "Residual Phase Essence",
+        "tier": "T0",
+        "source": "SP",
+        "notes": "Existing SP T0. Wisp of phase energy — evaporates quickly if not stored."
+      },
+      {
+        "weight": 16,
+        "materialName": "Dimensional Membrane Scraps",
+        "tier": "T0",
+        "source": "SP",
+        "notes": "Existing SP T0. Tissue from the phase-transition zone of the creature's body."
+      },
+      {
+        "weight": 14,
+        "materialName": "Rift Claw Fragment",
+        "tier": "T0",
+        "source": "ORIG",
+        "notes": "Claw tip that flickers between dimensions. Unique."
+      },
+      {
+        "weight": 10,
+        "materialName": "Phase-Shifted Chitin Shard",
+        "tier": "T0",
+        "source": "ORIG",
+        "notes": "Chitin from the phase-transition surface of the creature's outer body. Unique."
+      }
+    ],
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENTS",
+    "notes": "Two families: ORIG (phase-adapted predator biology) and SP Phase-Touched branch (existing SP phase material names from Campaign_Arc). Drops use the Phase-Touched side of the SP chain exclusively.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-riftclaw-spider-rare",
+    "creature": "RIFTCLAW SPIDER",
+    "creatureTier": "Rare",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 22,
+        "materialName": "Phase Silk Strand",
+        "tier": "T2",
+        "source": "SP",
+        "notes": "Existing SP T2 phase material."
+      },
+      {
+        "weight": 19,
+        "materialName": "Phase Residue Cluster",
+        "tier": "T2",
+        "source": "SP",
+        "notes": "Existing SP T2 phase material."
+      },
+      {
+        "weight": 16,
+        "materialName": "Phase-Touched Chitin Plate",
+        "tier": "T2",
+        "source": "SP",
+        "notes": "Existing SP T2 phase material."
+      },
+      {
+        "weight": 15,
+        "materialName": "Phase-Touched Webbing Bundle",
+        "tier": "T2",
+        "source": "SP",
+        "notes": "Existing SP T2 phase material."
+      },
+      {
+        "weight": 14,
+        "materialName": "Dimensional Tendon Coil",
+        "tier": "T0",
+        "source": "SP",
+        "notes": "Existing SP T0. Spatially-anchored tendon. Feeds Phase Silk chain."
+      },
+      {
+        "weight": 14,
+        "materialName": "Phase Anchor Tissue",
+        "tier": "T1",
+        "source": "ORIG",
+        "notes": "Tissue that anchors the creature to the material plane. Unique."
+      }
+    ],
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENTS",
+    "notes": "Two families: ORIG (phase-adapted predator biology) and SP Phase-Touched branch (existing SP phase material names from Campaign_Arc). Drops use the Phase-Touched side of the SP chain exclusively.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-riftclaw-spider-epic",
+    "creature": "RIFTCLAW SPIDER",
+    "creatureTier": "Rare",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 24,
+        "materialName": "Distortion Core Fragment",
+        "tier": "T3",
+        "source": "SP",
+        "notes": "Existing SP T3 phase material. Dense stable phase matter."
+      },
+      {
+        "weight": 20,
+        "materialName": "Phase Silk Bundle",
+        "tier": "T3",
+        "source": "SP",
+        "notes": "Existing SP T3 phase material."
+      },
+      {
+        "weight": 18,
+        "materialName": "Phase-Touched Thick Webbing",
+        "tier": "T3",
+        "source": "SP",
+        "notes": "Existing SP T3 phase material."
+      },
+      {
+        "weight": 15,
+        "materialName": "Phase Core",
+        "tier": "T4",
+        "source": "SP",
+        "notes": "Existing SP T4. Primary phase anchor organ."
+      },
+      {
+        "weight": 23,
+        "materialName": "Rift-Fused Claw Matrix",
+        "tier": "T3",
+        "source": "FUSED",
+        "notes": "FUSED TERMINAL. Dimensional instability fused with spider silk chemistry. Phases briefly through barriers on impact."
+      }
+    ],
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENTS",
+    "notes": "Two families: ORIG (phase-adapted predator biology) and SP Phase-Touched branch (existing SP phase material names from Campaign_Arc). Drops use the Phase-Touched side of the SP chain exclusively.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-collar-sentinel-common",
+    "creature": "COLLAR SENTINEL",
+    "creatureTier": "Uncommon — Construct",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 26,
+        "materialName": "Arcane Wire Coil",
+        "tier": "T1",
+        "source": "ORIG",
+        "notes": "Standard arcane-conductive wire from the Sentinel's suppression system."
+      },
+      {
+        "weight": 22,
+        "materialName": "Suppression Field Coil",
+        "tier": "T2",
+        "source": "ORIG",
+        "notes": "Coil of arcane wire generating suppressive force fields. Core component."
+      },
+      {
+        "weight": 18,
+        "materialName": "Control Chip Fragment",
+        "tier": "T1",
+        "source": "ORIG",
+        "notes": "Broken fragment of a control directive chip."
+      },
+      {
+        "weight": 18,
+        "materialName": "Structural Chassis Plate",
+        "tier": "T1",
+        "source": "ORIG",
+        "notes": "Standard structural plating from the Sentinel's body."
+      },
+      {
+        "weight": 16,
+        "materialName": "Deflection Rune Shard",
+        "tier": "T1",
+        "source": "ORIG",
+        "notes": "Fragment of the arcane deflection rune array."
+      }
+    ],
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENTS",
+    "notes": "ORIG only — all materials are arcane engineering components. No biological family. Use Investigation (INT) DC 13 to dismantle rather than Harvesting (WIS). No FUSED material — constructs have no biology to fuse. Epic pool contains the highest-value arcane components instead.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-collar-sentinel-rare",
+    "creature": "COLLAR SENTINEL",
+    "creatureTier": "Uncommon — Construct",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 24,
+        "materialName": "Arcane Deflection Plate",
+        "tier": "T2",
+        "source": "ORIG",
+        "notes": "Full deflection plate, intact. Source of the Arcane Deflection reaction ability."
+      },
+      {
+        "weight": 21,
+        "materialName": "Collar Control Module",
+        "tier": "T2",
+        "source": "ORIG",
+        "notes": "Intact control module — monitors and directs collared creatures."
+      },
+      {
+        "weight": 18,
+        "materialName": "Restraint Pulse Core",
+        "tier": "T3",
+        "source": "ORIG",
+        "notes": "Mechanism generating Restraint Pulse. Intact extraction."
+      },
+      {
+        "weight": 20,
+        "materialName": "Sentinel Chassis Fragment",
+        "tier": "T2",
+        "source": "ORIG",
+        "notes": "Dense arcane-infused structural plating, intact larger section."
+      },
+      {
+        "weight": 17,
+        "materialName": "Suppression Emitter Array",
+        "tier": "T2",
+        "source": "ORIG",
+        "notes": "The full emitter array for the suppression field. Intact."
+      }
+    ],
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENTS",
+    "notes": "ORIG only — all materials are arcane engineering components. No biological family. Use Investigation (INT) DC 13 to dismantle rather than Harvesting (WIS). No FUSED material — constructs have no biology to fuse. Epic pool contains the highest-value arcane components instead.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-collar-sentinel-epic",
+    "creature": "COLLAR SENTINEL",
+    "creatureTier": "Uncommon — Construct",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 28,
+        "materialName": "Restraint Pulse Core",
+        "tier": "T3",
+        "source": "ORIG",
+        "notes": "Higher quality extraction than the rare pool version."
+      },
+      {
+        "weight": 24,
+        "materialName": "Lockdown Protocol Chip",
+        "tier": "T3",
+        "source": "ORIG",
+        "notes": "Intact encoded chip — contains the full Lockdown Protocol directive."
+      },
+      {
+        "weight": 20,
+        "materialName": "Collar Fabrication Matrix",
+        "tier": "T3",
+        "source": "ORIG",
+        "notes": "The component responsible for collar signal transmission. Rare to extract intact."
+      },
+      {
+        "weight": 16,
+        "materialName": "Sentinel Command Core",
+        "tier": "T4",
+        "source": "ORIG",
+        "notes": "The Sentinel's central command organ. Source of superior battlefield awareness. Extremely rare."
+      },
+      {
+        "weight": 12,
+        "materialName": "Arcane Domination Crystal",
+        "tier": "T4",
+        "source": "ORIG",
+        "notes": "Crystal at the heart of the collar-control system. Overseer variant only. Terminal — no refinement."
+      }
+    ],
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENTS",
+    "notes": "ORIG only — all materials are arcane engineering components. No biological family. Use Investigation (INT) DC 13 to dismantle rather than Harvesting (WIS). No FUSED material — constructs have no biology to fuse. Epic pool contains the highest-value arcane components instead.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-sanguine-warden-common",
+    "creature": "SANGUINE WARDEN",
+    "creatureTier": "Rare",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 26,
+        "materialName": "Necrotic Blood Residue",
+        "tier": "T1",
+        "source": "ORIG",
+        "notes": "The creature's blood, thick with stolen life force. Degrades within hours if unpreserved."
+      },
+      {
+        "weight": 22,
+        "materialName": "Composite Flesh Shard",
+        "tier": "T1",
+        "source": "ORIG",
+        "notes": "Dense layered material from the outer body. Mechanically the source of the Composite Flesh trait."
+      },
+      {
+        "weight": 20,
+        "materialName": "Stolen Vitality Residue",
+        "tier": "T1",
+        "source": "ORIG",
+        "notes": "Diluted life force that leaked during extraction. Unstable."
+      },
+      {
+        "weight": 18,
+        "materialName": "Blood Coagulation Mass",
+        "tier": "T1",
+        "source": "ORIG",
+        "notes": "Semi-solidified blood mass with arcane binding properties."
+      },
+      {
+        "weight": 14,
+        "materialName": "Necrotic Skin Layer",
+        "tier": "T1",
+        "source": "ORIG",
+        "notes": "Outer skin saturated with necrotic energy."
+      }
+    ],
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENTS",
+    "notes": "ORIG only — a fusion construct of multiple failed subjects, not a dragon hybrid. All materials are unique to this creature's blood-magic biology. No other material family chain. Greater variant increases drop tier throughout.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-sanguine-warden-rare",
+    "creature": "SANGUINE WARDEN",
+    "creatureTier": "Rare",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 24,
+        "materialName": "Stolen Vitality Sac",
+        "tier": "T2",
+        "source": "ORIG",
+        "notes": "Biological sac storing absorbed life force. Source of Blood Fueled Regeneration."
+      },
+      {
+        "weight": 21,
+        "materialName": "Blood Burst Gland",
+        "tier": "T2",
+        "source": "ORIG",
+        "notes": "The organ responsible for Blood Burst. Will detonate if not carefully extracted."
+      },
+      {
+        "weight": 18,
+        "materialName": "Composite Flesh Core",
+        "tier": "T2",
+        "source": "ORIG",
+        "notes": "Dense inner core of layered biological material."
+      },
+      {
+        "weight": 19,
+        "materialName": "Life Leech Sinew",
+        "tier": "T2",
+        "source": "ORIG",
+        "notes": "Tendon tissue that absorbs vitality on contact with wounded creatures."
+      },
+      {
+        "weight": 18,
+        "materialName": "Necrotic Blood Crystal",
+        "tier": "T2",
+        "source": "ORIG",
+        "notes": "Blood that crystallised post-mortem — necrotic energy made stable."
+      }
+    ],
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENTS",
+    "notes": "ORIG only — a fusion construct of multiple failed subjects, not a dragon hybrid. All materials are unique to this creature's blood-magic biology. No other material family chain. Greater variant increases drop tier throughout.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-sanguine-warden-epic",
+    "creature": "SANGUINE WARDEN",
+    "creatureTier": "Rare",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 26,
+        "materialName": "Life Leech Sinew",
+        "tier": "T2",
+        "source": "ORIG",
+        "notes": "Higher quality extraction than the rare pool."
+      },
+      {
+        "weight": 22,
+        "materialName": "Crimson Core",
+        "tier": "T3",
+        "source": "ORIG",
+        "notes": "Dense core of compressed life force at the centre of the creature's body."
+      },
+      {
+        "weight": 18,
+        "materialName": "Harvest Vitality Matrix",
+        "tier": "T4",
+        "source": "ORIG",
+        "notes": "Primary life-force absorption organ. Generates Temporary HP from nearby deaths."
+      },
+      {
+        "weight": 16,
+        "materialName": "Blood Sovereign Essence",
+        "tier": "T4",
+        "source": "ORIG",
+        "notes": "The most refined life-force material available. Rare even from Greater variant."
+      },
+      {
+        "weight": 18,
+        "materialName": "Blood-Fused Soul Matrix",
+        "tier": "T4",
+        "source": "FUSED",
+        "notes": "FUSED TERMINAL. Blood magic and stolen soul energy have crystallised together. Simultaneously life-giving and life-draining."
+      }
+    ],
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENTS",
+    "notes": "ORIG only — a fusion construct of multiple failed subjects, not a dragon hybrid. All materials are unique to this creature's blood-magic biology. No other material family chain. Greater variant increases drop tier throughout.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-cryomantic-horror-common",
+    "creature": "CRYOMANTIC HORROR",
+    "creatureTier": "Rare",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 22,
+        "materialName": "Glacial Marrow Crystal",
+        "tier": "T2",
+        "source": "WD",
+        "notes": "WD T2 — now common for the Horror due to advanced cold integration."
+      },
+      {
+        "weight": 20,
+        "materialName": "Apex Cold Gland",
+        "tier": "T2",
+        "source": "WD",
+        "notes": "WD T2 — now common for the Horror."
+      },
+      {
+        "weight": 18,
+        "materialName": "Frost Claw Shard",
+        "tier": "T1",
+        "source": "ORIG",
+        "notes": "Claw fragment maintaining sub-zero temperature indefinitely post-mortem. Unique."
+      },
+      {
+        "weight": 17,
+        "materialName": "Living Frost Skin Scrap",
+        "tier": "T1",
+        "source": "ORIG",
+        "notes": "Skin that actively generates cold — continues to do so even post-mortem. Unique."
+      },
+      {
+        "weight": 13,
+        "materialName": "Ice Crystal Formation",
+        "tier": "T2",
+        "source": "WD",
+        "notes": "WD T2 formation from the creature's body surface."
+      },
+      {
+        "weight": 10,
+        "materialName": "Mutation Residue Crystal",
+        "tier": "T1",
+        "source": "ORIG",
+        "notes": "Crystallised residue from the creature's ongoing mutation process. Unique."
+      }
+    ],
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENTS",
+    "notes": "Two families: ORIG (self-mutating horror biology) and WD at high tiers. Horror draws from WD T3+ — higher baseline than Glacier Wing due to advanced ongoing mutation. Common pool starts at WD T2. Elder variant increases drop tier throughout.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-cryomantic-horror-rare",
+    "creature": "CRYOMANTIC HORROR",
+    "creatureTier": "Rare",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 23,
+        "materialName": "Permafrost Bone Core",
+        "tier": "T3",
+        "source": "WD",
+        "notes": "WD T3. Horror variant is more magically infused than the Winterfang version."
+      },
+      {
+        "weight": 19,
+        "materialName": "Glacial Burst Core",
+        "tier": "T3",
+        "source": "ORIG",
+        "notes": "Organ responsible for Glacial Burst. Violently explosive if punctured during extraction. Unique."
+      },
+      {
+        "weight": 17,
+        "materialName": "Ice Prison Matrix",
+        "tier": "T3",
+        "source": "ORIG",
+        "notes": "Crystalline structure from the creature's chest cavity. Source of the Ice Prison ability. Unique."
+      },
+      {
+        "weight": 16,
+        "materialName": "Living Frost Membrane",
+        "tier": "T3",
+        "source": "ORIG",
+        "notes": "Skin that actively generates cold. Full membrane extraction. Unique."
+      },
+      {
+        "weight": 14,
+        "materialName": "Permafrost Essence",
+        "tier": "T4",
+        "source": "WD",
+        "notes": "WD T4 — Horror produces this due to advanced mutation beyond base WD biology."
+      },
+      {
+        "weight": 11,
+        "materialName": "Cryomantic Core",
+        "tier": "T3",
+        "source": "ORIG",
+        "notes": "Self-sustaining cold energy core. Source of the Arcane Ice Core trait. Unique."
+      }
+    ],
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENTS",
+    "notes": "Two families: ORIG (self-mutating horror biology) and WD at high tiers. Horror draws from WD T3+ — higher baseline than Glacier Wing due to advanced ongoing mutation. Common pool starts at WD T2. Elder variant increases drop tier throughout.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-cryomantic-horror-epic",
+    "creature": "CRYOMANTIC HORROR",
+    "creatureTier": "Rare",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 24,
+        "materialName": "Permafrost Essence",
+        "tier": "T4",
+        "source": "WD",
+        "notes": "Better extraction. Elder variant primarily."
+      },
+      {
+        "weight": 20,
+        "materialName": "Absolute Zero Gland",
+        "tier": "T4",
+        "source": "ORIG",
+        "notes": "Apex cold generation organ — source of Absolute Zero enhancement. Elder only. TERMINAL. Unique."
+      },
+      {
+        "weight": 18,
+        "materialName": "Living Blizzard Essence",
+        "tier": "T4",
+        "source": "ORIG",
+        "notes": "Self-sustaining cold matrix more powerful than anything in the WD chain. Elder only. TERMINAL. Unique."
+      },
+      {
+        "weight": 15,
+        "materialName": "Elder Frost Soul",
+        "tier": "T4",
+        "source": "ORIG",
+        "notes": "Crystallised cold arcane energy that formed in the Elder's spine over years of mutation. Extremely rare. TERMINAL. Unique."
+      },
+      {
+        "weight": 23,
+        "materialName": "Frost-Fused Mutation Core",
+        "tier": "T4",
+        "source": "FUSED",
+        "notes": "FUSED TERMINAL. Self-mutation biology permanently fused with cold generation system. Continues to generate cold and mutate even after extraction."
+      }
+    ],
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENTS",
+    "notes": "Two families: ORIG (self-mutating horror biology) and WD at high tiers. Horror draws from WD T3+ — higher baseline than Glacier Wing due to advanced ongoing mutation. Common pool starts at WD T2. Elder variant increases drop tier throughout.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-mutated-chimera-hound-common",
+    "creature": "MUTATED CHIMERA HOUND",
+    "creatureTier": "Rare",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 20,
+        "materialName": "Crackling Scale Fragments",
+        "tier": "T0",
+        "source": "BD",
+        "notes": "Existing BD T0."
+      },
+      {
+        "weight": 18,
+        "materialName": "Mutation Residue Scraps",
+        "tier": "T0",
+        "source": "ORIG",
+        "notes": "Unstable biological waste from constant mutation cycling. Changes colour over time. Unique."
+      },
+      {
+        "weight": 16,
+        "materialName": "Unstable Silk Threads",
+        "tier": "T0",
+        "source": "SP",
+        "notes": "Existing SP T0 phase variant. Present due to Phase Mutation biology."
+      },
+      {
+        "weight": 15,
+        "materialName": "Charged Dragonhide Scraps",
+        "tier": "T0",
+        "source": "BD",
+        "notes": "Existing BD T0."
+      },
+      {
+        "weight": 16,
+        "materialName": "Multi-Element Bone Shard",
+        "tier": "T0",
+        "source": "ORIG",
+        "notes": "Bone showing evidence of multiple elemental adaptations simultaneously. Unique."
+      },
+      {
+        "weight": 15,
+        "materialName": "Adaptive Biology Tissue",
+        "tier": "T1",
+        "source": "ORIG",
+        "notes": "Tissue instinctively resisting repeated damage sources. Source of Adaptive Biology trait. Unique."
+      }
+    ],
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENTS",
+    "notes": "Three families: ORIG (multi-dragon hybrid biology), BD (Blue Dragon add-on — feeds shared BD chain), SP (Spider add-on via Phase Mutation — feeds shared SP phase chain). Mutation-dependent drops (Active Mutation Core): the website records the dominant mutation active at time of death and assigns the correct variant name. Prime variant increases drop tier throughout.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-mutated-chimera-hound-rare",
+    "creature": "MUTATED CHIMERA HOUND",
+    "creatureTier": "Rare",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 20,
+        "materialName": "Drake Scales",
+        "tier": "T1",
+        "source": "BD",
+        "notes": "Existing BD T1. Chimera variant shows mixed elemental trace."
+      },
+      {
+        "weight": 18,
+        "materialName": "Charged Lightning Gland",
+        "tier": "T1",
+        "source": "BD",
+        "notes": "Existing BD T1. Active primarily in Storm Mutation specimens."
+      },
+      {
+        "weight": 16,
+        "materialName": "Phase Silk Strand",
+        "tier": "T2",
+        "source": "SP",
+        "notes": "Existing SP T2. Active primarily in Phase Mutation specimens."
+      },
+      {
+        "weight": 15,
+        "materialName": "Chimera Breath Gland",
+        "tier": "T3",
+        "source": "ORIG",
+        "notes": "Organ responsible for Chimera Breath. Contains residue of all four damage types simultaneously. Unique."
+      },
+      {
+        "weight": 15,
+        "materialName": "Active Mutation Core",
+        "tier": "T2",
+        "source": "ORIG",
+        "notes": "MUTATION-DEPENDENT: website assigns variant based on dominant mutation at death. Storm / Venom / Frost / Phase variant. Unique per variant."
+      },
+      {
+        "weight": 16,
+        "materialName": "Predator Instinct Core",
+        "tier": "T3",
+        "source": "ORIG",
+        "notes": "Advanced variant governing unpredictable multi-element combat behaviour. Unique."
+      }
+    ],
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENTS",
+    "notes": "Three families: ORIG (multi-dragon hybrid biology), BD (Blue Dragon add-on — feeds shared BD chain), SP (Spider add-on via Phase Mutation — feeds shared SP phase chain). Mutation-dependent drops (Active Mutation Core): the website records the dominant mutation active at time of death and assigns the correct variant name. Prime variant increases drop tier throughout.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-mutated-chimera-hound-epic",
+    "creature": "MUTATED CHIMERA HOUND",
+    "creatureTier": "Rare",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 22,
+        "materialName": "Stormbound Tendon Coil",
+        "tier": "T2",
+        "source": "BD",
+        "notes": "Existing BD T2. Full extraction from Chimera Hound."
+      },
+      {
+        "weight": 18,
+        "materialName": "Distortion Core Fragment",
+        "tier": "T3",
+        "source": "SP",
+        "notes": "Existing SP T3 phase material. From Phase Mutation specimens primarily."
+      },
+      {
+        "weight": 17,
+        "materialName": "Unstable Evolution Organ",
+        "tier": "T4",
+        "source": "ORIG",
+        "notes": "The organ governing Unstable Evolution. Constantly cycling between states. Prime only. TERMINAL. Unique."
+      },
+      {
+        "weight": 16,
+        "materialName": "Chimera Fusion Core",
+        "tier": "T4",
+        "source": "ORIG",
+        "notes": "Stable multi-element core. Prime only. Extremely rare. TERMINAL. Unique."
+      },
+      {
+        "weight": 27,
+        "materialName": "Storm-Phase Chimera Core",
+        "tier": "T4",
+        "source": "FUSED",
+        "notes": "FUSED TERMINAL. BD lightning and SP phase energy fused into a single material that simultaneously conducts electricity and phases through matter."
+      }
+    ],
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENTS",
+    "notes": "Three families: ORIG (multi-dragon hybrid biology), BD (Blue Dragon add-on — feeds shared BD chain), SP (Spider add-on via Phase Mutation — feeds shared SP phase chain). Mutation-dependent drops (Active Mutation Core): the website records the dominant mutation active at time of death and assigns the correct variant name. Prime variant increases drop tier throughout.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-tempest-tyrant-common",
+    "creature": "TEMPEST TYRANT",
+    "creatureTier": "Boss",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 22,
+        "materialName": "Distilled Lightning Essence",
+        "tier": "T1",
+        "source": "BD",
+        "notes": "Existing BD T1. Tyrant produces vast quantities of this material."
+      },
+      {
+        "weight": 20,
+        "materialName": "Stormcall Scale Cluster",
+        "tier": "T2",
+        "source": "BD",
+        "notes": "Existing BD T2. Resonant scales from the outer armour."
+      },
+      {
+        "weight": 18,
+        "materialName": "Phase Silk Bundle",
+        "tier": "T3",
+        "source": "SP",
+        "notes": "Existing SP T3. From the Spider biology component of the Tyrant's construction."
+      },
+      {
+        "weight": 16,
+        "materialName": "Apex Predator Bone",
+        "tier": "T2",
+        "source": "ORIG",
+        "notes": "Dense bone from the aquatic apex predator component. Unique."
+      },
+      {
+        "weight": 14,
+        "materialName": "Arcane Absorption Membrane",
+        "tier": "T1",
+        "source": "ORIG",
+        "notes": "Membrane from the Arcane Soul Matrix housing. Unique."
+      },
+      {
+        "weight": 10,
+        "materialName": "Phase-Touched Thick Webbing",
+        "tier": "T3",
+        "source": "SP",
+        "notes": "Existing SP T3 phase variant."
+      }
+    ],
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENTS",
+    "notes": "Three families: ORIG (apex predator + aquatic biology), BD (T3-T4 existing BD materials), SP Phase-Touched (T3-T4 existing SP materials). Multiple characters can harvest simultaneously given Gargantuan size — each player takes their own attempts against the same pool. 5-6 Harvest Attempts, DC 15-17.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-tempest-tyrant-rare",
+    "creature": "TEMPEST TYRANT",
+    "creatureTier": "Boss",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 22,
+        "materialName": "Living Storm Essence",
+        "tier": "T3",
+        "source": "BD",
+        "notes": "Existing BD T3."
+      },
+      {
+        "weight": 19,
+        "materialName": "Apex Lightning Gland",
+        "tier": "T3",
+        "source": "BD",
+        "notes": "Existing BD T3. Primary mana-processing organ."
+      },
+      {
+        "weight": 17,
+        "materialName": "Neural Conduit Core",
+        "tier": "T3",
+        "source": "BD",
+        "notes": "Existing BD T3."
+      },
+      {
+        "weight": 15,
+        "materialName": "Phase Core",
+        "tier": "T4",
+        "source": "SP",
+        "notes": "Existing SP T4. Primary phase anchor organ."
+      },
+      {
+        "weight": 14,
+        "materialName": "Stormheart Fragment",
+        "tier": "T4",
+        "source": "BD",
+        "notes": "Existing BD T4. Compressed storm energy core fragment."
+      },
+      {
+        "weight": 13,
+        "materialName": "Siege Predator Sinew",
+        "tier": "T3",
+        "source": "ORIG",
+        "notes": "Sinew from the aquatic apex predator body — enormous tensile strength. Unique."
+      }
+    ],
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENTS",
+    "notes": "Three families: ORIG (apex predator + aquatic biology), BD (T3-T4 existing BD materials), SP Phase-Touched (T3-T4 existing SP materials). Multiple characters can harvest simultaneously given Gargantuan size — each player takes their own attempts against the same pool. 5-6 Harvest Attempts, DC 15-17.",
+    "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-tempest-tyrant-epic",
+    "creature": "TEMPEST TYRANT",
+    "creatureTier": "Boss",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 20,
+        "materialName": "Stormheart Core",
+        "tier": "T4",
+        "source": "BD",
+        "notes": "Existing BD T4/T5. Powers the Tyrant's storm regeneration."
+      },
+      {
+        "weight": 18,
+        "materialName": "Tempest Anchor Node",
+        "tier": "T4",
+        "source": "BD",
+        "notes": "Existing BD T4. Stabilises the Phase Instability trait."
+      },
+      {
+        "weight": 16,
+        "materialName": "Ascendant Storm Core",
+        "tier": "T4",
+        "source": "BD",
+        "notes": "Existing BD T4/T5. Self-sustaining storm-phase matrix."
+      },
+      {
+        "weight": 14,
+        "materialName": "Apex Stormscale Plating",
+        "tier": "T4",
+        "source": "BD",
+        "notes": "Existing BD T5. Outer armour plating resistant to lightning and force."
+      },
+      {
+        "weight": 12,
+        "materialName": "Arcane Soul Matrix Fragment",
+        "tier": "T4",
+        "source": "ORIG",
+        "notes": "Fragment of dozens of compressed stolen souls. Warm to the touch. TERMINAL. Unique."
+      },
+      {
+        "weight": 20,
+        "materialName": "Storm-Phase Sovereign Core",
+        "tier": "T4",
+        "source": "FUSED",
+        "notes": "FUSED TERMINAL. BD lightning and SP phase biology fused at the deepest structural level. Generates storm energy and exists between dimensions simultaneously. The pinnacle of Vael's work."
+      }
+    ],
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENTS",
+    "notes": "Three families: ORIG (apex predator + aquatic biology), BD (T3-T4 existing BD materials), SP Phase-Touched (T3-T4 existing SP materials). Multiple characters can harvest simultaneously given Gargantuan size — each player takes their own attempts against the same pool. 5-6 Harvest Attempts, DC 15-17.",
+    "source": "Blackspire_Loot_Tables.docx"
+  }
+]

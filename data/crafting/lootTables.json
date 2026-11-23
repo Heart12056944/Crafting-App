@@ -2443,5 +2443,744 @@
     "chapter": "CHAPTER 7 — SPECIAL EXPERIMENTS",
     "notes": "Three families: ORIG (apex predator + aquatic biology), BD (T3-T4 existing BD materials), SP Phase-Touched (T3-T4 existing SP materials). Multiple characters can harvest simultaneously given Gargantuan size — each player takes their own attempts against the same pool. 5-6 Harvest Attempts, DC 15-17.",
     "source": "Blackspire_Loot_Tables.docx"
+  },
+  {
+    "id": "loot-brainless-common",
+    "creature": "BRAINLESS",
+    "creatureTier": "Common",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 30,
+        "materialName": "Grave Silt",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Grey corpse-soil that sloughs off the Brainless. Smells of cold stone, not rot.",
+        "amount": "1d4"
+      },
+      {
+        "weight": 26,
+        "materialName": "Breath-Soured Sinew",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Tendon that kept moving long after it should have stopped. Tough and faintly cold.",
+        "amount": "1d4"
+      },
+      {
+        "weight": 24,
+        "materialName": "Hollow Marrow",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Marrow gone dry and powdery, as if something used it up.",
+        "amount": "1d4"
+      },
+      {
+        "weight": 20,
+        "materialName": "Loose Teeth",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A handful of teeth shaken from a Brainless jaw. Ground down for bone meal.",
+        "amount": "1d6"
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-brainless-rare",
+    "creature": "BRAINLESS",
+    "creatureTier": "Common",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 40,
+        "materialName": "Stilled Nerve Bundle",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "Nerves that no longer carry anything. Numbs whatever they touch."
+      },
+      {
+        "weight": 35,
+        "materialName": "Breath-Black Bile",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "Dark residue pooled where the breath settled in the gut. Mildly necrotic."
+      },
+      {
+        "weight": 25,
+        "materialName": "Intact Jawbone",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A whole jaw, still clenched. Sturdy, and unpleasant to hold."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-brainless-epic",
+    "creature": "BRAINLESS",
+    "creatureTier": "Common",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 55,
+        "materialName": "Lingering Exhale",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A breath trapped in a sealed lung-sac. Cold and heavier than air."
+      },
+      {
+        "weight": 45,
+        "materialName": "Unrotting Heart",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A heart that refuses to decay. It does not beat. It does not need to."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-directed-brainless-common",
+    "creature": "DIRECTED BRAINLESS",
+    "creatureTier": "Uncommon",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 28,
+        "materialName": "Stilled Nerve Bundle",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "Nerves that no longer carry anything. Numbs whatever they touch."
+      },
+      {
+        "weight": 26,
+        "materialName": "Breath-Black Bile",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "Dark residue pooled where the breath settled in the gut. Mildly necrotic."
+      },
+      {
+        "weight": 22,
+        "materialName": "Intact Jawbone",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A whole jaw, still clenched. Sturdy, and unpleasant to hold."
+      },
+      {
+        "weight": 24,
+        "materialName": "Command-Scarred Nerve",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "Nerve tissue scored by a master's will. It twitches toward the last order it was given."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-directed-brainless-rare",
+    "creature": "DIRECTED BRAINLESS",
+    "creatureTier": "Uncommon",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 36,
+        "materialName": "Lingering Exhale",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A breath trapped in a sealed lung-sac. Cold and heavier than air."
+      },
+      {
+        "weight": 30,
+        "materialName": "Unrotting Heart",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A heart that refuses to decay. It does not beat. It does not need to."
+      },
+      {
+        "weight": 34,
+        "materialName": "Held-Breath Lung",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A lung clenched around a breath it never let go of."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-directed-brainless-epic",
+    "creature": "DIRECTED BRAINLESS",
+    "creatureTier": "Uncommon",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 55,
+        "materialName": "Thread of Command",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "A faint, cold filament drawn from a directed corpse. It still points somewhere."
+      },
+      {
+        "weight": 45,
+        "materialName": "Obedient Skull",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "A skull that held an order. Cracked along the line where the command went in."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-the-bellman-common",
+    "creature": "THE BELLMAN",
+    "creatureTier": "Epic",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 26,
+        "materialName": "Held-Breath Lung",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A lung clenched around a breath it never let go of."
+      },
+      {
+        "weight": 24,
+        "materialName": "Lingering Exhale",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A breath trapped in a sealed lung-sac. Cold and heavier than air."
+      },
+      {
+        "weight": 20,
+        "materialName": "Unrotting Heart",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A heart that refuses to decay. It does not beat. It does not need to."
+      },
+      {
+        "weight": 30,
+        "materialName": "Toll-Iron Fragment",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A shard of the Bellman's bell-iron. It hums when struck near the dead.",
+        "amount": "1d4"
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-the-bellman-rare",
+    "creature": "THE BELLMAN",
+    "creatureTier": "Epic",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 30,
+        "materialName": "Thread of Command",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "A faint, cold filament drawn from a directed corpse. It still points somewhere."
+      },
+      {
+        "weight": 36,
+        "materialName": "Bell-Struck Bone",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "Bone that rang in time with the Bellman's toll until it fractured."
+      },
+      {
+        "weight": 34,
+        "materialName": "Resonant Skull Plate",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "A thick plate of the Bellman's skull, tuned like a bell."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-the-bellman-epic",
+    "creature": "THE BELLMAN",
+    "creatureTier": "Epic",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 100,
+        "materialName": "The Bellman's Clapper",
+        "tier": "T4",
+        "source": "VIGIL",
+        "notes": "The iron tongue of the Bellman's bell. Every Brainless within a mile used to answer it."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-oren-thask-common",
+    "creature": "OREN THASK",
+    "creatureTier": "Boss",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 22,
+        "materialName": "Bell-Struck Bone",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "Bone that rang in time with the Bellman's toll until it fractured."
+      },
+      {
+        "weight": 20,
+        "materialName": "Resonant Skull Plate",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "A thick plate of the Bellman's skull, tuned like a bell."
+      },
+      {
+        "weight": 22,
+        "materialName": "Thread of Command",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "A faint, cold filament drawn from a directed corpse. It still points somewhere."
+      },
+      {
+        "weight": 36,
+        "materialName": "Stolen Robe Thread",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "Thread unpicked from robes of the current Order generation. Stained in places no one should survive.",
+        "amount": "1d4"
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-oren-thask-rare",
+    "creature": "OREN THASK",
+    "creatureTier": "Boss",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 40,
+        "materialName": "Wound-Torn Vigil Robe",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "Order robes pierced where killing blows should have landed. Taken from the dead and worn anyway."
+      },
+      {
+        "weight": 30,
+        "materialName": "Unfallen Heart",
+        "tier": "T4",
+        "source": "VIGIL",
+        "notes": "The heart of an Ageless who should have died with the others. Still warm, somehow."
+      },
+      {
+        "weight": 30,
+        "materialName": "Shard of a Kept Skull",
+        "tier": "T4",
+        "source": "VIGIL",
+        "notes": "A piece of the skull an Ageless guarded above everything. Breaking the rest is what ended him."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-oren-thask-epic",
+    "creature": "OREN THASK",
+    "creatureTier": "Boss",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 100,
+        "materialName": "Devotion-Bound Core",
+        "tier": "T4",
+        "source": "VIGIL",
+        "notes": "A knot of something that is not flesh, found where heart meets spine. It feels like longing."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-thornspine-wolf-common",
+    "creature": "THORNSPINE WOLF",
+    "creatureTier": "Common",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 30,
+        "materialName": "Coarse Wolf Pelt",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Rough grey pelt from a Thornspine wolf. Needs curing before it is good for much."
+      },
+      {
+        "weight": 26,
+        "materialName": "Wolf Fang",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A long, hooked canine. Good arrowhead stock.",
+        "amount": "1d4"
+      },
+      {
+        "weight": 24,
+        "materialName": "Lean Sinew",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Clean sinew from a fast-running beast. Dries into excellent cord.",
+        "amount": "1d4"
+      },
+      {
+        "weight": 20,
+        "materialName": "Wolf Bone",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Light, dense leg bone. Takes a carved edge well.",
+        "amount": "1d4"
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-thornspine-wolf-rare",
+    "creature": "THORNSPINE WOLF",
+    "creatureTier": "Common",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 55,
+        "materialName": "Thick Winter Pelt",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "Dense under-fur grown for the high passes. Sheds snow like water."
+      },
+      {
+        "weight": 45,
+        "materialName": "Keen Scent Gland",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "The gland behind a wolf's muzzle. Sharpens the nose of anyone who uses it right."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-thornspine-wolf-epic",
+    "creature": "THORNSPINE WOLF",
+    "creatureTier": "Common",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 100,
+        "materialName": "Alpha's Ruff",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "The thick mane of a pack leader. Other wolves give it room even off the body."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-ridge-stag-common",
+    "creature": "RIDGE STAG",
+    "creatureTier": "Common",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 36,
+        "materialName": "Stag Hide",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Thin, supple hide from a ridge stag."
+      },
+      {
+        "weight": 34,
+        "materialName": "Antler Tine",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A single antler point. Hard, light, easy to carve.",
+        "amount": "1d4"
+      },
+      {
+        "weight": 30,
+        "materialName": "Lean Sinew",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Clean sinew from a fast-running beast. Dries into excellent cord.",
+        "amount": "1d4"
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-ridge-stag-rare",
+    "creature": "RIDGE STAG",
+    "creatureTier": "Common",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 55,
+        "materialName": "Branching Antler",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A full antler branch. Springy enough to bend into a bow."
+      },
+      {
+        "weight": 45,
+        "materialName": "Musk Gland",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A rutting stag's musk. Masks a person's scent, or draws every beast in the valley."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-ridge-stag-epic",
+    "creature": "RIDGE STAG",
+    "creatureTier": "Common",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 50,
+        "materialName": "Crown Antler",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "The crowned rack of an old stag. Druids prize it as a focus."
+      },
+      {
+        "weight": 50,
+        "materialName": "Swift Tendon",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "Leg tendon from a stag that outran wolves for years."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-crag-hawk-common",
+    "creature": "CRAG HAWK",
+    "creatureTier": "Common",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 40,
+        "materialName": "Grey Flight Feathers",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Stiff grey feathers from a crag hawk. Ideal fletching.",
+        "amount": "1d6"
+      },
+      {
+        "weight": 32,
+        "materialName": "Hollow Bird Bone",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Light, hollow wing bone. Strong for its weight.",
+        "amount": "1d4"
+      },
+      {
+        "weight": 28,
+        "materialName": "Hooked Talon",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A curved hawk talon. Grips and does not let go.",
+        "amount": "1d4"
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-crag-hawk-rare",
+    "creature": "CRAG HAWK",
+    "creatureTier": "Common",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 55,
+        "materialName": "Storm-Grey Primary",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A long primary feather that holds true in mountain wind.",
+        "amount": "1d4"
+      },
+      {
+        "weight": 45,
+        "materialName": "Keen Hawk Eye",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A crag hawk's eye, preserved. Distilled, it sharpens sight for hours."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-crag-hawk-epic",
+    "creature": "CRAG HAWK",
+    "creatureTier": "Common",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 100,
+        "materialName": "Crag Hawk Crest",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "The crest feathers of a hawk that hunted the high peaks for decades."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-thornspine-bear-common",
+    "creature": "THORNSPINE BEAR",
+    "creatureTier": "Uncommon",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 26,
+        "materialName": "Thick Winter Pelt",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "Dense under-fur grown for the high passes. Sheds snow like water."
+      },
+      {
+        "weight": 26,
+        "materialName": "Bear Claw",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A thick, blunt claw from a Thornspine bear.",
+        "amount": "1d4"
+      },
+      {
+        "weight": 26,
+        "materialName": "Dense Bear Fat",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "Heavy winter fat. Renders into tallow that keeps out cold and wet.",
+        "amount": "1d4"
+      },
+      {
+        "weight": 22,
+        "materialName": "Heavy Bear Bone",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "Thigh bone of a mountain bear. Nearly as hard as iron."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-thornspine-bear-rare",
+    "creature": "THORNSPINE BEAR",
+    "creatureTier": "Uncommon",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 55,
+        "materialName": "Whole Bear Hide",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "An unbroken bear hide. Heavy, warm and nearly arrow-proof once tanned."
+      },
+      {
+        "weight": 45,
+        "materialName": "Great Bear Claw",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A claw the length of a dagger."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-thornspine-bear-epic",
+    "creature": "THORNSPINE BEAR",
+    "creatureTier": "Uncommon",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 50,
+        "materialName": "Mountain Heart",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "The great heart of an old bear. Drinkers swear they can feel it beating."
+      },
+      {
+        "weight": 50,
+        "materialName": "Old Bear's Pelt",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "A scarred grey pelt from a bear that ruled its mountain for a generation."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
   }
 ]

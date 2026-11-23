@@ -1,3 +1,5 @@
+import lootTablesJson from "./crafting/lootTables.json";
+
 export type LootQuality = "common" | "rare" | "epic";
 export type CreatureTier = "common" | "uncommon" | "rare" | "epic" | "boss";
 
@@ -5,12 +7,18 @@ export type LootEntry = {
   name: string;
   amount?: string;
   kind?: "material" | "item" | "tool" | "kit";
+  // Relative chance within its quality pool. Missing = 1.
+  weight?: number;
 };
 
 export type LootTable = {
   id: string;
   label: string;
   family: string;
+  // Recipe set this creature belongs to (hidden with that set in the GM panel).
+  set?: string;
+  // Tier picked automatically when the GM chooses this creature.
+  defaultTier?: CreatureTier;
   tables: Partial<Record<LootQuality, LootEntry[]>>;
 };
 
@@ -33,7 +41,7 @@ function e(name: string, kind: LootEntry["kind"] = "material"): LootEntry {
   return { name, kind };
 }
 
-export const lootTables: LootTable[] = [
+const builtInLootTables: LootTable[] = [
   {
     id: "skeleton",
     label: "Skeleton",
@@ -395,6 +403,90 @@ export const lootTables: LootTable[] = [
     },
   }
 ];
+
+// Creatures defined in crafting/lootTables.json (Blackspire, Undying Vigil, and any
+// future set). One JSON row per creature per pool; grouped here into one table each.
+type JsonLootPool = {
+  id: string;
+  creature: string;
+  creatureTier: string;
+  pool: string;
+  set?: string;
+  family?: string;
+  entries: {
+    weight: number;
+    materialName: string;
+    amount?: string;
+    kind?: LootEntry["kind"];
+  }[];
+};
+
+function slugifyCreature(value: string) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
+
+function titleCaseCreature(value: string) {
+  return value.toLowerCase().replace(/(^|[\s-])([a-z])/g, (_, lead: string, letter: string) => lead + letter.toUpperCase());
+}
+
+function creatureTierFromLabel(label: string): CreatureTier {
+  const value = label.toLowerCase();
+  if (value.includes("boss")) return "boss";
+  if (value.includes("epic")) return "epic";
+  if (value.includes("uncommon")) return "uncommon";
+  if (value.includes("rare")) return "rare";
+  return "common";
+}
+
+const jsonLootTables: LootTable[] = (() => {
+  const builtInIds = new Set(builtInLootTables.map((table) => table.id));
+  const byCreature = new Map<string, LootTable>();
+
+  for (const pool of lootTablesJson as JsonLootPool[]) {
+    const id = slugifyCreature(pool.creature);
+    if (builtInIds.has(id)) continue;
+
+    let table = byCreature.get(id);
+    if (!table) {
+      table = {
+        id,
+        label: titleCaseCreature(pool.creature),
+        family: pool.family || id,
+        set: pool.set || "blackspire",
+        defaultTier: creatureTierFromLabel(pool.creatureTier),
+        tables: {},
+      };
+      byCreature.set(id, table);
+    }
+
+    const quality = pool.pool.toLowerCase();
+    if (quality !== "common" && quality !== "rare" && quality !== "epic") continue;
+
+    table.tables[quality] = pool.entries.map((entry) => ({
+      name: entry.materialName,
+      weight: entry.weight,
+      amount: entry.amount,
+      kind: entry.kind || "material",
+    }));
+  }
+
+  return [...byCreature.values()];
+})();
+
+export const lootTables: LootTable[] = [...builtInLootTables, ...jsonLootTables];
+
+// Picks one entry, respecting weights (entries without a weight count as 1).
+export function pickWeightedLootEntry(entries: LootEntry[]): LootEntry {
+  const total = entries.reduce((sum, entry) => sum + Math.max(0, entry.weight ?? 1), 0);
+  if (total <= 0) return entries[Math.floor(Math.random() * entries.length)];
+
+  let roll = Math.random() * total;
+  for (const entry of entries) {
+    roll -= Math.max(0, entry.weight ?? 1);
+    if (roll < 0) return entry;
+  }
+  return entries[entries.length - 1];
+}
 
 export function rollWeightedLootQuality(tier: CreatureTier): LootQuality | "none" {
   const weights = creatureTierRules[tier].weights;

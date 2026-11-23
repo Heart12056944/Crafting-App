@@ -4355,5 +4355,2053 @@
         "weight": 18
       }
     ]
+  },
+  {
+    "id": "material-grave-silt",
+    "name": "Grave Silt",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "undead"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Grey corpse-soil that sloughs off the Brainless. Smells of cold stone, not rot.",
+    "appearsIn": [
+      {
+        "creature": "BRAINLESS",
+        "pool": "Common",
+        "weight": 30
+      }
+    ]
+  },
+  {
+    "id": "material-breath-soured-sinew",
+    "name": "Breath-Soured Sinew",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "undead"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Tendon that kept moving long after it should have stopped. Tough and faintly cold.",
+    "appearsIn": [
+      {
+        "creature": "BRAINLESS",
+        "pool": "Common",
+        "weight": 26
+      }
+    ]
+  },
+  {
+    "id": "material-hollow-marrow",
+    "name": "Hollow Marrow",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "undead"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Marrow gone dry and powdery, as if something used it up.",
+    "appearsIn": [
+      {
+        "creature": "BRAINLESS",
+        "pool": "Common",
+        "weight": 24
+      }
+    ]
+  },
+  {
+    "id": "material-loose-teeth",
+    "name": "Loose Teeth",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "undead"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A handful of teeth shaken from a Brainless jaw. Ground down for bone meal.",
+    "appearsIn": [
+      {
+        "creature": "BRAINLESS",
+        "pool": "Common",
+        "weight": 20
+      }
+    ]
+  },
+  {
+    "id": "material-stilled-nerve-bundle",
+    "name": "Stilled Nerve Bundle",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "undead"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Nerves that no longer carry anything. Numbs whatever they touch.",
+    "appearsIn": [
+      {
+        "creature": "BRAINLESS",
+        "pool": "Rare",
+        "weight": 40
+      },
+      {
+        "creature": "DIRECTED BRAINLESS",
+        "pool": "Common",
+        "weight": 28
+      }
+    ]
+  },
+  {
+    "id": "material-breath-black-bile",
+    "name": "Breath-Black Bile",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "undead"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Dark residue pooled where the breath settled in the gut. Mildly necrotic.",
+    "appearsIn": [
+      {
+        "creature": "BRAINLESS",
+        "pool": "Rare",
+        "weight": 35
+      },
+      {
+        "creature": "DIRECTED BRAINLESS",
+        "pool": "Common",
+        "weight": 26
+      }
+    ]
+  },
+  {
+    "id": "material-intact-jawbone",
+    "name": "Intact Jawbone",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "undead"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A whole jaw, still clenched. Sturdy, and unpleasant to hold.",
+    "appearsIn": [
+      {
+        "creature": "BRAINLESS",
+        "pool": "Rare",
+        "weight": 25
+      },
+      {
+        "creature": "DIRECTED BRAINLESS",
+        "pool": "Common",
+        "weight": 22
+      }
+    ]
+  },
+  {
+    "id": "material-command-scarred-nerve",
+    "name": "Command-Scarred Nerve",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "undead",
+      "directed"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Nerve tissue scored by a master's will. It twitches toward the last order it was given.",
+    "appearsIn": [
+      {
+        "creature": "DIRECTED BRAINLESS",
+        "pool": "Common",
+        "weight": 24
+      }
+    ]
+  },
+  {
+    "id": "material-lingering-exhale",
+    "name": "Lingering Exhale",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "undead",
+      "directed"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A breath trapped in a sealed lung-sac. Cold and heavier than air.",
+    "appearsIn": [
+      {
+        "creature": "BRAINLESS",
+        "pool": "Epic",
+        "weight": 55
+      },
+      {
+        "creature": "DIRECTED BRAINLESS",
+        "pool": "Rare",
+        "weight": 36
+      },
+      {
+        "creature": "THE BELLMAN",
+        "pool": "Common",
+        "weight": 24
+      }
+    ]
+  },
+  {
+    "id": "material-unrotting-heart",
+    "name": "Unrotting Heart",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "undead"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A heart that refuses to decay. It does not beat. It does not need to.",
+    "appearsIn": [
+      {
+        "creature": "BRAINLESS",
+        "pool": "Epic",
+        "weight": 45
+      },
+      {
+        "creature": "DIRECTED BRAINLESS",
+        "pool": "Rare",
+        "weight": 30
+      },
+      {
+        "creature": "THE BELLMAN",
+        "pool": "Common",
+        "weight": 20
+      }
+    ]
+  },
+  {
+    "id": "material-held-breath-lung",
+    "name": "Held-Breath Lung",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "undead",
+      "directed"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A lung clenched around a breath it never let go of.",
+    "appearsIn": [
+      {
+        "creature": "DIRECTED BRAINLESS",
+        "pool": "Rare",
+        "weight": 34
+      },
+      {
+        "creature": "THE BELLMAN",
+        "pool": "Common",
+        "weight": 26
+      }
+    ]
+  },
+  {
+    "id": "material-toll-iron-fragment",
+    "name": "Toll-Iron Fragment",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "undead",
+      "ageless"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A shard of the Bellman's bell-iron. It hums when struck near the dead.",
+    "appearsIn": [
+      {
+        "creature": "THE BELLMAN",
+        "pool": "Common",
+        "weight": 30
+      }
+    ]
+  },
+  {
+    "id": "material-stolen-robe-thread",
+    "name": "Stolen Robe Thread",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "ageless"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Thread unpicked from robes of the current Order generation. Stained in places no one should survive.",
+    "appearsIn": [
+      {
+        "creature": "OREN THASK",
+        "pool": "Common",
+        "weight": 36
+      }
+    ]
+  },
+  {
+    "id": "material-thread-of-command",
+    "name": "Thread of Command",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Advanced Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "undead",
+      "directed"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A faint, cold filament drawn from a directed corpse. It still points somewhere.",
+    "appearsIn": [
+      {
+        "creature": "DIRECTED BRAINLESS",
+        "pool": "Epic",
+        "weight": 55
+      },
+      {
+        "creature": "THE BELLMAN",
+        "pool": "Rare",
+        "weight": 30
+      },
+      {
+        "creature": "OREN THASK",
+        "pool": "Common",
+        "weight": 22
+      }
+    ]
+  },
+  {
+    "id": "material-obedient-skull",
+    "name": "Obedient Skull",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Advanced Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "undead",
+      "directed"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A skull that held an order. Cracked along the line where the command went in.",
+    "appearsIn": [
+      {
+        "creature": "DIRECTED BRAINLESS",
+        "pool": "Epic",
+        "weight": 45
+      }
+    ]
+  },
+  {
+    "id": "material-bell-struck-bone",
+    "name": "Bell-Struck Bone",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Advanced Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "undead",
+      "ageless"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Bone that rang in time with the Bellman's toll until it fractured.",
+    "appearsIn": [
+      {
+        "creature": "THE BELLMAN",
+        "pool": "Rare",
+        "weight": 36
+      },
+      {
+        "creature": "OREN THASK",
+        "pool": "Common",
+        "weight": 22
+      }
+    ]
+  },
+  {
+    "id": "material-resonant-skull-plate",
+    "name": "Resonant Skull Plate",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Advanced Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "undead",
+      "ageless"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A thick plate of the Bellman's skull, tuned like a bell.",
+    "appearsIn": [
+      {
+        "creature": "THE BELLMAN",
+        "pool": "Rare",
+        "weight": 34
+      },
+      {
+        "creature": "OREN THASK",
+        "pool": "Common",
+        "weight": 20
+      }
+    ]
+  },
+  {
+    "id": "material-wound-torn-vigil-robe",
+    "name": "Wound-Torn Vigil Robe",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Advanced Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "ageless"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Order robes pierced where killing blows should have landed. Taken from the dead and worn anyway.",
+    "appearsIn": [
+      {
+        "creature": "OREN THASK",
+        "pool": "Rare",
+        "weight": 40
+      }
+    ]
+  },
+  {
+    "id": "material-the-bellman-s-clapper",
+    "name": "The Bellman's Clapper",
+    "tier": 4,
+    "tierLabel": "Tier 4 – High-End Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4",
+      "undead",
+      "ageless"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "The iron tongue of the Bellman's bell. Every Brainless within a mile used to answer it.",
+    "appearsIn": [
+      {
+        "creature": "THE BELLMAN",
+        "pool": "Epic",
+        "weight": 100
+      }
+    ]
+  },
+  {
+    "id": "material-unfallen-heart",
+    "name": "Unfallen Heart",
+    "tier": 4,
+    "tierLabel": "Tier 4 – High-End Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4",
+      "ageless"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "The heart of an Ageless who should have died with the others. Still warm, somehow.",
+    "appearsIn": [
+      {
+        "creature": "OREN THASK",
+        "pool": "Rare",
+        "weight": 30
+      }
+    ]
+  },
+  {
+    "id": "material-shard-of-a-kept-skull",
+    "name": "Shard of a Kept Skull",
+    "tier": 4,
+    "tierLabel": "Tier 4 – High-End Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4",
+      "ageless"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A piece of the skull an Ageless guarded above everything. Breaking the rest is what ended him.",
+    "appearsIn": [
+      {
+        "creature": "OREN THASK",
+        "pool": "Rare",
+        "weight": 30
+      }
+    ]
+  },
+  {
+    "id": "material-devotion-bound-core",
+    "name": "Devotion-Bound Core",
+    "tier": 4,
+    "tierLabel": "Tier 4 – High-End Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4",
+      "ageless"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A knot of something that is not flesh, found where heart meets spine. It feels like longing.",
+    "appearsIn": [
+      {
+        "creature": "OREN THASK",
+        "pool": "Epic",
+        "weight": 100
+      }
+    ]
+  },
+  {
+    "id": "material-coarse-wolf-pelt",
+    "name": "Coarse Wolf Pelt",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "wolf"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Rough grey pelt from a Thornspine wolf. Needs curing before it is good for much.",
+    "appearsIn": [
+      {
+        "creature": "THORNSPINE WOLF",
+        "pool": "Common",
+        "weight": 30
+      }
+    ]
+  },
+  {
+    "id": "material-wolf-fang",
+    "name": "Wolf Fang",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "wolf"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A long, hooked canine. Good arrowhead stock.",
+    "appearsIn": [
+      {
+        "creature": "THORNSPINE WOLF",
+        "pool": "Common",
+        "weight": 26
+      }
+    ]
+  },
+  {
+    "id": "material-lean-sinew",
+    "name": "Lean Sinew",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Clean sinew from a fast-running beast. Dries into excellent cord.",
+    "appearsIn": [
+      {
+        "creature": "THORNSPINE WOLF",
+        "pool": "Common",
+        "weight": 24
+      },
+      {
+        "creature": "RIDGE STAG",
+        "pool": "Common",
+        "weight": 30
+      }
+    ]
+  },
+  {
+    "id": "material-wolf-bone",
+    "name": "Wolf Bone",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "wolf"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Light, dense leg bone. Takes a carved edge well.",
+    "appearsIn": [
+      {
+        "creature": "THORNSPINE WOLF",
+        "pool": "Common",
+        "weight": 20
+      }
+    ]
+  },
+  {
+    "id": "material-thick-winter-pelt",
+    "name": "Thick Winter Pelt",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "wolf",
+      "bear"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Dense under-fur grown for the high passes. Sheds snow like water.",
+    "appearsIn": [
+      {
+        "creature": "THORNSPINE WOLF",
+        "pool": "Rare",
+        "weight": 55
+      },
+      {
+        "creature": "THORNSPINE BEAR",
+        "pool": "Common",
+        "weight": 26
+      }
+    ]
+  },
+  {
+    "id": "material-keen-scent-gland",
+    "name": "Keen Scent Gland",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "wolf"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "The gland behind a wolf's muzzle. Sharpens the nose of anyone who uses it right.",
+    "appearsIn": [
+      {
+        "creature": "THORNSPINE WOLF",
+        "pool": "Rare",
+        "weight": 45
+      }
+    ]
+  },
+  {
+    "id": "material-alpha-s-ruff",
+    "name": "Alpha's Ruff",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "beast",
+      "wolf"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "The thick mane of a pack leader. Other wolves give it room even off the body.",
+    "appearsIn": [
+      {
+        "creature": "THORNSPINE WOLF",
+        "pool": "Epic",
+        "weight": 100
+      }
+    ]
+  },
+  {
+    "id": "material-stag-hide",
+    "name": "Stag Hide",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "deer"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Thin, supple hide from a ridge stag.",
+    "appearsIn": [
+      {
+        "creature": "RIDGE STAG",
+        "pool": "Common",
+        "weight": 36
+      }
+    ]
+  },
+  {
+    "id": "material-antler-tine",
+    "name": "Antler Tine",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "deer"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A single antler point. Hard, light, easy to carve.",
+    "appearsIn": [
+      {
+        "creature": "RIDGE STAG",
+        "pool": "Common",
+        "weight": 34
+      }
+    ]
+  },
+  {
+    "id": "material-branching-antler",
+    "name": "Branching Antler",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "deer"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A full antler branch. Springy enough to bend into a bow.",
+    "appearsIn": [
+      {
+        "creature": "RIDGE STAG",
+        "pool": "Rare",
+        "weight": 55
+      }
+    ]
+  },
+  {
+    "id": "material-musk-gland",
+    "name": "Musk Gland",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "deer"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A rutting stag's musk. Masks a person's scent, or draws every beast in the valley.",
+    "appearsIn": [
+      {
+        "creature": "RIDGE STAG",
+        "pool": "Rare",
+        "weight": 45
+      }
+    ]
+  },
+  {
+    "id": "material-crown-antler",
+    "name": "Crown Antler",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "beast",
+      "deer"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "The crowned rack of an old stag. Druids prize it as a focus.",
+    "appearsIn": [
+      {
+        "creature": "RIDGE STAG",
+        "pool": "Epic",
+        "weight": 50
+      }
+    ]
+  },
+  {
+    "id": "material-swift-tendon",
+    "name": "Swift Tendon",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "beast",
+      "deer"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Leg tendon from a stag that outran wolves for years.",
+    "appearsIn": [
+      {
+        "creature": "RIDGE STAG",
+        "pool": "Epic",
+        "weight": 50
+      }
+    ]
+  },
+  {
+    "id": "material-grey-flight-feathers",
+    "name": "Grey Flight Feathers",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "bird"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Stiff grey feathers from a crag hawk. Ideal fletching.",
+    "appearsIn": [
+      {
+        "creature": "CRAG HAWK",
+        "pool": "Common",
+        "weight": 40
+      }
+    ]
+  },
+  {
+    "id": "material-hollow-bird-bone",
+    "name": "Hollow Bird Bone",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "bird"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Light, hollow wing bone. Strong for its weight.",
+    "appearsIn": [
+      {
+        "creature": "CRAG HAWK",
+        "pool": "Common",
+        "weight": 32
+      }
+    ]
+  },
+  {
+    "id": "material-hooked-talon",
+    "name": "Hooked Talon",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "bird"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A curved hawk talon. Grips and does not let go.",
+    "appearsIn": [
+      {
+        "creature": "CRAG HAWK",
+        "pool": "Common",
+        "weight": 28
+      }
+    ]
+  },
+  {
+    "id": "material-storm-grey-primary",
+    "name": "Storm-Grey Primary",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "bird"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A long primary feather that holds true in mountain wind.",
+    "appearsIn": [
+      {
+        "creature": "CRAG HAWK",
+        "pool": "Rare",
+        "weight": 55
+      }
+    ]
+  },
+  {
+    "id": "material-keen-hawk-eye",
+    "name": "Keen Hawk Eye",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "bird"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A crag hawk's eye, preserved. Distilled, it sharpens sight for hours.",
+    "appearsIn": [
+      {
+        "creature": "CRAG HAWK",
+        "pool": "Rare",
+        "weight": 45
+      }
+    ]
+  },
+  {
+    "id": "material-crag-hawk-crest",
+    "name": "Crag Hawk Crest",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "beast",
+      "bird"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "The crest feathers of a hawk that hunted the high peaks for decades.",
+    "appearsIn": [
+      {
+        "creature": "CRAG HAWK",
+        "pool": "Epic",
+        "weight": 100
+      }
+    ]
+  },
+  {
+    "id": "material-bear-claw",
+    "name": "Bear Claw",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "bear"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A thick, blunt claw from a Thornspine bear.",
+    "appearsIn": [
+      {
+        "creature": "THORNSPINE BEAR",
+        "pool": "Common",
+        "weight": 26
+      }
+    ]
+  },
+  {
+    "id": "material-dense-bear-fat",
+    "name": "Dense Bear Fat",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "bear"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Heavy winter fat. Renders into tallow that keeps out cold and wet.",
+    "appearsIn": [
+      {
+        "creature": "THORNSPINE BEAR",
+        "pool": "Common",
+        "weight": 26
+      }
+    ]
+  },
+  {
+    "id": "material-heavy-bear-bone",
+    "name": "Heavy Bear Bone",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "bear"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Thigh bone of a mountain bear. Nearly as hard as iron.",
+    "appearsIn": [
+      {
+        "creature": "THORNSPINE BEAR",
+        "pool": "Common",
+        "weight": 22
+      }
+    ]
+  },
+  {
+    "id": "material-whole-bear-hide",
+    "name": "Whole Bear Hide",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "beast",
+      "bear"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "An unbroken bear hide. Heavy, warm and nearly arrow-proof once tanned.",
+    "appearsIn": [
+      {
+        "creature": "THORNSPINE BEAR",
+        "pool": "Rare",
+        "weight": 55
+      }
+    ]
+  },
+  {
+    "id": "material-great-bear-claw",
+    "name": "Great Bear Claw",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "beast",
+      "bear"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A claw the length of a dagger.",
+    "appearsIn": [
+      {
+        "creature": "THORNSPINE BEAR",
+        "pool": "Rare",
+        "weight": 45
+      }
+    ]
+  },
+  {
+    "id": "material-mountain-heart",
+    "name": "Mountain Heart",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Advanced Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "beast",
+      "bear"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "The great heart of an old bear. Drinkers swear they can feel it beating.",
+    "appearsIn": [
+      {
+        "creature": "THORNSPINE BEAR",
+        "pool": "Epic",
+        "weight": 50
+      }
+    ]
+  },
+  {
+    "id": "material-old-bear-s-pelt",
+    "name": "Old Bear's Pelt",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Advanced Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "beast",
+      "bear"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A scarred grey pelt from a bear that ruled its mountain for a generation.",
+    "appearsIn": [
+      {
+        "creature": "THORNSPINE BEAR",
+        "pool": "Epic",
+        "weight": 50
+      }
+    ]
+  },
+  {
+    "id": "material-grey-ironstone",
+    "name": "Grey Ironstone",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "gathering",
+      "mining"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Rust-streaked stone from shallow Thornspine seams. Smelts into serviceable iron."
+  },
+  {
+    "id": "material-slate-grit",
+    "name": "Slate Grit",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "gathering",
+      "mining"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Fine dark grit that collects at the base of slate faces. A sharpening compound."
+  },
+  {
+    "id": "material-rimecopper-ore",
+    "name": "Rimecopper Ore",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "gathering",
+      "mining"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Copper ore laced with pale streaks. It stays cold to the touch."
+  },
+  {
+    "id": "material-thornspine-silver-ore",
+    "name": "Thornspine Silver Ore",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "gathering",
+      "mining"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Silver-bearing ore from deep ridge veins. The Order has bought every ounce for centuries."
+  },
+  {
+    "id": "material-emberquartz",
+    "name": "Emberquartz",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Advanced Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "gathering",
+      "mining"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Warm amber crystal from deep lodes. It glows faintly in the dark."
+  },
+  {
+    "id": "material-sunvein-crystal",
+    "name": "Sunvein Crystal",
+    "tier": 4,
+    "tierLabel": "Tier 4 – High-End Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4",
+      "gathering",
+      "mining"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A clear crystal that holds light like a coal holds heat. Undead shy away from it."
+  },
+  {
+    "id": "material-pine-logs",
+    "name": "Pine Logs",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "gathering",
+      "woodcutting"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Straight mountain pine. Splits clean into planks."
+  },
+  {
+    "id": "material-pine-pitch",
+    "name": "Pine Pitch",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "gathering",
+      "woodcutting"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Sticky resin scraped from cut pine. Burns hot and seals well."
+  },
+  {
+    "id": "material-ironbark-logs",
+    "name": "Ironbark Logs",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "gathering",
+      "woodcutting"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Dense, dark timber that dulls axes. Worth the effort."
+  },
+  {
+    "id": "material-ashwood-billet",
+    "name": "Ashwood Billet",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "gathering",
+      "woodcutting"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Pale, flexible wood from trees that grow along the ashline."
+  },
+  {
+    "id": "material-stillwood-heartwood",
+    "name": "Stillwood Heartwood",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Advanced Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "gathering",
+      "woodcutting"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Heartwood from trees near the dead lands. The Brainless walk around them, never through."
+  },
+  {
+    "id": "material-embered-heartwood",
+    "name": "Embered Heartwood",
+    "tier": 4,
+    "tierLabel": "Tier 4 – High-End Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4",
+      "gathering",
+      "woodcutting"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Heartwood from a lightning-struck tree that never stopped smouldering inside."
+  },
+  {
+    "id": "material-bitterleaf",
+    "name": "Bitterleaf",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "gathering",
+      "foraging"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A tough, bitter mountain leaf. Steeped, it closes wounds."
+  },
+  {
+    "id": "material-crag-moss",
+    "name": "Crag Moss",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "gathering",
+      "foraging"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Thick, absorbent moss from shaded rock. Packs wounds and stops bleeding."
+  },
+  {
+    "id": "material-hollowcap",
+    "name": "Hollowcap",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "gathering",
+      "foraging"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A pale mushroom that looks like several safe ones. It is not safe."
+  },
+  {
+    "id": "material-graveroot",
+    "name": "Graveroot",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "gathering",
+      "foraging"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A black root that only grows in soil that once held bodies. Undead dislike its smell."
+  },
+  {
+    "id": "material-pale-thistle",
+    "name": "Pale Thistle",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "gathering",
+      "foraging"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A silver-leafed thistle. Its sap soothes skin and dulls cold burns."
+  },
+  {
+    "id": "material-emberleaf",
+    "name": "Emberleaf",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Advanced Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "gathering",
+      "foraging"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Red-veined leaves that grow only near warm springs. Warm to the touch."
+  },
+  {
+    "id": "material-wardensbloom",
+    "name": "Wardensbloom",
+    "tier": 4,
+    "tierLabel": "Tier 4 – High-End Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4",
+      "gathering",
+      "foraging"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A small white flower with an ember-coloured heart. Wardens say it grows where one of theirs fell."
+  },
+  {
+    "id": "material-streamfin",
+    "name": "Streamfin",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "gathering",
+      "fishing"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A small silver fish from snowmelt streams. Mostly rendered for oil."
+  },
+  {
+    "id": "material-mudwhip",
+    "name": "Mudwhip",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "gathering",
+      "fishing"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A slick, whip-thin bottom-feeder. Its skin boils down into strong glue."
+  },
+  {
+    "id": "material-rimefin",
+    "name": "Rimefin",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "gathering",
+      "fishing"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A pale fish that lives under the ice. Its blood resists freezing."
+  },
+  {
+    "id": "material-glassjaw",
+    "name": "Glassjaw",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "gathering",
+      "fishing"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A tarn fish with hard, clear scales that turn blades at an angle."
+  },
+  {
+    "id": "material-tarnback",
+    "name": "Tarnback",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Advanced Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "gathering",
+      "fishing"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A huge, slow fish from the deepest tarns. It can stay down for hours."
+  },
+  {
+    "id": "material-deeplight",
+    "name": "Deeplight",
+    "tier": 4,
+    "tierLabel": "Tier 4 – High-End Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4",
+      "gathering",
+      "fishing"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A fish from the black bottom of the Thornspine tarns. It glows."
+  },
+  {
+    "id": "material-skyfall-slag",
+    "name": "Skyfall Slag",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Advanced Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "gathering",
+      "mining",
+      "meteorite"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Black, glassy slag from the crater rim. Heavier than any rock that size should be."
+  },
+  {
+    "id": "material-star-iron-fragment",
+    "name": "Star-Iron Fragment",
+    "tier": 4,
+    "tierLabel": "Tier 4 – High-End Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4",
+      "gathering",
+      "mining",
+      "meteorite"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A dark, pitted lump of iron from the meteorite. It pushes back faintly against your hand."
+  },
+  {
+    "id": "material-starglass-shard",
+    "name": "Starglass Shard",
+    "tier": 4,
+    "tierLabel": "Tier 4 – High-End Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4",
+      "gathering",
+      "mining",
+      "meteorite"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Clear glass fused by the impact. Light inside it bends the wrong way."
+  },
+  {
+    "id": "material-heart-of-the-fallen-star",
+    "name": "Heart of the Fallen Star",
+    "tier": 5,
+    "tierLabel": "Tier 5 – Master Materials",
+    "rarity": "ascendant",
+    "tags": [
+      "tier-5",
+      "gathering",
+      "mining",
+      "meteorite"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "The dense core of the meteorite. It hums, it is never cold, and nothing quite wants to touch it."
+  },
+  {
+    "id": "material-firestone-grit",
+    "name": "Firestone Grit",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "gathering",
+      "mining",
+      "explosive"
+    ],
+    "source": "VIGIL",
+    "set": "explosives-and-traps",
+    "notes": "Yellow, foul-smelling grit from surface seams. Burns with a blue flame."
+  },
+  {
+    "id": "material-cave-nitre",
+    "name": "Cave Nitre",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "gathering",
+      "mining",
+      "explosive"
+    ],
+    "source": "VIGIL",
+    "set": "explosives-and-traps",
+    "notes": "White crust scraped from deep, dry rock. The heart of any blast powder."
+  },
+  {
+    "id": "material-grave-salt",
+    "name": "Grave Salt",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "refined",
+      "undead"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Grave Silt boiled down to grey crystals. Brainless will not cross a line of it willingly."
+  },
+  {
+    "id": "material-bone-meal",
+    "name": "Bone Meal",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "refined"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Ground bone and tooth. A binding and warding base."
+  },
+  {
+    "id": "material-distilled-breath-black",
+    "name": "Distilled Breath-Black",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "refined",
+      "undead"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Breath-black bile reduced to an ink-dark concentrate."
+  },
+  {
+    "id": "material-iron-ingot",
+    "name": "Iron Ingot",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "refined",
+      "metal"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A bar of smelted iron."
+  },
+  {
+    "id": "material-rimecopper-ingot",
+    "name": "Rimecopper Ingot",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "refined",
+      "metal"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A cold, pale copper bar."
+  },
+  {
+    "id": "material-thornspine-silver-ingot",
+    "name": "Thornspine Silver Ingot",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Advanced Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "refined",
+      "metal",
+      "silver"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Bright silver from the Thornspine veins. Undead flesh burns where it touches."
+  },
+  {
+    "id": "material-cut-emberquartz",
+    "name": "Cut Emberquartz",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Advanced Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "refined"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Emberquartz cut and polished to focus its warmth."
+  },
+  {
+    "id": "material-whetstone-paste",
+    "name": "Whetstone Paste",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "refined"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Slate grit bound in oil. Puts a hard edge on anything."
+  },
+  {
+    "id": "material-wood-planks",
+    "name": "Wood Planks",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "refined",
+      "wood"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Cut and dried planks."
+  },
+  {
+    "id": "material-ironbark-planks",
+    "name": "Ironbark Planks",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "refined",
+      "wood"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Ironbark cut into heavy planks."
+  },
+  {
+    "id": "material-pitch-binder",
+    "name": "Pitch Binder",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "refined"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Pine pitch cooked into a waterproof, flammable binder."
+  },
+  {
+    "id": "material-ashwood-haft",
+    "name": "Ashwood Haft",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "refined",
+      "wood"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "An ashwood billet shaped into a flexible haft or limb."
+  },
+  {
+    "id": "material-bitterleaf-extract",
+    "name": "Bitterleaf Extract",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "refined",
+      "herb"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A strong bitterleaf infusion. The base of most field remedies."
+  },
+  {
+    "id": "material-moss-wadding",
+    "name": "Moss Wadding",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "refined",
+      "herb"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Dried, pressed crag moss for packing wounds."
+  },
+  {
+    "id": "material-hollowcap-toxin",
+    "name": "Hollowcap Toxin",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "refined",
+      "poison"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A clear, odourless toxin from boiled hollowcap."
+  },
+  {
+    "id": "material-graveroot-tincture",
+    "name": "Graveroot Tincture",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "refined",
+      "herb",
+      "undead"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Graveroot steeped in spirit. Smells of turned earth."
+  },
+  {
+    "id": "material-thistle-salve-base",
+    "name": "Thistle Salve Base",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "refined",
+      "herb"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A soothing silver salve made from pale thistle sap."
+  },
+  {
+    "id": "material-emberleaf-oil",
+    "name": "Emberleaf Oil",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Advanced Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "refined",
+      "herb"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A red oil pressed from emberleaf. It warms the skin and burns bright."
+  },
+  {
+    "id": "material-fish-oil",
+    "name": "Fish Oil",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "refined",
+      "fish"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Clear rendered oil. Burns long and clean."
+  },
+  {
+    "id": "material-fish-glue",
+    "name": "Fish Glue",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "refined",
+      "fish"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Strong glue boiled from mudwhip skin."
+  },
+  {
+    "id": "material-glassjaw-scales",
+    "name": "Glassjaw Scales",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "refined",
+      "fish"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Cleaned, hardened glassjaw scales ready for stitching."
+  },
+  {
+    "id": "material-cured-wolf-leather",
+    "name": "Cured Wolf Leather",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "refined",
+      "leather"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Wolf pelt cured into tough, warm leather."
+  },
+  {
+    "id": "material-supple-stag-leather",
+    "name": "Supple Stag Leather",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "refined",
+      "leather"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Soft, strong leather from tanned stag hide."
+  },
+  {
+    "id": "material-cured-winter-fur",
+    "name": "Cured Winter Fur",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "refined",
+      "leather"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Winter pelt cured with the fur on. Very warm."
+  },
+  {
+    "id": "material-tanned-bear-hide",
+    "name": "Tanned Bear Hide",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Advanced Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "refined",
+      "leather"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A whole bear hide tanned thick. Heavy, but turns blades."
+  },
+  {
+    "id": "material-rendered-tallow",
+    "name": "Rendered Tallow",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "refined"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Bear fat rendered clean. Waterproofs, fuels and soothes."
+  },
+  {
+    "id": "material-star-iron-ingot",
+    "name": "Star-Iron Ingot",
+    "tier": 4,
+    "tierLabel": "Tier 4 – High-End Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4",
+      "refined",
+      "metal",
+      "meteorite"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Meteoric iron worked into a bar. Blades made from it hit harder than their weight."
+  },
+  {
+    "id": "material-meteoric-flux",
+    "name": "Meteoric Flux",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Advanced Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "refined",
+      "meteorite"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Ground skyfall slag. A pinch lets star-iron bond with ordinary metal."
+  },
+  {
+    "id": "material-charcoal",
+    "name": "Charcoal",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "refined",
+      "wood",
+      "explosive"
+    ],
+    "source": "VIGIL",
+    "set": "explosives-and-traps",
+    "notes": "Pine burned slow and airless. Fuel, filter and a third of every blast powder."
+  },
+  {
+    "id": "material-blast-powder",
+    "name": "Blast Powder",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "refined",
+      "explosive"
+    ],
+    "source": "VIGIL",
+    "set": "explosives-and-traps",
+    "notes": "Grey-black powder that goes up with a flash and a bang. Keep it dry and far from flame."
+  },
+  {
+    "id": "material-fuse-cord",
+    "name": "Fuse Cord",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "refined",
+      "explosive"
+    ],
+    "source": "VIGIL",
+    "set": "explosives-and-traps",
+    "notes": "Pitch-soaked cord packed with powder. Burns about a foot every few seconds."
   }
 ]

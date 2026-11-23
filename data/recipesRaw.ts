@@ -68,6 +68,8 @@ type BlackspireRecipe = {
   chapter?: string;
   group?: string;
   section?: string;
+  // Recipe set, e.g. "blackspire" or "undying-vigil". Becomes a tag the GM can hide per campaign.
+  set?: string;
 };
 
 type BlackspireRefinement = {
@@ -89,6 +91,7 @@ type BlackspireRefinement = {
   isTerminal?: boolean;
   chapter?: string;
   group?: string;
+  set?: string;
 };
 
 export const rarityColors: Record<Rarity, string> = {
@@ -164,17 +167,31 @@ function recipeOutcomes(outcomes: BlackspireRecipe["outcomes"]): RecipeOutcome[]
   ];
 }
 
+// Reads "1x Output" / "2x Output" style text. The app only adds materials from
+// effects worded "Create Nx Name", so the yield is turned into that form here.
+function refinementYield(text: string | undefined, fallback: number) {
+  const match = text?.match(/(\d+)\s*[x×]/i);
+  return match ? Number(match[1]) : fallback;
+}
+
 function refinementOutcomes(refinement: BlackspireRefinement): RecipeOutcome[] {
+  const output = refinement.outputMaterial;
+  const normalQty = refinementYield(refinement.outcomes.normal, 1);
+  const bonus = refinement.outcomes.superior?.match(/\+(\d+)\s*output/i);
+  const superiorQty = bonus
+    ? normalQty + Number(bonus[1])
+    : refinementYield(refinement.outcomes.superior, normalQty + 1);
+
   return [
     {
       quality: "Superior",
-      description: refinement.outcomes.superior || "Superior refinement result.",
-      effect: [refinement.outcomes.superior, refinement.outcomes.normal].filter(Boolean),
+      description: `Create ${superiorQty}x ${output}.`,
+      effect: [`Create ${superiorQty}x ${output}`],
     },
     {
       quality: "Normal",
-      description: refinement.outcomes.normal || `Create 1x ${refinement.outputMaterial}.`,
-      effect: [refinement.outcomes.normal || `Create 1x ${refinement.outputMaterial}`],
+      description: `Create ${normalQty}x ${output}.`,
+      effect: [`Create ${normalQty}x ${output}`],
     },
     {
       quality: "Flawed",
@@ -192,13 +209,14 @@ const craftingRecipes: Recipe[] = rawRecipes.map((recipe) => ({
   name: recipe.name,
   category: normalizeCategory(recipe.type),
   rarity: rarityFromDc(recipe.dc || 10),
-  tags: [
-    "blackspire",
+  // Deduplicated: the type and group text can produce the same tag twice.
+  tags: [...new Set([
+    recipe.set || "blackspire",
     "crafting",
     normalizeCategory(recipe.type),
     rarityFromDc(recipe.dc || 10),
     ...tagsFrom(recipe.type, recipe.chapter, recipe.group, recipe.section),
-  ],
+  ])],
   description: recipe.outcomes.normal || recipe.outcomes.superior || recipe.name,
   dc: recipe.dc || 10,
   time: recipe.time,
@@ -218,15 +236,15 @@ const refinementRecipes: Recipe[] = rawRefinements
     name: `${refinement.inputMaterial} → ${refinement.outputMaterial}`,
     category: "material-refinement",
     rarity: rarityFromDc(refinement.dc || 10),
-    tags: [
-      "blackspire",
+    tags: [...new Set([
+      refinement.set || "blackspire",
       "refinement",
       "material-refinement",
       rarityFromDc(refinement.dc || 10),
       slugify(refinement.inputTier),
       slugify(refinement.outputTier),
       ...tagsFrom(refinement.chapter, refinement.group),
-    ],
+    ])],
     description: refinement.notes || `Refine ${refinement.inputMaterial} into ${refinement.outputMaterial}.`,
     dc: refinement.dc || 10,
     time: refinement.time,
@@ -242,3 +260,12 @@ const refinementRecipes: Recipe[] = rawRefinements
   }));
 
 export const recipesRaw: Recipe[] = [...craftingRecipes, ...refinementRecipes];
+
+// Every recipe set in the data. The GM panel shows one hide/show toggle per set,
+// so a new set only needs a new "set" value in the JSON.
+export const recipeSetTags: string[] = [
+  ...new Set([
+    ...rawRecipes.map((recipe) => recipe.set || "blackspire"),
+    ...rawRefinements.map((refinement) => refinement.set || "blackspire"),
+  ]),
+];

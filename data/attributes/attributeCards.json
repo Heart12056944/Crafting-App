@@ -333,7 +333,7 @@
     ],
     "rarity": "Uncommon",
     "score": 10,
-    "desc": "You never cut or shave your hair. Your Armor Class, regardless of whether you wear armor or not, always grants at least 40 temporary hit points at the start of each long rest."
+    "desc": "You have never cut or shaved your hair, and somehow it has made you very hard to put down. When you finish a long rest, you gain temporary hit points equal to 5 × your proficiency bonus, armoured or not."
   },
   {
     "id": 7328,
@@ -3236,6 +3236,7 @@
     ],
     "rarity": "Rare",
     "score": 60,
+    "statBonuses": {"STR": 2, "WIS": 1},
     "desc": "Base survivability score: +60. Stat bonuses: +2 STR, +1 WIS (standard). No additional stat modifier — Natural Armour AC 17 and Shell Defence already make Tortles among the most durable creatures in the world."
   },
   {
@@ -3249,6 +3250,7 @@
     ],
     "rarity": "Rare",
     "score": 55,
+    "statBonuses": {"STR": 2, "CON": 1},
     "desc": "Base survivability score: +55. Stat bonuses: +2 STR, +1 CON (standard). No additional stat modifier — Stone's Endurance and Powerful Build already represent exceptional physical resilience."
   },
   {
@@ -3262,6 +3264,8 @@
     ],
     "rarity": "Rare",
     "score": 50,
+    "statBonuses": {"CON": 2},
+    "statChoices": [{"label": "Subrace", "options": [{"label": "Hill Dwarf", "bonuses": {"WIS": 1}}, {"label": "Mountain Dwarf", "bonuses": {"STR": 2}}]}],
     "desc": "Base survivability score: +50. Stat bonuses: +2 CON (standard), plus subrace — Hill Dwarf +1 WIS, Mountain Dwarf +2 STR. No additional stat modifier."
   },
   {
@@ -3275,6 +3279,7 @@
     ],
     "rarity": "Rare",
     "score": 50,
+    "statBonuses": {"CON": 2, "WIS": 1},
     "desc": "Base survivability score: +50. Stat bonuses: +2 CON, +1 WIS (standard). No additional stat modifier — Natural Armour, Hold Breath, and Hunter's Lore reflect a species that has outlasted most of what tried to kill it."
   },
   {
@@ -3288,6 +3293,7 @@
     ],
     "rarity": "Rare",
     "score": 50,
+    "statBonuses": {"STR": 2, "CON": 1},
     "desc": "Base survivability score: +50. Stat bonuses: +2 STR, +1 CON (standard). No additional stat modifier — Relentless Endurance alone justifies the classification."
   },
   {
@@ -3301,6 +3307,7 @@
     ],
     "rarity": "Rare",
     "score": 50,
+    "statBonuses": {"WIS": 2, "STR": 1},
     "desc": "Base survivability score: +50. Stat bonuses: +2 WIS, +1 STR (standard). No additional stat modifier — Powerful Build, Hidden Step, and size make Firbolg exceptionally resilient."
   },
   {
@@ -3314,6 +3321,7 @@
     ],
     "rarity": "Rare",
     "score": 35,
+    "statBonuses": {"STR": 2, "CHA": 2},
     "desc": "Base survivability score: +35. Stat bonuses: +2 STR, +2 CHA (standard +2/+1 with secondary stat boost applied)."
   },
   {
@@ -3327,6 +3335,8 @@
     ],
     "rarity": "Rare",
     "score": 35,
+    "statBonuses": {"CHA": 2},
+    "statChoices": [{"label": "Subrace", "options": [{"label": "Protector", "bonuses": {"WIS": 1}}, {"label": "Scourge", "bonuses": {"CON": 1}}, {"label": "Fallen", "bonuses": {"STR": 1}}]}],
     "desc": "Base survivability score: +35. Stat bonuses: +2 CHA (standard). Subrace adds +1 WIS (Protector), +1 CON (Scourge), or +1 STR (Fallen) as normal — no secondary boost applied to subrace stat."
   },
   {
@@ -3340,6 +3350,8 @@
     ],
     "rarity": "Rare",
     "score": 30,
+    "statBonuses": {"CHA": 2},
+    "statChoices": [{"label": "+2 to one other ability", "pick": 1, "amount": 2, "exclude": ["CHA"]}],
     "desc": "Base survivability score: +30. Stat bonuses: +2 CHA, +2 to one other ability score of your choice (standard +2 CHA, +1 to two others — secondary boost applies to one chosen stat)."
   },
   {
@@ -3353,6 +3365,8 @@
     ],
     "rarity": "Rare",
     "score": 30,
+    "statBonuses": {"STR": 1, "DEX": 1, "CON": 1, "INT": 1, "WIS": 1, "CHA": 1},
+    "statChoices": [{"label": "+1 to three abilities", "pick": 3, "amount": 1, "exclude": []}],
     "desc": "Base survivability score: +30. Stat bonuses: +1 to all six ability scores, plus an additional +1 to any 3 ability scores of your choice."
   },
   {
@@ -3366,6 +3380,7 @@
     ],
     "rarity": "Rare",
     "score": 25,
+    "statBonuses": {"DEX": 2, "CHA": 2},
     "desc": "Base survivability score: +25. Stat bonuses: +2 DEX, +2 CHA (standard +2/+1 with secondary stat boost)."
   },
   {
@@ -3379,6 +3394,8 @@
     ],
     "rarity": "Rare",
     "score": 25,
+    "statBonuses": {"DEX": 2},
+    "statChoices": [{"label": "Subrace", "options": [{"label": "High Elf", "bonuses": {"INT": 2}}, {"label": "Wood Elf", "bonuses": {"WIS": 2}}, {"label": "Drow", "bonuses": {"CHA": 2}}]}],
     "desc": "Base survivability score: +25. Stat bonuses: +2 DEX, plus subrace secondary boosted — High Elf +2 INT, Wood Elf +2 WIS, Drow +2 CHA."
   },
   {
@@ -3392,6 +3409,7 @@
     ],
     "rarity": "Rare",
     "score": 25,
+    "statBonuses": {"CHA": 2, "INT": 2},
     "desc": "Base survivability score: +25. Stat bonuses: +2 CHA, +2 INT (standard +2/+1 with secondary stat boost)."
   },
   {
@@ -3406,6 +3424,7 @@
     ],
     "rarity": "Rare",
     "score": 25,
+    "statBonuses": {"DEX": 2, "INT": 2},
     "desc": "Base survivability score: +25. Stat bonuses: +2 DEX, +2 INT (standard +2/+1 with secondary stat boost)."
   },
   {
@@ -3419,6 +3438,7 @@
     ],
     "rarity": "Rare",
     "score": 15,
+    "statBonuses": {"INT": 3, "CON": 2},
     "desc": "Base survivability score: +15. Stat bonuses: +3 INT, +2 CON (standard +2/+1 with all bonuses increased by 1)."
   },
   {
@@ -3432,6 +3452,7 @@
     ],
     "rarity": "Rare",
     "score": 12,
+    "statBonuses": {"DEX": 3},
     "desc": "Base survivability score: +12. Stat bonuses: +3 DEX (standard +2 with bonus increased by 1)."
   },
   {
@@ -3445,6 +3466,7 @@
     ],
     "rarity": "Rare",
     "score": 12,
+    "statBonuses": {"DEX": 3, "WIS": 2},
     "desc": "Base survivability score: +12. Stat bonuses: +3 DEX, +2 WIS (standard +2/+1 with all bonuses increased by 1)."
   },
   {
@@ -3458,6 +3480,7 @@
     ],
     "rarity": "Rare",
     "score": 5,
+    "statBonuses": {"CON": 3, "STR": 2},
     "desc": "Base survivability score: +5. Stat bonuses: +3 CON, +2 STR (compensatory — Kobold has no standard racial stat bonuses)."
   },
   {
@@ -3705,6 +3728,7 @@
     ],
     "rarity": "Rare",
     "score": 0,
+    "statBonuses": {"STR": 1, "DEX": 1, "CON": 1, "INT": 1, "WIS": 1, "CHA": 1},
     "desc": "+1 to all ability scores. One additional skill proficiency of your choice. One feat of your choice at 1st level."
   },
   {
@@ -3717,6 +3741,8 @@
     ],
     "rarity": "Rare",
     "score": 0,
+    "statBonuses": {"DEX": 2},
+    "statChoices": [{"label": "Subrace", "options": [{"label": "High Elf", "bonuses": {"INT": 1}}, {"label": "Wood Elf", "bonuses": {"WIS": 1}}, {"label": "Drow", "bonuses": {"CHA": 1}}]}],
     "desc": "+2 DEX. Darkvision 60 ft. Keen Senses: proficiency in Perception. Fey Ancestry: advantage vs Charmed, can't be magically put to sleep. Trance: 4 hours for Long Rest. Subrace — High Elf (+1 INT, one wizard cantrip, one language), Wood Elf (+1 WIS, 35 ft speed, Mask of the Wild), Drow (+1 CHA, Superior Darkvision 120 ft, sunlight sensitivity, Drow Magic)."
   },
   {
@@ -3729,6 +3755,8 @@
     ],
     "rarity": "Rare",
     "score": 0,
+    "statBonuses": {"CON": 2},
+    "statChoices": [{"label": "Subrace", "options": [{"label": "Hill", "bonuses": {"WIS": 1}}, {"label": "Mountain", "bonuses": {"STR": 2}}]}],
     "desc": "+2 CON. Speed 25 ft, not reduced by heavy armour. Darkvision 60 ft. Dwarven Resilience: advantage vs poison, resistance to poison damage. Dwarven Combat Training: proficiency with handaxe, battleaxe, light hammer, warhammer. Stonecunning: double proficiency on stonework History checks. Subrace — Hill (+1 WIS, +1 HP/level) or Mountain (+2 STR, light and medium armour proficiency)."
   },
   {
@@ -3741,6 +3769,8 @@
     ],
     "rarity": "Rare",
     "score": 0,
+    "statBonuses": {"DEX": 2},
+    "statChoices": [{"label": "Subrace", "options": [{"label": "Lightfoot", "bonuses": {"CHA": 1}}, {"label": "Stout", "bonuses": {"CON": 1}}]}],
     "desc": "+2 DEX. Speed 25 ft. Lucky: reroll any 1 on attack, ability check, or save. Brave: advantage vs Frightened. Halfling Nimbleness: move through spaces of larger creatures. Subrace — Lightfoot (+1 CHA, hide behind larger creatures) or Stout (+1 CON, advantage vs poison, poison resistance)."
   },
   {
@@ -3753,6 +3783,8 @@
     ],
     "rarity": "Rare",
     "score": 0,
+    "statBonuses": {"INT": 2},
+    "statChoices": [{"label": "Subrace", "options": [{"label": "Rock", "bonuses": {"CON": 1}}, {"label": "Forest", "bonuses": {"DEX": 1}}]}],
     "desc": "+2 INT. Small. Speed 25 ft. Darkvision 60 ft. Gnome Cunning: advantage on INT, WIS, CHA saves vs magic. Subrace — Rock (+1 CON, Artificer's Lore, Tinker) or Forest (+1 DEX, Minor Illusion, Speak with Small Beasts)."
   },
   {
@@ -3765,6 +3797,8 @@
     ],
     "rarity": "Rare",
     "score": 0,
+    "statBonuses": {"CHA": 2},
+    "statChoices": [{"label": "+1 to two other abilities", "pick": 2, "amount": 1, "exclude": ["CHA"]}],
     "desc": "+2 CHA, +1 to two other ability scores of your choice. Darkvision 60 ft. Fey Ancestry: advantage vs Charmed, can't be magically put to sleep. Skill Versatility: proficiency in two skills of your choice."
   },
   {
@@ -3777,6 +3811,7 @@
     ],
     "rarity": "Rare",
     "score": 0,
+    "statBonuses": {"STR": 2, "CON": 1},
     "desc": "+2 STR, +1 CON. Darkvision 60 ft. Menacing: proficiency in Intimidation. Relentless Endurance: once per Long Rest, drop to 1 HP instead of 0. Savage Attacks: on a crit with a melee weapon, roll one additional damage die."
   },
   {
@@ -3789,6 +3824,7 @@
     ],
     "rarity": "Rare",
     "score": 0,
+    "statBonuses": {"CHA": 2, "INT": 1},
     "desc": "+2 CHA, +1 INT. Darkvision 60 ft. Hellish Resistance: Fire resistance. Infernal Legacy: Thaumaturgy cantrip, Hellish Rebuke at L3, Darkness at L5 (once per Long Rest each). CHA spellcasting ability."
   },
   {
@@ -3801,6 +3837,7 @@
     ],
     "rarity": "Rare",
     "score": 0,
+    "statBonuses": {"STR": 2, "CHA": 1},
     "desc": "+2 STR, +1 CHA. Choose draconic ancestry. Breath Weapon: 15 ft cone or 30 ft line, 2d6 damage (scales), DEX or CON save. Damage Resistance: ancestry type."
   },
   {
@@ -3813,6 +3850,8 @@
     ],
     "rarity": "Rare",
     "score": 0,
+    "statBonuses": {"CHA": 2},
+    "statChoices": [{"label": "Subrace", "options": [{"label": "Protector", "bonuses": {"WIS": 1}}, {"label": "Scourge", "bonuses": {"CON": 1}}, {"label": "Fallen", "bonuses": {"STR": 1}}]}],
     "desc": "+2 CHA. Darkvision 60 ft. Celestial Resistance: Necrotic and Radiant resistance. Healing Hands: restore HP equal to level, once per Long Rest. Light cantrip. Subrace — Protector (+1 WIS, Radiant Soul), Scourge (+1 CON, Radiant Consumption), or Fallen (+1 STR, Necrotic Shroud)."
   },
   {
@@ -3825,6 +3864,7 @@
     ],
     "rarity": "Rare",
     "score": 0,
+    "statBonuses": {"DEX": 2, "CHA": 1},
     "desc": "+2 DEX, +1 CHA. Speed 30 ft, climb 20 ft. Darkvision 60 ft. Feline Agility: double speed until end of turn (must move 0 ft next turn to reuse). Cat's Claws: 1d4 slashing unarmed. Cat's Talent: proficiency in Perception and Stealth."
   },
   {
@@ -3849,6 +3889,7 @@
     ],
     "rarity": "Rare",
     "score": 0,
+    "statBonuses": {"CON": 2, "WIS": 1},
     "desc": "+2 CON, +1 WIS. Speed 30 ft, swim 30 ft. Bite: 1d6 piercing unarmed. Cunning Artisan: craft basic weapons from creature materials during Short Rest. Hold Breath: 15 minutes. Hunter's Lore: proficiency in two of Animal Handling, Nature, Perception, Stealth, Survival. Natural Armour: AC 13 + DEX."
   },
   {
@@ -3861,6 +3902,7 @@
     ],
     "rarity": "Rare",
     "score": 0,
+    "statBonuses": {"STR": 2, "WIS": 1},
     "desc": "+2 STR, +1 WIS. Speed 30 ft, swim 30 ft. Claws: 1d4 slashing. Hold Breath: 1 hour. Natural Armour: AC 17, no DEX modifier, can use shield. Shell Defence: withdraw as action for +4 AC, advantage STR/CON saves, disadvantage DEX saves, speed 0, no reactions."
   },
   {
@@ -3873,6 +3915,7 @@
     ],
     "rarity": "Rare",
     "score": 0,
+    "statBonuses": {"STR": 2, "CON": 1},
     "desc": "+2 STR, +1 CON. Speed 30 ft. Natural Athlete: Athletics proficiency. Stone's Endurance: 1d12 + CON damage reduction, once per Short Rest. Powerful Build: one size larger for carrying. Mountain Born: Cold resistance."
   },
   {
@@ -3885,6 +3928,7 @@
     ],
     "rarity": "Rare",
     "score": 0,
+    "statBonuses": {"WIS": 2, "STR": 1},
     "desc": "+2 WIS, +1 STR. Speed 30 ft. Firbolg Magic: Detect Magic and Disguise Self once per Short Rest. Hidden Step: invisible as bonus action once per Short Rest. Powerful Build. Speech of Beast and Leaf."
   },
   {
@@ -3897,6 +3941,7 @@
     ],
     "rarity": "Rare",
     "score": 0,
+    "statBonuses": {"DEX": 2, "WIS": 1},
     "desc": "+2 DEX, +1 WIS. Speed 30 ft. Expert Forgery: advantage duplicating handwriting and crafted objects. Kenku Training: proficiency in two of Acrobatics, Deception, Stealth, Sleight of Hand. Mimicry: perfectly replicate sounds and voices, DC 14 Insight to identify."
   },
   {
@@ -3910,6 +3955,7 @@
     ],
     "rarity": "Rare",
     "score": 0,
+    "statBonuses": {"DEX": 2, "INT": 1},
     "desc": "+2 DEX, +1 INT. Speed 30 ft, Swim 30 ft. Hold Breath: 15 minutes. Ocean Magic: Shape Water cantrip, Ice Knife at L3 (once per Long Rest), Misty Step at L5 (once per Long Rest) — INT spellcasting. Echolocation: sense surroundings within 30 ft (60 ft underwater) even in darkness, unless Deafened."
   },
   {
@@ -5819,5 +5865,245 @@
     "tags": ["Passive", "Lineage", "DM Granted", "Aethros", "Armada"],
     "score": 0,
     "desc": "You have been where others have not. You came back different. Not worse. Different. You gain advantage on saving throws against being Frightened or Charmed by supernatural or divine effects. Once per long rest you may sense whether a location has been the site of a significant supernatural event within the last year — the DM confirms or denies presence only."
+  },
+  {
+    "id": 7240,
+    "name": "Prospector's Eye",
+    "tags": [
+      "Passive",
+      "Crafting — Mining",
+      "Rare"
+    ],
+    "rarity": "Rare",
+    "score": 6,
+    "desc": "Your Mining checks have advantage. You can tell at a glance whether a seam holds anything worth digging for."
+  },
+  {
+    "id": 7241,
+    "name": "Steady Swing",
+    "tags": [
+      "Passive",
+      "Crafting — Mining",
+      "Uncommon"
+    ],
+    "rarity": "Uncommon",
+    "score": 3,
+    "desc": "When mining, the vein you are aiming for counts as half again as wide."
+  },
+  {
+    "id": 7242,
+    "name": "Deep Delver",
+    "tags": [
+      "Passive",
+      "Crafting — Mining",
+      "Rare"
+    ],
+    "rarity": "Rare",
+    "score": 5,
+    "desc": "You get one extra strike on every Mining attempt."
+  },
+  {
+    "id": 7243,
+    "name": "Gem Sense",
+    "tags": [
+      "Passive",
+      "Crafting — Mining",
+      "Rare"
+    ],
+    "rarity": "Rare",
+    "score": 4,
+    "desc": "When a Mining loot roll would give a common-tier result, reroll its quality once and take the better result."
+  },
+  {
+    "id": 7244,
+    "name": "Timber Sense",
+    "tags": [
+      "Passive",
+      "Crafting — Woodcutting",
+      "Rare"
+    ],
+    "rarity": "Rare",
+    "score": 5,
+    "desc": "Your Woodcutting checks have advantage. You can read a tree's grain and know exactly where it will split."
+  },
+  {
+    "id": 7245,
+    "name": "Lumberjack's Rhythm",
+    "tags": [
+      "Passive",
+      "Crafting — Woodcutting",
+      "Uncommon"
+    ],
+    "rarity": "Uncommon",
+    "score": 3,
+    "desc": "When woodcutting, your timing window for each chop is half again as wide."
+  },
+  {
+    "id": 7246,
+    "name": "Heartwood Finder",
+    "tags": [
+      "Passive",
+      "Crafting — Woodcutting",
+      "Rare"
+    ],
+    "rarity": "Rare",
+    "score": 5,
+    "desc": "When you land all five chops cleanly in one Woodcutting attempt, gain one extra loot roll and upgrade one result's quality."
+  },
+  {
+    "id": 7247,
+    "name": "Clean Cuts",
+    "tags": [
+      "Passive",
+      "Crafting — Woodcutting",
+      "Uncommon"
+    ],
+    "rarity": "Uncommon",
+    "score": 2,
+    "desc": "Every common-tier result from your Woodcutting attempts gives 1 extra of that material."
+  },
+  {
+    "id": 7248,
+    "name": "Herbalist's Eye",
+    "tags": [
+      "Passive",
+      "Crafting — Foraging",
+      "Rare"
+    ],
+    "rarity": "Rare",
+    "score": 5,
+    "desc": "Your Foraging checks have advantage, and one herb in every patch is always marked for you."
+  },
+  {
+    "id": 7249,
+    "name": "Lookalike Wise",
+    "tags": [
+      "Passive",
+      "Crafting — Foraging",
+      "Uncommon"
+    ],
+    "rarity": "Uncommon",
+    "score": 3,
+    "desc": "You never mistake hollowcap for a good herb: lookalikes are marked when you forage, and you are immune to hollowcap poison."
+  },
+  {
+    "id": 7250,
+    "name": "Green Thumb",
+    "tags": [
+      "Passive",
+      "Crafting — Foraging",
+      "Rare"
+    ],
+    "rarity": "Rare",
+    "score": 4,
+    "desc": "You get two extra picks on every Foraging attempt."
+  },
+  {
+    "id": 7251,
+    "name": "Bountiful Gatherer",
+    "tags": [
+      "Passive",
+      "Crafting — Foraging",
+      "Uncommon"
+    ],
+    "rarity": "Uncommon",
+    "score": 2,
+    "desc": "Every common-tier result from your Foraging attempts gives 1 extra of that material."
+  },
+  {
+    "id": 7252,
+    "name": "Patient Angler",
+    "tags": [
+      "Passive",
+      "Crafting — Fishing",
+      "Rare"
+    ],
+    "rarity": "Rare",
+    "score": 5,
+    "desc": "Your Fishing checks have advantage. You know where the fish are holding just by watching the water."
+  },
+  {
+    "id": 7253,
+    "name": "Hair-Trigger Reflexes",
+    "tags": [
+      "Passive",
+      "Crafting — Fishing",
+      "Uncommon"
+    ],
+    "rarity": "Uncommon",
+    "score": 3,
+    "desc": "When fishing, your window to hook a bite is twice as long, and you get one extra cast per attempt."
+  },
+  {
+    "id": 7254,
+    "name": "Steady Line",
+    "tags": [
+      "Passive",
+      "Crafting — Fishing",
+      "Rare"
+    ],
+    "rarity": "Rare",
+    "score": 4,
+    "desc": "When reeling, the safe tension zone is half again as wide and fish fight you less."
+  },
+  {
+    "id": 7255,
+    "name": "Big Catch",
+    "tags": [
+      "Passive",
+      "Crafting — Fishing",
+      "Rare"
+    ],
+    "rarity": "Rare",
+    "score": 5,
+    "desc": "Whenever you land a fish, gain one extra loot roll."
+  },
+  {
+    "id": 7256,
+    "name": "Up Before Dawn",
+    "tags": [
+      "Passive",
+      "Crafting — Gathering",
+      "Rare"
+    ],
+    "rarity": "Rare",
+    "score": 4,
+    "desc": "You get one extra gathering attempt per day."
+  },
+  {
+    "id": 7257,
+    "name": "Jack of the Wilds",
+    "tags": [
+      "Passive",
+      "Crafting — Gathering",
+      "Uncommon"
+    ],
+    "rarity": "Uncommon",
+    "score": 3,
+    "desc": "+2 to all gathering checks: Mining, Woodcutting, Foraging and Fishing."
+  },
+  {
+    "id": 7258,
+    "name": "Fortune Favours the Forager",
+    "tags": [
+      "Passive",
+      "Crafting — Gathering",
+      "Rare"
+    ],
+    "rarity": "Rare",
+    "score": 4,
+    "desc": "On gathering checks, a natural 19 counts as a natural 20."
+  },
+  {
+    "id": 7259,
+    "name": "Can't Walk Past It",
+    "tags": [
+      "Passive",
+      "Crafting — Gathering",
+      "Rare"
+    ],
+    "rarity": "Rare",
+    "score": -2,
+    "desc": "Whenever the party passes a gathering spot that is open, you must make at least one gathering attempt there before moving on. In exchange, a natural 1 on a gathering check does not waste the attempt — you play it like any other roll."
   }
 ]

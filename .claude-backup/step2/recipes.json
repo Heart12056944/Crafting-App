@@ -1,0 +1,3638 @@
+[
+  {
+    "id": "recipe-cortical-tissue-potion",
+    "name": "Cortical Tissue Potion",
+    "type": "Potion",
+    "dc": 11,
+    "time": "30 min",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Fractured Cortical Tissue",
+        "quantity": 2
+      },
+      {
+        "name": "Empty Infusion Base",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Fractured Cortical Tissue, 1x Empty Infusion Base",
+    "outcomes": {
+      "superior": "Heal 3d4+2. Next attack you hit deals +1d4 force damage.",
+      "normal": "Heal 2d4.",
+      "flawed": "Heal 1d4. Potion tastes of something unpleasant you can't name."
+    },
+    "chapter": "CHAPTER 3 — FAILED HYBRID RECIPES",
+    "group": "FAILED HYBRID — Crafting Recipes",
+    "section": "Raw & T1 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-binding-fiber-rope",
+    "name": "Binding Fiber Rope",
+    "type": "Utility",
+    "dc": 11,
+    "time": "20 min",
+    "tool": "Weaver (DEX)",
+    "materials": [
+      {
+        "name": "Unstable Binding Fiber",
+        "quantity": 3
+      }
+    ],
+    "materialsText": "3x Unstable Binding Fiber",
+    "outcomes": {
+      "superior": "50ft rope. DC 16 to break. Holds magical creatures — resistance checks at disadv.",
+      "normal": "50ft rope. DC 16 to break.",
+      "flawed": "30ft rope. DC 12 to break."
+    },
+    "chapter": "CHAPTER 3 — FAILED HYBRID RECIPES",
+    "group": "FAILED HYBRID — Crafting Recipes",
+    "section": "Raw & T1 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-binding-fiber-wrap",
+    "name": "Binding Fiber Wrap",
+    "type": "Accessory",
+    "dc": 11,
+    "time": "30 min",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Unstable Binding Fiber",
+        "quantity": 2
+      },
+      {
+        "name": "Leather Cord",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Unstable Binding Fiber, 1x Leather Cord",
+    "outcomes": {
+      "superior": "Adv vs disarm. Once/short rest: auto-succeed one grapple Athletics check.",
+      "normal": "Advantage vs disarm attempts.",
+      "flawed": "No mechanical effect."
+    },
+    "chapter": "CHAPTER 3 — FAILED HYBRID RECIPES",
+    "group": "FAILED HYBRID — Crafting Recipes",
+    "section": "Raw & T1 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-arcane-nodule-poison",
+    "name": "Arcane Nodule Poison",
+    "type": "Poison",
+    "dc": 11,
+    "time": "20 min",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Suppressed Arcane Nodule",
+        "quantity": 1
+      },
+      {
+        "name": "Distilled Alcohol",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Suppressed Arcane Nodule, 1x Distilled Alcohol",
+    "outcomes": {
+      "superior": "Coat weapon: +1d4 force. DC 12 CON or lose Reaction until end of next turn.",
+      "normal": "Coat weapon: +1d4 force damage (1 hit).",
+      "flawed": "No effect. Material wasted."
+    },
+    "chapter": "CHAPTER 3 — FAILED HYBRID RECIPES",
+    "group": "FAILED HYBRID — Crafting Recipes",
+    "section": "Raw & T1 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-suppressed-nodule-amulet",
+    "name": "Suppressed Nodule Amulet",
+    "type": "Accessory",
+    "dc": 12,
+    "time": "45 min",
+    "tool": "Jeweler (DEX)",
+    "materials": [
+      {
+        "name": "Suppressed Arcane Nodule",
+        "quantity": 1
+      },
+      {
+        "name": "Metal Fitting",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Suppressed Arcane Nodule, 1x Metal Fitting",
+    "outcomes": {
+      "superior": "+1 Concentration saves. Once/long rest: auto-succeed one Concentration save.",
+      "normal": "+1 to Concentration saves.",
+      "flawed": "Cold, faintly vibrating amulet. No mechanical bonus."
+    },
+    "chapter": "CHAPTER 3 — FAILED HYBRID RECIPES",
+    "group": "FAILED HYBRID — Crafting Recipes",
+    "section": "Raw & T1 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-fused-core-armour-upgrade",
+    "name": "Fused Core Armour Upgrade",
+    "type": "Upgrade",
+    "dc": 13,
+    "time": "1 hr",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Fused Mutation Core",
+        "quantity": 1
+      },
+      {
+        "name": "Empty Infusion Base",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Fused Mutation Core, 1x Empty Infusion Base",
+    "outcomes": {
+      "superior": "Once/combat when dropping below half HP: resist triggering damage type 2 rounds.",
+      "normal": "Resist triggering damage type for 1 round.",
+      "flawed": "No effect."
+    },
+    "chapter": "CHAPTER 3 — FAILED HYBRID RECIPES",
+    "group": "FAILED HYBRID — Crafting Recipes",
+    "section": "T2 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-memory-fragment-lens",
+    "name": "Memory Fragment Lens",
+    "type": "Focus",
+    "dc": 14,
+    "time": "1 hr",
+    "tool": "Woodcarver (DEX)",
+    "materials": [
+      {
+        "name": "Preserved Memory Fragment",
+        "quantity": 1
+      },
+      {
+        "name": "Carved Focus",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Preserved Memory Fragment, 1x Carved Focus",
+    "outcomes": {
+      "superior": "+1 spell attack. Once/long rest: cast one known 1st-level spell without a slot.",
+      "normal": "+1 spell attack rolls.",
+      "flawed": "+1 spell attack only. The lens whispers faintly when used."
+    },
+    "chapter": "CHAPTER 3 — FAILED HYBRID RECIPES",
+    "group": "FAILED HYBRID — Crafting Recipes",
+    "section": "T2 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-fractured-lattice-shield",
+    "name": "Fractured Lattice Shield",
+    "type": "Armour",
+    "dc": 14,
+    "time": "1 hr",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Fractured Soul Lattice",
+        "quantity": 1
+      },
+      {
+        "name": "Wooden Shield",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Fractured Soul Lattice, 1x Wooden Shield",
+    "outcomes": {
+      "superior": "+2 AC. Once/combat: force attacker to reroll attack, take lower result.",
+      "normal": "+2 AC.",
+      "flawed": "+1 AC only."
+    },
+    "chapter": "CHAPTER 3 — FAILED HYBRID RECIPES",
+    "group": "FAILED HYBRID — Crafting Recipes",
+    "section": "T2 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-resonant-soul-blade-upgrade",
+    "name": "Resonant Soul Blade Upgrade",
+    "type": "Upgrade",
+    "dc": 15,
+    "time": "1 hr",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Resonant Soul Shard",
+        "quantity": 1
+      },
+      {
+        "name": "Reinforced Steel Blade",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Resonant Soul Shard, 1x Reinforced Steel Blade",
+    "outcomes": {
+      "superior": "+1 to hit. +1d6 force. On crit: target hears a scream not from the wielder.",
+      "normal": "+1 to hit. +1d4 force damage.",
+      "flawed": "+1 to hit only."
+    },
+    "chapter": "CHAPTER 3 — FAILED HYBRID RECIPES",
+    "group": "FAILED HYBRID — Crafting Recipes",
+    "section": "T3 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-essence-crystal-focus",
+    "name": "Essence Crystal Focus",
+    "type": "Focus",
+    "dc": 15,
+    "time": "1.5 hr",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Shattered Essence Crystal",
+        "quantity": 1
+      },
+      {
+        "name": "Carved Focus",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Shattered Essence Crystal, 1x Carved Focus",
+    "outcomes": {
+      "superior": "+1 spell attack. +1 spell save DC. 1st-level spells need no material components.",
+      "normal": "+1 spell attack. +1 spell save DC.",
+      "flawed": "+1 spell attack only."
+    },
+    "chapter": "CHAPTER 3 — FAILED HYBRID RECIPES",
+    "group": "FAILED HYBRID — Crafting Recipes",
+    "section": "T3 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-pack-hunter-cloak",
+    "name": "Pack Hunter Cloak",
+    "type": "Armour",
+    "dc": 12,
+    "time": "45 min",
+    "tool": "Weaver (DEX)",
+    "materials": [
+      {
+        "name": "Coarse Hound Hide",
+        "quantity": 1
+      },
+      {
+        "name": "Cloth",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Coarse Hound Hide, 1x Cloth",
+    "outcomes": {
+      "superior": "+2 Stealth. Allies within 10ft gain adv on Perception checks.",
+      "normal": "+2 Stealth.",
+      "flawed": "+1 Stealth only."
+    },
+    "chapter": "CHAPTER 4 — BLUE DRAGON HYBRID ORIG RECIPES",
+    "group": "DRAGONHOUND — ORIG Recipes",
+    "section": "Raw & T1 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-hound-sprint-potion",
+    "name": "Hound Sprint Potion",
+    "type": "Potion",
+    "dc": 11,
+    "time": "30 min",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Tensile Hound Sinew",
+        "quantity": 1
+      },
+      {
+        "name": "Empty Infusion Base",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Tensile Hound Sinew, 1x Empty Infusion Base",
+    "outcomes": {
+      "superior": "Drink: +20ft movement, ignore difficult terrain for 1 minute.",
+      "normal": "Drink: +10ft movement for 1 minute.",
+      "flawed": "Drink: +5ft movement until end of next turn."
+    },
+    "chapter": "CHAPTER 4 — BLUE DRAGON HYBRID ORIG RECIPES",
+    "group": "DRAGONHOUND — ORIG Recipes",
+    "section": "Raw & T1 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-hound-sinew-bow",
+    "name": "Hound Sinew Bow",
+    "type": "Weapon",
+    "dc": 12,
+    "time": "1 hr",
+    "tool": "Tinker (INT)",
+    "materials": [
+      {
+        "name": "Tensile Hound Sinew",
+        "quantity": 1
+      },
+      {
+        "name": "Wood Planks",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Tensile Hound Sinew, 1x Wood Planks",
+    "outcomes": {
+      "superior": "1d8 piercing. +1 to hit. Ignore long-range disadvantage.",
+      "normal": "1d8 piercing. +1 to hit.",
+      "flawed": "1d8 piercing. -1 to hit at long range."
+    },
+    "chapter": "CHAPTER 4 — BLUE DRAGON HYBRID ORIG RECIPES",
+    "group": "DRAGONHOUND — ORIG Recipes",
+    "section": "Raw & T1 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-hound-fang-dagger",
+    "name": "Hound Fang Dagger",
+    "type": "Weapon",
+    "dc": 13,
+    "time": "1 hr",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Reinforced Hound Fang",
+        "quantity": 1
+      },
+      {
+        "name": "Metal Fitting",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Reinforced Hound Fang, 1x Metal Fitting",
+    "outcomes": {
+      "superior": "1d6 piercing (finesse). +1 to hit. +1d4 on attacks after charging 20ft.",
+      "normal": "1d6 piercing (finesse). +1 to hit.",
+      "flawed": "1d6 piercing. -1 to hit."
+    },
+    "chapter": "CHAPTER 4 — BLUE DRAGON HYBRID ORIG RECIPES",
+    "group": "DRAGONHOUND — ORIG Recipes",
+    "section": "Raw & T1 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-hound-hide-armour",
+    "name": "Hound Hide Armour",
+    "type": "Armour",
+    "dc": 12,
+    "time": "1 hr",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Processed Hound Hide",
+        "quantity": 2
+      },
+      {
+        "name": "Metal Fitting",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Processed Hound Hide, 1x Metal Fitting",
+    "outcomes": {
+      "superior": "AC 13+DEX. Adv saves vs knock prone. +5ft movement.",
+      "normal": "AC 12+DEX. Adv saves vs knock prone.",
+      "flawed": "AC 11+DEX. No bonus."
+    },
+    "chapter": "CHAPTER 4 — BLUE DRAGON HYBRID ORIG RECIPES",
+    "group": "DRAGONHOUND — ORIG Recipes",
+    "section": "T2 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-fang-blade-core-dagger",
+    "name": "Fang Blade Core Dagger",
+    "type": "Weapon",
+    "dc": 13,
+    "time": "1 hr",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Hound Fang Blade Core",
+        "quantity": 1
+      },
+      {
+        "name": "Metal Fitting",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Hound Fang Blade Core, 1x Metal Fitting",
+    "outcomes": {
+      "superior": "1d6 piercing (finesse). +1 to hit. +1d4 piercing on charge attacks (20ft move).",
+      "normal": "1d6 piercing (finesse). +1 to hit.",
+      "flawed": "1d6 piercing. -1 to hit."
+    },
+    "chapter": "CHAPTER 4 — BLUE DRAGON HYBRID ORIG RECIPES",
+    "group": "DRAGONHOUND — ORIG Recipes",
+    "section": "T2 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-sprint-core-boots",
+    "name": "Sprint Core Boots",
+    "type": "Accessory",
+    "dc": 14,
+    "time": "1 hr",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Apex Hound Sprint Core",
+        "quantity": 1
+      },
+      {
+        "name": "Coarse Hound Hide",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Apex Hound Sprint Core, 1x Coarse Hound Hide",
+    "outcomes": {
+      "superior": "+10ft movement. Once/combat: move full speed as bonus action (no OA).",
+      "normal": "+10ft movement.",
+      "flawed": "+5ft movement only."
+    },
+    "chapter": "CHAPTER 4 — BLUE DRAGON HYBRID ORIG RECIPES",
+    "group": "DRAGONHOUND — ORIG Recipes",
+    "section": "T2 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-apex-fang-greatsword",
+    "name": "Apex Fang Greatsword",
+    "type": "Weapon",
+    "dc": 16,
+    "time": "2 hr",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Apex Hound Fang Matrix",
+        "quantity": 1
+      },
+      {
+        "name": "Steel Blade",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Apex Hound Fang Matrix, 1x Steel Blade",
+    "outcomes": {
+      "superior": "2d6 slashing. +1 to hit. +1d6 piercing damage once/turn.",
+      "normal": "2d6 slashing. +1 to hit.",
+      "flawed": "2d6 slashing. No bonus."
+    },
+    "chapter": "CHAPTER 4 — BLUE DRAGON HYBRID ORIG RECIPES",
+    "group": "DRAGONHOUND — ORIG Recipes",
+    "section": "T3 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-storm-fused-sinew-belt",
+    "name": "Storm-Fused Sinew Belt",
+    "type": "Accessory",
+    "dc": 15,
+    "time": "1 hr",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Storm-Fused Hound Sinew",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Storm-Fused Hound Sinew",
+    "outcomes": {
+      "superior": "+1d6 lightning on melee attacks. +5ft movement when you deal lightning damage.",
+      "normal": "+1d4 lightning on melee attacks.",
+      "flawed": "+1 lightning on melee (1 attack only)."
+    },
+    "chapter": "CHAPTER 4 — BLUE DRAGON HYBRID ORIG RECIPES",
+    "group": "DRAGONHOUND — ORIG Recipes",
+    "section": "FUSED Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-feather-layer-cloak",
+    "name": "Feather Layer Cloak",
+    "type": "Armour",
+    "dc": 11,
+    "time": "30 min",
+    "tool": "Weaver (DEX)",
+    "materials": [
+      {
+        "name": "Processed Feather Layer",
+        "quantity": 2
+      },
+      {
+        "name": "Cloth",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Processed Feather Layer, 1x Cloth",
+    "outcomes": {
+      "superior": "+2 Stealth. +5ft movement. Static discharge — melee attacker takes 1 lightning.",
+      "normal": "+2 Stealth. +5ft movement.",
+      "flawed": "No bonus."
+    },
+    "chapter": "CHAPTER 4 — BLUE DRAGON HYBRID ORIG RECIPES",
+    "group": "SPARKWING STALKER — ORIG Recipes",
+    "section": "Raw & T1 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-raptor-sight-helm",
+    "name": "Raptor Sight Helm",
+    "type": "Accessory",
+    "dc": 13,
+    "time": "45 min",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Sharpened Raptor Talon",
+        "quantity": 1
+      },
+      {
+        "name": "Reinforced Wing Strut",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Sharpened Raptor Talon, 1x Reinforced Wing Strut",
+    "outcomes": {
+      "superior": "Adv Perception. 60ft darkvision. +1 initiative.",
+      "normal": "Adv Perception. 60ft darkvision.",
+      "flawed": "Adv Perception only."
+    },
+    "chapter": "CHAPTER 4 — BLUE DRAGON HYBRID ORIG RECIPES",
+    "group": "SPARKWING STALKER — ORIG Recipes",
+    "section": "Raw & T1 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-wing-frame-shortbow",
+    "name": "Wing Frame Shortbow",
+    "type": "Weapon",
+    "dc": 13,
+    "time": "1 hr",
+    "tool": "Tinker (INT)",
+    "materials": [
+      {
+        "name": "Reinforced Wing Strut",
+        "quantity": 1
+      },
+      {
+        "name": "Raptor Feather Cluster",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Reinforced Wing Strut, 1x Raptor Feather Cluster",
+    "outcomes": {
+      "superior": "1d6 piercing. +1 to hit. +1d4 lightning on dive attacks (move 20ft first).",
+      "normal": "1d6 piercing. +1 to hit.",
+      "flawed": "1d6 piercing. No bonus."
+    },
+    "chapter": "CHAPTER 4 — BLUE DRAGON HYBRID ORIG RECIPES",
+    "group": "SPARKWING STALKER — ORIG Recipes",
+    "section": "T1-T2 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-hollow-bone-light-armour",
+    "name": "Hollow Bone Light Armour",
+    "type": "Armour",
+    "dc": 13,
+    "time": "1 hr",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Lightweight Wing Frame",
+        "quantity": 2
+      },
+      {
+        "name": "Processed Feather Layer",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Lightweight Wing Frame, 1x Processed Feather Layer",
+    "outcomes": {
+      "superior": "AC 13+DEX. Attackers from below have disadv. +5ft movement.",
+      "normal": "AC 12+DEX.",
+      "flawed": "AC 11+DEX. Armour is fragile — breaks on a crit against the wearer."
+    },
+    "chapter": "CHAPTER 4 — BLUE DRAGON HYBRID ORIG RECIPES",
+    "group": "SPARKWING STALKER — ORIG Recipes",
+    "section": "T1-T2 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-apex-talon-gauntlets",
+    "name": "Apex Talon Gauntlets",
+    "type": "Accessory",
+    "dc": 15,
+    "time": "1.5 hr",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Apex Talon Core",
+        "quantity": 1
+      },
+      {
+        "name": "Metal Fitting",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Apex Talon Core, 1x Metal Fitting",
+    "outcomes": {
+      "superior": "Unarmed: 1d6 slash+1d6 lightning. +1 to hit. Talon attacks can pierce shields.",
+      "normal": "Unarmed: 1d6 slashing. +1 to hit.",
+      "flawed": "Unarmed: 1d4 slashing."
+    },
+    "chapter": "CHAPTER 4 — BLUE DRAGON HYBRID ORIG RECIPES",
+    "group": "SPARKWING STALKER — ORIG Recipes",
+    "section": "T2-T3 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-dive-strike-bracer-upgrade",
+    "name": "Dive Strike Bracer Upgrade",
+    "type": "Upgrade",
+    "dc": 15,
+    "time": "1 hr",
+    "tool": "Smith/Tinker",
+    "materials": [
+      {
+        "name": "Apex Wing Frame",
+        "quantity": 1
+      },
+      {
+        "name": "Charged Tendon Strips",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Apex Wing Frame, 1x Charged Tendon Strips",
+    "outcomes": {
+      "superior": "Weapon upgrade. Charge 20ft before attacking: +2d6 lightning on that hit.",
+      "normal": "+1d6 lightning on 20ft charge attacks.",
+      "flawed": "+1d4 lightning on charge attacks."
+    },
+    "chapter": "CHAPTER 4 — BLUE DRAGON HYBRID ORIG RECIPES",
+    "group": "SPARKWING STALKER — ORIG Recipes",
+    "section": "T2-T3 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-arc-feather-cloak",
+    "name": "Arc Feather Cloak",
+    "type": "Armour",
+    "dc": 16,
+    "time": "1.5 hr",
+    "tool": "Weaver (DEX)",
+    "materials": [
+      {
+        "name": "Arc-Feathered Wing Membrane",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Arc-Feathered Wing Membrane",
+    "outcomes": {
+      "superior": "AC 13+DEX. Flying creatures disadv attacking you. +2 Stealth while airborne.",
+      "normal": "AC 12+DEX. +2 Stealth while airborne.",
+      "flawed": "AC 11+DEX. No bonus."
+    },
+    "chapter": "CHAPTER 4 — BLUE DRAGON HYBRID ORIG RECIPES",
+    "group": "SPARKWING STALKER — ORIG Recipes",
+    "section": "FUSED Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-mana-sense-hood",
+    "name": "Mana Sense Hood",
+    "type": "Armour",
+    "dc": 13,
+    "time": "45 min",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Mana Sense Cluster",
+        "quantity": 1
+      },
+      {
+        "name": "Cloth",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Mana Sense Cluster, 1x Cloth",
+    "outcomes": {
+      "superior": "Detect spellcasters and magic items within 120ft (no LOS required). Adv Perception vs magic.",
+      "normal": "Detect spellcasters within 60ft, no LOS.",
+      "flawed": "Detect spellcasters within 30ft only."
+    },
+    "chapter": "CHAPTER 4 — BLUE DRAGON HYBRID ORIG RECIPES",
+    "group": "ARCANE DEVOURER — ORIG Recipes",
+    "section": "T1 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-arcane-sense-gauntlets",
+    "name": "Arcane Sense Gauntlets",
+    "type": "Accessory",
+    "dc": 14,
+    "time": "1 hr",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Arcane Sense Node",
+        "quantity": 1
+      },
+      {
+        "name": "Metal Fitting",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Arcane Sense Node, 1x Metal Fitting",
+    "outcomes": {
+      "superior": "Adv Arcana checks. Touch to identify magic properties without casting Identify.",
+      "normal": "Adv on Arcana checks.",
+      "flawed": "No bonus."
+    },
+    "chapter": "CHAPTER 4 — BLUE DRAGON HYBRID ORIG RECIPES",
+    "group": "ARCANE DEVOURER — ORIG Recipes",
+    "section": "T1 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-absorption-membrane-vest",
+    "name": "Absorption Membrane Vest",
+    "type": "Armour",
+    "dc": 14,
+    "time": "1 hr",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Absorption Membrane Layer",
+        "quantity": 2
+      },
+      {
+        "name": "Leather Cord",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Absorption Membrane Layer, 1x Leather Cord",
+    "outcomes": {
+      "superior": "AC 12+DEX. Resistance to force. Once/combat: absorb a 1st-level spell (no effect).",
+      "normal": "AC 12+DEX. Resistance to force damage.",
+      "flawed": "AC 11+DEX. No resistance."
+    },
+    "chapter": "CHAPTER 4 — BLUE DRAGON HYBRID ORIG RECIPES",
+    "group": "ARCANE DEVOURER — ORIG Recipes",
+    "section": "T2-T3 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-mana-predator-helm",
+    "name": "Mana Predator Helm",
+    "type": "Accessory",
+    "dc": 15,
+    "time": "1 hr",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Mana Predator Neural Core",
+        "quantity": 1
+      },
+      {
+        "name": "Reinforced Drake Scale",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Mana Predator Neural Core, 1x Reinforced Drake Scale",
+    "outcomes": {
+      "superior": "+2 initiative. Adv Perception. Know spellcasters/magic items within 120ft (1 action).",
+      "normal": "+2 initiative. Adv Perception.",
+      "flawed": "+1 initiative only."
+    },
+    "chapter": "CHAPTER 4 — BLUE DRAGON HYBRID ORIG RECIPES",
+    "group": "ARCANE DEVOURER — ORIG Recipes",
+    "section": "T2-T3 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-spell-eater-blade-upgrade",
+    "name": "Spell-Eater Blade Upgrade",
+    "type": "Upgrade",
+    "dc": 16,
+    "time": "1.5 hr",
+    "tool": "Smith/Alchemist",
+    "materials": [
+      {
+        "name": "Mana Void Core",
+        "quantity": 1
+      },
+      {
+        "name": "Reinforced Steel Blade",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Mana Void Core, 1x Reinforced Steel Blade",
+    "outcomes": {
+      "superior": "Weapon upgrade. Vs concentrating targets: +1d8 force, target has disadv Conc. save.",
+      "normal": "+1d6 force vs concentrating targets.",
+      "flawed": "+1d4 force vs concentrating targets."
+    },
+    "chapter": "CHAPTER 4 — BLUE DRAGON HYBRID ORIG RECIPES",
+    "group": "ARCANE DEVOURER — ORIG Recipes",
+    "section": "T2-T3 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-apex-absorption-breastplate",
+    "name": "Apex Absorption Breastplate",
+    "type": "Armour",
+    "dc": 17,
+    "time": "2 hr",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Apex Absorption Membrane",
+        "quantity": 1
+      },
+      {
+        "name": "Large Reinforced Drake Scale",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Apex Absorption Membrane, 1x Large Reinforced Drake Scale",
+    "outcomes": {
+      "superior": "AC 16. Resistance to force. Once/round: reduce spell damage by 1d10+3 (reaction).",
+      "normal": "AC 16. Resistance to force damage.",
+      "flawed": "AC 15. No resistance."
+    },
+    "chapter": "CHAPTER 4 — BLUE DRAGON HYBRID ORIG RECIPES",
+    "group": "ARCANE DEVOURER — ORIG Recipes",
+    "section": "T2-T3 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-spell-fused-scale-armour",
+    "name": "Spell-Fused Scale Armour",
+    "type": "Armour",
+    "dc": 18,
+    "time": "2 hr",
+    "tool": "Smith/Alchemist",
+    "materials": [
+      {
+        "name": "Spell-Fused Scale Matrix",
+        "quantity": 1
+      },
+      {
+        "name": "Reinforced Drake Scale",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Spell-Fused Scale Matrix, 1x Reinforced Drake Scale",
+    "outcomes": {
+      "superior": "AC 17. Resist force+lightning. Once/combat: absorb a spell 3rd level or lower.",
+      "normal": "AC 16. Resistance to force and lightning.",
+      "flawed": "AC 15. No resistance."
+    },
+    "chapter": "CHAPTER 4 — BLUE DRAGON HYBRID ORIG RECIPES",
+    "group": "ARCANE DEVOURER — ORIG Recipes",
+    "section": "FUSED Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-camouflage-skin-wrap",
+    "name": "Camouflage Skin Wrap",
+    "type": "Armour",
+    "dc": 12,
+    "time": "30 min",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Predator Skin Layer",
+        "quantity": 1
+      },
+      {
+        "name": "Leather Cord",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Predator Skin Layer, 1x Leather Cord",
+    "outcomes": {
+      "superior": "While stationary: adv Stealth. Once/combat: invisible until start of next turn.",
+      "normal": "While stationary: +2 Stealth.",
+      "flawed": "+2 Stealth only (no movement restriction)."
+    },
+    "chapter": "CHAPTER 5 — GREEN DRAGON HYBRID ORIG RECIPES",
+    "group": "VENOMFANG STALKER — ORIG Recipes",
+    "section": "T1 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-ambush-muscle-belt",
+    "name": "Ambush Muscle Belt",
+    "type": "Accessory",
+    "dc": 13,
+    "time": "45 min",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Tensile Ambush Sinew",
+        "quantity": 1
+      },
+      {
+        "name": "Leather Cord",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Tensile Ambush Sinew, 1x Leather Cord",
+    "outcomes": {
+      "superior": "Once/turn: +1d6 poison damage on first attack after moving 20ft toward target.",
+      "normal": "Once/combat: +1d6 poison on first attack after 20ft move.",
+      "flawed": "+1d4 poison, no movement requirement."
+    },
+    "chapter": "CHAPTER 5 — GREEN DRAGON HYBRID ORIG RECIPES",
+    "group": "VENOMFANG STALKER — ORIG Recipes",
+    "section": "T1 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-camouflage-core-armour",
+    "name": "Camouflage Core Armour",
+    "type": "Armour",
+    "dc": 14,
+    "time": "1 hr",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Camouflage Skin Core",
+        "quantity": 1
+      },
+      {
+        "name": "Thin Chitin Plate",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Camouflage Skin Core, 1x Thin Chitin Plate",
+    "outcomes": {
+      "superior": "AC 12+DEX. +2 Stealth. Adv Stealth checks while stationary.",
+      "normal": "AC 12+DEX. +2 Stealth.",
+      "flawed": "AC 11+DEX. No Stealth bonus."
+    },
+    "chapter": "CHAPTER 5 — GREEN DRAGON HYBRID ORIG RECIPES",
+    "group": "VENOMFANG STALKER — ORIG Recipes",
+    "section": "T2 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-instinct-blade",
+    "name": "Instinct Blade",
+    "type": "Weapon",
+    "dc": 14,
+    "time": "1 hr",
+    "tool": "Smith (DEX)",
+    "materials": [
+      {
+        "name": "Predator Instinct Core",
+        "quantity": 1
+      },
+      {
+        "name": "Spider Fang",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Predator Instinct Core, 1x Spider Fang",
+    "outcomes": {
+      "superior": "1d6 piercing (finesse). +1d6 poison. +1 to hit vs unaware or surprised targets.",
+      "normal": "1d6 piercing. +1d4 poison.",
+      "flawed": "1d6 piercing. No bonus."
+    },
+    "chapter": "CHAPTER 5 — GREEN DRAGON HYBRID ORIG RECIPES",
+    "group": "VENOMFANG STALKER — ORIG Recipes",
+    "section": "T2 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-active-camo-cloak",
+    "name": "Active Camo Cloak",
+    "type": "Armour",
+    "dc": 15,
+    "time": "1 hr",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Active Camouflage Organ",
+        "quantity": 1
+      },
+      {
+        "name": "Cloth",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Active Camouflage Organ, 1x Cloth",
+    "outcomes": {
+      "superior": "Adv Stealth. Once/combat: become invisible for 1 minute (ends if you attack).",
+      "normal": "Adv Stealth. Once/long rest: invisible for 1 round.",
+      "flawed": "+2 Stealth only."
+    },
+    "chapter": "CHAPTER 5 — GREEN DRAGON HYBRID ORIG RECIPES",
+    "group": "VENOMFANG STALKER — ORIG Recipes",
+    "section": "T2 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-venom-laced-chitin-dagger",
+    "name": "Venom-Laced Chitin Dagger",
+    "type": "Weapon",
+    "dc": 13,
+    "time": "45 min",
+    "tool": "Smith (DEX)",
+    "materials": [
+      {
+        "name": "Venom-Laced Chitin Shard",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Venom-Laced Chitin Shard",
+    "outcomes": {
+      "superior": "1d4 piercing (finesse). +1d6 poison. DC 13 CON or Poisoned until end of next turn.",
+      "normal": "1d4 piercing. +1d4 poison.",
+      "flawed": "1d4 piercing. No bonus."
+    },
+    "chapter": "CHAPTER 5 — GREEN DRAGON HYBRID ORIG RECIPES",
+    "group": "VENOMFANG STALKER — ORIG Recipes",
+    "section": "FUSED Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-processed-membrane-cloak",
+    "name": "Processed Membrane Cloak",
+    "type": "Armour",
+    "dc": 13,
+    "time": "1 hr",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Processed Wing Membrane",
+        "quantity": 1
+      },
+      {
+        "name": "Cloth",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Processed Wing Membrane, 1x Cloth",
+    "outcomes": {
+      "superior": "AC 12+DEX. Resistance to poison. Adv Stealth in fog or obscured areas.",
+      "normal": "AC 12+DEX. Resistance to poison damage.",
+      "flawed": "AC 11+DEX. No resistance."
+    },
+    "chapter": "CHAPTER 5 — GREEN DRAGON HYBRID ORIG RECIPES",
+    "group": "MIREWING HUNTER — ORIG Recipes",
+    "section": "T1-T2 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-corrosive-blood-flask",
+    "name": "Corrosive Blood Flask",
+    "type": "Throwable",
+    "dc": 12,
+    "time": "20 min",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Corrosive Blood Vial",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Corrosive Blood Vial",
+    "outcomes": {
+      "superior": "Thrown 30ft. Target: 2d6 acid. 5ft splash: difficult terrain for 1 round.",
+      "normal": "Thrown 30ft. Target: 1d6 acid.",
+      "flawed": "Target: 1d4 acid. No splash."
+    },
+    "chapter": "CHAPTER 5 — GREEN DRAGON HYBRID ORIG RECIPES",
+    "group": "MIREWING HUNTER — ORIG Recipes",
+    "section": "T1-T2 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-toxic-bile-grenade",
+    "name": "Toxic Bile Grenade",
+    "type": "Throwable",
+    "dc": 14,
+    "time": "30 min",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Toxic Bile Gland",
+        "quantity": 1
+      },
+      {
+        "name": "Empty Infusion Base",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Toxic Bile Gland, 1x Empty Infusion Base",
+    "outcomes": {
+      "superior": "Thrown 30ft. 15ft radius. DC 14 CON — 3d6 poison, Poisoned 1 round.",
+      "normal": "15ft radius. 2d6 poison, DC 13 CON.",
+      "flawed": "Single target. 1d6 poison. No condition."
+    },
+    "chapter": "CHAPTER 5 — GREEN DRAGON HYBRID ORIG RECIPES",
+    "group": "MIREWING HUNTER — ORIG Recipes",
+    "section": "T1-T2 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-acid-blood-weapon-coat",
+    "name": "Acid Blood Weapon Coat",
+    "type": "Poison",
+    "dc": 15,
+    "time": "45 min",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Acid Blood Reservoir",
+        "quantity": 1
+      },
+      {
+        "name": "Distilled Alcohol",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Acid Blood Reservoir, 1x Distilled Alcohol",
+    "outcomes": {
+      "superior": "3 charges. Each hit: +1d6 acid, -1 AC to target (max -3, resets on long rest).",
+      "normal": "3 charges. Each hit: +1d4 acid.",
+      "flawed": "+1d4 acid on 1 hit only."
+    },
+    "chapter": "CHAPTER 5 — GREEN DRAGON HYBRID ORIG RECIPES",
+    "group": "MIREWING HUNTER — ORIG Recipes",
+    "section": "T3 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-wing-predator-core-ring",
+    "name": "Wing Predator Core Ring",
+    "type": "Accessory",
+    "dc": 15,
+    "time": "1 hr",
+    "tool": "Jeweler (DEX)",
+    "materials": [
+      {
+        "name": "Apex Wing Predator Core",
+        "quantity": 1
+      },
+      {
+        "name": "Metal Fitting",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Apex Wing Predator Core, 1x Metal Fitting",
+    "outcomes": {
+      "superior": "Adv checks to detect ambushes. +1 initiative. Adv on saves vs being surprised.",
+      "normal": "Adv vs surprised. +1 initiative.",
+      "flawed": "+1 initiative only."
+    },
+    "chapter": "CHAPTER 5 — GREEN DRAGON HYBRID ORIG RECIPES",
+    "group": "MIREWING HUNTER — ORIG Recipes",
+    "section": "T3 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-toxic-wing-membrane-armour",
+    "name": "Toxic Wing Membrane Armour",
+    "type": "Armour",
+    "dc": 16,
+    "time": "1.5 hr",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Toxic-Winged Membrane",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Toxic-Winged Membrane",
+    "outcomes": {
+      "superior": "AC 13+DEX. Resistance to poison. Melee attackers take 1d6 poison on hit.",
+      "normal": "AC 13+DEX. Resistance to poison.",
+      "flawed": "AC 12+DEX. No resistance."
+    },
+    "chapter": "CHAPTER 5 — GREEN DRAGON HYBRID ORIG RECIPES",
+    "group": "MIREWING HUNTER — ORIG Recipes",
+    "section": "FUSED Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-plague-nodule-belt",
+    "name": "Plague Nodule Belt",
+    "type": "Accessory",
+    "dc": 15,
+    "time": "1 hr",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Plague Essence Nodule",
+        "quantity": 1
+      },
+      {
+        "name": "Leather Cord",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Plague Essence Nodule, 1x Leather Cord",
+    "outcomes": {
+      "superior": "Passive 5ft aura: creatures starting turn within take 1d6 poison. DC 14 CON half.",
+      "normal": "Passive 5ft aura: 1d4 poison, no save.",
+      "flawed": "No aura. Once/combat: 1d4 poison on touch."
+    },
+    "chapter": "CHAPTER 5 — GREEN DRAGON HYBRID ORIG RECIPES",
+    "group": "PLAGUE MAW RAVAGER — ORIG Recipes",
+    "section": "T2 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-marrow-extract-poison",
+    "name": "Marrow Extract Poison",
+    "type": "Poison",
+    "dc": 13,
+    "time": "30 min",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Corrosive Marrow Extract",
+        "quantity": 1
+      },
+      {
+        "name": "Distilled Alcohol",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Corrosive Marrow Extract, 1x Distilled Alcohol",
+    "outcomes": {
+      "superior": "Coat weapon: +1d6 acid. DC 13 STR or -2 AC (max -4, resets on long rest).",
+      "normal": "Coat weapon: +1d4 acid (3 hits).",
+      "flawed": "+1d4 acid on 1 hit only."
+    },
+    "chapter": "CHAPTER 5 — GREEN DRAGON HYBRID ORIG RECIPES",
+    "group": "PLAGUE MAW RAVAGER — ORIG Recipes",
+    "section": "T2 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-contamination-hide-armour",
+    "name": "Contamination Hide Armour",
+    "type": "Armour",
+    "dc": 14,
+    "time": "1.5 hr",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Contamination Hide",
+        "quantity": 2
+      },
+      {
+        "name": "Metal Fitting",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Contamination Hide, 1x Metal Fitting",
+    "outcomes": {
+      "superior": "AC 14. Adv vs Poisoned condition. Melee attackers: DC 12 CON or Poisoned 1 rnd.",
+      "normal": "AC 14. Adv vs Poisoned condition.",
+      "flawed": "AC 13. No bonus."
+    },
+    "chapter": "CHAPTER 5 — GREEN DRAGON HYBRID ORIG RECIPES",
+    "group": "PLAGUE MAW RAVAGER — ORIG Recipes",
+    "section": "T2 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-plague-ward-heavy-armour",
+    "name": "Plague Ward Heavy Armour",
+    "type": "Armour",
+    "dc": 15,
+    "time": "1.5 hr",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Plague Ward Hide",
+        "quantity": 2
+      },
+      {
+        "name": "Metal Fitting",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Plague Ward Hide, 1x Metal Fitting",
+    "outcomes": {
+      "superior": "AC 15. Immunity to Poisoned condition. Melee attackers take 1d4 poison on hit.",
+      "normal": "AC 15. Immunity to Poisoned.",
+      "flawed": "AC 14. Advantage vs Poisoned only."
+    },
+    "chapter": "CHAPTER 5 — GREEN DRAGON HYBRID ORIG RECIPES",
+    "group": "PLAGUE MAW RAVAGER — ORIG Recipes",
+    "section": "T3-T4 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-contamination-vial",
+    "name": "Contamination Vial",
+    "type": "Throwable",
+    "dc": 16,
+    "time": "1 hr",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Contamination Sac",
+        "quantity": 1
+      },
+      {
+        "name": "Empty Infusion Base",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Contamination Sac, 1x Empty Infusion Base",
+    "outcomes": {
+      "superior": "20ft radius zone. 2d6 poison/turn. Difficult terrain. Lasts 10 rounds.",
+      "normal": "10ft radius zone. 1d6 poison/turn. 3 rounds.",
+      "flawed": "Single target. 1d6 poison. No zone."
+    },
+    "chapter": "CHAPTER 5 — GREEN DRAGON HYBRID ORIG RECIPES",
+    "group": "PLAGUE MAW RAVAGER — ORIG Recipes",
+    "section": "T3-T4 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-virulent-spore-bomb",
+    "name": "Virulent Spore Bomb",
+    "type": "Throwable",
+    "dc": 17,
+    "time": "1.5 hr",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Virulent Spore Cluster",
+        "quantity": 1
+      },
+      {
+        "name": "Empty Infusion Base",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Virulent Spore Cluster, 1x Empty Infusion Base",
+    "outcomes": {
+      "superior": "20ft radius. Creatures Poisoned until end of their turn they succeed DC 15 CON.",
+      "normal": "15ft radius. Poisoned 2 rounds. DC 14 CON.",
+      "flawed": "Single target. Poisoned 1 round. No save to end."
+    },
+    "chapter": "CHAPTER 5 — GREEN DRAGON HYBRID ORIG RECIPES",
+    "group": "PLAGUE MAW RAVAGER — ORIG Recipes",
+    "section": "T3-T4 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-plague-sovereign-upgrade",
+    "name": "Plague Sovereign Upgrade",
+    "type": "Upgrade",
+    "dc": 18,
+    "time": "2 hr",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Plague Sovereign Core",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Plague Sovereign Core",
+    "outcomes": {
+      "superior": "Armour upgrade. Immunity: Poisoned, Disease. Creatures in 10ft: 1d6 poison/turn.",
+      "normal": "Armour upgrade. Immunity to Poisoned. 5ft aura 1d4.",
+      "flawed": "Armour upgrade. Adv vs Poisoned only."
+    },
+    "chapter": "CHAPTER 5 — GREEN DRAGON HYBRID ORIG RECIPES",
+    "group": "PLAGUE MAW RAVAGER — ORIG Recipes",
+    "section": "T3-T4 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-plague-fused-chitin-armour",
+    "name": "Plague-Fused Chitin Armour",
+    "type": "Armour",
+    "dc": 17,
+    "time": "2 hr",
+    "tool": "Smith/Alchemist",
+    "materials": [
+      {
+        "name": "Plague-Fused Chitin Plate",
+        "quantity": 1
+      },
+      {
+        "name": "Reinforced Chitin",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Plague-Fused Chitin Plate, 1x Reinforced Chitin",
+    "outcomes": {
+      "superior": "AC 16. Immunity to Poisoned. Melee attackers: DC 14 CON or Poisoned 2 rounds.",
+      "normal": "AC 16. Immunity to Poisoned.",
+      "flawed": "AC 15. Adv vs Poisoned only."
+    },
+    "chapter": "CHAPTER 5 — GREEN DRAGON HYBRID ORIG RECIPES",
+    "group": "PLAGUE MAW RAVAGER — ORIG Recipes",
+    "section": "FUSED Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-frost-hide-light-armour",
+    "name": "Frost Hide Light Armour",
+    "type": "Armour",
+    "dc": 12,
+    "time": "1 hr",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Frost Hide Layer",
+        "quantity": 2
+      },
+      {
+        "name": "Leather Cord",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Frost Hide Layer, 1x Leather Cord",
+    "outcomes": {
+      "superior": "AC 13+DEX. Resistance to cold. Melee attackers take 1d4 cold damage.",
+      "normal": "AC 12+DEX. Resistance to cold.",
+      "flawed": "AC 11+DEX. No resistance."
+    },
+    "chapter": "CHAPTER 6 — WHITE DRAGON HYBRID RECIPES",
+    "group": "PLAGUE MAW RAVAGER — ORIG Recipes",
+    "section": "T1 WD Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-cryogenic-gland-vial",
+    "name": "Cryogenic Gland Vial",
+    "type": "Throwable",
+    "dc": 12,
+    "time": "20 min",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Cryogenic Gland",
+        "quantity": 1
+      },
+      {
+        "name": "Empty Infusion Base",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Cryogenic Gland, 1x Empty Infusion Base",
+    "outcomes": {
+      "superior": "Thrown 30ft. 15ft cone. DC 13 CON — 3d6 cold, -15ft movement until end of turn.",
+      "normal": "15ft cone. 2d6 cold. -10ft movement.",
+      "flawed": "Single target. 1d6 cold. No movement reduction."
+    },
+    "chapter": "CHAPTER 6 — WHITE DRAGON HYBRID RECIPES",
+    "group": "PLAGUE MAW RAVAGER — ORIG Recipes",
+    "section": "T1 WD Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-ice-bone-shield",
+    "name": "Ice Bone Shield",
+    "type": "Armour",
+    "dc": 13,
+    "time": "1 hr",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Dense Frostbone Shard",
+        "quantity": 2
+      },
+      {
+        "name": "Metal Fitting",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Dense Frostbone Shard, 1x Metal Fitting",
+    "outcomes": {
+      "superior": "+2 AC. Once/combat: reduce incoming physical damage by 1d8 (reaction).",
+      "normal": "+2 AC.",
+      "flawed": "+1 AC only."
+    },
+    "chapter": "CHAPTER 6 — WHITE DRAGON HYBRID RECIPES",
+    "group": "PLAGUE MAW RAVAGER — ORIG Recipes",
+    "section": "T1 WD Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-frost-claw-weapon",
+    "name": "Frost Claw Weapon",
+    "type": "Weapon",
+    "dc": 12,
+    "time": "45 min",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Frost Claw Shard",
+        "quantity": 1
+      },
+      {
+        "name": "Metal Fitting",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Frost Claw Shard, 1x Metal Fitting",
+    "outcomes": {
+      "superior": "1d8 slashing. +1d6 cold. On hit: -5ft movement (stackable, min 0).",
+      "normal": "1d8 slashing. +1d4 cold.",
+      "flawed": "1d8 slashing. No cold bonus."
+    },
+    "chapter": "CHAPTER 6 — WHITE DRAGON HYBRID RECIPES",
+    "group": "PLAGUE MAW RAVAGER — ORIG Recipes",
+    "section": "T1 WD Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-frozen-carapace-armour",
+    "name": "Frozen Carapace Armour",
+    "type": "Armour",
+    "dc": 16,
+    "time": "2 hr",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Reinforced Ice Bone",
+        "quantity": 2
+      },
+      {
+        "name": "Frozen Carapace Shard",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Reinforced Ice Bone, 1x Frozen Carapace Shard",
+    "outcomes": {
+      "superior": "AC 17. -5 first physical damage/round. Cold resist. Melee attackers: 1d6 cold.",
+      "normal": "AC 17. -5 first physical damage/round. Cold resistance.",
+      "flawed": "AC 16. -3 first physical damage/round."
+    },
+    "chapter": "CHAPTER 6 — WHITE DRAGON HYBRID RECIPES",
+    "group": "PLAGUE MAW RAVAGER — ORIG Recipes",
+    "section": "T2 WD Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-glacial-marrow-armour-upgrade",
+    "name": "Glacial Marrow Armour Upgrade",
+    "type": "Upgrade",
+    "dc": 15,
+    "time": "1 hr",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Glacial Marrow Crystal Dense",
+        "quantity": 1
+      },
+      {
+        "name": "Metal Fitting",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Glacial Marrow Crystal Dense, 1x Metal Fitting",
+    "outcomes": {
+      "superior": "Armour upgrade. Cold immunity instead of resistance. Once/combat: -1d10 damage.",
+      "normal": "Cold immunity instead of cold resistance.",
+      "flawed": "Cold resistance only. No upgrade effect."
+    },
+    "chapter": "CHAPTER 6 — WHITE DRAGON HYBRID RECIPES",
+    "group": "PLAGUE MAW RAVAGER — ORIG Recipes",
+    "section": "T2 WD Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-permafrost-bone-weapon-core",
+    "name": "Permafrost Bone Weapon Core",
+    "type": "Upgrade",
+    "dc": 16,
+    "time": "1.5 hr",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Permafrost Bone Core",
+        "quantity": 1
+      },
+      {
+        "name": "Steel Blade",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Permafrost Bone Core, 1x Steel Blade",
+    "outcomes": {
+      "superior": "Weapon upgrade. +1d6 cold. On hit: -10ft movement. Cannot reduce below 0.",
+      "normal": "+1d4 cold. -5ft movement on hit.",
+      "flawed": "+1d4 cold only."
+    },
+    "chapter": "CHAPTER 6 — WHITE DRAGON HYBRID RECIPES",
+    "group": "PLAGUE MAW RAVAGER — ORIG Recipes",
+    "section": "T2 WD Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-apex-cold-gland-potion",
+    "name": "Apex Cold Gland Potion",
+    "type": "Potion",
+    "dc": 15,
+    "time": "1 hr",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Apex Cold Gland",
+        "quantity": 1
+      },
+      {
+        "name": "Empty Infusion Base",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Apex Cold Gland, 1x Empty Infusion Base",
+    "outcomes": {
+      "superior": "Drink: cold damage you deal is +1d8 for 1 hour. Resistance to cold.",
+      "normal": "Drink: +1d6 cold damage for 1 hour.",
+      "flawed": "Drink: +1d4 cold damage for 10 minutes."
+    },
+    "chapter": "CHAPTER 6 — WHITE DRAGON HYBRID RECIPES",
+    "group": "PLAGUE MAW RAVAGER — ORIG Recipes",
+    "section": "T2 WD Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-apex-cold-muscle-belt",
+    "name": "Apex Cold Muscle Belt",
+    "type": "Accessory",
+    "dc": 14,
+    "time": "45 min",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Apex Cold Muscle",
+        "quantity": 1
+      },
+      {
+        "name": "Leather Cord",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Apex Cold Muscle, 1x Leather Cord",
+    "outcomes": {
+      "superior": "+10ft movement. Movement through difficult terrain costs no extra movement.",
+      "normal": "+10ft movement.",
+      "flawed": "+5ft movement only."
+    },
+    "chapter": "CHAPTER 6 — WHITE DRAGON HYBRID RECIPES",
+    "group": "PLAGUE MAW RAVAGER — ORIG Recipes",
+    "section": "T2 WD Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-frozen-wing-membrane-cloak",
+    "name": "Frozen Wing Membrane Cloak",
+    "type": "Armour",
+    "dc": 16,
+    "time": "1.5 hr",
+    "tool": "Weaver (DEX)",
+    "materials": [
+      {
+        "name": "Frozen Wing Membrane",
+        "quantity": 1
+      },
+      {
+        "name": "Cloth Bolts",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Frozen Wing Membrane, 1x Cloth Bolts",
+    "outcomes": {
+      "superior": "AC 13+DEX. Cold immunity. Immune to difficult terrain from ice/frost effects.",
+      "normal": "AC 13+DEX. Cold resistance.",
+      "flawed": "AC 12+DEX. No resistance."
+    },
+    "chapter": "CHAPTER 6 — WHITE DRAGON HYBRID RECIPES",
+    "group": "PLAGUE MAW RAVAGER — ORIG Recipes",
+    "section": "T3 WD Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-permafrost-bone-heavy-armour",
+    "name": "Permafrost Bone Heavy Armour",
+    "type": "Armour",
+    "dc": 17,
+    "time": "2.5 hr",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Permafrost Bone Core",
+        "quantity": 1
+      },
+      {
+        "name": "Reinforced Metal Plates",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Permafrost Bone Core, 1x Reinforced Metal Plates",
+    "outcomes": {
+      "superior": "AC 18. Cold resistance. -3 all physical damage. +1 to all CON saves.",
+      "normal": "AC 18. Cold resistance. -3 all physical damage.",
+      "flawed": "AC 17. Cold resistance only."
+    },
+    "chapter": "CHAPTER 6 — WHITE DRAGON HYBRID RECIPES",
+    "group": "PLAGUE MAW RAVAGER — ORIG Recipes",
+    "section": "T3 WD Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-permafrost-essence-upgrade",
+    "name": "Permafrost Essence Upgrade",
+    "type": "Upgrade",
+    "dc": 18,
+    "time": "2 hr",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Permafrost Essence",
+        "quantity": 1
+      },
+      {
+        "name": "Empty Infusion Base",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Permafrost Essence, 1x Empty Infusion Base",
+    "outcomes": {
+      "superior": "Armour upgrade. Passive cold aura 5ft: 1d6/turn. Cold immunity.",
+      "normal": "Passive cold aura 5ft: 1d4/turn. Cold resistance.",
+      "flawed": "Cold resistance only. No aura."
+    },
+    "chapter": "CHAPTER 6 — WHITE DRAGON HYBRID RECIPES",
+    "group": "PLAGUE MAW RAVAGER — ORIG Recipes",
+    "section": "T4 WD Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-apex-cold-membrane-armour",
+    "name": "Apex Cold Membrane Armour",
+    "type": "Armour",
+    "dc": 19,
+    "time": "2.5 hr",
+    "tool": "Leatherworker/Smith",
+    "materials": [
+      {
+        "name": "Apex Cold Membrane",
+        "quantity": 1
+      },
+      {
+        "name": "Reinforced Metal Plates",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Apex Cold Membrane, 1x Reinforced Metal Plates",
+    "outcomes": {
+      "superior": "AC 17+DEX(2). Cold immunity. Resist all physical damage while below half HP.",
+      "normal": "AC 17+DEX(2). Cold immunity.",
+      "flawed": "AC 16+DEX(2). Cold resistance only."
+    },
+    "chapter": "CHAPTER 6 — WHITE DRAGON HYBRID RECIPES",
+    "group": "PLAGUE MAW RAVAGER — ORIG Recipes",
+    "section": "T4 WD Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-apex-permafrost-heavy-armour",
+    "name": "Apex Permafrost Heavy Armour",
+    "type": "Armour",
+    "dc": 20,
+    "time": "3 hr",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Apex Permafrost Plating",
+        "quantity": 1
+      },
+      {
+        "name": "Reinforced Metal Plates",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Apex Permafrost Plating, 1x Reinforced Metal Plates",
+    "outcomes": {
+      "superior": "AC 19. Cold immunity. -5 first physical damage/round. Siege: double damage vs structures.",
+      "normal": "AC 19. Cold immunity. -5 first damage/round.",
+      "flawed": "AC 18. Cold resistance. -3 first damage/round."
+    },
+    "chapter": "CHAPTER 6 — WHITE DRAGON HYBRID RECIPES",
+    "group": "PLAGUE MAW RAVAGER — ORIG Recipes",
+    "section": "T4 WD Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-frost-claw-weapon-2",
+    "name": "Frost Claw Weapon",
+    "type": "Weapon",
+    "dc": 12,
+    "time": "45 min",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Apex Frost Claw",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Apex Frost Claw",
+    "outcomes": {
+      "superior": "1d8 slash. +1d6 cold. On hit: -5ft movement. On crit: -15ft movement.",
+      "normal": "1d8 slash. +1d4 cold. On hit: -5ft movement.",
+      "flawed": "1d8 slash. No cold bonus."
+    },
+    "chapter": "CHAPTER 6 — WHITE DRAGON HYBRID RECIPES",
+    "group": "FROSTCLAW PROWLER — ORIG Recipes",
+    "section": "T4 WD Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-cold-resistant-armour-padding",
+    "name": "Cold Resistant Armour Padding",
+    "type": "Upgrade",
+    "dc": 11,
+    "time": "20 min",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Cold Resistant Armour Pad",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "2x Cold Resistant Armour Pad",
+    "outcomes": {
+      "superior": "Armour upgrade. Cold resistance. -2 cold damage from all sources.",
+      "normal": "Armour upgrade. Cold resistance.",
+      "flawed": "Armour upgrade. +2 cold damage reduction only."
+    },
+    "chapter": "CHAPTER 6 — WHITE DRAGON HYBRID RECIPES",
+    "group": "FROSTCLAW PROWLER — ORIG Recipes",
+    "section": "T4 WD Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-relentless-hunt-boots",
+    "name": "Relentless Hunt Boots",
+    "type": "Accessory",
+    "dc": 13,
+    "time": "45 min",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Relentless Hunt Core",
+        "quantity": 1
+      },
+      {
+        "name": "Frost Hide Layer",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Relentless Hunt Core, 1x Frost Hide Layer",
+    "outcomes": {
+      "superior": "+5ft movement. Ignore difficult terrain from ice/frost. Once/combat: if a target has reduced your speed this combat, regain full movement (free action).",
+      "normal": "+5ft movement. Ignore ice/frost difficult terrain.",
+      "flawed": "+5ft movement only."
+    },
+    "chapter": "CHAPTER 6 — WHITE DRAGON HYBRID RECIPES",
+    "group": "FROSTCLAW PROWLER — ORIG Recipes",
+    "section": "T4 WD Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-hunt-sinew-longbow",
+    "name": "Hunt Sinew Longbow",
+    "type": "Weapon",
+    "dc": 12,
+    "time": "1 hr",
+    "tool": "Tinker (INT)",
+    "materials": [
+      {
+        "name": "Tensile Hunt Sinew",
+        "quantity": 1
+      },
+      {
+        "name": "Wood Planks",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Tensile Hunt Sinew, 1x Wood Planks",
+    "outcomes": {
+      "superior": "1d8 piercing. +1 to hit. Ignore long-range disadvantage. +1d4 cold on hit.",
+      "normal": "1d8 piercing. +1 to hit. +1d4 cold on hit.",
+      "flawed": "1d8 piercing. No bonus."
+    },
+    "chapter": "CHAPTER 6 — WHITE DRAGON HYBRID RECIPES",
+    "group": "FROSTCLAW PROWLER — ORIG Recipes",
+    "section": "T4 WD Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-wing-strut-shortbow",
+    "name": "Wing Strut Shortbow",
+    "type": "Weapon",
+    "dc": 12,
+    "time": "1 hr",
+    "tool": "Tinker (INT)",
+    "materials": [
+      {
+        "name": "Reinforced Wing Strut",
+        "quantity": 1
+      },
+      {
+        "name": "Raptor Feather Cluster",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Reinforced Wing Strut, 1x Raptor Feather Cluster",
+    "outcomes": {
+      "superior": "1d8 piercing. +1 to hit. Ignore long-range disadvantage.",
+      "normal": "1d8 piercing. +1 to hit.",
+      "flawed": "1d8 piercing. -1 at long range."
+    },
+    "chapter": "CHAPTER 6 — WHITE DRAGON HYBRID RECIPES",
+    "group": "GLACIER WING PREDATOR — ORIG Recipes",
+    "section": "T4 WD Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-ice-feather-cloak",
+    "name": "Ice Feather Cloak",
+    "type": "Armour",
+    "dc": 12,
+    "time": "30 min",
+    "tool": "Weaver (DEX)",
+    "materials": [
+      {
+        "name": "Processed Feather Layer",
+        "quantity": 2
+      },
+      {
+        "name": "Cloth",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Processed Feather Layer, 1x Cloth",
+    "outcomes": {
+      "superior": "+2 Stealth. Cold resistance. +5ft movement.",
+      "normal": "+2 Stealth. Cold resistance.",
+      "flawed": "+2 Stealth only."
+    },
+    "chapter": "CHAPTER 6 — WHITE DRAGON HYBRID RECIPES",
+    "group": "GLACIER WING PREDATOR — ORIG Recipes",
+    "section": "T4 WD Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-thermal-hide-armour",
+    "name": "Thermal Hide Armour",
+    "type": "Armour",
+    "dc": 14,
+    "time": "1 hr",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Thermal Predator Hide",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "2x Thermal Predator Hide",
+    "outcomes": {
+      "superior": "AC 14+DEX(2). Cold resistance. Attacker: DC 12 CON or -5ft movement for 1 round.",
+      "normal": "AC 13+DEX(2). Cold resistance.",
+      "flawed": "AC 12+DEX(2). No resistance."
+    },
+    "chapter": "CHAPTER 6 — WHITE DRAGON HYBRID RECIPES",
+    "group": "GLACIER WING PREDATOR — ORIG Recipes",
+    "section": "T4 WD Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-glacier-hunt-core-ring",
+    "name": "Glacier Hunt Core Ring",
+    "type": "Accessory",
+    "dc": 16,
+    "time": "1 hr",
+    "tool": "Jeweler (DEX)",
+    "materials": [
+      {
+        "name": "Glacier Apex Hunt Core",
+        "quantity": 1
+      },
+      {
+        "name": "Metal Fitting",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Glacier Apex Hunt Core, 1x Metal Fitting",
+    "outcomes": {
+      "superior": "Adv checks to detect isolated/ambushed targets. +2 initiative. Know if a creature is alone.",
+      "normal": "Adv vs surprised. +2 initiative.",
+      "flawed": "+1 initiative only."
+    },
+    "chapter": "CHAPTER 6 — WHITE DRAGON HYBRID RECIPES",
+    "group": "GLACIER WING PREDATOR — ORIG Recipes",
+    "section": "T4 WD Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-frozen-carapace-heavy-armour",
+    "name": "Frozen Carapace Heavy Armour",
+    "type": "Armour",
+    "dc": 17,
+    "time": "2.5 hr",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Frozen Carapace Plate",
+        "quantity": 1
+      },
+      {
+        "name": "Permafrost Bone Core",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Frozen Carapace Plate, 1x Permafrost Bone Core",
+    "outcomes": {
+      "superior": "AC 18. -5 first physical damage/round. Cold resistance. Melee attackers: 2d6 cold.",
+      "normal": "AC 18. -5 first physical damage/round. Cold resistance.",
+      "flawed": "AC 17. -3 first physical damage/round."
+    },
+    "chapter": "CHAPTER 6 — WHITE DRAGON HYBRID RECIPES",
+    "group": "WINTERFANG BEHEMOTH — ORIG Recipes",
+    "section": "T2-T3 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-siege-sinew-weapon-upgrade",
+    "name": "Siege Sinew Weapon Upgrade",
+    "type": "Upgrade",
+    "dc": 15,
+    "time": "1 hr",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Siege Sinew Bundle",
+        "quantity": 1
+      },
+      {
+        "name": "Metal Fitting",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Siege Sinew Bundle, 1x Metal Fitting",
+    "outcomes": {
+      "superior": "Weapon upgrade. +1d6 bludgeoning. Once/combat: shove as free action on a hit.",
+      "normal": "+1d4 bludgeoning. Shove on hit once/combat.",
+      "flawed": "+1d4 bludgeoning only."
+    },
+    "chapter": "CHAPTER 6 — WHITE DRAGON HYBRID RECIPES",
+    "group": "WINTERFANG BEHEMOTH — ORIG Recipes",
+    "section": "T2-T3 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-glacial-impact-boots",
+    "name": "Glacial Impact Boots",
+    "type": "Accessory",
+    "dc": 16,
+    "time": "1.5 hr",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Glacial Impact Core",
+        "quantity": 1
+      },
+      {
+        "name": "Dense Frostbone Shard",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Glacial Impact Core, 1x Dense Frostbone Shard",
+    "outcomes": {
+      "superior": "Once/combat: charge in a line up to 30ft, DC 15 STR or knocked prone + 2d8 cold.",
+      "normal": "Once/combat: charge 20ft, DC 13 STR or knocked prone.",
+      "flawed": "Once/combat: charge 20ft. No prone effect."
+    },
+    "chapter": "CHAPTER 6 — WHITE DRAGON HYBRID RECIPES",
+    "group": "WINTERFANG BEHEMOTH — ORIG Recipes",
+    "section": "T2-T3 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-apex-endurance-armour",
+    "name": "Apex Endurance Armour",
+    "type": "Armour",
+    "dc": 18,
+    "time": "2.5 hr",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Apex Endurance Core",
+        "quantity": 1
+      },
+      {
+        "name": "Reinforced Metal Plates",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Apex Endurance Core, 1x Reinforced Metal Plates",
+    "outcomes": {
+      "superior": "AC 18. Crits deal normal damage. -5 physical damage/round. Cold immunity.",
+      "normal": "AC 18. Crits deal normal damage. Cold immunity.",
+      "flawed": "AC 17. Cold resistance. Crits deal normal damage."
+    },
+    "chapter": "CHAPTER 6 — WHITE DRAGON HYBRID RECIPES",
+    "group": "WINTERFANG BEHEMOTH — ORIG Recipes",
+    "section": "T4 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-winterfang-siege-core-upgrade",
+    "name": "Winterfang Siege Core Upgrade",
+    "type": "Upgrade",
+    "dc": 18,
+    "time": "2 hr",
+    "tool": "Smith/Alchemist",
+    "materials": [
+      {
+        "name": "Winterfang Siege Core",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Winterfang Siege Core",
+    "outcomes": {
+      "superior": "Armour upgrade. Cold immunity. When you charge 15ft+: next attack +2d8 cold+bludgeoning.",
+      "normal": "Cold immunity. Charge 15ft+: +1d8 cold+bludgeoning.",
+      "flawed": "Cold resistance. No charge bonus."
+    },
+    "chapter": "CHAPTER 6 — WHITE DRAGON HYBRID RECIPES",
+    "group": "WINTERFANG BEHEMOTH — ORIG Recipes",
+    "section": "T4 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-permafrost-fused-heavy-armour",
+    "name": "Permafrost-Fused Heavy Armour",
+    "type": "Armour",
+    "dc": 19,
+    "time": "3 hr",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Permafrost-Fused Carapace",
+        "quantity": 1
+      },
+      {
+        "name": "Reinforced Metal Plates",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Permafrost-Fused Carapace, 1x Reinforced Metal Plates",
+    "outcomes": {
+      "superior": "AC 19. Cold immunity. -5 physical damage/round. Absorb kinetic: regain 1d6 HP when taking bludgeoning.",
+      "normal": "AC 19. Cold immunity. -5 physical damage/round.",
+      "flawed": "AC 18. Cold resistance. -3 physical damage/round."
+    },
+    "chapter": "CHAPTER 6 — WHITE DRAGON HYBRID RECIPES",
+    "group": "WINTERFANG BEHEMOTH — ORIG Recipes",
+    "section": "FUSED Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-phase-chitin-armour",
+    "name": "Phase Chitin Armour",
+    "type": "Armour",
+    "dc": 14,
+    "time": "1.5 hr",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Phase Chitin Layer",
+        "quantity": 2
+      },
+      {
+        "name": "Leather Cord",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Phase Chitin Layer, 1x Leather Cord",
+    "outcomes": {
+      "superior": "AC 13+DEX. Once/turn when hit: roll 1d6, on 5-6 the attack misses instead.",
+      "normal": "AC 12+DEX. 1d6 miss chance on 5-6, once/combat.",
+      "flawed": "AC 11+DEX. No miss chance."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "RIFTCLAW SPIDER — ORIG Recipes",
+    "section": "T1-T2 ORIG Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-phase-anchor-amulet",
+    "name": "Phase Anchor Amulet",
+    "type": "Accessory",
+    "dc": 15,
+    "time": "1 hr",
+    "tool": "Jeweler (DEX)",
+    "materials": [
+      {
+        "name": "Phase Anchor Node",
+        "quantity": 1
+      },
+      {
+        "name": "Metal Fitting",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Phase Anchor Node, 1x Metal Fitting",
+    "outcomes": {
+      "superior": "Cannot be forcibly teleported or banished. Adv saves vs dimensional effects.",
+      "normal": "Adv vs forced teleportation and banishment.",
+      "flawed": "No mechanical effect."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "RIFTCLAW SPIDER — ORIG Recipes",
+    "section": "T1-T2 ORIG Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-phase-chitin-plate-armour",
+    "name": "Phase Chitin Plate Armour",
+    "type": "Armour",
+    "dc": 15,
+    "time": "1.5 hr",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Phase Chitin Plate",
+        "quantity": 1
+      },
+      {
+        "name": "Leather Cord",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Phase Chitin Plate, 1x Leather Cord",
+    "outcomes": {
+      "superior": "AC 14+DEX. Once/turn when hit: 1d6 on 5-6 attack misses. Once/combat: phase 10ft (no OA).",
+      "normal": "AC 13+DEX. Miss chance once/turn.",
+      "flawed": "AC 12+DEX. No miss chance."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "RIFTCLAW SPIDER — ORIG Recipes",
+    "section": "T2-T3 ORIG Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-apex-rift-claw-gauntlets",
+    "name": "Apex Rift Claw Gauntlets",
+    "type": "Accessory",
+    "dc": 16,
+    "time": "1.5 hr",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Apex Rift Claw Matrix",
+        "quantity": 1
+      },
+      {
+        "name": "Metal Fitting",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Apex Rift Claw Matrix, 1x Metal Fitting",
+    "outcomes": {
+      "superior": "Unarmed: 1d8 slash+1d6 force. +1 to hit. Before attacking: teleport 15ft (no OA).",
+      "normal": "Unarmed: 1d8 slashing. +1 to hit.",
+      "flawed": "Unarmed: 1d6 slashing. No teleport."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "RIFTCLAW SPIDER — ORIG Recipes",
+    "section": "T2-T3 ORIG Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-phase-anchor-ring",
+    "name": "Phase Anchor Ring",
+    "type": "Accessory",
+    "dc": 16,
+    "time": "1 hr",
+    "tool": "Jeweler (DEX)",
+    "materials": [
+      {
+        "name": "Phase Anchor Core",
+        "quantity": 1
+      },
+      {
+        "name": "Metal Fitting",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Phase Anchor Core, 1x Metal Fitting",
+    "outcomes": {
+      "superior": "Immune to forced teleport/banishment. Once/long rest: end a forced movement effect.",
+      "normal": "Adv vs forced teleport/banishment.",
+      "flawed": "No mechanical effect."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "RIFTCLAW SPIDER — ORIG Recipes",
+    "section": "T2-T3 ORIG Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-rift-fused-claw-blade-upgrade",
+    "name": "Rift-Fused Claw Blade Upgrade",
+    "type": "Upgrade",
+    "dc": 17,
+    "time": "1.5 hr",
+    "tool": "Smith/Tinker",
+    "materials": [
+      {
+        "name": "Rift-Fused Claw Matrix",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Rift-Fused Claw Matrix",
+    "outcomes": {
+      "superior": "Weapon upgrade. Once/turn: teleport 15ft before attack (no OA). Attack: +1d8 force.",
+      "normal": "Once/combat: teleport 10ft before attack. +1d6 force.",
+      "flawed": "+1d6 force once/combat. No teleport."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "RIFTCLAW SPIDER — ORIG Recipes",
+    "section": "FUSED Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-arcane-wire-bracer",
+    "name": "Arcane Wire Bracer",
+    "type": "Accessory",
+    "dc": 12,
+    "time": "30 min",
+    "tool": "Tinker (INT)",
+    "materials": [
+      {
+        "name": "Arcane Conductor Bundle",
+        "quantity": 2
+      },
+      {
+        "name": "Metal Fitting",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Arcane Conductor Bundle, 1x Metal Fitting",
+    "outcomes": {
+      "superior": "+1 spell attack rolls. Once/combat: impose -2 to hit on one creature (bonus action).",
+      "normal": "+1 spell attack rolls.",
+      "flawed": "No bonus. Bracer crackles faintly."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "COLLAR SENTINEL — ORIG Recipes",
+    "section": "T1-T2 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-chassis-armour-upgrade",
+    "name": "Chassis Armour Upgrade",
+    "type": "Upgrade",
+    "dc": 13,
+    "time": "45 min",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Reinforced Chassis Section",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "2x Reinforced Chassis Section",
+    "outcomes": {
+      "superior": "Armour upgrade. +1 AC. Reduce first physical damage/round by 2.",
+      "normal": "Armour upgrade. +1 AC.",
+      "flawed": "No bonus."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "COLLAR SENTINEL — ORIG Recipes",
+    "section": "T1-T2 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-deflection-array-upgrade",
+    "name": "Deflection Array Upgrade",
+    "type": "Upgrade",
+    "dc": 13,
+    "time": "45 min",
+    "tool": "Tinker (INT)",
+    "materials": [
+      {
+        "name": "Deflection Rune Array",
+        "quantity": 1
+      },
+      {
+        "name": "Metal Fitting",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Deflection Rune Array, 1x Metal Fitting",
+    "outcomes": {
+      "superior": "Armour upgrade. Once/round: reduce incoming spell damage by 1d6 (reaction).",
+      "normal": "Armour upgrade. Once/combat: reduce spell damage 1d6.",
+      "flawed": "No effect."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "COLLAR SENTINEL — ORIG Recipes",
+    "section": "T1-T2 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-suppression-bracer",
+    "name": "Suppression Bracer",
+    "type": "Accessory",
+    "dc": 14,
+    "time": "1 hr",
+    "tool": "Tinker (INT)",
+    "materials": [
+      {
+        "name": "Suppression Field Coil",
+        "quantity": 1
+      },
+      {
+        "name": "Metal Fitting",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Suppression Field Coil, 1x Metal Fitting",
+    "outcomes": {
+      "superior": "Once/combat: 20ft radius. DC 14 STR — Restrained until end of next turn.",
+      "normal": "10ft radius. Reduce movement by 10ft. DC 12 STR.",
+      "flawed": "Single target. -5ft movement. No Restrained."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "COLLAR SENTINEL — ORIG Recipes",
+    "section": "T2-T3 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-arcane-deflection-upgrade",
+    "name": "Arcane Deflection Upgrade",
+    "type": "Upgrade",
+    "dc": 14,
+    "time": "1 hr",
+    "tool": "Smith/Tinker",
+    "materials": [
+      {
+        "name": "Arcane Deflection Plate",
+        "quantity": 1
+      },
+      {
+        "name": "Metal Fitting",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Arcane Deflection Plate, 1x Metal Fitting",
+    "outcomes": {
+      "superior": "Armour upgrade. Once/round: reduce spell attack damage by 1d10+3 (reaction).",
+      "normal": "Once/combat: reduce spell attack damage 1d10+3.",
+      "flawed": "Once/combat: reduce spell attack damage 1d6."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "COLLAR SENTINEL — ORIG Recipes",
+    "section": "T2-T3 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-lockdown-bolas",
+    "name": "Lockdown Bolas",
+    "type": "Throwable",
+    "dc": 13,
+    "time": "45 min",
+    "tool": "Tinker (INT)",
+    "materials": [
+      {
+        "name": "Lockdown Protocol Chip",
+        "quantity": 1
+      },
+      {
+        "name": "Leather Cord",
+        "quantity": 1
+      },
+      {
+        "name": "Metal Fitting",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Lockdown Protocol Chip, 1x Leather Cord, 1x Metal Fitting",
+    "outcomes": {
+      "superior": "Thrown 30ft. DC 14 STR — Restrained. Cannot teleport while Restrained this way.",
+      "normal": "Restrained. DC 12 STR. No teleport block.",
+      "flawed": "Prone only. DC 10 STR. No Restrained."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "COLLAR SENTINEL — ORIG Recipes",
+    "section": "T2-T3 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-control-module-helm",
+    "name": "Control Module Helm",
+    "type": "Accessory",
+    "dc": 15,
+    "time": "1 hr",
+    "tool": "Tinker (INT)",
+    "materials": [
+      {
+        "name": "Collar Control Module",
+        "quantity": 1
+      },
+      {
+        "name": "Structural Chassis Plate",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Collar Control Module, 1x Structural Chassis Plate",
+    "outcomes": {
+      "superior": "+1 initiative. Once/combat: impose disadv to hit on one creature for 1 round.",
+      "normal": "+1 initiative.",
+      "flawed": "No bonus."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "COLLAR SENTINEL — ORIG Recipes",
+    "section": "T2-T3 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-collar-matrix-upgrade",
+    "name": "Collar Matrix Upgrade",
+    "type": "Upgrade",
+    "dc": 15,
+    "time": "1 hr",
+    "tool": "Tinker (INT)",
+    "materials": [
+      {
+        "name": "Collar Fabrication Matrix",
+        "quantity": 1
+      },
+      {
+        "name": "Metal Fitting",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Collar Fabrication Matrix, 1x Metal Fitting",
+    "outcomes": {
+      "superior": "Armour upgrade. Once/long rest: send a silent mental command to one creature within 60ft (DM discretion on effect).",
+      "normal": "Armour upgrade. Once/long rest: detect collared or charmed creatures within 60ft.",
+      "flawed": "No effect."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "COLLAR SENTINEL — ORIG Recipes",
+    "section": "T2-T3 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-sentinel-command-upgrade",
+    "name": "Sentinel Command Upgrade",
+    "type": "Upgrade",
+    "dc": 17,
+    "time": "2 hr",
+    "tool": "Tinker (INT)",
+    "materials": [
+      {
+        "name": "Sentinel Command Core",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Sentinel Command Core",
+    "outcomes": {
+      "superior": "Armour upgrade. Know location of all creatures within 60ft. +2 initiative.",
+      "normal": "Armour upgrade. Creatures within 30ft known. +1 initiative.",
+      "flawed": "No bonus."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "COLLAR SENTINEL — ORIG Recipes",
+    "section": "T4 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-domination-crystal-wand",
+    "name": "Domination Crystal Wand",
+    "type": "Focus",
+    "dc": 18,
+    "time": "2 hr",
+    "tool": "Tinker/Alchemist",
+    "materials": [
+      {
+        "name": "Arcane Domination Crystal",
+        "quantity": 1
+      },
+      {
+        "name": "Carved Focus",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Arcane Domination Crystal, 1x Carved Focus",
+    "outcomes": {
+      "superior": "Once/long rest: cast Dominate Monster (DC 16) without a spell slot.",
+      "normal": "Once/long rest: cast Dominate Person (DC 15).",
+      "flawed": "Once/long rest: cast Command (DC 14)."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "COLLAR SENTINEL — ORIG Recipes",
+    "section": "T4 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-necrotic-blood-poison",
+    "name": "Necrotic Blood Poison",
+    "type": "Poison",
+    "dc": 12,
+    "time": "30 min",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Necrotic Blood Crystal",
+        "quantity": 2
+      },
+      {
+        "name": "Distilled Alcohol",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Necrotic Blood Crystal, 1x Distilled Alcohol",
+    "outcomes": {
+      "superior": "Coat weapon: +1d6 necrotic. Target: -1d6 max HP until long rest (max -3).",
+      "normal": "Coat weapon: +1d4 necrotic (3 hits).",
+      "flawed": "+1d4 necrotic on 1 hit only."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "SANGUINE WARDEN — ORIG Recipes",
+    "section": "T1 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-necrotic-skin-core-armour",
+    "name": "Necrotic Skin Core Armour",
+    "type": "Armour",
+    "dc": 12,
+    "time": "45 min",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Necrotic Skin Core",
+        "quantity": 2
+      },
+      {
+        "name": "Leather Cord",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Necrotic Skin Core, 1x Leather Cord",
+    "outcomes": {
+      "superior": "AC 12+DEX. Melee attackers take 1d4 necrotic on hit.",
+      "normal": "AC 12+DEX. Melee attacker takes 1 necrotic on hit.",
+      "flawed": "AC 11+DEX. No damage."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "SANGUINE WARDEN — ORIG Recipes",
+    "section": "T1 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-stolen-vitality-potion",
+    "name": "Stolen Vitality Potion",
+    "type": "Potion",
+    "dc": 14,
+    "time": "45 min",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Stolen Vitality Sac",
+        "quantity": 1
+      },
+      {
+        "name": "Empty Infusion Base",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Stolen Vitality Sac, 1x Empty Infusion Base",
+    "outcomes": {
+      "superior": "Bonus action drink: heal 3d8+3. Next 2 turns: +1d6 necrotic on hit, heal equal.",
+      "normal": "Bonus action drink: heal 2d8+2.",
+      "flawed": "Heal 1d8. Potion is cold."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "SANGUINE WARDEN — ORIG Recipes",
+    "section": "T2 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-blood-burst-flask",
+    "name": "Blood Burst Flask",
+    "type": "Throwable",
+    "dc": 15,
+    "time": "1 hr",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Blood Burst Gland",
+        "quantity": 1
+      },
+      {
+        "name": "Empty Infusion Base",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Blood Burst Gland, 1x Empty Infusion Base",
+    "outcomes": {
+      "superior": "20ft radius. DC 14 CON — 4d8 necrotic. Thrower heals half total damage dealt.",
+      "normal": "20ft radius. DC 13 CON — 3d8 necrotic. No healing.",
+      "flawed": "Single target. 2d6 necrotic. No healing."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "SANGUINE WARDEN — ORIG Recipes",
+    "section": "T2 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-composite-flesh-armour",
+    "name": "Composite Flesh Armour",
+    "type": "Armour",
+    "dc": 16,
+    "time": "2 hr",
+    "tool": "Smith/Leatherworker",
+    "materials": [
+      {
+        "name": "Composite Flesh Core",
+        "quantity": 1
+      },
+      {
+        "name": "Life Leech Sinew",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Composite Flesh Core, 1x Life Leech Sinew",
+    "outcomes": {
+      "superior": "AC 17. Crits deal normal damage. Gain 15 Temp HP when adjacent creature drops.",
+      "normal": "AC 16. Crits deal normal damage.",
+      "flawed": "AC 15. No crit reduction."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "SANGUINE WARDEN — ORIG Recipes",
+    "section": "T2 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-life-leech-blade-upgrade",
+    "name": "Life Leech Blade Upgrade",
+    "type": "Upgrade",
+    "dc": 16,
+    "time": "1.5 hr",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Life Leech Sinew",
+        "quantity": 1
+      },
+      {
+        "name": "Reinforced Steel Blade",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Life Leech Sinew, 1x Reinforced Steel Blade",
+    "outcomes": {
+      "superior": "Weapon upgrade. Once/turn: deal necrotic, heal equal amount.",
+      "normal": "Once/combat: deal necrotic, heal equal amount.",
+      "flawed": "Once/combat: +1d6 necrotic. No healing."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "SANGUINE WARDEN — ORIG Recipes",
+    "section": "T2 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-crimson-core-amulet",
+    "name": "Crimson Core Amulet",
+    "type": "Accessory",
+    "dc": 17,
+    "time": "1.5 hr",
+    "tool": "Jeweler (DEX)",
+    "materials": [
+      {
+        "name": "Crimson Core",
+        "quantity": 1
+      },
+      {
+        "name": "Metal Fitting",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Crimson Core, 1x Metal Fitting",
+    "outcomes": {
+      "superior": "+1d6 necrotic on all attacks. Once/long rest: regain 2d10 HP as bonus action.",
+      "normal": "+1d4 necrotic on all attacks.",
+      "flawed": "+1 necrotic on all attacks."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "SANGUINE WARDEN — ORIG Recipes",
+    "section": "T3-T4 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-harvest-vitality-upgrade",
+    "name": "Harvest Vitality Upgrade",
+    "type": "Upgrade",
+    "dc": 17,
+    "time": "2 hr",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Harvest Vitality Matrix",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Harvest Vitality Matrix",
+    "outcomes": {
+      "superior": "Armour upgrade. Gain 1d6 Temp HP at start of each turn. Gain 2d6 when nearby creature drops.",
+      "normal": "Armour upgrade. Gain 1 Temp HP at start of each turn.",
+      "flawed": "Armour upgrade. Gain 1 Temp HP once/combat."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "SANGUINE WARDEN — ORIG Recipes",
+    "section": "T3-T4 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-blood-sovereign-weapon",
+    "name": "Blood Sovereign Weapon",
+    "type": "Weapon",
+    "dc": 19,
+    "time": "2.5 hr",
+    "tool": "Smith/Alchemist",
+    "materials": [
+      {
+        "name": "Blood Sovereign Essence",
+        "quantity": 1
+      },
+      {
+        "name": "Steel Blade",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Blood Sovereign Essence, 1x Steel Blade",
+    "outcomes": {
+      "superior": "2d6 slash. +1 to hit. +1d8 necrotic. Heal equal to necrotic dealt once/turn.",
+      "normal": "2d6 slash. +1 to hit. +1d6 necrotic.",
+      "flawed": "2d6 slash. +1d4 necrotic. No healing."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "SANGUINE WARDEN — ORIG Recipes",
+    "section": "T3-T4 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-blood-fused-armour-upgrade",
+    "name": "Blood-Fused Armour Upgrade",
+    "type": "Upgrade",
+    "dc": 18,
+    "time": "2 hr",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Blood-Fused Soul Matrix",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Blood-Fused Soul Matrix",
+    "outcomes": {
+      "superior": "Armour upgrade. Heal 1d6 at start of each turn. Crits: heal 2d6 instead.",
+      "normal": "Armour upgrade. Heal 1 HP at start of each turn.",
+      "flawed": "Armour upgrade. Heal 1 HP once/combat only."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "SANGUINE WARDEN — ORIG Recipes",
+    "section": "FUSED Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-mutation-stabiliser-potion",
+    "name": "Mutation Stabiliser Potion",
+    "type": "Potion",
+    "dc": 14,
+    "time": "45 min",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Mutation Stabiliser Node",
+        "quantity": 1
+      },
+      {
+        "name": "Empty Infusion Base",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Mutation Stabiliser Node, 1x Empty Infusion Base",
+    "outcomes": {
+      "superior": "Drink: adv all CON saves for 1 hour. Immune to unwanted transformation.",
+      "normal": "Drink: adv on CON saves for 10 minutes.",
+      "flawed": "Drink: +2 to one CON save."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "CRYOMANTIC HORROR — ORIG Recipes",
+    "section": "T2-T3 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-apex-frost-claw-weapon",
+    "name": "Apex Frost Claw Weapon",
+    "type": "Weapon",
+    "dc": 14,
+    "time": "1 hr",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Apex Frost Claw",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Apex Frost Claw",
+    "outcomes": {
+      "superior": "1d8 slash. +1d8 cold. On hit: -10ft movement. On crit: target speed 0 1 round.",
+      "normal": "1d8 slash. +1d6 cold. On hit: -5ft movement.",
+      "flawed": "1d8 slash. No cold bonus."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "CRYOMANTIC HORROR — ORIG Recipes",
+    "section": "T2-T3 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-ice-prison-flask",
+    "name": "Ice Prison Flask",
+    "type": "Throwable",
+    "dc": 16,
+    "time": "1 hr",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Ice Prison Matrix",
+        "quantity": 1
+      },
+      {
+        "name": "Empty Infusion Base",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Ice Prison Matrix, 1x Empty Infusion Base",
+    "outcomes": {
+      "superior": "Thrown 60ft. DC 15 STR — Restrained in ice cage (AC 15, HP 25). Shatters: 2d6 cold in 5ft.",
+      "normal": "Restrained (no cage). DC 13 STR. No shatter.",
+      "flawed": "Restrained 1 round. No save to end."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "CRYOMANTIC HORROR — ORIG Recipes",
+    "section": "T2-T3 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-glacial-burst-grenade",
+    "name": "Glacial Burst Grenade",
+    "type": "Throwable",
+    "dc": 17,
+    "time": "45 min",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Glacial Burst Core",
+        "quantity": 1
+      },
+      {
+        "name": "Empty Infusion Base",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Glacial Burst Core, 1x Empty Infusion Base",
+    "outcomes": {
+      "superior": "Thrown 30ft. 20ft radius. DC 15 CON — 4d8 cold, target speed 0 until end of next turn.",
+      "normal": "20ft radius. DC 13 CON — 3d8 cold. -15ft movement.",
+      "flawed": "10ft radius. 2d6 cold. No movement reduction."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "CRYOMANTIC HORROR — ORIG Recipes",
+    "section": "T2-T3 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-living-frost-armour",
+    "name": "Living Frost Armour",
+    "type": "Armour",
+    "dc": 17,
+    "time": "2 hr",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Living Frost Membrane",
+        "quantity": 1
+      },
+      {
+        "name": "Reinforced Ice Bone",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Living Frost Membrane, 1x Reinforced Ice Bone",
+    "outcomes": {
+      "superior": "AC 16+DEX(2). Cold resist. Melee attackers: 1d6 cold. <half HP: resist all dmg 1 round.",
+      "normal": "AC 15+DEX(2). Cold resist. Melee attackers: 1d4 cold.",
+      "flawed": "AC 14+DEX(2). No resistance."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "CRYOMANTIC HORROR — ORIG Recipes",
+    "section": "T2-T3 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-cryomantic-core-ring",
+    "name": "Cryomantic Core Ring",
+    "type": "Accessory",
+    "dc": 17,
+    "time": "1.5 hr",
+    "tool": "Jeweler (DEX)",
+    "materials": [
+      {
+        "name": "Cryomantic Core",
+        "quantity": 1
+      },
+      {
+        "name": "Metal Fitting",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Cryomantic Core, 1x Metal Fitting",
+    "outcomes": {
+      "superior": "Cold attacks deal +1d6. Cold damage received restores 1d4 HP to wearer once/turn.",
+      "normal": "Cold attacks deal +1d4.",
+      "flawed": "+1 cold damage on all attacks."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "CRYOMANTIC HORROR — ORIG Recipes",
+    "section": "T2-T3 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-absolute-zero-flask",
+    "name": "Absolute Zero Flask",
+    "type": "Throwable",
+    "dc": 19,
+    "time": "1.5 hr",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Absolute Zero Gland",
+        "quantity": 1
+      },
+      {
+        "name": "Empty Infusion Base",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Absolute Zero Gland, 1x Empty Infusion Base",
+    "outcomes": {
+      "superior": "Thrown 30ft. 20ft radius. DC 17 CON — 6d8 cold, frozen solid until end of next turn (incapacitated, all dmg resist until thawed).",
+      "normal": "20ft radius. DC 15 CON — 5d8 cold. Speed 0.",
+      "flawed": "10ft radius. 3d8 cold. No frozen effect."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "CRYOMANTIC HORROR — ORIG Recipes",
+    "section": "T4 ORIG Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-living-blizzard-upgrade",
+    "name": "Living Blizzard Upgrade",
+    "type": "Upgrade",
+    "dc": 19,
+    "time": "2 hr",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Living Blizzard Essence",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Living Blizzard Essence",
+    "outcomes": {
+      "superior": "Armour upgrade. Passive 10ft aura: 1d8 cold/turn. Cold immunity. Flying speed equal to walking speed.",
+      "normal": "Passive 10ft aura: 1d6 cold/turn. Cold immunity.",
+      "flawed": "Passive 5ft aura: 1d4 cold/turn. Cold resistance."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "CRYOMANTIC HORROR — ORIG Recipes",
+    "section": "T4 ORIG Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-elder-frost-soul-focus",
+    "name": "Elder Frost Soul Focus",
+    "type": "Focus",
+    "dc": 19,
+    "time": "2 hr",
+    "tool": "Alchemist/Woodcarver",
+    "materials": [
+      {
+        "name": "Elder Frost Soul",
+        "quantity": 1
+      },
+      {
+        "name": "Carved Focus",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Elder Frost Soul, 1x Carved Focus",
+    "outcomes": {
+      "superior": "+2 spell attack. +1 spell save DC. Cold spells you cast can ignore resistance.",
+      "normal": "+2 spell attack. +1 spell save DC.",
+      "flawed": "+1 spell attack. +1 spell save DC."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "CRYOMANTIC HORROR — ORIG Recipes",
+    "section": "T4 ORIG Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-frost-fused-core-upgrade",
+    "name": "Frost-Fused Core Upgrade",
+    "type": "Upgrade",
+    "dc": 18,
+    "time": "2 hr",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Frost-Fused Mutation Core",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Frost-Fused Mutation Core",
+    "outcomes": {
+      "superior": "Armour upgrade. Cold immunity. Melee attacker: 1d6 cold. <half HP: +1 AC until end of combat.",
+      "normal": "Cold immunity. Melee attacker: 1d4 cold.",
+      "flawed": "Cold resistance. Melee attacker: 1 cold."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "CRYOMANTIC HORROR — ORIG Recipes",
+    "section": "FUSED Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-mutation-residue-coating",
+    "name": "Mutation Residue Coating",
+    "type": "Poison",
+    "dc": 11,
+    "time": "20 min",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Mutation Residue Scraps",
+        "quantity": 2
+      },
+      {
+        "name": "Distilled Alcohol",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Mutation Residue Scraps, 1x Distilled Alcohol",
+    "outcomes": {
+      "superior": "Coat weapon: +1d4 of a random damage type (roll 1d4: 1=lightning, 2=poison, 3=cold, 4=force).",
+      "normal": "Coat weapon: +1d4 random type (1 hit).",
+      "flawed": "+1 random type (1 hit). DM rolls, player doesn't know type until it hits."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "MUTATED CHIMERA HOUND — ORIG Recipes",
+    "section": "T1-T2 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-adaptive-biology-vest",
+    "name": "Adaptive Biology Vest",
+    "type": "Armour",
+    "dc": 13,
+    "time": "1 hr",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Adaptive Biology Tissue",
+        "quantity": 1
+      },
+      {
+        "name": "Leather Cord",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Adaptive Biology Tissue, 1x Leather Cord",
+    "outcomes": {
+      "superior": "AC 12+DEX. Once/round when hit: resist that damage type until start of next turn.",
+      "normal": "Once/combat: resist damage type that hits you.",
+      "flawed": "No resistance effect."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "MUTATED CHIMERA HOUND — ORIG Recipes",
+    "section": "T1-T2 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-multi-element-bone-core-ring",
+    "name": "Multi-Element Bone Core Ring",
+    "type": "Accessory",
+    "dc": 13,
+    "time": "45 min",
+    "tool": "Jeweler (DEX)",
+    "materials": [
+      {
+        "name": "Multi-Element Bone Core",
+        "quantity": 1
+      },
+      {
+        "name": "Metal Fitting",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Multi-Element Bone Core, 1x Metal Fitting",
+    "outcomes": {
+      "superior": "+1 to hit. Adv on saves vs single-element effects (fire, cold, lightning, etc.).",
+      "normal": "+1 to hit.",
+      "flawed": "No bonus."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "MUTATED CHIMERA HOUND — ORIG Recipes",
+    "section": "T1-T2 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-adaptive-skin-armour",
+    "name": "Adaptive Skin Armour",
+    "type": "Armour",
+    "dc": 16,
+    "time": "2 hr",
+    "tool": "Smith/Leatherworker",
+    "materials": [
+      {
+        "name": "Adaptive Biology Tissue",
+        "quantity": 1
+      },
+      {
+        "name": "Active Mutation Core (any)",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Adaptive Biology Tissue, 1x Active Mutation Core (any)",
+    "outcomes": {
+      "superior": "AC 15+DEX(2). Once/round when hit: resist that type until start of next turn.",
+      "normal": "Once/combat: resist damage type that hits you.",
+      "flawed": "No resistance effect."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "MUTATED CHIMERA HOUND — ORIG Recipes",
+    "section": "T2-T3 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-mutation-core-weapon-upgrade",
+    "name": "Mutation Core Weapon Upgrade",
+    "type": "Upgrade",
+    "dc": 15,
+    "time": "1 hr",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Active Mutation Core (Storm or Phase)",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Active Mutation Core (Storm or Phase)",
+    "outcomes": {
+      "superior": "Weapon upgrade. Storm: +1d6 lightning once/turn. Phase: teleport 10ft after hit (no OA).",
+      "normal": "+1d4 of mutation type.",
+      "flawed": "+1 of mutation type."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "MUTATED CHIMERA HOUND — ORIG Recipes",
+    "section": "T2-T3 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-chimera-breath-flask",
+    "name": "Chimera Breath Flask",
+    "type": "Throwable",
+    "dc": 17,
+    "time": "1 hr",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Chimera Breath Gland",
+        "quantity": 1
+      },
+      {
+        "name": "Empty Infusion Base",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Chimera Breath Gland, 1x Empty Infusion Base",
+    "outcomes": {
+      "superior": "30ft cone. Roll 1d4 type. DC 15 DEX — 5d8 of rolled type. Success: half.",
+      "normal": "30ft cone. 4d8 of rolled type. DC 13 DEX half.",
+      "flawed": "10ft radius. 2d8 of rolled type. No save."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "MUTATED CHIMERA HOUND — ORIG Recipes",
+    "section": "T2-T3 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-instinct-core-amulet",
+    "name": "Instinct Core Amulet",
+    "type": "Accessory",
+    "dc": 16,
+    "time": "1 hr",
+    "tool": "Jeweler (DEX)",
+    "materials": [
+      {
+        "name": "Predator Instinct Core",
+        "quantity": 1
+      },
+      {
+        "name": "Metal Fitting",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Predator Instinct Core, 1x Metal Fitting",
+    "outcomes": {
+      "superior": "+2 initiative. Adv on first attack each combat. Know creature's resistances on sight.",
+      "normal": "+2 initiative. Adv on first attack.",
+      "flawed": "+1 initiative only."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "MUTATED CHIMERA HOUND — ORIG Recipes",
+    "section": "T2-T3 Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-mutation-surge-potion",
+    "name": "Mutation Surge Potion",
+    "type": "Potion",
+    "dc": 16,
+    "time": "45 min",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Unstable Evolution Organ",
+        "quantity": 1
+      },
+      {
+        "name": "Empty Infusion Base",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Unstable Evolution Organ, 1x Empty Infusion Base",
+    "outcomes": {
+      "superior": "Roll 1d4: 1=+1d8 lightning 1 min. 2=+1d8 poison 1 min. 3=+1d8 cold 1 min. 4=immune to OA 1 min.",
+      "normal": "Same effect, lasts until end of next turn.",
+      "flawed": "Effect activates (DM rolls type), lasts 1 round only."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "MUTATED CHIMERA HOUND — ORIG Recipes",
+    "section": "T4 ORIG Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-chimera-fusion-core-ring",
+    "name": "Chimera Fusion Core Ring",
+    "type": "Accessory",
+    "dc": 18,
+    "time": "2 hr",
+    "tool": "Jeweler/Alchemist",
+    "materials": [
+      {
+        "name": "Chimera Fusion Core",
+        "quantity": 1
+      },
+      {
+        "name": "Metal Fitting",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Chimera Fusion Core, 1x Metal Fitting",
+    "outcomes": {
+      "superior": "Choose damage type as free action each turn. All attacks deal +1d6 of that type.",
+      "normal": "Once/combat: choose type, +1d6 for that turn.",
+      "flawed": "Once/long rest: choose type, +1d4 on next hit only."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "MUTATED CHIMERA HOUND — ORIG Recipes",
+    "section": "T4 ORIG Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-storm-phase-core-upgrade",
+    "name": "Storm-Phase Core Upgrade",
+    "type": "Upgrade",
+    "dc": 19,
+    "time": "2.5 hr",
+    "tool": "Smith/Alchemist",
+    "materials": [
+      {
+        "name": "Storm-Phase Chimera Core",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Storm-Phase Chimera Core",
+    "outcomes": {
+      "superior": "Armour upgrade. +1d6 lightning once/turn. Once/turn: teleport 10ft (no OA). Resist lightning.",
+      "normal": "+1d4 lightning once/turn. Resist lightning.",
+      "flawed": "+1d4 lightning once/combat."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "MUTATED CHIMERA HOUND — ORIG Recipes",
+    "section": "FUSED Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-arcane-soul-membrane-armour-upgrade",
+    "name": "Arcane Soul Membrane Armour Upgrade",
+    "type": "Upgrade",
+    "dc": 15,
+    "time": "1 hr",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Arcane Soul Membrane",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Arcane Soul Membrane",
+    "outcomes": {
+      "superior": "Armour upgrade. Adv on saves vs spells. Once/long rest: redirect one spell targeting you back at its caster.",
+      "normal": "Armour upgrade. Adv on saves vs spells.",
+      "flawed": "Armour upgrade. Once/combat: reroll one spell save."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "TEMPEST TYRANT — ORIG Recipes",
+    "section": "T2-T3 ORIG Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-siege-predator-bone-armour",
+    "name": "Siege Predator Bone Armour",
+    "type": "Armour",
+    "dc": 17,
+    "time": "2 hr",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Siege Predator Bone Core",
+        "quantity": 1
+      },
+      {
+        "name": "Reinforced Metal Plates",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Siege Predator Bone Core, 1x Reinforced Metal Plates",
+    "outcomes": {
+      "superior": "AC 18. -5 physical damage/round. Double damage to structures and objects.",
+      "normal": "AC 18. -5 physical damage/round.",
+      "flawed": "AC 17. -3 physical damage/round."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "TEMPEST TYRANT — ORIG Recipes",
+    "section": "T2-T3 ORIG Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-arcane-soul-focus",
+    "name": "Arcane Soul Focus",
+    "type": "Focus",
+    "dc": 19,
+    "time": "2 hr",
+    "tool": "Alchemist/Woodcarver",
+    "materials": [
+      {
+        "name": "Arcane Soul Matrix Fragment",
+        "quantity": 1
+      },
+      {
+        "name": "Carved Focus",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Arcane Soul Matrix Fragment, 1x Carved Focus",
+    "outcomes": {
+      "superior": "+2 spell attack. +1 spell save DC. Once/long rest: cast a 3rd level or lower spell without a slot. The focus occasionally whispers names.",
+      "normal": "+2 spell attack. +1 spell save DC.",
+      "flawed": "+1 spell attack. +1 spell save DC."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "TEMPEST TYRANT — ORIG Recipes",
+    "section": "T3-T4 ORIG Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-soul-matrix-ring",
+    "name": "Soul Matrix Ring",
+    "type": "Accessory",
+    "dc": 17,
+    "time": "1.5 hr",
+    "tool": "Jeweler/Alchemist",
+    "materials": [
+      {
+        "name": "Arcane Soul Matrix Fragment",
+        "quantity": 1
+      },
+      {
+        "name": "Metal Fitting",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Arcane Soul Matrix Fragment, 1x Metal Fitting",
+    "outcomes": {
+      "superior": "Adv on saves vs spells. Once/long rest: redirect one spell targeting you to its caster.",
+      "normal": "Adv on saves vs spells.",
+      "flawed": "Once/combat: reroll one spell saving throw."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "TEMPEST TYRANT — ORIG Recipes",
+    "section": "T3-T4 ORIG Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-siege-predator-heavy-armour",
+    "name": "Siege Predator Heavy Armour",
+    "type": "Armour",
+    "dc": 18,
+    "time": "2.5 hr",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Siege Predator Chassis",
+        "quantity": 1
+      },
+      {
+        "name": "Reinforced Metal Plates",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Siege Predator Chassis, 1x Reinforced Metal Plates",
+    "outcomes": {
+      "superior": "AC 19. -5 physical damage/round. Cold+lightning resist. Double damage to structures.",
+      "normal": "AC 19. -5 physical damage/round. Cold+lightning resist.",
+      "flawed": "AC 18. -3 physical damage/round."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "TEMPEST TYRANT — ORIG Recipes",
+    "section": "T3-T4 ORIG Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  },
+  {
+    "id": "recipe-storm-phase-sovereign-upgrade",
+    "name": "Storm-Phase Sovereign Upgrade",
+    "type": "Upgrade",
+    "dc": 20,
+    "time": "3 hr",
+    "tool": "Smith/Alchemist",
+    "materials": [
+      {
+        "name": "Storm-Phase Sovereign Core",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Storm-Phase Sovereign Core",
+    "outcomes": {
+      "superior": "Weapon upgrade. +1d8 lightning once/turn. Attacks phase through non-magical armour. +1 to hit.",
+      "normal": "+1d6 lightning once/turn. +1 to hit.",
+      "flawed": "+1d6 lightning once/combat."
+    },
+    "chapter": "CHAPTER 7 — SPECIAL EXPERIMENT RECIPES",
+    "group": "TEMPEST TYRANT — ORIG Recipes",
+    "section": "FUSED Material Recipes",
+    "source": "Blackspire_Recipes.docx"
+  }
+]
