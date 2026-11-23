@@ -1,0 +1,632 @@
+[
+  {
+    "id": "thornspine-surface-seam",
+    "name": "Thornspine Surface Seam",
+    "activity": "mining",
+    "tier": "common",
+    "dc": 10,
+    "description": "Rust-streaked rock exposed by rockfall. Easy pickings for anyone with a pick.",
+    "yields": {
+      "common": [
+        {
+          "name": "Grey Ironstone",
+          "weight": 45,
+          "amount": "1d4"
+        },
+        {
+          "name": "Slate Grit",
+          "weight": 35,
+          "amount": "1d4"
+        },
+        {
+          "name": "Firestone Grit",
+          "weight": 20,
+          "amount": "1d3"
+        }
+      ],
+      "rare": [
+        {
+          "name": "Rimecopper Ore",
+          "weight": 100,
+          "amount": "1d2"
+        }
+      ],
+      "epic": [
+        {
+          "name": "Thornspine Silver Ore",
+          "weight": 100
+        }
+      ]
+    },
+    "set": "undying-vigil",
+    "region": "Thornspine Mountains — past the Wall"
+  },
+  {
+    "id": "deep-ridge-vein",
+    "name": "Deep Ridge Vein",
+    "activity": "mining",
+    "tier": "uncommon",
+    "dc": 12,
+    "description": "A narrow seam cutting deep into the ridge. Cold air breathes out of the cracks.",
+    "yields": {
+      "common": [
+        {
+          "name": "Grey Ironstone",
+          "weight": 25,
+          "amount": "1d4"
+        },
+        {
+          "name": "Rimecopper Ore",
+          "weight": 35,
+          "amount": "1d2"
+        },
+        {
+          "name": "Slate Grit",
+          "weight": 15,
+          "amount": "1d4"
+        },
+        {
+          "name": "Cave Nitre",
+          "weight": 25,
+          "amount": "1d3"
+        }
+      ],
+      "rare": [
+        {
+          "name": "Thornspine Silver Ore",
+          "weight": 70
+        },
+        {
+          "name": "Emberquartz",
+          "weight": 30
+        }
+      ],
+      "epic": [
+        {
+          "name": "Emberquartz",
+          "weight": 100
+        }
+      ]
+    },
+    "set": "undying-vigil",
+    "region": "Thornspine Mountains — past the Wall"
+  },
+  {
+    "id": "ashline-lode",
+    "name": "Ashline Lode",
+    "activity": "mining",
+    "tier": "rare",
+    "dc": 14,
+    "description": "An old lode right on the ashline. The rock is warm, and the dead keep their distance.",
+    "yields": {
+      "common": [
+        {
+          "name": "Rimecopper Ore",
+          "weight": 40,
+          "amount": "1d2"
+        },
+        {
+          "name": "Thornspine Silver Ore",
+          "weight": 60
+        }
+      ],
+      "rare": [
+        {
+          "name": "Emberquartz",
+          "weight": 100
+        }
+      ],
+      "epic": [
+        {
+          "name": "Sunvein Crystal",
+          "weight": 100
+        }
+      ]
+    },
+    "set": "undying-vigil",
+    "region": "Thornspine Mountains — past the Wall"
+  },
+  {
+    "id": "meteorite-crater",
+    "name": "Meteorite Crater",
+    "activity": "mining",
+    "tier": "epic",
+    "dc": 16,
+    "description": "A scorched crater around a half-buried fallen star. The air hums, and compasses spin.",
+    "yields": {
+      "common": [
+        {
+          "name": "Skyfall Slag",
+          "weight": 70,
+          "amount": "1d3"
+        },
+        {
+          "name": "Emberquartz",
+          "weight": 30
+        }
+      ],
+      "rare": [
+        {
+          "name": "Star-Iron Fragment",
+          "weight": 65,
+          "amount": "1d2"
+        },
+        {
+          "name": "Starglass Shard",
+          "weight": 35
+        }
+      ],
+      "epic": [
+        {
+          "name": "Heart of the Fallen Star",
+          "weight": 100
+        }
+      ]
+    },
+    "set": "undying-vigil",
+    "region": "Thornspine Mountains — past the Wall"
+  },
+  {
+    "id": "pine-stand",
+    "name": "Pine Stand",
+    "activity": "woodcutting",
+    "tier": "common",
+    "dc": 10,
+    "description": "Straight mountain pines on a sheltered slope.",
+    "yields": {
+      "common": [
+        {
+          "name": "Pine Logs",
+          "weight": 60,
+          "amount": "1d4"
+        },
+        {
+          "name": "Pine Pitch",
+          "weight": 40,
+          "amount": "1d3"
+        }
+      ],
+      "rare": [
+        {
+          "name": "Ironbark Logs",
+          "weight": 100
+        }
+      ],
+      "epic": [
+        {
+          "name": "Ashwood Billet",
+          "weight": 100
+        }
+      ]
+    },
+    "set": "undying-vigil",
+    "region": "Thornspine Mountains — past the Wall"
+  },
+  {
+    "id": "old-ironbark-grove",
+    "name": "Old Ironbark Grove",
+    "activity": "woodcutting",
+    "tier": "uncommon",
+    "dc": 12,
+    "description": "Dark, dense trees older than the Order. Axes dull fast here.",
+    "yields": {
+      "common": [
+        {
+          "name": "Pine Logs",
+          "weight": 30,
+          "amount": "1d4"
+        },
+        {
+          "name": "Ironbark Logs",
+          "weight": 45,
+          "amount": "1d2"
+        },
+        {
+          "name": "Pine Pitch",
+          "weight": 25,
+          "amount": "1d3"
+        }
+      ],
+      "rare": [
+        {
+          "name": "Ashwood Billet",
+          "weight": 70
+        },
+        {
+          "name": "Stillwood Heartwood",
+          "weight": 30
+        }
+      ],
+      "epic": [
+        {
+          "name": "Stillwood Heartwood",
+          "weight": 100
+        }
+      ]
+    },
+    "set": "undying-vigil",
+    "region": "Thornspine Mountains — past the Wall"
+  },
+  {
+    "id": "lightning-scarred-ridge",
+    "name": "Lightning-Scarred Ridge",
+    "activity": "woodcutting",
+    "tier": "rare",
+    "dc": 14,
+    "description": "A ridge of blackened trees near the dead lands. Some still smoulder inside.",
+    "yields": {
+      "common": [
+        {
+          "name": "Ironbark Logs",
+          "weight": 50,
+          "amount": "1d2"
+        },
+        {
+          "name": "Ashwood Billet",
+          "weight": 50
+        }
+      ],
+      "rare": [
+        {
+          "name": "Stillwood Heartwood",
+          "weight": 100
+        }
+      ],
+      "epic": [
+        {
+          "name": "Embered Heartwood",
+          "weight": 100
+        }
+      ]
+    },
+    "set": "undying-vigil",
+    "region": "Thornspine Mountains — past the Wall"
+  },
+  {
+    "id": "shaded-rock-slopes",
+    "name": "Shaded Rock Slopes",
+    "activity": "foraging",
+    "tier": "common",
+    "dc": 10,
+    "description": "Mossy rock, loose scree and hardy leaves. Mind the pale mushrooms, kick the stones (some are tubers), and check the ledges for nests.",
+    "yields": {
+      "common": [
+        {
+          "name": "Bitterleaf",
+          "weight": 25,
+          "amount": "1d4"
+        },
+        {
+          "name": "Crag Moss",
+          "weight": 20,
+          "amount": "1d4"
+        },
+        {
+          "name": "Hollowcap",
+          "weight": 10
+        },
+        {
+          "name": "Scree Tuber",
+          "weight": 20,
+          "amount": "1d3"
+        },
+        {
+          "name": "Smokewort",
+          "weight": 15,
+          "amount": "1d3"
+        },
+        {
+          "name": "Crag Nest Egg",
+          "weight": 10,
+          "amount": "1d3"
+        }
+      ],
+      "rare": [
+        {
+          "name": "Graveroot",
+          "weight": 40,
+          "amount": "1d2"
+        },
+        {
+          "name": "Hollowcap",
+          "weight": 30,
+          "amount": "1d2"
+        },
+        {
+          "name": "Saltmoss",
+          "weight": 30,
+          "amount": "1d2"
+        }
+      ],
+      "epic": [
+        {
+          "name": "Pale Thistle",
+          "weight": 100
+        }
+      ]
+    },
+    "set": "undying-vigil",
+    "region": "Thornspine Mountains — past the Wall"
+  },
+  {
+    "id": "tarnside-reedbeds",
+    "name": "Tarnside Reedbeds",
+    "activity": "foraging",
+    "tier": "common",
+    "dc": 10,
+    "description": "Reeds, brambles, ferns and moss crowding a quiet tarn shore. Wasps nest in the rocks above.",
+    "yields": {
+      "common": [
+        {
+          "name": "Hollowreed Seed",
+          "weight": 30,
+          "amount": "1d4"
+        },
+        {
+          "name": "Bramblesweet",
+          "weight": 20,
+          "amount": "1d3"
+        },
+        {
+          "name": "Crag Moss",
+          "weight": 10,
+          "amount": "1d4"
+        },
+        {
+          "name": "Frostcurl",
+          "weight": 15,
+          "amount": "1d3"
+        },
+        {
+          "name": "Cragberry",
+          "weight": 15,
+          "amount": "1d4"
+        },
+        {
+          "name": "Reedfowl Egg",
+          "weight": 10,
+          "amount": "1d3"
+        }
+      ],
+      "rare": [
+        {
+          "name": "Cloudwasp Comb",
+          "weight": 40
+        },
+        {
+          "name": "Graveroot",
+          "weight": 25,
+          "amount": "1d2"
+        },
+        {
+          "name": "Snowstalk",
+          "weight": 20,
+          "amount": "1d2"
+        },
+        {
+          "name": "Rimepod",
+          "weight": 15,
+          "amount": "1d2"
+        }
+      ],
+      "epic": [
+        {
+          "name": "Pale Thistle",
+          "weight": 100
+        }
+      ]
+    },
+    "set": "undying-vigil",
+    "region": "Thornspine Mountains — past the Wall"
+  },
+  {
+    "id": "old-battlefield-meadow",
+    "name": "Old Battlefield Meadow",
+    "activity": "foraging",
+    "tier": "uncommon",
+    "dc": 12,
+    "description": "A quiet meadow where the soil is too dark. Graveroot grows thick here.",
+    "yields": {
+      "common": [
+        {
+          "name": "Bitterleaf",
+          "weight": 25,
+          "amount": "1d4"
+        },
+        {
+          "name": "Graveroot",
+          "weight": 30,
+          "amount": "1d2"
+        },
+        {
+          "name": "Hollowcap",
+          "weight": 20
+        },
+        {
+          "name": "Cragberry",
+          "weight": 25,
+          "amount": "1d4"
+        }
+      ],
+      "rare": [
+        {
+          "name": "Pale Thistle",
+          "weight": 60,
+          "amount": "1d2"
+        },
+        {
+          "name": "Ashbulb",
+          "weight": 40,
+          "amount": "1d2"
+        }
+      ],
+      "epic": [
+        {
+          "name": "Emberleaf",
+          "weight": 100
+        }
+      ]
+    },
+    "set": "undying-vigil",
+    "region": "Thornspine Mountains — past the Wall"
+  },
+  {
+    "id": "warm-spring-hollow",
+    "name": "Warm Spring Hollow",
+    "activity": "foraging",
+    "tier": "rare",
+    "dc": 14,
+    "description": "A steaming hollow where snow never settles. Rare plants crowd the water.",
+    "yields": {
+      "common": [
+        {
+          "name": "Pale Thistle",
+          "weight": 45,
+          "amount": "1d2"
+        },
+        {
+          "name": "Graveroot",
+          "weight": 30,
+          "amount": "1d2"
+        },
+        {
+          "name": "Sharpneedle",
+          "weight": 25,
+          "amount": "1d2"
+        }
+      ],
+      "rare": [
+        {
+          "name": "Emberleaf",
+          "weight": 70
+        },
+        {
+          "name": "Cloudwasp Comb",
+          "weight": 30
+        }
+      ],
+      "epic": [
+        {
+          "name": "Wardensbloom",
+          "weight": 60
+        },
+        {
+          "name": "Embergourd",
+          "weight": 40
+        }
+      ]
+    },
+    "set": "undying-vigil",
+    "region": "Thornspine Mountains — past the Wall"
+  },
+  {
+    "id": "snowmelt-stream",
+    "name": "Snowmelt Stream",
+    "activity": "fishing",
+    "tier": "common",
+    "dc": 10,
+    "description": "A fast, freezing stream full of small silver fish.",
+    "yields": {
+      "common": [
+        {
+          "name": "Streamfin",
+          "weight": 55,
+          "amount": "1d4"
+        },
+        {
+          "name": "Mudwhip",
+          "weight": 45,
+          "amount": "1d3"
+        }
+      ],
+      "rare": [
+        {
+          "name": "Rimefin",
+          "weight": 100
+        }
+      ],
+      "epic": [
+        {
+          "name": "Glassjaw",
+          "weight": 100
+        }
+      ]
+    },
+    "set": "undying-vigil",
+    "region": "Thornspine Mountains — past the Wall"
+  },
+  {
+    "id": "thornspine-tarn",
+    "name": "Thornspine Tarn",
+    "activity": "fishing",
+    "tier": "uncommon",
+    "dc": 12,
+    "description": "A still mountain lake, iced at the edges.",
+    "yields": {
+      "common": [
+        {
+          "name": "Streamfin",
+          "weight": 30,
+          "amount": "1d4"
+        },
+        {
+          "name": "Mudwhip",
+          "weight": 30,
+          "amount": "1d3"
+        },
+        {
+          "name": "Rimefin",
+          "weight": 40
+        }
+      ],
+      "rare": [
+        {
+          "name": "Glassjaw",
+          "weight": 100
+        }
+      ],
+      "epic": [
+        {
+          "name": "Tarnback",
+          "weight": 100
+        }
+      ]
+    },
+    "set": "undying-vigil",
+    "region": "Thornspine Mountains — past the Wall"
+  },
+  {
+    "id": "deep-tarn",
+    "name": "Deep Tarn",
+    "activity": "fishing",
+    "tier": "rare",
+    "dc": 14,
+    "description": "Black water with no visible bottom. Something down there glows.",
+    "yields": {
+      "common": [
+        {
+          "name": "Rimefin",
+          "weight": 40
+        },
+        {
+          "name": "Glassjaw",
+          "weight": 60
+        }
+      ],
+      "rare": [
+        {
+          "name": "Tarnback",
+          "weight": 100
+        }
+      ],
+      "epic": [
+        {
+          "name": "Deeplight",
+          "weight": 100
+        }
+      ]
+    },
+    "set": "undying-vigil",
+    "region": "Thornspine Mountains — past the Wall"
+  }
+]

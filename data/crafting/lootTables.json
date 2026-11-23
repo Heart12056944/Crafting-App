@@ -2840,14 +2840,14 @@
     "totalWeight": 100,
     "entries": [
       {
-        "weight": 30,
+        "weight": 24,
         "materialName": "Coarse Wolf Pelt",
         "tier": "T0",
         "source": "VIGIL",
         "notes": "Rough grey pelt from a Thornspine wolf. Needs curing before it is good for much."
       },
       {
-        "weight": 26,
+        "weight": 20,
         "materialName": "Wolf Fang",
         "tier": "T0",
         "source": "VIGIL",
@@ -2855,7 +2855,7 @@
         "amount": "1d4"
       },
       {
-        "weight": 24,
+        "weight": 18,
         "materialName": "Lean Sinew",
         "tier": "T0",
         "source": "VIGIL",
@@ -2863,12 +2863,26 @@
         "amount": "1d4"
       },
       {
-        "weight": 20,
+        "weight": 14,
         "materialName": "Wolf Bone",
         "tier": "T0",
         "source": "VIGIL",
         "notes": "Light, dense leg bone. Takes a carved edge well.",
         "amount": "1d4"
+      },
+      {
+        "weight": 12,
+        "materialName": "Wolf Neck",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Stringy neck meat. Best stewed for hours. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 12,
+        "materialName": "Wolf Shank",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A sinewy foreleg shank. Spoils in a few days unless cooked or cured."
       }
     ],
     "set": "undying-vigil",
@@ -2883,18 +2897,25 @@
     "totalWeight": 100,
     "entries": [
       {
-        "weight": 55,
+        "weight": 45,
         "materialName": "Thick Winter Pelt",
         "tier": "T1",
         "source": "VIGIL",
         "notes": "Dense under-fur grown for the high passes. Sheds snow like water."
       },
       {
-        "weight": 45,
+        "weight": 35,
         "materialName": "Keen Scent Gland",
         "tier": "T1",
         "source": "VIGIL",
         "notes": "The gland behind a wolf's muzzle. Sharpens the nose of anyone who uses it right."
+      },
+      {
+        "weight": 20,
+        "materialName": "Wolf Shoulder",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "The meatiest part of a wolf, and still lean. Spoils in a few days unless cooked or cured."
       }
     ],
     "set": "undying-vigil",
@@ -2909,11 +2930,18 @@
     "totalWeight": 100,
     "entries": [
       {
-        "weight": 100,
+        "weight": 70,
         "materialName": "Alpha's Ruff",
         "tier": "T2",
         "source": "VIGIL",
         "notes": "The thick mane of a pack leader. Other wolves give it room even off the body."
+      },
+      {
+        "weight": 30,
+        "materialName": "Wolf Backstrap",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "The long muscle along a wolf's spine. Surprisingly tender. Spoils in a few days unless cooked or cured."
       }
     ],
     "set": "undying-vigil",
@@ -2928,14 +2956,14 @@
     "totalWeight": 100,
     "entries": [
       {
-        "weight": 30,
+        "weight": 28,
         "materialName": "Stag Hide",
         "tier": "T0",
         "source": "VIGIL",
         "notes": "Thin, supple hide from a ridge stag."
       },
       {
-        "weight": 26,
+        "weight": 22,
         "materialName": "Antler Tine",
         "tier": "T0",
         "source": "VIGIL",
@@ -2943,7 +2971,7 @@
         "amount": "1d4"
       },
       {
-        "weight": 22,
+        "weight": 16,
         "materialName": "Lean Sinew",
         "tier": "T0",
         "source": "VIGIL",
@@ -2951,12 +2979,25 @@
         "amount": "1d4"
       },
       {
-        "weight": 22,
-        "materialName": "Raw Game Meat",
+        "weight": 12,
+        "materialName": "Stag Neck",
         "tier": "T0",
         "source": "VIGIL",
-        "notes": "A cut of fresh meat from a mountain beast. Cook it before it turns.",
-        "amount": "1d4"
+        "notes": "A thick neck roast. Wants slow cooking. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 12,
+        "materialName": "Stag Shank",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Lower leg, all connective tissue. Rich when braised. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 10,
+        "materialName": "Stag Brisket",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Thin breast meat between the forelegs. Spoils in a few days unless cooked or cured."
       }
     ],
     "set": "undying-vigil",
@@ -2971,18 +3012,39 @@
     "totalWeight": 100,
     "entries": [
       {
-        "weight": 55,
+        "weight": 34,
         "materialName": "Branching Antler",
         "tier": "T1",
         "source": "VIGIL",
         "notes": "A full antler branch. Springy enough to bend into a bow."
       },
       {
-        "weight": 45,
+        "weight": 26,
         "materialName": "Musk Gland",
         "tier": "T1",
         "source": "VIGIL",
         "notes": "A rutting stag's musk. Masks a person's scent, or draws every beast in the valley."
+      },
+      {
+        "weight": 14,
+        "materialName": "Stag Shoulder",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A whole shoulder roast. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 13,
+        "materialName": "Stag Rib Rack",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A rack of ribs, lean and dark. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 13,
+        "materialName": "Stag Hindquarter",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "The big muscles of the rear leg. Roasts or slices into steaks. Spoils in a few days unless cooked or cured."
       }
     ],
     "set": "undying-vigil",
@@ -2997,18 +3059,32 @@
     "totalWeight": 100,
     "entries": [
       {
-        "weight": 50,
+        "weight": 34,
         "materialName": "Crown Antler",
         "tier": "T2",
         "source": "VIGIL",
         "notes": "The crowned rack of an old stag. Druids prize it as a focus."
       },
       {
-        "weight": 50,
+        "weight": 26,
         "materialName": "Swift Tendon",
         "tier": "T2",
         "source": "VIGIL",
         "notes": "Leg tendon from a stag that outran wolves for years."
+      },
+      {
+        "weight": 22,
+        "materialName": "Stag Backstrap",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "The loin along the spine. The cut every hunter wants. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 18,
+        "materialName": "Stag Tenderloin",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "Two small strips from inside the ribcage. The most tender meat on a stag. Spoils in a few days unless cooked or cured."
       }
     ],
     "set": "undying-vigil",
@@ -3023,7 +3099,7 @@
     "totalWeight": 100,
     "entries": [
       {
-        "weight": 40,
+        "weight": 34,
         "materialName": "Grey Flight Feathers",
         "tier": "T0",
         "source": "VIGIL",
@@ -3031,7 +3107,7 @@
         "amount": "1d6"
       },
       {
-        "weight": 32,
+        "weight": 22,
         "materialName": "Hollow Bird Bone",
         "tier": "T0",
         "source": "VIGIL",
@@ -3039,12 +3115,33 @@
         "amount": "1d4"
       },
       {
-        "weight": 28,
+        "weight": 20,
         "materialName": "Hooked Talon",
         "tier": "T0",
         "source": "VIGIL",
         "notes": "A curved hawk talon. Grips and does not let go.",
         "amount": "1d4"
+      },
+      {
+        "weight": 8,
+        "materialName": "Hawk Thigh",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Dark thigh meat. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 8,
+        "materialName": "Hawk Drumstick",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A lean drumstick. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 8,
+        "materialName": "Hawk Wing",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "More bone than meat. Spoils in a few days unless cooked or cured."
       }
     ],
     "set": "undying-vigil",
@@ -3059,7 +3156,7 @@
     "totalWeight": 100,
     "entries": [
       {
-        "weight": 55,
+        "weight": 40,
         "materialName": "Storm-Grey Primary",
         "tier": "T1",
         "source": "VIGIL",
@@ -3067,11 +3164,26 @@
         "amount": "1d4"
       },
       {
-        "weight": 45,
+        "weight": 30,
         "materialName": "Keen Hawk Eye",
         "tier": "T1",
         "source": "VIGIL",
         "notes": "A crag hawk's eye, preserved. Distilled, it sharpens sight for hours."
+      },
+      {
+        "weight": 15,
+        "materialName": "Hawk Breast",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "The flight muscle. Dense, dark and plentiful for a bird. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 15,
+        "materialName": "Hawk Egg",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A crag hawk's egg, taken from the nest of a hawk that defended it.",
+        "amount": "1d2"
       }
     ],
     "set": "undying-vigil",
@@ -3112,7 +3224,7 @@
         "notes": "Dense under-fur grown for the high passes. Sheds snow like water."
       },
       {
-        "weight": 22,
+        "weight": 20,
         "materialName": "Bear Claw",
         "tier": "T1",
         "source": "VIGIL",
@@ -3120,7 +3232,7 @@
         "amount": "1d4"
       },
       {
-        "weight": 22,
+        "weight": 20,
         "materialName": "Dense Bear Fat",
         "tier": "T1",
         "source": "VIGIL",
@@ -3128,19 +3240,25 @@
         "amount": "1d4"
       },
       {
-        "weight": 16,
+        "weight": 14,
         "materialName": "Heavy Bear Bone",
         "tier": "T1",
         "source": "VIGIL",
         "notes": "Thigh bone of a mountain bear. Nearly as hard as iron."
       },
       {
-        "weight": 18,
-        "materialName": "Raw Game Meat",
+        "weight": 12,
+        "materialName": "Bear Neck",
         "tier": "T0",
         "source": "VIGIL",
-        "notes": "A cut of fresh meat from a mountain beast. Cook it before it turns.",
-        "amount": "1d6"
+        "notes": "A heavy, fatty neck roast. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 12,
+        "materialName": "Bear Shank",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A massive shank, thick with sinew. Spoils in a few days unless cooked or cured."
       }
     ],
     "set": "undying-vigil",
@@ -3155,18 +3273,39 @@
     "totalWeight": 100,
     "entries": [
       {
-        "weight": 55,
+        "weight": 32,
         "materialName": "Whole Bear Hide",
         "tier": "T2",
         "source": "VIGIL",
         "notes": "An unbroken bear hide. Heavy, warm and nearly arrow-proof once tanned."
       },
       {
-        "weight": 45,
+        "weight": 24,
         "materialName": "Great Bear Claw",
         "tier": "T2",
         "source": "VIGIL",
         "notes": "A claw the length of a dagger."
+      },
+      {
+        "weight": 16,
+        "materialName": "Bear Haunch",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A whole hindquarter, heavy and dark-meated. Wants a long, slow braise. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 14,
+        "materialName": "Bear Shoulder",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A shoulder roast as big as a man's chest. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 14,
+        "materialName": "Bear Ribs",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A slab of rich, fatty ribs. Spoils in a few days unless cooked or cured."
       }
     ],
     "set": "undying-vigil",
@@ -3181,18 +3320,32 @@
     "totalWeight": 100,
     "entries": [
       {
-        "weight": 50,
+        "weight": 30,
         "materialName": "Mountain Heart",
         "tier": "T3",
         "source": "VIGIL",
         "notes": "The great heart of an old bear. Drinkers swear they can feel it beating."
       },
       {
-        "weight": 50,
+        "weight": 30,
         "materialName": "Old Bear's Pelt",
         "tier": "T3",
         "source": "VIGIL",
         "notes": "A scarred grey pelt from a bear that ruled its mountain for a generation."
+      },
+      {
+        "weight": 20,
+        "materialName": "Bear Backstrap",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "The loin along a bear's spine. Dark, rich and tender. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 20,
+        "materialName": "Bear Tenderloin",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "The inner loin. Rare to get out whole. Spoils in a few days unless cooked or cured."
       }
     ],
     "set": "undying-vigil",
@@ -3748,7 +3901,7 @@
     "totalWeight": 100,
     "entries": [
       {
-        "weight": 34,
+        "weight": 30,
         "materialName": "Ram's Wool",
         "tier": "T0",
         "source": "VIGIL",
@@ -3756,7 +3909,7 @@
         "amount": "1d4"
       },
       {
-        "weight": 26,
+        "weight": 22,
         "materialName": "Curled Horn Chip",
         "tier": "T0",
         "source": "VIGIL",
@@ -3764,19 +3917,32 @@
         "amount": "1d4"
       },
       {
-        "weight": 24,
-        "materialName": "Raw Game Meat",
-        "tier": "T0",
-        "source": "VIGIL",
-        "notes": "A cut of fresh meat from a mountain beast. Cook it before it turns.",
-        "amount": "1d4"
-      },
-      {
-        "weight": 16,
+        "weight": 12,
         "materialName": "Lean Sinew",
         "tier": "T0",
         "source": "VIGIL",
         "notes": "Clean sinew from a fast-running beast. Dries into excellent cord."
+      },
+      {
+        "weight": 12,
+        "materialName": "Ram Neck",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Bony neck slices for the pot. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 12,
+        "materialName": "Ram Shank",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A meaty foreshank. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 12,
+        "materialName": "Ram Breast",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Fatty, thin breast meat. Spoils in a few days unless cooked or cured."
       }
     ],
     "set": "undying-vigil",
@@ -3791,18 +3957,39 @@
     "totalWeight": 100,
     "entries": [
       {
-        "weight": 55,
+        "weight": 34,
         "materialName": "Thick Fleece",
         "tier": "T1",
         "source": "VIGIL",
         "notes": "A whole fleece from a ram that wintered on the high ledges."
       },
       {
-        "weight": 45,
+        "weight": 26,
         "materialName": "Spiral Ram Horn",
         "tier": "T1",
         "source": "VIGIL",
         "notes": "A full curled horn, hard and springy."
+      },
+      {
+        "weight": 14,
+        "materialName": "Ram Shoulder",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A marbled shoulder roast. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 13,
+        "materialName": "Ram Loin Chops",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "Thick chops cut from the loin. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 13,
+        "materialName": "Ram Leg",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A whole hind leg for roasting. Spoils in a few days unless cooked or cured."
       }
     ],
     "set": "undying-vigil",
@@ -3817,11 +4004,25 @@
     "totalWeight": 100,
     "entries": [
       {
-        "weight": 100,
+        "weight": 50,
         "materialName": "Old Ram's Horns",
         "tier": "T2",
         "source": "VIGIL",
         "notes": "The battered horns of a ram that won every fight on its ledge."
+      },
+      {
+        "weight": 25,
+        "materialName": "Ram Rack",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A rack of rib chops, trimmed clean. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 25,
+        "materialName": "Ram Saddle",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "Both loins still joined along the backbone. Spoils in a few days unless cooked or cured."
       }
     ],
     "set": "undying-vigil",
@@ -3836,14 +4037,14 @@
     "totalWeight": 100,
     "entries": [
       {
-        "weight": 32,
+        "weight": 28,
         "materialName": "Bristle Hide",
         "tier": "T0",
         "source": "VIGIL",
         "notes": "Thick hide covered in stiff black bristles."
       },
       {
-        "weight": 30,
+        "weight": 24,
         "materialName": "Boar Tusk",
         "tier": "T0",
         "source": "VIGIL",
@@ -3851,12 +4052,25 @@
         "amount": "1d4"
       },
       {
-        "weight": 38,
-        "materialName": "Raw Game Meat",
+        "weight": 16,
+        "materialName": "Boar Jowl",
         "tier": "T0",
         "source": "VIGIL",
-        "notes": "A cut of fresh meat from a mountain beast. Cook it before it turns.",
-        "amount": "1d6"
+        "notes": "Fatty cheek meat. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 16,
+        "materialName": "Boar Hock",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "The lower leg joint. Boils down rich. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 16,
+        "materialName": "Boar Trotters",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "The feet. Mostly for broth. Spoils in a few days unless cooked or cured."
       }
     ],
     "set": "undying-vigil",
@@ -3871,18 +4085,46 @@
     "totalWeight": 100,
     "entries": [
       {
-        "weight": 55,
+        "weight": 30,
         "materialName": "Thick Boar Hide",
         "tier": "T1",
         "source": "VIGIL",
         "notes": "Heavy, wind-proof hide from an old tuskback."
       },
       {
-        "weight": 45,
+        "weight": 22,
         "materialName": "Great Tusk",
         "tier": "T1",
         "source": "VIGIL",
         "notes": "A tusk as long as a forearm."
+      },
+      {
+        "weight": 14,
+        "materialName": "Boar Belly",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A slab of fatty belly. Crisps beautifully over coals. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 12,
+        "materialName": "Boar Shoulder",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A heavily marbled shoulder roast. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 11,
+        "materialName": "Boar Spare Ribs",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A rack of meaty spare ribs. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 11,
+        "materialName": "Boar Ham",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "The whole hind leg. Spoils in a few days unless cooked or cured."
       }
     ],
     "set": "undying-vigil",
@@ -3897,11 +4139,25 @@
     "totalWeight": 100,
     "entries": [
       {
-        "weight": 100,
+        "weight": 40,
         "materialName": "Tuskback Heart",
         "tier": "T2",
         "source": "VIGIL",
         "notes": "The heart of a boar that charged until the very end. Cooks rich and dark."
+      },
+      {
+        "weight": 30,
+        "materialName": "Boar Loin",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "The long loin along the back. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 30,
+        "materialName": "Boar Tenderloin",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "The small inner loin. Hardly any fat at all. Spoils in a few days unless cooked or cured."
       }
     ],
     "set": "undying-vigil",
@@ -4142,7 +4398,7 @@
     "totalWeight": 100,
     "entries": [
       {
-        "weight": 40,
+        "weight": 30,
         "materialName": "Serpent Scale",
         "tier": "T2",
         "source": "VIGIL",
@@ -4150,18 +4406,26 @@
         "amount": "1d4"
       },
       {
-        "weight": 30,
+        "weight": 22,
         "materialName": "Tarn Serpent Fang",
         "tier": "T2",
         "source": "VIGIL",
         "notes": "A curved fang longer than a finger."
       },
       {
-        "weight": 30,
+        "weight": 20,
         "materialName": "Glassjaw",
         "tier": "T2",
         "source": "VIGIL",
         "notes": "A tarn fish with hard, clear scales that turn blades at an angle.",
+        "amount": "1d4"
+      },
+      {
+        "weight": 28,
+        "materialName": "Serpent Rib Meat",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "Strips of pale meat picked from between a tarn serpent's ribs. Spoils in a few days unless cooked or cured.",
         "amount": "1d4"
       }
     ],
@@ -4177,18 +4441,32 @@
     "totalWeight": 100,
     "entries": [
       {
-        "weight": 55,
+        "weight": 35,
         "materialName": "Serpent Hide",
         "tier": "T3",
         "source": "VIGIL",
         "notes": "Smooth, water-proof hide from a tarn serpent's belly."
       },
       {
-        "weight": 45,
+        "weight": 25,
         "materialName": "Venom Sac of the Deep",
         "tier": "T3",
         "source": "VIGIL",
         "notes": "A tarn serpent's venom sac. The venom stays cold and potent for months."
+      },
+      {
+        "weight": 25,
+        "materialName": "Serpent Fillet",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A long, firm fillet. Cold to the touch even after it's cut. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 15,
+        "materialName": "Serpent Egg",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "A tarn serpent's egg, leathery and cold. One makes a meal for four."
       }
     ],
     "set": "undying-vigil",
@@ -4203,11 +4481,18 @@
     "totalWeight": 100,
     "entries": [
       {
-        "weight": 100,
+        "weight": 60,
         "materialName": "Tarn Serpent Heart",
         "tier": "T4",
         "source": "VIGIL",
         "notes": "A huge, slow heart that beat once a minute in the cold deep."
+      },
+      {
+        "weight": 40,
+        "materialName": "Serpent Backstrap",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "The muscle running the serpent's whole length. Prized and rarely taken whole. Spoils in a few days unless cooked or cured."
       }
     ],
     "set": "undying-vigil",
@@ -4643,6 +4928,269 @@
     ],
     "set": "undying-vigil",
     "family": "humanoid",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-valdren-kine-common",
+    "creature": "VALDREN KINE",
+    "creatureTier": "Common",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 20,
+        "materialName": "Kine Hide",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A heavy red-brown hide."
+      },
+      {
+        "weight": 14,
+        "materialName": "Kine Suet",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Hard white fat from around the kidneys. Renders clean.",
+        "amount": "1d3"
+      },
+      {
+        "weight": 12,
+        "materialName": "Kine Shank",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A thick foreleg shank, banded with sinew. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 12,
+        "materialName": "Kine Brisket",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "The heavy breast meat, layered with fat. Wants long, slow cooking. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 12,
+        "materialName": "Kine Flank",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A flat, lean, coarse-grained belly muscle. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 10,
+        "materialName": "Kine Skirt",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A long, thin strip from the diaphragm. Tough but full of flavour. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 8,
+        "materialName": "Kine Cheek",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A dense little muscle that braises to nothing. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 6,
+        "materialName": "Kine Tail",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Bony rounds of tail, rich with gelatin. Made for stew. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 6,
+        "materialName": "Kine Tongue",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A whole tongue. Peel it after boiling. Spoils in a few days unless cooked or cured."
+      }
+    ],
+    "set": "basic-gear",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-valdren-kine-rare",
+    "creature": "VALDREN KINE",
+    "creatureTier": "Common",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 25,
+        "materialName": "Kine Chuck",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A marbled shoulder roast. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 25,
+        "materialName": "Kine Round",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "The big, lean muscles of the hind leg. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 25,
+        "materialName": "Kine Short Ribs",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "Thick ribs with a deep layer of meat on top. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 25,
+        "materialName": "Kine Sirloin",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A good, firm steak cut from near the hip. Spoils in a few days unless cooked or cured."
+      }
+    ],
+    "set": "basic-gear",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-valdren-kine-epic",
+    "creature": "VALDREN KINE",
+    "creatureTier": "Common",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 35,
+        "materialName": "Kine Rib Roast",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A standing roast of the best ribs, heavily marbled. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 35,
+        "materialName": "Kine Strip Loin",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "The long, tender loin along the back. Cut into the best steaks. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 30,
+        "materialName": "Kine Tenderloin",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "The softest meat on the animal, hidden under the spine. Spoils in a few days unless cooked or cured."
+      }
+    ],
+    "set": "basic-gear",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-valdren-hog-common",
+    "creature": "VALDREN HOG",
+    "creatureTier": "Common",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 20,
+        "materialName": "Hogskin",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Thick, bristly pigskin."
+      },
+      {
+        "weight": 20,
+        "materialName": "Hog Lard",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Soft white back fat.",
+        "amount": "1d3"
+      },
+      {
+        "weight": 20,
+        "materialName": "Hog Jowl",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A fatty cheek, cured or braised. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 20,
+        "materialName": "Hog Hock",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "The lower leg joint, all skin, bone and rich meat. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 20,
+        "materialName": "Hog Trotters",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "The feet. Boiled for broth and jelly. Spoils in a few days unless cooked or cured."
+      }
+    ],
+    "set": "basic-gear",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-valdren-hog-rare",
+    "creature": "VALDREN HOG",
+    "creatureTier": "Common",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 25,
+        "materialName": "Hog Belly",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A thick slab of belly, striped meat and fat: the bacon cut. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 25,
+        "materialName": "Hog Shoulder",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A heavily marbled shoulder that pulls apart when slow-cooked. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 25,
+        "materialName": "Hog Spare Ribs",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A long rack of meaty ribs. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 25,
+        "materialName": "Hog Ham",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "The whole hind leg, fresh or for curing. Spoils in a few days unless cooked or cured."
+      }
+    ],
+    "set": "basic-gear",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-valdren-hog-epic",
+    "creature": "VALDREN HOG",
+    "creatureTier": "Common",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 50,
+        "materialName": "Hog Loin",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "The long loin along the back. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 50,
+        "materialName": "Hog Tenderloin",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A slim, tender strip from inside the loin. Spoils in a few days unless cooked or cured."
+      }
+    ],
+    "set": "basic-gear",
+    "family": "beast",
     "source": "Undying_Vigil_Crafting"
   }
 ]

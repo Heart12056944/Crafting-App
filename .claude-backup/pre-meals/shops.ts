@@ -1,0 +1,219 @@
+// Shop stock, prices and what things are worth when sold.
+//
+// Shops only carry basic materials: components, simple refined goods, a few
+// common herbs, and what an ordinary hunter brings in from everyday wildlife.
+// Anything from tougher creatures (monsters, undead, bosses, any epic drop)
+// has to be hunted or harvested. The GM can still add anything to a shop.
+
+import lootTablesJson from "./crafting/lootTables.json";
+import { getMaterialTier, materialTierEntries, normalizeMaterialName } from "./materialTiers";
+import type { Recipe } from "./recipesRaw";
+
+export type StockEntry = {
+  name: string;
+  kind: "material" | "item";
+  priceCp: number;
+  qty: number | null; // null = unlimited
+};
+
+// Prices for basic goods, in copper.
+export const BASIC_PRICES_CP: Record<string, number> = {
+  // Components
+  "Basic Fiber": 5,
+  "Leather Scraps": 10,
+  "Twine (50ft.)": 10,
+  "Cotton Thread": 10,
+  Cloth: 20,
+  "Cloth Bolts": 100,
+  "Leather Cord": 20,
+  Resin: 20,
+  "Binding Agents": 50,
+  "Metal Fitting": 50,
+  "Scrap Steel": 30,
+  "Reinforced Metal Plates": 500,
+  "Steel Blade": 400,
+  "Reinforced Steel Blade": 1000,
+  "Wooden Shield": 200,
+  "Carved Focus": 500,
+  "Empty Infusion Base": 50,
+  "Empty Vials (set of 3)": 30,
+  "Blank Scrolls": 100,
+  // Simple refined goods
+  "Wood Planks": 20,
+  "Iron Ingot": 100,
+  Charcoal: 10,
+  "Pitch Binder": 50,
+  "Fish Oil": 30,
+  "Fish Glue": 40,
+  "Whetstone Paste": 50,
+  "Bone Meal": 30,
+  "Grave Salt": 100,
+  "Distilled Alcohol": 100,
+  "Woven Wool": 150,
+  "Rendered Tallow": 60,
+  "Cured Wolf Leather": 200,
+  "Supple Stag Leather": 200,
+  "Cured Winter Fur": 600,
+  // Common raw goods
+  "Pine Logs": 10,
+  "Pine Pitch": 10,
+  "Grey Ironstone": 20,
+  "Slate Grit": 10,
+  Bitterleaf: 20,
+  "Crag Moss": 20,
+  "Hollowreed Seed": 5,
+  Streamfin: 10,
+  "Coarse Salt": 5,
+  // Butcher's trim. Named cuts are priced by tier: 2 sp for everyday cuts
+  // (necks, shanks...), 1 gp for choice cuts (shoulders, ribs...). Prime cuts
+  // (backstrap, tenderloin...) are never stocked.
+  "Raw Game Meat": 20,
+  // Farm and island produce (wild Thornspine produce is never stocked: forage it)
+  Tull: 5,
+  Kesh: 5,
+  Varn: 5,
+  Orrel: 5,
+  Dunsk: 20,
+  Tidecress: 5,
+  "Sailor's Knot": 5,
+  Sourbell: 5,
+  Bloodpod: 20,
+  Galleyweed: 5,
+};
+
+// Value of a material by tier when it has no set price: 2 sp, 1 gp, 5 gp, 25 gp, 125 gp, 500 gp.
+const TIER_VALUE_CP = [20, 100, 500, 2500, 12500, 50000];
+
+const basicPriceByName = new Map(Object.entries(BASIC_PRICES_CP).map(([name, cp]) => [normalizeMaterialName(name), cp]));
+const knownMaterialNames = new Set(materialTierEntries.map((entry) => normalizeMaterialName(entry.name)));
+const materialTags = new Map(materialTierEntries.map((entry) => [normalizeMaterialName(entry.name), entry.tags || []]));
+
+export function isMaterialName(name: string) {
+  const key = normalizeMaterialName(name);
+  return basicPriceByName.has(key) || knownMaterialNames.has(key);
+}
+
+export function materialValueCp(name: string): number {
+  const basic = basicPriceByName.get(normalizeMaterialName(name));
+  if (basic !== undefined) return basic;
+  return TIER_VALUE_CP[getMaterialTier(name)] ?? TIER_VALUE_CP[0];
+}
+
+// What an average hunter brings in: common and rare drops (never epic) of
+// common or uncommon wildlife, tier 2 or lower (tier 1 for meat, so the
+// best cuts have to be hunted), and nothing touched by the dead.
+type LootJson = { creature: string; creatureTier: string; pool: string; family?: string; entries: { materialName: string }[] };
+export const HUNTER_MATERIALS: string[] = Array.from(
+  new Set(
+    (lootTablesJson as LootJson[])
+      .filter(
+        (table) =>
+          table.family === "beast" &&
+          ["Common", "Uncommon"].includes(table.creatureTier) &&
+          table.pool !== "Epic"
+      )
+      .flatMap((table) => table.entries.map((entry) => entry.materialName))
+      .filter((name) => {
+        const tags = materialTags.get(normalizeMaterialName(name)) || [];
+        if (tags.includes("undead")) return false;
+        // Prime cuts and the big signature cuts are for fine meals: hunt them.
+        if (tags.includes("meat")) return getMaterialTier(name) <= 1 && !tags.includes("meat-grade-prime");
+        return getMaterialTier(name) <= 2;
+      })
+  )
+).sort();
+
+// Item value by recipe difficulty: 10 gp, 50 gp, 200 gp, 750 gp, 2,500 gp, 10,000 gp.
+function recipeValueCp(dc: number) {
+  if (dc <= 11) return 1000;
+  if (dc <= 13) return 5000;
+  if (dc <= 15) return 20000;
+  if (dc <= 17) return 75000;
+  if (dc <= 19) return 250000;
+  return 1000000;
+}
+
+const RARITY_VALUE_CP: Record<string, number> = {
+  common: 1000,
+  uncommon: 10000,
+  rare: 50000,
+  epic: 250000,
+  ascendant: 500000,
+  legendary: 1000000,
+};
+
+const QUALITY_MULT: Record<string, number> = { Superior: 1.5, Normal: 1, Flawed: 0.5 };
+
+// Full value of one item. Shops pay half of this.
+export function itemValueCp(options: { recipe?: Pick<Recipe, "dc"> | null; rarity?: string | null; quality?: string | null }): number {
+  const base = options.recipe
+    ? recipeValueCp(options.recipe.dc)
+    : RARITY_VALUE_CP[(options.rarity || "").toLowerCase()] ?? 100;
+  return Math.round(base * (QUALITY_MULT[options.quality || "Normal"] ?? 1));
+}
+
+export const SELL_RATE = 0.5;
+
+export type ShopTemplate = { kind: string; name: string; description: string; stock: string[] };
+
+export const SHOP_TEMPLATES: ShopTemplate[] = [
+  {
+    kind: "general",
+    name: "General Store",
+    description: "Cloth, cord, thread and the odds and ends every crafter runs out of.",
+    stock: ["Cloth", "Cloth Bolts", "Leather Cord", "Leather Scraps", "Twine (50ft.)", "Cotton Thread", "Basic Fiber", "Resin", "Binding Agents", "Wood Planks", "Charcoal", "Fish Oil", "Coarse Salt", "Empty Vials (set of 3)", "Blank Scrolls"],
+  },
+  {
+    kind: "smithy",
+    name: "Smithy",
+    description: "Iron, fittings, plates and plain blades.",
+    stock: ["Scrap Steel", "Iron Ingot", "Grey Ironstone", "Metal Fitting", "Reinforced Metal Plates", "Steel Blade", "Reinforced Steel Blade", "Wooden Shield", "Whetstone Paste", "Charcoal"],
+  },
+  {
+    kind: "apothecary",
+    name: "Apothecary",
+    description: "Infusion bases, vials, spirit and common herbs.",
+    stock: ["Empty Infusion Base", "Empty Vials (set of 3)", "Distilled Alcohol", "Bitterleaf", "Crag Moss", "Bone Meal", "Hollowreed Seed", "Rendered Tallow"],
+  },
+  {
+    kind: "woodworker",
+    name: "Woodworker & Fletcher",
+    description: "Timber, pitch, glue and cord.",
+    stock: ["Pine Logs", "Wood Planks", "Pine Pitch", "Pitch Binder", "Fish Glue", "Resin", "Twine (50ft.)", "Carved Focus"],
+  },
+  {
+    kind: "hunter",
+    name: "Hunter's Lodge",
+    description: "Hides, pelts, wool, feathers and meat from everyday hunting. Nothing from anything truly dangerous.",
+    stock: [...HUNTER_MATERIALS, "Raw Game Meat", "Cured Wolf Leather", "Supple Stag Leather", "Cured Winter Fur", "Woven Wool", "Rendered Tallow", "Coarse Salt"],
+  },
+  {
+    kind: "valley-market",
+    name: "Valley Market",
+    description: "Root, leaf, beans and orchard fruit from the Valdren farms, plus salt and butcher's trim.",
+    stock: ["Tull", "Kesh", "Varn", "Orrel", "Dunsk", "Coarse Salt", "Raw Game Meat"],
+  },
+  {
+    kind: "island-market",
+    name: "Island Market",
+    description: "Romley produce from the island farms and tide pools, and everything a ship's galley runs on.",
+    stock: ["Tidecress", "Sailor's Knot", "Sourbell", "Bloodpod", "Galleyweed", "Coarse Salt"],
+  },
+  {
+    kind: "fishmonger",
+    name: "Dockside Fishmonger",
+    description: "The day's catch: shark, crab and octopus, plus salt for curing. Nothing from anything a crew would brag about killing.",
+    stock: ["Shark Fillet", "Shark Steak", "Shark Belly", "Crab Leg Meat", "Crab Body Meat", "Crab Claw Meat", "Octopus Tentacle", "Octopus Mantle", "Coarse Salt", "Fish Oil"],
+  },
+  {
+    kind: "quartermaster",
+    name: "Order Quartermaster",
+    description: "Grave salt, bone meal and field supplies for those who fight the dead.",
+    stock: ["Grave Salt", "Bone Meal", "Iron Ingot", "Whetstone Paste", "Empty Infusion Base", "Blank Scrolls", "Carved Focus", "Fish Oil"],
+  },
+  { kind: "custom", name: "New Shop", description: "", stock: [] },
+];
+
+export function stockFromNames(names: string[]): StockEntry[] {
+  return Array.from(new Set(names)).map((name) => ({ name, kind: "material", priceCp: materialValueCp(name), qty: null }));
+}

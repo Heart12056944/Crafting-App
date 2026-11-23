@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import {
   Backpack,
   BookMarked,
+  Soup,
   Store,
   BookOpen,
   Boxes,
@@ -17,6 +18,7 @@ import {
   KeyRound,
   Package,
   Pickaxe,
+  PawPrint,
   Plus,
   ScrollText,
   Shield,
@@ -56,6 +58,7 @@ import {
   setCampaignTagDisabled,
   replaceCampaignDisabledTags,
   setCharacterClaim,
+  setCampaignValue,
   type CampaignDiscoveryRow,
   type DiscoveryEntry,
 } from "@/lib/supabaseCampaignState";
@@ -82,6 +85,8 @@ import GatheringPanel, { type GatheredItem } from "@/components/GatheringPanel";
 import InventoryPanel, { type InventoryRecipe } from "@/components/InventoryPanel";
 import ShopPanel, { useCampaignShops } from "@/components/ShopPanel";
 import PlayerGuidePanel from "@/components/PlayerGuidePanel";
+import LarderPanel from "@/components/LarderPanel";
+import HusbandryPanel, { type HandlingInfo } from "@/components/HusbandryPanel";
 import { addInventoryItem } from "@/lib/supabaseInventory";
 import { consumableInfo } from "@/data/consumables";
 import {
@@ -127,7 +132,7 @@ type InventoryProfile = {
 
 type Stat = "STR" | "DEX" | "CON" | "INT" | "WIS" | "CHA";
 
-type TabId = "craft" | "available" | "recipes" | "materials" | "inventory" | "shops" | "characters" | "advancement" | "attributes" | "companions" | "rewards" | "looting" | "gathering" | "craftingRules" | "lootingRules" | "guide" | "admin";
+type TabId = "craft" | "available" | "recipes" | "materials" | "inventory" | "shops" | "characters" | "advancement" | "attributes" | "companions" | "rewards" | "looting" | "gathering" | "husbandry" | "craftingRules" | "lootingRules" | "guide" | "larder" | "admin";
 
 const tabs = [
   ["craft", "Craft", Hammer],
@@ -143,9 +148,11 @@ const tabs = [
   ["rewards", "Rewards", Gift],
   ["looting", "Looting", Package],
   ["gathering", "Gathering", Pickaxe],
+  ["husbandry", "Husbandry", PawPrint],
   ["craftingRules", "Crafting Rules", ScrollText],
   ["lootingRules", "Looting Rules", Dice5],
   ["guide", "Player Guide", BookMarked],
+  ["larder", "Larder", Soup],
   ["admin", "GM", KeyRound],
 ] as const satisfies readonly (readonly [TabId, string, React.ComponentType<{ className?: string }>])[];
 
@@ -181,6 +188,10 @@ type Character = {
   // Harvesting = WIS modifier + proficiency + this extra bonus.
   harvestingProficiency?: ProficiencyLevel;
   harvestingBonus?: number;
+  // Husbandry: Animal Handling proficiency, and whether they're a druid, a
+  // ranger or can speak with animals (lets them convince wild animals).
+  animalHandling?: ProficiencyLevel;
+  speaksWithAnimals?: boolean;
 };
 
 type CraftedItem = {
@@ -979,6 +990,24 @@ function firstAvailableMaterialForRequirement(rawRequired: RecipeMaterialWithTag
   });
 }
 
+// Which materials (and how many of each) fill a tag requirement, cheapest
+// first, combining several materials when no single one has enough.
+function allocateTagRequirement(rawRequired: RecipeMaterialWithTag, materialMap: Map<string, number>) {
+  const required = normalizeRequirement(rawRequired);
+  const picks: { name: string; qty: number }[] = [];
+  if (!required.tagRequirement) return picks;
+  let remaining = required.qty;
+  for (const entry of getMaterialsByTag(required.tagRequirement)) {
+    if (remaining <= 0) break;
+    const have = materialMap.get(normalizeName(entry.name)) || 0;
+    if (have <= 0) continue;
+    const take = Math.min(have, remaining);
+    picks.push({ name: entry.name, qty: take });
+    remaining -= take;
+  }
+  return picks;
+}
+
 function canRecipe(recipe: Recipe, materialMap: Map<string, number>) {
   return (recipe.materials as RecipeMaterialWithTag[]).every(
     (required) => availableQtyForRequirement(required, materialMap) >= required.qty
@@ -1251,6 +1280,8 @@ function normalizeCharacter(character: Partial<Character>): Character {
     gatheringToday: character.gatheringToday ?? 0,
     abilityScores: character.abilityScores ? { ...emptyStats(10), ...character.abilityScores } : undefined,
     statChoices: character.statChoices || {},
+    animalHandling: character.animalHandling ?? "none",
+    speaksWithAnimals: character.speaksWithAnimals ?? false,
     ...inferHarvesting(character),
   };
 }
@@ -1521,6 +1552,11 @@ export default function ArcaneCraftingCodexPage() {
   // Shops the GM has made for this campaign. Players only get the Shops tab while one is open.
   const { shops: campaignShops } = useCampaignShops(activeInventoryId);
   const anyShopOpen = campaignShops.some((shop) => shop.is_open);
+
+  // Husbandry: the campaign's day counter (advanced by Pass Day) and the wild
+  // animals the GM has placed nearby. Both live in campaign_discoveries.
+  const [campaignDay, setCampaignDay] = useState(1);
+  const [wildAnimals, setWildAnimals] = useState<string[]>([]);
 
   const [deviceId, setDeviceId] = useState("");
   const [characterClaims, setCharacterClaims] = useState<Record<string, string>>({}); // character id -> device id
@@ -2030,8 +2066,12 @@ export default function ArcaneCraftingCodexPage() {
       const hiddenRecipes: string[] = [];
       const openSpots: string[] = [];
       const claims: Record<string, string> = {};
+      const wild: string[] = [];
+      let day = 1;
 
       rows.forEach((row) => {
+        if (row.kind === "calendar" && row.item_key === "day") day = Math.max(1, Number(row.state) || 1);
+        if (row.kind === "wild-animal") wild.push(row.item_key);
         if (row.kind === "character-claim" && row.state) claims[row.item_key] = row.state;
         if (row.kind === "gathering-spot" && row.state === "discovered") openSpots.push(row.item_key);
         if (row.kind === "material" && row.state === "discovered") discoveredMaterials.push(row.item_key);
@@ -2044,6 +2084,8 @@ export default function ArcaneCraftingCodexPage() {
       setManuallyHiddenRecipeIds(hiddenRecipes);
       setEnabledGatheringSpotIds(openSpots);
       setCharacterClaims(claims);
+      setCampaignDay(day);
+      setWildAnimals(wild);
     }
 
     async function loadSharedVisibility(allowMigration: boolean) {
@@ -3558,7 +3600,66 @@ export default function ArcaneCraftingCodexPage() {
       }))
     );
 
-    setImportLog("A new crafting day has begun. Daily craft counts reset, PP gain is available again, and daily-limit advantage has been removed.");
+    const nextDay = campaignDay + 1;
+    setCampaignDay(nextDay);
+    if (activeInventoryId) {
+      setCampaignValue(activeInventoryId, "calendar", "day", String(nextDay)).catch((error) =>
+        console.warn("Failed to save the campaign day.", error)
+      );
+    }
+
+    setImportLog(`Day ${nextDay} has begun. Daily craft counts and gathering attempts reset, PP gain is available again, daily-limit advantage has been removed, and animals may be ready to collect from.`);
+  }
+
+  // Husbandry: a slaughtered animal goes onto the shared looting table to be
+  // harvested like any creature.
+  async function queueForButchering(tableId: string) {
+    if (!activeInventoryId) throw new Error("No campaign is loaded.");
+    const table = getLootTable(tableId);
+    const row = await insertCampaignLootCreature({
+      campaignId: activeInventoryId,
+      creatureTableId: table.id,
+      creatureLabel: table.label,
+      creatureTier: table.defaultTier || "common",
+      qty: 1,
+    });
+    const entry = supabaseLootCreatureToLocal(row);
+    setCreatureLootQueue((current) => [...current.filter((item) => item.id !== entry.id), entry]);
+    setSelectedCreatureQueueId((current) => current || entry.id);
+  }
+
+  function setWildAnimal(speciesId: string, nearby: boolean) {
+    if (!activeInventoryId) return;
+    setWildAnimals((current) => (nearby ? Array.from(new Set([...current, speciesId])) : current.filter((id) => id !== speciesId)));
+    setCampaignValue(activeInventoryId, "wild-animal", speciesId, nearby ? "nearby" : null).catch((error) =>
+      console.warn("Failed to save the wild animal.", error)
+    );
+  }
+
+  function handlingFor(characterId: string): HandlingInfo {
+    const character = effectiveCharacters.find((item) => item.id === characterId);
+    const level = character?.animalHandling ?? "none";
+    return {
+      level,
+      bonus: (character?.stats?.WIS ?? 0) + PROFICIENCY_BONUS[level],
+      speaks: Boolean(character?.speaksWithAnimals),
+    };
+  }
+
+  function setHandling(characterId: string, change: { level?: ProficiencyLevel; speaks?: boolean }) {
+    if (!adminUnlocked) return;
+    markCharactersForSupabaseSave();
+    setCharacters((current) =>
+      current.map((character) =>
+        character.id === characterId
+          ? {
+              ...character,
+              ...(change.level ? { animalHandling: change.level } : {}),
+              ...(change.speaks !== undefined ? { speaksWithAnimals: change.speaks } : {}),
+            }
+          : character
+      )
+    );
   }
 
   async function craftSelectedRecipe(recipeOverride?: Recipe) {
@@ -3610,7 +3711,11 @@ export default function ArcaneCraftingCodexPage() {
     const resolvedTagMaterials = (recipe.materials as RecipeMaterialWithTag[])
       .map((required) => normalizeRequirement(required))
       .filter((required) => required.tagRequirement)
-      .map((required) => ({ required, selected: firstAvailableMaterialForRequirement(required, materialMap) }));
+      .map((required) => ({
+        required,
+        selected: firstAvailableMaterialForRequirement(required, materialMap),
+        picks: allocateTagRequirement(required, materialMap),
+      }));
 
     if (usingPhaseTouched && !phaseMaterialAvailable) {
       setLastRoll({
@@ -3831,7 +3936,7 @@ export default function ArcaneCraftingCodexPage() {
           const resolved = resolvedTagMaterials.find((item) =>
             item.required.name === required.name && item.required.tagRequirement === required.tagRequirement
           );
-          if (resolved?.selected) consumeMaterial(resolved.selected.name, required.qty);
+          resolved?.picks.forEach((pick) => consumeMaterial(pick.name, pick.qty));
           return;
         }
 
@@ -4286,11 +4391,29 @@ export default function ArcaneCraftingCodexPage() {
           />
         )}
 
+        {activeTab === "husbandry" && (
+          <HusbandryPanel
+            campaignId={activeInventoryId}
+            characters={effectiveCharacters}
+            adminUnlocked={adminUnlocked}
+            claimedCharacterIds={myCharacterIds}
+            campaignDay={campaignDay}
+            wildAnimals={wildAnimals}
+            onSetWildAnimal={setWildAnimal}
+            handlingFor={handlingFor}
+            onSetHandling={setHandling}
+            onAddMaterials={addMaterialsToPool}
+            onButcher={queueForButchering}
+          />
+        )}
+
         {activeTab === "craftingRules" && <RulesPanel />}
 
         {activeTab === "lootingRules" && <LootingRulesPanel />}
 
         {activeTab === "guide" && <PlayerGuidePanel />}
+
+        {activeTab === "larder" && <LarderPanel disabledSets={disabledTags} />}
 
         {activeTab === "admin" && (
           <GMPanel
@@ -4405,7 +4528,7 @@ function RequiredMaterialsPanel({
           requirements.map((required, index) => {
             const available = availableQtyForRequirement(required, materialMap);
             const enough = available >= required.qty;
-            const label = required.tagRequirement
+            const label = required.tagRequirement && !/^meat-grade/i.test(required.tagRequirement)
               ? `${required.name} (${required.tagRequirement})`
               : required.name;
 

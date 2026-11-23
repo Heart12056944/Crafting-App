@@ -4945,7 +4945,7 @@
       {
         "creature": "THORNSPINE WOLF",
         "pool": "Common",
-        "weight": 30
+        "weight": 24
       },
       {
         "creature": "BRAINLESS WOLF",
@@ -4972,7 +4972,7 @@
       {
         "creature": "THORNSPINE WOLF",
         "pool": "Common",
-        "weight": 26
+        "weight": 20
       },
       {
         "creature": "BRAINLESS WOLF",
@@ -4998,17 +4998,17 @@
       {
         "creature": "THORNSPINE WOLF",
         "pool": "Common",
-        "weight": 24
+        "weight": 18
       },
       {
         "creature": "RIDGE STAG",
         "pool": "Common",
-        "weight": 22
+        "weight": 16
       },
       {
         "creature": "MOUNTAIN RAM",
         "pool": "Common",
-        "weight": 16
+        "weight": 12
       }
     ]
   },
@@ -5030,7 +5030,7 @@
       {
         "creature": "THORNSPINE WOLF",
         "pool": "Common",
-        "weight": 20
+        "weight": 14
       }
     ]
   },
@@ -5053,7 +5053,7 @@
       {
         "creature": "THORNSPINE WOLF",
         "pool": "Rare",
-        "weight": 55
+        "weight": 45
       },
       {
         "creature": "THORNSPINE BEAR",
@@ -5090,7 +5090,7 @@
       {
         "creature": "THORNSPINE WOLF",
         "pool": "Rare",
-        "weight": 45
+        "weight": 35
       }
     ]
   },
@@ -5112,7 +5112,7 @@
       {
         "creature": "THORNSPINE WOLF",
         "pool": "Epic",
-        "weight": 100
+        "weight": 70
       }
     ]
   },
@@ -5134,7 +5134,7 @@
       {
         "creature": "RIDGE STAG",
         "pool": "Common",
-        "weight": 30
+        "weight": 28
       }
     ]
   },
@@ -5156,7 +5156,7 @@
       {
         "creature": "RIDGE STAG",
         "pool": "Common",
-        "weight": 26
+        "weight": 22
       }
     ]
   },
@@ -5178,7 +5178,7 @@
       {
         "creature": "RIDGE STAG",
         "pool": "Rare",
-        "weight": 55
+        "weight": 34
       }
     ]
   },
@@ -5200,7 +5200,7 @@
       {
         "creature": "RIDGE STAG",
         "pool": "Rare",
-        "weight": 45
+        "weight": 26
       }
     ]
   },
@@ -5222,7 +5222,7 @@
       {
         "creature": "RIDGE STAG",
         "pool": "Epic",
-        "weight": 50
+        "weight": 34
       }
     ]
   },
@@ -5244,7 +5244,7 @@
       {
         "creature": "RIDGE STAG",
         "pool": "Epic",
-        "weight": 50
+        "weight": 26
       }
     ]
   },
@@ -5266,7 +5266,7 @@
       {
         "creature": "CRAG HAWK",
         "pool": "Common",
-        "weight": 40
+        "weight": 34
       }
     ]
   },
@@ -5288,7 +5288,7 @@
       {
         "creature": "CRAG HAWK",
         "pool": "Common",
-        "weight": 32
+        "weight": 22
       },
       {
         "creature": "CARRION CROW",
@@ -5315,7 +5315,7 @@
       {
         "creature": "CRAG HAWK",
         "pool": "Common",
-        "weight": 28
+        "weight": 20
       },
       {
         "creature": "CARRION CROW",
@@ -5342,7 +5342,7 @@
       {
         "creature": "CRAG HAWK",
         "pool": "Rare",
-        "weight": 55
+        "weight": 40
       }
     ]
   },
@@ -5364,7 +5364,7 @@
       {
         "creature": "CRAG HAWK",
         "pool": "Rare",
-        "weight": 45
+        "weight": 30
       }
     ]
   },
@@ -5408,7 +5408,7 @@
       {
         "creature": "THORNSPINE BEAR",
         "pool": "Common",
-        "weight": 22
+        "weight": 20
       },
       {
         "creature": "BRAINLESS BEAR",
@@ -5435,7 +5435,7 @@
       {
         "creature": "THORNSPINE BEAR",
         "pool": "Common",
-        "weight": 22
+        "weight": 20
       }
     ]
   },
@@ -5457,7 +5457,7 @@
       {
         "creature": "THORNSPINE BEAR",
         "pool": "Common",
-        "weight": 16
+        "weight": 14
       },
       {
         "creature": "BRAINLESS BEAR",
@@ -5484,7 +5484,7 @@
       {
         "creature": "THORNSPINE BEAR",
         "pool": "Rare",
-        "weight": 55
+        "weight": 32
       },
       {
         "creature": "BRAINLESS BEAR",
@@ -5511,7 +5511,7 @@
       {
         "creature": "THORNSPINE BEAR",
         "pool": "Rare",
-        "weight": 45
+        "weight": 24
       }
     ]
   },
@@ -5533,7 +5533,7 @@
       {
         "creature": "THORNSPINE BEAR",
         "pool": "Epic",
-        "weight": 50
+        "weight": 30
       }
     ]
   },
@@ -5555,7 +5555,7 @@
       {
         "creature": "THORNSPINE BEAR",
         "pool": "Epic",
-        "weight": 50
+        "weight": 30
       }
     ]
   },
@@ -5748,11 +5748,15 @@
     "tags": [
       "tier-0",
       "gathering",
-      "foraging"
+      "foraging",
+      "food",
+      "produce",
+      "produce-herb"
     ],
     "source": "VIGIL",
     "set": "undying-vigil",
-    "notes": "A tough, bitter mountain leaf. Steeped, it closes wounds."
+    "notes": "A tough, bitter mountain leaf. Steeped, it closes wounds.",
+    "appearance": "Tough, dark-green leaves with a waxy shine and serrated edges."
   },
   {
     "id": "material-crag-moss",
@@ -5778,11 +5782,15 @@
     "tags": [
       "tier-1",
       "gathering",
-      "foraging"
+      "foraging",
+      "food",
+      "produce",
+      "produce-vegetable"
     ],
     "source": "VIGIL",
     "set": "undying-vigil",
-    "notes": "A pale mushroom that looks like several safe ones. It is not safe."
+    "notes": "A pale mushroom that looks like several safe ones. It is not safe.",
+    "appearance": "Pale, bell-shaped mushroom caps that look like several stuck together."
   },
   {
     "id": "material-graveroot",
@@ -5823,11 +5831,15 @@
     "tags": [
       "tier-3",
       "gathering",
-      "foraging"
+      "foraging",
+      "food",
+      "produce",
+      "produce-herb"
     ],
     "source": "VIGIL",
     "set": "undying-vigil",
-    "notes": "Red-veined leaves that grow only near warm springs. Warm to the touch."
+    "notes": "Red-veined leaves that grow only near warm springs. Warm to the touch.",
+    "appearance": "Red-veined leaves, warm to the touch, that smell faintly of hot stone."
   },
   {
     "id": "material-wardensbloom",
@@ -5857,7 +5869,8 @@
     ],
     "source": "VIGIL",
     "set": "undying-vigil",
-    "notes": "A small silver fish from snowmelt streams. Mostly rendered for oil."
+    "notes": "A small silver fish from snowmelt streams. Mostly rendered for oil.",
+    "appearance": "A finger-long fish, bright silver with a thin black line down each side."
   },
   {
     "id": "material-mudwhip",
@@ -5872,7 +5885,8 @@
     ],
     "source": "VIGIL",
     "set": "undying-vigil",
-    "notes": "A slick, whip-thin bottom-feeder. Its skin boils down into strong glue."
+    "notes": "A slick, whip-thin bottom-feeder. Its skin boils down into strong glue.",
+    "appearance": "A slick, whip-thin brown fish with long whiskers and almost no scales."
   },
   {
     "id": "material-rimefin",
@@ -5887,7 +5901,8 @@
     ],
     "source": "VIGIL",
     "set": "undying-vigil",
-    "notes": "A pale fish that lives under the ice. Its blood resists freezing."
+    "notes": "A pale fish that lives under the ice. Its blood resists freezing.",
+    "appearance": "A pale, almost white fish with clear fins edged in frost-blue."
   },
   {
     "id": "material-glassjaw",
@@ -5907,9 +5922,10 @@
       {
         "creature": "TARN SERPENT",
         "pool": "Common",
-        "weight": 30
+        "weight": 20
       }
-    ]
+    ],
+    "appearance": "A heavy fish armoured in hard, clear scales like small panes of glass."
   },
   {
     "id": "material-tarnback",
@@ -5924,7 +5940,8 @@
     ],
     "source": "VIGIL",
     "set": "undying-vigil",
-    "notes": "A huge, slow fish from the deepest tarns. It can stay down for hours."
+    "notes": "A huge, slow fish from the deepest tarns. It can stay down for hours.",
+    "appearance": "A huge, slow, dark-green fish with a broad, humped back."
   },
   {
     "id": "material-deeplight",
@@ -5939,7 +5956,8 @@
     ],
     "source": "VIGIL",
     "set": "undying-vigil",
-    "notes": "A fish from the black bottom of the Thornspine tarns. It glows."
+    "notes": "A fish from the black bottom of the Thornspine tarns. It glows.",
+    "appearance": "A black, eel-like fish whose belly glows a soft green, even after it's caught."
   },
   {
     "id": "material-skyfall-slag",
@@ -6063,11 +6081,15 @@
       "tier-0",
       "gathering",
       "foraging",
-      "brewing"
+      "brewing",
+      "food",
+      "produce",
+      "produce-fruit"
     ],
     "source": "VIGIL",
     "set": "brewing",
-    "notes": "Dark, sticky clusters from a thorny mountain bramble. Too sweet to eat many of; perfect for fermenting."
+    "notes": "Dark, sticky clusters from a thorny mountain bramble. Too sweet to eat many of; perfect for fermenting.",
+    "appearance": "Dark, sticky clusters of tiny fruit, purple-black and glossy."
   },
   {
     "id": "material-cloudwasp-comb",
@@ -7229,43 +7251,6 @@
     ]
   },
   {
-    "id": "material-raw-game-meat",
-    "name": "Raw Game Meat",
-    "tier": 0,
-    "tierLabel": "Tier 0 – Raw Materials",
-    "rarity": "common",
-    "tags": [
-      "tier-0",
-      "beast",
-      "food"
-    ],
-    "source": "VIGIL",
-    "set": "undying-vigil",
-    "notes": "A cut of fresh meat from a mountain beast. Cook it before it turns.",
-    "appearsIn": [
-      {
-        "creature": "RIDGE STAG",
-        "pool": "Common",
-        "weight": 22
-      },
-      {
-        "creature": "THORNSPINE BEAR",
-        "pool": "Common",
-        "weight": 18
-      },
-      {
-        "creature": "MOUNTAIN RAM",
-        "pool": "Common",
-        "weight": 24
-      },
-      {
-        "creature": "TUSKBACK BOAR",
-        "pool": "Common",
-        "weight": 38
-      }
-    ]
-  },
-  {
     "id": "material-ram-s-wool",
     "name": "Ram's Wool",
     "tier": 0,
@@ -7283,7 +7268,7 @@
       {
         "creature": "MOUNTAIN RAM",
         "pool": "Common",
-        "weight": 34
+        "weight": 30
       }
     ]
   },
@@ -7305,7 +7290,7 @@
       {
         "creature": "MOUNTAIN RAM",
         "pool": "Common",
-        "weight": 26
+        "weight": 22
       }
     ]
   },
@@ -7327,7 +7312,7 @@
       {
         "creature": "MOUNTAIN RAM",
         "pool": "Rare",
-        "weight": 55
+        "weight": 34
       }
     ]
   },
@@ -7349,7 +7334,7 @@
       {
         "creature": "MOUNTAIN RAM",
         "pool": "Rare",
-        "weight": 45
+        "weight": 26
       }
     ]
   },
@@ -7371,7 +7356,7 @@
       {
         "creature": "MOUNTAIN RAM",
         "pool": "Epic",
-        "weight": 100
+        "weight": 50
       }
     ]
   },
@@ -7503,7 +7488,7 @@
       {
         "creature": "TUSKBACK BOAR",
         "pool": "Common",
-        "weight": 32
+        "weight": 28
       }
     ]
   },
@@ -7525,7 +7510,7 @@
       {
         "creature": "TUSKBACK BOAR",
         "pool": "Common",
-        "weight": 30
+        "weight": 24
       }
     ]
   },
@@ -7547,7 +7532,7 @@
       {
         "creature": "TUSKBACK BOAR",
         "pool": "Rare",
-        "weight": 55
+        "weight": 30
       }
     ]
   },
@@ -7569,7 +7554,7 @@
       {
         "creature": "TUSKBACK BOAR",
         "pool": "Rare",
-        "weight": 45
+        "weight": 22
       }
     ]
   },
@@ -7592,7 +7577,7 @@
       {
         "creature": "TUSKBACK BOAR",
         "pool": "Epic",
-        "weight": 100
+        "weight": 40
       }
     ]
   },
@@ -7792,7 +7777,7 @@
       {
         "creature": "TARN SERPENT",
         "pool": "Common",
-        "weight": 40
+        "weight": 30
       }
     ]
   },
@@ -7814,7 +7799,7 @@
       {
         "creature": "TARN SERPENT",
         "pool": "Common",
-        "weight": 30
+        "weight": 22
       }
     ]
   },
@@ -7836,7 +7821,7 @@
       {
         "creature": "TARN SERPENT",
         "pool": "Rare",
-        "weight": 55
+        "weight": 35
       }
     ]
   },
@@ -7859,7 +7844,7 @@
       {
         "creature": "TARN SERPENT",
         "pool": "Rare",
-        "weight": 45
+        "weight": 25
       }
     ]
   },
@@ -7881,7 +7866,7 @@
       {
         "creature": "TARN SERPENT",
         "pool": "Epic",
-        "weight": 100
+        "weight": 60
       }
     ]
   },
@@ -8307,5 +8292,2888 @@
     "source": "VIGIL",
     "set": "undying-vigil",
     "notes": "Ram's wool spun and woven into a thick, oily cloth."
+  },
+  {
+    "id": "material-raw-game-meat",
+    "name": "Raw Game Meat",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "food",
+      "meat",
+      "meat-grade-any"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "Mixed trimmings from whatever the hunters brought in. Spoils in a few days unless cooked or cured.",
+    "appearance": "A mixed heap of dark red trimmings in odd shapes and sizes, wrapped in cloth."
+  },
+  {
+    "id": "material-wolf-neck",
+    "name": "Wolf Neck",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "food",
+      "meat",
+      "wolf",
+      "meat-grade-any"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Stringy neck meat. Best stewed for hours. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "THORNSPINE WOLF",
+        "pool": "Common",
+        "weight": 12
+      }
+    ],
+    "appearance": "Thin ropes of dark, stringy meat around a column of knobbled bone."
+  },
+  {
+    "id": "material-wolf-shank",
+    "name": "Wolf Shank",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "food",
+      "meat",
+      "wolf",
+      "meat-grade-any"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A sinewy foreleg shank. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "THORNSPINE WOLF",
+        "pool": "Common",
+        "weight": 12
+      }
+    ],
+    "appearance": "A narrow foreleg, the meat wrapped tight in silvery sinew."
+  },
+  {
+    "id": "material-wolf-shoulder",
+    "name": "Wolf Shoulder",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "food",
+      "meat",
+      "wolf",
+      "meat-grade-any",
+      "meat-grade-choice"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "The meatiest part of a wolf, and still lean. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "THORNSPINE WOLF",
+        "pool": "Rare",
+        "weight": 20
+      }
+    ],
+    "appearance": "A flat, deep-red slab, lean and laced with grey connective tissue."
+  },
+  {
+    "id": "material-wolf-backstrap",
+    "name": "Wolf Backstrap",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "beast",
+      "food",
+      "meat",
+      "wolf",
+      "meat-grade-any",
+      "meat-grade-choice",
+      "meat-grade-prime"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "The long muscle along a wolf's spine. Surprisingly tender. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "THORNSPINE WOLF",
+        "pool": "Epic",
+        "weight": 30
+      }
+    ],
+    "appearance": "A long, narrow strip of almost purple meat with no fat on it at all."
+  },
+  {
+    "id": "material-stag-neck",
+    "name": "Stag Neck",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "food",
+      "meat",
+      "deer",
+      "meat-grade-any"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A thick neck roast. Wants slow cooking. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "RIDGE STAG",
+        "pool": "Common",
+        "weight": 12
+      }
+    ],
+    "appearance": "A thick, round roast of deep maroon meat, marbled with white sinew."
+  },
+  {
+    "id": "material-stag-shank",
+    "name": "Stag Shank",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "food",
+      "meat",
+      "deer",
+      "meat-grade-any"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Lower leg, all connective tissue. Rich when braised. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "RIDGE STAG",
+        "pool": "Common",
+        "weight": 12
+      }
+    ],
+    "appearance": "A short leg section, the dark meat glossy with silvery tendon."
+  },
+  {
+    "id": "material-stag-brisket",
+    "name": "Stag Brisket",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "food",
+      "meat",
+      "deer",
+      "meat-grade-any"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Thin breast meat between the forelegs. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "RIDGE STAG",
+        "pool": "Common",
+        "weight": 10
+      }
+    ],
+    "appearance": "A thin, layered flap of red meat and pale fat from the chest."
+  },
+  {
+    "id": "material-stag-shoulder",
+    "name": "Stag Shoulder",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "food",
+      "meat",
+      "deer",
+      "meat-grade-any",
+      "meat-grade-choice"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A whole shoulder roast. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "RIDGE STAG",
+        "pool": "Rare",
+        "weight": 14
+      }
+    ],
+    "appearance": "A broad, uneven roast, dark red, with a flat blade of bone inside."
+  },
+  {
+    "id": "material-stag-rib-rack",
+    "name": "Stag Rib Rack",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "food",
+      "meat",
+      "deer",
+      "meat-grade-any",
+      "meat-grade-choice"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A rack of ribs, lean and dark. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "RIDGE STAG",
+        "pool": "Rare",
+        "weight": 13
+      }
+    ],
+    "appearance": "A curved row of slender ribs with a strip of dark meat along the top."
+  },
+  {
+    "id": "material-stag-hindquarter",
+    "name": "Stag Hindquarter",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "food",
+      "meat",
+      "deer",
+      "meat-grade-any",
+      "meat-grade-choice"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "The big muscles of the rear leg. Roasts or slices into steaks. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "RIDGE STAG",
+        "pool": "Rare",
+        "weight": 13
+      }
+    ],
+    "appearance": "A heavy, tapering leg of tight-grained, dark red muscle."
+  },
+  {
+    "id": "material-stag-backstrap",
+    "name": "Stag Backstrap",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "beast",
+      "food",
+      "meat",
+      "deer",
+      "meat-grade-any",
+      "meat-grade-choice",
+      "meat-grade-prime"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "The loin along the spine. The cut every hunter wants. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "RIDGE STAG",
+        "pool": "Epic",
+        "weight": 22
+      }
+    ],
+    "appearance": "A long, smooth cylinder of deep crimson meat, perfectly lean."
+  },
+  {
+    "id": "material-stag-tenderloin",
+    "name": "Stag Tenderloin",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "beast",
+      "food",
+      "meat",
+      "deer",
+      "meat-grade-any",
+      "meat-grade-choice",
+      "meat-grade-prime"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Two small strips from inside the ribcage. The most tender meat on a stag. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "RIDGE STAG",
+        "pool": "Epic",
+        "weight": 18
+      }
+    ],
+    "appearance": "Two small, soft strips of dark red meat, smooth as velvet."
+  },
+  {
+    "id": "material-hawk-thigh",
+    "name": "Hawk Thigh",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "food",
+      "meat",
+      "bird",
+      "meat-grade-any",
+      "meat-grade-fowl"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "Dark thigh meat. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "CRAG HAWK",
+        "pool": "Common",
+        "weight": 8
+      }
+    ],
+    "appearance": "A small curl of dark, almost brown meat on a slender bone."
+  },
+  {
+    "id": "material-hawk-drumstick",
+    "name": "Hawk Drumstick",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "food",
+      "meat",
+      "bird",
+      "meat-grade-any",
+      "meat-grade-fowl"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "A lean drumstick. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "CRAG HAWK",
+        "pool": "Common",
+        "weight": 8
+      }
+    ],
+    "appearance": "A thin drumstick, tight-skinned and lean, the skin speckled grey."
+  },
+  {
+    "id": "material-hawk-wing",
+    "name": "Hawk Wing",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "food",
+      "meat",
+      "bird",
+      "meat-grade-any",
+      "meat-grade-fowl"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "More bone than meat. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "CRAG HAWK",
+        "pool": "Common",
+        "weight": 8
+      }
+    ],
+    "appearance": "A folded wing of skin and fine bone, more tendon than meat."
+  },
+  {
+    "id": "material-hawk-breast",
+    "name": "Hawk Breast",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "food",
+      "meat",
+      "bird",
+      "meat-grade-any",
+      "meat-grade-choice",
+      "meat-grade-fowl"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "The flight muscle. Dense, dark and plentiful for a bird. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "CRAG HAWK",
+        "pool": "Rare",
+        "weight": 15
+      }
+    ],
+    "appearance": "A dense, dark breast the size of a palm, deep red rather than pale."
+  },
+  {
+    "id": "material-bear-neck",
+    "name": "Bear Neck",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "food",
+      "meat",
+      "bear",
+      "meat-grade-any"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A heavy, fatty neck roast. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "THORNSPINE BEAR",
+        "pool": "Common",
+        "weight": 12
+      }
+    ],
+    "appearance": "A huge, fatty roast, the dark meat streaked with yellowish fat."
+  },
+  {
+    "id": "material-bear-shank",
+    "name": "Bear Shank",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "food",
+      "meat",
+      "bear",
+      "meat-grade-any"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A massive shank, thick with sinew. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "THORNSPINE BEAR",
+        "pool": "Common",
+        "weight": 12
+      }
+    ],
+    "appearance": "A leg section as thick as a forearm, wrapped in heavy sinew."
+  },
+  {
+    "id": "material-bear-shoulder",
+    "name": "Bear Shoulder",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "food",
+      "meat",
+      "bear",
+      "meat-grade-any",
+      "meat-grade-choice"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A shoulder roast as big as a man's chest. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "THORNSPINE BEAR",
+        "pool": "Rare",
+        "weight": 14
+      }
+    ],
+    "appearance": "A massive dark roast the size of a child's torso, heavy with seams of fat."
+  },
+  {
+    "id": "material-bear-ribs",
+    "name": "Bear Ribs",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "food",
+      "meat",
+      "bear",
+      "meat-grade-any",
+      "meat-grade-choice"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A slab of rich, fatty ribs. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "THORNSPINE BEAR",
+        "pool": "Rare",
+        "weight": 14
+      }
+    ],
+    "appearance": "A broad slab of thick ribs under dark meat and a rind of creamy fat."
+  },
+  {
+    "id": "material-bear-haunch",
+    "name": "Bear Haunch",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "beast",
+      "food",
+      "meat",
+      "bear",
+      "meat-grade-any",
+      "meat-grade-choice"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A whole hindquarter, heavy and dark-meated. Wants a long, slow braise. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "THORNSPINE BEAR",
+        "pool": "Rare",
+        "weight": 16
+      }
+    ],
+    "appearance": "A whole hindquarter, dark as wine, under a thick cap of yellow fat."
+  },
+  {
+    "id": "material-bear-backstrap",
+    "name": "Bear Backstrap",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "beast",
+      "food",
+      "meat",
+      "bear",
+      "meat-grade-any",
+      "meat-grade-choice",
+      "meat-grade-prime"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "The loin along a bear's spine. Dark, rich and tender. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "THORNSPINE BEAR",
+        "pool": "Epic",
+        "weight": 20
+      }
+    ],
+    "appearance": "A long, heavy loin of near-black meat with a thin seam of fat."
+  },
+  {
+    "id": "material-bear-tenderloin",
+    "name": "Bear Tenderloin",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "beast",
+      "food",
+      "meat",
+      "bear",
+      "meat-grade-any",
+      "meat-grade-choice",
+      "meat-grade-prime"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "The inner loin. Rare to get out whole. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "THORNSPINE BEAR",
+        "pool": "Epic",
+        "weight": 20
+      }
+    ],
+    "appearance": "A long, soft, dark loin, surprisingly fine-grained for something so big."
+  },
+  {
+    "id": "material-ram-neck",
+    "name": "Ram Neck",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "food",
+      "meat",
+      "ram",
+      "meat-grade-any"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Bony neck slices for the pot. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "MOUNTAIN RAM",
+        "pool": "Common",
+        "weight": 12
+      }
+    ],
+    "appearance": "Bony rounds of pink-red meat around thick vertebrae."
+  },
+  {
+    "id": "material-ram-shank",
+    "name": "Ram Shank",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "food",
+      "meat",
+      "ram",
+      "meat-grade-any"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A meaty foreshank. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "MOUNTAIN RAM",
+        "pool": "Common",
+        "weight": 12
+      }
+    ],
+    "appearance": "A stubby, meaty shank with a creamy cap of fat."
+  },
+  {
+    "id": "material-ram-breast",
+    "name": "Ram Breast",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "food",
+      "meat",
+      "ram",
+      "meat-grade-any"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Fatty, thin breast meat. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "MOUNTAIN RAM",
+        "pool": "Common",
+        "weight": 12
+      }
+    ],
+    "appearance": "A thin, flat sheet of meat layered with soft white fat."
+  },
+  {
+    "id": "material-ram-shoulder",
+    "name": "Ram Shoulder",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "food",
+      "meat",
+      "ram",
+      "meat-grade-any",
+      "meat-grade-choice"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A marbled shoulder roast. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "MOUNTAIN RAM",
+        "pool": "Rare",
+        "weight": 14
+      }
+    ],
+    "appearance": "A rounded, marbled roast, pink-red with ribbons of fat."
+  },
+  {
+    "id": "material-ram-loin-chops",
+    "name": "Ram Loin Chops",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "food",
+      "meat",
+      "ram",
+      "meat-grade-any",
+      "meat-grade-choice"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Thick chops cut from the loin. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "MOUNTAIN RAM",
+        "pool": "Rare",
+        "weight": 13
+      }
+    ],
+    "appearance": "Thick chops shaped around a bone, each with a rim of firm white fat."
+  },
+  {
+    "id": "material-ram-leg",
+    "name": "Ram Leg",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "food",
+      "meat",
+      "ram",
+      "meat-grade-any",
+      "meat-grade-choice"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A whole hind leg for roasting. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "MOUNTAIN RAM",
+        "pool": "Rare",
+        "weight": 13
+      }
+    ],
+    "appearance": "A whole hind leg, rounded and pale-skinned, the meat a rosy red."
+  },
+  {
+    "id": "material-ram-rack",
+    "name": "Ram Rack",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "beast",
+      "food",
+      "meat",
+      "ram",
+      "meat-grade-any",
+      "meat-grade-choice",
+      "meat-grade-prime"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A rack of rib chops, trimmed clean. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "MOUNTAIN RAM",
+        "pool": "Epic",
+        "weight": 25
+      }
+    ],
+    "appearance": "A neat row of rib chops, the bones scraped clean and curving like a crown."
+  },
+  {
+    "id": "material-ram-saddle",
+    "name": "Ram Saddle",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "beast",
+      "food",
+      "meat",
+      "ram",
+      "meat-grade-any",
+      "meat-grade-choice",
+      "meat-grade-prime"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Both loins still joined along the backbone. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "MOUNTAIN RAM",
+        "pool": "Epic",
+        "weight": 25
+      }
+    ],
+    "appearance": "Both loins still joined along the backbone: a long double roast under a cap of fat."
+  },
+  {
+    "id": "material-boar-jowl",
+    "name": "Boar Jowl",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "food",
+      "meat",
+      "boar",
+      "meat-grade-any"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Fatty cheek meat. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "TUSKBACK BOAR",
+        "pool": "Common",
+        "weight": 16
+      }
+    ],
+    "appearance": "A thick, square cheek, mostly pale fat with streaks of pink meat."
+  },
+  {
+    "id": "material-boar-hock",
+    "name": "Boar Hock",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "food",
+      "meat",
+      "boar",
+      "meat-grade-any"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "The lower leg joint. Boils down rich. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "TUSKBACK BOAR",
+        "pool": "Common",
+        "weight": 16
+      }
+    ],
+    "appearance": "A knobbly joint in thick, bristled skin, the meat packed around the bone."
+  },
+  {
+    "id": "material-boar-trotters",
+    "name": "Boar Trotters",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "food",
+      "meat",
+      "boar",
+      "meat-grade-any"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "The feet. Mostly for broth. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "TUSKBACK BOAR",
+        "pool": "Common",
+        "weight": 16
+      }
+    ],
+    "appearance": "Split hooves in pale, bristly skin. Mostly bone and gristle."
+  },
+  {
+    "id": "material-boar-belly",
+    "name": "Boar Belly",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "food",
+      "meat",
+      "boar",
+      "meat-grade-any",
+      "meat-grade-choice",
+      "cut-belly"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A slab of fatty belly. Crisps beautifully over coals. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "TUSKBACK BOAR",
+        "pool": "Rare",
+        "weight": 14
+      }
+    ],
+    "appearance": "A thick slab of alternating pink meat and white fat under bristly skin."
+  },
+  {
+    "id": "material-boar-shoulder",
+    "name": "Boar Shoulder",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "food",
+      "meat",
+      "boar",
+      "meat-grade-any",
+      "meat-grade-choice"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A heavily marbled shoulder roast. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "TUSKBACK BOAR",
+        "pool": "Rare",
+        "weight": 12
+      }
+    ],
+    "appearance": "A big, heavily marbled roast, deep pink and streaked with fat."
+  },
+  {
+    "id": "material-boar-spare-ribs",
+    "name": "Boar Spare Ribs",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "food",
+      "meat",
+      "boar",
+      "meat-grade-any",
+      "meat-grade-choice"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A rack of meaty spare ribs. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "TUSKBACK BOAR",
+        "pool": "Rare",
+        "weight": 11
+      }
+    ],
+    "appearance": "A long rack of curved ribs under a layer of dark pink meat."
+  },
+  {
+    "id": "material-boar-ham",
+    "name": "Boar Ham",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "food",
+      "meat",
+      "boar",
+      "meat-grade-any",
+      "meat-grade-choice",
+      "cut-ham"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "The whole hind leg. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "TUSKBACK BOAR",
+        "pool": "Rare",
+        "weight": 11
+      }
+    ],
+    "appearance": "A whole hind leg, round and heavy, the meat a deep rosy pink."
+  },
+  {
+    "id": "material-boar-loin",
+    "name": "Boar Loin",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "beast",
+      "food",
+      "meat",
+      "boar",
+      "meat-grade-any",
+      "meat-grade-choice",
+      "meat-grade-prime"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "The long loin along the back. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "TUSKBACK BOAR",
+        "pool": "Epic",
+        "weight": 30
+      }
+    ],
+    "appearance": "A long, even loin of dark pink meat under a thin cap of fat."
+  },
+  {
+    "id": "material-boar-tenderloin",
+    "name": "Boar Tenderloin",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "beast",
+      "food",
+      "meat",
+      "boar",
+      "meat-grade-any",
+      "meat-grade-choice",
+      "meat-grade-prime"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "The small inner loin. Hardly any fat at all. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "TUSKBACK BOAR",
+        "pool": "Epic",
+        "weight": 30
+      }
+    ],
+    "appearance": "A slim, tapering strip of deep pink meat with hardly any fat."
+  },
+  {
+    "id": "material-serpent-rib-meat",
+    "name": "Serpent Rib Meat",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "food",
+      "meat",
+      "serpent",
+      "meat-grade-any"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Strips of pale meat picked from between a tarn serpent's ribs. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "TARN SERPENT",
+        "pool": "Common",
+        "weight": 28
+      }
+    ],
+    "appearance": "Long, thin strips of pale, almost see-through meat, cold to the touch."
+  },
+  {
+    "id": "material-serpent-fillet",
+    "name": "Serpent Fillet",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "beast",
+      "food",
+      "meat",
+      "serpent",
+      "meat-grade-any",
+      "meat-grade-choice"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A long, firm fillet. Cold to the touch even after it's cut. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "TARN SERPENT",
+        "pool": "Rare",
+        "weight": 25
+      }
+    ],
+    "appearance": "A long, firm fillet of white meat with a faint blue sheen."
+  },
+  {
+    "id": "material-serpent-backstrap",
+    "name": "Serpent Backstrap",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Advanced Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "beast",
+      "food",
+      "meat",
+      "serpent",
+      "meat-grade-any",
+      "meat-grade-choice",
+      "meat-grade-prime"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "The muscle running the serpent's whole length. Prized and rarely taken whole. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "TARN SERPENT",
+        "pool": "Epic",
+        "weight": 40
+      }
+    ],
+    "appearance": "A rope of pale, dense muscle as long as a man, glistening and cold."
+  },
+  {
+    "id": "material-shark-fillet",
+    "name": "Shark Fillet",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "food",
+      "meat",
+      "shark",
+      "meat-grade-any",
+      "sea"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "Coarse, salty shark fillet. Spoils in a few days unless cooked or cured.",
+    "appearance": "A coarse, grey-white fillet that smells strongly of the sea."
+  },
+  {
+    "id": "material-shark-steak",
+    "name": "Shark Steak",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "food",
+      "meat",
+      "shark",
+      "meat-grade-any",
+      "meat-grade-choice",
+      "sea"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "A thick steak cut across the body. Spoils in a few days unless cooked or cured.",
+    "appearance": "A thick round steak of pinkish-white meat around a ring of cartilage."
+  },
+  {
+    "id": "material-shark-belly",
+    "name": "Shark Belly",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "food",
+      "meat",
+      "shark",
+      "meat-grade-any",
+      "meat-grade-choice",
+      "sea"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "Rich, fatty belly meat. Spoils in a few days unless cooked or cured.",
+    "appearance": "A pale, fatty strip, soft and almost creamy."
+  },
+  {
+    "id": "material-shark-loin",
+    "name": "Shark Loin",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "beast",
+      "food",
+      "meat",
+      "shark",
+      "meat-grade-any",
+      "meat-grade-choice",
+      "meat-grade-prime",
+      "sea"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "The thick loin along a big shark's back. Spoils in a few days unless cooked or cured.",
+    "appearance": "A thick block of firm, rose-tinted meat, the best part of a big shark."
+  },
+  {
+    "id": "material-crab-leg-meat",
+    "name": "Crab Leg Meat",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "food",
+      "meat",
+      "crab",
+      "meat-grade-any",
+      "sea"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "Sweet white meat from the legs. Spoils in a few days unless cooked or cured.",
+    "appearance": "Long, sweet strands of white meat with red edges, pulled from the shell."
+  },
+  {
+    "id": "material-crab-body-meat",
+    "name": "Crab Body Meat",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "food",
+      "meat",
+      "crab",
+      "meat-grade-any",
+      "sea"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "Flaky meat from the body. Spoils in a few days unless cooked or cured.",
+    "appearance": "Loose flakes of soft white meat picked from the body shell."
+  },
+  {
+    "id": "material-crab-claw-meat",
+    "name": "Crab Claw Meat",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "food",
+      "meat",
+      "crab",
+      "meat-grade-any",
+      "meat-grade-choice",
+      "sea"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "Dense meat from the great claw. Spoils in a few days unless cooked or cured.",
+    "appearance": "A dense, fist-sized lump of white meat streaked with red."
+  },
+  {
+    "id": "material-octopus-tentacle",
+    "name": "Octopus Tentacle",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "food",
+      "meat",
+      "octopus",
+      "meat-grade-any",
+      "sea"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "A thick tentacle. Tough unless cooked right. Spoils in a few days unless cooked or cured.",
+    "appearance": "A thick, mottled purple-grey tentacle lined with pale suckers."
+  },
+  {
+    "id": "material-octopus-mantle",
+    "name": "Octopus Mantle",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "food",
+      "meat",
+      "octopus",
+      "meat-grade-any",
+      "meat-grade-choice",
+      "sea"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "The head, sliced into tender rings. Spoils in a few days unless cooked or cured.",
+    "appearance": "The smooth, rounded body, sliced into pale rings."
+  },
+  {
+    "id": "material-scree-tuber",
+    "name": "Scree Tuber",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "gathering",
+      "foraging",
+      "food",
+      "produce",
+      "produce-vegetable"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A starchy mountain tuber that grows among loose stones. Bakes soft and earthy.",
+    "appearance": "A knobbly grey tuber the size of a fist, so like the scree it grows in that foragers find it by kicking stones."
+  },
+  {
+    "id": "material-frostcurl",
+    "name": "Frostcurl",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "gathering",
+      "foraging",
+      "food",
+      "produce",
+      "produce-vegetable"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Young fern shoots, eaten before they unroll. Crisp and grassy; eat them cooked.",
+    "appearance": "Tight green spirals of young fern, rimed with frost even in the hand."
+  },
+  {
+    "id": "material-snowstalk",
+    "name": "Snowstalk",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "gathering",
+      "foraging",
+      "food",
+      "produce",
+      "produce-vegetable"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A sharp, eye-watering stalk that flavours a whole pot.",
+    "appearance": "A hollow white stalk as long as an arm, with a papery blue tip."
+  },
+  {
+    "id": "material-ashbulb",
+    "name": "Ashbulb",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "gathering",
+      "foraging",
+      "food",
+      "produce",
+      "produce-vegetable"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A bitter, smoky bulb that grows only along the ashline.",
+    "appearance": "A black-skinned bulb; cut open, its flesh sits in grey rings like old ash."
+  },
+  {
+    "id": "material-cragberry",
+    "name": "Cragberry",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "gathering",
+      "foraging",
+      "food",
+      "produce",
+      "produce-fruit"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Hard, sour little berries from thorny crag shrubs. Best dried.",
+    "appearance": "Hard little red berries clustered on thorny grey shrubs."
+  },
+  {
+    "id": "material-rimepod",
+    "name": "Rimepod",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "gathering",
+      "foraging",
+      "food",
+      "produce",
+      "produce-fruit"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A pod-fruit that only sweetens after a hard frost. Cold, sweet and faintly fizzy.",
+    "appearance": "A pale blue pod the length of a thumb, hard until a frost, then soft and glassy."
+  },
+  {
+    "id": "material-embergourd",
+    "name": "Embergourd",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Advanced Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "gathering",
+      "foraging",
+      "food",
+      "produce",
+      "produce-fruit"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A gourd that grows in the warm hollows and never cools, even off the vine.",
+    "appearance": "A squat orange gourd, warm to the touch; its flesh glows a faint red when cut."
+  },
+  {
+    "id": "material-smokewort",
+    "name": "Smokewort",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "gathering",
+      "foraging",
+      "food",
+      "produce",
+      "produce-herb"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A downy herb that tastes like woodsmoke. Rubbed into meat before roasting.",
+    "appearance": "Grey, downy leaves that smell exactly like a dying campfire."
+  },
+  {
+    "id": "material-sharpneedle",
+    "name": "Sharpneedle",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "gathering",
+      "foraging",
+      "food",
+      "produce",
+      "produce-herb"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A resinous, needle-leafed herb. Piney and sharp; a little goes a long way.",
+    "appearance": "Stiff, needle-thin green leaves on a woody stem, sticky with resin."
+  },
+  {
+    "id": "material-saltmoss",
+    "name": "Saltmoss",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "gathering",
+      "foraging",
+      "food",
+      "produce",
+      "produce-herb"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A crusty moss from wet rock that tastes of salt. Foragers season with it.",
+    "appearance": "A crusty, white-green moss that leaves salt on your fingers."
+  },
+  {
+    "id": "material-tull",
+    "name": "Tull",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "food",
+      "produce",
+      "valdren",
+      "produce-vegetable"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "The staple root of Valdren farms. Dense, sweet when roasted, and keeps all winter.",
+    "appearance": "A heavy, round purple root with bright orange flesh."
+  },
+  {
+    "id": "material-kesh",
+    "name": "Kesh",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "food",
+      "produce",
+      "valdren",
+      "produce-vegetable"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "A leafy head grown in every Valdren kitchen garden. Mild cooked, peppery raw.",
+    "appearance": "A tight head of crinkled dark-green leaves, as big as two fists."
+  },
+  {
+    "id": "material-varn",
+    "name": "Varn",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "food",
+      "produce",
+      "valdren",
+      "produce-vegetable"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "Pod-beans dried by the sackful. The Compact feeds the Wall on them.",
+    "appearance": "Long yellow pods split open on fat, white beans."
+  },
+  {
+    "id": "material-orrel",
+    "name": "Orrel",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "food",
+      "produce",
+      "valdren",
+      "produce-fruit"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "A small, crisp orchard fruit from the Valdren lowlands. Tart, and good stewed.",
+    "appearance": "A small, hard yellow fruit with a red blush on the side that faced the sun."
+  },
+  {
+    "id": "material-dunsk",
+    "name": "Dunsk",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "food",
+      "produce",
+      "valdren",
+      "produce-fruit"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "A winter-keeping fruit stored in cellars. It sweetens as it shrivels.",
+    "appearance": "A dark, wrinkled, near-black fruit that looks spoiled and tastes sweeter for it."
+  },
+  {
+    "id": "material-tidecress",
+    "name": "Tidecress",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "food",
+      "produce",
+      "romley",
+      "produce-vegetable"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "Salty greens picked from tide pools at low water.",
+    "appearance": "Glossy, dark-green sprigs, beaded with salt from the tide pools."
+  },
+  {
+    "id": "material-sailor-s-knot",
+    "name": "Sailor's Knot",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "food",
+      "produce",
+      "romley",
+      "produce-vegetable"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "A twisted island root that keeps for months in a ship's hold.",
+    "appearance": "A twisted, knotted brown root, as if someone had tied it in a bowline."
+  },
+  {
+    "id": "material-sourbell",
+    "name": "Sourbell",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "food",
+      "produce",
+      "romley",
+      "produce-fruit"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "A jaw-achingly sour fruit. Sailors eat it to keep their teeth, and the peel flavours cheap rum.",
+    "appearance": "A bright yellow fruit shaped like a bell, its thick peel shiny with oil."
+  },
+  {
+    "id": "material-bloodpod",
+    "name": "Bloodpod",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "food",
+      "produce",
+      "romley",
+      "produce-fruit"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "A red island fruit full of crimson juice. Sailors swear it's why the sea is red.",
+    "appearance": "A red, leathery pod that bursts with crimson juice when you bite it."
+  },
+  {
+    "id": "material-galleyweed",
+    "name": "Galleyweed",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "food",
+      "produce",
+      "romley",
+      "produce-herb"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "Dried seaweed flakes kept in every ship's galley. Salty and savoury.",
+    "appearance": "Brittle grey-green flakes of dried seaweed, kept in a stoppered jar."
+  },
+  {
+    "id": "material-alchemist-s-blue",
+    "name": "Alchemist's Blue",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Advanced Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "food",
+      "produce",
+      "romley",
+      "produce-fruit"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "A rare blue fruit from a handful of remote islands. It tingles on the tongue.",
+    "appearance": "A smooth, vivid blue fruit that crackles faintly when you squeeze it."
+  },
+  {
+    "id": "material-crag-nest-egg",
+    "name": "Crag Nest Egg",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "gathering",
+      "foraging",
+      "food",
+      "egg",
+      "produce",
+      "produce-egg"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A small, speckled egg from a cliff nest. Strong-tasting.",
+    "appearance": "A small egg, brown and heavily speckled, about the size of a walnut."
+  },
+  {
+    "id": "material-reedfowl-egg",
+    "name": "Reedfowl Egg",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "gathering",
+      "foraging",
+      "food",
+      "egg",
+      "produce",
+      "produce-egg"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A pale green egg from a nest in the tarn reeds. Rich yolk.",
+    "appearance": "A smooth, pale green egg with a thick shell."
+  },
+  {
+    "id": "material-coop-egg",
+    "name": "Coop Egg",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "valdren",
+      "food",
+      "egg",
+      "produce",
+      "produce-egg"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "A farmyard egg from the Valdren lowlands. Sold by the dozen.",
+    "appearance": "A plain brown egg, sold twelve to a straw-lined basket."
+  },
+  {
+    "id": "material-skerry-egg",
+    "name": "Skerry Egg",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "romley",
+      "food",
+      "egg",
+      "produce",
+      "produce-egg"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "A big seabird egg collected from rocky islets. Fishy if fried.",
+    "appearance": "A big, pointed egg, blue-white and blotched with black."
+  },
+  {
+    "id": "material-hawk-egg",
+    "name": "Hawk Egg",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "bird",
+      "food",
+      "egg",
+      "produce",
+      "produce-egg"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A crag hawk's egg, taken from the nest of a hawk that defended it.",
+    "appearsIn": [
+      {
+        "creature": "CRAG HAWK",
+        "pool": "Rare",
+        "weight": 15
+      }
+    ],
+    "appearance": "A grey egg streaked with rust-red, warm if it's fresh from the nest."
+  },
+  {
+    "id": "material-serpent-egg",
+    "name": "Serpent Egg",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Advanced Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "beast",
+      "serpent",
+      "food",
+      "egg"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A tarn serpent's egg, leathery and cold. One makes a meal for four.",
+    "appearsIn": [
+      {
+        "creature": "TARN SERPENT",
+        "pool": "Rare",
+        "weight": 15
+      }
+    ],
+    "appearance": "A leathery, off-white egg as big as a melon, cold to the touch."
+  },
+  {
+    "id": "material-crab-roe",
+    "name": "Crab Roe",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "sea",
+      "crab",
+      "food",
+      "egg"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "Bright orange eggs from a giant crab. A delicacy in every port.",
+    "appearance": "A heap of tiny, bright orange beads that pop between your teeth."
+  },
+  {
+    "id": "material-coarse-flour",
+    "name": "Coarse Flour",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "food",
+      "pantry",
+      "refined"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "Ground seed or grain. The start of any bread.",
+    "appearance": "A sack of gritty, pale brown flour flecked with husk."
+  },
+  {
+    "id": "material-hearthbread",
+    "name": "Hearthbread",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "food",
+      "pantry",
+      "refined"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "A flat round of bread baked on a hot stone. Folds without breaking.",
+    "appearance": "A flat, round loaf a hand thick, freckled black where it touched the stone."
+  },
+  {
+    "id": "material-valdren-curd",
+    "name": "Valdren Curd",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "food",
+      "pantry",
+      "valdren",
+      "dairy",
+      "produce",
+      "produce-cheese"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "A crumbly white farm curd, sold wrapped in leaves.",
+    "appearance": "A crumbly white wheel wrapped in broad green leaves."
+  },
+  {
+    "id": "material-kine-milk",
+    "name": "Kine Milk",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "food",
+      "dairy",
+      "produce",
+      "produce-milk",
+      "valdren"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "Rich milk from Valdren farm kine, sold by the jug. Sours in two days.",
+    "appearance": "Creamy white milk in a stoppered clay jug, a yellow skin of cream on top."
+  },
+  {
+    "id": "material-goat-s-milk",
+    "name": "Goat's Milk",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "food",
+      "dairy",
+      "produce",
+      "produce-milk",
+      "romley"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "Thin, tangy milk from island goats. Sours in two days.",
+    "appearance": "Thin, bluish-white milk in a waxed skin."
+  },
+  {
+    "id": "material-ewe-s-milk",
+    "name": "Ewe's Milk",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "food",
+      "dairy",
+      "produce",
+      "produce-milk",
+      "ram",
+      "husbandry"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "Thick, sweet milk from a tamed mountain ewe. Sours in two days.",
+    "appearance": "Thick, ivory milk, almost like cream."
+  },
+  {
+    "id": "material-hind-s-milk",
+    "name": "Hind's Milk",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "food",
+      "dairy",
+      "produce",
+      "produce-milk",
+      "deer",
+      "husbandry"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "Rare, rich milk from a tamed ridge hind. Sours in a day.",
+    "appearance": "Pale, faintly golden milk that smells of grass."
+  },
+  {
+    "id": "material-ridge-wheel",
+    "name": "Ridge Wheel",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "food",
+      "dairy",
+      "produce",
+      "produce-cheese"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "A firm ewe's-milk cheese aged in cold caves. Nutty and sharp.",
+    "appearance": "A small, hard wheel with a grey-brown rind and a pale yellow, crumbly inside."
+  },
+  {
+    "id": "material-hind-cheese",
+    "name": "Hind Cheese",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "food",
+      "dairy",
+      "produce",
+      "produce-cheese"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "A soft, rich cheese from hind's milk. Hardly anyone makes it.",
+    "appearance": "A soft white round with a bloomy rind, oozing when cut."
+  },
+  {
+    "id": "material-brinecheese",
+    "name": "Brinecheese",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "food",
+      "dairy",
+      "produce",
+      "produce-cheese",
+      "romley"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "A salty goat's-milk cheese kept in brine aboard ship.",
+    "appearance": "Pale white blocks floating in a jar of cloudy brine."
+  },
+  {
+    "id": "material-wallwheel",
+    "name": "Wallwheel",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "food",
+      "dairy",
+      "produce",
+      "produce-cheese",
+      "valdren"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "A hard, waxed cheese made for the Compact. Keeps for a year on the Wall.",
+    "appearance": "A heavy wheel sealed in dark red wax, stamped with the Compact's mark."
+  },
+  {
+    "id": "material-kine-shank",
+    "name": "Kine Shank",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "food",
+      "meat",
+      "kine",
+      "meat-grade-any"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "A thick foreleg shank, banded with sinew. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "VALDREN KINE",
+        "pool": "Common",
+        "weight": 12
+      }
+    ],
+    "appearance": "A thick cross-cut of leg, a ring of dark red meat around a marrow bone."
+  },
+  {
+    "id": "material-kine-brisket",
+    "name": "Kine Brisket",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "food",
+      "meat",
+      "kine",
+      "meat-grade-any"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "The heavy breast meat, layered with fat. Wants long, slow cooking. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "VALDREN KINE",
+        "pool": "Common",
+        "weight": 12
+      }
+    ],
+    "appearance": "A heavy, flat slab of red meat under a thick cap of white fat."
+  },
+  {
+    "id": "material-kine-flank",
+    "name": "Kine Flank",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "food",
+      "meat",
+      "kine",
+      "meat-grade-any"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "A flat, lean, coarse-grained belly muscle. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "VALDREN KINE",
+        "pool": "Common",
+        "weight": 12
+      }
+    ],
+    "appearance": "A flat, oval sheet of lean red meat with long, visible grain."
+  },
+  {
+    "id": "material-kine-skirt",
+    "name": "Kine Skirt",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "food",
+      "meat",
+      "kine",
+      "meat-grade-any"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "A long, thin strip from the diaphragm. Tough but full of flavour. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "VALDREN KINE",
+        "pool": "Common",
+        "weight": 10
+      }
+    ],
+    "appearance": "A long, thin, ribbon-like strip of dark red meat."
+  },
+  {
+    "id": "material-kine-cheek",
+    "name": "Kine Cheek",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "food",
+      "meat",
+      "kine",
+      "meat-grade-any"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "A dense little muscle that braises to nothing. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "VALDREN KINE",
+        "pool": "Common",
+        "weight": 8
+      }
+    ],
+    "appearance": "A small, dense, dark red lump of muscle."
+  },
+  {
+    "id": "material-kine-tail",
+    "name": "Kine Tail",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "food",
+      "meat",
+      "kine",
+      "meat-grade-any"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "Bony rounds of tail, rich with gelatin. Made for stew. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "VALDREN KINE",
+        "pool": "Common",
+        "weight": 6
+      }
+    ],
+    "appearance": "Round sections of bony tail ringed with meat and fat."
+  },
+  {
+    "id": "material-kine-tongue",
+    "name": "Kine Tongue",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "food",
+      "meat",
+      "kine",
+      "meat-grade-any"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "A whole tongue. Peel it after boiling. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "VALDREN KINE",
+        "pool": "Common",
+        "weight": 6
+      }
+    ],
+    "appearance": "A whole, pale pink tongue with a rough, bumpy surface."
+  },
+  {
+    "id": "material-kine-chuck",
+    "name": "Kine Chuck",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "food",
+      "meat",
+      "kine",
+      "meat-grade-any",
+      "meat-grade-choice"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "A marbled shoulder roast. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "VALDREN KINE",
+        "pool": "Rare",
+        "weight": 25
+      }
+    ],
+    "appearance": "A thick, blocky roast laced with fat and seams of sinew."
+  },
+  {
+    "id": "material-kine-round",
+    "name": "Kine Round",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "food",
+      "meat",
+      "kine",
+      "meat-grade-any",
+      "meat-grade-choice"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "The big, lean muscles of the hind leg. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "VALDREN KINE",
+        "pool": "Rare",
+        "weight": 25
+      }
+    ],
+    "appearance": "A big, lean, deep red roast with almost no fat."
+  },
+  {
+    "id": "material-kine-short-ribs",
+    "name": "Kine Short Ribs",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "food",
+      "meat",
+      "kine",
+      "meat-grade-any",
+      "meat-grade-choice"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "Thick ribs with a deep layer of meat on top. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "VALDREN KINE",
+        "pool": "Rare",
+        "weight": 25
+      }
+    ],
+    "appearance": "Short, thick bones under a deep block of marbled meat."
+  },
+  {
+    "id": "material-kine-sirloin",
+    "name": "Kine Sirloin",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "food",
+      "meat",
+      "kine",
+      "meat-grade-any",
+      "meat-grade-choice"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "A good, firm steak cut from near the hip. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "VALDREN KINE",
+        "pool": "Rare",
+        "weight": 25
+      }
+    ],
+    "appearance": "A firm, red steak with a thin rim of white fat."
+  },
+  {
+    "id": "material-kine-rib-roast",
+    "name": "Kine Rib Roast",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "beast",
+      "food",
+      "meat",
+      "kine",
+      "meat-grade-any",
+      "meat-grade-choice",
+      "meat-grade-prime"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "A standing roast of the best ribs, heavily marbled. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "VALDREN KINE",
+        "pool": "Epic",
+        "weight": 35
+      }
+    ],
+    "appearance": "A standing rack of broad ribs under a heavily marbled eye of meat."
+  },
+  {
+    "id": "material-kine-strip-loin",
+    "name": "Kine Strip Loin",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "beast",
+      "food",
+      "meat",
+      "kine",
+      "meat-grade-any",
+      "meat-grade-choice",
+      "meat-grade-prime"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "The long, tender loin along the back. Cut into the best steaks. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "VALDREN KINE",
+        "pool": "Epic",
+        "weight": 35
+      }
+    ],
+    "appearance": "A long, even loin with fine marbling and a strip of fat along one edge."
+  },
+  {
+    "id": "material-kine-tenderloin",
+    "name": "Kine Tenderloin",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "beast",
+      "food",
+      "meat",
+      "kine",
+      "meat-grade-any",
+      "meat-grade-choice",
+      "meat-grade-prime"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "The softest meat on the animal, hidden under the spine. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "VALDREN KINE",
+        "pool": "Epic",
+        "weight": 30
+      }
+    ],
+    "appearance": "A long, tapering, velvet-smooth cylinder of deep red meat."
+  },
+  {
+    "id": "material-hog-jowl",
+    "name": "Hog Jowl",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "food",
+      "meat",
+      "hog",
+      "meat-grade-any"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "A fatty cheek, cured or braised. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "VALDREN HOG",
+        "pool": "Common",
+        "weight": 20
+      }
+    ],
+    "appearance": "A square slab of cheek, mostly white fat with pink streaks."
+  },
+  {
+    "id": "material-hog-hock",
+    "name": "Hog Hock",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "food",
+      "meat",
+      "hog",
+      "meat-grade-any"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "The lower leg joint, all skin, bone and rich meat. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "VALDREN HOG",
+        "pool": "Common",
+        "weight": 20
+      }
+    ],
+    "appearance": "A knobbly joint in thick pale skin."
+  },
+  {
+    "id": "material-hog-trotters",
+    "name": "Hog Trotters",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "food",
+      "meat",
+      "hog",
+      "meat-grade-any"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "The feet. Boiled for broth and jelly. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "VALDREN HOG",
+        "pool": "Common",
+        "weight": 20
+      }
+    ],
+    "appearance": "Pale, split pig's feet."
+  },
+  {
+    "id": "material-hog-belly",
+    "name": "Hog Belly",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "food",
+      "meat",
+      "hog",
+      "meat-grade-any",
+      "meat-grade-choice",
+      "cut-belly"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "A thick slab of belly, striped meat and fat: the bacon cut. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "VALDREN HOG",
+        "pool": "Rare",
+        "weight": 25
+      }
+    ],
+    "appearance": "A thick slab of alternating pink meat and white fat under pale skin."
+  },
+  {
+    "id": "material-hog-shoulder",
+    "name": "Hog Shoulder",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "food",
+      "meat",
+      "hog",
+      "meat-grade-any",
+      "meat-grade-choice"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "A heavily marbled shoulder that pulls apart when slow-cooked. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "VALDREN HOG",
+        "pool": "Rare",
+        "weight": 25
+      }
+    ],
+    "appearance": "A big, round, heavily marbled pink roast."
+  },
+  {
+    "id": "material-hog-spare-ribs",
+    "name": "Hog Spare Ribs",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "food",
+      "meat",
+      "hog",
+      "meat-grade-any",
+      "meat-grade-choice"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "A long rack of meaty ribs. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "VALDREN HOG",
+        "pool": "Rare",
+        "weight": 25
+      }
+    ],
+    "appearance": "A long rack of curved ribs under pink meat."
+  },
+  {
+    "id": "material-hog-ham",
+    "name": "Hog Ham",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "food",
+      "meat",
+      "hog",
+      "meat-grade-any",
+      "meat-grade-choice",
+      "cut-ham"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "The whole hind leg, fresh or for curing. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "VALDREN HOG",
+        "pool": "Rare",
+        "weight": 25
+      }
+    ],
+    "appearance": "A whole hind leg, round and heavy, pale-skinned and pink inside."
+  },
+  {
+    "id": "material-hog-loin",
+    "name": "Hog Loin",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "beast",
+      "food",
+      "meat",
+      "hog",
+      "meat-grade-any",
+      "meat-grade-choice",
+      "meat-grade-prime"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "The long loin along the back. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "VALDREN HOG",
+        "pool": "Epic",
+        "weight": 50
+      }
+    ],
+    "appearance": "A long, pale pink loin under a smooth cap of fat."
+  },
+  {
+    "id": "material-hog-tenderloin",
+    "name": "Hog Tenderloin",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "beast",
+      "food",
+      "meat",
+      "hog",
+      "meat-grade-any",
+      "meat-grade-choice",
+      "meat-grade-prime"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "A slim, tender strip from inside the loin. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "VALDREN HOG",
+        "pool": "Epic",
+        "weight": 50
+      }
+    ],
+    "appearance": "A slim, pale pink strip with hardly any fat."
+  },
+  {
+    "id": "material-kine-hide",
+    "name": "Kine Hide",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "kine",
+      "leather"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "A heavy red-brown hide.",
+    "appearsIn": [
+      {
+        "creature": "VALDREN KINE",
+        "pool": "Common",
+        "weight": 20
+      }
+    ]
+  },
+  {
+    "id": "material-kine-suet",
+    "name": "Kine Suet",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "kine",
+      "fat"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "Hard white fat from around the kidneys. Renders clean.",
+    "appearsIn": [
+      {
+        "creature": "VALDREN KINE",
+        "pool": "Common",
+        "weight": 14
+      }
+    ]
+  },
+  {
+    "id": "material-hogskin",
+    "name": "Hogskin",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "hog",
+      "leather"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "Thick, bristly pigskin.",
+    "appearsIn": [
+      {
+        "creature": "VALDREN HOG",
+        "pool": "Common",
+        "weight": 20
+      }
+    ]
+  },
+  {
+    "id": "material-hog-lard",
+    "name": "Hog Lard",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "hog",
+      "fat"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "Soft white back fat.",
+    "appearsIn": [
+      {
+        "creature": "VALDREN HOG",
+        "pool": "Common",
+        "weight": 20
+      }
+    ]
+  },
+  {
+    "id": "material-farm-leather",
+    "name": "Farm Leather",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "refined",
+      "leather"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "Plain, tough tanned leather from farm hides."
+  },
+  {
+    "id": "material-curing-salt",
+    "name": "Curing Salt",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "food",
+      "pantry",
+      "preservative"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "Salt mixed with nitre. It keeps meat red and stops it rotting.",
+    "appearance": "Coarse grey-pink salt in a waxed paper twist."
+  },
+  {
+    "id": "material-sour-vinegar",
+    "name": "Sour Vinegar",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "food",
+      "pantry",
+      "preservative"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "Sharp vinegar soured from seed mash. For pickling and brining.",
+    "appearance": "A small cask of cloudy, golden vinegar that stings the nose."
+  },
+  {
+    "id": "material-kindlepod",
+    "name": "Kindlepod",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "food",
+      "produce",
+      "produce-herb",
+      "valdren"
+    ],
+    "source": "VIGIL",
+    "set": "basic-gear",
+    "notes": "A dried red pod that's hot on the tongue. The spice in every cured sausage.",
+    "appearance": "Wrinkled, dried red pods strung on a cord."
   }
 ]

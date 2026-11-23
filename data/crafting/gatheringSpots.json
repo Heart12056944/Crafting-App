@@ -288,33 +288,53 @@
     "activity": "foraging",
     "tier": "common",
     "dc": 10,
-    "description": "Mossy rock and hardy leaves. Mind the pale mushrooms.",
+    "description": "Mossy rock, loose scree and hardy leaves. Mind the pale mushrooms, kick the stones (some are tubers), and check the ledges for nests.",
     "yields": {
       "common": [
         {
           "name": "Bitterleaf",
-          "weight": 45,
+          "weight": 25,
           "amount": "1d4"
         },
         {
           "name": "Crag Moss",
-          "weight": 40,
+          "weight": 20,
           "amount": "1d4"
         },
         {
           "name": "Hollowcap",
-          "weight": 15
+          "weight": 10
+        },
+        {
+          "name": "Scree Tuber",
+          "weight": 20,
+          "amount": "1d3"
+        },
+        {
+          "name": "Smokewort",
+          "weight": 15,
+          "amount": "1d3"
+        },
+        {
+          "name": "Crag Nest Egg",
+          "weight": 10,
+          "amount": "1d3"
         }
       ],
       "rare": [
         {
           "name": "Graveroot",
-          "weight": 60,
+          "weight": 40,
           "amount": "1d2"
         },
         {
           "name": "Hollowcap",
-          "weight": 40,
+          "weight": 30,
+          "amount": "1d2"
+        },
+        {
+          "name": "Saltmoss",
+          "weight": 30,
           "amount": "1d2"
         }
       ],
@@ -334,33 +354,58 @@
     "activity": "foraging",
     "tier": "common",
     "dc": 10,
-    "description": "Reeds, brambles and moss crowding a quiet tarn shore. Wasps nest in the rocks above.",
+    "description": "Reeds, brambles, ferns and moss crowding a quiet tarn shore. Wasps nest in the rocks above.",
     "yields": {
       "common": [
         {
           "name": "Hollowreed Seed",
-          "weight": 50,
+          "weight": 30,
           "amount": "1d4"
         },
         {
           "name": "Bramblesweet",
-          "weight": 30,
+          "weight": 20,
           "amount": "1d3"
         },
         {
           "name": "Crag Moss",
-          "weight": 20,
+          "weight": 10,
           "amount": "1d4"
+        },
+        {
+          "name": "Frostcurl",
+          "weight": 15,
+          "amount": "1d3"
+        },
+        {
+          "name": "Cragberry",
+          "weight": 15,
+          "amount": "1d4"
+        },
+        {
+          "name": "Reedfowl Egg",
+          "weight": 10,
+          "amount": "1d3"
         }
       ],
       "rare": [
         {
           "name": "Cloudwasp Comb",
-          "weight": 60
+          "weight": 40
         },
         {
           "name": "Graveroot",
-          "weight": 40,
+          "weight": 25,
+          "amount": "1d2"
+        },
+        {
+          "name": "Snowstalk",
+          "weight": 20,
+          "amount": "1d2"
+        },
+        {
+          "name": "Rimepod",
+          "weight": 15,
           "amount": "1d2"
         }
       ],
@@ -385,23 +430,33 @@
       "common": [
         {
           "name": "Bitterleaf",
-          "weight": 30,
+          "weight": 25,
           "amount": "1d4"
         },
         {
           "name": "Graveroot",
-          "weight": 40,
+          "weight": 30,
           "amount": "1d2"
         },
         {
           "name": "Hollowcap",
-          "weight": 30
+          "weight": 20
+        },
+        {
+          "name": "Cragberry",
+          "weight": 25,
+          "amount": "1d4"
         }
       ],
       "rare": [
         {
           "name": "Pale Thistle",
-          "weight": 100,
+          "weight": 60,
+          "amount": "1d2"
+        },
+        {
+          "name": "Ashbulb",
+          "weight": 40,
           "amount": "1d2"
         }
       ],
@@ -426,12 +481,17 @@
       "common": [
         {
           "name": "Pale Thistle",
-          "weight": 60,
+          "weight": 45,
           "amount": "1d2"
         },
         {
           "name": "Graveroot",
-          "weight": 40,
+          "weight": 30,
+          "amount": "1d2"
+        },
+        {
+          "name": "Sharpneedle",
+          "weight": 25,
           "amount": "1d2"
         }
       ],
@@ -448,7 +508,11 @@
       "epic": [
         {
           "name": "Wardensbloom",
-          "weight": 100
+          "weight": 60
+        },
+        {
+          "name": "Embergourd",
+          "weight": 40
         }
       ]
     },

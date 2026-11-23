@@ -100,6 +100,28 @@ export async function setCharacterClaim(campaignId: string, characterId: string,
   if (error) throw error;
 }
 
+// A small named value kept per campaign in the discoveries table, e.g. the
+// husbandry day counter (kind "calendar", key "day") or a wild animal the GM
+// has placed nearby (kind "wild-animal", key = species id). null removes it.
+export async function setCampaignValue(campaignId: string, kind: string, key: string, state: string | null): Promise<void> {
+  if (state === null) {
+    const { error } = await supabase
+      .from("campaign_discoveries")
+      .delete()
+      .eq("campaign_id", campaignId)
+      .eq("kind", kind)
+      .eq("item_key", key);
+    if (error) throw error;
+    return;
+  }
+
+  const { error } = await supabase.from("campaign_discoveries").upsert(
+    { campaign_id: campaignId, kind, item_key: key, state },
+    { onConflict: "campaign_id,kind,item_key" }
+  );
+  if (error) throw error;
+}
+
 export async function clearCampaignDiscoveries(campaignId: string): Promise<void> {
   // Wipes discovered/hidden recipes and materials only; claims and open gathering spots stay.
   const { error } = await supabase

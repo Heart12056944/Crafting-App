@@ -340,7 +340,7 @@ export default function ShopPanel({
   function createFromTemplate() {
     const chosen = SHOP_TEMPLATES.find((item) => item.kind === template) || SHOP_TEMPLATES[0];
     run(async () => {
-      await createShop({ campaignId, name: chosen.name, kind: chosen.kind, description: chosen.description, stock: stockFromNames(chosen.stock) });
+      await createShop({ campaignId, name: chosen.name, kind: chosen.kind, description: chosen.description, stock: stockFromNames(chosen.stock, chosen.items) });
       setMessage(`Created ${chosen.name}. It starts closed: open it when the party is nearby.`);
     });
   }

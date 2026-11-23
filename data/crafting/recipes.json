@@ -8590,209 +8590,6 @@
     "set": "undying-vigil"
   },
   {
-    "id": "vigil-recipe-ridgepot",
-    "name": "Ridgepot",
-    "type": "Potion",
-    "dc": 10,
-    "time": "1 hour",
-    "tool": "Cook's Utensils (WIS)",
-    "materials": [
-      {
-        "name": "Raw Game Meat",
-        "quantity": 2
-      },
-      {
-        "name": "Bitterleaf",
-        "quantity": 1
-      }
-    ],
-    "materialsText": "2x Raw Game Meat, 1x Bitterleaf",
-    "outcomes": {
-      "superior": "6 servings of a thick meat-and-leaf pot. Each: 1d6+2 temporary HP and advantage on CON saves against cold for 8 hours.",
-      "normal": "4 servings. Each: 1d6 temporary HP and advantage on CON saves against cold for 8 hours.",
-      "flawed": "2 servings. Each: 1d4 temporary HP."
-    },
-    "chapter": "BASIC GEAR",
-    "group": "COOKING — Basic Gear",
-    "section": "Common Recipes",
-    "source": "Undying_Vigil_Crafting",
-    "set": "basic-gear"
-  },
-  {
-    "id": "vigil-recipe-streamfin-skewers",
-    "name": "Streamfin Skewers",
-    "type": "Potion",
-    "dc": 10,
-    "time": "30 min",
-    "tool": "Cook's Utensils (WIS)",
-    "materials": [
-      {
-        "name": "Streamfin",
-        "quantity": 3
-      }
-    ],
-    "materialsText": "3x Streamfin",
-    "outcomes": {
-      "superior": "4 servings. Each: +2 to Perception checks for 4 hours.",
-      "normal": "4 servings. Each: +1 to Perception checks for 4 hours.",
-      "flawed": "2 servings. Filling, nothing more."
-    },
-    "chapter": "BASIC GEAR",
-    "group": "COOKING — Basic Gear",
-    "section": "Common Recipes",
-    "source": "Undying_Vigil_Crafting",
-    "set": "basic-gear"
-  },
-  {
-    "id": "vigil-recipe-rimefin-broth",
-    "name": "Rimefin Broth",
-    "type": "Potion",
-    "dc": 11,
-    "time": "1 hour",
-    "tool": "Cook's Utensils (WIS)",
-    "materials": [
-      {
-        "name": "Rimefin",
-        "quantity": 2
-      },
-      {
-        "name": "Pale Thistle",
-        "quantity": 1
-      }
-    ],
-    "materialsText": "2x Rimefin, 1x Pale Thistle",
-    "outcomes": {
-      "superior": "4 servings. Each: resistance to cold damage for 4 hours.",
-      "normal": "4 servings. Each: resistance to cold damage for 1 hour.",
-      "flawed": "2 servings. Each: advantage on one save against cold."
-    },
-    "chapter": "BASIC GEAR",
-    "group": "COOKING — Basic Gear",
-    "section": "Common Recipes",
-    "source": "Undying_Vigil_Crafting",
-    "set": "basic-gear"
-  },
-  {
-    "id": "vigil-recipe-trail-cakes",
-    "name": "Trail Cakes",
-    "type": "Potion",
-    "dc": 10,
-    "time": "2 hours",
-    "tool": "Cook's Utensils (WIS)",
-    "materials": [
-      {
-        "name": "Hollowreed Seed",
-        "quantity": 3
-      },
-      {
-        "name": "Rendered Tallow",
-        "quantity": 1
-      }
-    ],
-    "materialsText": "3x Hollowreed Seed, 1x Rendered Tallow",
-    "outcomes": {
-      "superior": "12 days of trail food that never spoils.",
-      "normal": "10 days of trail food that never spoils.",
-      "flawed": "5 days of trail food. Spoils in a month."
-    },
-    "chapter": "BASIC GEAR",
-    "group": "COOKING — Basic Gear",
-    "section": "Common Recipes",
-    "source": "Undying_Vigil_Crafting",
-    "set": "basic-gear"
-  },
-  {
-    "id": "vigil-recipe-tarnback-fillets",
-    "name": "Tarnback Fillets",
-    "type": "Potion",
-    "dc": 13,
-    "time": "1 hour",
-    "tool": "Cook's Utensils (WIS)",
-    "materials": [
-      {
-        "name": "Tarnback",
-        "quantity": 1
-      }
-    ],
-    "materialsText": "1x Tarnback",
-    "outcomes": {
-      "superior": "4 servings. Each: you can hold your breath 10x as long and have a swim speed equal to your walking speed for 8 hours.",
-      "normal": "4 servings. Each: you can hold your breath 5x as long for 8 hours.",
-      "flawed": "2 servings. Each: hold your breath twice as long for 1 hour."
-    },
-    "chapter": "BASIC GEAR",
-    "group": "COOKING — Basic Gear",
-    "section": "Uncommon Recipes",
-    "source": "Undying_Vigil_Crafting",
-    "set": "basic-gear"
-  },
-  {
-    "id": "vigil-recipe-heartfire-roast",
-    "name": "Heartfire Roast",
-    "type": "Potion",
-    "dc": 14,
-    "time": "2 hours",
-    "tool": "Cook's Utensils (WIS)",
-    "materials": [
-      {
-        "name": "Tuskback Heart",
-        "quantity": 1
-      },
-      {
-        "name": "Raw Game Meat",
-        "quantity": 2
-      },
-      {
-        "name": "Emberleaf",
-        "quantity": 1
-      }
-    ],
-    "materialsText": "1x Tuskback Heart, 2x Raw Game Meat, 1x Emberleaf",
-    "outcomes": {
-      "superior": "4 servings. Each: 2d6 temporary HP and advantage on STR checks and saves for 1 hour.",
-      "normal": "4 servings. Each: 1d6 temporary HP and advantage on STR checks for 1 hour.",
-      "flawed": "2 servings. Each: 1d6 temporary HP."
-    },
-    "chapter": "BASIC GEAR",
-    "group": "COOKING — Basic Gear",
-    "section": "Rare Recipes",
-    "source": "Undying_Vigil_Crafting",
-    "set": "basic-gear"
-  },
-  {
-    "id": "vigil-recipe-long-watch-feast",
-    "name": "Long-Watch Feast",
-    "type": "Potion",
-    "dc": 16,
-    "time": "4 hours",
-    "tool": "Cook's Utensils (WIS)",
-    "materials": [
-      {
-        "name": "Raw Game Meat",
-        "quantity": 4
-      },
-      {
-        "name": "Mountain Heart",
-        "quantity": 1
-      },
-      {
-        "name": "Cloudwasp Comb",
-        "quantity": 1
-      }
-    ],
-    "materialsText": "4x Raw Game Meat, 1x Mountain Heart, 1x Cloudwasp Comb",
-    "outcomes": {
-      "superior": "Feeds 8. For 24 hours each diner gains 2d10 temporary HP, immunity to being frightened, and advantage on WIS saves.",
-      "normal": "Feeds 6. For 24 hours each diner gains 2d10 temporary HP and immunity to being frightened.",
-      "flawed": "Feeds 4. Each diner gains 1d10 temporary HP."
-    },
-    "chapter": "BASIC GEAR",
-    "group": "COOKING — Basic Gear",
-    "section": "Epic Recipes",
-    "source": "Undying_Vigil_Crafting",
-    "set": "basic-gear"
-  },
-  {
     "id": "vigil-recipe-tusk-hook-fishing-rod",
     "name": "Tusk-Hook Fishing Rod",
     "type": "Utility",
@@ -9661,5 +9458,3126 @@
     "section": "Epic Recipes",
     "source": "Undying_Vigil_Crafting",
     "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-dried-meat-strips",
+    "name": "Dried Meat Strips",
+    "type": "Food",
+    "dc": 10,
+    "time": "4 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Any meat cut",
+        "quantity": 2,
+        "tag": "meat-grade-any"
+      },
+      {
+        "name": "Coarse Salt",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Any meat cut, 1x Coarse Salt",
+    "outcomes": {
+      "superior": "8 rations of salted, smoked meat. Keeps for a year.",
+      "normal": "6 rations of salted, smoked meat. Keeps for six months.",
+      "flawed": "3 rations. Tough and over-salted. Keeps for a month."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Dark, wrinkled strips of meat, crusted with salt and smelling of smoke."
+  },
+  {
+    "id": "vigil-recipe-salted-fish",
+    "name": "Salted Fish",
+    "type": "Food",
+    "dc": 10,
+    "time": "2 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Streamfin",
+        "quantity": 3
+      },
+      {
+        "name": "Coarse Salt",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "3x Streamfin, 1x Coarse Salt",
+    "outcomes": {
+      "superior": "6 rations of salted fish. Keeps for six months.",
+      "normal": "4 rations of salted fish. Keeps for three months.",
+      "flawed": "2 rations. Keeps for a month."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Flat, stiff fish split open and packed in grey salt."
+  },
+  {
+    "id": "vigil-recipe-salt-packed-shark",
+    "name": "Salt-Packed Shark",
+    "type": "Food",
+    "dc": 10,
+    "time": "2 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Shark Fillet",
+        "quantity": 2
+      },
+      {
+        "name": "Coarse Salt",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Shark Fillet, 1x Coarse Salt",
+    "outcomes": {
+      "superior": "8 rations of salt-packed shark. Keeps for six months.",
+      "normal": "6 rations of salt-packed shark. Keeps for three months.",
+      "flawed": "3 rations. Keeps for a month."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Grey-white slabs of shark in a crust of coarse salt, wrapped in sailcloth."
+  },
+  {
+    "id": "vigil-recipe-trail-cakes",
+    "name": "Trail Cakes",
+    "type": "Food",
+    "dc": 10,
+    "time": "2 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Hollowreed Seed",
+        "quantity": 3
+      },
+      {
+        "name": "Rendered Tallow",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "3x Hollowreed Seed, 1x Rendered Tallow",
+    "outcomes": {
+      "superior": "12 rations of dense seed cake that never spoils.",
+      "normal": "10 rations of dense seed cake that never spoils.",
+      "flawed": "5 rations. Crumbly; keeps for a month."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Dense brown rounds of pressed seed bound with tallow, hard enough to knock on."
+  },
+  {
+    "id": "vigil-recipe-ridgepot",
+    "name": "Ridgepot",
+    "type": "Food",
+    "dc": 10,
+    "time": "1 hour",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Any meat cut",
+        "quantity": 2,
+        "tag": "meat-grade-any"
+      },
+      {
+        "name": "Bitterleaf",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Any meat cut, 1x Bitterleaf",
+    "outcomes": {
+      "superior": "6 servings of thick meat-and-leaf stew. Counts as a day's food.",
+      "normal": "4 servings of thick meat-and-leaf stew. Counts as a day's food.",
+      "flawed": "2 servings. A little burnt."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A thick brown stew of meat chunks and dark, bitter leaves, steaming in a tin cup."
+  },
+  {
+    "id": "vigil-recipe-streamfin-skewers",
+    "name": "Streamfin Skewers",
+    "type": "Food",
+    "dc": 10,
+    "time": "30 min",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Streamfin",
+        "quantity": 3
+      }
+    ],
+    "materialsText": "3x Streamfin",
+    "outcomes": {
+      "superior": "4 servings of crisp grilled fish.",
+      "normal": "3 servings of grilled fish.",
+      "flawed": "2 servings. Mostly bones."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Small silver fish threaded on green sticks, charred at the edges."
+  },
+  {
+    "id": "vigil-recipe-fowl-broth",
+    "name": "Fowl Broth",
+    "type": "Food",
+    "dc": 10,
+    "time": "1 hour",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Any fowl",
+        "quantity": 2,
+        "tag": "meat-grade-fowl"
+      },
+      {
+        "name": "Bitterleaf",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Any fowl, 1x Bitterleaf",
+    "outcomes": {
+      "superior": "4 servings of clear, hot broth.",
+      "normal": "3 servings of hot broth.",
+      "flawed": "2 servings. Watery."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A clear golden broth with shreds of dark bird meat and a few torn leaves."
+  },
+  {
+    "id": "vigil-recipe-crab-boil",
+    "name": "Crab Boil",
+    "type": "Food",
+    "dc": 10,
+    "time": "1 hour",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Crab Leg Meat",
+        "quantity": 2
+      },
+      {
+        "name": "Crab Body Meat",
+        "quantity": 1
+      },
+      {
+        "name": "Coarse Salt",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Crab Leg Meat, 1x Crab Body Meat, 1x Coarse Salt",
+    "outcomes": {
+      "superior": "6 servings of boiled crab.",
+      "normal": "4 servings of boiled crab.",
+      "flawed": "2 servings. Overcooked."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A heap of cracked red shell and sweet white meat, steaming and salty."
+  },
+  {
+    "id": "vigil-recipe-hollowcap-fry",
+    "name": "Hollowcap Fry",
+    "type": "Food",
+    "dc": 10,
+    "time": "30 min",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Hollowcap",
+        "quantity": 2
+      },
+      {
+        "name": "Rendered Tallow",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Hollowcap, 1x Rendered Tallow",
+    "outcomes": {
+      "superior": "4 servings of crisp fried mushroom.",
+      "normal": "3 servings of fried mushroom.",
+      "flawed": "2 servings. Greasy."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Pale mushroom caps fried crisp and golden at the edges, glistening with fat."
+  },
+  {
+    "id": "vigil-recipe-rimefin-broth",
+    "name": "Rimefin Broth",
+    "type": "Food",
+    "dc": 12,
+    "time": "1 hour",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Rimefin",
+        "quantity": 2
+      },
+      {
+        "name": "Pale Thistle",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Rimefin, 1x Pale Thistle",
+    "outcomes": {
+      "superior": "4 servings. Each: advantage on CON saves against cold for 4 hours.",
+      "normal": "4 servings of rich fish broth.",
+      "flawed": "2 servings."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A milky, pale broth with flakes of white fish and silver thistle leaves floating on top."
+  },
+  {
+    "id": "vigil-recipe-choice-cut-skillet",
+    "name": "Choice-Cut Skillet",
+    "type": "Food",
+    "dc": 12,
+    "time": "1 hour",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Choice cut or better",
+        "quantity": 2,
+        "tag": "meat-grade-choice"
+      },
+      {
+        "name": "Rendered Tallow",
+        "quantity": 1
+      },
+      {
+        "name": "Bitterleaf",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Choice cut or better, 1x Rendered Tallow, 1x Bitterleaf",
+    "outcomes": {
+      "superior": "4 servings. Each: 1d6 temporary HP.",
+      "normal": "4 servings of seared meat.",
+      "flawed": "2 servings. Chewy."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Thick slices of seared meat, crusted brown and sizzling in their own fat."
+  },
+  {
+    "id": "vigil-recipe-boar-belly-crackle",
+    "name": "Boar Belly Crackle",
+    "type": "Food",
+    "dc": 12,
+    "time": "2 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Any belly (boar or hog)",
+        "quantity": 1,
+        "tag": "cut-belly"
+      },
+      {
+        "name": "Coarse Salt",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Any belly (boar or hog), 1x Coarse Salt",
+    "outcomes": {
+      "superior": "4 servings. Each: advantage on your next Strength check or save within 4 hours.",
+      "normal": "4 servings of crackling roast belly.",
+      "flawed": "2 servings. The crackling didn't."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A slab of belly roasted until the skin blisters into golden crackling over soft layers of meat and fat."
+  },
+  {
+    "id": "vigil-recipe-fire-roasted-ribs",
+    "name": "Fire-Roasted Ribs",
+    "type": "Food",
+    "dc": 12,
+    "time": "3 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Stag Rib Rack",
+        "quantity": 1
+      },
+      {
+        "name": "Coarse Salt",
+        "quantity": 1
+      },
+      {
+        "name": "Emberleaf",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Stag Rib Rack, 1x Coarse Salt, 1x Emberleaf",
+    "outcomes": {
+      "superior": "4 servings. Each: resistance to cold damage for 1 hour.",
+      "normal": "4 servings of smoky roast ribs.",
+      "flawed": "2 servings. Charred."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A rack of dark ribs, blackened at the tips and glazed red with warm leaf oil."
+  },
+  {
+    "id": "vigil-recipe-shark-steak-sear",
+    "name": "Shark Steak Sear",
+    "type": "Food",
+    "dc": 12,
+    "time": "30 min",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Shark Steak",
+        "quantity": 1
+      },
+      {
+        "name": "Coarse Salt",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Shark Steak, 1x Coarse Salt",
+    "outcomes": {
+      "superior": "4 servings. Each: +10 ft swimming speed for 1 hour.",
+      "normal": "4 servings of seared shark.",
+      "flawed": "2 servings. Dry."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A thick, pinkish-white steak with a hard brown crust and a salty rim."
+  },
+  {
+    "id": "vigil-recipe-octopus-skewers",
+    "name": "Octopus Skewers",
+    "type": "Food",
+    "dc": 12,
+    "time": "1 hour",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Octopus Tentacle",
+        "quantity": 2
+      },
+      {
+        "name": "Coarse Salt",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Octopus Tentacle, 1x Coarse Salt",
+    "outcomes": {
+      "superior": "4 servings. Each: advantage on checks to escape a grapple for 4 hours.",
+      "normal": "4 servings of tender charred octopus.",
+      "flawed": "2 servings. Rubbery."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Thick rings of purple-edged tentacle, charred in stripes on a skewer."
+  },
+  {
+    "id": "vigil-recipe-tarnback-fillets",
+    "name": "Tarnback Fillets",
+    "type": "Food",
+    "dc": 14,
+    "time": "1 hour",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Tarnback",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Tarnback",
+    "outcomes": {
+      "superior": "4 servings. Each: hold your breath 10x as long, and a swim speed equal to your walking speed, for 8 hours.",
+      "normal": "4 servings. Each: hold your breath 5x as long for 8 hours.",
+      "flawed": "2 servings. A plain fish supper."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Thick fillets with dark-green skin and dense, white flesh that flakes in big pieces."
+  },
+  {
+    "id": "vigil-recipe-heartfire-roast",
+    "name": "Heartfire Roast",
+    "type": "Food",
+    "dc": 14,
+    "time": "2 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Tuskback Heart",
+        "quantity": 1
+      },
+      {
+        "name": "Any meat cut",
+        "quantity": 2,
+        "tag": "meat-grade-any"
+      },
+      {
+        "name": "Emberleaf",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Tuskback Heart, 2x Any meat cut, 1x Emberleaf",
+    "outcomes": {
+      "superior": "4 servings. Each: 2d6 temporary HP and advantage on STR checks and saves for 1 hour.",
+      "normal": "4 servings. Each: 1d6 temporary HP and advantage on STR checks for 1 hour.",
+      "flawed": "2 servings. Rich, but nothing more."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Dark slices of heart and meat, glazed deep red and smelling of warm spice."
+  },
+  {
+    "id": "vigil-recipe-prime-cut-roast",
+    "name": "Prime Cut Roast",
+    "type": "Food",
+    "dc": 15,
+    "time": "3 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Prime cut",
+        "quantity": 1,
+        "tag": "meat-grade-prime"
+      },
+      {
+        "name": "Emberleaf",
+        "quantity": 1
+      },
+      {
+        "name": "Rendered Tallow",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Prime cut, 1x Emberleaf, 1x Rendered Tallow",
+    "outcomes": {
+      "superior": "4 servings. Each: 2d8 temporary HP and advantage on CON saves for 8 hours.",
+      "normal": "4 servings. Each: 1d8 temporary HP and advantage on CON saves for 1 hour.",
+      "flawed": "4 servings of good roast meat. No other effect."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A whole loin roasted to a deep brown crust, rosy at the centre, resting in its juices."
+  },
+  {
+    "id": "vigil-recipe-bear-haunch-braise",
+    "name": "Bear Haunch Braise",
+    "type": "Food",
+    "dc": 15,
+    "time": "6 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Bear Haunch",
+        "quantity": 1
+      },
+      {
+        "name": "Any meat cut",
+        "quantity": 2,
+        "tag": "meat-grade-any"
+      },
+      {
+        "name": "Hollowcap",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Bear Haunch, 2x Any meat cut, 1x Hollowcap",
+    "outcomes": {
+      "superior": "Feeds 6. Each diner's maximum HP increases by 10 for 8 hours.",
+      "normal": "Feeds 6. Each diner's maximum HP increases by 5 for 8 hours.",
+      "flawed": "Feeds 4. A heavy, filling stew. No other effect."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A dark, glossy stew of falling-apart meat and pale mushroom, thick enough to stand a spoon in."
+  },
+  {
+    "id": "vigil-recipe-reefkeeper-s-spread",
+    "name": "Reefkeeper's Spread",
+    "type": "Food",
+    "dc": 16,
+    "time": "4 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Shark Steak",
+        "quantity": 2
+      },
+      {
+        "name": "Crab Claw Meat",
+        "quantity": 2
+      },
+      {
+        "name": "Octopus Mantle",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Shark Steak, 2x Crab Claw Meat, 1x Octopus Mantle",
+    "outcomes": {
+      "superior": "Feeds 8. For 8 hours each diner gains 1d10 temporary HP, a swim speed equal to their walking speed, and advantage on saves against exhaustion.",
+      "normal": "Feeds 6. For 8 hours each diner gains 1d10 temporary HP and advantage on saves against exhaustion.",
+      "flawed": "Feeds 4. A good seafood supper. No other effect."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Epic Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A great platter of seared shark, red-and-white crab claws and charred octopus rings."
+  },
+  {
+    "id": "vigil-recipe-long-watch-feast",
+    "name": "Long-Watch Feast",
+    "type": "Food",
+    "dc": 16,
+    "time": "4 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Prime cut",
+        "quantity": 2,
+        "tag": "meat-grade-prime"
+      },
+      {
+        "name": "Mountain Heart",
+        "quantity": 1
+      },
+      {
+        "name": "Cloudwasp Comb",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Prime cut, 1x Mountain Heart, 1x Cloudwasp Comb",
+    "outcomes": {
+      "superior": "Feeds 8. For 24 hours each diner gains 2d10 temporary HP, immunity to being frightened, and advantage on WIS saves.",
+      "normal": "Feeds 6. For 24 hours each diner gains 2d10 temporary HP and immunity to being frightened.",
+      "flawed": "Feeds 4. A fine meal. No other effect."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Epic Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A long table of carved roasts and a whole heart sliced thin, with honeycomb dripping over everything."
+  },
+  {
+    "id": "vigil-recipe-serpent-fillet-platter",
+    "name": "Serpent Fillet Platter",
+    "type": "Food",
+    "dc": 17,
+    "time": "2 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Serpent Fillet",
+        "quantity": 1
+      },
+      {
+        "name": "Pale Thistle",
+        "quantity": 1
+      },
+      {
+        "name": "Emberleaf",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Serpent Fillet, 1x Pale Thistle, 1x Emberleaf",
+    "outcomes": {
+      "superior": "4 servings. Each: resistance to cold damage and 2d10 temporary HP for 8 hours.",
+      "normal": "4 servings. Each: resistance to cold damage and 1d10 temporary HP for 4 hours.",
+      "flawed": "2 servings. Cold and firm. No other effect."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Epic Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Pale, cold-looking fillets on silver thistle leaves, glistening under warm red oil."
+  },
+  {
+    "id": "vigil-recipe-pressed-fruit-cakes",
+    "name": "Pressed Fruit Cakes",
+    "type": "Food",
+    "dc": 10,
+    "time": "4 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Any fruit",
+        "quantity": 3,
+        "tag": "produce-fruit"
+      }
+    ],
+    "materialsText": "3x Any fruit",
+    "outcomes": {
+      "superior": "8 rations of dried, pressed fruit. Keeps for a year.",
+      "normal": "6 rations of dried, pressed fruit. Keeps for six months.",
+      "flawed": "3 rations. Sticky; keeps for a month."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Thin, chewy sheets of dried, pressed fruit, rolled up and tied with twine."
+  },
+  {
+    "id": "vigil-recipe-compact-bean-brick",
+    "name": "Compact Bean Brick",
+    "type": "Food",
+    "dc": 10,
+    "time": "4 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Varn",
+        "quantity": 2
+      },
+      {
+        "name": "Tull",
+        "quantity": 1
+      },
+      {
+        "name": "Coarse Salt",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Varn, 1x Tull, 1x Coarse Salt",
+    "outcomes": {
+      "superior": "10 rations of dried bean-and-root brick. Keeps for a year.",
+      "normal": "8 rations of dried bean-and-root brick. Keeps for a year.",
+      "flawed": "4 rations. Crumbles; keeps for three months."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A heavy, pale-brown brick of dried beans and root, stamped with the Compact's mark."
+  },
+  {
+    "id": "vigil-recipe-hold-rations",
+    "name": "Hold Rations",
+    "type": "Food",
+    "dc": 10,
+    "time": "2 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Sailor's Knot",
+        "quantity": 2
+      },
+      {
+        "name": "Galleyweed",
+        "quantity": 1
+      },
+      {
+        "name": "Coarse Salt",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Sailor's Knot, 1x Galleyweed, 1x Coarse Salt",
+    "outcomes": {
+      "superior": "8 rations of dried root and seaweed. Keeps for a year at sea.",
+      "normal": "6 rations of dried root and seaweed. Keeps for six months at sea.",
+      "flawed": "3 rations. Keeps for a month."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Dried twisted roots and seaweed flakes packed tight in a salted cloth bundle."
+  },
+  {
+    "id": "vigil-recipe-scree-tuber-bake",
+    "name": "Scree Tuber Bake",
+    "type": "Food",
+    "dc": 10,
+    "time": "1 hour",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Scree Tuber",
+        "quantity": 3
+      },
+      {
+        "name": "Rendered Tallow",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "3x Scree Tuber, 1x Rendered Tallow",
+    "outcomes": {
+      "superior": "6 servings of coal-baked tubers.",
+      "normal": "4 servings of coal-baked tubers.",
+      "flawed": "2 servings. Raw in the middle."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Grey tubers baked in the coals until the skin cracks and the inside turns fluffy and white."
+  },
+  {
+    "id": "vigil-recipe-frostcurl-pan",
+    "name": "Frostcurl Pan",
+    "type": "Food",
+    "dc": 10,
+    "time": "30 min",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Frostcurl",
+        "quantity": 2
+      },
+      {
+        "name": "Snowstalk",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Frostcurl, 1x Snowstalk",
+    "outcomes": {
+      "superior": "4 servings of wilted fern greens.",
+      "normal": "3 servings of wilted fern greens.",
+      "flawed": "2 servings. Stringy."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Bright green fern spirals and sliced white stalk, wilted in a hot pan."
+  },
+  {
+    "id": "vigil-recipe-valley-pot",
+    "name": "Valley Pot",
+    "type": "Food",
+    "dc": 10,
+    "time": "2 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Tull",
+        "quantity": 2
+      },
+      {
+        "name": "Kesh",
+        "quantity": 1
+      },
+      {
+        "name": "Any meat cut",
+        "quantity": 1,
+        "tag": "meat-grade-any"
+      }
+    ],
+    "materialsText": "2x Tull, 1x Kesh, 1x Any meat cut",
+    "outcomes": {
+      "superior": "8 servings of thick root-and-leaf stew. Counts as a day's food.",
+      "normal": "6 servings of thick root-and-leaf stew. Counts as a day's food.",
+      "flawed": "3 servings. Watery."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A thick orange-and-green stew of root, leaf and meat, the kind every Valdren farmhouse keeps on the fire."
+  },
+  {
+    "id": "vigil-recipe-galley-hash",
+    "name": "Galley Hash",
+    "type": "Food",
+    "dc": 10,
+    "time": "30 min",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Sailor's Knot",
+        "quantity": 2
+      },
+      {
+        "name": "Shark Fillet",
+        "quantity": 1
+      },
+      {
+        "name": "Galleyweed",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Sailor's Knot, 1x Shark Fillet, 1x Galleyweed",
+    "outcomes": {
+      "superior": "6 servings of fried root and shark.",
+      "normal": "4 servings of fried root and shark.",
+      "flawed": "2 servings. Burnt on the bottom."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A brown fry of chopped root, flaked shark and grey-green seaweed."
+  },
+  {
+    "id": "vigil-recipe-tidecress-bowl",
+    "name": "Tidecress Bowl",
+    "type": "Food",
+    "dc": 10,
+    "time": "15 min",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Tidecress",
+        "quantity": 3
+      },
+      {
+        "name": "Sourbell",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "3x Tidecress, 1x Sourbell",
+    "outcomes": {
+      "superior": "4 servings of salty greens and sour fruit.",
+      "normal": "3 servings.",
+      "flawed": "2 servings. Gritty with sand."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Glossy green sprigs tossed with slices of sour yellow fruit."
+  },
+  {
+    "id": "vigil-recipe-stewed-orrel",
+    "name": "Stewed Orrel",
+    "type": "Food",
+    "dc": 10,
+    "time": "1 hour",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Orrel",
+        "quantity": 3
+      }
+    ],
+    "materialsText": "3x Orrel",
+    "outcomes": {
+      "superior": "4 servings of soft stewed fruit.",
+      "normal": "3 servings of stewed fruit.",
+      "flawed": "2 servings. Scorched."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Soft yellow fruit stewed until it slumps, its red blush turning the juice pink."
+  },
+  {
+    "id": "vigil-recipe-smoke-rubbed-shoulder",
+    "name": "Smoke-Rubbed Shoulder",
+    "type": "Food",
+    "dc": 12,
+    "time": "3 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Choice cut or better",
+        "quantity": 1,
+        "tag": "meat-grade-choice"
+      },
+      {
+        "name": "Smokewort",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "1x Choice cut or better, 2x Smokewort",
+    "outcomes": {
+      "superior": "4 servings. Each: 1d6 temporary HP.",
+      "normal": "4 servings of smoky roast.",
+      "flawed": "2 servings. Dry."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A dark-crusted shoulder roast rubbed with grey herb, smelling like a campfire."
+  },
+  {
+    "id": "vigil-recipe-rimepod-preserve",
+    "name": "Rimepod Preserve",
+    "type": "Food",
+    "dc": 12,
+    "time": "2 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Rimepod",
+        "quantity": 3
+      },
+      {
+        "name": "Cloudwasp Comb",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "3x Rimepod, 1x Cloudwasp Comb",
+    "outcomes": {
+      "superior": "6 servings. Each: advantage on saves against exhaustion from cold for 8 hours.",
+      "normal": "6 servings of sweet preserve.",
+      "flawed": "3 servings. Too runny."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A jar of pale blue, glassy fruit sunk in thick golden syrup."
+  },
+  {
+    "id": "vigil-recipe-sourbell-draught",
+    "name": "Sourbell Draught",
+    "type": "Food",
+    "dc": 12,
+    "time": "30 min",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Sourbell",
+        "quantity": 2
+      },
+      {
+        "name": "Bloodpod",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Sourbell, 1x Bloodpod",
+    "outcomes": {
+      "superior": "4 servings. Each: advantage on CON saves against disease for 24 hours.",
+      "normal": "4 servings of sharp fruit drink.",
+      "flawed": "2 servings. Undrinkably sour."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A cloudy, yellow-red drink, sharp enough to make your eyes water."
+  },
+  {
+    "id": "vigil-recipe-herb-crusted-roast",
+    "name": "Herb-Crusted Roast",
+    "type": "Food",
+    "dc": 12,
+    "time": "3 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Choice cut or better",
+        "quantity": 2,
+        "tag": "meat-grade-choice"
+      },
+      {
+        "name": "Sharpneedle",
+        "quantity": 1
+      },
+      {
+        "name": "Saltmoss",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Choice cut or better, 1x Sharpneedle, 1x Saltmoss",
+    "outcomes": {
+      "superior": "4 servings. Each: advantage on CON saves against poison for 8 hours.",
+      "normal": "4 servings of herb-crusted roast.",
+      "flawed": "2 servings. The crust burnt."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Sliced roast meat under a green crust of needle-like herbs and white flecks of salt."
+  },
+  {
+    "id": "vigil-recipe-spiced-dunsk",
+    "name": "Spiced Dunsk",
+    "type": "Food",
+    "dc": 12,
+    "time": "1 hour",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Dunsk",
+        "quantity": 2
+      },
+      {
+        "name": "Any culinary herb",
+        "quantity": 1,
+        "tag": "produce-herb"
+      }
+    ],
+    "materialsText": "2x Dunsk, 1x Any culinary herb",
+    "outcomes": {
+      "superior": "4 servings. Each: advantage on your next WIS save within 4 hours.",
+      "normal": "4 servings of spiced stewed fruit.",
+      "flawed": "2 servings. Over-spiced."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Dark, glossy fruit stewed in its own juice with crushed herbs, almost black."
+  },
+  {
+    "id": "vigil-recipe-ashline-supper",
+    "name": "Ashline Supper",
+    "type": "Food",
+    "dc": 15,
+    "time": "3 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Ashbulb",
+        "quantity": 2
+      },
+      {
+        "name": "Prime cut",
+        "quantity": 1,
+        "tag": "meat-grade-prime"
+      },
+      {
+        "name": "Smokewort",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Ashbulb, 1x Prime cut, 1x Smokewort",
+    "outcomes": {
+      "superior": "4 servings. Each: resistance to necrotic damage and 1d8 temporary HP for 8 hours.",
+      "normal": "4 servings. Each: advantage on saves against necrotic effects and 1d6 temporary HP for 4 hours.",
+      "flawed": "4 servings of smoky roast. No other effect."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Grey-ringed bulbs roasted black around slices of dark loin, smelling of smoke."
+  },
+  {
+    "id": "vigil-recipe-embergourd-roast",
+    "name": "Embergourd Roast",
+    "type": "Food",
+    "dc": 16,
+    "time": "3 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Embergourd",
+        "quantity": 1
+      },
+      {
+        "name": "Any meat cut",
+        "quantity": 2,
+        "tag": "meat-grade-any"
+      },
+      {
+        "name": "Sharpneedle",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Embergourd, 2x Any meat cut, 1x Sharpneedle",
+    "outcomes": {
+      "superior": "4 servings. Each: resistance to fire damage, 2d6 temporary HP, and no harm from extreme cold for 24 hours.",
+      "normal": "4 servings. Each: resistance to fire damage and 1d6 temporary HP for 4 hours.",
+      "flawed": "2 servings of warm roast. No other effect."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Epic Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A halved orange gourd, still glowing faintly red inside, filled with roast meat."
+  },
+  {
+    "id": "vigil-recipe-blue-storm-platter",
+    "name": "Blue Storm Platter",
+    "type": "Food",
+    "dc": 17,
+    "time": "2 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Alchemist's Blue",
+        "quantity": 1
+      },
+      {
+        "name": "Prime cut",
+        "quantity": 1,
+        "tag": "meat-grade-prime"
+      },
+      {
+        "name": "Galleyweed",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Alchemist's Blue, 1x Prime cut, 1x Galleyweed",
+    "outcomes": {
+      "superior": "4 servings. Each: resistance to lightning damage and 2d8 temporary HP for 8 hours.",
+      "normal": "4 servings. Each: resistance to lightning damage and 1d8 temporary HP for 4 hours.",
+      "flawed": "2 servings. It fizzes. No other effect."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Epic Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Slices of prime meat under a bright blue glaze that crackles faintly when touched."
+  },
+  {
+    "id": "vigil-recipe-ridgerunner-s-breakfast",
+    "name": "Ridgerunner's Breakfast",
+    "type": "Food",
+    "dc": 12,
+    "time": "30 min",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Choice cut or better",
+        "quantity": 1,
+        "tag": "meat-grade-choice"
+      },
+      {
+        "name": "Any egg",
+        "quantity": 2,
+        "tag": "produce-egg"
+      },
+      {
+        "name": "Rendered Tallow",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Choice cut or better, 2x Any egg, 1x Rendered Tallow",
+    "outcomes": {
+      "superior": "2 servings. Each: 1d6 temporary HP and +1 to initiative for 8 hours.",
+      "normal": "2 servings of steak and eggs.",
+      "flawed": "1 serving. Overdone."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A thick seared steak with two fried eggs sliding off the side, yolks broken over the meat."
+  },
+  {
+    "id": "vigil-recipe-crackle-and-yolk",
+    "name": "Crackle and Yolk",
+    "type": "Food",
+    "dc": 12,
+    "time": "30 min",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Any belly (boar or hog)",
+        "quantity": 1,
+        "tag": "cut-belly"
+      },
+      {
+        "name": "Any egg",
+        "quantity": 2,
+        "tag": "produce-egg"
+      }
+    ],
+    "materialsText": "1x Any belly (boar or hog), 2x Any egg",
+    "outcomes": {
+      "superior": "3 servings. Each: advantage on your next CON save within 8 hours.",
+      "normal": "3 servings of crisp belly and eggs.",
+      "flawed": "2 servings. Burnt."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Strips of crisp boar belly beside runny-yolked eggs, all glistening with fat."
+  },
+  {
+    "id": "vigil-recipe-pan-eggs",
+    "name": "Pan Eggs",
+    "type": "Food",
+    "dc": 10,
+    "time": "15 min",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Any egg",
+        "quantity": 3,
+        "tag": "produce-egg"
+      },
+      {
+        "name": "Rendered Tallow",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "3x Any egg, 1x Rendered Tallow",
+    "outcomes": {
+      "superior": "3 servings of fried eggs.",
+      "normal": "2 servings of fried eggs.",
+      "flawed": "1 serving. Rubbery."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Eggs fried in tallow until the edges go brown and lacy."
+  },
+  {
+    "id": "vigil-recipe-frostcurl-scramble",
+    "name": "Frostcurl Scramble",
+    "type": "Food",
+    "dc": 10,
+    "time": "15 min",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Any egg",
+        "quantity": 2,
+        "tag": "produce-egg"
+      },
+      {
+        "name": "Frostcurl",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "2x Any egg, 2x Frostcurl",
+    "outcomes": {
+      "superior": "3 servings of eggs and greens.",
+      "normal": "2 servings of eggs and greens.",
+      "flawed": "1 serving. Watery."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Soft yellow egg folded through bright green fern spirals."
+  },
+  {
+    "id": "vigil-recipe-folded-curd-eggs",
+    "name": "Folded Curd Eggs",
+    "type": "Food",
+    "dc": 12,
+    "time": "30 min",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Any egg",
+        "quantity": 3,
+        "tag": "produce-egg"
+      },
+      {
+        "name": "Any cheese",
+        "quantity": 1,
+        "tag": "produce-cheese"
+      },
+      {
+        "name": "Any culinary herb",
+        "quantity": 1,
+        "tag": "produce-herb"
+      }
+    ],
+    "materialsText": "3x Any egg, 1x Any cheese, 1x Any culinary herb",
+    "outcomes": {
+      "superior": "3 servings. Each: 1d4 temporary HP and advantage on Perception checks for 1 hour.",
+      "normal": "3 servings of folded eggs and curd.",
+      "flawed": "2 servings. Torn and dry."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A thick folded egg cake, oozing crumbled white curd and flecked with herbs."
+  },
+  {
+    "id": "vigil-recipe-griddle-rounds",
+    "name": "Griddle Rounds",
+    "type": "Food",
+    "dc": 12,
+    "time": "30 min",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Coarse Flour",
+        "quantity": 2
+      },
+      {
+        "name": "Any egg",
+        "quantity": 1,
+        "tag": "produce-egg"
+      },
+      {
+        "name": "Cloudwasp Comb",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Coarse Flour, 1x Any egg, 1x Cloudwasp Comb",
+    "outcomes": {
+      "superior": "4 servings. Each: advantage on your next ability check within 4 hours.",
+      "normal": "4 servings of syrup-soaked griddle rounds.",
+      "flawed": "2 servings. Doughy in the middle."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A stack of thin golden rounds dripping with comb syrup."
+  },
+  {
+    "id": "vigil-recipe-reedmash",
+    "name": "Reedmash",
+    "type": "Food",
+    "dc": 10,
+    "time": "30 min",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Hollowreed Seed",
+        "quantity": 3
+      },
+      {
+        "name": "Any fruit",
+        "quantity": 1,
+        "tag": "produce-fruit"
+      }
+    ],
+    "materialsText": "3x Hollowreed Seed, 1x Any fruit",
+    "outcomes": {
+      "superior": "4 servings of fruit-topped porridge.",
+      "normal": "3 servings of seed porridge.",
+      "flawed": "2 servings. Lumpy."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A bowl of thick, nutty seed porridge topped with dark fruit."
+  },
+  {
+    "id": "vigil-recipe-wallbreaker-s-breakfast",
+    "name": "Wallbreaker's Breakfast",
+    "type": "Food",
+    "dc": 15,
+    "time": "1 hour",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Prime cut",
+        "quantity": 1,
+        "tag": "meat-grade-prime"
+      },
+      {
+        "name": "Any egg",
+        "quantity": 3,
+        "tag": "produce-egg"
+      },
+      {
+        "name": "Hearthbread",
+        "quantity": 1
+      },
+      {
+        "name": "Any cheese",
+        "quantity": 1,
+        "tag": "produce-cheese"
+      }
+    ],
+    "materialsText": "1x Prime cut, 3x Any egg, 1x Hearthbread, 1x Any cheese",
+    "outcomes": {
+      "superior": "Feeds 4. Each diner gains 2d8 temporary HP and advantage on CON saves for 8 hours.",
+      "normal": "Feeds 4. Each diner gains 1d8 temporary HP and advantage on CON saves for 4 hours.",
+      "flawed": "Feeds 2. A huge breakfast. No other effect."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A tin plate piled with a prime steak, three eggs, torn hearthbread and a wedge of curd."
+  },
+  {
+    "id": "vigil-recipe-wallman-s-fold",
+    "name": "Wallman's Fold",
+    "type": "Food",
+    "dc": 10,
+    "time": "15 min",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Hearthbread",
+        "quantity": 1
+      },
+      {
+        "name": "Any meat cut",
+        "quantity": 1,
+        "tag": "meat-grade-any"
+      },
+      {
+        "name": "Any vegetable",
+        "quantity": 1,
+        "tag": "produce-vegetable"
+      }
+    ],
+    "materialsText": "1x Hearthbread, 1x Any meat cut, 1x Any vegetable",
+    "outcomes": {
+      "superior": "3 folds of meat and greens. Keep for 3 days on the road.",
+      "normal": "2 folds of meat and greens. Keep for 2 days.",
+      "flawed": "1 fold. Soggy."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Hearthbread folded around sliced meat and greens, tied with string for the road."
+  },
+  {
+    "id": "vigil-recipe-riverman-s-fold",
+    "name": "Riverman's Fold",
+    "type": "Food",
+    "dc": 10,
+    "time": "15 min",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Hearthbread",
+        "quantity": 1
+      },
+      {
+        "name": "Streamfin",
+        "quantity": 2
+      },
+      {
+        "name": "Smokewort",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Hearthbread, 2x Streamfin, 1x Smokewort",
+    "outcomes": {
+      "superior": "3 folds of crisp fish.",
+      "normal": "2 folds of crisp fish.",
+      "flawed": "1 fold. Bony."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Hearthbread folded around crisp little fish and grey herb."
+  },
+  {
+    "id": "vigil-recipe-hearth-round",
+    "name": "Hearth Round",
+    "type": "Food",
+    "dc": 12,
+    "time": "30 min",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Hearthbread",
+        "quantity": 1
+      },
+      {
+        "name": "Any meat cut",
+        "quantity": 2,
+        "tag": "meat-grade-any"
+      },
+      {
+        "name": "Any cheese",
+        "quantity": 1,
+        "tag": "produce-cheese"
+      },
+      {
+        "name": "Kesh",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Hearthbread, 2x Any meat cut, 1x Any cheese, 1x Kesh",
+    "outcomes": {
+      "superior": "3 servings. Each: 1d6 temporary HP.",
+      "normal": "3 servings of seared meat rounds on bread.",
+      "flawed": "2 servings. Falls apart."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A thick round of seared ground meat and melting curd on split hearthbread, topped with leaves."
+  },
+  {
+    "id": "vigil-recipe-curd-toast",
+    "name": "Curd Toast",
+    "type": "Food",
+    "dc": 10,
+    "time": "15 min",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Hearthbread",
+        "quantity": 1
+      },
+      {
+        "name": "Any cheese",
+        "quantity": 1,
+        "tag": "produce-cheese"
+      }
+    ],
+    "materialsText": "1x Hearthbread, 1x Any cheese",
+    "outcomes": {
+      "superior": "3 servings of toasted bread and melted curd.",
+      "normal": "2 servings.",
+      "flawed": "1 serving. Scorched."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Hearthbread toasted over the fire with curd melted brown on top."
+  },
+  {
+    "id": "vigil-recipe-steamed-pockets",
+    "name": "Steamed Pockets",
+    "type": "Food",
+    "dc": 10,
+    "time": "1 hour",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Coarse Flour",
+        "quantity": 2
+      },
+      {
+        "name": "Any meat cut",
+        "quantity": 1,
+        "tag": "meat-grade-any"
+      },
+      {
+        "name": "Any vegetable",
+        "quantity": 1,
+        "tag": "produce-vegetable"
+      }
+    ],
+    "materialsText": "2x Coarse Flour, 1x Any meat cut, 1x Any vegetable",
+    "outcomes": {
+      "superior": "8 steamed pockets.",
+      "normal": "6 steamed pockets.",
+      "flawed": "3 pockets. Most split open."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Soft white flour pouches pinched shut around meat and vegetable, steaming."
+  },
+  {
+    "id": "vigil-recipe-crab-rounds",
+    "name": "Crab Rounds",
+    "type": "Food",
+    "dc": 12,
+    "time": "30 min",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Crab Body Meat",
+        "quantity": 2
+      },
+      {
+        "name": "Coarse Flour",
+        "quantity": 1
+      },
+      {
+        "name": "Any egg",
+        "quantity": 1,
+        "tag": "produce-egg"
+      }
+    ],
+    "materialsText": "2x Crab Body Meat, 1x Coarse Flour, 1x Any egg",
+    "outcomes": {
+      "superior": "4 servings. Each: advantage on DEX saves for 1 hour.",
+      "normal": "4 servings of crisp crab rounds.",
+      "flawed": "2 servings. Crumbly."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Crisp, golden patties of crab meat, flaked white inside."
+  },
+  {
+    "id": "vigil-recipe-roe-toast",
+    "name": "Roe Toast",
+    "type": "Food",
+    "dc": 12,
+    "time": "15 min",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Crab Roe",
+        "quantity": 1
+      },
+      {
+        "name": "Hearthbread",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Crab Roe, 1x Hearthbread",
+    "outcomes": {
+      "superior": "2 servings. Each: darkvision 30 ft (or +30 ft to your darkvision) for 1 hour.",
+      "normal": "2 servings of roe on toasted bread.",
+      "flawed": "1 serving. Too salty."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Hearthbread spread with bright orange crab roe that glistens like beads."
+  },
+  {
+    "id": "vigil-recipe-seared-prime-steak",
+    "name": "Seared Prime Steak",
+    "type": "Food",
+    "dc": 15,
+    "time": "30 min",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Prime cut",
+        "quantity": 1,
+        "tag": "meat-grade-prime"
+      },
+      {
+        "name": "Saltmoss",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Prime cut, 1x Saltmoss",
+    "outcomes": {
+      "superior": "2 servings. Each: 1d10 temporary HP and advantage on your first attack roll in your next fight within 8 hours.",
+      "normal": "2 servings. Each: 1d8 temporary HP for 4 hours.",
+      "flawed": "2 servings of good steak. No other effect."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A thick prime steak, crusted dark and salted, pink all the way through."
+  },
+  {
+    "id": "vigil-recipe-slow-smoked-brisket",
+    "name": "Slow-Smoked Brisket",
+    "type": "Food",
+    "dc": 12,
+    "time": "12 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Stag Brisket",
+        "quantity": 2
+      },
+      {
+        "name": "Smokewort",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "2x Stag Brisket, 2x Smokewort",
+    "outcomes": {
+      "superior": "6 servings. Each: 1d6 temporary HP.",
+      "normal": "6 servings of smoked brisket.",
+      "flawed": "3 servings. Tough."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Dark-barked slices of brisket with a red smoke ring, falling apart under the knife."
+  },
+  {
+    "id": "vigil-recipe-hearthkeeper-s-roast-plate",
+    "name": "Hearthkeeper's Roast Plate",
+    "type": "Food",
+    "dc": 12,
+    "time": "3 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Choice cut or better",
+        "quantity": 2,
+        "tag": "meat-grade-choice"
+      },
+      {
+        "name": "Tull",
+        "quantity": 2
+      },
+      {
+        "name": "Kesh",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Choice cut or better, 2x Tull, 1x Kesh",
+    "outcomes": {
+      "superior": "Feeds 4. Each diner: a short rest's worth of comfort; spend one Hit Die without a short rest, once, within 8 hours.",
+      "normal": "Feeds 4. A proper roast dinner.",
+      "flawed": "Feeds 2. Dry roast."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Sliced roast meat, roasted orange root and wilted leaves, all in their juices."
+  },
+  {
+    "id": "vigil-recipe-ridge-pie",
+    "name": "Ridge Pie",
+    "type": "Food",
+    "dc": 12,
+    "time": "2 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Coarse Flour",
+        "quantity": 2
+      },
+      {
+        "name": "Any meat cut",
+        "quantity": 2,
+        "tag": "meat-grade-any"
+      },
+      {
+        "name": "Tull",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Coarse Flour, 2x Any meat cut, 1x Tull",
+    "outcomes": {
+      "superior": "6 servings. Each: 1d4 temporary HP. Keeps for a week.",
+      "normal": "6 servings of meat pie. Keeps for a week.",
+      "flawed": "3 servings. The crust collapsed."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A deep pie with a cracked brown crust, thick meat and root filling bubbling through."
+  },
+  {
+    "id": "vigil-recipe-pan-rounds",
+    "name": "Pan Rounds",
+    "type": "Food",
+    "dc": 10,
+    "time": "30 min",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Any meat cut",
+        "quantity": 2,
+        "tag": "meat-grade-any"
+      },
+      {
+        "name": "Coarse Flour",
+        "quantity": 1
+      },
+      {
+        "name": "Any culinary herb",
+        "quantity": 1,
+        "tag": "produce-herb"
+      }
+    ],
+    "materialsText": "2x Any meat cut, 1x Coarse Flour, 1x Any culinary herb",
+    "outcomes": {
+      "superior": "4 servings of herbed meat rounds.",
+      "normal": "3 servings.",
+      "flawed": "2 servings. Burnt outside, raw inside."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Browned balls of herbed ground meat in their own fat."
+  },
+  {
+    "id": "vigil-recipe-mixed-skewers",
+    "name": "Mixed Skewers",
+    "type": "Food",
+    "dc": 10,
+    "time": "30 min",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Any meat cut",
+        "quantity": 2,
+        "tag": "meat-grade-any"
+      },
+      {
+        "name": "Any vegetable",
+        "quantity": 2,
+        "tag": "produce-vegetable"
+      }
+    ],
+    "materialsText": "2x Any meat cut, 2x Any vegetable",
+    "outcomes": {
+      "superior": "4 skewers of meat and vegetable.",
+      "normal": "3 skewers.",
+      "flawed": "2 skewers. Charred."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Chunks of meat and vegetable charred on long skewers."
+  },
+  {
+    "id": "vigil-recipe-stuffed-hawk",
+    "name": "Stuffed Hawk",
+    "type": "Food",
+    "dc": 12,
+    "time": "2 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Any fowl",
+        "quantity": 3,
+        "tag": "meat-grade-fowl"
+      },
+      {
+        "name": "Hearthbread",
+        "quantity": 1
+      },
+      {
+        "name": "Sharpneedle",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "3x Any fowl, 1x Hearthbread, 1x Sharpneedle",
+    "outcomes": {
+      "superior": "4 servings. Each: advantage on WIS (Perception) checks that rely on sight for 4 hours.",
+      "normal": "4 servings of stuffed roast bird.",
+      "flawed": "2 servings. Dry."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A whole roast bird, skin crisp and brown, stuffed with herbed bread."
+  },
+  {
+    "id": "vigil-recipe-galley-chowder",
+    "name": "Galley Chowder",
+    "type": "Food",
+    "dc": 12,
+    "time": "1 hour",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Shark Fillet",
+        "quantity": 1
+      },
+      {
+        "name": "Crab Body Meat",
+        "quantity": 1
+      },
+      {
+        "name": "Sailor's Knot",
+        "quantity": 1
+      },
+      {
+        "name": "Any milk",
+        "quantity": 1,
+        "tag": "produce-milk"
+      }
+    ],
+    "materialsText": "1x Shark Fillet, 1x Crab Body Meat, 1x Sailor's Knot, 1x Any milk",
+    "outcomes": {
+      "superior": "6 servings. Each: advantage on saves against exhaustion for 8 hours.",
+      "normal": "6 servings of thick seafood soup.",
+      "flawed": "3 servings. Thin."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A thick, creamy-white seafood soup with chunks of shark, crab and root."
+  },
+  {
+    "id": "vigil-recipe-galley-fry",
+    "name": "Galley Fry",
+    "type": "Food",
+    "dc": 10,
+    "time": "30 min",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Shark Fillet",
+        "quantity": 1
+      },
+      {
+        "name": "Sailor's Knot",
+        "quantity": 2
+      },
+      {
+        "name": "Coarse Flour",
+        "quantity": 1
+      },
+      {
+        "name": "Rendered Tallow",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Shark Fillet, 2x Sailor's Knot, 1x Coarse Flour, 1x Rendered Tallow",
+    "outcomes": {
+      "superior": "4 servings of battered fish and fried root.",
+      "normal": "3 servings.",
+      "flawed": "2 servings. Greasy."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Golden-battered strips of shark beside fried wedges of root, wrapped in paper."
+  },
+  {
+    "id": "vigil-recipe-root-soup",
+    "name": "Root Soup",
+    "type": "Food",
+    "dc": 10,
+    "time": "1 hour",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Tull",
+        "quantity": 2
+      },
+      {
+        "name": "Snowstalk",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Tull, 1x Snowstalk",
+    "outcomes": {
+      "superior": "4 servings of root soup.",
+      "normal": "3 servings.",
+      "flawed": "2 servings. Bland."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A thin orange soup of mashed root with slices of white stalk floating in it."
+  },
+  {
+    "id": "vigil-recipe-ridge-links",
+    "name": "Ridge Links",
+    "type": "Food",
+    "dc": 10,
+    "time": "4 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Any meat cut",
+        "quantity": 3,
+        "tag": "meat-grade-any"
+      },
+      {
+        "name": "Smokewort",
+        "quantity": 1
+      },
+      {
+        "name": "Coarse Salt",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "3x Any meat cut, 1x Smokewort, 1x Coarse Salt",
+    "outcomes": {
+      "superior": "12 smoked sausages. Keep for a month.",
+      "normal": "10 smoked sausages. Keep for a month.",
+      "flawed": "5 sausages. Keep for a week."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Coils of fat brown sausage, smoked and tied off with string."
+  },
+  {
+    "id": "vigil-recipe-tarn-egg-fold",
+    "name": "Tarn Egg Fold",
+    "type": "Food",
+    "dc": 16,
+    "time": "1 hour",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Serpent Egg",
+        "quantity": 1
+      },
+      {
+        "name": "Any cheese",
+        "quantity": 1,
+        "tag": "produce-cheese"
+      },
+      {
+        "name": "Sharpneedle",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Serpent Egg, 1x Any cheese, 1x Sharpneedle",
+    "outcomes": {
+      "superior": "Feeds 4. For 8 hours each diner has resistance to cold damage, 2d6 temporary HP, and can hold their breath for 10 minutes.",
+      "normal": "Feeds 4. For 4 hours each diner has resistance to cold damage and 1d6 temporary HP.",
+      "flawed": "Feeds 2. A strange, cold egg cake. No other effect."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Epic Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A huge, pale folded egg cake big enough for four, filled with curd and herbs."
+  },
+  {
+    "id": "vigil-recipe-salted-kettle-eggs",
+    "name": "Salted Kettle Eggs",
+    "type": "Food",
+    "dc": 10,
+    "time": "30 min",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Any egg",
+        "quantity": 4,
+        "tag": "produce-egg"
+      },
+      {
+        "name": "Coarse Salt",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "4x Any egg, 1x Coarse Salt",
+    "outcomes": {
+      "superior": "4 rations of salted eggs. Keep for a month.",
+      "normal": "4 rations of salted eggs. Keep for two weeks.",
+      "flawed": "2 rations. Keep for a week."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Hard-boiled eggs packed in a crock of salt."
+  },
+  {
+    "id": "vigil-recipe-dunsk-loaf",
+    "name": "Dunsk Loaf",
+    "type": "Food",
+    "dc": 10,
+    "time": "2 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Coarse Flour",
+        "quantity": 2
+      },
+      {
+        "name": "Dunsk",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "2x Coarse Flour, 2x Dunsk",
+    "outcomes": {
+      "superior": "8 rations of dense fruit bread. Keeps for two months.",
+      "normal": "6 rations of dense fruit bread. Keeps for two months.",
+      "flawed": "3 rations. Keeps for a month."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A dense, dark loaf studded with shrivelled black fruit."
+  },
+  {
+    "id": "vigil-recipe-bramble-crust",
+    "name": "Bramble Crust",
+    "type": "Food",
+    "dc": 12,
+    "time": "2 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Coarse Flour",
+        "quantity": 2
+      },
+      {
+        "name": "Bramblesweet",
+        "quantity": 3
+      },
+      {
+        "name": "Cloudwasp Comb",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Coarse Flour, 3x Bramblesweet, 1x Cloudwasp Comb",
+    "outcomes": {
+      "superior": "6 servings. Each: advantage on Charisma checks for 1 hour.",
+      "normal": "6 servings of fruit pie.",
+      "flawed": "3 servings. Soggy bottom."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A golden pie oozing dark purple fruit through its cracked crust."
+  },
+  {
+    "id": "vigil-recipe-comb-cake",
+    "name": "Comb Cake",
+    "type": "Food",
+    "dc": 12,
+    "time": "2 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Coarse Flour",
+        "quantity": 2
+      },
+      {
+        "name": "Cloudwasp Comb",
+        "quantity": 1
+      },
+      {
+        "name": "Any egg",
+        "quantity": 1,
+        "tag": "produce-egg"
+      }
+    ],
+    "materialsText": "2x Coarse Flour, 1x Cloudwasp Comb, 1x Any egg",
+    "outcomes": {
+      "superior": "6 servings. Each: 1d4 temporary HP and advantage on saves against being frightened for 1 hour.",
+      "normal": "6 servings of syrup cake.",
+      "flawed": "3 servings. Sunken."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A dense, golden cake soaked in comb syrup, sticky to the touch."
+  },
+  {
+    "id": "vigil-recipe-orrel-bake",
+    "name": "Orrel Bake",
+    "type": "Food",
+    "dc": 10,
+    "time": "1 hour",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Orrel",
+        "quantity": 3
+      },
+      {
+        "name": "Coarse Flour",
+        "quantity": 1
+      },
+      {
+        "name": "Rendered Tallow",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "3x Orrel, 1x Coarse Flour, 1x Rendered Tallow",
+    "outcomes": {
+      "superior": "6 servings of baked fruit.",
+      "normal": "4 servings of baked fruit.",
+      "flawed": "2 servings. Burnt topping."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Soft yellow fruit baked under a rough, crumbly brown topping."
+  },
+  {
+    "id": "vigil-recipe-sleepcup",
+    "name": "Sleepcup",
+    "type": "Food",
+    "dc": 12,
+    "time": "15 min",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Any milk",
+        "quantity": 1,
+        "tag": "produce-milk"
+      },
+      {
+        "name": "Cloudwasp Comb",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Any milk, 1x Cloudwasp Comb",
+    "outcomes": {
+      "superior": "2 servings. Each: you finish a long rest in 6 hours instead of 8.",
+      "normal": "2 servings of warm, sweet milk.",
+      "flawed": "1 serving. Scalded."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A steaming mug of warm milk with a spoon of golden comb stirred through it."
+  },
+  {
+    "id": "vigil-recipe-milk-braised-shoulder",
+    "name": "Milk-Braised Shoulder",
+    "type": "Food",
+    "dc": 12,
+    "time": "3 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Choice cut or better",
+        "quantity": 1,
+        "tag": "meat-grade-choice"
+      },
+      {
+        "name": "Any milk",
+        "quantity": 2,
+        "tag": "produce-milk"
+      },
+      {
+        "name": "Sharpneedle",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Choice cut or better, 2x Any milk, 1x Sharpneedle",
+    "outcomes": {
+      "superior": "4 servings. Each: 1d8 temporary HP.",
+      "normal": "4 servings of milk-braised roast.",
+      "flawed": "2 servings. The milk split."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A pale, tender shoulder roast in a thick, creamy sauce flecked with green."
+  },
+  {
+    "id": "vigil-recipe-cheese-pockets",
+    "name": "Cheese Pockets",
+    "type": "Food",
+    "dc": 10,
+    "time": "1 hour",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Coarse Flour",
+        "quantity": 2
+      },
+      {
+        "name": "Any cheese",
+        "quantity": 1,
+        "tag": "produce-cheese"
+      }
+    ],
+    "materialsText": "2x Coarse Flour, 1x Any cheese",
+    "outcomes": {
+      "superior": "8 cheese pockets.",
+      "normal": "6 cheese pockets.",
+      "flawed": "3 pockets. Most burst."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Golden pouches of crisp dough, oozing melted cheese at the seams."
+  },
+  {
+    "id": "vigil-recipe-wall-plate",
+    "name": "Wall Plate",
+    "type": "Food",
+    "dc": 10,
+    "time": "15 min",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Hearthbread",
+        "quantity": 1
+      },
+      {
+        "name": "Any cheese",
+        "quantity": 1,
+        "tag": "produce-cheese"
+      },
+      {
+        "name": "Any fruit",
+        "quantity": 1,
+        "tag": "produce-fruit"
+      }
+    ],
+    "materialsText": "1x Hearthbread, 1x Any cheese, 1x Any fruit",
+    "outcomes": {
+      "superior": "4 servings of bread, cheese and fruit. Keeps for 3 days.",
+      "normal": "3 servings. Keeps for 3 days.",
+      "flawed": "2 servings."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Hearthbread, a thick wedge of cheese and a piece of fruit on a wooden board."
+  },
+  {
+    "id": "vigil-recipe-brinecheese-bake",
+    "name": "Brinecheese Bake",
+    "type": "Food",
+    "dc": 10,
+    "time": "30 min",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Brinecheese",
+        "quantity": 1
+      },
+      {
+        "name": "Tidecress",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "1x Brinecheese, 2x Tidecress",
+    "outcomes": {
+      "superior": "4 servings of baked cheese and greens.",
+      "normal": "3 servings.",
+      "flawed": "2 servings. Too salty."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Salty white cheese baked soft over a bed of dark green tidecress."
+  },
+  {
+    "id": "vigil-recipe-creamed-reedmash",
+    "name": "Creamed Reedmash",
+    "type": "Food",
+    "dc": 10,
+    "time": "30 min",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Hollowreed Seed",
+        "quantity": 3
+      },
+      {
+        "name": "Any milk",
+        "quantity": 1,
+        "tag": "produce-milk"
+      }
+    ],
+    "materialsText": "3x Hollowreed Seed, 1x Any milk",
+    "outcomes": {
+      "superior": "4 servings of creamy porridge.",
+      "normal": "3 servings of creamy porridge.",
+      "flawed": "2 servings. Lumpy."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A bowl of thick, creamy seed porridge."
+  },
+  {
+    "id": "vigil-recipe-wallwheel-slices",
+    "name": "Wallwheel Slices",
+    "type": "Food",
+    "dc": 10,
+    "time": "15 min",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Wallwheel",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Wallwheel",
+    "outcomes": {
+      "superior": "10 rations of hard cheese. Keeps for a year.",
+      "normal": "8 rations of hard cheese. Keeps for a year.",
+      "flawed": "4 rations. Badly cut."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Hard, pale yellow slices of cheese wrapped in waxed cloth."
+  },
+  {
+    "id": "vigil-recipe-hindwheel-crust",
+    "name": "Hindwheel Crust",
+    "type": "Food",
+    "dc": 15,
+    "time": "2 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Hind Cheese",
+        "quantity": 1
+      },
+      {
+        "name": "Rimepod",
+        "quantity": 2
+      },
+      {
+        "name": "Coarse Flour",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Hind Cheese, 2x Rimepod, 1x Coarse Flour",
+    "outcomes": {
+      "superior": "6 servings. Each: 1d8 temporary HP and advantage on saves against being charmed for 8 hours.",
+      "normal": "6 servings. Each: advantage on saves against being charmed for 4 hours.",
+      "flawed": "3 servings of cheese crust. No other effect."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A shallow golden crust filled with soft white cheese and glassy blue fruit."
+  },
+  {
+    "id": "vigil-recipe-smokebelly",
+    "name": "Smokebelly",
+    "type": "Food",
+    "dc": 10,
+    "time": "7 days",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Any belly (boar or hog)",
+        "quantity": 1,
+        "tag": "cut-belly"
+      },
+      {
+        "name": "Curing Salt",
+        "quantity": 1
+      },
+      {
+        "name": "Smokewort",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Any belly (boar or hog), 1x Curing Salt, 1x Smokewort",
+    "outcomes": {
+      "superior": "12 rations of smoked, cured belly. Keeps for six months.",
+      "normal": "10 rations of smoked, cured belly. Keeps for six months.",
+      "flawed": "5 rations. Over-smoked; keeps for two months."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Long strips of smoked, cured belly, dark red and white, crisp at the edges when fried."
+  },
+  {
+    "id": "vigil-recipe-redlink",
+    "name": "Redlink",
+    "type": "Food",
+    "dc": 12,
+    "time": "21 days",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Any meat cut",
+        "quantity": 2,
+        "tag": "meat-grade-any"
+      },
+      {
+        "name": "Curing Salt",
+        "quantity": 1
+      },
+      {
+        "name": "Kindlepod",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Any meat cut, 1x Curing Salt, 1x Kindlepod",
+    "outcomes": {
+      "superior": "14 rations of hard, spicy cured sausage. Keeps for a year.",
+      "normal": "12 rations of hard, spicy cured sausage. Keeps for a year.",
+      "flawed": "6 rations. Crumbly; keeps for three months."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Thin, hard, dark red sausages, wrinkled and flecked with red spice; sliced into thin rounds."
+  },
+  {
+    "id": "vigil-recipe-hanging-link",
+    "name": "Hanging Link",
+    "type": "Food",
+    "dc": 12,
+    "time": "30 days",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Any meat cut",
+        "quantity": 3,
+        "tag": "meat-grade-any"
+      },
+      {
+        "name": "Curing Salt",
+        "quantity": 1
+      },
+      {
+        "name": "Any culinary herb",
+        "quantity": 1,
+        "tag": "produce-herb"
+      }
+    ],
+    "materialsText": "3x Any meat cut, 1x Curing Salt, 1x Any culinary herb",
+    "outcomes": {
+      "superior": "16 rations of dry-cured sausage. Keeps for a year.",
+      "normal": "14 rations of dry-cured sausage. Keeps for a year.",
+      "flawed": "7 rations. Keeps for three months."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A fat, white-dusted cured sausage, deep red and marbled inside."
+  },
+  {
+    "id": "vigil-recipe-hanging-ham",
+    "name": "Hanging Ham",
+    "type": "Food",
+    "dc": 12,
+    "time": "60 days",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Any ham (boar or hog)",
+        "quantity": 1,
+        "tag": "cut-ham"
+      },
+      {
+        "name": "Curing Salt",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "1x Any ham (boar or hog), 2x Curing Salt",
+    "outcomes": {
+      "superior": "24 rations of dry-cured ham. Keeps for a year.",
+      "normal": "20 rations of dry-cured ham. Keeps for a year.",
+      "flawed": "10 rations. Keeps for three months."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A whole cured leg, dark and dry outside, rosy and translucent when sliced thin."
+  },
+  {
+    "id": "vigil-recipe-brine-brisket",
+    "name": "Brine Brisket",
+    "type": "Food",
+    "dc": 10,
+    "time": "7 days",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Kine Brisket",
+        "quantity": 2
+      },
+      {
+        "name": "Curing Salt",
+        "quantity": 1
+      },
+      {
+        "name": "Sour Vinegar",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Kine Brisket, 1x Curing Salt, 1x Sour Vinegar",
+    "outcomes": {
+      "superior": "10 rations of salt-cured brisket. Keeps for six months.",
+      "normal": "8 rations of salt-cured brisket. Keeps for six months.",
+      "flawed": "4 rations. Keeps for a month."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Pink slices of salt-cured brisket, firm and glistening."
+  },
+  {
+    "id": "vigil-recipe-kindle-strips",
+    "name": "Kindle Strips",
+    "type": "Food",
+    "dc": 10,
+    "time": "4 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Any meat cut",
+        "quantity": 2,
+        "tag": "meat-grade-any"
+      },
+      {
+        "name": "Coarse Salt",
+        "quantity": 1
+      },
+      {
+        "name": "Kindlepod",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Any meat cut, 1x Coarse Salt, 1x Kindlepod",
+    "outcomes": {
+      "superior": "8 rations of spicy dried meat. Keeps for a year.",
+      "normal": "6 rations of spicy dried meat. Keeps for six months.",
+      "flawed": "3 rations. Keeps for a month."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Dark, chewy strips of dried meat crusted in red spice."
+  },
+  {
+    "id": "vigil-recipe-smoked-fillets",
+    "name": "Smoked Fillets",
+    "type": "Food",
+    "dc": 10,
+    "time": "1 day",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Streamfin",
+        "quantity": 3
+      },
+      {
+        "name": "Smokewort",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "3x Streamfin, 1x Smokewort",
+    "outcomes": {
+      "superior": "8 rations of smoked fish. Keeps for three months.",
+      "normal": "6 rations of smoked fish. Keeps for three months.",
+      "flawed": "3 rations. Keeps for a month."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Golden-brown, glossy fish fillets, stiff from the smoke."
+  },
+  {
+    "id": "vigil-recipe-potted-meat",
+    "name": "Potted Meat",
+    "type": "Food",
+    "dc": 10,
+    "time": "2 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Any meat cut",
+        "quantity": 2,
+        "tag": "meat-grade-any"
+      },
+      {
+        "name": "Rendered Tallow",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "2x Any meat cut, 2x Rendered Tallow",
+    "outcomes": {
+      "superior": "10 rations of meat sealed in fat. Keeps for six months.",
+      "normal": "8 rations of meat sealed in fat. Keeps for six months.",
+      "flawed": "4 rations. Keeps for a month."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Shredded meat packed into a crock under a sealing layer of white fat."
+  },
+  {
+    "id": "vigil-recipe-tallow-cake",
+    "name": "Tallow Cake",
+    "type": "Food",
+    "dc": 10,
+    "time": "2 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Any meat cut",
+        "quantity": 2,
+        "tag": "meat-grade-any"
+      },
+      {
+        "name": "Rendered Tallow",
+        "quantity": 1
+      },
+      {
+        "name": "Any fruit",
+        "quantity": 1,
+        "tag": "produce-fruit"
+      }
+    ],
+    "materialsText": "2x Any meat cut, 1x Rendered Tallow, 1x Any fruit",
+    "outcomes": {
+      "superior": "12 rations of dense meat-and-fruit cake. Keeps for a year.",
+      "normal": "10 rations of dense meat-and-fruit cake. Keeps for a year.",
+      "flawed": "5 rations. Keeps for three months."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Dense, dark bars of pounded meat, fat and fruit."
+  },
+  {
+    "id": "vigil-recipe-sour-jar",
+    "name": "Sour Jar",
+    "type": "Food",
+    "dc": 10,
+    "time": "7 days",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Any vegetable",
+        "quantity": 3,
+        "tag": "produce-vegetable"
+      },
+      {
+        "name": "Sour Vinegar",
+        "quantity": 1
+      },
+      {
+        "name": "Coarse Salt",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "3x Any vegetable, 1x Sour Vinegar, 1x Coarse Salt",
+    "outcomes": {
+      "superior": "10 rations of pickled vegetables. Keeps for a year.",
+      "normal": "8 rations of pickled vegetables. Keeps for a year.",
+      "flawed": "4 rations. Too sharp; keeps for six months."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A glass jar of vegetables in cloudy, golden vinegar."
+  },
+  {
+    "id": "vigil-recipe-sour-eggs",
+    "name": "Sour Eggs",
+    "type": "Food",
+    "dc": 10,
+    "time": "7 days",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Any egg",
+        "quantity": 4,
+        "tag": "produce-egg"
+      },
+      {
+        "name": "Sour Vinegar",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "4x Any egg, 1x Sour Vinegar",
+    "outcomes": {
+      "superior": "6 rations of pickled eggs. Keeps for three months.",
+      "normal": "4 rations of pickled eggs. Keeps for three months.",
+      "flawed": "2 rations. Keeps for a month."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Pale eggs floating in a jar of vinegar, tinted faintly gold."
+  },
+  {
+    "id": "vigil-recipe-short-rib-braise",
+    "name": "Short Rib Braise",
+    "type": "Food",
+    "dc": 12,
+    "time": "4 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Kine Short Ribs",
+        "quantity": 2
+      },
+      {
+        "name": "Tull",
+        "quantity": 1
+      },
+      {
+        "name": "Any culinary herb",
+        "quantity": 1,
+        "tag": "produce-herb"
+      }
+    ],
+    "materialsText": "2x Kine Short Ribs, 1x Tull, 1x Any culinary herb",
+    "outcomes": {
+      "superior": "4 servings. Each: 1d8 temporary HP.",
+      "normal": "4 servings of braised ribs.",
+      "flawed": "2 servings. Tough."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Thick ribs braised until the meat slides off the bone, in a dark, glossy sauce."
+  },
+  {
+    "id": "vigil-recipe-tailpot",
+    "name": "Tailpot",
+    "type": "Food",
+    "dc": 10,
+    "time": "6 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Kine Tail",
+        "quantity": 2
+      },
+      {
+        "name": "Tull",
+        "quantity": 1
+      },
+      {
+        "name": "Snowstalk",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Kine Tail, 1x Tull, 1x Snowstalk",
+    "outcomes": {
+      "superior": "6 servings of rich tail stew.",
+      "normal": "4 servings of tail stew.",
+      "flawed": "2 servings. Thin."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A dark, rich stew of tail rounds and root, thick with gelatin."
+  },
+  {
+    "id": "vigil-recipe-pulled-shoulder",
+    "name": "Pulled Shoulder",
+    "type": "Food",
+    "dc": 12,
+    "time": "8 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Hog Shoulder",
+        "quantity": 1
+      },
+      {
+        "name": "Smokewort",
+        "quantity": 1
+      },
+      {
+        "name": "Kindlepod",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Hog Shoulder, 1x Smokewort, 1x Kindlepod",
+    "outcomes": {
+      "superior": "8 servings. Each: advantage on your next CON save within 8 hours.",
+      "normal": "8 servings of smoky pulled pork.",
+      "flawed": "4 servings. Dry."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "A heap of shredded, smoky pork, red with spice."
+  },
+  {
+    "id": "vigil-recipe-smokebelly-fold",
+    "name": "Smokebelly Fold",
+    "type": "Food",
+    "dc": 10,
+    "time": "15 min",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Hearthbread",
+        "quantity": 1
+      },
+      {
+        "name": "Any belly (boar or hog)",
+        "quantity": 1,
+        "tag": "cut-belly"
+      },
+      {
+        "name": "Kesh",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Hearthbread, 1x Any belly (boar or hog), 1x Kesh",
+    "outcomes": {
+      "superior": "4 folds of crisp belly and greens.",
+      "normal": "3 folds.",
+      "flawed": "2 folds. Greasy."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear",
+    "appearance": "Hearthbread folded around crisp smokebelly and green leaves."
+  },
+  {
+    "id": "vigil-recipe-farmhand-s-pack",
+    "name": "Farmhand's Pack",
+    "type": "Utility",
+    "dc": 10,
+    "time": "4 hours",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Farm Leather",
+        "quantity": 2
+      },
+      {
+        "name": "Leather Cord",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Farm Leather, 1x Leather Cord",
+    "outcomes": {
+      "superior": "A sturdy pack. You can carry 40 lb more before you're encumbered.",
+      "normal": "A sturdy pack. You can carry 20 lb more before you're encumbered.",
+      "flawed": "A plain pack. It holds what any pack holds."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "EXPEDITION GEAR — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear"
   }
 ]

@@ -3,7 +3,7 @@
 // the item in the Inventory tab.
 
 const COUNT_WORDS =
-  "servings?|uses?|shots?|drams?|small glasses|glasses|arrows?|bolts?|darts?|torches?|bombs?|charges?|doses?|flasks?|vials?|bullets?|javelins?|applications?|rations?|days of trail food";
+  "servings?|uses?|shots?|drams?|small glasses|glasses|arrows?|bolts?|darts?|torches?|bombs?|charges?|doses?|flasks?|vials?|bullets?|javelins?|applications?|rations?|days of trail food|folds?|pockets?|skewers?|sausages?";
 
 const NOT_USED_UP =
   /reusable|lantern|grapnel|grappling hook|alarm|focus|holy symbol|tattoo|lens|compass|vial frosts|fishing rod|climbing kit|crampons|snowshoes|\btent\b|bedroll|whistle|\bmap\b|cipher key|once per (short|long) rest|once per day/i;

@@ -98,8 +98,19 @@ function normalizeTag(value: string) {
   return value.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
 }
 
+// Grade tags (e.g. "meat-grade-choice", "produce-fruit") match exactly, never by
+// substring, and list the cheapest materials first so a recipe uses up lesser
+// cuts and produce before better ones.
+const EXACT_TAG_PREFIXES = ["meat grade", "produce ", "cut "];
+
 export function getMaterialsByTag(tag: string): MaterialTierEntry[] {
   const normalizedTag = normalizeTag(tag);
+
+  if (EXACT_TAG_PREFIXES.some((prefix) => normalizedTag.startsWith(prefix))) {
+    return materialTierEntries
+      .filter((entry) => (entry.tags || []).some((entryTag) => normalizeTag(entryTag) === normalizedTag))
+      .sort((a, b) => a.tier - b.tier);
+  }
 
   return materialTierEntries.filter((entry) =>
     (entry.tags || []).some((entryTag) => {

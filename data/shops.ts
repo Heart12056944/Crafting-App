@@ -7,7 +7,8 @@
 
 import lootTablesJson from "./crafting/lootTables.json";
 import { getMaterialTier, materialTierEntries, normalizeMaterialName } from "./materialTiers";
-import type { Recipe } from "./recipesRaw";
+import { recipesRaw, type Recipe } from "./recipesRaw";
+import { consumableInfo } from "./consumables";
 
 export type StockEntry = {
   name: string;
@@ -63,6 +64,35 @@ export const BASIC_PRICES_CP: Record<string, number> = {
   "Crag Moss": 20,
   "Hollowreed Seed": 5,
   Streamfin: 10,
+  "Coarse Salt": 5,
+  // Butcher's trim. Named cuts are priced by tier: 2 sp for everyday cuts
+  // (necks, shanks...), 1 gp for choice cuts (shoulders, ribs...). Prime cuts
+  // (backstrap, tenderloin...) are never stocked.
+  "Raw Game Meat": 20,
+  // Farm and island produce (wild Thornspine produce is never stocked: forage it)
+  Tull: 5,
+  Kesh: 5,
+  Varn: 5,
+  Orrel: 5,
+  Dunsk: 20,
+  Tidecress: 5,
+  "Sailor's Knot": 5,
+  Sourbell: 5,
+  Bloodpod: 20,
+  Galleyweed: 5,
+  "Coop Egg": 2,
+  "Skerry Egg": 3,
+  "Coarse Flour": 5,
+  Hearthbread: 10,
+  "Valdren Curd": 20,
+  "Kine Milk": 2,
+  "Goat's Milk": 2,
+  Wallwheel: 50,
+  Brinecheese: 20,
+  "Ridge Wheel": 80,
+  "Curing Salt": 10,
+  "Sour Vinegar": 10,
+  Kindlepod: 5,
 };
 
 // Value of a material by tier when it has no set price: 2 sp, 1 gp, 5 gp, 25 gp, 125 gp, 500 gp.
@@ -84,7 +114,8 @@ export function materialValueCp(name: string): number {
 }
 
 // What an average hunter brings in: common and rare drops (never epic) of
-// common or uncommon wildlife, tier 2 or lower, and nothing touched by the dead.
+// common or uncommon wildlife, tier 2 or lower (tier 1 for meat, so the
+// best cuts have to be hunted), and nothing touched by the dead.
 type LootJson = { creature: string; creatureTier: string; pool: string; family?: string; entries: { materialName: string }[] };
 export const HUNTER_MATERIALS: string[] = Array.from(
   new Set(
@@ -96,7 +127,13 @@ export const HUNTER_MATERIALS: string[] = Array.from(
           table.pool !== "Epic"
       )
       .flatMap((table) => table.entries.map((entry) => entry.materialName))
-      .filter((name) => getMaterialTier(name) <= 2 && !(materialTags.get(normalizeMaterialName(name)) || []).includes("undead"))
+      .filter((name) => {
+        const tags = materialTags.get(normalizeMaterialName(name)) || [];
+        if (tags.includes("undead")) return false;
+        // Prime cuts and the big signature cuts are for fine meals: hunt them.
+        if (tags.includes("meat")) return getMaterialTier(name) <= 1 && !tags.includes("meat-grade-prime");
+        return getMaterialTier(name) <= 2;
+      })
   )
 ).sort();
 
@@ -122,23 +159,36 @@ const RARITY_VALUE_CP: Record<string, number> = {
 const QUALITY_MULT: Record<string, number> = { Superior: 1.5, Normal: 1, Flawed: 0.5 };
 
 // Full value of one item. Shops pay half of this.
+// Food is priced per serving or ration: 5 cp for rations and plain meals,
+// 15 cp for good meals, 5 sp for fine meals.
+function foodValueCp(recipe: Recipe) {
+  const normal = recipe.outcomes.find((outcome) => outcome.quality === "Normal");
+  const servings = Math.max(1, consumableInfo(recipe, normal?.description || recipe.description).usesPerItem);
+  const each = recipe.dc >= 14 ? 50 : recipe.dc >= 12 ? 15 : 5;
+  return servings * each;
+}
+
 export function itemValueCp(options: { recipe?: Pick<Recipe, "dc"> | null; rarity?: string | null; quality?: string | null }): number {
-  const base = options.recipe
-    ? recipeValueCp(options.recipe.dc)
+  const recipe = options.recipe as Recipe | null | undefined;
+  const base = recipe
+    ? recipe.tool === "Cook's Utensils" && recipe.outcomes
+      ? foodValueCp(recipe)
+      : recipeValueCp(recipe.dc)
     : RARITY_VALUE_CP[(options.rarity || "").toLowerCase()] ?? 100;
   return Math.round(base * (QUALITY_MULT[options.quality || "Normal"] ?? 1));
 }
 
 export const SELL_RATE = 0.5;
 
-export type ShopTemplate = { kind: string; name: string; description: string; stock: string[] };
+// stock: materials; items: finished goods (by recipe name), priced by value.
+export type ShopTemplate = { kind: string; name: string; description: string; stock: string[]; items?: string[] };
 
 export const SHOP_TEMPLATES: ShopTemplate[] = [
   {
     kind: "general",
     name: "General Store",
     description: "Cloth, cord, thread and the odds and ends every crafter runs out of.",
-    stock: ["Cloth", "Cloth Bolts", "Leather Cord", "Leather Scraps", "Twine (50ft.)", "Cotton Thread", "Basic Fiber", "Resin", "Binding Agents", "Wood Planks", "Charcoal", "Fish Oil", "Empty Vials (set of 3)", "Blank Scrolls"],
+    stock: ["Cloth", "Cloth Bolts", "Leather Cord", "Leather Scraps", "Twine (50ft.)", "Cotton Thread", "Basic Fiber", "Resin", "Binding Agents", "Wood Planks", "Charcoal", "Fish Oil", "Coarse Salt", "Empty Vials (set of 3)", "Blank Scrolls"],
   },
   {
     kind: "smithy",
@@ -162,7 +212,36 @@ export const SHOP_TEMPLATES: ShopTemplate[] = [
     kind: "hunter",
     name: "Hunter's Lodge",
     description: "Hides, pelts, wool, feathers and meat from everyday hunting. Nothing from anything truly dangerous.",
-    stock: [...HUNTER_MATERIALS, "Cured Wolf Leather", "Supple Stag Leather", "Cured Winter Fur", "Woven Wool", "Rendered Tallow"],
+    stock: [...HUNTER_MATERIALS, "Raw Game Meat", "Cured Wolf Leather", "Supple Stag Leather", "Cured Winter Fur", "Woven Wool", "Rendered Tallow", "Coarse Salt"],
+  },
+  {
+    kind: "butcher",
+    name: "Butcher & Curer",
+    description: "Farm beef and pork, everyday game, fat, curing salt and spice, and a rack of cured meats ready for the road. Prime cuts are spoken for.",
+    stock: [
+      "Kine Shank", "Kine Brisket", "Kine Flank", "Kine Skirt", "Kine Tail", "Kine Chuck", "Kine Round", "Kine Short Ribs", "Kine Sirloin",
+      "Hog Jowl", "Hog Hock", "Hog Belly", "Hog Shoulder", "Hog Spare Ribs", "Hog Ham",
+      "Raw Game Meat", "Kine Suet", "Hog Lard", "Curing Salt", "Coarse Salt", "Kindlepod", "Sour Vinegar",
+    ],
+    items: ["Smokebelly", "Redlink", "Hanging Link", "Hanging Ham", "Brine Brisket", "Dried Meat Strips", "Potted Meat"],
+  },
+  {
+    kind: "valley-market",
+    name: "Valley Market",
+    description: "Root, leaf, beans, orchard fruit, eggs, milk, cheese and bread from the Valdren farms, plus salt and butcher's trim.",
+    stock: ["Tull", "Kesh", "Varn", "Orrel", "Dunsk", "Kindlepod", "Coop Egg", "Kine Milk", "Valdren Curd", "Wallwheel", "Coarse Flour", "Hearthbread", "Coarse Salt", "Sour Vinegar", "Raw Game Meat"],
+  },
+  {
+    kind: "island-market",
+    name: "Island Market",
+    description: "Romley produce from the island farms and tide pools, and everything a ship's galley runs on.",
+    stock: ["Tidecress", "Sailor's Knot", "Sourbell", "Bloodpod", "Galleyweed", "Skerry Egg", "Goat's Milk", "Brinecheese", "Hearthbread", "Coarse Salt"],
+  },
+  {
+    kind: "fishmonger",
+    name: "Dockside Fishmonger",
+    description: "The day's catch: shark, crab and octopus, plus salt for curing. Nothing from anything a crew would brag about killing.",
+    stock: ["Shark Fillet", "Shark Steak", "Shark Belly", "Crab Leg Meat", "Crab Body Meat", "Crab Claw Meat", "Octopus Tentacle", "Octopus Mantle", "Coarse Salt", "Fish Oil"],
   },
   {
     kind: "quartermaster",
@@ -173,6 +252,13 @@ export const SHOP_TEMPLATES: ShopTemplate[] = [
   { kind: "custom", name: "New Shop", description: "", stock: [] },
 ];
 
-export function stockFromNames(names: string[]): StockEntry[] {
-  return Array.from(new Set(names)).map((name) => ({ name, kind: "material", priceCp: materialValueCp(name), qty: null }));
+const foodRecipeByName = new Map(recipesRaw.map((recipe) => [recipe.name, recipe]));
+
+export function stockFromNames(names: string[], items: string[] = []): StockEntry[] {
+  return [
+    ...Array.from(new Set(names)).map((name) => ({ name, kind: "material" as const, priceCp: materialValueCp(name), qty: null })),
+    ...items
+      .filter((name) => foodRecipeByName.has(name))
+      .map((name) => ({ name, kind: "item" as const, priceCp: itemValueCp({ recipe: foodRecipeByName.get(name) }), qty: null })),
+  ];
 }

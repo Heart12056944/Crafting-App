@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { BookMarked, Coins, Hammer, Pickaxe, Store, UserRound } from "lucide-react";
+import { BookMarked, Coins, Hammer, PawPrint, Pickaxe, Store, UserRound } from "lucide-react";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { GATHERING_ATTEMPTS_PER_DAY } from "@/data/gatheringSpots";
@@ -104,6 +104,37 @@ const SECTIONS: Section[] = [
     ],
   },
   {
+    title: "Husbandry",
+    icon: PawPrint,
+    intro: "Keep prey animals for what they give. The Husbandry tab shows the day count, any wild animals nearby, and your herd.",
+    rules: [
+      {
+        title: "Taming a wild animal",
+        body: "When the GM places a wild animal nearby (a mountain ram, ridge stag, tuskback boar or reedfowl), one of your characters can try to tame it: d20 + WIS + Animal Handling proficiency against the animal's DC. Each animal gets one attempt. On a success it joins you; on a failure it bolts.",
+      },
+      {
+        title: "Convincing instead",
+        body: "A druid, a ranger, or anyone who can speak with animals may convince the animal instead: the DC is 2 lower and you roll with advantage. The GM marks who can do this.",
+      },
+      {
+        title: "Farm animals",
+        body: "Kine (cows), hogs, coop fowl and skerry goats are bought, not tamed. Pay from your purse and the GM adds them to your herd.",
+      },
+      {
+        title: "Butchering",
+        body: "Rams, stags, boars, kine and hogs can be butchered from their details. The animal goes onto the Looting table and is harvested like any creature, so the cuts depend on the harvest rolls.",
+      },
+      {
+        title: "Collecting",
+        body: "Each animal gives things on a schedule: milk and eggs every day, wool every week, shed antler every month, and a boar will root up food daily. Some only come from females (milk, eggs) or males (shed antler). Press the button when it says ready. Everything goes to the party's materials, and the day only moves on when the GM presses Pass Day.",
+      },
+      {
+        title: "Milk and cheese",
+        body: "Milk sours in a day or two, so turn it into cheese with Cook's Utensils: kine milk into curd, ewe's milk into ridge wheel, hind's milk into hind cheese, goat's milk into brinecheese. Farm milk and cheese can also be bought at markets.",
+      },
+    ],
+  },
+  {
     title: "Gathering & Cooking",
     icon: Pickaxe,
     rules: [
@@ -120,8 +151,32 @@ const SECTIONS: Section[] = [
         body: "A crafted fishing rod counts as your rod and widens the green zone. Bait in your inventory is used automatically, one use per attempt. Grub Bait gives +1 and a longer bite window. A Deeplight Lure gives +2 and upgrades a clean catch.",
       },
       {
+        title: "Meat and cuts",
+        body: (
+          <>
+            Harvesting a game animal can give real cuts of meat, in three grades. <strong>Everyday cuts</strong> are common: necks, shanks, brisket, jowl, hocks, drumsticks and fillets. <strong>Choice cuts</strong> are rarer: shoulders, rib racks, hindquarters, loin chops, belly and ham. <strong>Prime cuts</strong> come only from the best harvests: backstrap, tenderloin, a rack or saddle of ram, boar loin and shark loin. Recipes ask for a grade (&ldquo;any meat cut&rdquo;, &ldquo;choice cut or better&rdquo;, &ldquo;prime cut&rdquo;), and any matching cut will do, with the cheapest used first. A few dishes need one particular cut, like a bear haunch or boar belly. Raw meat spoils in a few days unless it&apos;s cooked or cured.
+          </>
+        ),
+      },
+      {
+        title: "Preserving",
+        body: "Curing salt, vinegar, smoke and fat keep food for months. Cure belly from a boar or hog into smokebelly, make hard spiced or dry-cured sausages, hams, brined brisket, potted meat, pickles and pickled eggs. Preserved foods are rations: press Use as each one is eaten.",
+      },
+      {
+        title: "Vegetables, fruit & herbs",
+        body: "Forage wild produce past the Wall: tubers, ferns and smoky herbs on the rock slopes, berries and frost-pods by the tarns, and rarer things in the warm springs. Farm and island produce (roots, leaves, beans, orchard and island fruit, seaweed) is sold at markets. Recipes may ask for a particular one or for \"any vegetable\", \"any fruit\" or \"any culinary herb\". The Larder tab shows what every food looks like.",
+      },
+      {
         title: "Cooking",
-        body: "Meals are crafted with Cook's Utensils from game meat, fish and herbs. Each makes several servings; press Use as each person eats. Meals give temporary HP and short buffs, such as cold resistance, keener senses or extra strength.",
+        body: (
+          <>
+            Cook with Cook&apos;s Utensils. Every dish makes several servings or rations, so press Use as each person eats.{" "}
+            <strong>Rations</strong> (dried meat, salted fish, trail cakes) keep you fed on the road for months.{" "}
+            <strong>Plain meals</strong> are a hot meal and nothing more.{" "}
+            <strong>Good meals</strong> give a small bonus, but only when the cook gets a Superior result.{" "}
+            <strong>Fine meals</strong> use the best cuts and rare ingredients (DC 14 and up), and they give real bonuses like temporary HP, extra maximum HP, resistances or swimming, unless the cook botches them.
+          </>
+        ),
       },
       {
         title: "Attribute cards",

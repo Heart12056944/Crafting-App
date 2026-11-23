@@ -22,6 +22,8 @@ export type RecipeOutcome = {
 export type RecipeMaterial = {
   name: string;
   qty: number;
+  // Any material carrying this tag will do (shown to players by name).
+  tagRequirement?: string;
 };
 
 export type Recipe = {
@@ -58,7 +60,8 @@ type BlackspireRecipe = {
   dc: number | null;
   time: string;
   tool: string;
-  materials: { name: string; quantity: number }[];
+  // tag: "any material with this tag" (e.g. a grade of meat) instead of one named material.
+  materials: { name: string; quantity: number; tag?: string }[];
   materialsText: string;
   outcomes: {
     superior: string;
@@ -133,6 +136,8 @@ function normalizeCategory(type: string): Recipe["category"] {
   if (value.includes("weapon")) return "weapon";
   if (value.includes("armour") || value.includes("armor")) return "armour";
   if (value.includes("potion")) return "potion";
+  // Rations and meals: eaten, so used up like any consumable.
+  if (value.includes("food")) return "consumable";
   if (value.includes("poison")) return "poison";
   if (value.includes("accessory")) return "accessory";
   if (value.includes("upgrade")) return "upgrade";
@@ -225,6 +230,7 @@ const craftingRecipes: Recipe[] = rawRecipes.map((recipe) => ({
   materials: recipe.materials.map((material) => ({
     name: material.name,
     qty: material.quantity,
+    ...(material.tag ? { tagRequirement: material.tag } : {}),
   })),
   outcomes: recipeOutcomes(recipe.outcomes),
 }));
