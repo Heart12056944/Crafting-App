@@ -4272,5 +4272,93 @@
     "group": "UNDYING VIGIL — Refinement Chains",
     "source": "Undying_Vigil_Crafting",
     "set": "brewing"
+  },
+  {
+    "id": "vigil-refine-bone-dust-to-bone-meal",
+    "inputMaterial": "Bone Dust",
+    "inputTier": "T0",
+    "quantity": 4,
+    "outputMaterial": "Bone Meal",
+    "outputTier": "T1",
+    "dc": 10,
+    "time": "30 min",
+    "tool": "Alchemist (INT)",
+    "outcomes": {
+      "superior": "2x Bone Meal",
+      "normal": "1x Bone Meal",
+      "flawed": "Return 2x Bone Dust"
+    },
+    "notes": "Sift skeleton bone dust into bone meal.",
+    "isTerminal": false,
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "UNDYING VIGIL — Refinement Chains",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-refine-rusted-mail-links-to-iron-ingot",
+    "inputMaterial": "Rusted Mail Links",
+    "inputTier": "T0",
+    "quantity": 4,
+    "outputMaterial": "Iron Ingot",
+    "outputTier": "T1",
+    "dc": 10,
+    "time": "1 hour",
+    "tool": "Smith (STR)",
+    "outcomes": {
+      "superior": "2x Iron Ingot",
+      "normal": "1x Iron Ingot",
+      "flawed": "Return 2x Rusted Mail Links"
+    },
+    "notes": "Scour and re-smelt old mail into a usable bar.",
+    "isTerminal": false,
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "UNDYING VIGIL — Refinement Chains",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-refine-ram-s-wool-to-woven-wool",
+    "inputMaterial": "Ram's Wool",
+    "inputTier": "T0",
+    "quantity": 3,
+    "outputMaterial": "Woven Wool",
+    "outputTier": "T1",
+    "dc": 10,
+    "time": "2 hours",
+    "tool": "Weaver (DEX)",
+    "outcomes": {
+      "superior": "2x Woven Wool",
+      "normal": "1x Woven Wool",
+      "flawed": "Return 2x Ram's Wool"
+    },
+    "notes": "Spin and weave ram's wool into thick cloth.",
+    "isTerminal": false,
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "UNDYING VIGIL — Refinement Chains",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-refine-bat-guano-to-cave-nitre",
+    "inputMaterial": "Bat Guano",
+    "inputTier": "T0",
+    "quantity": 5,
+    "outputMaterial": "Cave Nitre",
+    "outputTier": "T1",
+    "dc": 12,
+    "time": "4 hours",
+    "tool": "Alchemist (INT)",
+    "outcomes": {
+      "superior": "2x Cave Nitre",
+      "normal": "1x Cave Nitre",
+      "flawed": "Return 3x Bat Guano"
+    },
+    "notes": "Leach guano with water, then boil the liquor down to nitre crystals. Open air only.",
+    "isTerminal": false,
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "UNDYING VIGIL — Refinement Chains",
+    "source": "Undying_Vigil_Crafting",
+    "set": "explosives-and-traps"
   }
 ]

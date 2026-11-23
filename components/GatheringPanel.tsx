@@ -6,6 +6,7 @@ import { Axe, Fish, Leaf, Pickaxe } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { pickWeightedLootEntry, rollDiceExpression, type LootQuality } from "@/data/lootTables";
+import { fetchCampaignInventory, remainingUses, spendInventoryUse, type InventoryRow } from "@/lib/supabaseInventory";
 import {
   GATHERING_ATTEMPTS_PER_DAY,
   GATHERING_ATTRIBUTE_IDS as CARD,
@@ -75,8 +76,74 @@ type GatherMods = {
   greenMult: number;
   pullMult: number;
   bigCatch: boolean;
+  // Crafted fishing gear from the gatherer's inventory.
+  gearBonus: number;
+  lureUpgrade: boolean;
   active: string[];
 };
+
+// Crafted rods and bait in a character's inventory improve the fishing game.
+// Effects follow the recipe text; quality is the crafted quality.
+const ROD_EFFECTS: Record<string, Record<string, { green: number; pull: number }>> = {
+  "Tusk-Hook Fishing Rod": {
+    Superior: { green: 1.3, pull: 1 },
+    Normal: { green: 1.2, pull: 1 },
+    Flawed: { green: 1.1, pull: 1 },
+  },
+  "Serpent-Line Rod": {
+    Superior: { green: 1.5, pull: 0.75 },
+    Normal: { green: 1.4, pull: 0.85 },
+    Flawed: { green: 1.3, pull: 1 },
+  },
+};
+
+const BAIT_EFFECTS: { name: string; check: number; bite: number; upgrade: boolean }[] = [
+  { name: "Deeplight Lure", check: 2, bite: 1, upgrade: true },
+  { name: "Grub Bait", check: 1, bite: 1.5, upgrade: false },
+];
+
+type FishingGear = {
+  rod: InventoryRow | null;
+  green: number;
+  pull: number;
+  bait: InventoryRow | null;
+  baitCheck: number;
+  baitBite: number;
+  baitUpgrade: boolean;
+};
+
+function fishingGearFor(rows: InventoryRow[], characterId: string | undefined): FishingGear {
+  const mine = rows.filter((row) => characterId && row.character_id === characterId && row.qty > 0);
+  let rod: InventoryRow | null = null;
+  let green = 1;
+  let pull = 1;
+  mine.forEach((row) => {
+    const effects = ROD_EFFECTS[row.name];
+    if (!effects) return;
+    const effect = effects[row.quality || "Normal"] || effects.Normal;
+    if (effect.green > green) {
+      rod = row;
+      green = effect.green;
+      pull = effect.pull;
+    }
+  });
+  for (const bait of BAIT_EFFECTS) {
+    const row = mine.find((item) => item.name === bait.name && (remainingUses(item) ?? 1) > 0);
+    if (row) return { rod, green, pull, bait: row, baitCheck: bait.check, baitBite: bait.bite, baitUpgrade: bait.upgrade };
+  }
+  return { rod, green, pull, bait: null, baitCheck: 0, baitBite: 1, baitUpgrade: false };
+}
+
+function withFishingGear(mods: GatherMods, gear: FishingGear): GatherMods {
+  return {
+    ...mods,
+    greenMult: mods.greenMult * gear.green,
+    pullMult: mods.pullMult * gear.pull,
+    biteMult: mods.biteMult * gear.baitBite,
+    gearBonus: gear.baitCheck,
+    lureUpgrade: gear.baitUpgrade,
+  };
+}
 
 function modsFor(cardIds: Set<number>, activity: GatheringActivity): GatherMods {
   const has = (id: number) => cardIds.has(id);
@@ -107,6 +174,8 @@ function modsFor(cardIds: Set<number>, activity: GatheringActivity): GatherMods 
     greenMult: fish && has(CARD.steadyLine) ? 1.5 : 1,
     pullMult: fish && has(CARD.steadyLine) ? 0.65 : 1,
     bigCatch: fish && has(CARD.bigCatch),
+    gearBonus: 0,
+    lureUpgrade: false,
     active: gatheringAttributeMeta
       .filter((meta) => cardIds.has(meta.id) && (meta.activity === "any" || meta.activity === activity))
       .map((meta) => meta.name),
@@ -804,6 +873,10 @@ export default function GatheringPanel(props: {
   updateCharacterTool: (characterId: string, tool: string, level: ProficiencyLevel) => void;
   // Attribute cards assigned in this campaign (campaign_character_attributes rows).
   characterAttributes: { character_id: string; card_id: number }[];
+  // A player's claimed characters; when given, only these can gather.
+  allowedCharacterIds?: string[];
+  // Used to read the gatherer's crafted rods and bait from the inventory.
+  campaignId: string;
 }) {
   function cardIdsFor(id: string | undefined) {
     return new Set(
@@ -811,13 +884,32 @@ export default function GatheringPanel(props: {
     );
   }
 
-  const visibleCharacters = props.characters.filter((character) => props.adminUnlocked || character.isActive !== false);
+  const allowed = props.allowedCharacterIds || [];
+  const visibleCharacters = props.characters.filter(
+    (character) =>
+      (props.adminUnlocked || character.isActive !== false) && (allowed.length === 0 || allowed.includes(character.id))
+  );
   const [characterId, setCharacterId] = useState(visibleCharacters[0]?.id || "");
   const [spotId, setSpotId] = useState("");
   const [roll, setRoll] = useState<RollState | null>(null);
   const [game, setGame] = useState<ActiveGame | null>(null);
   const [gameKey, setGameKey] = useState(0);
   const [results, setResults] = useState<{ items: GatheredItem[]; notes: string[] } | null>(null);
+  const [inventoryRows, setInventoryRows] = useState<InventoryRow[]>([]);
+  const [inventoryVersion, setInventoryVersion] = useState(0);
+
+  useEffect(() => {
+    if (!props.campaignId) return;
+    let cancelled = false;
+    fetchCampaignInventory(props.campaignId)
+      .then((rows) => {
+        if (!cancelled) setInventoryRows(rows);
+      })
+      .catch((error) => console.warn("Could not load inventory for gathering gear.", error));
+    return () => {
+      cancelled = true;
+    };
+  }, [props.campaignId, inventoryVersion]);
 
   const spotsInSet = gatheringSpots.filter((spot) => !spot.set || !props.disabledTags.includes(spot.set));
   const availableSpots = props.adminUnlocked ? spotsInSet : spotsInSet.filter((spot) => props.enabledSpotIds.includes(spot.id));
@@ -828,9 +920,12 @@ export default function GatheringPanel(props: {
   const attemptsPerDay = gatheringAttemptsPerDay(cardIds);
   const attemptsUsed = character?.gatheringToday ?? 0;
   const attemptsLeft = attemptsPerDay - attemptsUsed;
-  const mods = spot ? modsFor(cardIds, spot.activity) : null;
-  const toolOwned = Boolean(character && activity && character.ownedTools?.[activity.tool]);
-  const toolBroken = Boolean(character && activity && character.brokenTools?.[activity.tool]);
+  const fishingGear = fishingGearFor(inventoryRows, character?.id);
+  const baseMods = spot ? modsFor(cardIds, spot.activity) : null;
+  const mods = baseMods && spot?.activity === "fishing" ? withFishingGear(baseMods, fishingGear) : baseMods;
+  const craftedRod = spot?.activity === "fishing" ? fishingGear.rod : null;
+  const toolOwned = Boolean(character && activity && (character.ownedTools?.[activity.tool] || craftedRod));
+  const toolBroken = Boolean(character && activity && character.brokenTools?.[activity.tool] && !craftedRod);
   const busy = Boolean(roll) && !results;
 
   const statBonus = character && activity ? character.stats[activity.stat] || 0 : 0;
@@ -854,10 +949,16 @@ export default function GatheringPanel(props: {
     const rolls = mods.advantage ? [rollD20(), rollD20()] : [rollD20()];
     const natural = Math.max(...rolls);
     const natTwenty = natural >= mods.natTwentyOn;
-    const total = natural + statBonus + profBonus + mods.checkBonus;
+    const total = natural + statBonus + profBonus + mods.checkBonus + mods.gearBonus;
     let margin = total - spot.dc;
     if (natTwenty) margin = Math.max(margin, 10);
     props.onSpendAttempt(character.id);
+    const bait = spot.activity === "fishing" ? fishingGear.bait : null;
+    if (bait) {
+      spendInventoryUse(bait)
+        .catch((error) => console.warn("Could not spend bait.", error))
+        .finally(() => setInventoryVersion((version) => version + 1));
+    }
     setResults(null);
     setRoll({ natural, rolls, total, margin, natTwenty, spot, characterId: character.id, mods });
 
@@ -887,6 +988,10 @@ export default function GatheringPanel(props: {
       boosted.lootRolls += 1;
       boosted.notes.push("Big Catch: +1 loot roll.");
     }
+    if (roll.mods.lureUpgrade && result.caught) {
+      boosted.upgrades += 1;
+      boosted.notes.push("Deeplight Lure: the catch is upgraded a quality.");
+    }
     const items = rollLoot(roll.spot, boosted, roll.mods);
     setResults({ items, notes: boosted.notes });
     props.onGathered(roll.characterId, roll.spot, items);
@@ -915,7 +1020,7 @@ export default function GatheringPanel(props: {
             <select
               value={character?.id || ""}
               onChange={(event) => setCharacterId(event.target.value)}
-              disabled={busy}
+              disabled={busy || visibleCharacters.length <= 1}
               className="w-full rounded-md border border-[#9a7b45] bg-[#f2dfb9] px-3 py-2"
             >
               {visibleCharacters.map((item) => (
@@ -970,9 +1075,23 @@ export default function GatheringPanel(props: {
               <p>
                 <strong>Check:</strong> d20{mods?.advantage ? " (advantage)" : ""} + {activity.stat} ({statBonus >= 0 ? "+" : ""}{statBonus})
                 {profBonus ? ` + ${activity.tool} proficiency (+${profBonus})` : ""}
-                {mods?.checkBonus ? ` + attributes (+${mods.checkBonus})` : ""} vs DC {spot.dc}
+                {mods?.checkBonus ? ` + attributes (+${mods.checkBonus})` : ""}
+                {mods?.gearBonus ? ` + bait (+${mods.gearBonus})` : ""} vs DC {spot.dc}
               </p>
-              <p><strong>Tool:</strong> {activity.tool} {toolOwned ? (toolBroken ? "(broken)" : "(owned)") : "(missing)"}</p>
+              <p>
+                <strong>Tool:</strong>{" "}
+                {craftedRod
+                  ? `${craftedRod.name} (${craftedRod.quality || "Normal"})`
+                  : `${activity.tool} ${toolOwned ? (toolBroken ? "(broken)" : "(owned)") : "(missing)"}`}
+              </p>
+              {spot.activity === "fishing" && (
+                <p>
+                  <strong>Bait:</strong>{" "}
+                  {fishingGear.bait
+                    ? `${fishingGear.bait.name} (${remainingUses(fishingGear.bait) ?? fishingGear.bait.qty} uses left; one is used per attempt)`
+                    : "none (craft Grub Bait or a Deeplight Lure)"}
+                </p>
+              )}
               <p><strong>Attempts today:</strong> {attemptsUsed}/{attemptsPerDay}{props.adminUnlocked && attemptsLeft <= 0 ? " (GM can continue)" : ""}</p>
             </div>
           )}

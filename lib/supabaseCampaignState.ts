@@ -79,8 +79,34 @@ export async function upsertCampaignDiscoveries(campaignId: string, entries: Dis
   }
 }
 
+// Character claims reuse the discoveries table: kind "character-claim",
+// item_key = character id, state = the claiming device's id. null releases it.
+export async function setCharacterClaim(campaignId: string, characterId: string, deviceId: string | null): Promise<void> {
+  if (deviceId === null) {
+    const { error } = await supabase
+      .from("campaign_discoveries")
+      .delete()
+      .eq("campaign_id", campaignId)
+      .eq("kind", "character-claim")
+      .eq("item_key", characterId);
+    if (error) throw error;
+    return;
+  }
+
+  const { error } = await supabase.from("campaign_discoveries").upsert(
+    { campaign_id: campaignId, kind: "character-claim", item_key: characterId, state: deviceId },
+    { onConflict: "campaign_id,kind,item_key" }
+  );
+  if (error) throw error;
+}
+
 export async function clearCampaignDiscoveries(campaignId: string): Promise<void> {
-  const { error } = await supabase.from("campaign_discoveries").delete().eq("campaign_id", campaignId);
+  // Wipes discovered/hidden recipes and materials only; claims and open gathering spots stay.
+  const { error } = await supabase
+    .from("campaign_discoveries")
+    .delete()
+    .eq("campaign_id", campaignId)
+    .in("kind", ["recipe", "material"]);
 
   if (error) {
     throw error;

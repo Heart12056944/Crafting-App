@@ -2928,14 +2928,14 @@
     "totalWeight": 100,
     "entries": [
       {
-        "weight": 36,
+        "weight": 30,
         "materialName": "Stag Hide",
         "tier": "T0",
         "source": "VIGIL",
         "notes": "Thin, supple hide from a ridge stag."
       },
       {
-        "weight": 34,
+        "weight": 26,
         "materialName": "Antler Tine",
         "tier": "T0",
         "source": "VIGIL",
@@ -2943,11 +2943,19 @@
         "amount": "1d4"
       },
       {
-        "weight": 30,
+        "weight": 22,
         "materialName": "Lean Sinew",
         "tier": "T0",
         "source": "VIGIL",
         "notes": "Clean sinew from a fast-running beast. Dries into excellent cord.",
+        "amount": "1d4"
+      },
+      {
+        "weight": 22,
+        "materialName": "Raw Game Meat",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A cut of fresh meat from a mountain beast. Cook it before it turns.",
         "amount": "1d4"
       }
     ],
@@ -3097,14 +3105,14 @@
     "totalWeight": 100,
     "entries": [
       {
-        "weight": 26,
+        "weight": 22,
         "materialName": "Thick Winter Pelt",
         "tier": "T1",
         "source": "VIGIL",
         "notes": "Dense under-fur grown for the high passes. Sheds snow like water."
       },
       {
-        "weight": 26,
+        "weight": 22,
         "materialName": "Bear Claw",
         "tier": "T1",
         "source": "VIGIL",
@@ -3112,7 +3120,7 @@
         "amount": "1d4"
       },
       {
-        "weight": 26,
+        "weight": 22,
         "materialName": "Dense Bear Fat",
         "tier": "T1",
         "source": "VIGIL",
@@ -3120,11 +3128,19 @@
         "amount": "1d4"
       },
       {
-        "weight": 22,
+        "weight": 16,
         "materialName": "Heavy Bear Bone",
         "tier": "T1",
         "source": "VIGIL",
         "notes": "Thigh bone of a mountain bear. Nearly as hard as iron."
+      },
+      {
+        "weight": 18,
+        "materialName": "Raw Game Meat",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A cut of fresh meat from a mountain beast. Cook it before it turns.",
+        "amount": "1d6"
       }
     ],
     "set": "undying-vigil",
@@ -3181,6 +3197,1452 @@
     ],
     "set": "undying-vigil",
     "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-skeleton-warrior-common",
+    "creature": "SKELETON WARRIOR",
+    "creatureTier": "Common",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 34,
+        "materialName": "Stripped Rib",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A rib picked clean long ago. The Ageless it held up stopped needing flesh decades back.",
+        "amount": "1d4"
+      },
+      {
+        "weight": 34,
+        "materialName": "Bone Dust",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Fine grey powder that sifts out of old skeletal joints.",
+        "amount": "1d6"
+      },
+      {
+        "weight": 32,
+        "materialName": "Rusted Mail Links",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Corroded rings from mail worn by something that no longer bleeds.",
+        "amount": "1d4"
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-skeleton-warrior-rare",
+    "creature": "SKELETON WARRIOR",
+    "creatureTier": "Common",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 35,
+        "materialName": "Hollow Vertebra",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A spinal bone worn smooth from centuries of turning."
+      },
+      {
+        "weight": 30,
+        "materialName": "Skull Splinter",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A piece of the skull that held the mind. Once it broke, the rest of the skeleton fell."
+      },
+      {
+        "weight": 35,
+        "materialName": "Pitted War-Steel",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "Old blade steel, pitted but sound. The skeleton kept it sharp."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-skeleton-warrior-epic",
+    "creature": "SKELETON WARRIOR",
+    "creatureTier": "Common",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 50,
+        "materialName": "Grave-Black Plate Shard",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "Armour plate blackened by long years in the dead lands."
+      },
+      {
+        "weight": 50,
+        "materialName": "Unyielding Femur",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A thigh bone gone as hard as iron. It never broke, however often it was struck."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-skeleton-archer-common",
+    "creature": "SKELETON ARCHER",
+    "creatureTier": "Common",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 30,
+        "materialName": "Stripped Rib",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A rib picked clean long ago. The Ageless it held up stopped needing flesh decades back.",
+        "amount": "1d4"
+      },
+      {
+        "weight": 28,
+        "materialName": "Bone Dust",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Fine grey powder that sifts out of old skeletal joints.",
+        "amount": "1d6"
+      },
+      {
+        "weight": 42,
+        "materialName": "Grave-Cut Arrowhead",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A bone arrowhead carved by fingers with no skin on them.",
+        "amount": "1d6"
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-skeleton-archer-rare",
+    "creature": "SKELETON ARCHER",
+    "creatureTier": "Common",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 35,
+        "materialName": "Hollow Vertebra",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A spinal bone worn smooth from centuries of turning."
+      },
+      {
+        "weight": 30,
+        "materialName": "Skull Splinter",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A piece of the skull that held the mind. Once it broke, the rest of the skeleton fell."
+      },
+      {
+        "weight": 35,
+        "materialName": "Socket Ember",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "The cold light from an empty eye socket, caught in a chip of bone before it faded."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-skeleton-archer-epic",
+    "creature": "SKELETON ARCHER",
+    "creatureTier": "Common",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 100,
+        "materialName": "Unerring Finger Bones",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "The draw-hand of a skeleton archer, still curled around a string that isn't there."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-skeleton-knight-common",
+    "creature": "SKELETON KNIGHT",
+    "creatureTier": "Uncommon",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 30,
+        "materialName": "Hollow Vertebra",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A spinal bone worn smooth from centuries of turning."
+      },
+      {
+        "weight": 30,
+        "materialName": "Skull Splinter",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A piece of the skull that held the mind. Once it broke, the rest of the skeleton fell."
+      },
+      {
+        "weight": 40,
+        "materialName": "Pitted War-Steel",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "Old blade steel, pitted but sound. The skeleton kept it sharp.",
+        "amount": "1d4"
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-skeleton-knight-rare",
+    "creature": "SKELETON KNIGHT",
+    "creatureTier": "Uncommon",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 36,
+        "materialName": "Grave-Black Plate Shard",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "Armour plate blackened by long years in the dead lands."
+      },
+      {
+        "weight": 30,
+        "materialName": "Unyielding Femur",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A thigh bone gone as hard as iron. It never broke, however often it was struck."
+      },
+      {
+        "weight": 34,
+        "materialName": "Oath-Etched Heraldry",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A rusted crest from a knight's shield. The order it names no longer exists."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-skeleton-knight-epic",
+    "creature": "SKELETON KNIGHT",
+    "creatureTier": "Uncommon",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 100,
+        "materialName": "Knight's Anchor Skull",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "A skeleton knight's skull, cracked open. A mind lived in it, and a sense of duty older than the Compact."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-skeleton-mage-common",
+    "creature": "SKELETON MAGE",
+    "creatureTier": "Uncommon",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 26,
+        "materialName": "Hollow Vertebra",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A spinal bone worn smooth from centuries of turning."
+      },
+      {
+        "weight": 24,
+        "materialName": "Skull Splinter",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A piece of the skull that held the mind. Once it broke, the rest of the skeleton fell."
+      },
+      {
+        "weight": 26,
+        "materialName": "Socket Ember",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "The cold light from an empty eye socket, caught in a chip of bone before it faded."
+      },
+      {
+        "weight": 24,
+        "materialName": "Mouldered Spell Page",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A page of spell notes in a hand that has not changed in centuries.",
+        "amount": "1d4"
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-skeleton-mage-rare",
+    "creature": "SKELETON MAGE",
+    "creatureTier": "Uncommon",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 40,
+        "materialName": "Marrow Ink",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "Dark ink pressed from necrotic marrow. Skeleton mages write with nothing else."
+      },
+      {
+        "weight": 30,
+        "materialName": "Bone Focus Rod",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A forearm bone carved into a casting rod. It points toward the nearest corpse."
+      },
+      {
+        "weight": 30,
+        "materialName": "Unyielding Femur",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A thigh bone gone as hard as iron. It never broke, however often it was struck."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-skeleton-mage-epic",
+    "creature": "SKELETON MAGE",
+    "creatureTier": "Uncommon",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 100,
+        "materialName": "Whispering Skull",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "A skeleton mage's broken skull. It still mutters half-finished spells."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-death-knight-common",
+    "creature": "DEATH KNIGHT",
+    "creatureTier": "Epic",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 36,
+        "materialName": "Grave-Black Plate Shard",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "Armour plate blackened by long years in the dead lands."
+      },
+      {
+        "weight": 32,
+        "materialName": "Unyielding Femur",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A thigh bone gone as hard as iron. It never broke, however often it was struck."
+      },
+      {
+        "weight": 32,
+        "materialName": "Oath-Etched Heraldry",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A rusted crest from a knight's shield. The order it names no longer exists."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-death-knight-rare",
+    "creature": "DEATH KNIGHT",
+    "creatureTier": "Epic",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 30,
+        "materialName": "Knight's Anchor Skull",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "A skeleton knight's skull, cracked open. A mind lived in it, and a sense of duty older than the Compact."
+      },
+      {
+        "weight": 40,
+        "materialName": "Death-Tempered Steel",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "Steel quenched again and again in a death knight's cold until it took the cold for itself."
+      },
+      {
+        "weight": 30,
+        "materialName": "Fallen Oath-Blade Shard",
+        "tier": "T4",
+        "source": "VIGIL",
+        "notes": "A broken piece of a death knight's sword. It remembers every blow it landed."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-death-knight-epic",
+    "creature": "DEATH KNIGHT",
+    "creatureTier": "Epic",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 100,
+        "materialName": "Heart of a Broken Oath",
+        "tier": "T4",
+        "source": "VIGIL",
+        "notes": "Cold black crystal grown inside a death knight's ribcage, where a heart used to be."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-lich-common",
+    "creature": "LICH",
+    "creatureTier": "Boss",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 30,
+        "materialName": "Marrow Ink",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "Dark ink pressed from necrotic marrow. Skeleton mages write with nothing else."
+      },
+      {
+        "weight": 26,
+        "materialName": "Bone Focus Rod",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A forearm bone carved into a casting rod. It points toward the nearest corpse."
+      },
+      {
+        "weight": 24,
+        "materialName": "Mouldered Spell Page",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A page of spell notes in a hand that has not changed in centuries.",
+        "amount": "1d4"
+      },
+      {
+        "weight": 20,
+        "materialName": "Socket Ember",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "The cold light from an empty eye socket, caught in a chip of bone before it faded.",
+        "amount": "1d4"
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-lich-rare",
+    "creature": "LICH",
+    "creatureTier": "Boss",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 35,
+        "materialName": "Whispering Skull",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "A skeleton mage's broken skull. It still mutters half-finished spells."
+      },
+      {
+        "weight": 30,
+        "materialName": "Grave-Crown Circlet",
+        "tier": "T4",
+        "source": "VIGIL",
+        "notes": "A lich's circlet of bone and black iron. Cold enough to burn."
+      },
+      {
+        "weight": 35,
+        "materialName": "Lich's Held Breath",
+        "tier": "T4",
+        "source": "VIGIL",
+        "notes": "A sealed vial of breath a lich drew from the dead lands and never let go."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-lich-epic",
+    "creature": "LICH",
+    "creatureTier": "Boss",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 100,
+        "materialName": "Lich-Skull Shard",
+        "tier": "T5",
+        "source": "VIGIL",
+        "notes": "A shard of a lich's skull. Breaking the skull is the only way to end one, and the shard remembers being whole."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-mountain-ram-common",
+    "creature": "MOUNTAIN RAM",
+    "creatureTier": "Common",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 34,
+        "materialName": "Ram's Wool",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Coarse, oily wool shorn from a mountain ram. Spins into warm, water-shedding yarn.",
+        "amount": "1d4"
+      },
+      {
+        "weight": 26,
+        "materialName": "Curled Horn Chip",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A chip of ridged ram horn. Grips well and doesn't slip when wet.",
+        "amount": "1d4"
+      },
+      {
+        "weight": 24,
+        "materialName": "Raw Game Meat",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A cut of fresh meat from a mountain beast. Cook it before it turns.",
+        "amount": "1d4"
+      },
+      {
+        "weight": 16,
+        "materialName": "Lean Sinew",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Clean sinew from a fast-running beast. Dries into excellent cord."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-mountain-ram-rare",
+    "creature": "MOUNTAIN RAM",
+    "creatureTier": "Common",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 55,
+        "materialName": "Thick Fleece",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A whole fleece from a ram that wintered on the high ledges."
+      },
+      {
+        "weight": 45,
+        "materialName": "Spiral Ram Horn",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A full curled horn, hard and springy."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-mountain-ram-epic",
+    "creature": "MOUNTAIN RAM",
+    "creatureTier": "Common",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 100,
+        "materialName": "Old Ram's Horns",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "The battered horns of a ram that won every fight on its ledge."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-tuskback-boar-common",
+    "creature": "TUSKBACK BOAR",
+    "creatureTier": "Common",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 32,
+        "materialName": "Bristle Hide",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Thick hide covered in stiff black bristles."
+      },
+      {
+        "weight": 30,
+        "materialName": "Boar Tusk",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A short, sharp tusk. Makes a good hook or awl.",
+        "amount": "1d4"
+      },
+      {
+        "weight": 38,
+        "materialName": "Raw Game Meat",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A cut of fresh meat from a mountain beast. Cook it before it turns.",
+        "amount": "1d6"
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-tuskback-boar-rare",
+    "creature": "TUSKBACK BOAR",
+    "creatureTier": "Common",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 55,
+        "materialName": "Thick Boar Hide",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "Heavy, wind-proof hide from an old tuskback."
+      },
+      {
+        "weight": 45,
+        "materialName": "Great Tusk",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A tusk as long as a forearm."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-tuskback-boar-epic",
+    "creature": "TUSKBACK BOAR",
+    "creatureTier": "Common",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 100,
+        "materialName": "Tuskback Heart",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "The heart of a boar that charged until the very end. Cooks rich and dark."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-carrion-crow-common",
+    "creature": "CARRION CROW",
+    "creatureTier": "Common",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 45,
+        "materialName": "Black Crow Feather",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A glossy black feather. Stiff enough to fletch.",
+        "amount": "1d6"
+      },
+      {
+        "weight": 30,
+        "materialName": "Hollow Bird Bone",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Light, hollow wing bone. Strong for its weight.",
+        "amount": "1d4"
+      },
+      {
+        "weight": 25,
+        "materialName": "Hooked Talon",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A curved hawk talon. Grips and does not let go.",
+        "amount": "1d4"
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-carrion-crow-rare",
+    "creature": "CARRION CROW",
+    "creatureTier": "Common",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 50,
+        "materialName": "Grave-Fed Crow Eye",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "The eye of a crow that fed on Brainless. It turns toward the dead on its own."
+      },
+      {
+        "weight": 50,
+        "materialName": "Crow Gizzard Stone",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A polished stone from a crow's gizzard. Perfectly round.",
+        "amount": "1d4"
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-carrion-crow-epic",
+    "creature": "CARRION CROW",
+    "creatureTier": "Common",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 100,
+        "materialName": "Murder-Black Plume",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "Tail plume from the crow that led the flock. The others still follow it."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-cave-bat-common",
+    "creature": "CAVE BAT",
+    "creatureTier": "Common",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 50,
+        "materialName": "Bat Wing Membrane",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Thin, tough wing skin from a cave bat.",
+        "amount": "1d4"
+      },
+      {
+        "weight": 50,
+        "materialName": "Bat Guano",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Dried cave droppings. Leached and boiled, they give up nitre.",
+        "amount": "1d6"
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-cave-bat-rare",
+    "creature": "CAVE BAT",
+    "creatureTier": "Common",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 100,
+        "materialName": "Echo Bone",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A tiny skull bone that rings when sound bounces off it."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-cave-bat-epic",
+    "creature": "CAVE BAT",
+    "creatureTier": "Common",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 100,
+        "materialName": "Night-Ear",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "The great folded ear of an elder bat. Hears a heartbeat through stone."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-snow-cat-common",
+    "creature": "SNOW CAT",
+    "creatureTier": "Uncommon",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 34,
+        "materialName": "Thick Winter Pelt",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "Dense under-fur grown for the high passes. Sheds snow like water."
+      },
+      {
+        "weight": 33,
+        "materialName": "Silent Paw Pad",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A snow cat's paw pad, soft as felt. It makes no sound on stone."
+      },
+      {
+        "weight": 33,
+        "materialName": "Snow Cat Fang",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A long, thin fang made for one quick bite to the neck."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-snow-cat-rare",
+    "creature": "SNOW CAT",
+    "creatureTier": "Uncommon",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 55,
+        "materialName": "Ghostfur Pelt",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "White pelt that is almost impossible to see against snow."
+      },
+      {
+        "weight": 45,
+        "materialName": "Hunter's Whisker",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A snow cat whisker. It trembles before anything moves nearby."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-snow-cat-epic",
+    "creature": "SNOW CAT",
+    "creatureTier": "Uncommon",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 100,
+        "materialName": "Snow Cat Eye",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "A pale eye that saw through blizzards. It still catches light in the dark."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-tarn-serpent-common",
+    "creature": "TARN SERPENT",
+    "creatureTier": "Epic",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 40,
+        "materialName": "Serpent Scale",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A dinner-plate scale from a tarn serpent. Hard and slick.",
+        "amount": "1d4"
+      },
+      {
+        "weight": 30,
+        "materialName": "Tarn Serpent Fang",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A curved fang longer than a finger."
+      },
+      {
+        "weight": 30,
+        "materialName": "Glassjaw",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A tarn fish with hard, clear scales that turn blades at an angle.",
+        "amount": "1d4"
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-tarn-serpent-rare",
+    "creature": "TARN SERPENT",
+    "creatureTier": "Epic",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 55,
+        "materialName": "Serpent Hide",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "Smooth, water-proof hide from a tarn serpent's belly."
+      },
+      {
+        "weight": 45,
+        "materialName": "Venom Sac of the Deep",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "A tarn serpent's venom sac. The venom stays cold and potent for months."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-tarn-serpent-epic",
+    "creature": "TARN SERPENT",
+    "creatureTier": "Epic",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 100,
+        "materialName": "Tarn Serpent Heart",
+        "tier": "T4",
+        "source": "VIGIL",
+        "notes": "A huge, slow heart that beat once a minute in the cold deep."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-brainless-wolf-common",
+    "creature": "BRAINLESS WOLF",
+    "creatureTier": "Uncommon",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 26,
+        "materialName": "Coarse Wolf Pelt",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Rough grey pelt from a Thornspine wolf. Needs curing before it is good for much."
+      },
+      {
+        "weight": 26,
+        "materialName": "Wolf Fang",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A long, hooked canine. Good arrowhead stock.",
+        "amount": "1d4"
+      },
+      {
+        "weight": 24,
+        "materialName": "Breath-Soured Sinew",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Tendon that kept moving long after it should have stopped. Tough and faintly cold.",
+        "amount": "1d4"
+      },
+      {
+        "weight": 24,
+        "materialName": "Stilled Nerve Bundle",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "Nerves that no longer carry anything. Numbs whatever they touch."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-brainless-wolf-rare",
+    "creature": "BRAINLESS WOLF",
+    "creatureTier": "Uncommon",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 40,
+        "materialName": "Breath-Matted Pelt",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A Brainless beast's pelt, matted with breath-black. The dead don't seem to notice whoever wears it."
+      },
+      {
+        "weight": 30,
+        "materialName": "Thick Winter Pelt",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "Dense under-fur grown for the high passes. Sheds snow like water."
+      },
+      {
+        "weight": 30,
+        "materialName": "Breath-Black Bile",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "Dark residue pooled where the breath settled in the gut. Mildly necrotic."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-brainless-wolf-epic",
+    "creature": "BRAINLESS WOLF",
+    "creatureTier": "Uncommon",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 100,
+        "materialName": "Hollow Howl",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "The throat of a Brainless wolf. Air pushed through it still howls, and the dead come."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-brainless-bear-common",
+    "creature": "BRAINLESS BEAR",
+    "creatureTier": "Rare",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 30,
+        "materialName": "Bear Claw",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A thick, blunt claw from a Thornspine bear.",
+        "amount": "1d4"
+      },
+      {
+        "weight": 30,
+        "materialName": "Heavy Bear Bone",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "Thigh bone of a mountain bear. Nearly as hard as iron."
+      },
+      {
+        "weight": 40,
+        "materialName": "Breath-Matted Pelt",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A Brainless beast's pelt, matted with breath-black. The dead don't seem to notice whoever wears it."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-brainless-bear-rare",
+    "creature": "BRAINLESS BEAR",
+    "creatureTier": "Rare",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 30,
+        "materialName": "Whole Bear Hide",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "An unbroken bear hide. Heavy, warm and nearly arrow-proof once tanned."
+      },
+      {
+        "weight": 30,
+        "materialName": "Lingering Exhale",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A breath trapped in a sealed lung-sac. Cold and heavier than air."
+      },
+      {
+        "weight": 40,
+        "materialName": "Deadweight Paw",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "A Brainless bear's paw, heavy as an anvil and still clenched."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-brainless-bear-epic",
+    "creature": "BRAINLESS BEAR",
+    "creatureTier": "Rare",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 100,
+        "materialName": "Breath-Burst Heart",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "A swollen heart packed with old breath. It bursts at the lightest cut."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-bloom-amalgam-common",
+    "creature": "BLOOM AMALGAM",
+    "creatureTier": "Epic",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 25,
+        "materialName": "Lingering Exhale",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A breath trapped in a sealed lung-sac. Cold and heavier than air."
+      },
+      {
+        "weight": 25,
+        "materialName": "Unrotting Heart",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A heart that refuses to decay. It does not beat. It does not need to."
+      },
+      {
+        "weight": 25,
+        "materialName": "Held-Breath Lung",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A lung clenched around a breath it never let go of."
+      },
+      {
+        "weight": 25,
+        "materialName": "Breath-Matted Pelt",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A Brainless beast's pelt, matted with breath-black. The dead don't seem to notice whoever wears it."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-bloom-amalgam-rare",
+    "creature": "BLOOM AMALGAM",
+    "creatureTier": "Epic",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 40,
+        "materialName": "Fused Bone Knot",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "Bones from a dozen bodies grown together into one hard knot."
+      },
+      {
+        "weight": 30,
+        "materialName": "Bloom Ichor",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "Thin grey fluid from an amalgam. Corpses it touches will not rise again."
+      },
+      {
+        "weight": 30,
+        "materialName": "Obedient Skull",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "A skull that held an order. Cracked along the line where the command went in."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-bloom-amalgam-epic",
+    "creature": "BLOOM AMALGAM",
+    "creatureTier": "Epic",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 100,
+        "materialName": "Bloom Seed",
+        "tier": "T4",
+        "source": "VIGIL",
+        "notes": "The catalyst at an amalgam's centre. Handle it as if it were about to go off, because it might."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "undead",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-waking-cultist-common",
+    "creature": "WAKING CULTIST",
+    "creatureTier": "Uncommon",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 34,
+        "materialName": "Ritual Ash",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Ash from a Waking rite, carried in a pouch. It smells of cold stone.",
+        "amount": "1d4"
+      },
+      {
+        "weight": 33,
+        "materialName": "Breath-Prayer Strip",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A cloth strip lettered with prayers to Varreth, worn wrapped around the wrist."
+      },
+      {
+        "weight": 33,
+        "materialName": "Ceremonial Knife",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A thin ritual blade. Cheap steel, but kept very sharp."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "humanoid",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-waking-cultist-rare",
+    "creature": "WAKING CULTIST",
+    "creatureTier": "Uncommon",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 50,
+        "materialName": "Exhale-Stained Gloves",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "Gloves worn while handling the dead. Stained grey to the wrist."
+      },
+      {
+        "weight": 50,
+        "materialName": "Coded Waking Letter",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A letter in a simple cipher. Someone was meant to burn it."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "humanoid",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-waking-cultist-epic",
+    "creature": "WAKING CULTIST",
+    "creatureTier": "Uncommon",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 100,
+        "materialName": "Waking Sigil Ring",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "A ring stamped with the Waking's mark. The Directed Brainless hesitate when they see it."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "humanoid",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-compact-deserter-common",
+    "creature": "COMPACT DESERTER",
+    "creatureTier": "Common",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 34,
+        "materialName": "Frayed Compact Tabard",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "An Ironwall Compact tabard with the insignia cut off."
+      },
+      {
+        "weight": 33,
+        "materialName": "Spent Compact Bolts",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Compact-issue crossbow bolts, bent or missing their fletching. The heads are still good.",
+        "amount": "2d4"
+      },
+      {
+        "weight": 33,
+        "materialName": "Rusted Mail Links",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Corroded rings from mail worn by something that no longer bleeds.",
+        "amount": "1d4"
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "humanoid",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-compact-deserter-rare",
+    "creature": "COMPACT DESERTER",
+    "creatureTier": "Common",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 50,
+        "materialName": "Compact Crossbow Parts",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "The prod, trigger and windlass of a Compact heavy crossbow."
+      },
+      {
+        "weight": 50,
+        "materialName": "Ironwall Patrol Map",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A worn map of patrol routes and safe passes behind the Wall."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "humanoid",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-compact-deserter-epic",
+    "creature": "COMPACT DESERTER",
+    "creatureTier": "Common",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 100,
+        "materialName": "Compact Signal Horn",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A brass signal horn. Every soldier on the Wall knows its calls."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "humanoid",
     "source": "Undying_Vigil_Crafting"
   }
 ]

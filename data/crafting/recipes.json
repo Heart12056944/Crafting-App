@@ -7236,5 +7236,2430 @@
     "section": "Epic Recipes",
     "source": "Undying_Vigil_Crafting",
     "set": "brewing"
+  },
+  {
+    "id": "vigil-recipe-rib-cage-buckler",
+    "name": "Rib-Cage Buckler",
+    "type": "Armour",
+    "dc": 11,
+    "time": "2 hours",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Stripped Rib",
+        "quantity": 4
+      },
+      {
+        "name": "Leather Cord",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "4x Stripped Rib, 1x Leather Cord",
+    "outcomes": {
+      "superior": "Shield, +2 AC. Weighs 2 lb. Once per short rest, add +2 more AC against one attack as a reaction.",
+      "normal": "Shield, +2 AC. Weighs 2 lb.",
+      "flawed": "Shield, +1 AC. It creaks."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "AGELESS SKELETONS — Vigil Recipes",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-bone-dust-ward-chalk",
+    "name": "Bone-Dust Ward Chalk",
+    "type": "Utility",
+    "dc": 10,
+    "time": "30 min",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Bone Dust",
+        "quantity": 3
+      },
+      {
+        "name": "Grave Salt",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "3x Bone Dust, 1x Grave Salt",
+    "outcomes": {
+      "superior": "Mark up to 6 doors or windows for 24 hours. A skeletal undead that touches a mark takes 2d6 radiant, and the chalk flares loud enough to wake sleepers within 60 ft.",
+      "normal": "Mark up to 4 doors or windows for 24 hours. A skeletal undead that touches a mark takes 1d6 radiant, and the chalk flares, waking sleepers within 60 ft.",
+      "flawed": "Mark 1 door for 8 hours. It flares when undead touch it."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "AGELESS SKELETONS — Vigil Recipes",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-grave-cut-arrows",
+    "name": "Grave-Cut Arrows",
+    "type": "Weapon",
+    "dc": 10,
+    "time": "1 hour",
+    "tool": "Fletcher (DEX)",
+    "materials": [
+      {
+        "name": "Grave-Cut Arrowhead",
+        "quantity": 4
+      },
+      {
+        "name": "Grey Flight Feathers",
+        "quantity": 2
+      },
+      {
+        "name": "Wood Planks",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "4x Grave-Cut Arrowhead, 2x Grey Flight Feathers, 1x Wood Planks",
+    "outcomes": {
+      "superior": "20 arrows. Hits against undead deal +1d6 piercing.",
+      "normal": "20 arrows. Hits against undead deal +1d4 piercing.",
+      "flawed": "10 ordinary arrows."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "AGELESS SKELETONS — Vigil Recipes",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-socketlight-lantern",
+    "name": "Socketlight Lantern",
+    "type": "Utility",
+    "dc": 12,
+    "time": "2 hours",
+    "tool": "Tinker (INT)",
+    "materials": [
+      {
+        "name": "Socket Ember",
+        "quantity": 2
+      },
+      {
+        "name": "Hollow Vertebra",
+        "quantity": 2
+      },
+      {
+        "name": "Metal Fitting",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Socket Ember, 2x Hollow Vertebra, 1x Metal Fitting",
+    "outcomes": {
+      "superior": "Cold blue light, bright for 30 ft and dim for 30 ft more, that never needs fuel. Undead cannot see its light.",
+      "normal": "Cold blue light, bright for 20 ft and dim for 20 ft more, that never needs fuel. Undead cannot see its light.",
+      "flawed": "Dim cold light for 10 ft. Never needs fuel. Undead can see it."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "AGELESS SKELETONS — Vigil Recipes",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-vertebra-flail",
+    "name": "Vertebra Flail",
+    "type": "Weapon",
+    "dc": 12,
+    "time": "2 hours",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Hollow Vertebra",
+        "quantity": 3
+      },
+      {
+        "name": "Pitted War-Steel",
+        "quantity": 2
+      },
+      {
+        "name": "Leather Cord",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "3x Hollow Vertebra, 2x Pitted War-Steel, 1x Leather Cord",
+    "outcomes": {
+      "superior": "+1 flail. Hits against skeletal undead deal +1d6 bludgeoning.",
+      "normal": "Flail. Hits against skeletal undead deal +1d4 bludgeoning.",
+      "flawed": "Flail. No bonus."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "AGELESS SKELETONS — Vigil Recipes",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-war-steel-longsword",
+    "name": "War-Steel Longsword",
+    "type": "Weapon",
+    "dc": 12,
+    "time": "4 hours",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Pitted War-Steel",
+        "quantity": 3
+      },
+      {
+        "name": "Whetstone Paste",
+        "quantity": 1
+      },
+      {
+        "name": "Leather Cord",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "3x Pitted War-Steel, 1x Whetstone Paste, 1x Leather Cord",
+    "outcomes": {
+      "superior": "+1 longsword. Scores a critical hit on a 19-20 against undead.",
+      "normal": "Longsword. +1 to damage rolls.",
+      "flawed": "Longsword. No bonus."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "AGELESS SKELETONS — Vigil Recipes",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-skull-splinter-charm",
+    "name": "Skull-Splinter Charm",
+    "type": "Accessory",
+    "dc": 13,
+    "time": "2 hours",
+    "tool": "Jeweler (DEX)",
+    "materials": [
+      {
+        "name": "Skull Splinter",
+        "quantity": 3
+      },
+      {
+        "name": "Thornspine Silver Ingot",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "3x Skull Splinter, 1x Thornspine Silver Ingot",
+    "outcomes": {
+      "superior": "While worn, the charm grows cold when a skeletal Ageless is within 120 ft, and they have disadvantage on checks to find you.",
+      "normal": "While worn, the charm grows cold when a skeletal Ageless is within 60 ft.",
+      "flawed": "The charm grows cold near undead within 30 ft, but not always."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "AGELESS SKELETONS — Vigil Recipes",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-marrow-ink-spell-scroll",
+    "name": "Marrow-Ink Spell Scroll",
+    "type": "Utility",
+    "dc": 14,
+    "time": "1 hour",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Marrow Ink",
+        "quantity": 1
+      },
+      {
+        "name": "Mouldered Spell Page",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "1x Marrow Ink, 2x Mouldered Spell Page",
+    "outcomes": {
+      "superior": "Copy one spell you know, up to 3rd level, onto the page as a spell scroll.",
+      "normal": "Copy one spell you know, up to 2nd level, onto the page as a spell scroll.",
+      "flawed": "Copy one spell you know, up to 1st level, onto the page as a spell scroll."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "AGELESS SKELETONS — Vigil Recipes",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-bone-focus-wand",
+    "name": "Bone Focus Wand",
+    "type": "Focus",
+    "dc": 14,
+    "time": "2 hours",
+    "tool": "Woodcarver (DEX)",
+    "materials": [
+      {
+        "name": "Bone Focus Rod",
+        "quantity": 1
+      },
+      {
+        "name": "Socket Ember",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Bone Focus Rod, 1x Socket Ember",
+    "outcomes": {
+      "superior": "Arcane focus. +1 to spell attack rolls. Necrotic damage from your spells ignores resistance.",
+      "normal": "Arcane focus. +1 to spell attack rolls.",
+      "flawed": "Arcane focus. No bonus."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "AGELESS SKELETONS — Vigil Recipes",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-femur-maul",
+    "name": "Femur Maul",
+    "type": "Weapon",
+    "dc": 14,
+    "time": "4 hours",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Unyielding Femur",
+        "quantity": 2
+      },
+      {
+        "name": "Iron Ingot",
+        "quantity": 1
+      },
+      {
+        "name": "Leather Cord",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Unyielding Femur, 1x Iron Ingot, 1x Leather Cord",
+    "outcomes": {
+      "superior": "+1 maul. A skeletal undead you hit must succeed on a DC 14 STR save or fall prone.",
+      "normal": "Maul. Hits against skeletal undead deal +1d6 bludgeoning.",
+      "flawed": "Maul. No bonus."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "AGELESS SKELETONS — Vigil Recipes",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-oath-etched-tabard",
+    "name": "Oath-Etched Tabard",
+    "type": "Accessory",
+    "dc": 14,
+    "time": "4 hours",
+    "tool": "Weaver (DEX)",
+    "materials": [
+      {
+        "name": "Oath-Etched Heraldry",
+        "quantity": 1
+      },
+      {
+        "name": "Cloth",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "1x Oath-Etched Heraldry, 2x Cloth",
+    "outcomes": {
+      "superior": "Once per short rest, when an ally within 30 ft drops to 0 HP, move up to your speed toward them without provoking opportunity attacks.",
+      "normal": "Once per long rest, when an ally within 30 ft drops to 0 HP, move up to your speed toward them without provoking opportunity attacks.",
+      "flawed": "A handsome tabard. Undead knights pause, just for a moment, when they see the crest."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "AGELESS SKELETONS — Vigil Recipes",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-grave-black-half-plate",
+    "name": "Grave-Black Half Plate",
+    "type": "Armour",
+    "dc": 15,
+    "time": "8 hours",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Grave-Black Plate Shard",
+        "quantity": 4
+      },
+      {
+        "name": "Unyielding Femur",
+        "quantity": 1
+      },
+      {
+        "name": "Iron Ingot",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "4x Grave-Black Plate Shard, 1x Unyielding Femur, 2x Iron Ingot",
+    "outcomes": {
+      "superior": "Half plate, AC 15 + DEX (max 2). Resistance to necrotic damage.",
+      "normal": "Half plate, AC 15 + DEX (max 2). Advantage on saves against necrotic effects.",
+      "flawed": "Half plate, AC 15 + DEX (max 2). Disadvantage on Stealth."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "AGELESS SKELETONS — Vigil Recipes",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-unerring-bone-bow",
+    "name": "Unerring Bone Bow",
+    "type": "Weapon",
+    "dc": 15,
+    "time": "4 hours",
+    "tool": "Fletcher (DEX)",
+    "materials": [
+      {
+        "name": "Unerring Finger Bones",
+        "quantity": 1
+      },
+      {
+        "name": "Ashwood Haft",
+        "quantity": 1
+      },
+      {
+        "name": "Breath-Soured Sinew",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "1x Unerring Finger Bones, 1x Ashwood Haft, 2x Breath-Soured Sinew",
+    "outcomes": {
+      "superior": "+1 longbow. Once per short rest, reroll a missed attack with it.",
+      "normal": "Longbow. Once per long rest, reroll a missed attack with it.",
+      "flawed": "Longbow. No bonus."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "AGELESS SKELETONS — Vigil Recipes",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-anchor-skull-helm",
+    "name": "Anchor-Skull Helm",
+    "type": "Armour",
+    "dc": 16,
+    "time": "8 hours",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Knight's Anchor Skull",
+        "quantity": 1
+      },
+      {
+        "name": "Grave-Black Plate Shard",
+        "quantity": 2
+      },
+      {
+        "name": "Iron Ingot",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Knight's Anchor Skull, 2x Grave-Black Plate Shard, 1x Iron Ingot",
+    "outcomes": {
+      "superior": "Helm. You can't be frightened or charmed by undead. Once per long rest, when you drop to 0 HP, you stay conscious until the end of your next turn.",
+      "normal": "Helm. Advantage on saves against being frightened or charmed by undead.",
+      "flawed": "Helm. Advantage on saves against being frightened by undead."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "AGELESS SKELETONS — Vigil Recipes",
+    "section": "Epic Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-whispering-grimoire",
+    "name": "Whispering Grimoire",
+    "type": "Focus",
+    "dc": 17,
+    "time": "1 day",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Whispering Skull",
+        "quantity": 1
+      },
+      {
+        "name": "Marrow Ink",
+        "quantity": 2
+      },
+      {
+        "name": "Mouldered Spell Page",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "1x Whispering Skull, 2x Marrow Ink, 2x Mouldered Spell Page",
+    "outcomes": {
+      "superior": "Once per long rest, cast a spell you know of 3rd level or lower without spending a slot. The skull whispers the words with you.",
+      "normal": "Once per long rest, cast a spell you know of 2nd level or lower without spending a slot.",
+      "flawed": "Once per long rest, cast a 1st-level spell you know without a slot, then make a DC 12 WIS save or be frightened for 1 minute."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "AGELESS SKELETONS — Vigil Recipes",
+    "section": "Epic Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-death-tempered-greatsword",
+    "name": "Death-Tempered Greatsword",
+    "type": "Weapon",
+    "dc": 18,
+    "time": "2 days",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Death-Tempered Steel",
+        "quantity": 2
+      },
+      {
+        "name": "Fallen Oath-Blade Shard",
+        "quantity": 1
+      },
+      {
+        "name": "Iron Ingot",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Death-Tempered Steel, 1x Fallen Oath-Blade Shard, 1x Iron Ingot",
+    "outcomes": {
+      "superior": "+2 greatsword. Hits deal +1d6 cold damage.",
+      "normal": "+1 greatsword. Hits deal +1d6 cold damage.",
+      "flawed": "+1 greatsword. It is always cold to hold."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "AGELESS SKELETONS — Vigil Recipes",
+    "section": "Ascendant Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-broken-oath-amulet",
+    "name": "Broken-Oath Amulet",
+    "type": "Accessory",
+    "dc": 18,
+    "time": "1 day",
+    "tool": "Jeweler (DEX)",
+    "materials": [
+      {
+        "name": "Heart of a Broken Oath",
+        "quantity": 1
+      },
+      {
+        "name": "Thornspine Silver Ingot",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Heart of a Broken Oath, 1x Thornspine Silver Ingot",
+    "outcomes": {
+      "superior": "Once per long rest, when you drop to 0 HP, drop to 1 HP instead, and undead within 30 ft must succeed on a DC 15 WIS save or be frightened of you for 1 minute.",
+      "normal": "Once per long rest, when you drop to 0 HP, drop to 1 HP instead.",
+      "flawed": "Once per long rest, reduce one hit's damage by 3d6."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "AGELESS SKELETONS — Vigil Recipes",
+    "section": "Ascendant Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-held-breath-phial",
+    "name": "Held-Breath Phial",
+    "type": "Throwable",
+    "dc": 18,
+    "time": "2 hours",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Lich's Held Breath",
+        "quantity": 1
+      },
+      {
+        "name": "Empty Infusion Base",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Lich's Held Breath, 1x Empty Infusion Base",
+    "outcomes": {
+      "superior": "Single use. Throw up to 60 ft: a 15 ft cube, DC 16 CON save, 6d8 necrotic (half on success). Living creatures that fail can't regain HP until the end of their next turn.",
+      "normal": "Single use. Throw up to 60 ft: a 15 ft cube, DC 15 CON save, 5d8 necrotic (half on success).",
+      "flawed": "Single use. Throw up to 30 ft: a 10 ft cube, DC 13 CON save, 3d8 necrotic (half on success)."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "AGELESS SKELETONS — Vigil Recipes",
+    "section": "Ascendant Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-reforged-grave-crown",
+    "name": "Reforged Grave-Crown",
+    "type": "Accessory",
+    "dc": 19,
+    "time": "2 days",
+    "tool": "Jeweler (DEX)",
+    "materials": [
+      {
+        "name": "Grave-Crown Circlet",
+        "quantity": 1
+      },
+      {
+        "name": "Cut Emberquartz",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Grave-Crown Circlet, 1x Cut Emberquartz",
+    "outcomes": {
+      "superior": "+1 to your spell save DC. Once per long rest, an undead within 60 ft must succeed on a WIS save against your spell DC or be charmed by you for 1 minute.",
+      "normal": "+1 to your spell save DC.",
+      "flawed": "+1 to your spell save DC, but undead within 60 ft can sense where you are."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "AGELESS SKELETONS — Vigil Recipes",
+    "section": "Ascendant Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-shardbound-staff",
+    "name": "Shardbound Staff",
+    "type": "Focus",
+    "dc": 20,
+    "time": "3 days",
+    "tool": "Woodcarver (DEX)",
+    "materials": [
+      {
+        "name": "Lich-Skull Shard",
+        "quantity": 1
+      },
+      {
+        "name": "Stillwood Heartwood",
+        "quantity": 1
+      },
+      {
+        "name": "Cut Emberquartz",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Lich-Skull Shard, 1x Stillwood Heartwood, 1x Cut Emberquartz",
+    "outcomes": {
+      "superior": "Staff and arcane focus. +2 to spell attack rolls and spell save DC. Once per long rest, ask the shard one question about the dead or the dead lands; the DM answers truthfully, if cryptically.",
+      "normal": "Staff and arcane focus. +1 to spell attack rolls and spell save DC. Once per long rest, ask the shard one question; it may answer.",
+      "flawed": "Staff and arcane focus. +1 to spell attack rolls. It mutters when you sleep."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "AGELESS SKELETONS — Vigil Recipes",
+    "section": "Legendary Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-crossbow-bolts",
+    "name": "Crossbow Bolts",
+    "type": "Weapon",
+    "dc": 10,
+    "time": "1 hour",
+    "tool": "Fletcher (DEX)",
+    "materials": [
+      {
+        "name": "Wood Planks",
+        "quantity": 1
+      },
+      {
+        "name": "Iron Ingot",
+        "quantity": 1
+      },
+      {
+        "name": "Black Crow Feather",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "1x Wood Planks, 1x Iron Ingot, 2x Black Crow Feather",
+    "outcomes": {
+      "superior": "30 crossbow bolts.",
+      "normal": "20 crossbow bolts.",
+      "flawed": "10 crossbow bolts."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "BASIC ARMS — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear"
+  },
+  {
+    "id": "vigil-recipe-re-fletched-compact-bolts",
+    "name": "Re-Fletched Compact Bolts",
+    "type": "Weapon",
+    "dc": 10,
+    "time": "30 min",
+    "tool": "Fletcher (DEX)",
+    "materials": [
+      {
+        "name": "Spent Compact Bolts",
+        "quantity": 6
+      },
+      {
+        "name": "Grey Flight Feathers",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "6x Spent Compact Bolts, 1x Grey Flight Feathers",
+    "outcomes": {
+      "superior": "20 bolts with Compact-issue heads. +1 to damage rolls.",
+      "normal": "20 crossbow bolts.",
+      "flawed": "10 crossbow bolts."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "BASIC ARMS — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear"
+  },
+  {
+    "id": "vigil-recipe-light-crossbow",
+    "name": "Light Crossbow",
+    "type": "Weapon",
+    "dc": 12,
+    "time": "4 hours",
+    "tool": "Tinker (INT)",
+    "materials": [
+      {
+        "name": "Ironbark Planks",
+        "quantity": 1
+      },
+      {
+        "name": "Iron Ingot",
+        "quantity": 1
+      },
+      {
+        "name": "Lean Sinew",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "1x Ironbark Planks, 1x Iron Ingot, 2x Lean Sinew",
+    "outcomes": {
+      "superior": "Light crossbow. Its range increases to 100/400 ft.",
+      "normal": "Light crossbow.",
+      "flawed": "Light crossbow. Disadvantage on attacks at long range."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "BASIC ARMS — Basic Gear",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear"
+  },
+  {
+    "id": "vigil-recipe-heavy-crossbow",
+    "name": "Heavy Crossbow",
+    "type": "Weapon",
+    "dc": 14,
+    "time": "8 hours",
+    "tool": "Tinker (INT)",
+    "materials": [
+      {
+        "name": "Compact Crossbow Parts",
+        "quantity": 1
+      },
+      {
+        "name": "Ironbark Planks",
+        "quantity": 2
+      },
+      {
+        "name": "Rimecopper Ingot",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Compact Crossbow Parts, 2x Ironbark Planks, 1x Rimecopper Ingot",
+    "outcomes": {
+      "superior": "+1 heavy crossbow. It ignores the loading property once per turn.",
+      "normal": "Heavy crossbow, Compact pattern. +1 to damage rolls.",
+      "flawed": "Heavy crossbow."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "BASIC ARMS — Basic Gear",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear"
+  },
+  {
+    "id": "vigil-recipe-sling-and-bullets",
+    "name": "Sling and Bullets",
+    "type": "Weapon",
+    "dc": 10,
+    "time": "1 hour",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Supple Stag Leather",
+        "quantity": 1
+      },
+      {
+        "name": "Lean Sinew",
+        "quantity": 1
+      },
+      {
+        "name": "Iron Ingot",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Supple Stag Leather, 1x Lean Sinew, 1x Iron Ingot",
+    "outcomes": {
+      "superior": "Sling and 30 iron bullets. +1 to attack rolls with the sling.",
+      "normal": "Sling and 20 iron bullets.",
+      "flawed": "Sling and 10 bullets."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "BASIC ARMS — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear"
+  },
+  {
+    "id": "vigil-recipe-gizzard-stone-bullets",
+    "name": "Gizzard-Stone Bullets",
+    "type": "Weapon",
+    "dc": 11,
+    "time": "30 min",
+    "tool": "Jeweler (DEX)",
+    "materials": [
+      {
+        "name": "Crow Gizzard Stone",
+        "quantity": 3
+      }
+    ],
+    "materialsText": "3x Crow Gizzard Stone",
+    "outcomes": {
+      "superior": "10 sling bullets. +1 to attack and damage rolls.",
+      "normal": "10 sling bullets. +1 to attack rolls.",
+      "flawed": "5 sling bullets. +1 to attack rolls."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-iron-spear",
+    "name": "Iron Spear",
+    "type": "Weapon",
+    "dc": 10,
+    "time": "2 hours",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Ashwood Haft",
+        "quantity": 1
+      },
+      {
+        "name": "Iron Ingot",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Ashwood Haft, 1x Iron Ingot",
+    "outcomes": {
+      "superior": "Spear. +1 to attack rolls when thrown.",
+      "normal": "Spear.",
+      "flawed": "Spear. The head wobbles; it breaks on a natural 1."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "BASIC ARMS — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear"
+  },
+  {
+    "id": "vigil-recipe-javelin-bundle",
+    "name": "Javelin Bundle",
+    "type": "Weapon",
+    "dc": 10,
+    "time": "2 hours",
+    "tool": "Woodcarver (DEX)",
+    "materials": [
+      {
+        "name": "Wood Planks",
+        "quantity": 2
+      },
+      {
+        "name": "Iron Ingot",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Wood Planks, 1x Iron Ingot",
+    "outcomes": {
+      "superior": "6 javelins. Their normal range is 40 ft.",
+      "normal": "5 javelins.",
+      "flawed": "3 javelins."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "BASIC ARMS — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear"
+  },
+  {
+    "id": "vigil-recipe-tuskback-boar-spear",
+    "name": "Tuskback Boar Spear",
+    "type": "Weapon",
+    "dc": 12,
+    "time": "3 hours",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Ashwood Haft",
+        "quantity": 1
+      },
+      {
+        "name": "Great Tusk",
+        "quantity": 1
+      },
+      {
+        "name": "Iron Ingot",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Ashwood Haft, 1x Great Tusk, 1x Iron Ingot",
+    "outcomes": {
+      "superior": "+1 spear with a crossbar. When a creature moves at least 20 ft straight toward you and you hit it with an opportunity attack, it takes an extra 2d6 piercing.",
+      "normal": "Spear with a crossbar. When a creature moves at least 20 ft straight toward you and you hit it with an opportunity attack, it takes an extra 1d6 piercing.",
+      "flawed": "Spear."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-horn-backed-shortbow",
+    "name": "Horn-Backed Shortbow",
+    "type": "Weapon",
+    "dc": 13,
+    "time": "4 hours",
+    "tool": "Fletcher (DEX)",
+    "materials": [
+      {
+        "name": "Spiral Ram Horn",
+        "quantity": 2
+      },
+      {
+        "name": "Ashwood Haft",
+        "quantity": 1
+      },
+      {
+        "name": "Lean Sinew",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "2x Spiral Ram Horn, 1x Ashwood Haft, 2x Lean Sinew",
+    "outcomes": {
+      "superior": "Shortbow. Range 120/480 ft, +1 to damage rolls.",
+      "normal": "Shortbow. Range 100/400 ft.",
+      "flawed": "Shortbow."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-snow-fang-dagger",
+    "name": "Snow-Fang Dagger",
+    "type": "Weapon",
+    "dc": 12,
+    "time": "2 hours",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Snow Cat Fang",
+        "quantity": 2
+      },
+      {
+        "name": "Iron Ingot",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Snow Cat Fang, 1x Iron Ingot",
+    "outcomes": {
+      "superior": "Dagger. Hits against a creature that hasn't acted yet this combat deal +2d4 piercing.",
+      "normal": "Dagger. Hits against a creature that hasn't acted yet this combat deal +1d4 piercing.",
+      "flawed": "Dagger."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-re-edged-ritual-knife",
+    "name": "Re-Edged Ritual Knife",
+    "type": "Weapon",
+    "dc": 11,
+    "time": "1 hour",
+    "tool": "Smith (DEX)",
+    "materials": [
+      {
+        "name": "Ceremonial Knife",
+        "quantity": 1
+      },
+      {
+        "name": "Whetstone Paste",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Ceremonial Knife, 1x Whetstone Paste",
+    "outcomes": {
+      "superior": "Dagger. Hits against Ageless deal +1d6 piercing.",
+      "normal": "Dagger. Hits against Ageless deal +1d4 piercing.",
+      "flawed": "Dagger."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "CULTISTS & DESERTERS — Vigil Recipes",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-ember-blessed-water",
+    "name": "Ember-Blessed Water",
+    "type": "Throwable",
+    "dc": 13,
+    "time": "1 hour",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Empty Infusion Base",
+        "quantity": 1
+      },
+      {
+        "name": "Emberleaf Oil",
+        "quantity": 1
+      },
+      {
+        "name": "Grave Salt",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Empty Infusion Base, 1x Emberleaf Oil, 1x Grave Salt",
+    "outcomes": {
+      "superior": "Single use. Throw up to 20 ft or splash an adjacent creature. An undead or fiend takes 3d6 radiant. Verath's warmth is in it, so Ageless take full damage despite resisting divine magic.",
+      "normal": "Single use. Throw up to 20 ft. An undead or fiend takes 2d6 radiant. Ageless take full damage despite resisting divine magic.",
+      "flawed": "Single use. An undead takes 1d6 radiant. Ageless resist it as normal."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "AGELESS — Vigil Recipes",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-climbing-kit",
+    "name": "Climbing Kit",
+    "type": "Utility",
+    "dc": 11,
+    "time": "2 hours",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Iron Ingot",
+        "quantity": 2
+      },
+      {
+        "name": "Cured Wolf Leather",
+        "quantity": 1
+      },
+      {
+        "name": "Curled Horn Chip",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "2x Iron Ingot, 1x Cured Wolf Leather, 2x Curled Horn Chip",
+    "outcomes": {
+      "superior": "Pitons, harness and grips. You gain a climbing speed equal to your walking speed, and you can't fall more than 25 ft while anchored.",
+      "normal": "Pitons, harness and grips. Advantage on climbing checks, and you can't fall more than 25 ft while anchored.",
+      "flawed": "Pitons and a harness. Advantage on climbing checks."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "EXPEDITION GEAR — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear"
+  },
+  {
+    "id": "vigil-recipe-crampons",
+    "name": "Crampons",
+    "type": "Utility",
+    "dc": 11,
+    "time": "1 hour",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Iron Ingot",
+        "quantity": 1
+      },
+      {
+        "name": "Leather Cord",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Iron Ingot, 1x Leather Cord",
+    "outcomes": {
+      "superior": "Ice doesn't count as difficult terrain for you, and you can't be knocked prone on ice.",
+      "normal": "Ice doesn't count as difficult terrain for you.",
+      "flawed": "Advantage on checks to keep your footing on ice."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "EXPEDITION GEAR — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear"
+  },
+  {
+    "id": "vigil-recipe-snowshoes",
+    "name": "Snowshoes",
+    "type": "Utility",
+    "dc": 10,
+    "time": "1 hour",
+    "tool": "Woodcarver (DEX)",
+    "materials": [
+      {
+        "name": "Wood Planks",
+        "quantity": 1
+      },
+      {
+        "name": "Lean Sinew",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "1x Wood Planks, 2x Lean Sinew",
+    "outcomes": {
+      "superior": "Deep snow doesn't count as difficult terrain for you, and your tracks are faint (DC +5 to follow).",
+      "normal": "Deep snow doesn't count as difficult terrain for you.",
+      "flawed": "Deep snow costs you 1.5x movement instead of 2x."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "EXPEDITION GEAR — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear"
+  },
+  {
+    "id": "vigil-recipe-hide-tent",
+    "name": "Hide Tent",
+    "type": "Utility",
+    "dc": 11,
+    "time": "4 hours",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Thick Boar Hide",
+        "quantity": 2
+      },
+      {
+        "name": "Woven Wool",
+        "quantity": 1
+      },
+      {
+        "name": "Wood Planks",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "2x Thick Boar Hide, 1x Woven Wool, 2x Wood Planks",
+    "outcomes": {
+      "superior": "4-person tent. A long rest inside counts as sheltered even in a blizzard.",
+      "normal": "2-person tent. A long rest inside counts as sheltered even in a blizzard.",
+      "flawed": "2-person tent. It leaks."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "EXPEDITION GEAR — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear"
+  },
+  {
+    "id": "vigil-recipe-fleece-bedroll",
+    "name": "Fleece Bedroll",
+    "type": "Utility",
+    "dc": 10,
+    "time": "2 hours",
+    "tool": "Weaver (DEX)",
+    "materials": [
+      {
+        "name": "Thick Fleece",
+        "quantity": 1
+      },
+      {
+        "name": "Woven Wool",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Thick Fleece, 1x Woven Wool",
+    "outcomes": {
+      "superior": "You can't gain exhaustion from cold while sleeping in it, and you finish a long rest with 1d6 temporary HP.",
+      "normal": "You can't gain exhaustion from cold while sleeping in it.",
+      "flawed": "Advantage on saves against cold while sleeping in it."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "EXPEDITION GEAR — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear"
+  },
+  {
+    "id": "vigil-recipe-patched-field-cloak",
+    "name": "Patched Field Cloak",
+    "type": "Accessory",
+    "dc": 10,
+    "time": "2 hours",
+    "tool": "Weaver (DEX)",
+    "materials": [
+      {
+        "name": "Frayed Compact Tabard",
+        "quantity": 2
+      },
+      {
+        "name": "Ram's Wool",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "2x Frayed Compact Tabard, 2x Ram's Wool",
+    "outcomes": {
+      "superior": "Advantage on CON saves against extreme cold. Compact patrols take you for one of their own at a distance.",
+      "normal": "Advantage on CON saves against extreme cold.",
+      "flawed": "A warm cloak. No other effect."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "CULTISTS & DESERTERS — Vigil Recipes",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-bat-wing-glider-cloak",
+    "name": "Bat-Wing Glider Cloak",
+    "type": "Accessory",
+    "dc": 14,
+    "time": "4 hours",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Bat Wing Membrane",
+        "quantity": 4
+      },
+      {
+        "name": "Lean Sinew",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "4x Bat Wing Membrane, 2x Lean Sinew",
+    "outcomes": {
+      "superior": "When you fall, you can glide: you move 3 ft horizontally for every 1 ft you fall, and you take no falling damage.",
+      "normal": "When you fall, you can glide: you move 2 ft horizontally for every 1 ft you fall, and you take no falling damage.",
+      "flawed": "You take half damage from falling."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-field-repair-kit",
+    "name": "Field Repair Kit",
+    "type": "Utility",
+    "dc": 11,
+    "time": "1 hour",
+    "tool": "Tinker (INT)",
+    "materials": [
+      {
+        "name": "Iron Ingot",
+        "quantity": 1
+      },
+      {
+        "name": "Fish Glue",
+        "quantity": 1
+      },
+      {
+        "name": "Leather Cord",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Iron Ingot, 1x Fish Glue, 1x Leather Cord",
+    "outcomes": {
+      "superior": "4 uses. Each: during a short rest, repair one broken tool, or restore a damaged weapon or armour to full use.",
+      "normal": "3 uses. Each: during a short rest, repair one broken tool, or restore a damaged weapon or armour to full use.",
+      "flawed": "1 use. Repair one broken tool during a short rest."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "EXPEDITION GEAR — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear"
+  },
+  {
+    "id": "vigil-recipe-tallow-edge-oil",
+    "name": "Tallow Edge Oil",
+    "type": "Upgrade",
+    "dc": 12,
+    "time": "1 hour",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Rendered Tallow",
+        "quantity": 1
+      },
+      {
+        "name": "Whetstone Paste",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Rendered Tallow, 1x Whetstone Paste",
+    "outcomes": {
+      "superior": "3 applications. As a bonus action, coat a weapon: +1d4 damage for 1 minute.",
+      "normal": "3 applications. As a bonus action, coat a weapon: +1 damage for 1 minute.",
+      "flawed": "1 application. +1 damage for 1 minute."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "EXPEDITION GEAR — Basic Gear",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear"
+  },
+  {
+    "id": "vigil-recipe-annotated-patrol-map",
+    "name": "Annotated Patrol Map",
+    "type": "Utility",
+    "dc": 12,
+    "time": "2 hours",
+    "tool": "Tinker (INT)",
+    "materials": [
+      {
+        "name": "Ironwall Patrol Map",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "2x Ironwall Patrol Map",
+    "outcomes": {
+      "superior": "Your party can't become lost behind the Wall, travels at a fast pace without the Perception penalty, and knows where Compact patrols will be.",
+      "normal": "Your party can't become lost behind the Wall and knows where Compact patrols will be.",
+      "flawed": "Advantage on checks to navigate behind the Wall."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "CULTISTS & DESERTERS — Vigil Recipes",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-ironwall-signal-horn",
+    "name": "Ironwall Signal Horn",
+    "type": "Accessory",
+    "dc": 14,
+    "time": "2 hours",
+    "tool": "Tinker (INT)",
+    "materials": [
+      {
+        "name": "Compact Signal Horn",
+        "quantity": 1
+      },
+      {
+        "name": "Rimecopper Ingot",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Compact Signal Horn, 1x Rimecopper Ingot",
+    "outcomes": {
+      "superior": "Heard up to 3 miles away. Once per long rest, blow it as a bonus action: allies who hear it gain advantage on their next attack roll or saving throw.",
+      "normal": "Heard up to 3 miles away. Once per long rest, blow it as a bonus action: allies who hear it gain advantage on their next saving throw.",
+      "flawed": "Heard up to a mile away."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "CULTISTS & DESERTERS — Vigil Recipes",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-ridgepot",
+    "name": "Ridgepot",
+    "type": "Potion",
+    "dc": 10,
+    "time": "1 hour",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Raw Game Meat",
+        "quantity": 2
+      },
+      {
+        "name": "Bitterleaf",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Raw Game Meat, 1x Bitterleaf",
+    "outcomes": {
+      "superior": "6 servings of a thick meat-and-leaf pot. Each: 1d6+2 temporary HP and advantage on CON saves against cold for 8 hours.",
+      "normal": "4 servings. Each: 1d6 temporary HP and advantage on CON saves against cold for 8 hours.",
+      "flawed": "2 servings. Each: 1d4 temporary HP."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear"
+  },
+  {
+    "id": "vigil-recipe-streamfin-skewers",
+    "name": "Streamfin Skewers",
+    "type": "Potion",
+    "dc": 10,
+    "time": "30 min",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Streamfin",
+        "quantity": 3
+      }
+    ],
+    "materialsText": "3x Streamfin",
+    "outcomes": {
+      "superior": "4 servings. Each: +2 to Perception checks for 4 hours.",
+      "normal": "4 servings. Each: +1 to Perception checks for 4 hours.",
+      "flawed": "2 servings. Filling, nothing more."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear"
+  },
+  {
+    "id": "vigil-recipe-rimefin-broth",
+    "name": "Rimefin Broth",
+    "type": "Potion",
+    "dc": 11,
+    "time": "1 hour",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Rimefin",
+        "quantity": 2
+      },
+      {
+        "name": "Pale Thistle",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Rimefin, 1x Pale Thistle",
+    "outcomes": {
+      "superior": "4 servings. Each: resistance to cold damage for 4 hours.",
+      "normal": "4 servings. Each: resistance to cold damage for 1 hour.",
+      "flawed": "2 servings. Each: advantage on one save against cold."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear"
+  },
+  {
+    "id": "vigil-recipe-trail-cakes",
+    "name": "Trail Cakes",
+    "type": "Potion",
+    "dc": 10,
+    "time": "2 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Hollowreed Seed",
+        "quantity": 3
+      },
+      {
+        "name": "Rendered Tallow",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "3x Hollowreed Seed, 1x Rendered Tallow",
+    "outcomes": {
+      "superior": "12 days of trail food that never spoils.",
+      "normal": "10 days of trail food that never spoils.",
+      "flawed": "5 days of trail food. Spoils in a month."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear"
+  },
+  {
+    "id": "vigil-recipe-tarnback-fillets",
+    "name": "Tarnback Fillets",
+    "type": "Potion",
+    "dc": 13,
+    "time": "1 hour",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Tarnback",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Tarnback",
+    "outcomes": {
+      "superior": "4 servings. Each: you can hold your breath 10x as long and have a swim speed equal to your walking speed for 8 hours.",
+      "normal": "4 servings. Each: you can hold your breath 5x as long for 8 hours.",
+      "flawed": "2 servings. Each: hold your breath twice as long for 1 hour."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear"
+  },
+  {
+    "id": "vigil-recipe-heartfire-roast",
+    "name": "Heartfire Roast",
+    "type": "Potion",
+    "dc": 14,
+    "time": "2 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Tuskback Heart",
+        "quantity": 1
+      },
+      {
+        "name": "Raw Game Meat",
+        "quantity": 2
+      },
+      {
+        "name": "Emberleaf",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Tuskback Heart, 2x Raw Game Meat, 1x Emberleaf",
+    "outcomes": {
+      "superior": "4 servings. Each: 2d6 temporary HP and advantage on STR checks and saves for 1 hour.",
+      "normal": "4 servings. Each: 1d6 temporary HP and advantage on STR checks for 1 hour.",
+      "flawed": "2 servings. Each: 1d6 temporary HP."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear"
+  },
+  {
+    "id": "vigil-recipe-long-watch-feast",
+    "name": "Long-Watch Feast",
+    "type": "Potion",
+    "dc": 16,
+    "time": "4 hours",
+    "tool": "Cook's Utensils (WIS)",
+    "materials": [
+      {
+        "name": "Raw Game Meat",
+        "quantity": 4
+      },
+      {
+        "name": "Mountain Heart",
+        "quantity": 1
+      },
+      {
+        "name": "Cloudwasp Comb",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "4x Raw Game Meat, 1x Mountain Heart, 1x Cloudwasp Comb",
+    "outcomes": {
+      "superior": "Feeds 8. For 24 hours each diner gains 2d10 temporary HP, immunity to being frightened, and advantage on WIS saves.",
+      "normal": "Feeds 6. For 24 hours each diner gains 2d10 temporary HP and immunity to being frightened.",
+      "flawed": "Feeds 4. Each diner gains 1d10 temporary HP."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "COOKING — Basic Gear",
+    "section": "Epic Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear"
+  },
+  {
+    "id": "vigil-recipe-tusk-hook-fishing-rod",
+    "name": "Tusk-Hook Fishing Rod",
+    "type": "Utility",
+    "dc": 11,
+    "time": "2 hours",
+    "tool": "Woodcarver (DEX)",
+    "materials": [
+      {
+        "name": "Ashwood Haft",
+        "quantity": 1
+      },
+      {
+        "name": "Lean Sinew",
+        "quantity": 2
+      },
+      {
+        "name": "Boar Tusk",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Ashwood Haft, 2x Lean Sinew, 1x Boar Tusk",
+    "outcomes": {
+      "superior": "Fishing rod. In the fishing game the green zone is 30% wider.",
+      "normal": "Fishing rod. In the fishing game the green zone is 20% wider.",
+      "flawed": "Fishing rod. In the fishing game the green zone is 10% wider."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "GATHERING GEAR — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear"
+  },
+  {
+    "id": "vigil-recipe-serpent-line-rod",
+    "name": "Serpent-Line Rod",
+    "type": "Utility",
+    "dc": 16,
+    "time": "4 hours",
+    "tool": "Woodcarver (DEX)",
+    "materials": [
+      {
+        "name": "Stillwood Heartwood",
+        "quantity": 1
+      },
+      {
+        "name": "Tarn Serpent Fang",
+        "quantity": 1
+      },
+      {
+        "name": "Swift Tendon",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Stillwood Heartwood, 1x Tarn Serpent Fang, 1x Swift Tendon",
+    "outcomes": {
+      "superior": "Fishing rod. In the fishing game the green zone is 50% wider and fish pull 25% softer.",
+      "normal": "Fishing rod. In the fishing game the green zone is 40% wider and fish pull 15% softer.",
+      "flawed": "Fishing rod. In the fishing game the green zone is 30% wider."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "GATHERING GEAR — Basic Gear",
+    "section": "Epic Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear"
+  },
+  {
+    "id": "vigil-recipe-grub-bait",
+    "name": "Grub Bait",
+    "type": "Utility",
+    "dc": 10,
+    "time": "30 min",
+    "tool": "Herbalism Kit (WIS)",
+    "materials": [
+      {
+        "name": "Graveroot",
+        "quantity": 1
+      },
+      {
+        "name": "Bone Meal",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Graveroot, 1x Bone Meal",
+    "outcomes": {
+      "superior": "8 uses. Each fishing attempt uses one: +1 to the check and the bite window lasts 50% longer.",
+      "normal": "5 uses. Each fishing attempt uses one: +1 to the check and the bite window lasts 50% longer.",
+      "flawed": "2 uses. Each fishing attempt uses one: +1 to the check and the bite window lasts 50% longer."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "GATHERING GEAR — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear"
+  },
+  {
+    "id": "vigil-recipe-deeplight-lure",
+    "name": "Deeplight Lure",
+    "type": "Utility",
+    "dc": 14,
+    "time": "1 hour",
+    "tool": "Tinker (INT)",
+    "materials": [
+      {
+        "name": "Deeplight",
+        "quantity": 1
+      },
+      {
+        "name": "Fish Glue",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Deeplight, 1x Fish Glue",
+    "outcomes": {
+      "superior": "5 uses. Each fishing attempt uses one: +2 to the check, and a clean catch is upgraded a quality.",
+      "normal": "3 uses. Each fishing attempt uses one: +2 to the check, and a clean catch is upgraded a quality.",
+      "flawed": "1 use. +2 to the check, and a clean catch is upgraded a quality."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "GATHERING GEAR — Basic Gear",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear"
+  },
+  {
+    "id": "vigil-recipe-ram-horn-helm",
+    "name": "Ram-Horn Helm",
+    "type": "Armour",
+    "dc": 14,
+    "time": "4 hours",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Old Ram's Horns",
+        "quantity": 1
+      },
+      {
+        "name": "Iron Ingot",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Old Ram's Horns, 1x Iron Ingot",
+    "outcomes": {
+      "superior": "Helm. If you move at least 15 ft straight before shoving a creature, you have advantage and push it 10 ft further.",
+      "normal": "Helm. If you move at least 15 ft straight before shoving a creature, you have advantage.",
+      "flawed": "Helm. It is very heavy."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-silent-step-boots",
+    "name": "Silent-Step Boots",
+    "type": "Accessory",
+    "dc": 13,
+    "time": "2 hours",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Silent Paw Pad",
+        "quantity": 2
+      },
+      {
+        "name": "Supple Stag Leather",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Silent Paw Pad, 1x Supple Stag Leather",
+    "outcomes": {
+      "superior": "Advantage on Stealth checks that rely on moving quietly.",
+      "normal": "+2 to Stealth checks that rely on moving quietly.",
+      "flawed": "+1 to Stealth checks on stone."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-ghostfur-cloak",
+    "name": "Ghostfur Cloak",
+    "type": "Accessory",
+    "dc": 15,
+    "time": "4 hours",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Ghostfur Pelt",
+        "quantity": 1
+      },
+      {
+        "name": "Cured Winter Fur",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Ghostfur Pelt, 1x Cured Winter Fur",
+    "outcomes": {
+      "superior": "Advantage on Stealth in snow or fog, and resistance to cold damage.",
+      "normal": "Advantage on Stealth in snow, and advantage on saves against cold.",
+      "flawed": "Advantage on Stealth in snow."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-whisker-charm",
+    "name": "Whisker Charm",
+    "type": "Accessory",
+    "dc": 14,
+    "time": "2 hours",
+    "tool": "Jeweler (DEX)",
+    "materials": [
+      {
+        "name": "Hunter's Whisker",
+        "quantity": 2
+      },
+      {
+        "name": "Thornspine Silver Ingot",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Hunter's Whisker, 1x Thornspine Silver Ingot",
+    "outcomes": {
+      "superior": "+3 to initiative, and you can't be surprised while conscious.",
+      "normal": "+2 to initiative.",
+      "flawed": "+1 to initiative."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-snow-eye-lens",
+    "name": "Snow-Eye Lens",
+    "type": "Accessory",
+    "dc": 16,
+    "time": "4 hours",
+    "tool": "Jeweler (DEX)",
+    "materials": [
+      {
+        "name": "Snow Cat Eye",
+        "quantity": 1
+      },
+      {
+        "name": "Cut Emberquartz",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Snow Cat Eye, 1x Cut Emberquartz",
+    "outcomes": {
+      "superior": "Darkvision 60 ft, and snow, fog and blizzards don't obscure your vision within 60 ft.",
+      "normal": "Snow, fog and blizzards don't obscure your vision within 60 ft.",
+      "flawed": "Snow and fog don't obscure your vision within 30 ft."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Epic Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-bristleback-jerkin",
+    "name": "Bristleback Jerkin",
+    "type": "Armour",
+    "dc": 11,
+    "time": "3 hours",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Bristle Hide",
+        "quantity": 3
+      },
+      {
+        "name": "Leather Cord",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "3x Bristle Hide, 1x Leather Cord",
+    "outcomes": {
+      "superior": "Studded leather, AC 12 + DEX. A creature that grapples you takes 1d4 piercing at the start of each of its turns.",
+      "normal": "Studded leather, AC 12 + DEX. A creature that grapples you takes 1 piercing at the start of each of its turns.",
+      "flawed": "Leather armour, AC 11 + DEX."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-crow-eye-monocle",
+    "name": "Crow-Eye Monocle",
+    "type": "Accessory",
+    "dc": 13,
+    "time": "2 hours",
+    "tool": "Jeweler (DEX)",
+    "materials": [
+      {
+        "name": "Grave-Fed Crow Eye",
+        "quantity": 1
+      },
+      {
+        "name": "Rimecopper Ingot",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Grave-Fed Crow Eye, 1x Rimecopper Ingot",
+    "outcomes": {
+      "superior": "Advantage on Perception to spot undead within 120 ft, and you can tell a Directed Brainless from a free one at a glance.",
+      "normal": "Advantage on Perception to spot undead within 60 ft.",
+      "flawed": "The monocle twitches toward undead within 30 ft."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-crow-speaker-s-plume",
+    "name": "Crow-Speaker's Plume",
+    "type": "Accessory",
+    "dc": 14,
+    "time": "2 hours",
+    "tool": "Weaver (DEX)",
+    "materials": [
+      {
+        "name": "Murder-Black Plume",
+        "quantity": 1
+      },
+      {
+        "name": "Cloth",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Murder-Black Plume, 1x Cloth",
+    "outcomes": {
+      "superior": "You can speak with crows. Once per day, ask the local crows where the nearest undead are; they answer truthfully.",
+      "normal": "You can speak with crows. Once per day, ask the local crows one question; they answer as best a crow can.",
+      "flawed": "Crows stop bothering you."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-echo-whistle",
+    "name": "Echo Whistle",
+    "type": "Utility",
+    "dc": 12,
+    "time": "1 hour",
+    "tool": "Woodcarver (DEX)",
+    "materials": [
+      {
+        "name": "Echo Bone",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "2x Echo Bone",
+    "outcomes": {
+      "superior": "As an action, blow it to learn the shape of the space within 120 ft, including hidden passages open to the air.",
+      "normal": "As an action, blow it to learn the shape of the space within 60 ft.",
+      "flawed": "As an action, blow it to learn the shape of the space within 20 ft."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-night-ear-earring",
+    "name": "Night-Ear Earring",
+    "type": "Accessory",
+    "dc": 14,
+    "time": "2 hours",
+    "tool": "Jeweler (DEX)",
+    "materials": [
+      {
+        "name": "Night-Ear",
+        "quantity": 1
+      },
+      {
+        "name": "Thornspine Silver Ingot",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Night-Ear, 1x Thornspine Silver Ingot",
+    "outcomes": {
+      "superior": "Blindsight 15 ft.",
+      "normal": "Blindsight 10 ft.",
+      "flawed": "Advantage on hearing-based Perception checks."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-serpent-scale-armour",
+    "name": "Serpent-Scale Armour",
+    "type": "Armour",
+    "dc": 15,
+    "time": "8 hours",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Serpent Scale",
+        "quantity": 6
+      },
+      {
+        "name": "Leather Cord",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "6x Serpent Scale, 2x Leather Cord",
+    "outcomes": {
+      "superior": "Scale mail, AC 14 + DEX (max 2). No Stealth disadvantage, and you can swim in it without penalty.",
+      "normal": "Scale mail, AC 14 + DEX (max 2). No Stealth disadvantage.",
+      "flawed": "Scale mail, AC 14 + DEX (max 2). Disadvantage on Stealth."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-serpent-hide-cloak",
+    "name": "Serpent-Hide Cloak",
+    "type": "Accessory",
+    "dc": 16,
+    "time": "4 hours",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Serpent Hide",
+        "quantity": 1
+      },
+      {
+        "name": "Fish Glue",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Serpent Hide, 1x Fish Glue",
+    "outcomes": {
+      "superior": "You gain a swim speed equal to your walking speed, and you can hold your breath for 30 minutes.",
+      "normal": "You gain a swim speed equal to half your walking speed, and you can hold your breath for 15 minutes.",
+      "flawed": "Advantage on Athletics checks to swim."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Epic Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-deep-venom-poison",
+    "name": "Deep-Venom Poison",
+    "type": "Poison",
+    "dc": 16,
+    "time": "2 hours",
+    "tool": "Poisoner (INT)",
+    "materials": [
+      {
+        "name": "Venom Sac of the Deep",
+        "quantity": 1
+      },
+      {
+        "name": "Empty Infusion Base",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Venom Sac of the Deep, 1x Empty Infusion Base",
+    "outcomes": {
+      "superior": "3 doses. Coat a weapon: on a hit, DC 15 CON save or take 4d6 poison and have your speed halved for 1 minute (half damage on a save).",
+      "normal": "2 doses. Coat a weapon: on a hit, DC 14 CON save or take 3d6 poison and have your speed halved for 1 minute.",
+      "flawed": "1 dose. Coat a weapon: on a hit, DC 12 CON save or take 2d6 poison."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Epic Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-tarnheart-elixir",
+    "name": "Tarnheart Elixir",
+    "type": "Potion",
+    "dc": 18,
+    "time": "4 hours",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Tarn Serpent Heart",
+        "quantity": 1
+      },
+      {
+        "name": "Empty Infusion Base",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Tarn Serpent Heart, 1x Empty Infusion Base",
+    "outcomes": {
+      "superior": "For 24 hours: breathe water, swim speed 60 ft, resistance to cold. Once, when you drop below half HP, regain 4d8 HP.",
+      "normal": "For 8 hours: breathe water, swim speed 40 ft, resistance to cold.",
+      "flawed": "For 1 hour: breathe water."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Ascendant Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-deadhide-cloak",
+    "name": "Deadhide Cloak",
+    "type": "Accessory",
+    "dc": 14,
+    "time": "4 hours",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Breath-Matted Pelt",
+        "quantity": 2
+      },
+      {
+        "name": "Leather Cord",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Breath-Matted Pelt, 1x Leather Cord",
+    "outcomes": {
+      "superior": "Free Brainless ignore you unless you attack them. Directed Brainless have disadvantage on Perception checks to notice you.",
+      "normal": "Free Brainless have disadvantage on Perception checks to notice you.",
+      "flawed": "It reeks. Brainless notice you a little less."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "BRAINLESS BEASTS & THE BLOOM — Vigil Recipes",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-hollow-howl-lure",
+    "name": "Hollow Howl Lure",
+    "type": "Utility",
+    "dc": 14,
+    "time": "1 hour",
+    "tool": "Woodcarver (DEX)",
+    "materials": [
+      {
+        "name": "Hollow Howl",
+        "quantity": 1
+      },
+      {
+        "name": "Ashwood Haft",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Hollow Howl, 1x Ashwood Haft",
+    "outcomes": {
+      "superior": "Once per short rest, blow it: free Brainless within 300 ft spend their next turn moving toward a point you choose within 120 ft.",
+      "normal": "Once per long rest, blow it: free Brainless within 200 ft spend their next turn moving toward the sound.",
+      "flawed": "Once per long rest, blow it: Brainless within 60 ft turn toward the sound."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "BRAINLESS BEASTS & THE BLOOM — Vigil Recipes",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-deadweight-gauntlets",
+    "name": "Deadweight Gauntlets",
+    "type": "Armour",
+    "dc": 16,
+    "time": "4 hours",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Deadweight Paw",
+        "quantity": 1
+      },
+      {
+        "name": "Iron Ingot",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "1x Deadweight Paw, 2x Iron Ingot",
+    "outcomes": {
+      "superior": "Your unarmed strikes deal 1d10 bludgeoning, and you have advantage on checks to grapple.",
+      "normal": "Your unarmed strikes deal 1d8 bludgeoning.",
+      "flawed": "Your unarmed strikes deal 1d6 bludgeoning."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "BRAINLESS BEASTS & THE BLOOM — Vigil Recipes",
+    "section": "Epic Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-breath-burst-bomb",
+    "name": "Breath-Burst Bomb",
+    "type": "Throwable",
+    "dc": 16,
+    "time": "2 hours",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Breath-Burst Heart",
+        "quantity": 1
+      },
+      {
+        "name": "Pitch Binder",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Breath-Burst Heart, 1x Pitch Binder",
+    "outcomes": {
+      "superior": "Single use. Throw up to 60 ft: 20 ft burst. Living creatures make a DC 15 CON save or are poisoned for 1 minute. Directed Brainless in the burst lose their master's command for 1 minute.",
+      "normal": "Single use. Throw up to 60 ft: 15 ft burst. DC 14 CON save or poisoned for 1 minute. Directed Brainless lose their command for 1 round.",
+      "flawed": "Single use. 10 ft burst. DC 12 CON save or poisoned for 1 round."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "BRAINLESS BEASTS & THE BLOOM — Vigil Recipes",
+    "section": "Epic Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-knotbone-shield",
+    "name": "Knotbone Shield",
+    "type": "Armour",
+    "dc": 16,
+    "time": "4 hours",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Fused Bone Knot",
+        "quantity": 1
+      },
+      {
+        "name": "Iron Ingot",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Fused Bone Knot, 1x Iron Ingot",
+    "outcomes": {
+      "superior": "+1 shield (+3 AC total). Resistance to bludgeoning damage from undead.",
+      "normal": "+1 shield (+3 AC total).",
+      "flawed": "Shield, +2 AC."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "BRAINLESS BEASTS & THE BLOOM — Vigil Recipes",
+    "section": "Epic Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-bloom-ward-oil",
+    "name": "Bloom-Ward Oil",
+    "type": "Upgrade",
+    "dc": 16,
+    "time": "2 hours",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Bloom Ichor",
+        "quantity": 1
+      },
+      {
+        "name": "Fish Oil",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Bloom Ichor, 1x Fish Oil",
+    "outcomes": {
+      "superior": "5 applications. Coat a weapon for 1 hour: anything it kills can't be raised as undead by any means.",
+      "normal": "3 applications. Coat a weapon for 1 hour: anything it kills can't be raised for 7 days.",
+      "flawed": "1 application. Anything the weapon kills in the next hour can't be raised for 1 day."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "BRAINLESS BEASTS & THE BLOOM — Vigil Recipes",
+    "section": "Epic Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-unbloom-charge",
+    "name": "Unbloom Charge",
+    "type": "Throwable",
+    "dc": 19,
+    "time": "4 hours",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Bloom Seed",
+        "quantity": 1
+      },
+      {
+        "name": "Blast Powder",
+        "quantity": 2
+      },
+      {
+        "name": "Grave Salt",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "1x Bloom Seed, 2x Blast Powder, 2x Grave Salt",
+    "outcomes": {
+      "superior": "Single use. Set it and light it: every Brainless within 60 ft must succeed on a DC 17 CON save or collapse, destroyed, and no corpse within 60 ft can rise for 30 days.",
+      "normal": "Single use. Every Brainless within 30 ft must succeed on a DC 16 CON save or collapse, destroyed.",
+      "flawed": "Single use. Brainless within 15 ft take 4d10 radiant (DC 14 CON for half)."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "BRAINLESS BEASTS & THE BLOOM — Vigil Recipes",
+    "section": "Ascendant Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-ash-mark-paint",
+    "name": "Ash Mark Paint",
+    "type": "Utility",
+    "dc": 11,
+    "time": "30 min",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Ritual Ash",
+        "quantity": 3
+      }
+    ],
+    "materialsText": "3x Ritual Ash",
+    "outcomes": {
+      "superior": "Paint the Waking's mark on yourself. For 10 minutes, Directed Brainless treat you as an ally until you attack.",
+      "normal": "Paint the Waking's mark on yourself. For 1 minute, Directed Brainless treat you as an ally until you attack.",
+      "flawed": "Directed Brainless hesitate for one round before attacking you."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "CULTISTS & DESERTERS — Vigil Recipes",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-counter-prayer-charm",
+    "name": "Counter-Prayer Charm",
+    "type": "Accessory",
+    "dc": 12,
+    "time": "1 hour",
+    "tool": "Weaver (DEX)",
+    "materials": [
+      {
+        "name": "Breath-Prayer Strip",
+        "quantity": 2
+      },
+      {
+        "name": "Grave Salt",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Breath-Prayer Strip, 1x Grave Salt",
+    "outcomes": {
+      "superior": "Advantage on saves against being charmed or frightened by Ageless, and you know when one tries.",
+      "normal": "Advantage on saves against being charmed by Ageless.",
+      "flawed": "+1 to saves against being charmed by undead."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "CULTISTS & DESERTERS — Vigil Recipes",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-breath-proof-gloves",
+    "name": "Breath-Proof Gloves",
+    "type": "Accessory",
+    "dc": 14,
+    "time": "2 hours",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Exhale-Stained Gloves",
+        "quantity": 1
+      },
+      {
+        "name": "Supple Stag Leather",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Exhale-Stained Gloves, 1x Supple Stag Leather",
+    "outcomes": {
+      "superior": "You can handle corpses and Brainless safely, and you have resistance to necrotic damage from touch attacks.",
+      "normal": "You can handle corpses and Brainless safely, and you have advantage on saves against necrotic effects from touch.",
+      "flawed": "You can handle corpses safely."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "CULTISTS & DESERTERS — Vigil Recipes",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-waking-cipher-key",
+    "name": "Waking Cipher Key",
+    "type": "Utility",
+    "dc": 14,
+    "time": "2 hours",
+    "tool": "Tinker (INT)",
+    "materials": [
+      {
+        "name": "Coded Waking Letter",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "2x Coded Waking Letter",
+    "outcomes": {
+      "superior": "You can read Waking codes. The DM tells you one true detail of a current Waking plan.",
+      "normal": "You can read Waking codes.",
+      "flawed": "You can read about half of any Waking code."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "CULTISTS & DESERTERS — Vigil Recipes",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-turned-sigil-ring",
+    "name": "Turned Sigil Ring",
+    "type": "Accessory",
+    "dc": 17,
+    "time": "4 hours",
+    "tool": "Jeweler (DEX)",
+    "materials": [
+      {
+        "name": "Waking Sigil Ring",
+        "quantity": 1
+      },
+      {
+        "name": "Thornspine Silver Ingot",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Waking Sigil Ring, 1x Thornspine Silver Ingot",
+    "outcomes": {
+      "superior": "Once per long rest, Directed Brainless within 30 ft must succeed on a DC 15 WIS save or obey a one-word command from you.",
+      "normal": "Once per long rest, one Directed Brainless within 30 ft must succeed on a DC 14 WIS save or obey a one-word command from you.",
+      "flawed": "Directed Brainless that see the ring hesitate for a round."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "CULTISTS & DESERTERS — Vigil Recipes",
+    "section": "Epic Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
   }
 ]

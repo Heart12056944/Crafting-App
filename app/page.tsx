@@ -4,6 +4,8 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import {
+  Backpack,
+  Store,
   BookOpen,
   Boxes,
   ClipboardList,
@@ -52,6 +54,7 @@ import {
   fetchCampaignDisabledTags,
   setCampaignTagDisabled,
   replaceCampaignDisabledTags,
+  setCharacterClaim,
   type CampaignDiscoveryRow,
   type DiscoveryEntry,
 } from "@/lib/supabaseCampaignState";
@@ -75,6 +78,10 @@ import AttributeCardsPanel from "@/components/AttributeCardsPanel";
 import RewardsPanel from "@/components/RewardsPanel";
 import CompanionPanel from "@/components/CompanionPanel";
 import GatheringPanel, { type GatheredItem } from "@/components/GatheringPanel";
+import InventoryPanel, { type InventoryRecipe } from "@/components/InventoryPanel";
+import ShopPanel, { useCampaignShops } from "@/components/ShopPanel";
+import { addInventoryItem } from "@/lib/supabaseInventory";
+import { consumableInfo } from "@/data/consumables";
 import {
   cardStatBonuses,
   choiceKey,
@@ -118,13 +125,15 @@ type InventoryProfile = {
 
 type Stat = "STR" | "DEX" | "CON" | "INT" | "WIS" | "CHA";
 
-type TabId = "craft" | "available" | "recipes" | "materials" | "characters" | "advancement" | "attributes" | "companions" | "rewards" | "looting" | "gathering" | "craftingRules" | "lootingRules" | "admin";
+type TabId = "craft" | "available" | "recipes" | "materials" | "inventory" | "shops" | "characters" | "advancement" | "attributes" | "companions" | "rewards" | "looting" | "gathering" | "craftingRules" | "lootingRules" | "admin";
 
 const tabs = [
   ["craft", "Craft", Hammer],
   ["available", "Available", BookOpen],
   ["recipes", "All Recipes", ClipboardList],
   ["materials", "Materials", FlaskConical],
+  ["inventory", "Inventory", Backpack],
+  ["shops", "Shops", Store],
   ["characters", "Characters", UserRound],
   ["advancement", "PP Improvements", Wrench],
   ["attributes", "Attributes", BookOpen],
@@ -520,6 +529,22 @@ const RECIPE_TAG_FILTERS_STORAGE_KEY = "artisan-codex-recipe-tag-filters";
 const RECIPE_SORT_STORAGE_KEY = "artisan-codex-recipe-sort";
 const RECIPE_DISCOVERY_FILTER_STORAGE_KEY = "artisan-codex-recipe-discovery-filter";
 const STATS: Stat[] = ["STR", "DEX", "CON", "INT", "WIS", "CHA"];
+const DEVICE_ID_STORAGE_KEY = "artisan-codex-device-id";
+
+// A random id for this browser, kept in local storage. Character claims are
+// tied to it, which is what locks a claimed character to one computer.
+function readOrCreateDeviceId(): string {
+  try {
+    let id = window.localStorage.getItem(DEVICE_ID_STORAGE_KEY);
+    if (!id) {
+      id = crypto.randomUUID();
+      window.localStorage.setItem(DEVICE_ID_STORAGE_KEY, id);
+    }
+    return id;
+  } catch {
+    return crypto.randomUUID();
+  }
+}
 
 const TOOL_OPTIONS = [
   "Smith",
@@ -536,11 +561,12 @@ const TOOL_OPTIONS = [
   "Tattoo Artist Needles",
   "Herbalism Kit",
   "Brewer's Supplies",
+  "Cook's Utensils",
 ];
 
 // "Smith" -> "Smith's Tools", but kits and supplies keep their own name.
 function toolLabel(tool: string) {
-  return /kit|supplies|needles|rod|axe|pickaxe/i.test(tool) ? tool : `${tool}'s Tools`;
+  return /kit|supplies|needles|utensils|rod|axe|pickaxe/i.test(tool) ? tool : `${tool}'s Tools`;
 }
 
 const PROFICIENCY_BONUS: Record<ProficiencyLevel, number> = {
@@ -750,6 +776,7 @@ const SPECIALIZATIONS = [
   "Tattoo Artist Needles: Inkbinder, Runic Skinworker, Living Mark Specialist, Oceanic Tattooist.",
   "Herbalism Kit: Field Healer, Rootwise, Wildcrafter, Tonic Maker.",
   "Brewer's Supplies: Cellar Keeper, Spirit Distiller, Festival Brewer.",
+  "Cook's Utensils: Camp Cook, Trail Provisioner, Feastmaster.",
 ];
 
 const TOOL_IMPROVEMENT_OPTIONS: Record<string, string[]> = {
@@ -811,6 +838,11 @@ const TOOL_IMPROVEMENT_OPTIONS: Record<string, string[]> = {
     "Specialization: Cellar Keeper",
     "Specialization: Spirit Distiller",
     "Specialization: Festival Brewer",
+  ],
+  "Cook's Utensils": [
+    "Specialization: Camp Cook",
+    "Specialization: Trail Provisioner",
+    "Specialization: Feastmaster",
   ],
 };
 
@@ -1401,7 +1433,7 @@ export default function ArcaneCraftingCodexPage() {
   const [disabledTags, setDisabledTags] = useState<string[]>([]);
   const [importLog, setImportLog] = useState("");
 
-  const [selectedCharacterId, setSelectedCharacterId] = useState<string>(() => characters[0].id);
+  const [selectedCharacterChoice, setSelectedCharacterId] = useState<string>(() => characters[0].id);
   const [selectedRecipeId, setSelectedRecipeId] = useState<string>(() => recipes[0]?.id ?? "");
   const [rollMode, setRollMode] = useState<"normal" | "advantage">("normal");
   const [assistantBonus, setAssistantBonus] = useState<"none" | "plus2">("none");
@@ -1466,7 +1498,7 @@ export default function ArcaneCraftingCodexPage() {
   const [newLootCreatureTableId, setNewLootCreatureTableId] = useState(lootTables[0]?.id || "skeleton");
   const [newLootCreatureQty, setNewLootCreatureQty] = useState(1);
   const [activeCreatureQueueId, setActiveCreatureQueueId] = useState("");
-  const [lootCharacterId, setLootCharacterId] = useState<string>(() => characters[0].id);
+  const [lootCharacterChoice, setLootCharacterId] = useState<string>(() => characters[0].id);
   const [harvestStarted, setHarvestStarted] = useState(false);
   const [harvestAttemptsRemaining, setHarvestAttemptsRemaining] = useState(0);
   const [harvestDc, setHarvestDc] = useState(10);
@@ -1478,6 +1510,54 @@ export default function ArcaneCraftingCodexPage() {
   const [isLoadingCampaignData, setIsLoadingCampaignData] = useState(false);
   const skipSupabaseSaveRef = useRef(false);
   const realtimeRefreshTimerRef = useRef<number | null>(null);
+
+  // Players claim the character(s) they play. A claim is tied to this browser's
+  // device id and shared through Supabase, so a claimed character is locked to
+  // that computer until the player or the GM releases it. For players, Craft,
+  // Looting, Gathering and Inventory only offer their own claimed characters.
+  // Shops the GM has made for this campaign. Players only get the Shops tab while one is open.
+  const { shops: campaignShops } = useCampaignShops(activeInventoryId);
+  const anyShopOpen = campaignShops.some((shop) => shop.is_open);
+
+  const [deviceId, setDeviceId] = useState("");
+  const [characterClaims, setCharacterClaims] = useState<Record<string, string>>({}); // character id -> device id
+  const [claimMessage, setClaimMessage] = useState("");
+  const myCharacterIds = deviceId
+    ? characters.filter((character) => characterClaims[character.id] === deviceId).map((character) => character.id)
+    : [];
+  const lockToClaimed = !adminUnlocked && myCharacterIds.length > 0;
+  const ownCharacter = (choice: string) => (lockToClaimed && !myCharacterIds.includes(choice) ? myCharacterIds[0] : choice);
+  const selectedCharacterId = ownCharacter(selectedCharacterChoice);
+  const lootCharacterId = ownCharacter(lootCharacterChoice);
+
+  function claimCharacter(characterId: string) {
+    if (!activeInventoryId || !deviceId || !characterId) return;
+    const holder = characterClaims[characterId];
+    if (holder && holder !== deviceId) {
+      setClaimMessage("That character is already claimed on another device. Ask the GM to release it.");
+      return;
+    }
+    setClaimMessage("");
+    setCharacterClaims((current) => ({ ...current, [characterId]: deviceId }));
+    setCharacterClaim(activeInventoryId, characterId, deviceId).catch((error) => {
+      console.warn("Failed to save character claim.", error);
+      setClaimMessage("Could not save your claim. Check your connection and try again.");
+    });
+  }
+
+  function releaseCharacter(characterId: string) {
+    if (!activeInventoryId) return;
+    if (!adminUnlocked && characterClaims[characterId] !== deviceId) return;
+    setCharacterClaims((current) => {
+      const next = { ...current };
+      delete next[characterId];
+      return next;
+    });
+    setCharacterClaim(activeInventoryId, characterId, null).catch((error) => {
+      console.warn("Failed to release character claim.", error);
+      setClaimMessage("Could not release that claim. Try again.");
+    });
+  }
   const shouldSaveMaterialsRef = useRef(false);
   const shouldSaveCharactersRef = useRef(false);
   // Latest values for realtime callbacks, which would otherwise see stale state.
@@ -1654,6 +1734,7 @@ export default function ArcaneCraftingCodexPage() {
         setDisabledTags([]);
         setSelectedCharacterId(fallbackCharacter.id);
       } finally {
+        setDeviceId(readOrCreateDeviceId());
         setMaterialsLoaded(true);
       }
     }
@@ -1945,8 +2026,10 @@ export default function ArcaneCraftingCodexPage() {
       const discoveredRecipes: string[] = [];
       const hiddenRecipes: string[] = [];
       const openSpots: string[] = [];
+      const claims: Record<string, string> = {};
 
       rows.forEach((row) => {
+        if (row.kind === "character-claim" && row.state) claims[row.item_key] = row.state;
         if (row.kind === "gathering-spot" && row.state === "discovered") openSpots.push(row.item_key);
         if (row.kind === "material" && row.state === "discovered") discoveredMaterials.push(row.item_key);
         if (row.kind === "recipe" && row.state === "discovered") discoveredRecipes.push(row.item_key);
@@ -1957,6 +2040,7 @@ export default function ArcaneCraftingCodexPage() {
       setManuallyDiscoveredRecipeIds(discoveredRecipes);
       setManuallyHiddenRecipeIds(hiddenRecipes);
       setEnabledGatheringSpotIds(openSpots);
+      setCharacterClaims(claims);
     }
 
     async function loadSharedVisibility(allowMigration: boolean) {
@@ -2154,6 +2238,20 @@ export default function ArcaneCraftingCodexPage() {
   const derivedInfoById = useMemo(
     () => new Map(derivedCharacters.map((entry) => [entry.character.id, entry.info])),
     [derivedCharacters]
+  );
+
+  const inventoryRecipes: InventoryRecipe[] = useMemo(
+    () =>
+      recipes.map((recipe) => ({
+        id: recipe.id,
+        name: recipe.name,
+        category: recipe.category,
+        tags: recipe.tags,
+        rarity: getRarityFromTags(recipe),
+        description: recipe.description,
+        normalOutcome: getOutcome(recipe, "Normal")?.description,
+      })),
+    [recipes]
   );
 
   const selectedRecipe = recipes.find((recipe) => recipe.id === selectedRecipeId) || recipes[0];
@@ -3318,6 +3416,22 @@ export default function ArcaneCraftingCodexPage() {
         naturalRoll: 0,
       };
       setCraftedItems((current) => [lootedItem, ...current]);
+
+      if (activeInventoryId) {
+        addInventoryItem({
+          campaignId: activeInventoryId,
+          characterId: character?.id || null,
+          name: entry.name,
+          kind: entry.kind || "item",
+          rarity: lootedItem.rarity,
+          quality: "Normal",
+          source: "Looted",
+          description: `Looted from ${table.label}.`,
+          metadata: { consumable: false },
+        }).catch((error) => {
+          console.warn("Failed to add looted item to the inventory.", error);
+        });
+      }
     }
   }
 
@@ -3343,6 +3457,46 @@ export default function ArcaneCraftingCodexPage() {
           : character
       )
     );
+  }
+
+  // Bought and salvaged materials go into the party's shared pool.
+  function addMaterialsToPool(items: { name: string; qty: number }[]) {
+    const incoming = items.filter((item) => item.qty > 0);
+    if (incoming.length === 0) return;
+    markMaterialsForSupabaseSave();
+    setMaterials((current) =>
+      upsertMaterialList(
+        current,
+        incoming.map((item) => ({ id: crypto.randomUUID(), name: item.name, qty: item.qty, tier: getMaterialTier(item.name) }))
+      )
+    );
+    markMaterialsDiscovered(incoming.map((item) => item.name));
+  }
+
+  // Sold materials leave the pool. Refuses (changing nothing) if there aren't enough.
+  function removeMaterialsFromPool(items: { name: string; qty: number }[]) {
+    const enough = items.every((item) => {
+      const have = materials.find((material) => normalizeName(material.name) === normalizeName(item.name))?.qty ?? 0;
+      return have >= item.qty;
+    });
+    if (!enough) return false;
+    markMaterialsForSupabaseSave();
+    setMaterials((current) =>
+      current.map((material) => {
+        const taken = items.find((item) => normalizeName(item.name) === normalizeName(material.name));
+        return taken ? { ...material, qty: Math.max(0, material.qty - taken.qty) } : material;
+      })
+    );
+    return true;
+  }
+
+  // Salvage check bonus: ability modifier + tool proficiency, as for crafting.
+  function salvageCheckBonus(characterId: string, tool: string, stat: string) {
+    const character = effectiveCharacters.find((item) => item.id === characterId);
+    if (!character) return 0;
+    const level: ProficiencyLevel =
+      character.tools?.[tool] || (character.toolProgress?.[tool]?.proficient ? "proficient" : "none");
+    return (character.stats?.[stat as Stat] || 0) + (PROFICIENCY_BONUS[level] || 0);
   }
 
   function addGatheredMaterials(characterId: string, spot: GatheringSpot, items: GatheredItem[]) {
@@ -3748,7 +3902,7 @@ export default function ArcaneCraftingCodexPage() {
         try {
           const savedItem = await insertCraftedItem({
             campaignId: activeInventoryId,
-            characterId: null,
+            characterId: selectedCharacter.id,
             recipeId: recipe.id,
             name: craftedItem.name,
             rarity: craftedItem.rarity,
@@ -3769,6 +3923,31 @@ export default function ArcaneCraftingCodexPage() {
           console.warn("Failed to save crafted item to Supabase.", error);
           setImportLog("Warning: crafted item saved locally, but Supabase crafted item sync failed. Check the browser console for the Supabase error details.");
         }
+
+        // The finished item goes into the crafter's inventory, with uses read from the outcome.
+        const outcomeText = outcome?.description || recipe.description;
+        const uses = consumableInfo(recipe, outcomeText);
+        addInventoryItem({
+          campaignId: activeInventoryId,
+          characterId: selectedCharacter.id,
+          name: craftedItem.name,
+          kind: recipe.category,
+          rarity: craftedItem.rarity,
+          quality: craftedItem.quality,
+          source: "Crafted",
+          description: outcomeText,
+          effect: [
+            ...(craftedItem.effect || []),
+            ...(craftedItem.phaseTouchedEffect
+              ? [`${craftedItem.phaseTouchedEffect.name}: ${craftedItem.phaseTouchedEffect.effect.join(" ")}`]
+              : []),
+          ],
+          statBlock: craftedItem.statBlock || null,
+          metadata: { consumable: uses.consumable, usesPerItem: uses.usesPerItem, recipeId: recipe.id, crafter: selectedCharacter.name },
+        }).catch((error) => {
+          console.warn("Failed to add crafted item to the inventory.", error);
+          setImportLog("Warning: item crafted, but it could not be added to the inventory.");
+        });
       }
     }
 
@@ -3850,7 +4029,7 @@ export default function ArcaneCraftingCodexPage() {
         </header>
 
         <nav className="flex flex-wrap gap-3">
-          {tabs.map(([id, label, Icon]) => (
+          {tabs.filter(([id]) => id !== "shops" || adminUnlocked || anyShopOpen).map(([id, label, Icon]) => (
             <Button
               key={id}
               onClick={() => setActiveTab(id)}
@@ -3865,6 +4044,16 @@ export default function ArcaneCraftingCodexPage() {
             </Button>
           ))}
         </nav>
+
+        <CharacterClaimBar
+          characters={effectiveCharacters.filter((character) => adminUnlocked || character.isActive !== false)}
+          claims={characterClaims}
+          deviceId={deviceId}
+          adminUnlocked={adminUnlocked}
+          message={claimMessage}
+          onClaim={claimCharacter}
+          onRelease={releaseCharacter}
+        />
 
         {(activeTab === "available" || activeTab === "recipes") && (
           <RecipeFilters
@@ -3888,7 +4077,7 @@ export default function ArcaneCraftingCodexPage() {
         {activeTab === "craft" && (
           <div className="grid grid-cols-1 xl:grid-cols-[1.2fr_0.8fr] gap-7">
             <CraftPanel
-              characters={effectiveCharacters}
+              characters={lockToClaimed ? effectiveCharacters.filter((character) => myCharacterIds.includes(character.id)) : effectiveCharacters}
               recipes={recipes}
               materialMap={materialMap}
               selectedCharacterId={selectedCharacterId}
@@ -3907,6 +4096,7 @@ export default function ArcaneCraftingCodexPage() {
               phaseTouchedMaterial={phaseTouchedMaterial}
               setPhaseTouchedMaterial={setPhaseTouchedMaterial}
               characterAttributeAssignments={characterAttributeAssignments}
+              lockCharacter={lockToClaimed && myCharacterIds.length === 1}
             />
             <CraftedItemList items={craftedItems} setItems={setCraftedItems} />
           </div>
@@ -3941,6 +4131,30 @@ export default function ArcaneCraftingCodexPage() {
             setPage={setAllRecipePage}
             adminUnlocked={adminUnlocked}
             markRecipeDiscovered={markRecipeDiscovered}
+          />
+        )}
+
+        {activeTab === "inventory" && (
+          <InventoryPanel
+            campaignId={activeInventoryId}
+            characters={characters}
+            adminUnlocked={adminUnlocked}
+            claimedCharacterIds={myCharacterIds}
+            recipes={inventoryRecipes}
+            onAddMaterials={addMaterialsToPool}
+            salvageBonus={salvageCheckBonus}
+          />
+        )}
+
+        {activeTab === "shops" && (
+          <ShopPanel
+            campaignId={activeInventoryId}
+            characters={effectiveCharacters}
+            adminUnlocked={adminUnlocked}
+            claimedCharacterIds={myCharacterIds}
+            materials={materials}
+            onAddMaterials={addMaterialsToPool}
+            onRemoveMaterials={removeMaterialsFromPool}
           />
         )}
 
@@ -4031,9 +4245,10 @@ export default function ArcaneCraftingCodexPage() {
             setNewLootCreatureQty={setNewLootCreatureQty}
             addCreatureToLootQueue={addCreatureToLootQueue}
             removeCreatureFromLootQueue={removeCreatureFromLootQueue}
-            characters={effectiveCharacters}
+            characters={lockToClaimed ? effectiveCharacters.filter((character) => myCharacterIds.includes(character.id)) : effectiveCharacters}
             lootCharacterId={lootCharacterId}
             setLootCharacterId={setLootCharacterId}
+            lockHarvester={lockToClaimed && myCharacterIds.length === 1}
             harvestStarted={harvestStarted}
             harvestAttemptsRemaining={harvestAttemptsRemaining}
             harvestDc={harvestDc}
@@ -4063,6 +4278,8 @@ export default function ArcaneCraftingCodexPage() {
             updateCharacterToolOwned={updateCharacterToolOwned}
             updateCharacterTool={updateCharacterTool}
             characterAttributes={characterAttributeAssignments}
+            allowedCharacterIds={lockToClaimed ? myCharacterIds : []}
+            campaignId={activeInventoryId}
           />
         )}
 
@@ -4281,6 +4498,7 @@ function CraftPanel(props: {
   phaseTouchedMaterial: string;
   setPhaseTouchedMaterial: (value: string) => void;
   characterAttributeAssignments: CharacterAttributeAssignmentRow[];
+  lockCharacter?: boolean;
 }) {
   const selectedRecipe =
     props.recipes.find((recipe) => recipe.id === props.selectedRecipeId) || props.recipes[0];
@@ -4330,7 +4548,7 @@ function CraftPanel(props: {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <FantasySelect value={props.selectedCharacterId} onValueChange={props.setSelectedCharacterId}>
+          <FantasySelect value={props.selectedCharacterId} onValueChange={props.setSelectedCharacterId} disabled={props.lockCharacter}>
             {props.characters.map((character) => (
               <SelectItem key={character.id} value={character.id}>
                 {character.name}
@@ -5048,6 +5266,75 @@ function MaterialsPanel({
   );
 }
 
+function CharacterClaimBar({
+  characters,
+  claims,
+  deviceId,
+  adminUnlocked,
+  message,
+  onClaim,
+  onRelease,
+}: {
+  characters: Character[];
+  claims: Record<string, string>;
+  deviceId: string;
+  adminUnlocked: boolean;
+  message: string;
+  onClaim: (characterId: string) => void;
+  onRelease: (characterId: string) => void;
+}) {
+  const mine = characters.filter((character) => deviceId && claims[character.id] === deviceId);
+  const claimable = characters.filter((character) => claims[character.id] !== deviceId || !deviceId);
+
+  return (
+    <div className="space-y-2 rounded-xl border border-[#9a7b45] bg-[#ead6ad] px-4 py-3 font-serif text-[#251b10]">
+      {adminUnlocked ? (
+        <div className="flex flex-wrap items-center gap-2 text-sm">
+          <strong>Character claims:</strong>
+          {characters.map((character) => (
+            <span key={character.id} className="flex items-center gap-1 rounded-full border border-[#9a7b45] bg-[#fff0c7] px-3 py-0.5">
+              {character.name}: {claims[character.id] ? (claims[character.id] === deviceId ? "this computer" : `claimed (device ${claims[character.id].slice(0, 4)})`) : "unclaimed"}
+              {claims[character.id] && (
+                <button className="ml-1 text-xs font-bold text-[#8b1a1a] underline" onClick={() => onRelease(character.id)}>
+                  release
+                </button>
+              )}
+            </span>
+          ))}
+        </div>
+      ) : (
+        <div className="flex flex-wrap items-center gap-2">
+          <strong>Your characters:</strong>
+          {mine.length === 0 && <span className="text-sm italic">none yet</span>}
+          {mine.map((character) => (
+            <span key={character.id} className="flex items-center gap-1 rounded-full border border-[#4b3115] bg-[#4b3115] px-3 py-0.5 text-sm text-[#fff0c7]">
+              {character.name}
+              <button className="ml-1 text-xs underline" onClick={() => onRelease(character.id)} aria-label={`Release ${character.name}`}>
+                release
+              </button>
+            </span>
+          ))}
+          <select
+            value=""
+            onChange={(event) => onClaim(event.target.value)}
+            className="rounded border border-[#9a7b45] bg-[#fff0c7] px-2 py-1 text-sm"
+            aria-label="Claim a character"
+          >
+            <option value="">Claim a character...</option>
+            {claimable.map((character) => (
+              <option key={character.id} value={character.id} disabled={Boolean(claims[character.id])}>
+                {character.name}{claims[character.id] ? " (claimed on another device)" : ""}
+              </option>
+            ))}
+          </select>
+          <span className="text-xs">Claimed characters are locked to this computer. Crafting, looting, gathering and inventory use them.</span>
+        </div>
+      )}
+      {message && <p className="text-sm font-bold text-[#7a3f00]">{message}</p>}
+    </div>
+  );
+}
+
 function formatModifier(value: number) {
   return `${value >= 0 ? "+" : ""}${value}`;
 }
@@ -5624,6 +5911,7 @@ function LootingPanel({
   removeCreatureFromLootQueue,
   characters,
   lootCharacterId,
+  lockHarvester,
   setLootCharacterId,
   harvestStarted,
   harvestAttemptsRemaining,
@@ -5666,6 +5954,7 @@ function LootingPanel({
   removeCreatureFromLootQueue: (entryId: string) => void;
   characters: Character[];
   lootCharacterId: string;
+  lockHarvester?: boolean;
   setLootCharacterId: (id: string) => void;
   harvestStarted: boolean;
   harvestAttemptsRemaining: number;
@@ -5818,7 +6107,7 @@ function LootingPanel({
 
           <label className="space-y-1 block">
             <strong>Harvester</strong>
-            <FantasySelect value={lootCharacterId} onValueChange={setLootCharacterId} disabled={harvestStarted}>
+            <FantasySelect value={lootCharacterId} onValueChange={setLootCharacterId} disabled={harvestStarted || lockHarvester}>
               {characters.filter((character) => adminUnlocked || character.isActive !== false).map((character) => (
                 <SelectItem key={character.id} value={character.id}>
                   {character.name} (Harvesting +{character.harvesting ?? 0})
