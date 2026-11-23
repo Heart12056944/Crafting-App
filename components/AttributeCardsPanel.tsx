@@ -214,7 +214,11 @@ function Card({
         ))}
       </div>
 
-      {!compact && <p className="text-sm leading-relaxed text-[#c8b888]">{card.desc}</p>}
+      {/* Compact cards (Character Cards view) show the effect too, a little smaller,
+          with bottom room so the GM's Remove button doesn't cover the text. */}
+      <p className={compact ? "whitespace-pre-line pb-8 text-xs leading-snug text-[#c8b888]" : "whitespace-pre-line text-sm leading-relaxed text-[#c8b888]"}>
+        {card.desc}
+      </p>
       {hidden && <p className="mt-2 text-xs font-bold uppercase tracking-wide text-[#e09050]">Hidden from players</p>}
     </div>
   );
