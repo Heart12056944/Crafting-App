@@ -7,6 +7,7 @@ export type Rarity =
   | "rare"
   | "epic"
   | "ascendant"
+  | "forgeborn"
   | "legendary"
   | "artifact";
 
@@ -51,6 +52,8 @@ export type Recipe = {
   stat: "STR" | "DEX" | "CON" | "INT" | "WIS" | "CHA";
   materials: RecipeMaterial[];
   outcomes: RecipeOutcome[];
+  // Region id where this can be crafted. Anywhere when missing.
+  location?: string;
 };
 
 type BlackspireRecipe = {
@@ -73,6 +76,8 @@ type BlackspireRecipe = {
   section?: string;
   // Recipe set, e.g. "blackspire" or "undying-vigil". Becomes a tag the GM can hide per campaign.
   set?: string;
+  // Region id where this recipe can be crafted (e.g. "still-burning-forge"). Anywhere when missing.
+  location?: string;
 };
 
 type BlackspireRefinement = {
@@ -103,6 +108,7 @@ export const rarityColors: Record<Rarity, string> = {
   rare: "#1c7ed6",
   epic: "#9c36b5",
   ascendant: "#43c7d8",
+  forgeborn: "#e8590c",
   legendary: "#d6a21f",
   artifact: "#c92a2a",
 };
@@ -233,6 +239,7 @@ const craftingRecipes: Recipe[] = rawRecipes.map((recipe) => ({
     ...(material.tag ? { tagRequirement: material.tag } : {}),
   })),
   outcomes: recipeOutcomes(recipe.outcomes),
+  ...(recipe.location ? { location: recipe.location } : {}),
 }));
 
 const refinementRecipes: Recipe[] = rawRefinements

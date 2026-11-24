@@ -153,6 +153,7 @@ const RARITY_VALUE_CP: Record<string, number> = {
   rare: 50000,
   epic: 250000,
   ascendant: 500000,
+  forgeborn: 750000,
   legendary: 1000000,
 };
 

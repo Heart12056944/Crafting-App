@@ -871,6 +871,9 @@ export default function GatheringPanel(props: {
   characters: GatheringCharacter[];
   adminUnlocked: boolean;
   enabledSpotIds: string[];
+  // The party's current region: players only see its spots. Null = no region set.
+  regionSpotIds?: string[] | null;
+  regionName?: string;
   disabledTags: string[];
   onToggleSpot: (spotId: string, enabled: boolean) => void;
   onSpendAttempt: (characterId: string) => void;
@@ -925,7 +928,10 @@ export default function GatheringPanel(props: {
   }, [props.campaignId, inventoryVersion]);
 
   const spotsInSet = gatheringSpots.filter((spot) => !spot.set || !props.disabledTags.includes(spot.set));
-  const availableSpots = props.adminUnlocked ? spotsInSet : spotsInSet.filter((spot) => props.enabledSpotIds.includes(spot.id));
+  const inRegion = (id: string) => !props.regionSpotIds || props.regionSpotIds.includes(id);
+  const availableSpots = props.adminUnlocked
+    ? [...spotsInSet].sort((a, b) => Number(inRegion(b.id)) - Number(inRegion(a.id)))
+    : spotsInSet.filter((spot) => props.enabledSpotIds.includes(spot.id) && inRegion(spot.id));
   const character = visibleCharacters.find((item) => item.id === characterId) || visibleCharacters[0];
   const spot = availableSpots.find((item) => item.id === spotId);
   const activity = spot ? gatheringActivities[spot.activity] : null;
@@ -1059,7 +1065,13 @@ export default function GatheringPanel(props: {
           <div className="space-y-2">
             <strong>Gathering Spots</strong>
             {availableSpots.length === 0 && (
-              <p className={box}>{props.adminUnlocked ? "No spots in visible recipe sets." : "Your GM hasn't opened any gathering spots yet."}</p>
+              <p className={box}>
+                {props.adminUnlocked
+                  ? "No spots in visible recipe sets."
+                  : props.regionName
+                    ? `Nothing to gather at ${props.regionName}.`
+                    : "Your GM hasn't opened any gathering spots yet."}
+              </p>
             )}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
               {availableSpots.map((item) => {
@@ -1081,6 +1093,9 @@ export default function GatheringPanel(props: {
                         {gatheringActivities[item.activity].label} · {gatheringTierLabels[item.tier]} · DC {item.dc}
                       </span>
                       <span className="block text-xs italic mt-1">{item.description}</span>
+                      {props.adminUnlocked && props.regionSpotIds ? (
+                        <span className="block text-xs font-bold mt-1">{inRegion(item.id) ? `Here (${props.regionName})` : "Not in the party's region"}</span>
+                      ) : null}
                     </button>
                     {props.adminUnlocked && (
                       <label className="flex items-center gap-2 text-xs font-bold">

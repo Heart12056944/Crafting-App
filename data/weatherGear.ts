@@ -7,14 +7,15 @@ export type Exposure = "cold" | "wet" | "heat";
 
 // Worn clothing/gear in a character's own pack.
 export const PERSONAL_GEAR: Record<Exposure, string[]> = {
-  cold: ["Winter Coat", "Cured Wolf-Leather Jerkin", "Winter-Fur Cloak", "Direwolf Cloak", "Sabretooth Mantle"],
+  cold: ["Winter Coat", "Cured Wolf-Leather Jerkin", "Winter-Fur Cloak", "Direwolf Cloak", "Sabretooth Mantle", "Blackstone Warming Stone", "Blackstone Plate"],
   wet: ["Oilskin Cloak"],
-  heat: ["Summer Linens"],
+  heat: ["Summer Linens", "Mist-Lined Cloak"],
 };
 
 // Camp gear protects everyone, wherever it's carried (or in the party stash).
 export const CAMP_GEAR: Partial<Record<Exposure, string[]>> = {
   wet: ["Waxed Tarp", "Hide Tent"],
+  cold: ["Blackstone Hearth Brick", "Forgeheart Brazier"],
 };
 
 // Extras: mittens stop frostbite, a waterskin covers heat-wave water.

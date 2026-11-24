@@ -11667,5 +11667,627 @@
         "weight": 100
       }
     ]
+  },
+  {
+    "id": "material-blackstone-chips",
+    "name": "Blackstone Chips",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "gathering",
+      "mining",
+      "blackstone"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Flakes of the Vigil's black rock. Faintly warm, and heavier than they look."
+  },
+  {
+    "id": "material-vigil-blackstone",
+    "name": "Vigil Blackstone",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Advanced Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "gathering",
+      "mining",
+      "blackstone"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A block of the black stone the Undying Ember is carved from. Warm to the touch, and nearly impossible to cut."
+  },
+  {
+    "id": "material-warm-blackstone-core",
+    "name": "Warm Blackstone Core",
+    "tier": 4,
+    "tierLabel": "Tier 4 – High-End Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4",
+      "gathering",
+      "mining",
+      "blackstone"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A smooth, dense core from the deepest seam. It is always the temperature of skin."
+  },
+  {
+    "id": "material-mistmoss",
+    "name": "Mistmoss",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "gathering",
+      "foraging",
+      "mistmoss"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Pale, dripping moss that only grows in constant spray."
+  },
+  {
+    "id": "material-silvered-mistmoss",
+    "name": "Silvered Mistmoss",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "gathering",
+      "foraging",
+      "mistmoss"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Mistmoss grown so long in the spray that it has a silver sheen. Clears sickness from the lungs."
+  },
+  {
+    "id": "material-spraybow-moss",
+    "name": "Spraybow Moss",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Advanced Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "gathering",
+      "foraging",
+      "mistmoss"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A rare clump that holds a tiny rainbow in its droplets even in shade."
+  },
+  {
+    "id": "material-cloud-lichen",
+    "name": "Cloud Lichen",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "gathering",
+      "foraging",
+      "lichen"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Grey-green lichen from ledges that spend most days inside cloud."
+  },
+  {
+    "id": "material-frost-rimed-lichen",
+    "name": "Frost-Rimed Lichen",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "gathering",
+      "foraging",
+      "lichen"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Lichen grown under a permanent rime of ice. Draws the cold out of flesh."
+  },
+  {
+    "id": "material-skyheart-lichen",
+    "name": "Skyheart Lichen",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Advanced Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "gathering",
+      "foraging",
+      "lichen"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A pale-blue lichen from the very edge of the Spine. Drying it, people swear it gets lighter."
+  },
+  {
+    "id": "material-burrow-resin",
+    "name": "Burrow Resin",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "gathering",
+      "foraging",
+      "resin"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Hard, tacky resin scraped from the canyon burrows. Something lined them with it."
+  },
+  {
+    "id": "material-amber-burrow-resin",
+    "name": "Amber Burrow Resin",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "gathering",
+      "foraging",
+      "resin"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Older resin, cured to clear amber. Seals anything airtight."
+  },
+  {
+    "id": "material-burrowglass",
+    "name": "Burrowglass",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Advanced Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "gathering",
+      "foraging",
+      "resin"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Resin so old it has turned to black glass. It holds an edge better than steel."
+  },
+  {
+    "id": "material-shrinestone-rubble",
+    "name": "Shrinestone Rubble",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "gathering",
+      "mining",
+      "shrinestone"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Broken stone from a dead god's temple. The dead don't like to step on it."
+  },
+  {
+    "id": "material-shrinestone",
+    "name": "Shrinestone",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "gathering",
+      "mining",
+      "shrinestone"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A carved block from the temple walls. Whatever blessing it held is faint, but not gone."
+  },
+  {
+    "id": "material-altar-heartstone",
+    "name": "Altar Heartstone",
+    "tier": 4,
+    "tierLabel": "Tier 4 – High-End Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4",
+      "gathering",
+      "mining",
+      "shrinestone"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "The core of the shattered altar. It still feels like being watched by something kind."
+  },
+  {
+    "id": "material-rusted-war-iron",
+    "name": "Rusted War-Iron",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "gathering",
+      "mining",
+      "war-iron"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Rust-crusted plates and blades from the stronghold's armoury. Good iron under the rust."
+  },
+  {
+    "id": "material-orcish-war-iron",
+    "name": "Orcish War-Iron",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "gathering",
+      "mining",
+      "war-iron"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Heavy, dark iron the orcs forged thick. It takes a beating and keeps its edge."
+  },
+  {
+    "id": "material-warchief-s-iron",
+    "name": "Warchief's Iron",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Advanced Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "gathering",
+      "mining",
+      "war-iron"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Iron from a warchief's own arms, worked with bone and old blood. It feels eager."
+  },
+  {
+    "id": "material-forge-cinder",
+    "name": "Forge Cinder",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "gathering",
+      "mining",
+      "forge"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Ash from the Forge floor that never cools. Holds heat for days in a tin."
+  },
+  {
+    "id": "material-living-cinder",
+    "name": "Living Cinder",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Advanced Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "gathering",
+      "mining",
+      "forge"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A cinder that glows, dims and glows again, like breathing."
+  },
+  {
+    "id": "material-lantern-crystal-shard",
+    "name": "Lantern Crystal Shard",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "gathering",
+      "mining",
+      "lantern-crystal"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A chip of the blue crystal that lights the tunnels. It never stops glowing."
+  },
+  {
+    "id": "material-lantern-crystal",
+    "name": "Lantern Crystal",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "gathering",
+      "mining",
+      "lantern-crystal"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A whole blue crystal, bright enough to read by."
+  },
+  {
+    "id": "material-heartlight-crystal",
+    "name": "Heartlight Crystal",
+    "tier": 4,
+    "tierLabel": "Tier 4 – High-End Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4",
+      "gathering",
+      "mining",
+      "lantern-crystal"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A crystal with a white-gold heart. Its light feels like morning."
+  },
+  {
+    "id": "material-rune-etched-slag",
+    "name": "Rune-Etched Slag",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Advanced Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "gathering",
+      "mining",
+      "forge"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Slag from the Forge with dwarven runes still legible in it. The runes survived the melt."
+  },
+  {
+    "id": "material-unfinished-dwarven-ingot",
+    "name": "Unfinished Dwarven Ingot",
+    "tier": 4,
+    "tierLabel": "Tier 4 – High-End Materials",
+    "rarity": "epic",
+    "tags": [
+      "tier-4",
+      "gathering",
+      "mining",
+      "forge"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "An ingot left on the racks, still waiting for its last hammering. It has waited a long time."
+  },
+  {
+    "id": "material-forgeheart-coal",
+    "name": "Forgeheart Coal",
+    "tier": 5,
+    "tierLabel": "Tier 5 – Master Materials",
+    "rarity": "ascendant",
+    "tags": [
+      "tier-5",
+      "gathering",
+      "mining",
+      "forge"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A coal from the central crucible. It has burned for centuries and shows no sign of stopping."
+  },
+  {
+    "id": "material-silkchoke-silk",
+    "name": "Silkchoke Silk",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "spider",
+      "silk"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Grey spider silk, sticky until washed. Stronger than hemp.",
+    "appearsIn": [
+      {
+        "creature": "SILKCHOKE SPIDER",
+        "pool": "Common",
+        "weight": 60
+      }
+    ]
+  },
+  {
+    "id": "material-spun-dragline",
+    "name": "Spun Dragline",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "beast",
+      "spider",
+      "silk"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "The thick safety line a spider hangs from. A single strand holds a grown man.",
+    "appearsIn": [
+      {
+        "creature": "SILKCHOKE SPIDER",
+        "pool": "Rare",
+        "weight": 70
+      },
+      {
+        "creature": "SILKCHOKE SPIDER",
+        "pool": "Epic",
+        "weight": 100
+      },
+      {
+        "creature": "SILKCHOKE MATRIARCH",
+        "pool": "Common",
+        "weight": 50
+      }
+    ]
+  },
+  {
+    "id": "material-matriarch-silk",
+    "name": "Matriarch Silk",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Advanced Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "beast",
+      "spider",
+      "silk"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Silver silk from a matriarch's egg sac. It barely weighs anything and turns a blade.",
+    "appearsIn": [
+      {
+        "creature": "SILKCHOKE MATRIARCH",
+        "pool": "Rare",
+        "weight": 60
+      },
+      {
+        "creature": "SILKCHOKE MATRIARCH",
+        "pool": "Epic",
+        "weight": 50
+      }
+    ]
+  },
+  {
+    "id": "material-silkchoke-venom-sac",
+    "name": "Silkchoke Venom Sac",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "spider",
+      "venom"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A spider's venom sac. The venom numbs, then stiffens.",
+    "appearsIn": [
+      {
+        "creature": "SILKCHOKE SPIDER",
+        "pool": "Common",
+        "weight": 40
+      },
+      {
+        "creature": "SILKCHOKE SPIDER",
+        "pool": "Rare",
+        "weight": 30
+      },
+      {
+        "creature": "SILKCHOKE MATRIARCH",
+        "pool": "Common",
+        "weight": 50
+      }
+    ]
+  },
+  {
+    "id": "material-matriarch-venom",
+    "name": "Matriarch Venom",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Advanced Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "beast",
+      "spider",
+      "venom"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Venom from a matriarch. One drop stops a horse where it stands.",
+    "appearsIn": [
+      {
+        "creature": "SILKCHOKE MATRIARCH",
+        "pool": "Rare",
+        "weight": 40
+      },
+      {
+        "creature": "SILKCHOKE MATRIARCH",
+        "pool": "Epic",
+        "weight": 50
+      }
+    ]
+  },
+  {
+    "id": "material-forge-quenched-steel",
+    "name": "Forge-Quenched Steel",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Advanced Materials",
+    "rarity": "forgeborn",
+    "tags": [
+      "tier-3",
+      "forgeborn",
+      "forge"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Steel quenched in the Forge's fire. It rings for a long time when struck."
+  },
+  {
+    "id": "material-runebound-silver",
+    "name": "Runebound Silver",
+    "tier": 4,
+    "tierLabel": "Tier 4 – High-End Materials",
+    "rarity": "forgeborn",
+    "tags": [
+      "tier-4",
+      "forgeborn",
+      "forge"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Silver worked with the old runes. Undead flinch from it before they see it."
+  },
+  {
+    "id": "material-blackstone-alloy",
+    "name": "Blackstone Alloy",
+    "tier": 4,
+    "tierLabel": "Tier 4 – High-End Materials",
+    "rarity": "forgeborn",
+    "tags": [
+      "tier-4",
+      "forgeborn",
+      "forge",
+      "blackstone"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Vigil Blackstone melted with star-iron. Nothing else gets hot enough to do it."
+  },
+  {
+    "id": "material-starheart-alloy",
+    "name": "Starheart Alloy",
+    "tier": 5,
+    "tierLabel": "Tier 5 – Master Materials",
+    "rarity": "forgeborn",
+    "tags": [
+      "tier-5",
+      "forgeborn",
+      "forge"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "The heart of a fallen star melted in the Forge's crucible. It glows in the dark like a cooling coal."
   }
 ]

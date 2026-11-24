@@ -628,5 +628,634 @@
     },
     "set": "undying-vigil",
     "region": "Thornspine Mountains — past the Wall"
+  },
+  {
+    "id": "village-gardens",
+    "name": "Village Gardens",
+    "activity": "foraging",
+    "tier": "common",
+    "dc": 9,
+    "description": "Walled gardens and hedgerows behind the village houses. Ask first, or forage the hedges.",
+    "yields": {
+      "common": [
+        {
+          "name": "Bitterleaf",
+          "weight": 30,
+          "amount": "1d4"
+        },
+        {
+          "name": "Bramblesweet",
+          "weight": 25,
+          "amount": "1d3"
+        },
+        {
+          "name": "Cragberry",
+          "weight": 25,
+          "amount": "1d4"
+        },
+        {
+          "name": "Frostcurl",
+          "weight": 20,
+          "amount": "1d3"
+        }
+      ],
+      "rare": [
+        {
+          "name": "Snowstalk",
+          "weight": 50,
+          "amount": "1d2"
+        },
+        {
+          "name": "Rimepod",
+          "weight": 50,
+          "amount": "1d2"
+        }
+      ],
+      "epic": [
+        {
+          "name": "Cloudwasp Comb",
+          "weight": 100
+        }
+      ]
+    },
+    "set": "undying-vigil",
+    "region": "Thornspine Mountains — past the Wall"
+  },
+  {
+    "id": "spray-soaked-rocks",
+    "name": "Spray-Soaked Rocks",
+    "activity": "foraging",
+    "tier": "uncommon",
+    "dc": 12,
+    "description": "Slick boulders under Thunder Falls, drenched in spray day and night. Mind your footing.",
+    "yields": {
+      "common": [
+        {
+          "name": "Mistmoss",
+          "weight": 65,
+          "amount": "1d3"
+        },
+        {
+          "name": "Crag Moss",
+          "weight": 35,
+          "amount": "1d4"
+        }
+      ],
+      "rare": [
+        {
+          "name": "Silvered Mistmoss",
+          "weight": 100
+        }
+      ],
+      "epic": [
+        {
+          "name": "Spraybow Moss",
+          "weight": 100
+        }
+      ]
+    },
+    "set": "undying-vigil",
+    "region": "Thornspine Mountains — past the Wall"
+  },
+  {
+    "id": "plunge-pool",
+    "name": "Plunge Pool",
+    "activity": "fishing",
+    "tier": "uncommon",
+    "dc": 12,
+    "description": "The churning pool at the foot of the falls. Big fish shelter under the overhang.",
+    "yields": {
+      "common": [
+        {
+          "name": "Streamfin",
+          "weight": 40,
+          "amount": "1d4"
+        },
+        {
+          "name": "Rimefin",
+          "weight": 60
+        }
+      ],
+      "rare": [
+        {
+          "name": "Glassjaw",
+          "weight": 100
+        }
+      ],
+      "epic": [
+        {
+          "name": "Tarnback",
+          "weight": 100
+        }
+      ]
+    },
+    "set": "undying-vigil",
+    "region": "Thornspine Mountains — past the Wall"
+  },
+  {
+    "id": "cloud-ledges",
+    "name": "Cloud Ledges",
+    "activity": "foraging",
+    "tier": "rare",
+    "dc": 14,
+    "description": "Narrow ledges along the Spine, inside the cloud most days. Hawks nest here.",
+    "yields": {
+      "common": [
+        {
+          "name": "Cloud Lichen",
+          "weight": 65,
+          "amount": "1d3"
+        },
+        {
+          "name": "Crag Nest Egg",
+          "weight": 35,
+          "amount": "1d2"
+        }
+      ],
+      "rare": [
+        {
+          "name": "Frost-Rimed Lichen",
+          "weight": 100
+        }
+      ],
+      "epic": [
+        {
+          "name": "Skyheart Lichen",
+          "weight": 100
+        }
+      ]
+    },
+    "set": "undying-vigil",
+    "region": "Thornspine Mountains — past the Wall"
+  },
+  {
+    "id": "canyon-rapids",
+    "name": "Canyon Rapids",
+    "activity": "fishing",
+    "tier": "common",
+    "dc": 11,
+    "description": "Fast white water under the plank bridge, halfway up the mountain.",
+    "yields": {
+      "common": [
+        {
+          "name": "Streamfin",
+          "weight": 55,
+          "amount": "1d4"
+        },
+        {
+          "name": "Mudwhip",
+          "weight": 45,
+          "amount": "1d3"
+        }
+      ],
+      "rare": [
+        {
+          "name": "Rimefin",
+          "weight": 100
+        }
+      ],
+      "epic": [
+        {
+          "name": "Glassjaw",
+          "weight": 100
+        }
+      ]
+    },
+    "set": "undying-vigil",
+    "region": "Thornspine Mountains — past the Wall"
+  },
+  {
+    "id": "vigil-mine-galleries",
+    "name": "Vigil Mine Galleries",
+    "activity": "mining",
+    "tier": "uncommon",
+    "dc": 12,
+    "description": "The working tunnels under the mine fort. The rock darkens and warms the deeper you go.",
+    "yields": {
+      "common": [
+        {
+          "name": "Grey Ironstone",
+          "weight": 40,
+          "amount": "1d4"
+        },
+        {
+          "name": "Blackstone Chips",
+          "weight": 35,
+          "amount": "1d3"
+        },
+        {
+          "name": "Cave Nitre",
+          "weight": 25,
+          "amount": "1d3"
+        }
+      ],
+      "rare": [
+        {
+          "name": "Thornspine Silver Ore",
+          "weight": 70
+        },
+        {
+          "name": "Vigil Blackstone",
+          "weight": 30
+        }
+      ],
+      "epic": [
+        {
+          "name": "Emberquartz",
+          "weight": 100
+        }
+      ]
+    },
+    "set": "undying-vigil",
+    "region": "Thornspine Mountains — past the Wall"
+  },
+  {
+    "id": "the-warm-seam",
+    "name": "The Warm Seam",
+    "activity": "mining",
+    "tier": "epic",
+    "dc": 16,
+    "description": "The lowest tunnel, cut into pure black stone. It is warm as a living thing down here.",
+    "yields": {
+      "common": [
+        {
+          "name": "Blackstone Chips",
+          "weight": 70,
+          "amount": "1d4"
+        },
+        {
+          "name": "Emberquartz",
+          "weight": 30
+        }
+      ],
+      "rare": [
+        {
+          "name": "Vigil Blackstone",
+          "weight": 100
+        }
+      ],
+      "epic": [
+        {
+          "name": "Warm Blackstone Core",
+          "weight": 100
+        }
+      ]
+    },
+    "set": "undying-vigil",
+    "region": "Thornspine Mountains — past the Wall"
+  },
+  {
+    "id": "market-midden",
+    "name": "Market Midden",
+    "activity": "foraging",
+    "tier": "common",
+    "dc": 10,
+    "description": "Scavenging: the heap behind the Valdren gate market. Traders throw out more than they should.",
+    "yields": {
+      "common": [
+        {
+          "name": "Spent Compact Bolts",
+          "weight": 40,
+          "amount": "1d4"
+        },
+        {
+          "name": "Farm Leather",
+          "weight": 30
+        },
+        {
+          "name": "Grey Ironstone",
+          "weight": 30,
+          "amount": "1d3"
+        }
+      ],
+      "rare": [
+        {
+          "name": "Iron Ingot",
+          "weight": 100
+        }
+      ],
+      "epic": [
+        {
+          "name": "Thornspine Silver Ore",
+          "weight": 100
+        }
+      ]
+    },
+    "set": "undying-vigil",
+    "region": "Thornspine Mountains — past the Wall"
+  },
+  {
+    "id": "spent-bolt-field",
+    "name": "Spent-Bolt Field",
+    "activity": "foraging",
+    "tier": "common",
+    "dc": 10,
+    "description": "Scavenging: the killing ground below the Dominion wall, carpeted with spent ballista bolts.",
+    "yields": {
+      "common": [
+        {
+          "name": "Spent Compact Bolts",
+          "weight": 70,
+          "amount": "1d6"
+        },
+        {
+          "name": "Grey Ironstone",
+          "weight": 30,
+          "amount": "1d3"
+        }
+      ],
+      "rare": [
+        {
+          "name": "Iron Ingot",
+          "weight": 100,
+          "amount": "1d2"
+        }
+      ],
+      "epic": [
+        {
+          "name": "Iron Ingot",
+          "weight": 100,
+          "amount": "1d4"
+        }
+      ]
+    },
+    "set": "undying-vigil",
+    "region": "Thornspine Mountains — past the Wall"
+  },
+  {
+    "id": "collapsed-rampart",
+    "name": "Collapsed Rampart",
+    "activity": "foraging",
+    "tier": "common",
+    "dc": 9,
+    "description": "Scavenging: a fallen section of the coalition's wall. Nobody has had the money to clear it.",
+    "yields": {
+      "common": [
+        {
+          "name": "Spent Compact Bolts",
+          "weight": 60,
+          "amount": "2d4"
+        },
+        {
+          "name": "Iron Ingot",
+          "weight": 40,
+          "amount": "1d2"
+        }
+      ],
+      "rare": [
+        {
+          "name": "Iron Ingot",
+          "weight": 100,
+          "amount": "1d4"
+        }
+      ],
+      "epic": [
+        {
+          "name": "Ironwall Patrol Map",
+          "weight": 100
+        }
+      ]
+    },
+    "set": "undying-vigil",
+    "region": "Thornspine Mountains — past the Wall"
+  },
+  {
+    "id": "resin-burrows",
+    "name": "Resin Burrows",
+    "activity": "foraging",
+    "tier": "rare",
+    "dc": 14,
+    "description": "The honeycombed burrows in the canyon walls, lined with hard resin. Don't reach in too far.",
+    "yields": {
+      "common": [
+        {
+          "name": "Burrow Resin",
+          "weight": 100,
+          "amount": "1d3"
+        }
+      ],
+      "rare": [
+        {
+          "name": "Amber Burrow Resin",
+          "weight": 100
+        }
+      ],
+      "epic": [
+        {
+          "name": "Burrowglass",
+          "weight": 100
+        }
+      ]
+    },
+    "set": "undying-vigil",
+    "region": "Thornspine Mountains — past the Wall"
+  },
+  {
+    "id": "rusted-armoury",
+    "name": "Rusted Armoury",
+    "activity": "mining",
+    "tier": "uncommon",
+    "dc": 12,
+    "description": "Salvage: the stronghold's collapsed armoury, a mound of rusted orcish iron.",
+    "yields": {
+      "common": [
+        {
+          "name": "Rusted War-Iron",
+          "weight": 75,
+          "amount": "1d3"
+        },
+        {
+          "name": "Grey Ironstone",
+          "weight": 25,
+          "amount": "1d2"
+        }
+      ],
+      "rare": [
+        {
+          "name": "Orcish War-Iron",
+          "weight": 100
+        }
+      ],
+      "epic": [
+        {
+          "name": "Warchief's Iron",
+          "weight": 100
+        }
+      ]
+    },
+    "set": "undying-vigil",
+    "region": "Thornspine Mountains — past the Wall"
+  },
+  {
+    "id": "shattered-altar",
+    "name": "Shattered Altar",
+    "activity": "mining",
+    "tier": "rare",
+    "dc": 14,
+    "description": "The broken altar of a dead god. Working the stone feels like an apology.",
+    "yields": {
+      "common": [
+        {
+          "name": "Shrinestone Rubble",
+          "weight": 100,
+          "amount": "1d4"
+        }
+      ],
+      "rare": [
+        {
+          "name": "Shrinestone",
+          "weight": 100
+        }
+      ],
+      "epic": [
+        {
+          "name": "Altar Heartstone",
+          "weight": 100
+        }
+      ]
+    },
+    "set": "undying-vigil",
+    "region": "Thornspine Mountains — past the Wall"
+  },
+  {
+    "id": "lantern-crystal-veins",
+    "name": "Lantern Crystal Veins",
+    "activity": "mining",
+    "tier": "uncommon",
+    "dc": 12,
+    "description": "Blue crystal growing out of the tunnel walls. It lights the way down.",
+    "yields": {
+      "common": [
+        {
+          "name": "Lantern Crystal Shard",
+          "weight": 70,
+          "amount": "1d3"
+        },
+        {
+          "name": "Forge Cinder",
+          "weight": 30,
+          "amount": "1d2"
+        }
+      ],
+      "rare": [
+        {
+          "name": "Lantern Crystal",
+          "weight": 100
+        }
+      ],
+      "epic": [
+        {
+          "name": "Heartlight Crystal",
+          "weight": 100
+        }
+      ]
+    },
+    "set": "undying-vigil",
+    "region": "Thornspine Mountains — past the Wall"
+  },
+  {
+    "id": "web-choked-galleries",
+    "name": "Web-Choked Galleries",
+    "activity": "foraging",
+    "tier": "uncommon",
+    "dc": 13,
+    "description": "Galleries so thick with web you have to cut your way through. Whatever spun it may be home.",
+    "yields": {
+      "common": [
+        {
+          "name": "Silkchoke Silk",
+          "weight": 70,
+          "amount": "1d3"
+        },
+        {
+          "name": "Hollowcap",
+          "weight": 30
+        }
+      ],
+      "rare": [
+        {
+          "name": "Spun Dragline",
+          "weight": 100
+        }
+      ],
+      "epic": [
+        {
+          "name": "Matriarch Silk",
+          "weight": 100
+        }
+      ]
+    },
+    "set": "undying-vigil",
+    "region": "Thornspine Mountains — past the Wall"
+  },
+  {
+    "id": "forge-slag-heaps",
+    "name": "Forge Slag Heaps",
+    "activity": "mining",
+    "tier": "rare",
+    "dc": 15,
+    "description": "Centuries of slag around the Forge. Some of it never cooled.",
+    "yields": {
+      "common": [
+        {
+          "name": "Forge Cinder",
+          "weight": 100,
+          "amount": "1d4"
+        }
+      ],
+      "rare": [
+        {
+          "name": "Rune-Etched Slag",
+          "weight": 65
+        },
+        {
+          "name": "Living Cinder",
+          "weight": 35
+        }
+      ],
+      "epic": [
+        {
+          "name": "Unfinished Dwarven Ingot",
+          "weight": 100
+        }
+      ]
+    },
+    "set": "undying-vigil",
+    "region": "Thornspine Mountains — past the Wall"
+  },
+  {
+    "id": "central-crucible",
+    "name": "The Central Crucible",
+    "activity": "mining",
+    "tier": "epic",
+    "dc": 18,
+    "description": "The great crucible at the heart of the Forge. The heat is unbearable. Something keeps it burning.",
+    "yields": {
+      "common": [
+        {
+          "name": "Living Cinder",
+          "weight": 70
+        },
+        {
+          "name": "Forge Cinder",
+          "weight": 30,
+          "amount": "1d4"
+        }
+      ],
+      "rare": [
+        {
+          "name": "Unfinished Dwarven Ingot",
+          "weight": 100
+        }
+      ],
+      "epic": [
+        {
+          "name": "Forgeheart Coal",
+          "weight": 100
+        }
+      ]
+    },
+    "set": "undying-vigil",
+    "region": "Thornspine Mountains — past the Wall"
   }
 ]

@@ -249,6 +249,14 @@ const SECTIONS: Section[] = [
     intro: "The calendar, the weather, food and mounts.",
     rules: [
       {
+        title: "Regions",
+        body: "The top of the Travel & Camp tab shows where the party is, from the village at the base of the Unwavering up to the Vigil, along the Wall, and past it. When the GM moves the party somewhere new, that region's gathering spots open (mining, woodcutting, foraging and fishing), and the materials you can find or harvest there show up in the codex. The Gathering tab shows the spots where you are right now, and random bounties come from the creatures that live there.",
+      },
+      {
+        title: "The Still-Burning Forge",
+        body: "Deep past the Wall, a dwarven forge still burns. Some recipes can only be made there: they're marked \"Only at the Still-Burning Forge\" and show up once you've found everything they need. At the Forge you can also smelt Forgeborn alloys (a rarity found nowhere else) and get broken tools repaired for free.",
+      },
+      {
         title: "Calendar",
         body: "Each Pass Day moves the date on. A year has four seasons of three 30-day months (Early, Mid and Late). Years are counted from the end of the Crimson Crusade: PCR for the years since (the Undying Vigil begins in 240 PCR), and BCR for the years before it.",
       },

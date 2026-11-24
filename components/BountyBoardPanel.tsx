@@ -90,7 +90,10 @@ export default function BountyBoardPanel({
   onRemoveMaterials,
   onJournal,
   undeadWeight = 1,
+  regionCreatureIds = null,
 }: {
+  // The party's current region: random bounties pick from its creatures.
+  regionCreatureIds?: string[] | null;
   // From the threat clock: how much likelier undead are on random bounties.
   undeadWeight?: number;
   abundanceOf: (table: LootTable) => Abundance;
@@ -256,6 +259,7 @@ export default function BountyBoardPanel({
           factions={factions}
           abundanceOf={abundanceOf}
           undeadWeight={undeadWeight}
+          regionCreatureIds={regionCreatureIds}
           busy={busy}
           run={run}
         />
@@ -467,10 +471,12 @@ function PostForm({
   factions,
   abundanceOf,
   undeadWeight,
+  regionCreatureIds,
   busy,
   run,
 }: {
   undeadWeight: number;
+  regionCreatureIds: string[] | null;
   campaignId: string;
   disabledTags: string[];
   partyLevel: number;
@@ -499,13 +505,15 @@ function PostForm({
   const bands = bountyBands(partyLevel);
   const byRarity = useMemo(() => {
     const groups: Record<BountyRarity, LootTable[]> = { common: [], rare: [], epic: [] };
-    for (const table of creatures) {
+    // In a region, random bounties come from the creatures that live there.
+    const local = regionCreatureIds ? creatures.filter((table) => regionCreatureIds.includes(table.id)) : [];
+    for (const table of local.length ? local : creatures) {
       if (table.defaultTier === "boss" || abundanceOf(table) === "hunted out") continue;
       const rarity = bountyRarityFor(creatureInfo(table), partyLevel);
       if (rarity) groups[rarity].push(table);
     }
     return groups;
-  }, [creatures, partyLevel, abundanceOf]);
+  }, [creatures, partyLevel, abundanceOf, regionCreatureIds]);
 
   const huntTables = hunt
     .map((line) => ({ line, table: creatures.find((item) => item.id === line.id) }))

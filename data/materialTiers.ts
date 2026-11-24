@@ -6,6 +6,7 @@ export type CraftingRarity =
   | "rare"
   | "epic"
   | "ascendant"
+  | "forgeborn"
   | "legendary"
   | "artifact";
 
@@ -89,6 +90,10 @@ export const materialTiers: MaterialTierGroup[] = Object.values(
     return acc;
   }, {})
 ).sort((a, b) => a.tier - b.tier);
+
+export function getMaterialRarity(name: string): CraftingRarity {
+  return (materialByName.get(normalizeMaterialName(name))?.rarity as CraftingRarity) || "common";
+}
 
 export function getMaterialTier(name: string): number {
   return materialByName.get(normalizeMaterialName(name))?.tier ?? 0;

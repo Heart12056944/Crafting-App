@@ -5824,5 +5824,160 @@
     "set": "undying-vigil",
     "family": "beast",
     "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-silkchoke-spider-common",
+    "creature": "SILKCHOKE SPIDER",
+    "creatureTier": "Common",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 60,
+        "materialName": "Silkchoke Silk",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "Grey spider silk, sticky until washed. Stronger than hemp.",
+        "amount": "1d3"
+      },
+      {
+        "weight": 40,
+        "materialName": "Silkchoke Venom Sac",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A spider's venom sac. The venom numbs, then stiffens."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "spider",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-silkchoke-spider-rare",
+    "creature": "SILKCHOKE SPIDER",
+    "creatureTier": "Common",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 70,
+        "materialName": "Spun Dragline",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "The thick safety line a spider hangs from. A single strand holds a grown man."
+      },
+      {
+        "weight": 30,
+        "materialName": "Silkchoke Venom Sac",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A spider's venom sac. The venom numbs, then stiffens.",
+        "amount": "1d2"
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "spider",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-silkchoke-spider-epic",
+    "creature": "SILKCHOKE SPIDER",
+    "creatureTier": "Common",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 100,
+        "materialName": "Spun Dragline",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "The thick safety line a spider hangs from. A single strand holds a grown man.",
+        "amount": "1d3"
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "spider",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-silkchoke-matriarch-common",
+    "creature": "SILKCHOKE MATRIARCH",
+    "creatureTier": "Rare",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 50,
+        "materialName": "Spun Dragline",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "The thick safety line a spider hangs from. A single strand holds a grown man.",
+        "amount": "1d3"
+      },
+      {
+        "weight": 50,
+        "materialName": "Silkchoke Venom Sac",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A spider's venom sac. The venom numbs, then stiffens.",
+        "amount": "1d2"
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "spider",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-silkchoke-matriarch-rare",
+    "creature": "SILKCHOKE MATRIARCH",
+    "creatureTier": "Rare",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 60,
+        "materialName": "Matriarch Silk",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "Silver silk from a matriarch's egg sac. It barely weighs anything and turns a blade."
+      },
+      {
+        "weight": 40,
+        "materialName": "Matriarch Venom",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "Venom from a matriarch. One drop stops a horse where it stands."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "spider",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-silkchoke-matriarch-epic",
+    "creature": "SILKCHOKE MATRIARCH",
+    "creatureTier": "Rare",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 50,
+        "materialName": "Matriarch Silk",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "Silver silk from a matriarch's egg sac. It barely weighs anything and turns a blade.",
+        "amount": "1d2"
+      },
+      {
+        "weight": 50,
+        "materialName": "Matriarch Venom",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "Venom from a matriarch. One drop stops a horse where it stands."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "spider",
+    "source": "Undying_Vigil_Crafting"
   }
 ]

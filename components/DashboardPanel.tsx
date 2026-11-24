@@ -32,6 +32,7 @@ type Props = {
   campaignDay: number;
   date: CalendarDate;
   calendar: CalendarSettings;
+  regionName?: string;
   characters: DashCharacter[];
   lootQueue: { id: string; label: string }[];
   threat: ThreatSettings;
@@ -143,6 +144,7 @@ export default function DashboardPanel(props: Props) {
           <div>
             <p className="text-sm uppercase tracking-wide text-[#e7c75e]">Today, campaign day {campaignDay}</p>
             <p className="font-serif text-3xl">{date.label}</p>
+            <p className="text-sm text-[#e7c75e]">{props.regionName ? `The party is at ${props.regionName}.` : "No region set (Travel & Camp)."}</p>
           </div>
           <p className="font-serif text-xl">
             {weather.label}

@@ -42,6 +42,7 @@ const RARITY_COLORS: Record<string, string> = {
   rare: "#1c7ed6",
   epic: "#9c36b5",
   ascendant: "#2aa9b8",
+  forgeborn: "#e8590c",
   legendary: "#b8860b",
   artifact: "#c92a2a",
 };

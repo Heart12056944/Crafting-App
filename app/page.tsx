@@ -36,7 +36,7 @@ import {
 } from "lucide-react";
 
 import { recipesRaw, recipeSetTags, rarityColors, type Recipe, type Rarity } from "@/data/recipesRaw";
-import { materialTiers, getMaterialTier, normalizeMaterialName, getMaterialsByTag, getPhaseTouchedCounterpart } from "@/data/materialTiers";
+import { materialTiers, getMaterialTier, getMaterialRarity, normalizeMaterialName, getMaterialsByTag, getPhaseTouchedCounterpart } from "@/data/materialTiers";
 import {
   calculateCraftResult,
   applyRegularTraining,
@@ -73,6 +73,8 @@ import { fetchCampaignCraftedItems, insertCraftedItem, deleteCraftedItem } from 
 import { fetchCampaignCharacters, replaceCampaignCharacters, saveChangedCharacters } from "@/lib/supabaseCharacters";
 import { autoBackup } from "@/lib/supabaseBackups";
 import DashboardPanel from "@/components/DashboardPanel";
+import RegionPanel from "@/components/RegionPanel";
+import { regionById } from "@/data/regions";
 import { CalendarDayContext } from "@/components/CalendarContext";
 import type { OrderDeed, OrderRank } from "@/data/order";
 import { THREAT_STAGES, advanceThreat, readThreat, threatStage } from "@/data/threat";
@@ -150,7 +152,7 @@ import {
   scoreToModifier,
   type AppliedStatCard,
 } from "@/data/abilityScores";
-import { gatheringActivities, type GatheringActivity, type GatheringSpot } from "@/data/gatheringSpots";
+import { gatheringActivities, gatheringSpots, type GatheringActivity, type GatheringSpot } from "@/data/gatheringSpots";
 import { GmLoginPanel, CreateGmPanel } from "@/components/GmAuthPanels";
 
 import { Card, CardContent } from "@/components/ui/card";
@@ -710,6 +712,12 @@ function recipeAlwaysKnown(recipe: Recipe) {
 }
 
 function recipeIsDiscovered(recipe: Recipe, discoveredMaterialNames: Set<string>) {
+  // Recipes tied to a place (the Forge) show up once every material for them has been found.
+  if (recipe.location) {
+    return (recipe.materials as RecipeMaterialWithTag[]).every(
+      (material) => material.tagRequirement || discoveredMaterialNames.has(normalizeName(material.name))
+    );
+  }
   if (recipeAlwaysKnown(recipe)) return true;
 
   return (recipe.materials as RecipeMaterialWithTag[]).some((material) => {
@@ -724,6 +732,7 @@ const RARITY_ORDER: Rarity[] = [
   "rare",
   "epic",
   "ascendant",
+  "forgeborn",
   "legendary",
   "artifact",
 ];
@@ -734,6 +743,7 @@ const RARITY_LABELS: Record<Rarity, string> = {
   rare: "Rare",
   epic: "Epic",
   ascendant: "Ascendant",
+  forgeborn: "Forgeborn",
   legendary: "Legendary",
   artifact: "Artifact",
 };
@@ -1685,6 +1695,10 @@ export default function ArcaneCraftingCodexPage() {
   // The threat clock (GM only), from campaign values of kind "threat".
   const [threatValues, setThreatValues] = useState<Record<string, string>>({});
   const threat = useMemo(() => readThreat(threatValues), [threatValues]);
+  // Where the party is: campaign values of kind "region" ("current", and "visited-<id>" = day first reached).
+  const [regionValues, setRegionValues] = useState<Record<string, string>>({});
+  const currentRegion = regionById.get(regionValues.current || "") || null;
+  const visitedRegionIds = Object.keys(regionValues).filter((key) => key.startsWith("visited-")).map((key) => key.slice(8));
   // Ecology: hunting pressure per creature and how picked-over each gathering spot is.
   const [huntingPressure, setHuntingPressure] = useState<Record<string, Pressure>>({});
   const [spotUses, setSpotUses] = useState<Record<string, SpotUse>>({});
@@ -2230,6 +2244,7 @@ export default function ArcaneCraftingCodexPage() {
       let combatState: CombatState | null = null;
       const homesteadRows: Record<string, string> = {};
       const threatRows: Record<string, string> = {};
+      const regionRows: Record<string, string> = {};
       const pressureRows: Record<string, Pressure> = {};
       const spotRows: Record<string, SpotUse> = {};
       let day = 1;
@@ -2239,6 +2254,7 @@ export default function ArcaneCraftingCodexPage() {
         else if (row.kind === "calendar" && row.state) calendarRows[row.item_key] = row.state;
         else if (row.kind === "homestead" && row.state) homesteadRows[row.item_key] = row.state;
         else if (row.kind === "threat" && row.state) threatRows[row.item_key] = row.state;
+        else if (row.kind === "region" && row.state) regionRows[row.item_key] = row.state;
         else if ((row.kind === "ecology" || row.kind === "spot-use") && row.state) {
           try {
             if (row.kind === "ecology") pressureRows[row.item_key] = JSON.parse(row.state) as Pressure;
@@ -2272,6 +2288,7 @@ export default function ArcaneCraftingCodexPage() {
       setCombat(combatState);
       setHomesteadValues(homesteadRows);
       setThreatValues(threatRows);
+      setRegionValues(regionRows);
       setHuntingPressure(pressureRows);
       setSpotUses(spotRows);
       setWildAnimals(wild);
@@ -2523,14 +2540,15 @@ export default function ArcaneCraftingCodexPage() {
 
       return {
         ...recipe,
-        available: canRecipe(recipe, materialMap),
+        // Recipes tied to a place (the Forge) are only available there.
+        available: canRecipe(recipe, materialMap) && (!recipe.location || recipe.location === currentRegion?.id),
         missing: missingMaterials(recipe, materialMap),
         rarityFromTags: getRarityFromTags(recipe),
         discovered,
         hiddenByDisabledTag: recipe.tags.some((tag) => disabledTags.includes(tag)),
       };
     });
-  }, [recipes, materialMap, discoveredMaterialNames, manuallyDiscoveredRecipeIds, manuallyHiddenRecipeIds, disabledTags]);
+  }, [recipes, materialMap, discoveredMaterialNames, manuallyDiscoveredRecipeIds, manuallyHiddenRecipeIds, disabledTags, currentRegion?.id]);
 
   const filteredRecipeStatus = useMemo(() => {
     const search = recipeSearch.trim().toLowerCase();
@@ -3010,6 +3028,32 @@ export default function ArcaneCraftingCodexPage() {
           : character
       )
     );
+  }
+
+  // At the Still-Burning Forge, broken tools are repaired for free (players: their own characters).
+  const forgeRepairIds = effectiveCharacters
+    .filter((character) => character.isActive !== false && (adminUnlocked || myCharacterIds.includes(character.id)))
+    .map((character) => character.id);
+  const brokenToolCount = effectiveCharacters
+    .filter((character) => forgeRepairIds.includes(character.id))
+    .reduce((sum, character) => sum + Object.values(character.brokenTools || {}).filter(Boolean).length, 0);
+
+  function repairToolsAtForge() {
+    if (currentRegion?.id !== "still-burning-forge") return;
+    const names: string[] = [];
+    markCharactersForSupabaseSave();
+    setCharacters((current) =>
+      current.map((character) => {
+        if (!forgeRepairIds.includes(character.id)) return character;
+        const broken = Object.entries(character.brokenTools || {}).filter(([, value]) => value).map(([tool]) => tool);
+        if (!broken.length) return character;
+        names.push(`${character.name} (${broken.map((tool) => toolLabel(tool)).join(", ")})`);
+        return { ...character, brokenTools: Object.fromEntries(Object.keys(character.brokenTools || {}).map((tool) => [tool, false])) };
+      })
+    );
+    window.setTimeout(() => {
+      if (names.length) logJournal(`Repaired at the Still-Burning Forge: ${names.join("; ")}.`);
+    }, 0);
   }
 
   function updateCharacterToolBroken(characterId: string, tool: string, broken: boolean) {
@@ -4411,6 +4455,44 @@ export default function ArcaneCraftingCodexPage() {
     return summary;
   }
 
+  // Move the party into a region: its gathering spots open to players, and the
+  // materials found there (spot yields, and the common parts harvested from its
+  // creatures) are discovered. Its wildlife is shown to the GM only.
+  function moveToRegion(regionId: string | null) {
+    if (!activeInventoryId || !adminUnlocked) return;
+    const region = regionId ? regionById.get(regionId) : null;
+    setRegionValues((current) => {
+      const next = { ...current };
+      if (region) next.current = region.id;
+      else delete next.current;
+      if (region && !next[`visited-${region.id}`]) next[`visited-${region.id}`] = String(campaignDay);
+      return next;
+    });
+    setCampaignValue(activeInventoryId, "region", "current", region ? region.id : null).catch((error) => console.warn("Failed to save the region.", error));
+    if (!region) return;
+    const firstVisit = !regionValues[`visited-${region.id}`];
+    if (firstVisit) setCampaignValue(activeInventoryId, "region", `visited-${region.id}`, String(campaignDay)).catch(() => undefined);
+
+    const newSpots = region.spots.filter((id) => !enabledGatheringSpotIds.includes(id));
+    if (newSpots.length) {
+      setEnabledGatheringSpotIds((current) => [...new Set([...current, ...newSpots])]);
+      saveDiscoveries(newSpots.map((id) => ({ kind: "gathering-spot" as const, key: id, state: "discovered" as const })));
+    }
+    const materialNames = [
+      ...new Set([
+        ...region.spots.flatMap((id) => {
+          const spot = gatheringSpots.find((item) => item.id === id);
+          return spot ? Object.values(spot.yields).flatMap((entries) => (entries || []).map((entry) => entry.name)) : [];
+        }),
+        ...region.creatures.flatMap((id) =>
+          (lootTables.find((table) => table.id === id)?.tables.common || []).filter((entry) => (entry.kind || "material") === "material").map((entry) => entry.name)
+        ),
+      ]),
+    ];
+    if (materialNames.length) markMaterialsDiscovered(materialNames);
+    logJournal(firstVisit ? `The party reached ${region.name} for the first time.` : `The party travelled to ${region.name}.`);
+  }
+
   function setWildAnimal(speciesId: string, nearby: boolean) {
     if (!activeInventoryId) return;
     setWildAnimals((current) => (nearby ? Array.from(new Set([...current, speciesId])) : current.filter((id) => id !== speciesId)));
@@ -4458,6 +4540,19 @@ export default function ArcaneCraftingCodexPage() {
         ppGained: 0,
         title: "Missing Tool",
         message: `${selectedCharacter.name} does not own ${toolLabel(recipe.tool)} and cannot craft ${recipe.name}.`,
+      });
+      return;
+    }
+
+    if (recipe.location && recipe.location !== currentRegion?.id) {
+      setLastRoll({
+        recipeName: recipe.name,
+        naturalRoll: 0,
+        total: 0,
+        quality: "Failed",
+        ppGained: 0,
+        title: "Wrong Place",
+        message: `${recipe.name} can only be made at ${regionById.get(recipe.location)?.name || recipe.location}.`,
       });
       return;
     }
@@ -5015,6 +5110,7 @@ export default function ArcaneCraftingCodexPage() {
               setPhaseTouchedMaterial={setPhaseTouchedMaterial}
               characterAttributeAssignments={characterAttributeAssignments}
               lockCharacter={lockToClaimed && myCharacterIds.length === 1}
+              currentRegionId={currentRegion?.id || ""}
             />
             <CraftedItemList items={craftedItems} setItems={setCraftedItems} />
           </div>
@@ -5192,6 +5288,8 @@ export default function ArcaneCraftingCodexPage() {
             characters={effectiveCharacters}
             adminUnlocked={adminUnlocked}
             enabledSpotIds={enabledGatheringSpotIds}
+            regionSpotIds={currentRegion?.spots || null}
+            regionName={currentRegion?.name || ""}
             disabledTags={disabledTags}
             onToggleSpot={toggleGatheringSpot}
             onSpendAttempt={spendGatheringAttempt}
@@ -5239,6 +5337,22 @@ export default function ArcaneCraftingCodexPage() {
             onRemoveMaterials={removeMaterialsFromPool}
             onJournal={logJournal}
             undeadWeight={threatStage(threat.value).undeadWeight}
+            regionCreatureIds={currentRegion?.creatures || null}
+          />
+        )}
+
+        {activeTab === "travel" && (
+          <RegionPanel
+            adminUnlocked={adminUnlocked}
+            disabledSets={disabledTags}
+            current={currentRegion}
+            visited={visitedRegionIds}
+            enabledSpotIds={enabledGatheringSpotIds}
+            wildAnimals={wildAnimals}
+            onSetWildAnimal={setWildAnimal}
+            onMove={moveToRegion}
+            brokenToolCount={brokenToolCount}
+            onRepairTools={repairToolsAtForge}
           />
         )}
 
@@ -5308,6 +5422,7 @@ export default function ArcaneCraftingCodexPage() {
             campaignDay={campaignDay}
             date={today}
             calendar={calendar}
+            regionName={currentRegion?.name || ""}
             characters={effectiveCharacters}
             lootQueue={creatureLootQueue.map((entry) => ({ id: entry.id, label: `${entry.qty}× ${entry.creatureLabel}` }))}
             threat={threat}
@@ -5511,6 +5626,8 @@ function CharacterAttributeEffectList({
 
 
 function CraftPanel(props: {
+  // The party's region: some recipes can only be made in one place.
+  currentRegionId?: string;
   characters: Character[];
   recipes: Recipe[];
   materialMap: Map<string, number>;
@@ -5557,7 +5674,8 @@ function CraftPanel(props: {
   const hasRequiredTool = Boolean(selectedCharacter.ownedTools?.[selectedRecipe.tool]);
   const requiredToolBroken = Boolean(selectedCharacter.brokenTools?.[selectedRecipe.tool]);
   const materialsAvailable = canRecipe(selectedRecipe, props.materialMap);
-  const available = materialsAvailable && hasRequiredTool && !requiredToolBroken;
+  const wrongPlace = Boolean(selectedRecipe.location && selectedRecipe.location !== props.currentRegionId);
+  const available = materialsAvailable && hasRequiredTool && !requiredToolBroken && !wrongPlace;
   const missing = missingMaterials(selectedRecipe, props.materialMap);
   const rarityColor = getRarityColor(selectedRecipe);
   const rarity = getRarityFromTags(selectedRecipe);
@@ -5730,7 +5848,9 @@ function CraftPanel(props: {
 
         {!available && (
           <p className="text-lg">
-            {!hasRequiredTool
+            {wrongPlace
+              ? `This can only be made at ${regionById.get(selectedRecipe.location || "")?.name || "a special place"}.`
+              : !hasRequiredTool
               ? `Missing required tool: ${toolLabel(selectedRecipe.tool)}.`
               : requiredToolBroken
                 ? `Required tool is broken: ${toolLabel(selectedRecipe.tool)}.`
@@ -6059,6 +6179,11 @@ function RecipeGrid({
                         Hidden from players
                       </div>
                     )}
+                    {recipe.location && (
+                      <div className="w-fit rounded-full border border-[#e8590c] bg-[#ffe3cf] px-3 py-0.5 text-[11px] font-bold text-[#8a2e00]">
+                        Only at {regionById.get(recipe.location)?.name || recipe.location}
+                      </div>
+                    )}
                     {adminUnlocked && markRecipeDiscovered && (
                       <label className="flex items-center gap-1 rounded-full border border-[#9a7b45] bg-[#fff3cc] px-3 py-0.5 text-[11px] font-bold">
                         <input
@@ -6265,7 +6390,14 @@ function MaterialsPanel({
                       opacity: material.qty > 0 ? 1 : 0.65,
                     }}
                   >
-                    <span>{material.name}</span>
+                    <span>
+                      {material.name}
+                      {getMaterialRarity(material.name) === "forgeborn" && (
+                        <span className="ml-1 text-xs font-bold" style={{ color: rarityColors.forgeborn }}>
+                          Forgeborn
+                        </span>
+                      )}
+                    </span>
                     <div className="flex items-center gap-3">
                       {adminUnlocked && (
                         <label className="flex items-center gap-1 text-xs">

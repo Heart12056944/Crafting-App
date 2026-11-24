@@ -48,6 +48,8 @@ export const CREATURE_INFO: Record<string, CreatureInfo> = {
   "tempest-tyrant": { cr: 10, role: "predator" },
   // Undying Vigil
   brainless: { cr: 0.25, role: "predator" },
+  "silkchoke-spider": { cr: 1, role: "predator" },
+  "silkchoke-matriarch": { cr: 5, role: "predator" },
   "directed-brainless": { cr: 1, role: "predator" },
   "the-bellman": { cr: 5, role: "predator" },
   "oren-thask": { cr: 8, role: "predator" },
