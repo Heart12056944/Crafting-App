@@ -110,7 +110,8 @@ export default function BountyBoardPanel({
   const [message, setMessage] = useState("");
   const [showDone, setShowDone] = useState(false);
   const { factions } = useCampaignFactions(campaignId);
-  const factionName = (id?: string | null) => factions.find((faction) => faction.id === id)?.name;
+  // Players don't see factions the party hasn't met.
+  const factionName = (id?: string | null) => factions.find((faction) => faction.id === id && (adminUnlocked || !faction.hidden))?.name;
   const reloadRef = useRef(async () => {});
 
   useEffect(() => {
@@ -759,7 +760,10 @@ function PostForm({
           <select value={factionId} onChange={(event) => setFactionId(event.target.value)} className={fieldClass} aria-label="Faction posting the job">
             <option value="">No faction</option>
             {factions.map((faction) => (
-              <option key={faction.id} value={faction.id}>For {faction.name}</option>
+              <option key={faction.id} value={faction.id}>
+                For {faction.name}
+                {faction.hidden ? " (hidden from players)" : ""}
+              </option>
             ))}
           </select>
           {factionId && (

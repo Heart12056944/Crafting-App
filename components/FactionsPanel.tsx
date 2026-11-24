@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Flag, Trash2 } from "lucide-react";
+import { Eye, EyeOff, Flag, Trash2 } from "lucide-react";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -46,6 +46,8 @@ export default function FactionsPanel({
   const [description, setDescription] = useState("");
   const [amounts, setAmounts] = useState<Record<string, number>>({});
   const [busy, setBusy] = useState(false);
+  const [startHidden, setStartHidden] = useState(true);
+  const shown = factions.filter((faction) => adminUnlocked || !faction.hidden);
   const [message, setMessage] = useState("");
 
   async function act(action: () => Promise<unknown>, done?: string, journal?: string) {
@@ -89,8 +91,8 @@ export default function FactionsPanel({
 
       <Panel>
         <div className="space-y-3">
-          {factions.length === 0 && <p className="text-sm italic">No factions yet.</p>}
-          {factions.map((faction) => {
+          {shown.length === 0 && <p className="text-sm italic">{adminUnlocked ? "No factions yet." : "The party hasn't dealt with any factions yet."}</p>}
+          {shown.map((faction) => {
             const tier = reputationTier(faction.reputation);
             const amount = amounts[faction.id] ?? 5;
             const change = (delta: number) =>
@@ -100,9 +102,12 @@ export default function FactionsPanel({
                 `Standing with ${faction.name} ${delta > 0 ? "rose" : "fell"} by ${Math.abs(delta)} (now ${Math.max(-100, Math.min(100, faction.reputation + delta))}).`
               );
             return (
-              <div key={faction.id} className="rounded-xl border-2 border-[#9a7b45] bg-[#f7e7c5] p-3 space-y-2">
+              <div key={faction.id} className={`rounded-xl border-2 border-[#9a7b45] p-3 space-y-2 ${faction.hidden ? "bg-[#e3d2ad] opacity-80" : "bg-[#f7e7c5]"}`}>
                 <div className="flex flex-wrap items-center justify-between gap-2">
-                  <p className="text-lg font-bold">{faction.name}</p>
+                  <p className="text-lg font-bold">
+                    {faction.name}
+                    {faction.hidden && <span className="ml-2 text-xs font-normal italic">(hidden from players)</span>}
+                  </p>
                   <p className="font-bold">
                     {tier.label} ({faction.reputation > 0 ? "+" : ""}
                     {faction.reputation})
@@ -137,6 +142,21 @@ export default function FactionsPanel({
                     <Button size="sm" disabled={busy} onClick={() => change(-amount)} className="bg-[#8b1a1a] hover:bg-[#a52222] text-[#fff0c7]">
                       Lower
                     </Button>
+                    <Button
+                      size="sm"
+                      disabled={busy}
+                      onClick={() =>
+                        act(
+                          () => updateFaction(faction.id, { hidden: !faction.hidden }),
+                          faction.hidden ? `${faction.name} is now visible to the players.` : `${faction.name} is hidden from the players.`,
+                          faction.hidden ? `The party made contact with ${faction.name}.` : undefined
+                        )
+                      }
+                      className="bg-[#2f3b4b] hover:bg-[#3d4c60] text-[#fff0c7]"
+                    >
+                      {faction.hidden ? <Eye className="mr-1 h-3 w-3" /> : <EyeOff className="mr-1 h-3 w-3" />}
+                      {faction.hidden ? "Reveal to players" : "Hide"}
+                    </Button>
                     <button className="ml-auto flex items-center gap-1 text-xs text-[#8b1a1a]" disabled={busy} onClick={() => act(() => deleteFaction(faction.id), `${faction.name} removed.`)}>
                       <Trash2 className="h-3 w-3" /> Remove
                     </button>
@@ -163,7 +183,7 @@ export default function FactionsPanel({
                   className={darkButton}
                   onClick={() =>
                     act(async () => {
-                      await createFaction(campaignId, name.trim(), description.trim());
+                      await createFaction(campaignId, name.trim(), description.trim(), startHidden);
                       setName("");
                       setDescription("");
                     }, `Added ${name.trim()}.`)
@@ -172,6 +192,10 @@ export default function FactionsPanel({
                   Add faction
                 </Button>
               </div>
+              <label className="flex items-center gap-2 text-xs">
+                <input type="checkbox" checked={startHidden} onChange={(event) => setStartHidden(event.target.checked)} />
+                Start hidden (reveal it when the party makes contact)
+              </label>
             </div>
           )}
         </div>

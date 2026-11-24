@@ -9,6 +9,8 @@ export type FactionRow = {
   name: string;
   description: string | null;
   reputation: number;
+  // Hidden from players until the party makes contact.
+  hidden?: boolean;
   created_at: string;
 };
 
@@ -31,12 +33,14 @@ export async function fetchFactions(campaignId: string): Promise<FactionRow[]> {
   return (data as FactionRow[] | null) || [];
 }
 
-export async function createFaction(campaignId: string, name: string, description: string) {
-  const { error } = await supabase.from("campaign_factions").insert({ campaign_id: campaignId, name, description: description || null });
+export async function createFaction(campaignId: string, name: string, description: string, hidden = false) {
+  const { error } = await supabase
+    .from("campaign_factions")
+    .insert({ campaign_id: campaignId, name, description: description || null, ...(hidden ? { hidden: true } : {}) });
   if (error) throw error;
 }
 
-export async function updateFaction(id: string, changes: Partial<Pick<FactionRow, "name" | "description" | "reputation">>) {
+export async function updateFaction(id: string, changes: Partial<Pick<FactionRow, "name" | "description" | "reputation" | "hidden">>) {
   const next = { ...changes };
   if (next.reputation !== undefined) next.reputation = Math.max(-100, Math.min(100, Math.round(next.reputation)));
   const { error } = await supabase.from("campaign_factions").update(next).eq("id", id);

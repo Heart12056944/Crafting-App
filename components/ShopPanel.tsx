@@ -247,7 +247,7 @@ export default function ShopPanel({
 
   // Standing with the shop's faction: a discount (negative = surcharge; -1 = won't trade).
   function standingFor(shop: ShopRow | undefined) {
-    const faction = factions.find((item) => item.id === shop?.faction_id);
+    const faction = factions.find((item) => item.id === shop?.faction_id && (adminUnlocked || !item.hidden));
     return faction ? { faction, tier: reputationTier(faction.reputation) } : null;
   }
   function priceFor(shop: ShopRow, entry: StockEntry) {
