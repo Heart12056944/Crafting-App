@@ -205,7 +205,7 @@ export async function moveInventoryItem(row: InventoryRow, toCharacterId: string
 
 export async function updateInventoryItem(
   id: string,
-  changes: Partial<Pick<InventoryRow, "qty" | "metadata" | "name" | "description">>
+  changes: Partial<Pick<InventoryRow, "qty" | "metadata" | "name" | "description" | "quality" | "effect" | "stat_block">>
 ): Promise<void> {
   const { error } = await supabase.from("campaign_inventory_items").update(changes).eq("id", id);
   if (error) throw error;

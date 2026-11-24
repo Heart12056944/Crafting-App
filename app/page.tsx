@@ -3038,6 +3038,66 @@ export default function ArcaneCraftingCodexPage() {
     .filter((character) => forgeRepairIds.includes(character.id))
     .reduce((sum, character) => sum + Object.values(character.brokenTools || {}).filter(Boolean).length, 0);
 
+  // At the Forge, each character can rework one item they made per visit:
+  // roll the recipe's check again and keep the better quality.
+  const forgeReworked = (regionValues.reworked || "").split(",").filter(Boolean);
+
+  async function reworkItemAtForge(characterId: string, row: InventoryRow): Promise<string> {
+    if (currentRegion?.id !== "still-burning-forge" || !activeInventoryId) return "The party isn't at the Forge.";
+    if (forgeReworked.includes(characterId)) return "That character has already reworked an item this visit.";
+    const character = effectiveCharacters.find((entry) => entry.id === characterId);
+    const recipe = recipes.find((entry) => entry.id === row.metadata?.recipeId) || recipes.find((entry) => normalizeName(entry.name) === normalizeName(row.name));
+    if (!character || !recipe) return "Only items made from a recipe can be reworked.";
+    const toolProgress = character.toolProgress?.[recipe.tool] ?? emptyToolProgress();
+    const toolLevel = character.tools[recipe.tool] || (toolProgress.proficient ? "proficient" : "none");
+    const bonus = (character.stats[recipe.stat] || 0) + profBonus(toolLevel, character.level);
+    const naturalRoll = Math.floor(Math.random() * 20) + 1;
+    const total = naturalRoll + bonus;
+    const result = calculateCraftResult({ naturalRoll, total, dc: recipe.dc });
+    const order = ["Flawed", "Normal", "Superior"];
+    const before = row.quality || "Normal";
+    const rolled = result.quality === "Failed" ? before : result.quality;
+    const improved = order.indexOf(rolled) > order.indexOf(before);
+
+    const used = [...forgeReworked, characterId].join(",");
+    setRegionValues((current) => ({ ...current, reworked: used }));
+    setCampaignValue(activeInventoryId, "region", "reworked", used).catch(() => undefined);
+
+    const rollText = `rolled ${naturalRoll} + ${bonus} = ${total} against DC ${recipe.dc}`;
+    if (!improved) {
+      logJournal(`${character.name} reworked their ${row.name} at the Forge (${rollText}); it stays ${before}.`);
+      return `${row.name} stays ${before} (${rollText}).`;
+    }
+    const outcome = getOutcome(recipe, rolled as CraftQuality);
+    const reworked = {
+      quality: rolled,
+      description: outcome?.description || row.description,
+      effect: outcome?.effect || row.effect,
+      stat_block: outcome?.statBlock || row.stat_block,
+    };
+    if (row.qty > 1) {
+      // Only one item from the stack goes back on the anvil.
+      await updateInventoryItem(row.id, { qty: row.qty - 1 });
+      await addInventoryItem({
+        campaignId: activeInventoryId,
+        characterId: row.character_id,
+        name: row.name,
+        kind: row.kind,
+        rarity: row.rarity,
+        quality: reworked.quality,
+        source: row.source,
+        description: reworked.description,
+        effect: reworked.effect || [],
+        statBlock: reworked.stat_block,
+        metadata: { ...row.metadata, usesLeft: undefined },
+      });
+    } else {
+      await updateInventoryItem(row.id, reworked);
+    }
+    logJournal(`${character.name} reworked their ${row.name} at the Forge: ${before} → ${rolled} (${rollText}).`);
+    return `${row.name} is now ${rolled}! (${rollText})`;
+  }
+
   function repairToolsAtForge() {
     if (currentRegion?.id !== "still-burning-forge") return;
     const names: string[] = [];
@@ -4466,8 +4526,12 @@ export default function ArcaneCraftingCodexPage() {
       if (region) next.current = region.id;
       else delete next.current;
       if (region && !next[`visited-${region.id}`]) next[`visited-${region.id}`] = String(campaignDay);
+      // A new visit to the Forge: everyone can rework an item again.
+      if (region?.id === "still-burning-forge" && current.current !== region.id) delete next.reworked;
       return next;
     });
+    if (region?.id === "still-burning-forge" && regionValues.current !== region.id)
+      setCampaignValue(activeInventoryId, "region", "reworked", null).catch(() => undefined);
     setCampaignValue(activeInventoryId, "region", "current", region ? region.id : null).catch((error) => console.warn("Failed to save the region.", error));
     if (!region) return;
     const firstVisit = !regionValues[`visited-${region.id}`];
@@ -5353,6 +5417,11 @@ export default function ArcaneCraftingCodexPage() {
             onMove={moveToRegion}
             brokenToolCount={brokenToolCount}
             onRepairTools={repairToolsAtForge}
+            campaignId={activeInventoryId}
+            reworkCharacters={effectiveCharacters
+              .filter((character) => forgeRepairIds.includes(character.id))
+              .map((character) => ({ id: character.id, name: character.name, used: forgeReworked.includes(character.id) }))}
+            onRework={reworkItemAtForge}
           />
         )}
 

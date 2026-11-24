@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MapPin } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -9,6 +9,7 @@ import { gatheringActivities, gatheringSpots } from "@/data/gatheringSpots";
 import { lootTables } from "@/data/lootTables";
 import { speciesById } from "@/data/husbandry";
 import { creatureInfo } from "@/data/creatures";
+import { fetchCampaignInventory, type InventoryRow } from "@/lib/supabaseInventory";
 
 // Where the party is. The GM moves the party between regions; players see
 // where they are and what they can gather there. Wildlife is for the GM only.
@@ -25,6 +26,10 @@ type Props = {
   // The Still-Burning Forge: free tool repairs.
   brokenToolCount?: number;
   onRepairTools?: () => void;
+  // The Still-Burning Forge: rework one crafted item per character per visit.
+  campaignId?: string;
+  reworkCharacters?: { id: string; name: string; used: boolean }[];
+  onRework?: (characterId: string, row: InventoryRow) => Promise<string>;
 };
 
 const darkButton = "bg-[#4b3115] hover:bg-[#62401c] text-[#fff0c7]";
@@ -137,6 +142,7 @@ function RegionDetails(props: Props & { region: Region; preview: boolean }) {
             </Button>
             {!props.brokenToolCount ? <span className="text-xs">No broken tools.</span> : null}
           </div>
+          <ReworkSection {...props} />
         </div>
       ) : null}
 
@@ -178,6 +184,87 @@ function RegionDetails(props: Props & { region: Region; preview: boolean }) {
           {region.gmNote ? <p className="italic">{region.gmNote}</p> : null}
         </div>
       ) : null}
+    </div>
+  );
+}
+
+// Rework: pick one crafted item per character, roll its recipe again, keep the better quality.
+function ReworkSection({ campaignId, reworkCharacters = [], onRework }: Props) {
+  const [items, setItems] = useState<InventoryRow[]>([]);
+  const [characterId, setCharacterId] = useState("");
+  const [itemId, setItemId] = useState("");
+  const [message, setMessage] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [reload, setReload] = useState(0);
+
+  useEffect(() => {
+    if (!campaignId) return;
+    fetchCampaignInventory(campaignId)
+      .then(setItems)
+      .catch(() => setItems([]));
+  }, [campaignId, reload]);
+
+  const chosenCharacter = reworkCharacters.find((entry) => entry.id === characterId) || reworkCharacters.find((entry) => !entry.used);
+  const candidates = items.filter(
+    (row) => row.character_id === chosenCharacter?.id && row.source === "Crafted" && (row.quality === "Flawed" || row.quality === "Normal")
+  );
+  const chosenItem = candidates.find((row) => row.id === itemId) || candidates[0];
+  if (!onRework || reworkCharacters.length === 0) return null;
+
+  async function rework() {
+    if (!chosenCharacter || !chosenItem || !onRework) return;
+    setBusy(true);
+    try {
+      setMessage(await onRework(chosenCharacter.id, chosenItem));
+      setItemId("");
+      setReload((value) => value + 1);
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "The rework failed.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  return (
+    <div className="space-y-2 pt-2 border-t border-[#e8a070]">
+      <p className="font-semibold">Rework an item</p>
+      <p className="text-xs">Once per visit, each character can put one Flawed or Normal item they made back on the anvil: roll its recipe again and keep the better quality.</p>
+      <div className="flex flex-wrap items-center gap-2">
+        <select
+          className="rounded border border-[#9a7b45] bg-[#fff0c7] px-2 py-1"
+          value={chosenCharacter?.id || ""}
+          onChange={(event) => {
+            setCharacterId(event.target.value);
+            setItemId("");
+          }}
+          aria-label="Rework character"
+        >
+          {reworkCharacters.map((entry) => (
+            <option key={entry.id} value={entry.id}>
+              {entry.name}
+              {entry.used ? " (done this visit)" : ""}
+            </option>
+          ))}
+        </select>
+        <select
+          className="rounded border border-[#9a7b45] bg-[#fff0c7] px-2 py-1"
+          value={chosenItem?.id || ""}
+          onChange={(event) => setItemId(event.target.value)}
+          aria-label="Item to rework"
+          disabled={!candidates.length}
+        >
+          {candidates.length === 0 ? <option value="">No Flawed or Normal crafted items</option> : null}
+          {candidates.map((row) => (
+            <option key={row.id} value={row.id}>
+              {row.name} ({row.quality})
+            </option>
+          ))}
+        </select>
+        <Button size="sm" className={darkButton} disabled={busy || !chosenItem || chosenCharacter?.used} onClick={rework}>
+          Rework
+        </Button>
+      </div>
+      {message ? <p className="text-sm font-semibold">{message}</p> : null}
     </div>
   );
 }
