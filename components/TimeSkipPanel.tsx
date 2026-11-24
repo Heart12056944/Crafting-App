@@ -71,7 +71,7 @@ export default function TimeSkipPanel({ onPassTime }: { onPassTime: (days: numbe
       </div>
       {confirming ? (
         <div className="flex flex-wrap items-center gap-2">
-          <span className="font-bold">Pass {describeSpan(days)}? This can&apos;t be undone.</span>
+          <span className="font-bold">Pass {describeSpan(days)}? A backup is taken first, so you can restore it from the Today tab.</span>
           <Button disabled={busy} onClick={go} className="bg-[#8b1a1a] hover:bg-[#a52222] text-[#fff0c7]">
             {busy ? "Passing time..." : "Pass the time"}
           </Button>

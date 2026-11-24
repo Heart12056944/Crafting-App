@@ -1,5 +1,6 @@
 "use client";
 
+import { useDateForDay } from "@/components/CalendarContext";
 import React, { useEffect, useRef, useState } from "react";
 import { PawPrint, Trash2 } from "lucide-react";
 
@@ -88,6 +89,7 @@ export default function HusbandryPanel({
   onButcher: (speciesId: string) => Promise<void>;
   onJournal?: (text: string) => void;
 }) {
+  const dateFor = useDateForDay();
   const [animals, setAnimals] = useState<AnimalRow[]>([]);
   const [version, setVersion] = useState(0);
   const [message, setMessage] = useState("");
@@ -248,7 +250,7 @@ export default function HusbandryPanel({
               <PawPrint className="w-8 h-8" />
               <h2 className="text-3xl font-bold">Husbandry</h2>
             </div>
-            <span className="rounded-full border border-[#9a7b45] bg-[#fff0c7] px-3 py-1 text-sm font-bold">Day {campaignDay}</span>
+            <span className="rounded-full border border-[#9a7b45] bg-[#fff0c7] px-3 py-1 text-sm font-bold">{dateFor(campaignDay).label}</span>
           </div>
           <p>
             Keep prey animals for what they give: milk, wool, eggs, shed antler, or whatever a boar roots up. Wild ones must be tamed when the GM says one is nearby. Anyone can try with <strong>Animal Handling</strong> (WIS); a <strong>druid, ranger, or anyone who can speak with animals</strong> can instead <em>convince</em> it, rolling with advantage against a lower DC. Farm animals are bought. Products come back on a schedule counted in days, and the day moves on when the GM presses Pass Day.

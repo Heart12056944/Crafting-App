@@ -17,6 +17,20 @@ type Section = { title: string; icon: React.ComponentType<{ className?: string }
 
 const SECTIONS: Section[] = [
   {
+    title: "Finding your way",
+    icon: BookMarked,
+    rules: [
+      {
+        title: "Tab groups",
+        body: "The tabs are grouped: Character (your sheet, inventory, cards and the journal), Crafting (recipes, materials, gathering, the herd, looting and the larder), World (travel, shops, the bounty board, factions and the homestead) and Game Master (the GM's own pages, and the GM sign-in). Pick a group, then a tab; each group remembers the tab you last used.",
+      },
+      {
+        title: "Saving and backups",
+        body: "Everything saves as you go, one character at a time, so two players changing their own characters never overwrite each other. The GM also keeps backups of the whole campaign, taken automatically before each Pass Day, long time skip and the end of a combat, and can put the campaign back to any of them if something goes wrong.",
+      },
+    ],
+  },
+  {
     title: "Your Characters",
     icon: UserRound,
     rules: [
@@ -236,7 +250,7 @@ const SECTIONS: Section[] = [
     rules: [
       {
         title: "Calendar",
-        body: "Each Pass Day moves the date on. A year has four seasons of three 30-day months (Early, Mid and Late).",
+        body: "Each Pass Day moves the date on. A year has four seasons of three 30-day months (Early, Mid and Late). Years are counted from the end of the Crimson Crusade: PCR for the years since (the Undying Vigil begins in 240 PCR), and BCR for the years before it.",
       },
       {
         title: "Weather",
@@ -287,6 +301,10 @@ const SECTIONS: Section[] = [
       {
         title: "What standing does",
         body: "A faction's shops give 5% off when you're Friendly (15+), 10% when Honoured (40+) and 15% when Exalted (75+), and pay a little more for what you sell. Unfriendly factions charge 10% more; hostile ones won't trade at all.",
+      },
+      {
+        title: "The Order of the Undying Vigil",
+        body: "In a Vigil campaign, My Character shows your rank in the Order: the Unlit, the Kindled, the Steadfast, the Tempered, the Unwavering, and the Vigil itself. The ranks are not a chain of command; they record what Verath has witnessed in you. The GM names you to a new rank and records the deeds the fire has seen, and each rank shows what it would take to reach the next. The Tempered carry Verath's mark, and no more than nine are ever Unwavering.",
       },
     ],
   },

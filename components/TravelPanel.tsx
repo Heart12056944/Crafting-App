@@ -20,6 +20,9 @@ import {
   weatherById,
   weatherTable,
   typicalTemperature,
+  splitYear,
+  toSignedYear,
+  type Era,
   type CalendarDate,
   type CalendarSettings,
   type ClimateId,
@@ -405,6 +408,8 @@ function CalendarCard({
   const [season, setSeason] = useState<Season>(date.season);
   const [part, setPart] = useState<(typeof MONTH_PARTS)[number]>(date.part);
   const [day, setDay] = useState(date.day);
+  const [yearValue, setYearValue] = useState(splitYear(date.year).value);
+  const [era, setEra] = useState<Era>(splitYear(date.year).era);
   const possible = Object.keys(weatherTable(calendar.climate, date));
   const gatheringNotes = Object.entries(weather.gathering).map(([activity, effect]) =>
     effect === "closed" ? `no ${activity}` : `${activity} ${Number(effect) > 0 ? "+" : ""}${effect}`
@@ -414,6 +419,7 @@ function CalendarCard({
     // Day 1 of the campaign is today minus the days already played.
     const start = dayOfYearIndex(season, part, day) - (campaignDay - 1);
     setCalendarValue("start", String(start));
+    setCalendarValue("year", String(toSignedYear(yearValue, era)));
   }
 
   return (
@@ -426,9 +432,9 @@ function CalendarCard({
         <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
           <div className="rounded-xl border-2 border-[#9a7b45] bg-[#f7e7c5] p-3">
             <p className="text-xs uppercase tracking-wide">Today</p>
-            <p className="text-2xl font-bold">{date.label}</p>
+            <p className="text-2xl font-bold">{date.short}</p>
             <p className="text-sm">
-              Campaign day {campaignDay} · year {date.year} of the campaign · {CLIMATES[calendar.climate].label}
+              {date.yearLabel} · campaign day {campaignDay} · {CLIMATES[calendar.climate].label}
             </p>
           </div>
           <div className="rounded-xl border-2 border-[#9a7b45] bg-[#f7e7c5] p-3">
@@ -469,6 +475,19 @@ function CalendarCard({
                 onChange={(event) => setDay(Math.max(1, Math.min(DAYS_PER_MONTH, Number(event.target.value) || 1)))}
                 aria-label="Day of the month"
               />
+              <span>,</span>
+              <input
+                type="number"
+                min={0}
+                className={`${fieldClass} w-20`}
+                value={yearValue}
+                onChange={(event) => setYearValue(Math.max(0, Number(event.target.value) || 0))}
+                aria-label="Year"
+              />
+              <select className={fieldClass} value={era} onChange={(event) => setEra(event.target.value as Era)} aria-label="Era">
+                <option value="PCR">PCR</option>
+                <option value="BCR">BCR</option>
+              </select>
               <Button size="sm" onClick={setToday} className={darkButton}>Set date</Button>
             </div>
             <div className="flex flex-wrap items-center gap-2">

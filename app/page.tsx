@@ -32,6 +32,7 @@ import {
   Flag,
   Castle,
   Wrench,
+  LayoutDashboard,
 } from "lucide-react";
 
 import { recipesRaw, recipeSetTags, rarityColors, type Recipe, type Rarity } from "@/data/recipesRaw";
@@ -69,7 +70,12 @@ import {
   type DiscoveryEntry,
 } from "@/lib/supabaseCampaignState";
 import { fetchCampaignCraftedItems, insertCraftedItem, deleteCraftedItem } from "@/lib/supabaseCraftedItems";
-import { fetchCampaignCharacters, replaceCampaignCharacters } from "@/lib/supabaseCharacters";
+import { fetchCampaignCharacters, replaceCampaignCharacters, saveChangedCharacters } from "@/lib/supabaseCharacters";
+import { autoBackup } from "@/lib/supabaseBackups";
+import DashboardPanel from "@/components/DashboardPanel";
+import { CalendarDayContext } from "@/components/CalendarContext";
+import type { OrderDeed, OrderRank } from "@/data/order";
+import { THREAT_STAGES, advanceThreat, readThreat, threatStage } from "@/data/threat";
 import {
   fetchCampaignLootCreatures,
   insertCampaignLootCreature,
@@ -114,7 +120,20 @@ import { averageDice, describeSpan, materialShelfLifeDays, shelfLifeDays, type T
 import { isFoodRow, isRationRow } from "@/data/rations";
 import { pickProductMaterial, productsFor, speciesById as husbandrySpecies } from "@/data/husbandry";
 import TimeSkipPanel from "@/components/TimeSkipPanel";
-import { dateForCampaignDay, daysWithoutFoodAllowed, readCalendarSettings, rollWeather, weatherById } from "@/data/calendar";
+import {
+  DEFAULT_YEAR,
+  MONTH_PARTS,
+  SEASONS,
+  dateForCampaignDay,
+  dayOfYearIndex,
+  daysWithoutFoodAllowed,
+  readCalendarSettings,
+  rollWeather,
+  toSignedYear,
+  weatherById,
+  type Era,
+  type Season,
+} from "@/data/calendar";
 import { pickFoodFor } from "@/data/rations";
 import { addJournalEntry } from "@/lib/supabaseJournal";
 import { consumableInfo } from "@/data/consumables";
@@ -165,7 +184,7 @@ type InventoryProfile = {
 
 type Stat = "STR" | "DEX" | "CON" | "INT" | "WIS" | "CHA";
 
-type TabId = "craft" | "available" | "recipes" | "materials" | "inventory" | "shops" | "characters" | "advancement" | "attributes" | "companions" | "rewards" | "looting" | "gathering" | "husbandry" | "bounties" | "travel" | "combat" | "mycharacter" | "journal" | "factions" | "homestead" | "craftingRules" | "lootingRules" | "guide" | "larder" | "admin";
+type TabId = "craft" | "available" | "recipes" | "materials" | "inventory" | "shops" | "characters" | "advancement" | "attributes" | "companions" | "rewards" | "looting" | "gathering" | "husbandry" | "bounties" | "travel" | "combat" | "mycharacter" | "journal" | "factions" | "homestead" | "craftingRules" | "lootingRules" | "guide" | "larder" | "dashboard" | "admin";
 
 const tabs = [
   ["craft", "Craft", Hammer],
@@ -187,14 +206,23 @@ const tabs = [
   ["bounties", "Bounty Board", Scroll],
   ["factions", "Factions", Flag],
   ["homestead", "Homestead", Castle],
-  ["combat", "Combat", Swords],
   ["travel", "Travel & Camp", Tent],
   ["craftingRules", "Crafting Rules", ScrollText],
   ["lootingRules", "Looting Rules", Dice5],
   ["guide", "Player Guide", BookMarked],
   ["larder", "Larder", Soup],
+  ["dashboard", "Today", LayoutDashboard],
+  ["combat", "Combat", Swords],
   ["admin", "GM", KeyRound],
 ] as const satisfies readonly (readonly [TabId, string, React.ComponentType<{ className?: string }>])[];
+
+// Tabs are grouped so the bar isn't one long row.
+const tabGroups: { id: string; label: string; tabs: TabId[] }[] = [
+  { id: "character", label: "Character", tabs: ["mycharacter", "characters", "inventory", "advancement", "attributes", "companions", "rewards", "journal"] },
+  { id: "crafting", label: "Crafting", tabs: ["craft", "available", "recipes", "materials", "gathering", "husbandry", "looting", "larder", "craftingRules", "lootingRules"] },
+  { id: "world", label: "World", tabs: ["travel", "shops", "bounties", "factions", "homestead", "guide"] },
+  { id: "gm", label: "Game Master", tabs: ["dashboard", "combat", "admin"] },
+];
 
 type ProficiencyLevel = "none" | "proficient" | "expertise";
 type CraftQuality = "Superior" | "Normal" | "Flawed";
@@ -246,6 +274,9 @@ type Character = {
   afflictions?: Affliction[];
   // What the character does on days off.
   downtime?: Downtime;
+  // The Order of the Undying Vigil: rank and witnessed deeds.
+  orderRank?: OrderRank;
+  orderDeeds?: OrderDeed[];
   // Mining / Woodcutting / Foraging / Fishing skill proficiency from the sheet.
   gatheringSkills?: Partial<Record<GatheringActivity, ProficiencyLevel>>;
 };
@@ -1343,6 +1374,8 @@ function normalizeCharacter(character: Partial<Character>): Character {
     claimable: character.claimable ?? false,
     afflictions: Array.isArray(character.afflictions) ? character.afflictions : [],
     downtime: character.downtime || { activity: "none" },
+    orderRank: character.orderRank,
+    orderDeeds: Array.isArray(character.orderDeeds) ? character.orderDeeds : [],
     daysWithoutFood: character.daysWithoutFood ?? 0,
     exhaustion: character.exhaustion ?? 0,
     gatheringSkills: character.gatheringSkills || {},
@@ -1618,6 +1651,17 @@ export default function ArcaneCraftingCodexPage() {
   // Shops the GM has made for this campaign. Players only get the Shops tab while one is open.
   const { shops: campaignShops } = useCampaignShops(activeInventoryId);
   const anyShopOpen = campaignShops.some((shop) => shop.is_open);
+  function tabVisible(id: TabId) {
+    if (id === "shops") return adminUnlocked || anyShopOpen;
+    if (id === "combat" || id === "dashboard") return adminUnlocked;
+    return true;
+  }
+  // Remember the last tab used in each group, so switching groups returns to it.
+  const lastTabInGroup = useRef<Record<string, TabId>>({});
+  useEffect(() => {
+    const group = tabGroups.find((entry) => entry.tabs.includes(activeTab));
+    if (group) lastTabInGroup.current[group.id] = activeTab;
+  }, [activeTab]);
 
   // Husbandry: the campaign's day counter (advanced by Pass Day) and the wild
   // animals the GM has placed nearby. Both live in campaign_discoveries.
@@ -1626,7 +1670,8 @@ export default function ArcaneCraftingCodexPage() {
   const [calendarValues, setCalendarValues] = useState<Record<string, string>>({});
   const [lastDayReport, setLastDayReport] = useState<string[]>([]);
   const calendar = useMemo(() => readCalendarSettings(calendarValues), [calendarValues]);
-  const today = useMemo(() => dateForCampaignDay(campaignDay, calendar.start), [campaignDay, calendar.start]);
+  const today = useMemo(() => dateForCampaignDay(campaignDay, calendar.start, calendar.startYear), [campaignDay, calendar.start, calendar.startYear]);
+  const dayToDate = React.useCallback((day: number) => dateForCampaignDay(day, calendar.start, calendar.startYear), [calendar.start, calendar.startYear]);
   const [wildAnimals, setWildAnimals] = useState<string[]>([]);
   // Average level of the characters in play (for random bounties).
   const partyLevel = useMemo(() => {
@@ -1637,6 +1682,9 @@ export default function ArcaneCraftingCodexPage() {
   const [combat, setCombat] = useState<CombatState | null>(null);
   // Homestead facility levels (and its name under the key "name").
   const [homesteadValues, setHomesteadValues] = useState<Record<string, string>>({});
+  // The threat clock (GM only), from campaign values of kind "threat".
+  const [threatValues, setThreatValues] = useState<Record<string, string>>({});
+  const threat = useMemo(() => readThreat(threatValues), [threatValues]);
   // Ecology: hunting pressure per creature and how picked-over each gathering spot is.
   const [huntingPressure, setHuntingPressure] = useState<Record<string, Pressure>>({});
   const [spotUses, setSpotUses] = useState<Record<string, SpotUse>>({});
@@ -1689,6 +1737,11 @@ export default function ArcaneCraftingCodexPage() {
   }
   const shouldSaveMaterialsRef = useRef(false);
   const shouldSaveCharactersRef = useRef(false);
+  // What each character looked like when last loaded or saved, so only changed characters are written.
+  const savedCharactersRef = useRef<Map<string, string>>(new Map());
+  function rememberSavedCharacters(list: Character[]) {
+    savedCharactersRef.current = new Map(list.map((character) => [character.id, JSON.stringify(characterToSupabasePayload(character))]));
+  }
   // Latest values for realtime callbacks, which would otherwise see stale state.
   const inventoryProfilesRef = useRef<InventoryProfile[]>([]);
   const activeInventoryIdRef = useRef("");
@@ -1836,6 +1889,7 @@ export default function ArcaneCraftingCodexPage() {
         setActiveInventoryId(activeProfile.id);
         setMaterials(activeMaterials);
         setCharacters(activeCharacters);
+      rememberSavedCharacters(supabaseCharacterRows.length > 0 ? activeCharacters : []);
         setCraftedItems(activeCraftedItems);
         setDisabledTags(activeProfile.disabledTags || []);
         setSelectedCharacterId((activeCharacters[0] || defaultCharacter()).id);
@@ -1891,6 +1945,7 @@ export default function ArcaneCraftingCodexPage() {
       setMaterials(activeMaterials);
       setCraftedItems(activeCraftedItems);
       setCharacters(activeCharacters);
+      rememberSavedCharacters(supabaseCharacterRows.length > 0 ? activeCharacters : []);
       setSelectedCharacterId((currentId) =>
         activeCharacters.some((character) => character.id === currentId)
           ? currentId
@@ -2060,13 +2115,27 @@ export default function ArcaneCraftingCodexPage() {
     if (shouldSaveCharactersRef.current && characters.length > 0) {
       shouldSaveCharactersRef.current = false;
 
-      replaceCampaignCharacters(
-        activeInventoryId,
-        characters.map(characterToSupabasePayload)
-      ).catch((error) => {
-        console.warn("Failed to save campaign characters to Supabase.", error);
-        setImportLog("Warning: characters saved locally, but Supabase character sync failed.");
-      });
+      const snapshot = savedCharactersRef.current;
+      const payloads = characters.map((character) => ({ character, payload: characterToSupabasePayload(character) }));
+      const changed = payloads.filter(({ character, payload }) => snapshot.get(character.id) !== JSON.stringify(payload));
+      const currentIds = new Set(characters.map((character) => character.id));
+      // Only the GM removes characters.
+      const removed = adminUnlocked && snapshot.size ? [...snapshot.keys()].filter((id) => !currentIds.has(id)) : [];
+      if (changed.length || removed.length) {
+        saveChangedCharacters(
+          activeInventoryId,
+          changed.map(({ payload }) => payload),
+          removed
+        )
+          .then(() => {
+            changed.forEach(({ character, payload }) => snapshot.set(character.id, JSON.stringify(payload)));
+            removed.forEach((id) => snapshot.delete(id));
+          })
+          .catch((error) => {
+            console.warn("Failed to save campaign characters to Supabase.", error);
+            setImportLog("Warning: characters saved locally, but Supabase character sync failed.");
+          });
+      }
     }
   }, [materials, characters, disabledTags, materialsLoaded, activeInventoryId, isLoadingCampaignData]);
 
@@ -2160,6 +2229,7 @@ export default function ArcaneCraftingCodexPage() {
       const calendarRows: Record<string, string> = {};
       let combatState: CombatState | null = null;
       const homesteadRows: Record<string, string> = {};
+      const threatRows: Record<string, string> = {};
       const pressureRows: Record<string, Pressure> = {};
       const spotRows: Record<string, SpotUse> = {};
       let day = 1;
@@ -2168,6 +2238,7 @@ export default function ArcaneCraftingCodexPage() {
         if (row.kind === "calendar" && row.item_key === "day") day = Math.max(1, Number(row.state) || 1);
         else if (row.kind === "calendar" && row.state) calendarRows[row.item_key] = row.state;
         else if (row.kind === "homestead" && row.state) homesteadRows[row.item_key] = row.state;
+        else if (row.kind === "threat" && row.state) threatRows[row.item_key] = row.state;
         else if ((row.kind === "ecology" || row.kind === "spot-use") && row.state) {
           try {
             if (row.kind === "ecology") pressureRows[row.item_key] = JSON.parse(row.state) as Pressure;
@@ -2200,6 +2271,7 @@ export default function ArcaneCraftingCodexPage() {
       setCalendarValues(calendarRows);
       setCombat(combatState);
       setHomesteadValues(homesteadRows);
+      setThreatValues(threatRows);
       setHuntingPressure(pressureRows);
       setSpotUses(spotRows);
       setWildAnimals(wild);
@@ -2643,6 +2715,7 @@ export default function ArcaneCraftingCodexPage() {
       setActiveInventoryId(profile.id);
       setMaterials(activeMaterials);
       setCharacters(activeCharacters);
+      rememberSavedCharacters(supabaseCharacterRows.length > 0 ? activeCharacters : []);
       setCraftedItems(activeCraftedItems);
       setDisabledTags(profile.disabledTags || []);
       setSelectedCharacterId((activeCharacters[0] || defaultCharacter()).id);
@@ -2684,7 +2757,7 @@ export default function ArcaneCraftingCodexPage() {
     };
   }, [materialsLoaded]);
 
-  async function createInventoryProfile(copyCurrent = false) {
+  async function createInventoryProfile(copyCurrent = false, startDate?: { year: number; season: Season; part: (typeof MONTH_PARTS)[number]; day: number }) {
     if (!adminUnlocked) return;
 
     try {
@@ -2754,8 +2827,16 @@ export default function ArcaneCraftingCodexPage() {
         console.warn("Failed to set the shared active campaign.", error);
       }
 
+      // The campaign's calendar starts on the chosen date.
+      const date = startDate || { year: DEFAULT_YEAR, season: "Spring" as Season, part: "Mid" as const, day: 1 };
+      const calendarStart = { start: String(dayOfYearIndex(date.season, date.part, date.day)), year: String(date.year) };
+      await setCampaignValue(profile.id, "calendar", "start", calendarStart.start).catch(() => undefined);
+      await setCampaignValue(profile.id, "calendar", "year", calendarStart.year).catch(() => undefined);
+      setCampaignDay(1);
+      setCalendarValues(calendarStart);
+
       setNewInventoryName("");
-      setImportLog(`Created and opened ${name}.`);
+      setImportLog(`Created and opened ${name}, starting ${dateForCampaignDay(1, Number(calendarStart.start), date.year).label}.`);
     } catch (error) {
       console.error(error);
       setImportLog("Could not create campaign in Supabase.");
@@ -3734,6 +3815,7 @@ export default function ArcaneCraftingCodexPage() {
 
   async function passDay() {
     if (!adminUnlocked) return;
+    if (activeInventoryId) await autoBackup(activeInventoryId, `Before Pass Day (day ${campaignDay})`);
 
     let meals: { fed: Set<string>; lines: string[] } | null = null;
     try {
@@ -3862,7 +3944,7 @@ export default function ArcaneCraftingCodexPage() {
     );
 
     const nextDay = campaignDay + 1;
-    const nextDate = dateForCampaignDay(nextDay, calendar.start);
+    const nextDate = dateForCampaignDay(nextDay, calendar.start, calendar.startYear);
     const nextWeather = rollWeather(calendar.climate, nextDate, calendar.weather);
     setCampaignDay(nextDay);
     setCalendarValues((current) => ({ ...current, weather: nextWeather }));
@@ -3875,6 +3957,7 @@ export default function ArcaneCraftingCodexPage() {
       );
     }
 
+    tickThreat(1, nextDay);
     const log = [
       `Day ${nextDay} (${nextDate.label}) has begun. Weather: ${weatherById(nextWeather).label}.`,
       ...(meals?.lines || []),
@@ -3920,6 +4003,7 @@ export default function ArcaneCraftingCodexPage() {
   async function passTime(days: number, options: TimeSkipOptions): Promise<string[]> {
     if (!adminUnlocked || !activeInventoryId || days < 1) return [];
     const campaignId = activeInventoryId;
+    await autoBackup(campaignId, `Before skipping ${describeSpan(days)} (day ${campaignDay})`);
     const lines: string[] = [];
     const party = effectiveCharacters.filter((character) => character.isActive !== false);
     const changes = new Map<string, Partial<Character>>();
@@ -4145,18 +4229,55 @@ export default function ArcaneCraftingCodexPage() {
       }))
     );
     const nextDay = campaignDay + days;
-    const nextDate = dateForCampaignDay(nextDay, calendar.start);
+    const nextDate = dateForCampaignDay(nextDay, calendar.start, calendar.startYear);
     const nextWeather = rollWeather(calendar.climate, nextDate);
     setCampaignDay(nextDay);
     setCalendarValues((current) => ({ ...current, weather: nextWeather }));
     await setCampaignValue(campaignId, "calendar", "day", String(nextDay)).catch(() => undefined);
     await setCampaignValue(campaignId, "calendar", "weather", nextWeather).catch(() => undefined);
 
-    const summary = [`${describeSpan(days)} passed. It is now ${nextDate.label}, year ${nextDate.year} (day ${nextDay}). Weather: ${weatherById(nextWeather).label}.`, ...lines];
+    const threatLine = !options.threat ? null : tickThreat(days, nextDay);
+    const summary = [`${describeSpan(days)} passed. It is now ${nextDate.label} (campaign day ${nextDay}). Weather: ${weatherById(nextWeather).label}.`, ...lines];
     await addJournalEntry({ campaignId, day: nextDay, text: summary.join(" ") });
     setImportLog(summary[0]);
-    setLastDayReport(summary);
-    return summary;
+    setLastDayReport(threatLine ? [...summary, `(GM only) ${threatLine}`] : summary);
+    return threatLine ? [...summary, `(GM only) ${threatLine}`] : summary;
+  }
+
+  function setThreatValue(key: string, value: string | null) {
+    if (!activeInventoryId || !adminUnlocked) return;
+    setThreatValues((current) => {
+      const next = { ...current };
+      if (value === null) delete next[key];
+      else next[key] = value;
+      return next;
+    });
+    setCampaignValue(activeInventoryId, "threat", key, value).catch((error) => console.warn("Failed to save the threat clock.", error));
+  }
+
+  // Move the threat clock to a new value; crossing into a new stage posts its rumours (GM only).
+  function setThreat(value: number, day = campaignDay, progress?: number) {
+    const clamped = Math.max(0, Math.min(100, Math.round(value)));
+    const before = threat.value;
+    setThreatValue("value", String(clamped));
+    if (progress !== undefined) setThreatValue("progress", progress ? progress.toFixed(3) : null);
+    if (!activeInventoryId || clamped <= before) return null;
+    const crossed = THREAT_STAGES.filter((stage) => stage.min > before && stage.min <= clamped);
+    for (const stage of crossed) {
+      void addJournalEntry({ campaignId: activeInventoryId, day, text: `Threat clock: ${stage.name}. ${stage.note}`, gmOnly: true });
+      for (const rumour of stage.rumours) void addJournalEntry({ campaignId: activeInventoryId, day, text: rumour, kind: "rumour", gmOnly: true });
+    }
+    return crossed.length ? `The threat clock reached ${crossed[crossed.length - 1].name} (${clamped}).` : null;
+  }
+
+  // Time passing moves the clock along at the GM's chosen rate.
+  function tickThreat(days: number, day: number) {
+    const result = advanceThreat(threat, days);
+    if (result.value === threat.value) {
+      if (threat.perMonth > 0) setThreatValue("progress", result.progress ? result.progress.toFixed(3) : null);
+      return null;
+    }
+    return setThreat(result.value, day, result.progress) || `The threat clock is at ${result.value} (${threatStage(result.value).name}).`;
   }
 
   function setCalendarValue(key: string, value: string | null) {
@@ -4269,6 +4390,7 @@ export default function ArcaneCraftingCodexPage() {
     tamed: string[];
     ran: string[];
   }) {
+    if (activeInventoryId) await autoBackup(activeInventoryId, `Before ending combat (day ${campaignDay})`);
     const lines: string[] = [];
     for (const { table, tier, qty } of results.killed.values()) {
       await queueCreatureForLooting(table, qty, tier);
@@ -4778,6 +4900,7 @@ export default function ArcaneCraftingCodexPage() {
   }
 
   return (
+    <CalendarDayContext.Provider value={dayToDate}>
     <div
       className="min-h-screen text-[#f3dfb5] p-6 md:p-8"
       style={{
@@ -4802,9 +4925,28 @@ export default function ArcaneCraftingCodexPage() {
           </p>
         </header>
 
-        <nav className="flex flex-wrap gap-3">
-          {tabs
-            .filter(([id]) => (id !== "shops" || adminUnlocked || anyShopOpen) && (id !== "combat" || adminUnlocked))
+        <nav className="flex flex-wrap gap-2" aria-label="Tab groups">
+          {tabGroups.map((group) => {
+            const active = group.tabs.includes(activeTab);
+            const first = tabs.find(([id]) => group.tabs.includes(id) && tabVisible(id));
+            if (!first) return null;
+            return (
+              <Button
+                key={group.id}
+                onClick={() => setActiveTab(lastTabInGroup.current[group.id] && tabVisible(lastTabInGroup.current[group.id]) ? lastTabInGroup.current[group.id] : first[0])}
+                className={`font-serif text-lg rounded-xl border px-5 ${
+                  active ? "bg-[#d2ad5f] text-[#171717] border-[#fff0c7]" : "bg-[#3a2a17] text-[#fff0c7] border-[#9a7b45] hover:bg-[#4b3115]"
+                }`}
+              >
+                {group.label}
+              </Button>
+            );
+          })}
+        </nav>
+        <nav className="flex flex-wrap gap-3" aria-label="Tabs">
+          {(tabGroups.find((group) => group.tabs.includes(activeTab))?.tabs || [])
+            .filter(tabVisible)
+            .map((tabId) => tabs.find(([id]) => id === tabId)!)
             .map(([id, label, Icon]) => (
             <Button
               key={id}
@@ -5096,6 +5238,7 @@ export default function ArcaneCraftingCodexPage() {
             abundanceOf={abundanceOf}
             onRemoveMaterials={removeMaterialsFromPool}
             onJournal={logJournal}
+            undeadWeight={threatStage(threat.value).undeadWeight}
           />
         )}
 
@@ -5137,6 +5280,7 @@ export default function ArcaneCraftingCodexPage() {
             canEdit={(id: string) => adminUnlocked || myCharacterIds.includes(id)}
             trainingDiscount={trainingDiscount(homestead)}
             onUpdate={updateOwnCharacter}
+            showOrder={/vigil/i.test(inventoryProfiles.find((profile) => profile.id === activeInventoryId)?.name || "") || effectiveCharacters.some((character) => character.orderRank)}
           />
         )}
 
@@ -5155,7 +5299,24 @@ export default function ArcaneCraftingCodexPage() {
         {activeTab === "factions" && <FactionsPanel campaignId={activeInventoryId} adminUnlocked={adminUnlocked} onJournal={logJournal} />}
 
         {activeTab === "journal" && (
-          <JournalPanel campaignId={activeInventoryId} adminUnlocked={adminUnlocked} campaignDay={campaignDay} calendarStart={calendar.start} />
+          <JournalPanel campaignId={activeInventoryId} adminUnlocked={adminUnlocked} campaignDay={campaignDay} calendarStart={calendar.start} calendarStartYear={calendar.startYear} />
+        )}
+
+        {activeTab === "dashboard" && adminUnlocked && (
+          <DashboardPanel
+            campaignId={activeInventoryId}
+            campaignDay={campaignDay}
+            date={today}
+            calendar={calendar}
+            characters={effectiveCharacters}
+            lootQueue={creatureLootQueue.map((entry) => ({ id: entry.id, label: `${entry.qty}× ${entry.creatureLabel}` }))}
+            threat={threat}
+            setThreat={(value: number) => {
+              setThreat(value);
+            }}
+            setThreatRate={(perMonth: number) => setThreatValue("perMonth", String(perMonth))}
+            goTo={(tab) => setActiveTab(tab)}
+          />
         )}
 
         {activeTab === "craftingRules" && <RulesPanel />}
@@ -5204,6 +5365,7 @@ export default function ArcaneCraftingCodexPage() {
         )}
       </div>
     </div>
+    </CalendarDayContext.Provider>
   );
 }
 
@@ -7401,7 +7563,7 @@ function GMPanel(props: {
   switchInventoryProfile: (profileId: string) => void;
   newInventoryName: string;
   setNewInventoryName: (value: string) => void;
-  createInventoryProfile: (copyCurrent?: boolean) => void;
+  createInventoryProfile: (copyCurrent?: boolean, startDate?: { year: number; season: Season; part: (typeof MONTH_PARTS)[number]; day: number }) => void;
   renameInventoryProfile: (profileId: string, name: string) => void;
   deleteInventoryProfile: (profileId: string) => void;
   allTags: string[];
@@ -7414,6 +7576,12 @@ function GMPanel(props: {
   passTime: (days: number, options: TimeSkipOptions) => Promise<string[]>;
 }) {
   const [confirmLevelUp, setConfirmLevelUp] = useState(false);
+  // Start date for a new campaign.
+  const [newYear, setNewYear] = useState(DEFAULT_YEAR);
+  const [newEra, setNewEra] = useState<Era>("PCR");
+  const [newSeason, setNewSeason] = useState<Season>("Spring");
+  const [newPart, setNewPart] = useState<(typeof MONTH_PARTS)[number]>("Mid");
+  const [newDay, setNewDay] = useState(1);
   return (
     <ParchmentCard>
       <div className="space-y-5 font-serif">
@@ -7495,12 +7663,54 @@ function GMPanel(props: {
                   value={props.newInventoryName}
                   onChange={(event) => props.setNewInventoryName(event.target.value)}
                 />
-                <Button onClick={() => props.createInventoryProfile(false)} className="bg-[#4b3115] hover:bg-[#62401c] text-[#fff0c7]">
+                <Button
+                  onClick={() => props.createInventoryProfile(false, { year: toSignedYear(newYear, newEra), season: newSeason, part: newPart, day: newDay })}
+                  className="bg-[#4b3115] hover:bg-[#62401c] text-[#fff0c7]"
+                >
                   New Campaign
                 </Button>
-                <Button onClick={() => props.createInventoryProfile(true)} className="bg-[#2f3b4b] hover:bg-[#3d4c60] text-[#fff0c7]">
+                <Button
+                  onClick={() => props.createInventoryProfile(true, { year: toSignedYear(newYear, newEra), season: newSeason, part: newPart, day: newDay })}
+                  className="bg-[#2f3b4b] hover:bg-[#3d4c60] text-[#fff0c7]"
+                >
                   Copy Current Campaign
                 </Button>
+              </div>
+              <div className="flex flex-wrap items-center gap-2 text-sm">
+                <span>New campaign starts on</span>
+                <select className="rounded border border-[#9a7b45] bg-[#fff0c7] px-2 py-1" value={newPart} onChange={(event) => setNewPart(event.target.value as (typeof MONTH_PARTS)[number])} aria-label="Start part of season">
+                  {MONTH_PARTS.map((option) => (
+                    <option key={option}>{option}</option>
+                  ))}
+                </select>
+                <select className="rounded border border-[#9a7b45] bg-[#fff0c7] px-2 py-1" value={newSeason} onChange={(event) => setNewSeason(event.target.value as Season)} aria-label="Start season">
+                  {SEASONS.map((option) => (
+                    <option key={option}>{option}</option>
+                  ))}
+                </select>
+                <span>day</span>
+                <input
+                  type="number"
+                  min={1}
+                  max={30}
+                  className="w-16 rounded border border-[#9a7b45] bg-[#fff0c7] px-2 py-1"
+                  value={newDay}
+                  onChange={(event) => setNewDay(Math.max(1, Math.min(30, Number(event.target.value) || 1)))}
+                  aria-label="Start day"
+                />
+                <span>,</span>
+                <input
+                  type="number"
+                  min={0}
+                  className="w-20 rounded border border-[#9a7b45] bg-[#fff0c7] px-2 py-1"
+                  value={newYear}
+                  onChange={(event) => setNewYear(Math.max(0, Number(event.target.value) || 0))}
+                  aria-label="Start year"
+                />
+                <select className="rounded border border-[#9a7b45] bg-[#fff0c7] px-2 py-1" value={newEra} onChange={(event) => setNewEra(event.target.value as Era)} aria-label="Start era">
+                  <option value="PCR">PCR (after the Crusade)</option>
+                  <option value="BCR">BCR (before the Crusade ended)</option>
+                </select>
               </div>
 
               <div className="space-y-2">

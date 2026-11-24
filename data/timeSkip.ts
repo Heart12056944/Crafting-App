@@ -15,6 +15,7 @@ export type TimeSkipOptions = {
   bounties: boolean; // open jobs on the board expire
   standing: boolean; // faction standing drifts toward neutral
   resetWildlife: boolean; // hunting pressure and picked-over spots clear
+  threat: boolean; // the threat clock moves on at its monthly rate
 };
 
 export const DEFAULT_TIME_SKIP: TimeSkipOptions = {
@@ -27,6 +28,7 @@ export const DEFAULT_TIME_SKIP: TimeSkipOptions = {
   bounties: true,
   standing: false,
   resetWildlife: true,
+  threat: true,
 };
 
 export const TIME_SKIP_LABELS: Record<keyof TimeSkipOptions, string> = {
@@ -39,6 +41,7 @@ export const TIME_SKIP_LABELS: Record<keyof TimeSkipOptions, string> = {
   bounties: "Open bounties and commissions expire",
   standing: "Faction standing drifts back toward neutral (1 point a month)",
   resetWildlife: "Hunted-out creatures and picked-over spots recover",
+  threat: "The threat clock moves on at its monthly rate (GM only)",
 };
 
 export const TIME_UNITS: { id: string; label: string; days: number }[] = [

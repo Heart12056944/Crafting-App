@@ -36,7 +36,9 @@ export default function JournalPanel({
   adminUnlocked,
   campaignDay,
   calendarStart,
+  calendarStartYear,
 }: {
+  calendarStartYear: number;
   campaignId: string;
   adminUnlocked: boolean;
   campaignDay: number;
@@ -96,7 +98,7 @@ export default function JournalPanel({
                   {entry.gm_only ? <span className="text-xs italic"> (GM only)</span> : null}
                 </p>
                 <p className="text-xs">
-                  Heard on {dateForCampaignDay(entry.day, calendarStart).label}
+                  Heard on {dateForCampaignDay(entry.day, calendarStart, calendarStartYear).label}
                   {entry.status === "resolved" ? " · resolved" : ""}
                 </p>
                 {adminUnlocked && (
@@ -186,7 +188,7 @@ export default function JournalPanel({
           {[...byDay.entries()].map(([day, dayEntries]) => (
             <div key={day} className="space-y-1">
               <p className="font-bold">
-                Day {day} · {dateForCampaignDay(day, calendarStart).label}
+                Day {day} · {dateForCampaignDay(day, calendarStart, calendarStartYear).label}
               </p>
               {[...dayEntries].reverse().map((entry) => (
                 <p key={entry.id} className="flex items-start justify-between gap-2 border-b border-[#e0c896] text-sm">

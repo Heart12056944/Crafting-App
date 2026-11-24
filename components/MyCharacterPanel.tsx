@@ -1,5 +1,7 @@
 "use client";
 
+import { useDateForDay } from "@/components/CalendarContext";
+import { ORDER_RANKS, orderRankById, type OrderDeed, type OrderRank } from "@/data/order";
 import React, { useEffect, useRef, useState } from "react";
 import { UserRound } from "lucide-react";
 
@@ -51,6 +53,8 @@ type SheetCharacter = {
   exhaustion?: number;
   afflictions?: Affliction[];
   downtime?: Downtime;
+  orderRank?: OrderRank;
+  orderDeeds?: OrderDeed[];
 };
 
 const fieldClass = "rounded border border-[#9a7b45] bg-[#fff0c7] px-2 py-1 text-sm";
@@ -87,11 +91,14 @@ export default function MyCharacterPanel({
   canEdit,
   trainingDiscount,
   onUpdate,
+  showOrder = false,
 }: {
+  // Show the Order of the Undying Vigil rank track.
+  showOrder?: boolean;
   // Whether this viewer may change this character (GM, or the player who claimed it).
   canEdit: (characterId: string) => boolean;
   trainingDiscount: number;
-  onUpdate: (characterId: string, changes: { afflictions?: Affliction[]; downtime?: Downtime }, journal?: string) => void;
+  onUpdate: (characterId: string, changes: { afflictions?: Affliction[]; downtime?: Downtime; orderRank?: OrderRank; orderDeeds?: OrderDeed[] }, journal?: string) => void;
   campaignId: string;
   adminUnlocked: boolean;
   characters: SheetCharacter[];
@@ -100,6 +107,7 @@ export default function MyCharacterPanel({
   cardIdsById: Map<string, number[]>;
   campaignDay: number;
 }) {
+  const dateFor = useDateForDay();
   const shown = characters.filter((character) => characterIds.includes(character.id));
   const [selectedId, setSelectedId] = useState("");
   const selected = shown.find((character) => character.id === selectedId) || shown[0];
@@ -222,7 +230,7 @@ export default function MyCharacterPanel({
                 {exhaustion ? `Exhaustion ${exhaustion} (−${exhaustion * 2} to d20 tests, −${exhaustion * 5} ft speed)` : "No exhaustion"}
               </p>
               {(character.daysWithoutFood ?? 0) > 0 && <p>{character.daysWithoutFood} day(s) without food</p>}
-              <p>Day {campaignDay}</p>
+              <p>{dateFor(campaignDay).label}</p>
             </div>
           </div>
 
@@ -313,6 +321,15 @@ export default function MyCharacterPanel({
             }}
           />
 
+          {showOrder ? (
+            <OrderSection
+              character={character}
+              adminUnlocked={adminUnlocked}
+              campaignDay={campaignDay}
+              update={(changes, journal) => onUpdate(character.id, changes, journal)}
+            />
+          ) : null}
+
           <DowntimeSection
             character={character}
             editable={canEdit(character.id)}
@@ -379,6 +396,110 @@ export default function MyCharacterPanel({
         </CardContent>
       </Card>
     </div>
+  );
+}
+
+// The Order of the Undying Vigil: rank and the deeds Verath has witnessed. The GM sets the rank.
+function OrderSection({
+  character,
+  adminUnlocked,
+  campaignDay,
+  update,
+}: {
+  character: SheetCharacter;
+  adminUnlocked: boolean;
+  campaignDay: number;
+  update: (changes: { orderRank?: OrderRank; orderDeeds?: OrderDeed[] }, journal?: string) => void;
+}) {
+  const dateFor = useDateForDay();
+  const [deed, setDeed] = useState("");
+  const rank = orderRankById.get(character.orderRank || "kindled") || ORDER_RANKS[1];
+  const deeds = character.orderDeeds || [];
+  const index = ORDER_RANKS.findIndex((entry) => entry.id === rank.id);
+  const next = ORDER_RANKS[index + 1];
+
+  function setRank(id: OrderRank) {
+    const to = orderRankById.get(id);
+    if (!to || id === rank.id) return;
+    const raised = ORDER_RANKS.findIndex((entry) => entry.id === id) > index;
+    update(
+      { orderRank: id },
+      raised
+        ? `${character.name} has been named ${to.name} of the Order of the Undying Vigil.${to.mark ? ` ${to.mark}` : ""}`
+        : `${character.name} is now counted among ${to.name} of the Order.`
+    );
+  }
+
+  function addDeed() {
+    const text = deed.trim();
+    if (!text) return;
+    update({ orderDeeds: [...deeds, { day: campaignDay, text }] }, `Witnessed by the fire: ${character.name}, ${text}`);
+    setDeed("");
+  }
+
+  return (
+    <Section title="The Order of the Undying Vigil">
+      <div className="space-y-2 text-sm">
+        <p>
+          <strong className="font-serif text-lg">
+            {rank.numeral}. {rank.name}
+          </strong>{" "}
+          <span className="text-[#6b5432]">({rank.title})</span>
+        </p>
+        <p>{rank.practice}</p>
+        {rank.mark ? <p className="italic text-[#7a4a12]">{rank.mark}</p> : null}
+        {next ? (
+          <p className="text-[#6b5432]">
+            <strong>Toward {next.name}:</strong> {next.advancement}
+          </p>
+        ) : null}
+        <p className="text-xs text-[#6b5432]">The ranks are not a hierarchy: a rank records what Verath has witnessed, and gives no authority over anyone.</p>
+        <div>
+          <p className="font-semibold">Deeds witnessed ({deeds.length})</p>
+          {deeds.length === 0 ? (
+            <p className="italic text-[#6b5432]">None recorded yet.</p>
+          ) : (
+            <ul className="list-disc pl-5">
+              {deeds.map((entry, position) => (
+                <li key={`${entry.day}-${position}`}>
+                  {dateFor(entry.day).label}: {entry.text}
+                  {adminUnlocked ? (
+                    <button
+                      className="ml-2 text-xs underline"
+                      onClick={() => update({ orderDeeds: deeds.filter((_, other) => other !== position) })}
+                      aria-label={`Remove deed ${position + 1}`}
+                    >
+                      remove
+                    </button>
+                  ) : null}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+        {adminUnlocked ? (
+          <div className="flex flex-wrap items-center gap-2">
+            <select className={fieldClass} value={rank.id} onChange={(event) => setRank(event.target.value as OrderRank)} aria-label={`${character.name}'s Order rank`}>
+              {ORDER_RANKS.map((entry) => (
+                <option key={entry.id} value={entry.id}>
+                  {entry.numeral}. {entry.name}
+                </option>
+              ))}
+            </select>
+            <input
+              className={`${fieldClass} flex-1 min-w-[12rem]`}
+              placeholder="A deed, e.g. held the gate alone through the night"
+              value={deed}
+              onChange={(event) => setDeed(event.target.value)}
+              aria-label={`Deed for ${character.name}`}
+            />
+            <Button size="sm" className={smallButton} onClick={addDeed} disabled={!deed.trim()}>
+              Record deed
+            </Button>
+          </div>
+        ) : null}
+      </div>
+    </Section>
   );
 }
 

@@ -89,7 +89,10 @@ export default function BountyBoardPanel({
   abundanceOf,
   onRemoveMaterials,
   onJournal,
+  undeadWeight = 1,
 }: {
+  // From the threat clock: how much likelier undead are on random bounties.
+  undeadWeight?: number;
   abundanceOf: (table: LootTable) => Abundance;
   partyLevel: number;
   // Writes a line to the party journal.
@@ -252,6 +255,7 @@ export default function BountyBoardPanel({
           partyLevel={partyLevel}
           factions={factions}
           abundanceOf={abundanceOf}
+          undeadWeight={undeadWeight}
           busy={busy}
           run={run}
         />
@@ -462,9 +466,11 @@ function PostForm({
   partyLevel,
   factions,
   abundanceOf,
+  undeadWeight,
   busy,
   run,
 }: {
+  undeadWeight: number;
   campaignId: string;
   disabledTags: string[];
   partyLevel: number;
@@ -527,7 +533,8 @@ function PostForm({
     const pool: LootTable[] = [];
     const candidates = [...byRarity[rarity]];
     while (pool.length < kinds && candidates.length) {
-      const weights = candidates.map((table) => ABUNDANCE_WEIGHT[abundanceOf(table)]);
+      // Plentiful creatures come up more; the threat clock makes undead likelier.
+      const weights = candidates.map((table) => ABUNDANCE_WEIGHT[abundanceOf(table)] * (table.family === "undead" ? undeadWeight : 1));
       let pick = Math.random() * weights.reduce((sum, weight) => sum + weight, 0);
       const index = Math.max(0, weights.findIndex((weight) => (pick -= weight) <= 0));
       pool.push(candidates.splice(index, 1)[0]);

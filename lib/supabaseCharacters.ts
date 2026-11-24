@@ -161,6 +161,29 @@ export async function replaceCampaignCharacters(
   return saved;
 }
 
+// Saves only the characters that changed (and deletes ones that were removed),
+// so two people editing different characters never overwrite each other.
+export async function saveChangedCharacters(campaignId: string, changed: CharacterPayload[], removedIds: string[] = []) {
+  const toRow = (character: CharacterPayload) => ({
+    id: character.id,
+    campaign_id: campaignId,
+    name: character.name,
+    is_admin: character.isAdmin ?? false,
+    is_active: character.isActive ?? true,
+    tool_progress: character.data,
+  });
+  const withIds = changed.filter((character) => character.id && UUID.test(character.id));
+  if (withIds.length) {
+    const { error } = await supabase.from("campaign_characters").upsert(withIds.map(toRow), { onConflict: "id" });
+    if (error) throw error;
+  }
+  const gone = removedIds.filter((id) => UUID.test(id));
+  if (gone.length) {
+    const { error } = await supabase.from("campaign_characters").delete().in("id", gone);
+    if (error) throw error;
+  }
+}
+
 export async function deleteCampaignCharacter(id: string): Promise<void> {
   const { error } = await supabase.from("campaign_characters").delete().eq("id", id);
   if (error) throw error;

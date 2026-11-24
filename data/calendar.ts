@@ -17,17 +17,50 @@ export function dayOfYearIndex(season: Season, part: (typeof MONTH_PARTS)[number
   return SEASONS.indexOf(season) * 90 + MONTH_PARTS.indexOf(part) * DAYS_PER_MONTH + Math.max(1, Math.min(DAYS_PER_MONTH, day)) - 1;
 }
 
-export type CalendarDate = { season: Season; part: (typeof MONTH_PARTS)[number]; day: number; year: number; label: string };
+// Years are counted in the Post-Crusade Reckoning: Year 0 is the year the
+// Ironwall was finished. Earlier years are BCR ("before"), so 273 BCR = −273 PCR.
+// The present day of Tales on the Sea is 250 PCR.
+export const DEFAULT_YEAR = 250;
+export type Era = "PCR" | "BCR";
 
-// campaignDay starts at 1.
-export function dateForCampaignDay(campaignDay: number, start = DEFAULT_START): CalendarDate {
+export function formatYear(year: number) {
+  return year < 0 ? `${-year} BCR` : `${year} PCR`;
+}
+
+// Signed PCR year from a number and an era (273 BCR -> -273).
+export function toSignedYear(value: number, era: Era) {
+  const year = Math.abs(Math.round(value));
+  return era === "BCR" ? -year : year;
+}
+
+export function splitYear(year: number): { value: number; era: Era } {
+  return year < 0 ? { value: -year, era: "BCR" } : { value: year, era: "PCR" };
+}
+
+export type CalendarDate = {
+  season: Season;
+  part: (typeof MONTH_PARTS)[number];
+  day: number;
+  // Signed PCR year (negative = BCR).
+  year: number;
+  yearLabel: string;
+  // e.g. "Mid Spring, day 3"
+  short: string;
+  // e.g. "Mid Spring, day 3, 240 PCR"
+  label: string;
+};
+
+// campaignDay starts at 1. start: day of the year that campaign day 1 falls on;
+// startYear: the (signed PCR) year campaign day 1 falls in.
+export function dateForCampaignDay(campaignDay: number, start = DEFAULT_START, startYear = DEFAULT_YEAR): CalendarDate {
   const absolute = start + Math.max(0, campaignDay - 1);
   const index = ((absolute % DAYS_PER_YEAR) + DAYS_PER_YEAR) % DAYS_PER_YEAR;
   const season = SEASONS[Math.floor(index / 90)];
   const part = MONTH_PARTS[Math.floor((index % 90) / DAYS_PER_MONTH)];
   const day = (index % DAYS_PER_MONTH) + 1;
-  const year = Math.floor(absolute / DAYS_PER_YEAR) + 1;
-  return { season, part, day, year, label: `${part} ${season}, day ${day}` };
+  const year = startYear + Math.floor(absolute / DAYS_PER_YEAR);
+  const short = `${part} ${season}, day ${day}`;
+  return { season, part, day, year, yearLabel: formatYear(year), short, label: `${short}, ${formatYear(year)}` };
 }
 
 export type ClimateId = "mountain" | "valley" | "tropical-sea";
@@ -226,6 +259,8 @@ export function weatherById(id: string | undefined) {
 // Settings saved in campaign_discoveries (kind "calendar").
 export type CalendarSettings = {
   start: number;
+  // Signed PCR year campaign day 1 falls in.
+  startYear: number;
   climate: ClimateId;
   weather: string;
   // Rations are eaten automatically on Pass Day unless this is "off".
@@ -238,6 +273,7 @@ export function readCalendarSettings(values: Record<string, string>): CalendarSe
   const climate = values.climate as ClimateId;
   return {
     start: Number.isFinite(Number(values.start)) && values.start !== undefined ? Number(values.start) : DEFAULT_START,
+    startYear: values.year !== undefined && Number.isFinite(Number(values.year)) ? Number(values.year) : DEFAULT_YEAR,
     climate: climate && CLIMATES[climate] ? climate : "mountain",
     weather: values.weather && WEATHER[values.weather] ? values.weather : "clear",
     rations: values.rations !== "off",
