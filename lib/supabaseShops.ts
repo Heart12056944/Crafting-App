@@ -1,6 +1,7 @@
 import { supabase } from "./supabaseClient";
 import type { Coins } from "@/data/coins";
 import type { StockEntry } from "@/data/shops";
+import type { Market } from "@/data/market";
 
 // Shops live in campaign_shops. Players only see shops the GM has opened.
 
@@ -13,6 +14,8 @@ export type ShopRow = {
   is_open: boolean;
   stock: StockEntry[];
   sort: number;
+  faction_id?: string | null;
+  market?: Market;
   created_at: string;
 };
 
@@ -23,7 +26,7 @@ export async function fetchShops(campaignId: string): Promise<ShopRow[]> {
     .eq("campaign_id", campaignId)
     .order("created_at", { ascending: true });
   if (error) throw error;
-  return ((data as ShopRow[] | null) || []).map((row) => ({ ...row, stock: Array.isArray(row.stock) ? row.stock : [] }));
+  return ((data as ShopRow[] | null) || []).map((row) => ({ ...row, stock: Array.isArray(row.stock) ? row.stock : [], market: row.market || {} }));
 }
 
 export async function createShop(input: { campaignId: string; name: string; kind: string; description: string; stock: StockEntry[] }) {
@@ -38,7 +41,13 @@ export async function createShop(input: { campaignId: string; name: string; kind
   if (error) throw error;
 }
 
-export async function updateShop(id: string, changes: Partial<Pick<ShopRow, "name" | "description" | "is_open" | "stock">>) {
+// Remember a trade so the price reacts. Never throws: a failed record shouldn't undo a sale.
+export async function recordMarket(shopId: string, item: string, bought: number, sold: number, day: number) {
+  const { error } = await supabase.rpc("record_market", { p_shop: shopId, p_item: item, p_bought: bought, p_sold: sold, p_day: day });
+  if (error) console.warn("Could not record the trade.", error);
+}
+
+export async function updateShop(id: string, changes: Partial<Pick<ShopRow, "name" | "description" | "is_open" | "stock" | "faction_id">>) {
   const { error } = await supabase.from("campaign_shops").update(changes).eq("id", id);
   if (error) throw error;
 }

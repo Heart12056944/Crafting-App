@@ -4951,6 +4951,11 @@
         "creature": "BRAINLESS WOLF",
         "pool": "Common",
         "weight": 26
+      },
+      {
+        "creature": "THORNSPINE DIREWOLF",
+        "pool": "Common",
+        "weight": 30
       }
     ]
   },
@@ -4978,6 +4983,21 @@
         "creature": "BRAINLESS WOLF",
         "pool": "Common",
         "weight": 26
+      },
+      {
+        "creature": "FERAL HOUND",
+        "pool": "Rare",
+        "weight": 50
+      },
+      {
+        "creature": "FERAL HOUND",
+        "pool": "Epic",
+        "weight": 100
+      },
+      {
+        "creature": "THORNSPINE DIREWOLF",
+        "pool": "Common",
+        "weight": 25
       }
     ]
   },
@@ -5009,6 +5029,26 @@
         "creature": "MOUNTAIN RAM",
         "pool": "Common",
         "weight": 12
+      },
+      {
+        "creature": "SCREE JACKAL",
+        "pool": "Common",
+        "weight": 25
+      },
+      {
+        "creature": "FERAL HOUND",
+        "pool": "Common",
+        "weight": 25
+      },
+      {
+        "creature": "THORNSPINE DIREWOLF",
+        "pool": "Common",
+        "weight": 25
+      },
+      {
+        "creature": "THORNSPINE SABRETOOTH",
+        "pool": "Common",
+        "weight": 20
       }
     ]
   },
@@ -5031,6 +5071,11 @@
         "creature": "THORNSPINE WOLF",
         "pool": "Common",
         "weight": 14
+      },
+      {
+        "creature": "SCREE JACKAL",
+        "pool": "Rare",
+        "weight": 40
       }
     ]
   },
@@ -5069,6 +5114,11 @@
         "creature": "BRAINLESS WOLF",
         "pool": "Rare",
         "weight": 30
+      },
+      {
+        "creature": "THORNSPINE SABRETOOTH",
+        "pool": "Common",
+        "weight": 35
       }
     ]
   },
@@ -7379,6 +7429,26 @@
         "creature": "SNOW CAT",
         "pool": "Common",
         "weight": 33
+      },
+      {
+        "creature": "SCREE JACKAL",
+        "pool": "Epic",
+        "weight": 100
+      },
+      {
+        "creature": "VALDREN MOUSER",
+        "pool": "Rare",
+        "weight": 100
+      },
+      {
+        "creature": "CRAG LYNX",
+        "pool": "Common",
+        "weight": 30
+      },
+      {
+        "creature": "RIDGE PANTHER",
+        "pool": "Rare",
+        "weight": 50
       }
     ]
   },
@@ -7445,6 +7515,26 @@
         "creature": "SNOW CAT",
         "pool": "Rare",
         "weight": 45
+      },
+      {
+        "creature": "RIDGE FOX",
+        "pool": "Epic",
+        "weight": 40
+      },
+      {
+        "creature": "VALDREN MOUSER",
+        "pool": "Epic",
+        "weight": 100
+      },
+      {
+        "creature": "CRAG LYNX",
+        "pool": "Epic",
+        "weight": 100
+      },
+      {
+        "creature": "RIDGE PANTHER",
+        "pool": "Epic",
+        "weight": 40
       }
     ]
   },
@@ -8309,6 +8399,43 @@
     "source": "VIGIL",
     "set": "basic-gear",
     "notes": "Mixed trimmings from whatever the hunters brought in. Spoils in a few days unless cooked or cured.",
+    "appearsIn": [
+      {
+        "creature": "RIDGE FOX",
+        "pool": "Common",
+        "weight": 40
+      },
+      {
+        "creature": "SCREE JACKAL",
+        "pool": "Common",
+        "weight": 25
+      },
+      {
+        "creature": "FERAL HOUND",
+        "pool": "Common",
+        "weight": 20
+      },
+      {
+        "creature": "THORNSPINE DIREWOLF",
+        "pool": "Common",
+        "weight": 20
+      },
+      {
+        "creature": "CRAG LYNX",
+        "pool": "Common",
+        "weight": 25
+      },
+      {
+        "creature": "RIDGE PANTHER",
+        "pool": "Common",
+        "weight": 25
+      },
+      {
+        "creature": "THORNSPINE SABRETOOTH",
+        "pool": "Common",
+        "weight": 20
+      }
+    ],
     "appearance": "A mixed heap of dark red trimmings in odd shapes and sizes, wrapped in cloth."
   },
   {
@@ -11175,5 +11302,370 @@
     "set": "basic-gear",
     "notes": "A dried red pod that's hot on the tongue. The spice in every cured sausage.",
     "appearance": "Wrinkled, dried red pods strung on a cord."
+  },
+  {
+    "id": "material-fox-pelt",
+    "name": "Fox Pelt",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "fox"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A thick russet pelt with a white winter underfur.",
+    "appearsIn": [
+      {
+        "creature": "RIDGE FOX",
+        "pool": "Common",
+        "weight": 60
+      }
+    ]
+  },
+  {
+    "id": "material-fox-brush",
+    "name": "Fox Brush",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "fox"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A fox's full, white-tipped tail.",
+    "appearsIn": [
+      {
+        "creature": "RIDGE FOX",
+        "pool": "Rare",
+        "weight": 100
+      },
+      {
+        "creature": "RIDGE FOX",
+        "pool": "Epic",
+        "weight": 60
+      }
+    ]
+  },
+  {
+    "id": "material-jackal-hide",
+    "name": "Jackal Hide",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "jackal"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A thin, sandy-grey hide, patchy along the spine.",
+    "appearsIn": [
+      {
+        "creature": "SCREE JACKAL",
+        "pool": "Common",
+        "weight": 50
+      },
+      {
+        "creature": "SCREE JACKAL",
+        "pool": "Rare",
+        "weight": 60
+      }
+    ]
+  },
+  {
+    "id": "material-hound-pelt",
+    "name": "Hound Pelt",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "hound"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A matted, mud-brown pelt from a farm dog gone wild.",
+    "appearsIn": [
+      {
+        "creature": "FERAL HOUND",
+        "pool": "Common",
+        "weight": 55
+      },
+      {
+        "creature": "FERAL HOUND",
+        "pool": "Rare",
+        "weight": 50
+      }
+    ]
+  },
+  {
+    "id": "material-direwolf-pelt",
+    "name": "Direwolf Pelt",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "wolf"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A huge, shaggy charcoal pelt, big enough to sleep under.",
+    "appearsIn": [
+      {
+        "creature": "THORNSPINE DIREWOLF",
+        "pool": "Rare",
+        "weight": 55
+      }
+    ]
+  },
+  {
+    "id": "material-direwolf-fang",
+    "name": "Direwolf Fang",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "wolf"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A fang as long as a finger, yellowed and chipped.",
+    "appearsIn": [
+      {
+        "creature": "THORNSPINE DIREWOLF",
+        "pool": "Rare",
+        "weight": 45
+      }
+    ]
+  },
+  {
+    "id": "material-direwolf-heart",
+    "name": "Direwolf Heart",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "beast",
+      "wolf"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A heavy heart that seems to keep a slow beat for a while after the kill.",
+    "appearsIn": [
+      {
+        "creature": "THORNSPINE DIREWOLF",
+        "pool": "Epic",
+        "weight": 100
+      }
+    ]
+  },
+  {
+    "id": "material-cat-pelt",
+    "name": "Cat Pelt",
+    "tier": 0,
+    "tierLabel": "Tier 0 – Raw Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-0",
+      "beast",
+      "cat"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A small, soft tabby pelt.",
+    "appearsIn": [
+      {
+        "creature": "VALDREN MOUSER",
+        "pool": "Common",
+        "weight": 100
+      }
+    ]
+  },
+  {
+    "id": "material-lynx-pelt",
+    "name": "Lynx Pelt",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "cat"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A spotted grey pelt, dense and silky.",
+    "appearsIn": [
+      {
+        "creature": "CRAG LYNX",
+        "pool": "Common",
+        "weight": 45
+      },
+      {
+        "creature": "CRAG LYNX",
+        "pool": "Rare",
+        "weight": 40
+      }
+    ]
+  },
+  {
+    "id": "material-lynx-ear-tuft",
+    "name": "Lynx Ear Tuft",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "cat"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "The black tufts from a lynx's ears. Said to catch the faintest sound.",
+    "appearsIn": [
+      {
+        "creature": "CRAG LYNX",
+        "pool": "Rare",
+        "weight": 60
+      }
+    ]
+  },
+  {
+    "id": "material-panther-pelt",
+    "name": "Panther Pelt",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "cat"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A sleek, near-black pelt with faint rosettes in the right light.",
+    "appearsIn": [
+      {
+        "creature": "RIDGE PANTHER",
+        "pool": "Common",
+        "weight": 40
+      },
+      {
+        "creature": "RIDGE PANTHER",
+        "pool": "Rare",
+        "weight": 50
+      }
+    ]
+  },
+  {
+    "id": "material-panther-claw",
+    "name": "Panther Claw",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "cat"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A hooked black claw, needle-sharp.",
+    "appearsIn": [
+      {
+        "creature": "RIDGE PANTHER",
+        "pool": "Common",
+        "weight": 35
+      },
+      {
+        "creature": "RIDGE PANTHER",
+        "pool": "Epic",
+        "weight": 60
+      },
+      {
+        "creature": "THORNSPINE SABRETOOTH",
+        "pool": "Common",
+        "weight": 25
+      }
+    ]
+  },
+  {
+    "id": "material-sabretooth-fang",
+    "name": "Sabretooth Fang",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "beast",
+      "cat"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A curved fang as long as a dagger blade.",
+    "appearsIn": [
+      {
+        "creature": "THORNSPINE SABRETOOTH",
+        "pool": "Rare",
+        "weight": 50
+      }
+    ]
+  },
+  {
+    "id": "material-sabretooth-pelt",
+    "name": "Sabretooth Pelt",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "beast",
+      "cat"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A heavy tawny pelt striped with smoke-grey.",
+    "appearsIn": [
+      {
+        "creature": "THORNSPINE SABRETOOTH",
+        "pool": "Rare",
+        "weight": 50
+      }
+    ]
+  },
+  {
+    "id": "material-sabretooth-skull",
+    "name": "Sabretooth Skull",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Advanced Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "beast",
+      "cat"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A massive skull with sockets for fangs as long as your forearm.",
+    "appearsIn": [
+      {
+        "creature": "THORNSPINE SABRETOOTH",
+        "pool": "Epic",
+        "weight": 100
+      }
+    ]
   }
 ]

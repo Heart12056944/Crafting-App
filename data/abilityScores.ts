@@ -112,6 +112,30 @@ export function cardStatBonuses(
 export const SKILL_PROFICIENCY_BONUS = { none: 0, proficient: 2, expertise: 4 } as const;
 export type SkillProficiency = keyof typeof SKILL_PROFICIENCY_BONUS;
 
-export function harvestingTotal(wisModifier: number, proficiency: SkillProficiency, bonus: number) {
-  return wisModifier + SKILL_PROFICIENCY_BONUS[proficiency] + bonus;
+// Proficiency bonus by character level (PHB): +2 at 1-4, +3 at 5-8, up to +6 at 17-20.
+export const PROFICIENCY_BY_LEVEL: { levels: string; from: number; to: number; bonus: number }[] = [
+  { levels: "1–4", from: 1, to: 4, bonus: 2 },
+  { levels: "5–8", from: 5, to: 8, bonus: 3 },
+  { levels: "9–12", from: 9, to: 12, bonus: 4 },
+  { levels: "13–16", from: 13, to: 16, bonus: 5 },
+  { levels: "17–20", from: 17, to: 20, bonus: 6 },
+];
+
+export function clampLevel(level: number | undefined | null) {
+  return Math.max(1, Math.min(20, Math.round(Number(level) || 1)));
+}
+
+export function proficiencyBonusForLevel(level: number | undefined | null) {
+  const value = clampLevel(level);
+  return PROFICIENCY_BY_LEVEL.find((row) => value >= row.from && value <= row.to)?.bonus ?? 2;
+}
+
+// What a proficiency adds at a level: proficient = PB, expertise = double PB.
+export function profBonus(proficiency: SkillProficiency | undefined | null, level: number | undefined | null) {
+  const pb = proficiencyBonusForLevel(level);
+  return proficiency === "expertise" ? pb * 2 : proficiency === "proficient" ? pb : 0;
+}
+
+export function harvestingTotal(wisModifier: number, proficiency: SkillProficiency, bonus: number, level?: number) {
+  return wisModifier + profBonus(proficiency, level) + bonus;
 }

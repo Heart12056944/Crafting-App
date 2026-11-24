@@ -1,5 +1,8 @@
 "use client";
 
+import { profBonus as proficiencyFor } from "@/data/abilityScores";
+import { outOfSeason, seasonalSpot, spotDcPenalty, spotUsesNow, type SpotUse } from "@/data/ecology";
+import type { Season } from "@/data/calendar";
 import React, { useEffect, useRef, useState } from "react";
 import { Axe, Fish, Leaf, Pickaxe } from "lucide-react";
 
@@ -37,6 +40,10 @@ export type GatheringCharacter = {
   ownedTools: Record<string, boolean>;
   brokenTools: Record<string, boolean>;
   gatheringToday?: number;
+  // Proficiency in the Mining / Woodcutting / Foraging / Fishing skills from the
+  // character sheet. The check uses this or the tool proficiency, whichever is higher.
+  gatheringSkills?: Partial<Record<GatheringActivity, ProficiencyLevel>>;
+  level?: number;
 };
 
 export type GatheredItem = {
@@ -182,7 +189,6 @@ function modsFor(cardIds: Set<number>, activity: GatheringActivity): GatherMods 
   };
 }
 
-const PROFICIENCY_BONUS: Record<ProficiencyLevel, number> = { none: 0, proficient: 2, expertise: 4 };
 
 const ACTIVITY_ICONS: Record<GatheringActivity, React.ComponentType<{ className?: string }>> = {
   mining: Pickaxe,
@@ -877,6 +883,13 @@ export default function GatheringPanel(props: {
   allowedCharacterIds?: string[];
   // Used to read the gatherer's crafted rods and bait from the inventory.
   campaignId: string;
+  // Today's weather: a modifier per activity, or "closed".
+  weather?: { id?: string; label: string; gathering: Partial<Record<GatheringActivity, number | "closed">> };
+  // Ecology: the season, and how picked-over each spot is.
+  season?: Season;
+  campaignDay?: number;
+  spotUses?: Record<string, SpotUse>;
+  onSpotUsed?: (spotId: string) => void;
 }) {
   function cardIdsFor(id: string | undefined) {
     return new Set(
@@ -929,11 +942,20 @@ export default function GatheringPanel(props: {
   const busy = Boolean(roll) && !results;
 
   const statBonus = character && activity ? character.stats[activity.stat] || 0 : 0;
-  const profLevel: ProficiencyLevel = character && activity ? character.tools?.[activity.tool] || "none" : "none";
-  const profBonus = PROFICIENCY_BONUS[profLevel] || 0;
+  const toolProfBonus = character && activity ? proficiencyFor(character.tools?.[activity.tool], character.level) : 0;
+  const skillProfBonus = character && spot ? proficiencyFor(character.gatheringSkills?.[spot.activity], character.level) : 0;
+  const profBonus = Math.max(toolProfBonus, skillProfBonus);
+  const weatherEffect = spot ? props.weather?.gathering[spot.activity] : undefined;
+  const weatherBonus = typeof weatherEffect === "number" ? weatherEffect : 0;
+  const pickedOver = spot ? spotUsesNow(props.spotUses?.[spot.id], props.campaignDay || 0) : 0;
+  const dcPenalty = spotDcPenalty(pickedOver);
+  const spotDc = spot ? spot.dc + dcPenalty : 0;
+  const notInSeason = spot && props.season ? outOfSeason(spot, props.season, props.weather?.id) : [];
 
   const blockedReason = !character
     ? "Choose a character."
+    : spot && weatherEffect === "closed"
+      ? `No ${gatheringActivities[spot.activity].label.toLowerCase()} today: ${props.weather?.label}.`
     : !spot
       ? "Choose a gathering spot."
       : !toolOwned
@@ -949,10 +971,11 @@ export default function GatheringPanel(props: {
     const rolls = mods.advantage ? [rollD20(), rollD20()] : [rollD20()];
     const natural = Math.max(...rolls);
     const natTwenty = natural >= mods.natTwentyOn;
-    const total = natural + statBonus + profBonus + mods.checkBonus + mods.gearBonus;
-    let margin = total - spot.dc;
+    const total = natural + statBonus + profBonus + mods.checkBonus + mods.gearBonus + weatherBonus;
+    let margin = total - spotDc;
     if (natTwenty) margin = Math.max(margin, 10);
     props.onSpendAttempt(character.id);
+    props.onSpotUsed?.(spot.id);
     const bait = spot.activity === "fishing" ? fishingGear.bait : null;
     if (bait) {
       spendInventoryUse(bait)
@@ -960,7 +983,9 @@ export default function GatheringPanel(props: {
         .finally(() => setInventoryVersion((version) => version + 1));
     }
     setResults(null);
-    setRoll({ natural, rolls, total, margin, natTwenty, spot, characterId: character.id, mods });
+    // Today's version of the spot: out-of-season finds gone, DC raised if picked over.
+    const today = props.season ? seasonalSpot({ ...spot, dc: spotDc }, props.season, props.weather?.id) : { ...spot, dc: spotDc };
+    setRoll({ natural, rolls, total, margin, natTwenty, spot: today, characterId: character.id, mods });
 
     if (natural === 1 && !mods.nat1Safe) {
       setGame(null);
@@ -1074,10 +1099,20 @@ export default function GatheringPanel(props: {
               <p><strong>Activity:</strong> {activity.label}. {activity.summary}</p>
               <p>
                 <strong>Check:</strong> d20{mods?.advantage ? " (advantage)" : ""} + {activity.stat} ({statBonus >= 0 ? "+" : ""}{statBonus})
-                {profBonus ? ` + ${activity.tool} proficiency (+${profBonus})` : ""}
+                {profBonus
+                  ? ` + ${skillProfBonus >= toolProfBonus ? `${activity.label} skill` : activity.tool} proficiency (+${profBonus})`
+                  : ""}
                 {mods?.checkBonus ? ` + attributes (+${mods.checkBonus})` : ""}
-                {mods?.gearBonus ? ` + bait (+${mods.gearBonus})` : ""} vs DC {spot.dc}
+                {mods?.gearBonus ? ` + bait (+${mods.gearBonus})` : ""}
+                {weatherBonus ? ` ${weatherBonus > 0 ? "+" : "−"} ${props.weather?.label.toLowerCase()} (${weatherBonus > 0 ? "+" : ""}${weatherBonus})` : ""} vs DC {spotDc}
+                {dcPenalty ? ` (picked over: +${dcPenalty})` : ""}
               </p>
+              {pickedOver > 0 && (
+                <p className="text-xs">
+                  Worked {pickedOver} time{pickedOver === 1 ? "" : "s"} recently. After 3 attempts each one adds +1 DC (up to +5); it recovers one a day.
+                </p>
+              )}
+              {notInSeason.length > 0 && <p className="text-xs">Out of season ({props.season}): {notInSeason.join(", ")}.</p>}
               <p>
                 <strong>Tool:</strong>{" "}
                 {craftedRod

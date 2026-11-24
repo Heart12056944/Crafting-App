@@ -1,10 +1,12 @@
 "use client";
 
 import React from "react";
-import { BookMarked, Coins, Hammer, PawPrint, Pickaxe, Store, UserRound } from "lucide-react";
+import { BookMarked, BookOpenText, Castle, CloudSun, Coins, Flag, Hammer, HeartPulse, Hourglass, PawPrint, Pickaxe, Scroll, Sprout, Store, UserRound } from "lucide-react";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { GATHERING_ATTEMPTS_PER_DAY } from "@/data/gatheringSpots";
+import { PROFICIENCY_BY_LEVEL } from "@/data/abilityScores";
+import { MOUNT_RULES } from "@/data/husbandry";
 
 // Plain-language guide to what players can do in the Codex. Keep it in step
 // with the features: claiming, inventories, coins, shops, salvage, upgrades,
@@ -26,6 +28,22 @@ const SECTIONS: Section[] = [
         title: "Changing computers",
         body: "Press release on your character to free it, then claim it again on the new computer. If you can't get back to the old one, ask the GM to release it.",
       },
+      {
+        title: "My Character",
+        body: "The My Character tab shows your character at a glance: ability scores, skills, tools, attribute cards, coin purse, everything you carry, and the animals you keep or ride. If you play more than one, switch between them with the tabs at the top.",
+      },
+      {
+        title: "Future characters",
+        body: "The GM can make a character you'll play later claimable before it joins the party. You can claim it now, but it stays out of everything else until the GM makes it active.",
+      },
+      {
+        title: "Level and proficiency bonus",
+        body: `Each character has a level; the GM's Level Up Party button adds one to everyone. Your proficiency bonus comes from your level (${PROFICIENCY_BY_LEVEL.map((row) => `levels ${row.levels}: +${row.bonus}`).join(", ")}) and is used in every crafting, harvesting, gathering, salvage and Animal Handling check. Expertise is double.`,
+      },
+      {
+        title: "Skills",
+        body: "Your proficiency in Harvesting, Mining, Woodcutting, Foraging, Fishing and Animal Handling is set on the Characters tab to match your character sheet. A gathering check uses the skill or the tool proficiency, whichever is higher.",
+      },
     ],
   },
   {
@@ -41,8 +59,12 @@ const SECTIONS: Section[] = [
         body: "Potions, meals, bombs, ammunition, oils and bait track their uses. Press Use whenever you drink, eat, throw, fire or apply one. A stack shows uses left on the opened one and in total. Gear like rods, tents and climbing kits is never used up.",
       },
       {
-        title: "Giving items",
-        body: "Give 1 or Give all to another character or the party stash. A half-used consumable stays with you unless you give the whole stack.",
+        title: "Carry weight",
+        body: "Everything you carry has a weight, and coins weigh a pound per 50. My Character shows your total against your carrying capacity (STR × 15 lb, more with a bigger pack such as a Farmhand's Pack); over it, your speed drops to 5 ft. Inventory shows each holder's total. Your mount can carry more: see its card.",
+      },
+      {
+        title: "Sending items",
+        body: "Press Send beside an item, choose how many, then pick the character (or the party stash) to send it to. Only characters active in the party are listed. A half-used consumable stays with you unless you send the whole stack.",
       },
       {
         title: "Upgrades",
@@ -111,6 +133,10 @@ const SECTIONS: Section[] = [
       {
         title: "Taming a wild animal",
         body: "When the GM places a wild animal nearby (a mountain ram, ridge stag, tuskback boar or reedfowl), one of your characters can try to tame it: d20 + WIS + Animal Handling proficiency against the animal's DC. Each animal gets one attempt. On a success it joins you; on a failure it bolts.",
+      },
+      {
+        title: "Dogs and cats",
+        body: "Wolves, direwolves, foxes, jackals, feral hounds, snow cats, mousers, lynxes, panthers and sabretooths can be tamed too, but they're hard: DC 17, up to 19 for the biggest. Tamed hunters bring back game meat every few days, and a direwolf or sabretooth can even be ridden. A creature you subdue in a fight can be marked \"Tame\" when the combat ends, and it waits in Husbandry for the roll.",
       },
       {
         title: "Convincing instead",
@@ -183,6 +209,159 @@ const SECTIONS: Section[] = [
         body: "Gathering and harvesting attribute cards apply on their own. If you have one, its bonus is already in your roll and the mini-game.",
       },
     ],
+  },
+  {
+    title: "Bounty Board",
+    icon: Scroll,
+    intro: "Jobs the GM posts for the party. Only creatures and items from this campaign appear.",
+    rules: [
+      {
+        title: "How bounties are chosen",
+        body: "A bounty can ask for several kinds of creature. The GM either picks them and how many, or rolls a random bounty sized to the party's level: common jobs (easy prey and small predators) ask for up to 8, rare ones (a fair fight) up to 5, and epic ones (a challenging fight) up to 3. Tough prey is rarer than predators of the same strength.",
+      },
+      {
+        title: "Bounties",
+        body: "Hunt the named creature. If the bounty asks for proof (a pelt, teeth, a claw...), harvest it from the kill on the Looting tab, then press Turn in proof: the proof leaves the party's materials and the reward is paid to whoever you choose. Without proof, press Report done and the GM pays out once they've checked.",
+      },
+      {
+        title: "Commissions",
+        body: "Someone wants an item crafted. Make it (or find it), then press Deliver with it in your pack or the party stash. Deliver at Superior quality, when Superior wasn't required, for 50% more.",
+      },
+    ],
+  },
+  {
+    title: "Travel & Camp",
+    icon: CloudSun,
+    intro: "The calendar, the weather, food and mounts.",
+    rules: [
+      {
+        title: "Calendar",
+        body: "Each Pass Day moves the date on. A year has four seasons of three 30-day months (Early, Mid and Late).",
+      },
+      {
+        title: "Weather",
+        body: "A new day's weather is rolled for the season and climate. It can change gathering (rain helps fishing, storms stop it, snow slows foraging), make travel harder, spook mounts, or call for saves against cold or heat. The Travel & Camp tab shows today's effects.",
+      },
+      {
+        title: "Dressing for the weather",
+        body: "The Vigil has hard winters, rainy springs and autumns, and hot summers. On harsh days the GM may call for CON saves from anyone out in it: a winter coat (or wolf-leather jerkin, fur cloak) gives advantage against cold, and mittens stop frostbite; an oilskin cloak, or a tarp or tent for the camp, keeps the rain off; summer linens help in a heat wave, and without a waterskin the save is at disadvantage. A failed save is a level of exhaustion. The Travel & Camp tab shows what each character is carrying. Goggles, snowshoes and crampons help with snow glare, deep snow and ice.",
+      },
+      {
+        title: "Long stretches of time",
+        body: "The GM can pass weeks, months or years at once (resting at the Vigil, or time between chapters). They choose what happens: whether you eat from your packs, food spoils, wounds heal, downtime carries on, the herd's produce is collected, and so on. It's all written in the Journal.",
+      },
+      {
+        title: "Rations",
+        body: "Each Pass Day every active character eats one day's food: one ration or one serving of a dish, from their own pack first, then the party stash. Fresh meals are eaten before rations that keep. You can go 3 + your CON modifier days (at least 1) without food; after that, each day without food adds a level of exhaustion (−2 to d20 tests and −5 ft speed per level). A day with food and rest takes one level away. If an inn or host feeds you, the GM ticks Meals provided and nothing is eaten.",
+      },
+      {
+        title: "Eating for a bonus",
+        body: "Your daily food is eaten for you. Press Use on a meal only when you eat it for its bonus.",
+      },
+    ],
+  },
+  {
+    title: "Journal & rumours",
+    icon: BookOpenText,
+    intro: "The party's story so far, written as it happens.",
+    rules: [
+      {
+        title: "The log",
+        body: "Every new day, fight, bounty, purchase and sale, tamed animal, injury, illness and bit of downtime is written in the Journal by day. Handy for recaps.",
+      },
+      {
+        title: "Rumours",
+        body: "Things the party has heard, posted by the GM. Chase them or don't; the GM marks them resolved when they're settled.",
+      },
+    ],
+  },
+  {
+    title: "Factions",
+    icon: Flag,
+    intro: "Where the party stands with the groups it deals with, from −100 to 100.",
+    rules: [
+      {
+        title: "Gaining standing",
+        body: "Jobs on the Bounty Board can be posted for a faction; finishing them raises your standing with it. The GM can also raise or lower it for what you do in play.",
+      },
+      {
+        title: "What standing does",
+        body: "A faction's shops give 5% off when you're Friendly (15+), 10% when Honoured (40+) and 15% when Exalted (75+), and pay a little more for what you sell. Unfriendly factions charge 10% more; hostile ones won't trade at all.",
+      },
+    ],
+  },
+  {
+    title: "Prices",
+    icon: Store,
+    intro: "Shops react to what you buy and sell.",
+    rules: [
+      {
+        title: "Supply and demand",
+        body: "Each purchase pushes that item's price up a little at that shop; each sale floods it and the shop pays less. The effect fades a day at a time, so it pays to sell your pelts in more than one place, or to wait.",
+      },
+    ],
+  },
+  {
+    title: "Homestead",
+    icon: Castle,
+    intro: "The party's base. At the Vigil, everything is already built.",
+    rules: [
+      {
+        title: "Facilities",
+        body: "A forge, workshop, apothecary and kitchen give +1 to +3 to crafting checks with their tools. An infirmary helps against disease and speeds healing, stables hold more animals, a training yard shortens downtime training, and a library helps research.",
+      },
+    ],
+  },
+  {
+    title: "Injuries & illness",
+    icon: HeartPulse,
+    intro: "Wounds that linger and diseases that spread.",
+    rules: [
+      {
+        title: "Lingering injuries",
+        body: "When the GM calls for it (dropping to 0 HP, a brutal critical), roll on the lingering injury table from My Character. Most heal with days of rest; losing an eye or a hand needs powerful magic.",
+      },
+      {
+        title: "Diseases",
+        body: "Grave rot from undead bites, marsh ague from the tarns, wound fever, frostbite and rattle cough. Each Pass Day you make a CON save: three in a row and you recover, failures make it worse. Use the listed remedy from your pack (a Rotbane Poultice or Bitterleaf Draught, say) to cure it, or a helping item for advantage on the next save.",
+      },
+    ],
+  },
+  {
+    title: "Downtime",
+    icon: Hourglass,
+    intro: "What your character does on days off. Set it on My Character; it happens at each Pass Day.",
+    rules: [
+      {
+        title: "Activities",
+        body: "Training (learn a tool: 5 gp a day for 10 − INT workweeks), Working (earn coin), Recuperating (advantage against disease, faster healing), Researching (1 gp a day; the GM answers your rolls) and Carousing (1 gp a day; make contacts or trouble).",
+      },
+    ],
+  },
+  {
+    title: "The wild",
+    icon: Sprout,
+    intro: "The land reacts to the party.",
+    rules: [
+      {
+        title: "Seasons",
+        body: "Plants, eggs and some fish only grow in their seasons: frostcurl in spring, berries in summer and autumn, embergourds in autumn, and rimepods only after a hard frost. A gathering spot tells you what's out of season.",
+      },
+      {
+        title: "Picked-over spots",
+        body: "After three attempts at the same spot, each attempt adds +1 to its DC (up to +5). Spots recover one attempt a day.",
+      },
+      {
+        title: "Hunting pressure",
+        body: "Kill a lot of one creature and it thins out, gets scarce, then is hunted out for a while. Hunt the predators hard and the prey animals thrive.",
+      },
+    ],
+  },
+  {
+    title: "Mounts",
+    icon: PawPrint,
+    intro: "Horses, mules and ponies are bought; tamed ridge stags and tuskback boars can be ridden too. Track them on the Travel & Camp tab.",
+    rules: MOUNT_RULES,
   },
 ];
 

@@ -19,12 +19,18 @@ import {
   Package,
   Pickaxe,
   PawPrint,
+  Scroll,
+  Tent,
   Plus,
   ScrollText,
   Shield,
   Trash2,
   Upload,
   UserRound,
+  Swords,
+  BookOpenText,
+  Flag,
+  Castle,
   Wrench,
 } from "lucide-react";
 
@@ -76,7 +82,7 @@ import {
   insertCampaignLootLog,
   type SupabaseLootLog,
 } from "@/lib/supabaseLootLog";
-import { creatureTierRules, lootTables, rollDiceExpression, rollWeightedLootQuality, getLootTable, pickWeightedLootEntry, type CreatureTier, type LootQuality } from "@/data/lootTables";
+import { creatureTierRules, lootTables, rollDiceExpression, rollWeightedLootQuality, getLootTable, pickWeightedLootEntry, lootTableSets, type CreatureTier, type LootQuality, type LootTable } from "@/data/lootTables";
 import { supabase } from "@/lib/supabaseClient";
 import AttributeCardsPanel from "@/components/AttributeCardsPanel";
 import RewardsPanel from "@/components/RewardsPanel";
@@ -87,18 +93,45 @@ import ShopPanel, { useCampaignShops } from "@/components/ShopPanel";
 import PlayerGuidePanel from "@/components/PlayerGuidePanel";
 import LarderPanel from "@/components/LarderPanel";
 import HusbandryPanel, { type HandlingInfo } from "@/components/HusbandryPanel";
-import { addInventoryItem } from "@/lib/supabaseInventory";
+import BountyBoardPanel from "@/components/BountyBoardPanel";
+import TravelPanel from "@/components/TravelPanel";
+import CombatPanel, { type CombatState } from "@/components/CombatPanel";
+import JournalPanel from "@/components/JournalPanel";
+import FactionsPanel from "@/components/FactionsPanel";
+import HomesteadPanel from "@/components/HomesteadPanel";
+import { craftingFacilityBonus, diseaseSaveBonus, injuryHealRate, researchBonus, trainingDiscount, type FacilityId, type HomesteadLevels } from "@/data/homestead";
+import { progressAffliction, type Affliction } from "@/data/afflictions";
+import { abundanceFor, totalPredatorPressure, pressureNow, type Pressure, type SpotUse } from "@/data/ecology";
+import { carousingResult, trainingDaysNeeded, workPayCp, type Downtime } from "@/data/downtime";
+import { changePurse, fetchPurses } from "@/lib/supabaseCoins";
+import { paymentPlan, emptyCoins, changeForCp, formatCp } from "@/data/coins";
+import MyCharacterPanel from "@/components/MyCharacterPanel";
+import { addInventoryItem, deleteInventoryItem, fetchCampaignInventory, spendInventoryUse, updateInventoryItem, type InventoryRow } from "@/lib/supabaseInventory";
+import { fetchCampaignAnimals, updateAnimal } from "@/lib/supabaseAnimals";
+import { fetchBounties, updateBounty } from "@/lib/supabaseBounties";
+import { fetchFactions, updateFaction } from "@/lib/supabaseFactions";
+import { averageDice, describeSpan, materialShelfLifeDays, shelfLifeDays, type TimeSkipOptions } from "@/data/timeSkip";
+import { isFoodRow, isRationRow } from "@/data/rations";
+import { pickProductMaterial, productsFor, speciesById as husbandrySpecies } from "@/data/husbandry";
+import TimeSkipPanel from "@/components/TimeSkipPanel";
+import { dateForCampaignDay, daysWithoutFoodAllowed, readCalendarSettings, rollWeather, weatherById } from "@/data/calendar";
+import { pickFoodFor } from "@/data/rations";
+import { addJournalEntry } from "@/lib/supabaseJournal";
 import { consumableInfo } from "@/data/consumables";
 import {
   cardStatBonuses,
   choiceKey,
   statCardsFor as statCardsForDisplay,
   emptyStats,
+  clampLevel,
+  profBonus,
+  proficiencyBonusForLevel,
+  PROFICIENCY_BY_LEVEL,
   harvestingTotal,
   scoreToModifier,
   type AppliedStatCard,
 } from "@/data/abilityScores";
-import type { GatheringSpot } from "@/data/gatheringSpots";
+import { gatheringActivities, type GatheringActivity, type GatheringSpot } from "@/data/gatheringSpots";
 import { GmLoginPanel, CreateGmPanel } from "@/components/GmAuthPanels";
 
 import { Card, CardContent } from "@/components/ui/card";
@@ -132,7 +165,7 @@ type InventoryProfile = {
 
 type Stat = "STR" | "DEX" | "CON" | "INT" | "WIS" | "CHA";
 
-type TabId = "craft" | "available" | "recipes" | "materials" | "inventory" | "shops" | "characters" | "advancement" | "attributes" | "companions" | "rewards" | "looting" | "gathering" | "husbandry" | "craftingRules" | "lootingRules" | "guide" | "larder" | "admin";
+type TabId = "craft" | "available" | "recipes" | "materials" | "inventory" | "shops" | "characters" | "advancement" | "attributes" | "companions" | "rewards" | "looting" | "gathering" | "husbandry" | "bounties" | "travel" | "combat" | "mycharacter" | "journal" | "factions" | "homestead" | "craftingRules" | "lootingRules" | "guide" | "larder" | "admin";
 
 const tabs = [
   ["craft", "Craft", Hammer],
@@ -149,6 +182,13 @@ const tabs = [
   ["looting", "Looting", Package],
   ["gathering", "Gathering", Pickaxe],
   ["husbandry", "Husbandry", PawPrint],
+  ["mycharacter", "My Character", UserRound],
+  ["journal", "Journal", BookOpenText],
+  ["bounties", "Bounty Board", Scroll],
+  ["factions", "Factions", Flag],
+  ["homestead", "Homestead", Castle],
+  ["combat", "Combat", Swords],
+  ["travel", "Travel & Camp", Tent],
   ["craftingRules", "Crafting Rules", ScrollText],
   ["lootingRules", "Looting Rules", Dice5],
   ["guide", "Player Guide", BookMarked],
@@ -192,6 +232,22 @@ type Character = {
   // ranger or can speak with animals (lets them convince wild animals).
   animalHandling?: ProficiencyLevel;
   speaksWithAnimals?: boolean;
+  // True when abilityScores were copied from the character sheet, which already
+  // includes race bonuses: race cards are then not added on top.
+  sheetScores?: boolean;
+  // Character level (1-20). The proficiency bonus comes from this.
+  level?: number;
+  // Rations: days in a row without food, and exhaustion level (0-6).
+  daysWithoutFood?: number;
+  exhaustion?: number;
+  // A character not in play yet: players can claim it, but it's hidden everywhere else.
+  claimable?: boolean;
+  // Lingering injuries and diseases.
+  afflictions?: Affliction[];
+  // What the character does on days off.
+  downtime?: Downtime;
+  // Mining / Woodcutting / Foraging / Fishing skill proficiency from the sheet.
+  gatheringSkills?: Partial<Record<GatheringActivity, ProficiencyLevel>>;
 };
 
 type CraftedItem = {
@@ -530,7 +586,7 @@ const WEAPON_RECIPE_TAGS = [
 ] as const;
 
 // Recipe sets (blackspire, undying-vigil, ...) come first, straight from the data.
-const MANAGED_RECIPE_TAGS: string[] = [...recipeSetTags, ...MAIN_RECIPE_TAGS, ...WEAPON_RECIPE_TAGS];
+const MANAGED_RECIPE_TAGS: string[] = [...new Set([...recipeSetTags, ...lootTableSets]), ...MAIN_RECIPE_TAGS, ...WEAPON_RECIPE_TAGS];
 
 const MATERIALS_STORAGE_KEY = "artisan-codex-materials";
 const INVENTORY_PROFILES_STORAGE_KEY = "artisan-codex-inventory-profiles";
@@ -1282,6 +1338,14 @@ function normalizeCharacter(character: Partial<Character>): Character {
     statChoices: character.statChoices || {},
     animalHandling: character.animalHandling ?? "none",
     speaksWithAnimals: character.speaksWithAnimals ?? false,
+    sheetScores: character.sheetScores ?? false,
+    level: clampLevel(character.level),
+    claimable: character.claimable ?? false,
+    afflictions: Array.isArray(character.afflictions) ? character.afflictions : [],
+    downtime: character.downtime || { activity: "none" },
+    daysWithoutFood: character.daysWithoutFood ?? 0,
+    exhaustion: character.exhaustion ?? 0,
+    gatheringSkills: character.gatheringSkills || {},
     ...inferHarvesting(character),
   };
 }
@@ -1310,8 +1374,10 @@ type DerivedCharacterInfo = {
 function deriveCharacter(character: Character, cardIds: number[]): { character: Character; info: DerivedCharacterInfo } {
   const bonuses = cardStatBonuses(cardIds, character.statChoices);
   const base = character.abilityScores;
+  // Scores from the character sheet already include race bonuses.
+  const applied = character.sheetScores ? emptyStats() : bonuses.total;
   const finalScores = base
-    ? (Object.fromEntries(STATS.map((stat) => [stat, (base[stat] ?? 10) + bonuses.total[stat]])) as Record<Stat, number>)
+    ? (Object.fromEntries(STATS.map((stat) => [stat, (base[stat] ?? 10) + applied[stat]])) as Record<Stat, number>)
     : null;
   const stats = finalScores
     ? (Object.fromEntries(STATS.map((stat) => [stat, scoreToModifier(finalScores[stat])])) as Record<Stat, number>)
@@ -1322,13 +1388,13 @@ function deriveCharacter(character: Character, cardIds: number[]): { character: 
     character: {
       ...character,
       stats,
-      harvesting: harvestingTotal(stats.WIS ?? 0, harvestingProficiency, harvestingBonus),
+      harvesting: harvestingTotal(stats.WIS ?? 0, harvestingProficiency, harvestingBonus, character.level),
       harvestingProficiency,
       harvestingBonus,
     },
     info: {
       finalScores,
-      bonusTotals: bonuses.total,
+      bonusTotals: applied,
       bonusLines: bonuses.lines,
       unmadeChoices: bonuses.unmadeChoices,
       statCards: statCardsForDisplay(cardIds),
@@ -1556,13 +1622,37 @@ export default function ArcaneCraftingCodexPage() {
   // Husbandry: the campaign's day counter (advanced by Pass Day) and the wild
   // animals the GM has placed nearby. Both live in campaign_discoveries.
   const [campaignDay, setCampaignDay] = useState(1);
+  // Calendar settings (start date, climate, today's weather, rations on/off).
+  const [calendarValues, setCalendarValues] = useState<Record<string, string>>({});
+  const [lastDayReport, setLastDayReport] = useState<string[]>([]);
+  const calendar = useMemo(() => readCalendarSettings(calendarValues), [calendarValues]);
+  const today = useMemo(() => dateForCampaignDay(campaignDay, calendar.start), [campaignDay, calendar.start]);
   const [wildAnimals, setWildAnimals] = useState<string[]>([]);
+  // Average level of the characters in play (for random bounties).
+  const partyLevel = useMemo(() => {
+    const party = characters.filter((character) => character.isActive !== false);
+    return party.length ? party.reduce((sum, character) => sum + clampLevel(character.level), 0) / party.length : 1;
+  }, [characters]);
+  // The fight in progress (GM only), saved so a refresh doesn't lose it.
+  const [combat, setCombat] = useState<CombatState | null>(null);
+  // Homestead facility levels (and its name under the key "name").
+  const [homesteadValues, setHomesteadValues] = useState<Record<string, string>>({});
+  // Ecology: hunting pressure per creature and how picked-over each gathering spot is.
+  const [huntingPressure, setHuntingPressure] = useState<Record<string, Pressure>>({});
+  const [spotUses, setSpotUses] = useState<Record<string, SpotUse>>({});
+  const homestead = useMemo(
+    () => Object.fromEntries(Object.entries(homesteadValues).filter(([key]) => key !== "name").map(([key, value]) => [key, Number(value) || 0])) as HomesteadLevels,
+    [homesteadValues]
+  );
 
   const [deviceId, setDeviceId] = useState("");
   const [characterClaims, setCharacterClaims] = useState<Record<string, string>>({}); // character id -> device id
   const [claimMessage, setClaimMessage] = useState("");
+  // Claimed characters that are in play. Claimed future characters (not active) don't count.
   const myCharacterIds = deviceId
-    ? characters.filter((character) => characterClaims[character.id] === deviceId).map((character) => character.id)
+    ? characters
+        .filter((character) => characterClaims[character.id] === deviceId && (character.isActive !== false || adminUnlocked))
+        .map((character) => character.id)
     : [];
   const lockToClaimed = !adminUnlocked && myCharacterIds.length > 0;
   const ownCharacter = (choice: string) => (lockToClaimed && !myCharacterIds.includes(choice) ? myCharacterIds[0] : choice);
@@ -2067,10 +2157,32 @@ export default function ArcaneCraftingCodexPage() {
       const openSpots: string[] = [];
       const claims: Record<string, string> = {};
       const wild: string[] = [];
+      const calendarRows: Record<string, string> = {};
+      let combatState: CombatState | null = null;
+      const homesteadRows: Record<string, string> = {};
+      const pressureRows: Record<string, Pressure> = {};
+      const spotRows: Record<string, SpotUse> = {};
       let day = 1;
 
       rows.forEach((row) => {
         if (row.kind === "calendar" && row.item_key === "day") day = Math.max(1, Number(row.state) || 1);
+        else if (row.kind === "calendar" && row.state) calendarRows[row.item_key] = row.state;
+        else if (row.kind === "homestead" && row.state) homesteadRows[row.item_key] = row.state;
+        else if ((row.kind === "ecology" || row.kind === "spot-use") && row.state) {
+          try {
+            if (row.kind === "ecology") pressureRows[row.item_key] = JSON.parse(row.state) as Pressure;
+            else spotRows[row.item_key] = JSON.parse(row.state) as SpotUse;
+          } catch {
+            // ignore a bad row
+          }
+        }
+        else if (row.kind === "combat" && row.item_key === "current" && row.state) {
+          try {
+            combatState = JSON.parse(row.state) as CombatState;
+          } catch {
+            combatState = null;
+          }
+        }
         if (row.kind === "wild-animal") wild.push(row.item_key);
         if (row.kind === "character-claim" && row.state) claims[row.item_key] = row.state;
         if (row.kind === "gathering-spot" && row.state === "discovered") openSpots.push(row.item_key);
@@ -2085,6 +2197,11 @@ export default function ArcaneCraftingCodexPage() {
       setEnabledGatheringSpotIds(openSpots);
       setCharacterClaims(claims);
       setCampaignDay(day);
+      setCalendarValues(calendarRows);
+      setCombat(combatState);
+      setHomesteadValues(homesteadRows);
+      setHuntingPressure(pressureRows);
+      setSpotUses(spotRows);
       setWildAnimals(wild);
     }
 
@@ -2306,6 +2423,7 @@ export default function ArcaneCraftingCodexPage() {
   const allTags = useMemo(() => {
     const set = new Set<string>();
     recipes.forEach((recipe) => recipe.tags.forEach((tag) => set.add(tag)));
+    lootTableSets.forEach((tag) => set.add(tag));
     return [...set].sort();
   }, [recipes]);
 
@@ -2614,10 +2732,8 @@ export default function ArcaneCraftingCodexPage() {
         );
       }
 
-      await replaceCampaignCharacters(
-        profile.id,
-        profile.characters.map(characterToSupabasePayload)
-      );
+      // A new campaign gets its own copies of the characters (new ids).
+      await replaceCampaignCharacters(profile.id, profile.characters.map(characterToSupabasePayload), { keepIds: false });
 
       if (copyCurrent) {
         try {
@@ -2885,6 +3001,20 @@ export default function ArcaneCraftingCodexPage() {
     );
   }
 
+  function updateCharacterFields(characterId: string, changes: Partial<Character>) {
+    if (!adminUnlocked) return;
+    markCharactersForSupabaseSave();
+    setCharacters((current) => current.map((character) => (character.id === characterId ? { ...character, ...changes } : character)));
+  }
+
+  // Changes a player may make to their own character (downtime, treating illness); the GM can change any.
+  function updateOwnCharacter(characterId: string, changes: Partial<Character>, journal?: string) {
+    if (!adminUnlocked && !myCharacterIds.includes(characterId)) return;
+    markCharactersForSupabaseSave();
+    setCharacters((current) => current.map((character) => (character.id === characterId ? { ...character, ...changes } : character)));
+    if (journal) logJournal(journal);
+  }
+
   function updateCharacterHarvestingProficiency(characterId: string, level: ProficiencyLevel) {
     if (!adminUnlocked) return;
     markCharactersForSupabaseSave();
@@ -3115,6 +3245,7 @@ export default function ArcaneCraftingCodexPage() {
 
     const table = getLootTable(newLootCreatureTableId);
     const qty = Math.max(1, Math.floor(newLootCreatureQty || 1));
+    addHuntingPressure(table.id, qty);
 
     insertCampaignLootCreature({
       campaignId: activeInventoryId,
@@ -3541,7 +3672,7 @@ export default function ArcaneCraftingCodexPage() {
     if (!character) return 0;
     const level: ProficiencyLevel =
       character.tools?.[tool] || (character.toolProgress?.[tool]?.proficient ? "proficient" : "none");
-    return (character.stats?.[stat as Stat] || 0) + (PROFICIENCY_BONUS[level] || 0);
+    return (character.stats?.[stat as Stat] || 0) + profBonus(level, character.level);
   }
 
   function addGatheredMaterials(characterId: string, spot: GatheringSpot, items: GatheredItem[]) {
@@ -3576,56 +3707,586 @@ export default function ArcaneCraftingCodexPage() {
     });
   }
 
-  function passDay() {
+  // Pass Day: the day's food is eaten, hunger is tracked, the date moves on
+  // and the next day's weather is rolled.
+  async function eatForTheDay(): Promise<{ fed: Set<string>; lines: string[] } | null> {
+    if (!activeInventoryId || !calendar.rations) return null;
+    const party = effectiveCharacters.filter((character) => character.isActive !== false);
+    if (calendar.fedDay === campaignDay) {
+      return { fed: new Set(party.map((character) => character.id)), lines: ["Meals were provided today, so no rations were used."] };
+    }
+    const fed = new Set<string>();
+    const lines: string[] = [];
+    let rows = await fetchCampaignInventory(activeInventoryId);
+    for (const character of party) {
+      const food = pickFoodFor(character.id, rows);
+      if (!food) {
+        lines.push(`${character.name} had nothing to eat.`);
+        continue;
+      }
+      await spendInventoryUse(food);
+      fed.add(character.id);
+      lines.push(`${character.name} ate ${food.name}${food.character_id === null ? " (party stash)" : ""}.`);
+      rows = await fetchCampaignInventory(activeInventoryId);
+    }
+    return { fed, lines };
+  }
+
+  async function passDay() {
     if (!adminUnlocked) return;
+
+    let meals: { fed: Set<string>; lines: string[] } | null = null;
+    try {
+      meals = await eatForTheDay();
+    } catch (error) {
+      console.warn("Could not hand out the day's food.", error);
+    }
+    const conById = new Map(effectiveCharacters.map((character) => [character.id, character.stats?.CON ?? 0]));
+    const hungerLines: string[] = [];
+
+    // Downtime and afflictions: worked out first (coins move here), applied below.
+    const dayChanges = new Map<string, { afflictions?: Affliction[]; downtime?: Downtime; tools?: Character["tools"]; exhaustion: number }>();
+    const dayLines: string[] = [];
+    let purses: Awaited<ReturnType<typeof fetchPurses>> = [];
+    try {
+      purses = activeInventoryId ? await fetchPurses(activeInventoryId) : [];
+    } catch {
+      purses = [];
+    }
+    const d20 = () => Math.floor(Math.random() * 20) + 1;
+    async function pay(characterId: string, name: string, costCp: number, reason: string) {
+      const purse = purses.find((row) => row.holder === characterId) || emptyCoins();
+      const plan = paymentPlan(purse, costCp);
+      if (!plan || !activeInventoryId) return false;
+      await changePurse(activeInventoryId, characterId, plan, reason);
+      return true;
+    }
+    for (const character of effectiveCharacters.filter((item) => item.isActive !== false)) {
+      const changes: { afflictions?: Affliction[]; downtime?: Downtime; tools?: Character["tools"]; exhaustion: number } = { exhaustion: 0 };
+      const downtime = character.downtime || { activity: "none" as const };
+      const pb = proficiencyBonusForLevel(character.level);
+      const mods = character.stats || ({} as Record<Stat, number>);
+      try {
+        if (downtime.activity === "training" && downtime.target) {
+          if (await pay(character.id, character.name, 500, `Training: ${downtime.target}`)) {
+            const needed = trainingDaysNeeded(mods.INT ?? 0, trainingDiscount(homestead));
+            const done = (downtime.daysDone || 0) + 1;
+            if (done >= needed) {
+              changes.tools = { ...character.tools, [downtime.target]: "proficient" };
+              changes.downtime = { activity: "none" };
+              dayLines.push(`${character.name} finished training and is now proficient with ${toolLabel(downtime.target)}!`);
+            } else {
+              changes.downtime = { ...downtime, daysDone: done };
+              dayLines.push(`${character.name} trained with ${toolLabel(downtime.target)} (${done}/${needed} days).`);
+            }
+          } else dayLines.push(`${character.name} couldn't pay the 5 gp for training today.`);
+        } else if (downtime.activity === "work") {
+          const best = Math.max(...(Object.values(mods) as number[]), 0);
+          const total = d20() + best + pb;
+          const earned = workPayCp(total);
+          if (activeInventoryId) await changePurse(activeInventoryId, character.id, changeForCp(earned), "Wages");
+          dayLines.push(`${character.name} worked (rolled ${total}) and earned ${formatCp(earned)}.`);
+        } else if (downtime.activity === "research") {
+          if (await pay(character.id, character.name, 100, `Research: ${downtime.target || "a topic"}`)) {
+            const total = d20() + (mods.INT ?? 0) + researchBonus(homestead);
+            changes.downtime = { ...downtime, daysDone: (downtime.daysDone || 0) + 1 };
+            dayLines.push(`${character.name} researched ${downtime.target ? `"${downtime.target}"` : "a topic"}: rolled ${total} (day ${changes.downtime.daysDone}).`);
+          } else dayLines.push(`${character.name} couldn't pay for research today.`);
+        } else if (downtime.activity === "carousing") {
+          if (await pay(character.id, character.name, 100, "Carousing")) {
+            const total = d20() + (mods.CHA ?? 0);
+            dayLines.push(`${character.name} went carousing (rolled ${total}) and ${carousingResult(total)}.`);
+          } else dayLines.push(`${character.name} couldn't afford a night out.`);
+        }
+      } catch (error) {
+        console.warn("Downtime failed.", error);
+      }
+
+      const resting = downtime.activity === "recuperate";
+      if (character.afflictions?.length) {
+        const next: Affliction[] = [];
+        for (const affliction of character.afflictions) {
+          const result = progressAffliction(affliction, {
+            conMod: mods.CON ?? 0,
+            bonus: diseaseSaveBonus(homestead),
+            advantage: resting,
+            healRate: injuryHealRate(homestead) + (resting ? 1 : 0),
+          });
+          if (result.next) next.push(result.next);
+          if (result.line) dayLines.push(`${character.name} — ${result.line}`);
+          changes.exhaustion += result.exhaustion;
+        }
+        changes.afflictions = next;
+      }
+      dayChanges.set(character.id, changes);
+    }
 
     markCharactersForSupabaseSave();
     setCharacters((current) =>
-      current.map((character) => ({
-        ...character,
-        gatheringToday: 0,
-        toolProgress: Object.fromEntries(
-          TOOL_OPTIONS.map((tool) => {
-            const progress = character.toolProgress?.[tool] ?? emptyToolProgress();
-
-            return [
-              tool,
-              {
-                ...progress,
-                craftsTodayByCategory: {},
-              },
-            ];
-          })
-        ) as Record<string, ToolProgress>,
-      }))
+      current.map((character) => {
+        let hunger = {};
+        if (meals && character.isActive !== false) {
+          if (meals.fed.has(character.id)) {
+            // Eating and a night's rest: hunger resets and one level of exhaustion goes.
+            hunger = { daysWithoutFood: 0, exhaustion: Math.max(0, (character.exhaustion ?? 0) - 1) };
+          } else {
+            const days = (character.daysWithoutFood ?? 0) + 1;
+            const allowed = daysWithoutFoodAllowed(conById.get(character.id) ?? 0);
+            const exhaustion = Math.min(6, (character.exhaustion ?? 0) + (days > allowed ? 1 : 0));
+            hungerLines.push(
+              days > allowed
+                ? `${character.name} has gone ${days} days without food and gains a level of exhaustion (now ${exhaustion}).`
+                : `${character.name} has gone ${days} day${days === 1 ? "" : "s"} without food (exhaustion starts after ${allowed}).`
+            );
+            hunger = { daysWithoutFood: days, exhaustion };
+          }
+        }
+        const day = dayChanges.get(character.id);
+        const afterHunger = (hunger as { exhaustion?: number }).exhaustion ?? character.exhaustion ?? 0;
+        return {
+          ...character,
+          ...hunger,
+          ...(day?.afflictions ? { afflictions: day.afflictions } : {}),
+          ...(day?.downtime ? { downtime: day.downtime } : {}),
+          ...(day?.tools ? { tools: day.tools } : {}),
+          ...(day?.exhaustion ? { exhaustion: Math.min(6, afterHunger + day.exhaustion) } : {}),
+          gatheringToday: 0,
+          toolProgress: Object.fromEntries(
+            TOOL_OPTIONS.map((tool) => {
+              const progress = character.toolProgress?.[tool] ?? emptyToolProgress();
+              return [tool, { ...progress, craftsTodayByCategory: {} }];
+            })
+          ) as Record<string, ToolProgress>,
+        };
+      })
     );
 
     const nextDay = campaignDay + 1;
+    const nextDate = dateForCampaignDay(nextDay, calendar.start);
+    const nextWeather = rollWeather(calendar.climate, nextDate, calendar.weather);
     setCampaignDay(nextDay);
+    setCalendarValues((current) => ({ ...current, weather: nextWeather }));
     if (activeInventoryId) {
       setCampaignValue(activeInventoryId, "calendar", "day", String(nextDay)).catch((error) =>
         console.warn("Failed to save the campaign day.", error)
       );
+      setCampaignValue(activeInventoryId, "calendar", "weather", nextWeather).catch((error) =>
+        console.warn("Failed to save the weather.", error)
+      );
     }
 
-    setImportLog(`Day ${nextDay} has begun. Daily craft counts and gathering attempts reset, PP gain is available again, daily-limit advantage has been removed, and animals may be ready to collect from.`);
+    const log = [
+      `Day ${nextDay} (${nextDate.label}) has begun. Weather: ${weatherById(nextWeather).label}.`,
+      ...(meals?.lines || []),
+      ...hungerLines,
+      ...dayLines,
+      "Daily craft counts and gathering attempts reset, PP gain is available again, and animals may be ready to collect from.",
+    ];
+    setImportLog(log.join(" "));
+    setLastDayReport(log);
+    if (activeInventoryId) {
+      const endOfDay = [...(meals?.lines || []), ...hungerLines];
+      for (const line of dayLines) void addJournalEntry({ campaignId: activeInventoryId, day: campaignDay, text: line });
+      if (endOfDay.length) void addJournalEntry({ campaignId: activeInventoryId, day: campaignDay, text: endOfDay.join(" ") });
+      void addJournalEntry({
+        campaignId: activeInventoryId,
+        day: nextDay,
+        text: `A new day: ${nextDate.label}. Weather: ${weatherById(nextWeather).label}.`,
+      });
+    }
+  }
+
+  function applyExposure(results: { characterId: string; exhaustion: number; frostbite: boolean }[], lines: string[]) {
+    if (!adminUnlocked) return;
+    if (results.length) {
+      markCharactersForSupabaseSave();
+      setCharacters((current) =>
+        current.map((character) => {
+          const result = results.find((item) => item.characterId === character.id);
+          if (!result) return character;
+          const afflictions = character.afflictions || [];
+          const frostbite =
+            result.frostbite && !afflictions.some((item) => item.key === "frostbite")
+              ? [...afflictions, { id: Math.random().toString(36).slice(2, 10), type: "disease" as const, key: "frostbite", since: campaignDay, stage: 1, successes: 0 }]
+              : afflictions;
+          return { ...character, exhaustion: Math.min(6, (character.exhaustion ?? 0) + result.exhaustion), afflictions: frostbite };
+        })
+      );
+    }
+    if (lines.length) logJournal(lines.join(" "));
+  }
+
+  // Pass a long stretch of time at once. The GM chooses what happens (see TimeSkipOptions).
+  async function passTime(days: number, options: TimeSkipOptions): Promise<string[]> {
+    if (!adminUnlocked || !activeInventoryId || days < 1) return [];
+    const campaignId = activeInventoryId;
+    const lines: string[] = [];
+    const party = effectiveCharacters.filter((character) => character.isActive !== false);
+    const changes = new Map<string, Partial<Character>>();
+    const change = (id: string, next: Partial<Character>) => changes.set(id, { ...(changes.get(id) || {}), ...next });
+    let rows: InventoryRow[] = [];
+    try {
+      rows = await fetchCampaignInventory(campaignId);
+    } catch {
+      rows = [];
+    }
+    const usesOf = (row: InventoryRow) => {
+      const per = Math.max(1, row.metadata?.usesPerItem ?? 1);
+      return (row.qty - 1) * per + (row.metadata?.usesLeft ?? per);
+    };
+    async function setUses(row: InventoryRow, uses: number) {
+      const per = Math.max(1, row.metadata?.usesPerItem ?? 1);
+      if (uses <= 0) {
+        await deleteInventoryItem(row.id);
+        rows = rows.filter((item) => item.id !== row.id);
+        return;
+      }
+      const qty = Math.ceil(uses / per);
+      const usesLeft = uses - (qty - 1) * per;
+      await updateInventoryItem(row.id, { qty, metadata: { ...row.metadata, usesLeft } });
+      rows = rows.map((item) => (item.id === row.id ? { ...item, qty, metadata: { ...item.metadata, usesLeft } } : item));
+    }
+
+    // 1. Food: each day eats one day's food, own pack first, fresh before rations.
+    if (options.eat) {
+      for (const character of party) {
+        let need = days;
+        const food = rows
+          .filter((row) => isFoodRow(row) && (row.character_id === character.id || row.character_id === null))
+          .sort((a, b) => (a.character_id === character.id ? 0 : 2) + (isRationRow(a) ? 1 : 0) - ((b.character_id === character.id ? 0 : 2) + (isRationRow(b) ? 1 : 0)));
+        for (const row of food) {
+          if (need <= 0) break;
+          const have = usesOf(row);
+          const take = Math.min(have, need);
+          need -= take;
+          await setUses(row, have - take);
+        }
+        const eaten = days - need;
+        if (need > 0) {
+          const allowed = daysWithoutFoodAllowed(character.stats?.CON ?? 0);
+          const exhaustion = options.rest ? 0 : Math.min(5, (character.exhaustion ?? 0) + Math.max(0, need - allowed));
+          change(character.id, { daysWithoutFood: options.rest ? 0 : need, exhaustion });
+          lines.push(`${character.name} ate ${eaten} day(s) of food and went ${need} day(s) without${options.rest ? " (but found enough to get by)" : ""}.`);
+        } else lines.push(`${character.name} ate ${eaten} days of food.`);
+      }
+    }
+
+    // 2. Spoilage: food past its shelf life, and perishable materials.
+    if (options.spoil) {
+      const spoiled: string[] = [];
+      for (const row of [...rows]) {
+        const life = shelfLifeDays(row);
+        if (life !== null && life < days) {
+          spoiled.push(`${row.qty}× ${row.name}`);
+          await deleteInventoryItem(row.id);
+          rows = rows.filter((item) => item.id !== row.id);
+        }
+      }
+      const rotten = materials
+        .filter((material) => material.qty > 0)
+        .map((material) => ({ material, life: materialShelfLifeDays(material.name) }))
+        .filter(({ life }) => life !== null && (life as number) < days)
+        .map(({ material }) => ({ name: material.name, qty: material.qty }));
+      if (rotten.length) removeMaterialsFromPool(rotten);
+      const all = [...spoiled, ...rotten.map((item) => `${item.qty}× ${item.name}`)];
+      if (all.length) lines.push(`Spoiled: ${all.join(", ")}.`);
+    }
+
+    // 3. Afflictions, rest and downtime, per character.
+    let purses: Awaited<ReturnType<typeof fetchPurses>> = [];
+    try {
+      purses = await fetchPurses(campaignId);
+    } catch {
+      purses = [];
+    }
+    const cpOf = (id: string) => {
+      const purse = purses.find((row) => row.holder === id);
+      return purse ? purse.cp + purse.sp * 10 + purse.ep * 50 + purse.gp * 100 + purse.pp * 1000 : 0;
+    };
+    async function spend(id: string, cp: number, reason: string) {
+      if (cp <= 0) return;
+      const purse = purses.find((row) => row.holder === id) || emptyCoins();
+      const plan = paymentPlan(purse, cp);
+      if (plan) await changePurse(campaignId, id, plan, reason);
+    }
+    for (const character of party) {
+      if (options.heal && character.afflictions?.length) {
+        const rate = injuryHealRate(homestead);
+        const kept: Affliction[] = [];
+        for (const affliction of character.afflictions) {
+          if (affliction.type === "disease") {
+            lines.push(`${character.name} recovered from ${affliction.key.replace(/-/g, " ")}.`);
+            continue;
+          }
+          if (affliction.daysLeft === null || affliction.daysLeft === undefined) {
+            kept.push(affliction);
+            continue;
+          }
+          const left = affliction.daysLeft - days * rate;
+          if (left > 0) kept.push({ ...affliction, daysLeft: left });
+          else lines.push(`${character.name}'s ${affliction.key.replace(/-/g, " ")} healed.`);
+        }
+        change(character.id, { afflictions: kept });
+      }
+      if (options.rest) change(character.id, { exhaustion: 0, daysWithoutFood: 0 });
+
+      const downtime = character.downtime;
+      if (options.downtime && downtime && downtime.activity !== "none") {
+        const mods = character.stats || ({} as Record<Stat, number>);
+        try {
+          if (downtime.activity === "training" && downtime.target) {
+            const needed = trainingDaysNeeded(mods.INT ?? 0, trainingDiscount(homestead));
+            const left = needed - (downtime.daysDone || 0);
+            const trained = Math.min(days, left, Math.floor(cpOf(character.id) / 500));
+            await spend(character.id, trained * 500, `Training: ${downtime.target}`);
+            if ((downtime.daysDone || 0) + trained >= needed) {
+              change(character.id, { tools: { ...character.tools, [downtime.target]: "proficient" }, downtime: { activity: "none" } });
+              lines.push(`${character.name} finished training and is now proficient with ${toolLabel(downtime.target)}.`);
+            } else {
+              change(character.id, { downtime: { ...downtime, daysDone: (downtime.daysDone || 0) + trained } });
+              lines.push(`${character.name} trained ${trained} day(s) with ${toolLabel(downtime.target)}${trained < Math.min(days, left) ? " before the money ran out" : ""}.`);
+            }
+          } else if (downtime.activity === "work") {
+            const best = Math.max(...(Object.values(mods) as number[]), 0);
+            const daily = workPayCp(Math.round(10.5 + best + proficiencyBonusForLevel(character.level)));
+            await changePurse(campaignId, character.id, changeForCp(daily * days), "Wages");
+            lines.push(`${character.name} worked and earned ${formatCp(daily * days)}.`);
+          } else if (downtime.activity === "research") {
+            const researched = Math.min(days, Math.floor(cpOf(character.id) / 100));
+            await spend(character.id, researched * 100, `Research: ${downtime.target || "a topic"}`);
+            change(character.id, { downtime: { ...downtime, daysDone: (downtime.daysDone || 0) + researched } });
+            lines.push(`${character.name} researched ${downtime.target ? `"${downtime.target}"` : "a topic"} for ${researched} day(s) (GM: decide what they learned).`);
+          } else if (downtime.activity === "carousing") {
+            const nights = Math.min(days, Math.floor(cpOf(character.id) / 100));
+            await spend(character.id, nights * 100, "Carousing");
+            const contacts = Math.round(nights / 5 + (mods.CHA ?? 0));
+            lines.push(`${character.name} caroused for ${nights} night(s) and made about ${Math.max(0, contacts)} contacts (and maybe some trouble).`);
+          }
+        } catch (error) {
+          console.warn("Downtime failed.", error);
+        }
+      }
+    }
+
+    // 4. The herd's produce.
+    if (options.animals) {
+      try {
+        const herd = await fetchCampaignAnimals(campaignId);
+        const gained = new Map<string, number>();
+        for (const animal of herd) {
+          const species = husbandrySpecies.get(animal.species);
+          if (!species) continue;
+          const products = productsFor(species, animal.sex);
+          for (const product of products) {
+            // With spoilage on, only the most recent milk and eggs are still good.
+            const freshest = Math.min(...product.materials.map((item) => materialShelfLifeDays(item.name) ?? Infinity));
+            const window = options.spoil && freshest < days ? freshest : days;
+            const batches = Math.floor(window / product.everyDays);
+            for (let i = 0; i < Math.min(batches, 60); i += 1) {
+              const name = pickProductMaterial(product, Math.random());
+              gained.set(name, (gained.get(name) || 0) + Math.max(1, Math.round(averageDice(product.amount) * (batches > 60 ? batches / 60 : 1))));
+            }
+          }
+          if (products.length) {
+            await updateAnimal(animal.id, {
+              last_collected: Object.fromEntries(products.map((product) => [product.id, campaignDay + days])),
+            });
+          }
+        }
+        if (gained.size) {
+          addMaterialsToPool([...gained].map(([name, qty]) => ({ name, qty })));
+          lines.push(`The animals gave: ${[...gained].map(([name, qty]) => `${qty}× ${name}`).join(", ")}.`);
+        }
+      } catch (error) {
+        console.warn("Could not collect from the herd.", error);
+      }
+    }
+
+    // 5. The bounty board and factions.
+    if (options.bounties) {
+      try {
+        const open = (await fetchBounties(campaignId)).filter((row) => row.status === "open" || row.status === "claimed");
+        for (const row of open) await updateBounty(row.id, { status: "cancelled" });
+        if (open.length) lines.push(`${open.length} open job(s) on the board expired.`);
+      } catch {
+        // no board yet
+      }
+    }
+    if (options.standing) {
+      try {
+        const drift = Math.floor(days / 30);
+        for (const faction of drift ? await fetchFactions(campaignId) : []) {
+          if (!faction.reputation) continue;
+          const next = faction.reputation > 0 ? Math.max(0, faction.reputation - drift) : Math.min(0, faction.reputation + drift);
+          await updateFaction(faction.id, { reputation: next });
+        }
+        if (drift) lines.push(`Faction standing drifted ${drift} point(s) toward neutral.`);
+      } catch {
+        // no factions yet
+      }
+    }
+    if (options.resetWildlife) {
+      for (const id of Object.keys(huntingPressure)) setCampaignValue(campaignId, "ecology", id, null).catch(() => undefined);
+      for (const id of Object.keys(spotUses)) setCampaignValue(campaignId, "spot-use", id, null).catch(() => undefined);
+      setHuntingPressure({});
+      setSpotUses({});
+    }
+
+    // 6. Characters, the calendar and the weather.
+    markCharactersForSupabaseSave();
+    setCharacters((current) =>
+      current.map((character) => ({
+        ...character,
+        ...(changes.get(character.id) || {}),
+        gatheringToday: 0,
+        toolProgress: Object.fromEntries(
+          TOOL_OPTIONS.map((tool) => [tool, { ...(character.toolProgress?.[tool] ?? emptyToolProgress()), craftsTodayByCategory: {} }])
+        ) as Record<string, ToolProgress>,
+      }))
+    );
+    const nextDay = campaignDay + days;
+    const nextDate = dateForCampaignDay(nextDay, calendar.start);
+    const nextWeather = rollWeather(calendar.climate, nextDate);
+    setCampaignDay(nextDay);
+    setCalendarValues((current) => ({ ...current, weather: nextWeather }));
+    await setCampaignValue(campaignId, "calendar", "day", String(nextDay)).catch(() => undefined);
+    await setCampaignValue(campaignId, "calendar", "weather", nextWeather).catch(() => undefined);
+
+    const summary = [`${describeSpan(days)} passed. It is now ${nextDate.label}, year ${nextDate.year} (day ${nextDay}). Weather: ${weatherById(nextWeather).label}.`, ...lines];
+    await addJournalEntry({ campaignId, day: nextDay, text: summary.join(" ") });
+    setImportLog(summary[0]);
+    setLastDayReport(summary);
+    return summary;
+  }
+
+  function setCalendarValue(key: string, value: string | null) {
+    if (!activeInventoryId || !adminUnlocked) return;
+    setCalendarValues((current) => {
+      const next = { ...current };
+      if (value === null) delete next[key];
+      else next[key] = value;
+      return next;
+    });
+    setCampaignValue(activeInventoryId, "calendar", key, value).catch((error) => console.warn("Failed to save the calendar.", error));
+  }
+
+  function levelUpParty() {
+    if (!adminUnlocked) return;
+    markCharactersForSupabaseSave();
+    const changes: string[] = [];
+    setCharacters((current) =>
+      current.map((character) => {
+        const before = clampLevel(character.level);
+        const level = clampLevel(before + 1);
+        const pb = proficiencyBonusForLevel(level);
+        changes.push(`${character.name} ${level}${pb > proficiencyBonusForLevel(before) ? ` (proficiency +${pb})` : ""}`);
+        return { ...character, level };
+      })
+    );
+    setImportLog(`Level up! ${changes.join(", ")}.`);
+    logJournal(`Level up! ${changes.join(", ")}.`);
   }
 
   // Husbandry: a slaughtered animal goes onto the shared looting table to be
   // harvested like any creature.
   async function queueForButchering(tableId: string) {
+    await queueCreatureForLooting(tableId, 1);
+  }
+
+  async function queueCreatureForLooting(tableId: string, qty: number, tier?: CreatureTier) {
     if (!activeInventoryId) throw new Error("No campaign is loaded.");
     const table = getLootTable(tableId);
     const row = await insertCampaignLootCreature({
       campaignId: activeInventoryId,
       creatureTableId: table.id,
       creatureLabel: table.label,
-      creatureTier: table.defaultTier || "common",
-      qty: 1,
+      creatureTier: tier || table.defaultTier || "common",
+      qty,
     });
     const entry = supabaseLootCreatureToLocal(row);
     setCreatureLootQueue((current) => [...current.filter((item) => item.id !== entry.id), entry]);
     setSelectedCreatureQueueId((current) => current || entry.id);
+  }
+
+  // Adds a line to the party journal for today.
+  function logJournal(text: string, gmOnly = false) {
+    if (!activeInventoryId) return;
+    void addJournalEntry({ campaignId: activeInventoryId, day: campaignDay, text, gmOnly });
+  }
+
+  function setHomesteadValue(key: string, value: string | null) {
+    if (!activeInventoryId || !adminUnlocked) return;
+    setHomesteadValues((current) => {
+      const next = { ...current };
+      if (value === null) delete next[key];
+      else next[key] = value;
+      return next;
+    });
+    setCampaignValue(activeInventoryId, "homestead", key, value).catch((error) => console.warn("Failed to save the homestead.", error));
+  }
+
+  function addHuntingPressure(tableId: string, qty: number) {
+    if (!activeInventoryId) return;
+    const table = lootTables.find((item) => item.id === tableId);
+    if (!table || table.set === "basic-gear") return; // farm animals don't count
+    const next: Pressure = { pressure: pressureNow(huntingPressure[tableId], campaignDay) + qty, day: campaignDay };
+    setHuntingPressure((current) => ({ ...current, [tableId]: next }));
+    setCampaignValue(activeInventoryId, "ecology", tableId, JSON.stringify(next)).catch((error) => console.warn("Failed to save hunting pressure.", error));
+  }
+
+  function resetHuntingPressure(tableId: string) {
+    if (!activeInventoryId || !adminUnlocked) return;
+    setHuntingPressure((current) => {
+      const next = { ...current };
+      delete next[tableId];
+      return next;
+    });
+    setCampaignValue(activeInventoryId, "ecology", tableId, null).catch(() => undefined);
+  }
+
+  function markSpotUsed(spotId: string) {
+    if (!activeInventoryId) return;
+    const current = spotUses[spotId];
+    const uses = current ? Math.max(0, current.uses - Math.max(0, campaignDay - current.day)) : 0;
+    const next: SpotUse = { uses: uses + 1, day: campaignDay };
+    setSpotUses((all) => ({ ...all, [spotId]: next }));
+    setCampaignValue(activeInventoryId, "spot-use", spotId, JSON.stringify(next)).catch((error) => console.warn("Failed to save the spot.", error));
+  }
+
+  const predatorPressure = useMemo(() => totalPredatorPressure(lootTables, huntingPressure, campaignDay), [huntingPressure, campaignDay]);
+  const abundanceOf = (table: Pick<LootTable, "id" | "defaultTier" | "family">) => abundanceFor(table, huntingPressure, campaignDay, predatorPressure);
+
+  function saveCombat(state: CombatState | null) {
+    if (!activeInventoryId || !adminUnlocked) return;
+    setCombat(state);
+    setCampaignValue(activeInventoryId, "combat", "current", state ? JSON.stringify(state) : null).catch((error) =>
+      console.warn("Failed to save the combat.", error)
+    );
+  }
+
+  async function finishCombat(results: {
+    killed: Map<string, { table: string; tier: CreatureTier; qty: number }>;
+    tamed: string[];
+    ran: string[];
+  }) {
+    const lines: string[] = [];
+    for (const { table, tier, qty } of results.killed.values()) {
+      await queueCreatureForLooting(table, qty, tier);
+      addHuntingPressure(table, qty);
+      lines.push(`${qty}× ${getLootTable(table).label}`);
+    }
+    for (const speciesId of new Set(results.tamed)) setWildAnimal(speciesId, true);
+    const tamedNames = [...new Set(results.tamed)].map((id) => getLootTable(id).label);
+    const summary = [
+      "Combat over.",
+      lines.length ? `Added to the Looting tab: ${lines.join(", ")}.` : "",
+      tamedNames.length ? `Waiting to be tamed in Husbandry: ${tamedNames.join(", ")}.` : "",
+      results.ran.length ? `Ran away: ${results.ran.join(", ")}.` : "",
+    ]
+      .filter(Boolean)
+      .join(" ");
+    logJournal(summary);
+    return summary;
   }
 
   function setWildAnimal(speciesId: string, nearby: boolean) {
@@ -3641,7 +4302,7 @@ export default function ArcaneCraftingCodexPage() {
     const level = character?.animalHandling ?? "none";
     return {
       level,
-      bonus: (character?.stats?.WIS ?? 0) + PROFICIENCY_BONUS[level],
+      bonus: (character?.stats?.WIS ?? 0) + profBonus(level, character?.level),
       speaks: Boolean(character?.speaksWithAnimals),
     };
   }
@@ -3788,7 +4449,7 @@ export default function ArcaneCraftingCodexPage() {
     const toolLevel = hasToolAffinity
       ? "proficient"
       : selectedCharacter.tools[recipe.tool] || (toolProgress.proficient ? "proficient" : "none");
-    const proficiencyBonus = PROFICIENCY_BONUS[toolLevel] || 0;
+    const proficiencyBonus = profBonus(toolLevel, selectedCharacter.level);
     const statBonus = selectedCharacter.stats[recipe.stat] || 0;
     const plusTwo = assistantBonus === "plus2" ? 2 : 0;
 
@@ -3803,7 +4464,8 @@ export default function ArcaneCraftingCodexPage() {
       }
     }
 
-    const total = npcCraft ? adjustedDc : naturalRoll + statBonus + proficiencyBonus + plusTwo;
+    const facilityBonus = craftingFacilityBonus(homestead, recipe.tool);
+    const total = npcCraft ? adjustedDc : naturalRoll + statBonus + proficiencyBonus + plusTwo + (facilityBonus?.bonus || 0);
     let craftResult = npcCraft
       ? {
           type: "success",
@@ -3868,6 +4530,10 @@ export default function ArcaneCraftingCodexPage() {
         title: "Alchemical Bloodline",
         message: `${craftResult.message} Alchemical Bloodline upgraded this Normal alchemical result to Superior.`,
       };
+    }
+
+    if (facilityBonus && !npcCraft) {
+      craftResult = { ...craftResult, message: `${craftResult.message} (+${facilityBonus.bonus} from the ${facilityBonus.facility}.)` };
     }
 
     if (
@@ -4137,7 +4803,9 @@ export default function ArcaneCraftingCodexPage() {
         </header>
 
         <nav className="flex flex-wrap gap-3">
-          {tabs.filter(([id]) => id !== "shops" || adminUnlocked || anyShopOpen).map(([id, label, Icon]) => (
+          {tabs
+            .filter(([id]) => (id !== "shops" || adminUnlocked || anyShopOpen) && (id !== "combat" || adminUnlocked))
+            .map(([id, label, Icon]) => (
             <Button
               key={id}
               onClick={() => setActiveTab(id)}
@@ -4154,7 +4822,7 @@ export default function ArcaneCraftingCodexPage() {
         </nav>
 
         <CharacterClaimBar
-          characters={effectiveCharacters.filter((character) => adminUnlocked || character.isActive !== false)}
+          characters={effectiveCharacters.filter((character) => adminUnlocked || character.isActive !== false || character.claimable)}
           claims={characterClaims}
           deviceId={deviceId}
           adminUnlocked={adminUnlocked}
@@ -4263,6 +4931,8 @@ export default function ArcaneCraftingCodexPage() {
             materials={materials}
             onAddMaterials={addMaterialsToPool}
             onRemoveMaterials={removeMaterialsFromPool}
+            campaignDay={campaignDay}
+            onJournal={logJournal}
           />
         )}
 
@@ -4290,6 +4960,7 @@ export default function ArcaneCraftingCodexPage() {
             updateCharacterAbilityScore={updateCharacterAbilityScore}
             switchToAbilityScores={switchToAbilityScores}
             updateCharacterStatChoice={updateCharacterStatChoice}
+            updateCharacterFields={updateCharacterFields}
             derivedInfoById={derivedInfoById}
             updateCharacterActive={updateCharacterActive}
             updateCharacterTool={updateCharacterTool}
@@ -4388,6 +5059,11 @@ export default function ArcaneCraftingCodexPage() {
             characterAttributes={characterAttributeAssignments}
             allowedCharacterIds={lockToClaimed ? myCharacterIds : []}
             campaignId={activeInventoryId}
+            weather={weatherById(calendar.weather)}
+            season={today.season}
+            campaignDay={campaignDay}
+            spotUses={spotUses}
+            onSpotUsed={markSpotUsed}
           />
         )}
 
@@ -4404,7 +5080,82 @@ export default function ArcaneCraftingCodexPage() {
             onSetHandling={setHandling}
             onAddMaterials={addMaterialsToPool}
             onButcher={queueForButchering}
+            onJournal={logJournal}
           />
+        )}
+
+        {activeTab === "bounties" && (
+          <BountyBoardPanel
+            campaignId={activeInventoryId}
+            characters={effectiveCharacters}
+            adminUnlocked={adminUnlocked}
+            claimedCharacterIds={myCharacterIds}
+            materials={materials}
+            disabledTags={disabledTags}
+            partyLevel={partyLevel}
+            abundanceOf={abundanceOf}
+            onRemoveMaterials={removeMaterialsFromPool}
+            onJournal={logJournal}
+          />
+        )}
+
+        {activeTab === "travel" && (
+          <TravelPanel
+            campaignId={activeInventoryId}
+            adminUnlocked={adminUnlocked}
+            characters={effectiveCharacters}
+            claimedCharacterIds={myCharacterIds}
+            campaignDay={campaignDay}
+            date={today}
+            calendar={calendar}
+            lastDayReport={lastDayReport}
+            setCalendarValue={setCalendarValue}
+            onAdjustCharacter={updateCharacterFields}
+            wildlife={Object.keys(huntingPressure)
+              .map((id) => lootTables.find((table) => table.id === id))
+              .filter((table): table is LootTable => Boolean(table))
+              .map((table) => ({ id: table.id, label: table.label, abundance: abundanceOf(table), pressure: pressureNow(huntingPressure[table.id], campaignDay) }))}
+            predatorPressure={predatorPressure}
+            onResetWildlife={resetHuntingPressure}
+            onExposure={applyExposure}
+          />
+        )}
+
+        {activeTab === "combat" && adminUnlocked && (
+          <CombatPanel disabledTags={disabledTags} combat={combat} campaignDay={campaignDay} onSave={saveCombat} onFinish={finishCombat} />
+        )}
+
+        {activeTab === "mycharacter" && (
+          <MyCharacterPanel
+            campaignId={activeInventoryId}
+            adminUnlocked={adminUnlocked}
+            characters={effectiveCharacters.filter((character) => character.isActive !== false || adminUnlocked)}
+            characterIds={adminUnlocked ? effectiveCharacters.map((character) => character.id) : myCharacterIds}
+            finalScoresById={new Map([...derivedInfoById].map(([id, info]) => [id, info.finalScores]))}
+            cardIdsById={cardIdsByCharacter}
+            campaignDay={campaignDay}
+            canEdit={(id: string) => adminUnlocked || myCharacterIds.includes(id)}
+            trainingDiscount={trainingDiscount(homestead)}
+            onUpdate={updateOwnCharacter}
+          />
+        )}
+
+        {activeTab === "homestead" && (
+          <HomesteadPanel
+            campaignId={activeInventoryId}
+            adminUnlocked={adminUnlocked}
+            levels={homestead}
+            name={homesteadValues.name || ""}
+            setLevel={(id: FacilityId, level: number) => setHomesteadValue(id, level > 0 ? String(level) : null)}
+            setName={(name: string) => setHomesteadValue("name", name || null)}
+            onJournal={logJournal}
+          />
+        )}
+
+        {activeTab === "factions" && <FactionsPanel campaignId={activeInventoryId} adminUnlocked={adminUnlocked} onJournal={logJournal} />}
+
+        {activeTab === "journal" && (
+          <JournalPanel campaignId={activeInventoryId} adminUnlocked={adminUnlocked} campaignDay={campaignDay} calendarStart={calendar.start} />
         )}
 
         {activeTab === "craftingRules" && <RulesPanel />}
@@ -4447,6 +5198,8 @@ export default function ArcaneCraftingCodexPage() {
             enableAllTags={enableAllTags}
             disableAllTags={disableAllTags}
             passDay={passDay}
+            levelUpParty={levelUpParty}
+            passTime={passTime}
           />
         )}
       </div>
@@ -5437,6 +6190,7 @@ function CharacterClaimBar({
           {mine.map((character) => (
             <span key={character.id} className="flex items-center gap-1 rounded-full border border-[#4b3115] bg-[#4b3115] px-3 py-0.5 text-sm text-[#fff0c7]">
               {character.name}
+              {character.isActive === false && <span className="text-xs italic">(not in play yet)</span>}
               <button className="ml-1 text-xs underline" onClick={() => onRelease(character.id)} aria-label={`Release ${character.name}`}>
                 release
               </button>
@@ -5451,7 +6205,9 @@ function CharacterClaimBar({
             <option value="">Claim a character...</option>
             {claimable.map((character) => (
               <option key={character.id} value={character.id} disabled={Boolean(claims[character.id])}>
-                {character.name}{claims[character.id] ? " (claimed on another device)" : ""}
+                {character.name}
+                {character.isActive === false ? " (future character)" : ""}
+                {claims[character.id] ? " (claimed on another device)" : ""}
               </option>
             ))}
           </select>
@@ -5477,6 +6233,7 @@ function CharacterStatsEditor({
   updateCharacterHarvesting,
   updateCharacterHarvestingProficiency,
   updateCharacterStatChoice,
+  updateCharacterFields,
 }: {
   character: Character;
   info?: DerivedCharacterInfo;
@@ -5487,6 +6244,7 @@ function CharacterStatsEditor({
   updateCharacterHarvesting: (characterId: string, value: number) => void;
   updateCharacterHarvestingProficiency: (characterId: string, level: ProficiencyLevel) => void;
   updateCharacterStatChoice: (characterId: string, key: string, values: string[]) => void;
+  updateCharacterFields: (characterId: string, changes: Partial<Character>) => void;
 }) {
   const usesScores = Boolean(character.abilityScores);
   const finalScores = info?.finalScores ?? null;
@@ -5494,8 +6252,8 @@ function CharacterStatsEditor({
     ? (Object.fromEntries(STATS.map((stat) => [stat, scoreToModifier(finalScores[stat])])) as Record<Stat, number>)
     : character.stats;
   const { harvestingProficiency, harvestingBonus } = inferHarvesting(character);
-  const proficiencyBonus = PROFICIENCY_BONUS[harvestingProficiency];
-  const harvesting = harvestingTotal(modifiers.WIS ?? 0, harvestingProficiency, harvestingBonus);
+  const proficiencyBonus = profBonus(harvestingProficiency, character.level);
+  const harvesting = harvestingTotal(modifiers.WIS ?? 0, harvestingProficiency, harvestingBonus, character.level);
   const choiceCards = (info?.statCards || []).filter((entry) => !entry.ignored && (entry.card.statChoices || []).length > 0);
   const hasCardBonuses = (info?.bonusLines.length ?? 0) > 0 || choiceCards.length > 0;
 
@@ -5529,6 +6287,21 @@ function CharacterStatsEditor({
           </label>
         ))}
       </div>
+
+      {usesScores && (
+        <label className="flex items-start gap-2 text-xs">
+          <input
+            type="checkbox"
+            className="mt-0.5"
+            checked={Boolean(character.sheetScores)}
+            disabled={!adminUnlocked}
+            onChange={(event) => updateCharacterFields(character.id, { sheetScores: event.target.checked })}
+          />
+          <span>
+            These are the final scores from the character sheet (race bonuses already included), so race cards don&apos;t add to them.
+          </span>
+        </label>
+      )}
 
       {!usesScores && (
         <div className="rounded-lg border border-dashed border-[#9a7b45] bg-[#ead6ad] p-3 text-xs space-y-2">
@@ -5603,8 +6376,75 @@ function CharacterStatsEditor({
             <p className="text-xs font-bold text-[#7a3f00]">{info?.unmadeChoices} race choice{info?.unmadeChoices === 1 ? "" : "s"} still to make.</p>
           )}
           {!usesScores && <p className="text-xs italic">Not applied until this character switches to ability scores.</p>}
+          {usesScores && character.sheetScores && <p className="text-xs italic">Already included in the sheet scores, so not added again.</p>}
         </div>
       )}
+
+      <div className="rounded-lg border border-[#9a7b45] bg-[#ead6ad] p-3 space-y-2">
+        <div className="flex flex-wrap items-center gap-3">
+          <label className="flex items-center gap-2 text-sm font-bold">
+            Level
+            <FantasyInput
+              type="number"
+              min={1}
+              max={20}
+              className="w-20"
+              value={clampLevel(character.level)}
+              disabled={!adminUnlocked}
+              onChange={(event) => updateCharacterFields(character.id, { level: clampLevel(numberValue(event.target.value, 1)) })}
+            />
+          </label>
+          <span className="text-sm">
+            Proficiency bonus <strong>+{proficiencyBonusForLevel(character.level)}</strong> (expertise +{proficiencyBonusForLevel(character.level) * 2})
+          </span>
+        </div>
+        <p className="text-sm font-bold">Skills</p>
+        <p className="text-xs">Proficiency in the skills the codex uses, as on the character sheet. A gathering check uses the skill or the tool proficiency, whichever is higher.</p>
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
+          <label className="space-y-1 text-xs">
+            <span className="block font-bold">
+              Animal Handling (WIS {formatModifier((modifiers.WIS ?? 0) + profBonus(character.animalHandling, character.level))})
+            </span>
+            <select
+              value={character.animalHandling || "none"}
+              disabled={!adminUnlocked}
+              aria-label="Animal Handling proficiency"
+              onChange={(event) => updateCharacterFields(character.id, { animalHandling: event.target.value as ProficiencyLevel })}
+              className="w-full rounded border border-[#9a7b45] bg-[#f2dfb9] px-1 py-0.5"
+            >
+              <option value="none">Not proficient</option>
+              <option value="proficient">Proficient</option>
+              <option value="expertise">Expertise</option>
+            </select>
+          </label>
+          {(Object.keys(gatheringActivities) as GatheringActivity[]).map((activity) => {
+            const level = character.gatheringSkills?.[activity] || "none";
+            const info = gatheringActivities[activity];
+            return (
+              <label key={activity} className="space-y-1 text-xs">
+                <span className="block font-bold">
+                  {info.label} ({info.stat} {formatModifier((modifiers[info.stat] ?? 0) + profBonus(level, character.level))})
+                </span>
+                <select
+                  value={level}
+                  disabled={!adminUnlocked}
+                  aria-label={`${info.label} proficiency`}
+                  onChange={(event) =>
+                    updateCharacterFields(character.id, {
+                      gatheringSkills: { ...(character.gatheringSkills || {}), [activity]: event.target.value as ProficiencyLevel },
+                    })
+                  }
+                  className="w-full rounded border border-[#9a7b45] bg-[#f2dfb9] px-1 py-0.5"
+                >
+                  <option value="none">Not proficient</option>
+                  <option value="proficient">Proficient</option>
+                  <option value="expertise">Expertise</option>
+                </select>
+              </label>
+            );
+          })}
+        </div>
+      </div>
 
       <div className="rounded-lg border border-[#9a7b45] bg-[#ead6ad] p-3 space-y-2">
         <p>
@@ -5620,8 +6460,8 @@ function CharacterStatsEditor({
             onValueChange={(value) => updateCharacterHarvestingProficiency(character.id, value as ProficiencyLevel)}
           >
             <SelectItem value="none">Not proficient</SelectItem>
-            <SelectItem value="proficient">Proficient (+2)</SelectItem>
-            <SelectItem value="expertise">Expertise (+4)</SelectItem>
+            <SelectItem value="proficient">Proficient</SelectItem>
+            <SelectItem value="expertise">Expertise</SelectItem>
           </FantasySelect>
           <label className="flex items-center gap-2 text-sm">
             <span className="whitespace-nowrap">Other bonus</span>
@@ -5652,6 +6492,7 @@ function CharactersPanel({
   updateCharacterAbilityScore,
   switchToAbilityScores,
   updateCharacterStatChoice,
+  updateCharacterFields,
   derivedInfoById,
   updateCharacterActive,
   updateCharacterTool,
@@ -5671,6 +6512,7 @@ function CharactersPanel({
   updateCharacterAbilityScore: (characterId: string, stat: Stat, value: number) => void;
   switchToAbilityScores: (characterId: string) => void;
   updateCharacterStatChoice: (characterId: string, key: string, values: string[]) => void;
+  updateCharacterFields: (characterId: string, changes: Partial<Character>) => void;
   derivedInfoById: Map<string, DerivedCharacterInfo>;
   updateCharacterActive: (characterId: string, isActive: boolean) => void;
   updateCharacterTool: (characterId: string, tool: string, level: ProficiencyLevel) => void;
@@ -5703,8 +6545,8 @@ function CharactersPanel({
               }
             >
               <SelectItem value="none">Not proficient</SelectItem>
-              <SelectItem value="proficient">Proficient (+2)</SelectItem>
-              <SelectItem value="expertise">Expertise (+4)</SelectItem>
+              <SelectItem value="proficient">Proficient</SelectItem>
+              <SelectItem value="expertise">Expertise</SelectItem>
             </FantasySelect>
             <span className="block text-xs">Harvesting is worked out from WIS plus this proficiency.</span>
           </label>
@@ -5801,7 +6643,19 @@ function CharactersPanel({
                     onChange={(event) => updateCharacterActive(character.id, event.target.checked)}
                   />
                   Active in party
-                  {character.isActive === false && <span className="text-[#7a3f00]">(hidden from players)</span>}
+                  {character.isActive === false && (
+                    <span className="text-[#7a3f00]">{character.claimable ? "(players can claim it, nothing else)" : "(hidden from players)"}</span>
+                  )}
+                </label>
+              )}
+              {adminUnlocked && character.isActive === false && (
+                <label className="flex items-center gap-2 rounded-xl border border-[#9a7b45] bg-[#ead6ad] px-3 py-2 text-sm">
+                  <input
+                    type="checkbox"
+                    checked={Boolean(character.claimable)}
+                    onChange={(event) => updateCharacterFields(character.id, { claimable: event.target.checked })}
+                  />
+                  Visible for claiming (a future character): players can claim it, but it stays out of the party until it&apos;s active.
                 </label>
               )}
 
@@ -5815,6 +6669,7 @@ function CharactersPanel({
                 updateCharacterHarvesting={updateCharacterHarvesting}
                 updateCharacterHarvestingProficiency={updateCharacterHarvestingProficiency}
                 updateCharacterStatChoice={updateCharacterStatChoice}
+                updateCharacterFields={updateCharacterFields}
               />
 
               <div className="space-y-3 max-h-[520px] overflow-auto pr-1">
@@ -6555,7 +7410,10 @@ function GMPanel(props: {
   enableAllTags: () => void;
   disableAllTags: () => void;
   passDay: () => void;
+  levelUpParty: () => void;
+  passTime: (days: number, options: TimeSkipOptions) => Promise<string[]>;
 }) {
+  const [confirmLevelUp, setConfirmLevelUp] = useState(false);
   return (
     <ParchmentCard>
       <div className="space-y-5 font-serif">
@@ -6573,6 +7431,26 @@ function GMPanel(props: {
               >
                 Pass Day
               </Button>
+              <TimeSkipPanel onPassTime={props.passTime} />
+              {confirmLevelUp ? (
+                <span className="flex flex-wrap items-center gap-2 text-sm">
+                  <span>Add a level to every character?</span>
+                  <Button
+                    onClick={() => {
+                      props.levelUpParty();
+                      setConfirmLevelUp(false);
+                    }}
+                    className="bg-[#1d5c2e] hover:bg-[#247338] text-[#fff0c7]"
+                  >
+                    Level Up
+                  </Button>
+                  <button type="button" className="underline" onClick={() => setConfirmLevelUp(false)}>Cancel</button>
+                </span>
+              ) : (
+                <Button onClick={() => setConfirmLevelUp(true)} className="w-fit bg-[#1d5c2e] hover:bg-[#247338] text-[#fff0c7]">
+                  Level Up Party
+                </Button>
+              )}
             </div>
           )}
         </div>

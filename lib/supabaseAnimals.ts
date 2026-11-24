@@ -14,7 +14,18 @@ export type AnimalRow = {
   tamed_by: string | null;
   last_collected: Record<string, number>;
   notes: string | null;
+  // Mounts: riding state (missing on databases without the column yet).
+  mount_state?: MountState;
   created_at: string;
+};
+
+export type MountState = {
+  // HP after damage, on campaign day hpDay. A night's rest (a later day) restores full HP.
+  hp?: number;
+  hpDay?: number;
+  rider?: string | null;
+  mode?: "controlled" | "independent";
+  saddle?: "none" | "riding" | "military";
 };
 
 export async function fetchCampaignAnimals(campaignId: string): Promise<AnimalRow[]> {
@@ -24,7 +35,7 @@ export async function fetchCampaignAnimals(campaignId: string): Promise<AnimalRo
     .eq("campaign_id", campaignId)
     .order("created_at", { ascending: true });
   if (error) throw error;
-  return ((data as AnimalRow[] | null) || []).map((row) => ({ ...row, last_collected: row.last_collected || {} }));
+  return ((data as AnimalRow[] | null) || []).map((row) => ({ ...row, last_collected: row.last_collected || {}, mount_state: row.mount_state || {} }));
 }
 
 export async function addAnimal(input: {
@@ -52,7 +63,7 @@ export async function addAnimal(input: {
 
 export async function updateAnimal(
   id: string,
-  changes: Partial<Pick<AnimalRow, "name" | "sex" | "character_id" | "notes" | "last_collected">>
+  changes: Partial<Pick<AnimalRow, "name" | "sex" | "character_id" | "notes" | "last_collected" | "mount_state">>
 ): Promise<void> {
   const { error } = await supabase.from("campaign_animals").update(changes).eq("id", id);
   if (error) throw error;

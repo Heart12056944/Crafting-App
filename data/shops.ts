@@ -168,10 +168,28 @@ function foodValueCp(recipe: Recipe) {
   return servings * each;
 }
 
+// Everyday travel and weather gear, priced like the PHB's adventuring gear.
+const GEAR_PRICES_CP: Record<string, number> = {
+  "Winter Coat": 800,
+  "Fur Mittens & Hat": 100,
+  "Snow Goggles": 50,
+  "Oilskin Cloak": 300,
+  "Waxed Tarp": 200,
+  "Oiled Boots": 200,
+  "Summer Linens": 100,
+  "Large Waterskin": 50,
+  Snowshoes: 200,
+  Crampons: 300,
+  "Fleece Bedroll": 200,
+  "Hide Tent": 500,
+};
+
 export function itemValueCp(options: { recipe?: Pick<Recipe, "dc"> | null; rarity?: string | null; quality?: string | null }): number {
   const recipe = options.recipe as Recipe | null | undefined;
   const base = recipe
-    ? recipe.tool === "Cook's Utensils" && recipe.outcomes
+    ? recipe.name && GEAR_PRICES_CP[recipe.name] !== undefined
+      ? GEAR_PRICES_CP[recipe.name]
+      : recipe.tool === "Cook's Utensils" && recipe.outcomes
       ? foodValueCp(recipe)
       : recipeValueCp(recipe.dc)
     : RARITY_VALUE_CP[(options.rarity || "").toLowerCase()] ?? 100;
@@ -189,6 +207,7 @@ export const SHOP_TEMPLATES: ShopTemplate[] = [
     name: "General Store",
     description: "Cloth, cord, thread and the odds and ends every crafter runs out of.",
     stock: ["Cloth", "Cloth Bolts", "Leather Cord", "Leather Scraps", "Twine (50ft.)", "Cotton Thread", "Basic Fiber", "Resin", "Binding Agents", "Wood Planks", "Charcoal", "Fish Oil", "Coarse Salt", "Empty Vials (set of 3)", "Blank Scrolls"],
+    items: ["Dried Meat Strips", "Trail Cakes", "Winter Coat", "Fur Mittens & Hat", "Snow Goggles", "Oilskin Cloak", "Waxed Tarp", "Oiled Boots", "Summer Linens", "Large Waterskin"],
   },
   {
     kind: "smithy",
@@ -230,12 +249,14 @@ export const SHOP_TEMPLATES: ShopTemplate[] = [
     name: "Valley Market",
     description: "Root, leaf, beans, orchard fruit, eggs, milk, cheese and bread from the Valdren farms, plus salt and butcher's trim.",
     stock: ["Tull", "Kesh", "Varn", "Orrel", "Dunsk", "Kindlepod", "Coop Egg", "Kine Milk", "Valdren Curd", "Wallwheel", "Coarse Flour", "Hearthbread", "Coarse Salt", "Sour Vinegar", "Raw Game Meat"],
+    items: ["Compact Bean Brick", "Wallwheel Slices"],
   },
   {
     kind: "island-market",
     name: "Island Market",
     description: "Romley produce from the island farms and tide pools, and everything a ship's galley runs on.",
     stock: ["Tidecress", "Sailor's Knot", "Sourbell", "Bloodpod", "Galleyweed", "Skerry Egg", "Goat's Milk", "Brinecheese", "Hearthbread", "Coarse Salt"],
+    items: ["Hold Rations", "Salted Fish"],
   },
   {
     kind: "fishmonger",
@@ -248,6 +269,7 @@ export const SHOP_TEMPLATES: ShopTemplate[] = [
     name: "Order Quartermaster",
     description: "Grave salt, bone meal and field supplies for those who fight the dead.",
     stock: ["Grave Salt", "Bone Meal", "Iron Ingot", "Whetstone Paste", "Empty Infusion Base", "Blank Scrolls", "Carved Focus", "Fish Oil"],
+    items: ["Compact Bean Brick", "Dried Meat Strips", "Winter Coat", "Fur Mittens & Hat", "Oilskin Cloak", "Snowshoes", "Crampons", "Fleece Bedroll"],
   },
   { kind: "custom", name: "New Shop", description: "", stock: [] },
 ];

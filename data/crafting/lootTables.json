@@ -5192,5 +5192,637 @@
     "set": "basic-gear",
     "family": "beast",
     "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-ridge-fox-common",
+    "creature": "RIDGE FOX",
+    "creatureTier": "Common",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 60,
+        "materialName": "Fox Pelt",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A thick russet pelt with a white winter underfur."
+      },
+      {
+        "weight": 40,
+        "materialName": "Raw Game Meat",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Mixed trimmings from whatever the hunters brought in. Spoils in a few days unless cooked or cured."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-ridge-fox-rare",
+    "creature": "RIDGE FOX",
+    "creatureTier": "Common",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 100,
+        "materialName": "Fox Brush",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A fox's full, white-tipped tail."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-ridge-fox-epic",
+    "creature": "RIDGE FOX",
+    "creatureTier": "Common",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 60,
+        "materialName": "Fox Brush",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A fox's full, white-tipped tail."
+      },
+      {
+        "weight": 40,
+        "materialName": "Hunter's Whisker",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A snow cat whisker. It trembles before anything moves nearby."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-scree-jackal-common",
+    "creature": "SCREE JACKAL",
+    "creatureTier": "Common",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 50,
+        "materialName": "Jackal Hide",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A thin, sandy-grey hide, patchy along the spine."
+      },
+      {
+        "weight": 25,
+        "materialName": "Lean Sinew",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Clean sinew from a fast-running beast. Dries into excellent cord.",
+        "amount": "1d2"
+      },
+      {
+        "weight": 25,
+        "materialName": "Raw Game Meat",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Mixed trimmings from whatever the hunters brought in. Spoils in a few days unless cooked or cured."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-scree-jackal-rare",
+    "creature": "SCREE JACKAL",
+    "creatureTier": "Common",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 60,
+        "materialName": "Jackal Hide",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A thin, sandy-grey hide, patchy along the spine.",
+        "amount": "2"
+      },
+      {
+        "weight": 40,
+        "materialName": "Wolf Bone",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Light, dense leg bone. Takes a carved edge well.",
+        "amount": "1d2"
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-scree-jackal-epic",
+    "creature": "SCREE JACKAL",
+    "creatureTier": "Common",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 100,
+        "materialName": "Silent Paw Pad",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A snow cat's paw pad, soft as felt. It makes no sound on stone."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-feral-hound-common",
+    "creature": "FERAL HOUND",
+    "creatureTier": "Common",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 55,
+        "materialName": "Hound Pelt",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A matted, mud-brown pelt from a farm dog gone wild."
+      },
+      {
+        "weight": 25,
+        "materialName": "Lean Sinew",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Clean sinew from a fast-running beast. Dries into excellent cord."
+      },
+      {
+        "weight": 20,
+        "materialName": "Raw Game Meat",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Mixed trimmings from whatever the hunters brought in. Spoils in a few days unless cooked or cured."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-feral-hound-rare",
+    "creature": "FERAL HOUND",
+    "creatureTier": "Common",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 50,
+        "materialName": "Hound Pelt",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A matted, mud-brown pelt from a farm dog gone wild.",
+        "amount": "2"
+      },
+      {
+        "weight": 50,
+        "materialName": "Wolf Fang",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A long, hooked canine. Good arrowhead stock."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-feral-hound-epic",
+    "creature": "FERAL HOUND",
+    "creatureTier": "Common",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 100,
+        "materialName": "Wolf Fang",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A long, hooked canine. Good arrowhead stock.",
+        "amount": "1d3"
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-thornspine-direwolf-common",
+    "creature": "THORNSPINE DIREWOLF",
+    "creatureTier": "Uncommon",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 30,
+        "materialName": "Coarse Wolf Pelt",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Rough grey pelt from a Thornspine wolf. Needs curing before it is good for much."
+      },
+      {
+        "weight": 25,
+        "materialName": "Wolf Fang",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A long, hooked canine. Good arrowhead stock.",
+        "amount": "1d4"
+      },
+      {
+        "weight": 25,
+        "materialName": "Lean Sinew",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Clean sinew from a fast-running beast. Dries into excellent cord.",
+        "amount": "1d4"
+      },
+      {
+        "weight": 20,
+        "materialName": "Raw Game Meat",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Mixed trimmings from whatever the hunters brought in. Spoils in a few days unless cooked or cured.",
+        "amount": "1d3"
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-thornspine-direwolf-rare",
+    "creature": "THORNSPINE DIREWOLF",
+    "creatureTier": "Uncommon",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 55,
+        "materialName": "Direwolf Pelt",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A huge, shaggy charcoal pelt, big enough to sleep under."
+      },
+      {
+        "weight": 45,
+        "materialName": "Direwolf Fang",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A fang as long as a finger, yellowed and chipped.",
+        "amount": "1d2"
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-thornspine-direwolf-epic",
+    "creature": "THORNSPINE DIREWOLF",
+    "creatureTier": "Uncommon",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 100,
+        "materialName": "Direwolf Heart",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A heavy heart that seems to keep a slow beat for a while after the kill."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-valdren-mouser-common",
+    "creature": "VALDREN MOUSER",
+    "creatureTier": "Common",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 100,
+        "materialName": "Cat Pelt",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A small, soft tabby pelt."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-valdren-mouser-rare",
+    "creature": "VALDREN MOUSER",
+    "creatureTier": "Common",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 100,
+        "materialName": "Silent Paw Pad",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A snow cat's paw pad, soft as felt. It makes no sound on stone."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-valdren-mouser-epic",
+    "creature": "VALDREN MOUSER",
+    "creatureTier": "Common",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 100,
+        "materialName": "Hunter's Whisker",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A snow cat whisker. It trembles before anything moves nearby."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-crag-lynx-common",
+    "creature": "CRAG LYNX",
+    "creatureTier": "Common",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 45,
+        "materialName": "Lynx Pelt",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A spotted grey pelt, dense and silky."
+      },
+      {
+        "weight": 30,
+        "materialName": "Silent Paw Pad",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A snow cat's paw pad, soft as felt. It makes no sound on stone."
+      },
+      {
+        "weight": 25,
+        "materialName": "Raw Game Meat",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Mixed trimmings from whatever the hunters brought in. Spoils in a few days unless cooked or cured."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-crag-lynx-rare",
+    "creature": "CRAG LYNX",
+    "creatureTier": "Common",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 60,
+        "materialName": "Lynx Ear Tuft",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "The black tufts from a lynx's ears. Said to catch the faintest sound."
+      },
+      {
+        "weight": 40,
+        "materialName": "Lynx Pelt",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A spotted grey pelt, dense and silky."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-crag-lynx-epic",
+    "creature": "CRAG LYNX",
+    "creatureTier": "Common",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 100,
+        "materialName": "Hunter's Whisker",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A snow cat whisker. It trembles before anything moves nearby."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-ridge-panther-common",
+    "creature": "RIDGE PANTHER",
+    "creatureTier": "Uncommon",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 40,
+        "materialName": "Panther Pelt",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A sleek, near-black pelt with faint rosettes in the right light."
+      },
+      {
+        "weight": 35,
+        "materialName": "Panther Claw",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A hooked black claw, needle-sharp.",
+        "amount": "1d2"
+      },
+      {
+        "weight": 25,
+        "materialName": "Raw Game Meat",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Mixed trimmings from whatever the hunters brought in. Spoils in a few days unless cooked or cured.",
+        "amount": "1d2"
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-ridge-panther-rare",
+    "creature": "RIDGE PANTHER",
+    "creatureTier": "Uncommon",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 50,
+        "materialName": "Panther Pelt",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A sleek, near-black pelt with faint rosettes in the right light."
+      },
+      {
+        "weight": 50,
+        "materialName": "Silent Paw Pad",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A snow cat's paw pad, soft as felt. It makes no sound on stone."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-ridge-panther-epic",
+    "creature": "RIDGE PANTHER",
+    "creatureTier": "Uncommon",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 60,
+        "materialName": "Panther Claw",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A hooked black claw, needle-sharp.",
+        "amount": "1d4"
+      },
+      {
+        "weight": 40,
+        "materialName": "Hunter's Whisker",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A snow cat whisker. It trembles before anything moves nearby."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-thornspine-sabretooth-common",
+    "creature": "THORNSPINE SABRETOOTH",
+    "creatureTier": "Rare",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 35,
+        "materialName": "Thick Winter Pelt",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "Dense under-fur grown for the high passes. Sheds snow like water."
+      },
+      {
+        "weight": 25,
+        "materialName": "Panther Claw",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A hooked black claw, needle-sharp.",
+        "amount": "1d3"
+      },
+      {
+        "weight": 20,
+        "materialName": "Lean Sinew",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Clean sinew from a fast-running beast. Dries into excellent cord.",
+        "amount": "1d4"
+      },
+      {
+        "weight": 20,
+        "materialName": "Raw Game Meat",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Mixed trimmings from whatever the hunters brought in. Spoils in a few days unless cooked or cured.",
+        "amount": "1d4"
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-thornspine-sabretooth-rare",
+    "creature": "THORNSPINE SABRETOOTH",
+    "creatureTier": "Rare",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 50,
+        "materialName": "Sabretooth Pelt",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A heavy tawny pelt striped with smoke-grey."
+      },
+      {
+        "weight": 50,
+        "materialName": "Sabretooth Fang",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A curved fang as long as a dagger blade."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-thornspine-sabretooth-epic",
+    "creature": "THORNSPINE SABRETOOTH",
+    "creatureTier": "Rare",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 100,
+        "materialName": "Sabretooth Skull",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "A massive skull with sockets for fangs as long as your forearm."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
   }
 ]

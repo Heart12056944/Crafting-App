@@ -17,6 +17,7 @@ import {
   type HusbandryProduct,
 } from "@/data/husbandry";
 import { lootTables, rollDiceExpression } from "@/data/lootTables";
+import { CREATURE_INFO } from "@/data/creatures";
 import { formatCp } from "@/data/coins";
 
 type CharacterLike = { id: string; name: string; isActive?: boolean };
@@ -52,7 +53,8 @@ function collectRoll(product: HusbandryProduct) {
 }
 
 // Species that can be butchered: the ones with a loot table of the same id.
-const BUTCHERABLE = new Set(lootTables.map((table) => table.id));
+// Dogs and cats are companions, not livestock.
+const BUTCHERABLE = new Set(lootTables.filter((table) => !CREATURE_INFO[table.id]?.kind).map((table) => table.id));
 
 // Each listener gets its own channel name (Supabase throws on repeats).
 let animalChannelCount = 0;
@@ -69,6 +71,7 @@ export default function HusbandryPanel({
   onSetHandling,
   onAddMaterials,
   onButcher,
+  onJournal,
 }: {
   campaignId: string;
   characters: CharacterLike[];
@@ -83,6 +86,7 @@ export default function HusbandryPanel({
   onAddMaterials: (items: { name: string; qty: number }[]) => void;
   // Puts this species on the Looting tab's table to be harvested like any creature.
   onButcher: (speciesId: string) => Promise<void>;
+  onJournal?: (text: string) => void;
 }) {
   const [animals, setAnimals] = useState<AnimalRow[]>([]);
   const [version, setVersion] = useState(0);
@@ -168,6 +172,7 @@ export default function HusbandryPanel({
       onSetWildAnimal(speciesId, false);
       if (!success) {
         setMessage(`${rollText} The ${species.name.toLowerCase()} bolts. Ask the GM if there's another nearby.`);
+        onJournal?.(`${rollText} The ${species.name.toLowerCase()} bolts. Ask the GM if there's another nearby.`);
         return;
       }
       const sex = randomSex();
@@ -184,6 +189,7 @@ export default function HusbandryPanel({
       });
       setTameNames((current) => ({ ...current, [speciesId]: "" }));
       setMessage(`${rollText} Success! ${name} (${sex === "female" ? "a female" : "a male"} ${species.name.toLowerCase()}) has been ${how} and joins ${nameOf(activeTamer)}.`);
+      onJournal?.(`${rollText} Success! ${name} (${sex === "female" ? "a female" : "a male"} ${species.name.toLowerCase()}) has been ${how} and joins ${nameOf(activeTamer)}.`);
     });
   }
 
@@ -206,6 +212,7 @@ export default function HusbandryPanel({
       await onButcher(species.id);
       await releaseAnimal(animal.id);
       setMessage(`${animal.name} has been slaughtered. Harvest it on the Looting tab like any creature: the cuts depend on the harvest rolls.`);
+      onJournal?.(`${animal.name} has been slaughtered. Harvest it on the Looting tab like any creature: the cuts depend on the harvest rolls.`);
     });
   }
 
@@ -226,6 +233,7 @@ export default function HusbandryPanel({
       });
       setAddName("");
       setMessage(`${name} joins ${addKeeper ? nameOf(addKeeper) : "the party"}.`);
+      onJournal?.(`${name} joins ${addKeeper ? nameOf(addKeeper) : "the party"}.`);
     });
   }
 
@@ -354,7 +362,9 @@ export default function HusbandryPanel({
                       {animal.tamed_by ? ` · ${animal.tamed_by}` : ""}
                     </p>
                   </div>
-                  {products.length === 0 && <p className="text-xs italic">Gives nothing; good company, though.</p>}
+                  {products.length === 0 && (
+                    <p className="text-xs italic">{species.mount ? "A mount: ride it, and track it in combat, from the Travel & Camp tab." : "Gives nothing; good company, though."}</p>
+                  )}
                   {products.map((product) => {
                     const wait = daysUntilReady(product, animal.last_collected[product.id], campaignDay);
                     const what = product.materials.map((item) => item.name).join(" / ");

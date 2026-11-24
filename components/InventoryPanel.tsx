@@ -1,7 +1,8 @@
 "use client";
 
+import { rowWeight } from "@/data/weights";
 import React, { useEffect, useState } from "react";
-import { Backpack, ChevronDown, ChevronRight, Package, Trash2 } from "lucide-react";
+import { Backpack, ChevronDown, ChevronRight, Package, Send, Trash2 } from "lucide-react";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -148,7 +149,8 @@ function ItemRow({
   onUpgrade: (row: InventoryRow, targetId: string) => void;
 }) {
   const [open, setOpen] = useState(false);
-  const [target, setTarget] = useState("");
+  const [sending, setSending] = useState(false);
+  const [sendCount, setSendCount] = useState(1);
   const [upgradeTarget, setUpgradeTarget] = useState("");
   const [confirmSalvage, setConfirmSalvage] = useState(false);
   const upgrades = row.metadata.upgrades || [];
@@ -178,12 +180,59 @@ function ItemRow({
             )}
           </span>
         </button>
-        {canAct && consumable && (
-          <Button size="sm" disabled={busy} onClick={() => onUse(row)} className={darkButton}>
-            Use
-          </Button>
-        )}
+        <div className="flex items-center gap-2">
+          {canAct && consumable && (
+            <Button size="sm" disabled={busy} onClick={() => onUse(row)} className={darkButton}>
+              Use
+            </Button>
+          )}
+          {canAct && targets.length > 0 && (
+            <Button
+              size="sm"
+              disabled={busy}
+              onClick={() => {
+                setSending(!sending);
+                setSendCount(1);
+              }}
+              className={blueButton}
+              aria-label={`Send ${row.name}`}
+            >
+              <Send className="h-3 w-3 mr-1" /> Send
+            </Button>
+          )}
+        </div>
       </div>
+
+      {canAct && sending && targets.length > 0 && (
+        <div className="rounded-lg border border-[#1c5d99] bg-[#e4eef7] p-2 space-y-2 text-sm">
+          {row.qty > 1 && (
+            <div className="flex flex-wrap items-center gap-2">
+              <span>How many?</span>
+              <button className="rounded border border-[#1c5d99] px-2" onClick={() => setSendCount(Math.max(1, sendCount - 1))}>−</button>
+              <strong>{sendCount}</strong>
+              <button className="rounded border border-[#1c5d99] px-2" onClick={() => setSendCount(Math.min(row.qty, sendCount + 1))}>+</button>
+              <button className="text-xs underline" onClick={() => setSendCount(row.qty)}>All {row.qty}</button>
+            </div>
+          )}
+          <p className="text-xs">Send {sendCount === row.qty && row.qty > 1 ? "all" : sendCount} {row.name} to:</p>
+          <div className="flex flex-wrap gap-2">
+            {targets.map((option) => (
+              <Button
+                key={option.value}
+                size="sm"
+                disabled={busy}
+                onClick={() => {
+                  onGive(row, option.value, sendCount >= row.qty ? undefined : sendCount);
+                  setSending(false);
+                }}
+                className={blueButton}
+              >
+                {option.label}
+              </Button>
+            ))}
+          </div>
+        </div>
+      )}
 
       {open && (
         <div className="space-y-1 text-sm">
@@ -244,25 +293,6 @@ function ItemRow({
             <button type="button" className="text-xs font-bold underline" disabled={busy} onClick={() => setConfirmSalvage(true)}>
               Salvage for materials
             </button>
-          )}
-        </div>
-      )}
-
-      {canAct && targets.length > 0 && (
-        <div className="flex flex-wrap items-center gap-2 text-sm">
-          <select value={target} onChange={(event) => setTarget(event.target.value)} className={fieldClass} aria-label={`Give ${row.name} to`}>
-            <option value="">Give to...</option>
-            {targets.map((option) => (
-              <option key={option.value} value={option.value}>{option.label}</option>
-            ))}
-          </select>
-          <Button size="sm" disabled={!target || busy} onClick={() => onGive(row, target, 1)} className={blueButton}>
-            Give 1
-          </Button>
-          {row.qty > 1 && (
-            <Button size="sm" disabled={!target || busy} onClick={() => onGive(row, target)} className={blueButton}>
-              Give all
-            </Button>
           )}
         </div>
       )}
@@ -392,7 +422,7 @@ export default function InventoryPanel({
 
   function handleGive(row: InventoryRow, target: string, count?: number) {
     const to = target === STASH ? null : target;
-    run(() => moveInventoryItem(row, to, count), `${count === 1 ? "1" : "All"} ${row.name} → ${nameOf(to)}.`);
+    run(() => moveInventoryItem(row, to, count), `${count === undefined ? "All" : count} ${row.name} → ${nameOf(to)}.`);
   }
 
   // Who makes the salvage check: the holder, or for stash items a claimed character.
@@ -523,7 +553,10 @@ export default function InventoryPanel({
 
   const targetsFor = (holderId: string | null) => [
     ...(holderId !== null ? [{ value: STASH, label: "Party stash" }] : []),
-    ...visibleCharacters.filter((character) => character.id !== holderId).map((character) => ({ value: character.id, label: character.name })),
+    // Only characters active in the party can be sent things.
+    ...characters
+      .filter((character) => character.isActive !== false && character.id !== holderId)
+      .map((character) => ({ value: character.id, label: character.name })),
   ];
 
   const recipeNames = Array.from(new Set(recipes.filter((recipe) => recipe.category !== "material-refinement").map((recipe) => recipe.name)));
@@ -613,7 +646,9 @@ export default function InventoryPanel({
                   <div className="flex items-center gap-2">
                     <Package className="w-6 h-6" />
                     <h3 className="text-2xl font-bold">{holder.label}</h3>
-                    <span className="text-sm">({items.reduce((sum, row) => sum + row.qty, 0)} items)</span>
+                    <span className="text-sm">
+                      ({items.reduce((sum, row) => sum + row.qty, 0)} items, {Math.round(items.reduce((sum, row) => sum + rowWeight(row), 0) * 100) / 100} lb)
+                    </span>
                   </div>
                   {items.length === 0 ? (
                     <p className="text-sm italic">Nothing here yet.</p>

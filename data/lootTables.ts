@@ -473,7 +473,18 @@ const jsonLootTables: LootTable[] = (() => {
   return [...byCreature.values()];
 })();
 
-export const lootTables: LootTable[] = [...builtInLootTables, ...jsonLootTables];
+// The hand-written tables are the Tales on the Sea creatures, so they hide with that set.
+export const lootTables: LootTable[] = [
+  ...builtInLootTables.map((table) => ({ ...table, set: table.set || "tales-on-the-sea" })),
+  ...jsonLootTables,
+];
+
+// Every creature set; each gets a show/hide toggle in the GM panel.
+export const lootTableSets: string[] = [...new Set(lootTables.map((table) => table.set).filter((set): set is string => Boolean(set)))];
+
+export function isLootTableVisible(table: Pick<LootTable, "set">, disabledSets: string[]) {
+  return !table.set || !disabledSets.includes(table.set);
+}
 
 // Picks one entry, respecting weights (entries without a weight count as 1).
 export function pickWeightedLootEntry(entries: LootEntry[]): LootEntry {

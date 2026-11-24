@@ -6,7 +6,9 @@ import { Store, Trash2 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/lib/supabaseClient";
-import { createShop, deleteShop, fetchShops, shopPurchase, updateShop, type ShopRow } from "@/lib/supabaseShops";
+import { createShop, deleteShop, fetchShops, recordMarket, shopPurchase, updateShop, type ShopRow } from "@/lib/supabaseShops";
+import { useCampaignFactions, reputationTier } from "@/lib/supabaseFactions";
+import { buyPriceCp, marketFactor, marketNote, sellPriceCp } from "@/data/market";
 import { PARTY_FUND, changePurse } from "@/lib/supabaseCoins";
 import { addInventoryItem, fetchCampaignInventory, removeOneInventoryItem, remainingUses, type InventoryRow } from "@/lib/supabaseInventory";
 import { CoinChips, useCampaignPurses } from "@/components/CoinPurses";
@@ -213,7 +215,11 @@ export default function ShopPanel({
   materials,
   onAddMaterials,
   onRemoveMaterials,
+  campaignDay,
+  onJournal,
 }: {
+  campaignDay: number;
+  onJournal: (text: string) => void;
   campaignId: string;
   characters: CharacterLike[];
   adminUnlocked: boolean;
@@ -236,6 +242,23 @@ export default function ShopPanel({
   const [template, setTemplate] = useState(SHOP_TEMPLATES[0].kind);
   const [sellMaterial, setSellMaterial] = useState("");
   const [sellMaterialQty, setSellMaterialQty] = useState(1);
+  const [sellShopId, setSellShopId] = useState("");
+  const { factions } = useCampaignFactions(campaignId);
+
+  // Standing with the shop's faction: a discount (negative = surcharge; -1 = won't trade).
+  function standingFor(shop: ShopRow | undefined) {
+    const faction = factions.find((item) => item.id === shop?.faction_id);
+    return faction ? { faction, tier: reputationTier(faction.reputation) } : null;
+  }
+  function priceFor(shop: ShopRow, entry: StockEntry) {
+    const standing = standingFor(shop);
+    return buyPriceCp(entry.priceCp, marketFactor(shop.market, entry.name, campaignDay), standing ? Math.max(-0.5, standing.tier.discount) : 0);
+  }
+  function salePrice(shop: ShopRow | undefined, name: string, baseSellCp: number) {
+    if (!shop) return baseSellCp;
+    const standing = standingFor(shop);
+    return sellPriceCp(baseSellCp, marketFactor(shop.market, name, campaignDay), standing ? Math.max(-0.5, standing.tier.discount) : 0);
+  }
 
   useEffect(() => {
     if (!campaignId) return;
@@ -262,6 +285,7 @@ export default function ShopPanel({
   const purse = coinsOf(activeBuyer);
   const openShops = shops.filter((shop) => shop.is_open);
   const shownShops = adminUnlocked ? shops : openShops;
+  const sellShop = (adminUnlocked ? shops : openShops).find((shop) => shop.id === sellShopId) || openShops[0] || (adminUnlocked ? shops[0] : undefined);
   const buyerItems = inventory.filter((row) => (activeBuyer === PARTY_FUND ? row.character_id === null : row.character_id === activeBuyer));
   const poolForSale = materials.filter((material) => material.qty > 0);
   const stockNames = Array.from(new Set([...materialTierEntries.map((entry) => entry.name), ...Array.from(recipeByName.values()).map((recipe) => recipe.name)]));
@@ -284,8 +308,10 @@ export default function ShopPanel({
   function buy(shop: ShopRow, entry: StockEntry) {
     const key = `${shop.id}:${entry.name}`;
     const qty = Math.max(1, quantities[key] || 1);
-    const total = entry.priceCp * qty;
+    const total = priceFor(shop, entry) * qty;
     const plan = paymentPlan(purse, total);
+    const standing = standingFor(shop);
+    if (standing && standing.tier.discount <= -1) return setMessage(`${shop.name} won't trade with you: ${standing.faction.name} is hostile.`);
     if (!activeBuyer) return setMessage("Claim a character to shop.");
     if (!plan) return setMessage(`${nameOf(activeBuyer)} can't afford ${qty}× ${entry.name} (${formatCp(total)}).`);
     run(async () => {
@@ -309,7 +335,9 @@ export default function ShopPanel({
           metadata: { consumable: info.consumable, usesPerItem: info.usesPerItem, recipeId: recipe?.id || null },
         });
       }
+      await recordMarket(shop.id, entry.name, qty, 0, campaignDay);
       setMessage(`${nameOf(activeBuyer)} bought ${qty}× ${entry.name} for ${formatCp(total)}.${entry.kind === "material" ? " It's in the party's materials." : ""}`);
+      onJournal(`${nameOf(activeBuyer)} bought ${qty}× ${entry.name} at ${shop.name} for ${formatCp(total)}.`);
     });
   }
 
@@ -317,23 +345,29 @@ export default function ShopPanel({
     const material = poolForSale.find((item) => item.name === sellMaterial);
     if (!material || !activeBuyer) return;
     const qty = Math.min(material.qty, Math.max(1, sellMaterialQty));
-    const total = Math.floor(materialValueCp(material.name) * SELL_RATE) * qty;
+    if (sellShop && standingFor(sellShop)?.tier.discount === -1) return setMessage(`${sellShop.name} won't trade with you.`);
+    const total = salePrice(sellShop, material.name, Math.floor(materialValueCp(material.name) * SELL_RATE)) * qty;
     if (total <= 0) return setMessage("Nobody will pay for that.");
     run(async () => {
       if (!onRemoveMaterials([{ name: material.name, qty }])) throw new Error(`The party doesn't have ${qty}× ${material.name}.`);
       await changePurse(campaignId, activeBuyer, changeForCp(total), `Sold ${qty}× ${material.name}`);
+      if (sellShop) await recordMarket(sellShop.id, material.name, 0, qty, campaignDay);
       setMessage(`Sold ${qty}× ${material.name} for ${formatCp(total)} → ${nameOf(activeBuyer)}.`);
+      onJournal(`${nameOf(activeBuyer)} sold ${qty}× ${material.name}${sellShop ? ` to ${sellShop.name}` : ""} for ${formatCp(total)}.`);
       setSellMaterial("");
       setSellMaterialQty(1);
     });
   }
 
   function sellItem(row: InventoryRow) {
-    const total = itemSaleCp(row);
+    if (sellShop && standingFor(sellShop)?.tier.discount === -1) return setMessage(`${sellShop.name} won't trade with you.`);
+    const total = salePrice(sellShop, row.name, itemSaleCp(row));
     run(async () => {
       await removeOneInventoryItem(row);
       await changePurse(campaignId, activeBuyer, changeForCp(total), `Sold ${row.name}`);
+      if (sellShop) await recordMarket(sellShop.id, row.name, 0, 1, campaignDay);
       setMessage(`Sold ${row.name} for ${formatCp(total)} → ${nameOf(activeBuyer)}.`);
+      onJournal(`${nameOf(activeBuyer)} sold ${row.name}${sellShop ? ` to ${sellShop.name}` : ""} for ${formatCp(total)}.`);
     });
   }
 
@@ -437,6 +471,27 @@ export default function ShopPanel({
                 )}
               </div>
               {shop.description && <p className="text-sm italic">{shop.description}</p>}
+              {(() => {
+                const standing = standingFor(shop);
+                return standing ? (
+                  <p className="text-xs">
+                    {standing.faction.name}&apos;s shop · you are <strong>{standing.tier.label}</strong> ({standing.faction.reputation}): {standing.tier.note}
+                  </p>
+                ) : null;
+              })()}
+              {adminUnlocked && factions.length > 0 && (
+                <select
+                  className={fieldClass}
+                  value={shop.faction_id || ""}
+                  onChange={(event) => run(async () => updateShop(shop.id, { faction_id: event.target.value || null }))}
+                  aria-label={`${shop.name}'s faction`}
+                >
+                  <option value="">Independent shop</option>
+                  {factions.map((faction) => (
+                    <option key={faction.id} value={faction.id}>Run by {faction.name}</option>
+                  ))}
+                </select>
+              )}
               {adminUnlocked && editing === shop.id && (
                 <ShopEditor
                   key={`${shop.id}-${shop.stock.length}`}
@@ -455,13 +510,16 @@ export default function ShopPanel({
                     const key = `${shop.id}:${entry.name}`;
                     const qty = Math.max(1, quantities[key] || 1);
                     const soldOut = entry.qty !== null && entry.qty <= 0;
-                    const affordable = Boolean(paymentPlan(purse, entry.priceCp * qty));
+                    const price = priceFor(shop, entry);
+                    const trend = marketNote(marketFactor(shop.market, entry.name, campaignDay));
+                    const affordable = Boolean(paymentPlan(purse, price * qty));
                     return (
                       <div key={entry.name} className="grid grid-cols-[1fr_auto_auto_auto] items-center gap-2 rounded-lg bg-[#f7e7c5] px-2 py-1 text-sm">
                         <span>
                           <strong>{entry.name}</strong>
                           <span className="block text-xs">
-                            {formatCp(entry.priceCp)} each · {entry.qty === null ? "plenty in stock" : soldOut ? "sold out" : `${entry.qty} in stock`}
+                            {formatCp(price)} each{price !== entry.priceCp ? <span className="line-through opacity-60"> {formatCp(entry.priceCp)}</span> : null}
+                            {trend ? ` · ${trend}` : ""} · {entry.qty === null ? "plenty in stock" : soldOut ? "sold out" : `${entry.qty} in stock`}
                           </span>
                         </span>
                         <input
@@ -472,7 +530,7 @@ export default function ShopPanel({
                           onChange={(event) => setQuantities({ ...quantities, [key]: Math.max(1, Math.floor(Number(event.target.value) || 1)) })}
                           aria-label={`How many ${entry.name}`}
                         />
-                        <span className="text-xs w-20 text-right">{formatCp(entry.priceCp * qty)}</span>
+                        <span className="text-xs w-20 text-right">{formatCp(price * qty)}</span>
                         <Button
                           size="sm"
                           className={darkButton}
@@ -496,7 +554,20 @@ export default function ShopPanel({
         <Panel>
           <div className="space-y-4">
             <h3 className="text-2xl font-bold">Sell</h3>
-            <p className="text-sm">Shops pay half of what something is worth. The coins go to {nameOf(activeBuyer)}.</p>
+            <p className="text-sm">
+              Shops pay half of what something is worth, less if they&apos;ve been flooded with it lately, more if they belong to a faction
+              that likes you. The coins go to {nameOf(activeBuyer)}.
+            </p>
+            {(adminUnlocked ? shops : openShops).length > 1 && (
+              <label className="flex items-center gap-2 text-sm">
+                Sell to
+                <select className={fieldClass} value={sellShop?.id || ""} onChange={(event) => setSellShopId(event.target.value)} aria-label="Shop to sell to">
+                  {(adminUnlocked ? shops : openShops).map((shop) => (
+                    <option key={shop.id} value={shop.id}>{shop.name}</option>
+                  ))}
+                </select>
+              </label>
+            )}
 
             <div className="space-y-2">
               <strong>Party materials</strong>
@@ -508,7 +579,7 @@ export default function ShopPanel({
                     <option value="">Choose a material...</option>
                     {poolForSale.map((material) => (
                       <option key={material.name} value={material.name}>
-                        {material.name} (×{material.qty}) · {formatCp(Math.floor(materialValueCp(material.name) * SELL_RATE))} each
+                        {material.name} (×{material.qty}) · {formatCp(salePrice(sellShop, material.name, Math.floor(materialValueCp(material.name) * SELL_RATE)))} each
                       </option>
                     ))}
                   </select>
@@ -544,7 +615,7 @@ export default function ShopPanel({
                         {row.metadata?.upgrades?.length ? ` · ${row.metadata.upgrades.length} upgrade${row.metadata.upgrades.length === 1 ? "" : "s"}` : ""}
                       </span>
                       <Button size="sm" className={blueButton} disabled={busy} onClick={() => sellItem(row)} aria-label={`Sell ${row.name}`}>
-                        Sell 1 for {formatCp(itemSaleCp(row))}
+                        Sell 1 for {formatCp(salePrice(sellShop, row.name, itemSaleCp(row)))}
                       </Button>
                     </div>
                   );

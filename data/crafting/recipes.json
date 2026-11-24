@@ -12579,5 +12579,680 @@
     "section": "Common Recipes",
     "source": "Undying_Vigil_Crafting",
     "set": "basic-gear"
+  },
+  {
+    "id": "vigil-recipe-fox-fur-hood",
+    "name": "Fox-Fur Hood",
+    "type": "Accessory",
+    "dc": 10,
+    "time": "2 hours",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Fox Pelt",
+        "quantity": 2
+      },
+      {
+        "name": "Leather Cord",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Fox Pelt, 1x Leather Cord",
+    "outcomes": {
+      "superior": "A warm hood. Advantage on CON saves against extreme cold, and you can't be blinded by snow glare.",
+      "normal": "A warm hood. Advantage on CON saves against extreme cold.",
+      "flawed": "A plain fur hood."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-brush-tail-lure",
+    "name": "Brush-Tail Lure",
+    "type": "Utility",
+    "dc": 11,
+    "time": "1 hour",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Fox Brush",
+        "quantity": 1
+      },
+      {
+        "name": "Leather Cord",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Fox Brush, 1x Leather Cord",
+    "outcomes": {
+      "superior": "A twitching lure. +3 to Survival checks to draw out or trap small game.",
+      "normal": "+2 to Survival checks to draw out or trap small game.",
+      "flawed": "+1 to Survival checks to trap small game."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-patchwork-hide-vest",
+    "name": "Patchwork Hide Vest",
+    "type": "Armour",
+    "dc": 10,
+    "time": "4 hours",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Hound Pelt",
+        "quantity": 2
+      },
+      {
+        "name": "Jackal Hide",
+        "quantity": 1
+      },
+      {
+        "name": "Cat Pelt",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Hound Pelt, 1x Jackal Hide, 1x Cat Pelt",
+    "outcomes": {
+      "superior": "Light armour, AC 11 + DEX. You have advantage on saves against extreme cold.",
+      "normal": "Light armour, AC 11 + DEX.",
+      "flawed": "Light armour, AC 11 + DEX, but it itches."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-jackal-hide-gloves",
+    "name": "Jackal-Hide Gloves",
+    "type": "Accessory",
+    "dc": 10,
+    "time": "1 hour",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Jackal Hide",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "2x Jackal Hide",
+    "outcomes": {
+      "superior": "Supple gloves. +2 to Harvesting checks and no harm from handling thorns or nettles.",
+      "normal": "Supple gloves. +1 to Harvesting checks.",
+      "flawed": "Rough gloves."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-direwolf-cloak",
+    "name": "Direwolf Cloak",
+    "type": "Accessory",
+    "dc": 13,
+    "time": "4 hours",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Direwolf Pelt",
+        "quantity": 1
+      },
+      {
+        "name": "Cured Wolf Leather",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Direwolf Pelt, 1x Cured Wolf Leather",
+    "outcomes": {
+      "superior": "Advantage on Intimidation checks against beasts, and wolves won't attack you unless you attack first.",
+      "normal": "Advantage on Intimidation checks against beasts.",
+      "flawed": "A heavy, warm cloak."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-direwolf-fang-spear",
+    "name": "Direwolf Fang Spear",
+    "type": "Weapon",
+    "dc": 13,
+    "time": "3 hours",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Direwolf Fang",
+        "quantity": 2
+      },
+      {
+        "name": "Ashwood Haft",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Direwolf Fang, 1x Ashwood Haft",
+    "outcomes": {
+      "superior": "Spear. +1 to attack and damage rolls; on a hit you can knock a Medium or smaller target prone (DC 13 STR save).",
+      "normal": "Spear. +1 to damage rolls.",
+      "flawed": "Spear."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-packheart-draught",
+    "name": "Packheart Draught",
+    "type": "Potion",
+    "dc": 14,
+    "time": "4 hours",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Direwolf Heart",
+        "quantity": 1
+      },
+      {
+        "name": "Bitterleaf",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "1x Direwolf Heart, 2x Bitterleaf",
+    "outcomes": {
+      "superior": "For 1 hour you have advantage on attack rolls against a creature if an ally is within 5 feet of it.",
+      "normal": "For 10 minutes you have advantage on attack rolls against a creature if an ally is within 5 feet of it.",
+      "flawed": "For 1 minute, +1 to attack rolls while an ally is within 5 feet of your target."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-lynx-fur-mantle",
+    "name": "Lynx-Fur Mantle",
+    "type": "Accessory",
+    "dc": 12,
+    "time": "3 hours",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Lynx Pelt",
+        "quantity": 2
+      },
+      {
+        "name": "Leather Cord",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Lynx Pelt, 1x Leather Cord",
+    "outcomes": {
+      "superior": "Advantage on Stealth checks in forest or snow.",
+      "normal": "+2 to Stealth checks in forest or snow.",
+      "flawed": "+1 to Stealth checks in snow."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-tufted-earrings",
+    "name": "Tufted Earrings",
+    "type": "Accessory",
+    "dc": 12,
+    "time": "1 hour",
+    "tool": "Jeweler (DEX)",
+    "materials": [
+      {
+        "name": "Lynx Ear Tuft",
+        "quantity": 2
+      },
+      {
+        "name": "Thornspine Silver Ingot",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Lynx Ear Tuft, 1x Thornspine Silver Ingot",
+    "outcomes": {
+      "superior": "Advantage on Perception checks that rely on hearing.",
+      "normal": "+2 to Perception checks that rely on hearing.",
+      "flawed": "+1 to Perception checks that rely on hearing."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-shadow-pelt-cloak",
+    "name": "Shadow-Pelt Cloak",
+    "type": "Accessory",
+    "dc": 13,
+    "time": "4 hours",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Panther Pelt",
+        "quantity": 2
+      },
+      {
+        "name": "Cured Wolf Leather",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Panther Pelt, 1x Cured Wolf Leather",
+    "outcomes": {
+      "superior": "Advantage on Stealth checks in dim light or darkness.",
+      "normal": "+2 to Stealth checks in dim light or darkness.",
+      "flawed": "+1 to Stealth checks in darkness."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-panther-claw-gauntlets",
+    "name": "Panther-Claw Gauntlets",
+    "type": "Weapon",
+    "dc": 13,
+    "time": "3 hours",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Panther Claw",
+        "quantity": 4
+      },
+      {
+        "name": "Cured Wolf Leather",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "4x Panther Claw, 1x Cured Wolf Leather",
+    "outcomes": {
+      "superior": "Your unarmed strikes deal 1d6 slashing and count as finesse; on a crit, +1d6.",
+      "normal": "Your unarmed strikes deal 1d6 slashing.",
+      "flawed": "Your unarmed strikes deal 1d4 slashing."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-sabre-fang-knife",
+    "name": "Sabre-Fang Knife",
+    "type": "Weapon",
+    "dc": 15,
+    "time": "4 hours",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Sabretooth Fang",
+        "quantity": 1
+      },
+      {
+        "name": "Iron Ingot",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Sabretooth Fang, 1x Iron Ingot",
+    "outcomes": {
+      "superior": "Dagger, +1. On a critical hit the target also bleeds for 1d6 at the start of each of its turns until healed (DC 13 Medicine to stop).",
+      "normal": "Dagger, +1.",
+      "flawed": "Dagger."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-sabretooth-mantle",
+    "name": "Sabretooth Mantle",
+    "type": "Accessory",
+    "dc": 15,
+    "time": "6 hours",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Sabretooth Pelt",
+        "quantity": 1
+      },
+      {
+        "name": "Thick Winter Pelt",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Sabretooth Pelt, 1x Thick Winter Pelt",
+    "outcomes": {
+      "superior": "Advantage on Intimidation checks, and resistance to cold damage.",
+      "normal": "Advantage on Intimidation checks.",
+      "flawed": "+1 to Intimidation checks."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-sabretooth-helm",
+    "name": "Sabretooth Helm",
+    "type": "Armour",
+    "dc": 17,
+    "time": "1 day",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Sabretooth Skull",
+        "quantity": 1
+      },
+      {
+        "name": "Iron Ingot",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "1x Sabretooth Skull, 2x Iron Ingot",
+    "outcomes": {
+      "superior": "+1 AC. You have advantage on saves against being frightened, and once per day you can roar: creatures of your choice within 30 ft make a DC 14 WIS save or are frightened of you until the end of your next turn.",
+      "normal": "+1 AC. Advantage on saves against being frightened.",
+      "flawed": "Advantage on saves against being frightened."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Epic Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-rotbane-poultice",
+    "name": "Rotbane Poultice",
+    "type": "Potion",
+    "dc": 13,
+    "time": "2 hours",
+    "tool": "Herbalism Kit (WIS)",
+    "materials": [
+      {
+        "name": "Bitterleaf",
+        "quantity": 2
+      },
+      {
+        "name": "Ashbulb",
+        "quantity": 1
+      },
+      {
+        "name": "Saltmoss",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "2x Bitterleaf, 1x Ashbulb, 1x Saltmoss",
+    "outcomes": {
+      "superior": "Pressed onto the wound, it draws out grave rot: cures it and restores any HP maximum it took. Also ends one other disease.",
+      "normal": "Cures grave rot.",
+      "flawed": "Gives advantage on the next save against grave rot."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "HERBALISM — Vigil Recipes",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-winter-coat",
+    "name": "Winter Coat",
+    "type": "Utility",
+    "dc": 11,
+    "time": "6 hours",
+    "tool": "Weaver (DEX)",
+    "materials": [
+      {
+        "name": "Thick Winter Pelt",
+        "quantity": 1
+      },
+      {
+        "name": "Woven Wool",
+        "quantity": 2
+      },
+      {
+        "name": "Cotton Thread",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Thick Winter Pelt, 2x Woven Wool, 1x Cotton Thread",
+    "outcomes": {
+      "superior": "Cold-weather clothing. Advantage on CON saves against extreme cold, and you're immune to frostbite while you wear it with mittens.",
+      "normal": "Cold-weather clothing: advantage on CON saves against extreme cold.",
+      "flawed": "Cold-weather clothing, but drafty: no advantage below −25°C (bitter cold or blizzards)."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "EXPEDITION GEAR — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear"
+  },
+  {
+    "id": "vigil-recipe-fur-mittens-hat",
+    "name": "Fur Mittens & Hat",
+    "type": "Utility",
+    "dc": 9,
+    "time": "1 hour",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Coarse Wolf Pelt",
+        "quantity": 1
+      },
+      {
+        "name": "Leather Cord",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Coarse Wolf Pelt, 1x Leather Cord",
+    "outcomes": {
+      "superior": "Warm hands and ears. With a winter coat you can't get frostbite, and cold doesn't give disadvantage on DEX checks.",
+      "normal": "Warm hands and ears. With a winter coat you can't get frostbite.",
+      "flawed": "Keeps the worst off. −1 to DEX checks in bitter cold."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "EXPEDITION GEAR — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear"
+  },
+  {
+    "id": "vigil-recipe-snow-goggles",
+    "name": "Snow Goggles",
+    "type": "Utility",
+    "dc": 8,
+    "time": "1 hour",
+    "tool": "Woodcarver (DEX)",
+    "materials": [
+      {
+        "name": "Wood Planks",
+        "quantity": 1
+      },
+      {
+        "name": "Leather Cord",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Wood Planks, 1x Leather Cord",
+    "outcomes": {
+      "superior": "Slit goggles. You can't be blinded by snow glare, and you ignore disadvantage on Perception from glare.",
+      "normal": "You can't be blinded by snow glare.",
+      "flawed": "Cuts the glare, but −1 to Perception checks that rely on sight."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "EXPEDITION GEAR — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear"
+  },
+  {
+    "id": "vigil-recipe-oilskin-cloak",
+    "name": "Oilskin Cloak",
+    "type": "Utility",
+    "dc": 10,
+    "time": "3 hours",
+    "tool": "Weaver (DEX)",
+    "materials": [
+      {
+        "name": "Cloth Bolts",
+        "quantity": 1
+      },
+      {
+        "name": "Fish Oil",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "1x Cloth Bolts, 2x Fish Oil",
+    "outcomes": {
+      "superior": "Keeps you dry in any rain. No chill from being soaked, and your pack stays dry.",
+      "normal": "Keeps you dry in rain. No chill from being soaked.",
+      "flawed": "Keeps the worst of the rain off; heavy rain still soaks you."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "EXPEDITION GEAR — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear"
+  },
+  {
+    "id": "vigil-recipe-waxed-tarp",
+    "name": "Waxed Tarp",
+    "type": "Utility",
+    "dc": 9,
+    "time": "2 hours",
+    "tool": "Weaver (DEX)",
+    "materials": [
+      {
+        "name": "Cloth Bolts",
+        "quantity": 1
+      },
+      {
+        "name": "Rendered Tallow",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Cloth Bolts, 1x Rendered Tallow",
+    "outcomes": {
+      "superior": "Shelter for four. You can light a fire under it in any rain, and the party sleeps dry.",
+      "normal": "Shelter for four. You can keep a fire going under it in rain.",
+      "flawed": "Shelter for two; it drips."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "EXPEDITION GEAR — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear"
+  },
+  {
+    "id": "vigil-recipe-oiled-boots",
+    "name": "Oiled Boots",
+    "type": "Utility",
+    "dc": 10,
+    "time": "3 hours",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Farm Leather",
+        "quantity": 1
+      },
+      {
+        "name": "Rendered Tallow",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Farm Leather, 1x Rendered Tallow",
+    "outcomes": {
+      "superior": "Dry feet: no penalty from mud, puddles or snowmelt, and long wet marches don't tire you.",
+      "normal": "Dry feet in mud and rain.",
+      "flawed": "Mostly dry feet."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "EXPEDITION GEAR — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear"
+  },
+  {
+    "id": "vigil-recipe-summer-linens",
+    "name": "Summer Linens",
+    "type": "Utility",
+    "dc": 8,
+    "time": "2 hours",
+    "tool": "Weaver (DEX)",
+    "materials": [
+      {
+        "name": "Cloth Bolts",
+        "quantity": 1
+      },
+      {
+        "name": "Cotton Thread",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Cloth Bolts, 1x Cotton Thread",
+    "outcomes": {
+      "superior": "Loose, light clothing and a wide-brimmed hat. Advantage on CON saves against extreme heat, and you need no extra water in a heat wave.",
+      "normal": "Light clothing and a hat: advantage on CON saves against extreme heat.",
+      "flawed": "Light clothing: +1 to CON saves against extreme heat."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "EXPEDITION GEAR — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear"
+  },
+  {
+    "id": "vigil-recipe-large-waterskin",
+    "name": "Large Waterskin",
+    "type": "Utility",
+    "dc": 8,
+    "time": "1 hour",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Farm Leather",
+        "quantity": 1
+      },
+      {
+        "name": "Leather Cord",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Farm Leather, 1x Leather Cord",
+    "outcomes": {
+      "superior": "Holds a gallon and a half and keeps it cool. Enough water for a heat wave.",
+      "normal": "Holds a gallon. Enough water for a heat wave.",
+      "flawed": "Holds half a gallon; it seeps."
+    },
+    "chapter": "BASIC GEAR",
+    "group": "EXPEDITION GEAR — Basic Gear",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "basic-gear"
   }
 ]
