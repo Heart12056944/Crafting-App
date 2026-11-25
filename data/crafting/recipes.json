@@ -27160,5 +27160,610 @@
     "section": "Uncommon Recipes",
     "source": "Undying_Vigil_Crafting",
     "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-rime-bear-cloak",
+    "name": "Rime Bear Cloak",
+    "type": "Armour",
+    "dc": 14,
+    "time": "6 hours",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Rime Bear Pelt",
+        "quantity": 1
+      },
+      {
+        "name": "Woven Wool",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Rime Bear Pelt, 1x Woven Wool",
+    "outcomes": {
+      "superior": "Cold-weather gear. Advantage on Stealth checks in snow, and resistance to cold damage.",
+      "normal": "Cold-weather gear and advantage on Stealth checks in snow.",
+      "flawed": "Cold-weather gear."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-rime-fur-sleeping-roll",
+    "name": "Rime-Fur Sleeping Roll",
+    "type": "Utility",
+    "dc": 13,
+    "time": "4 hours",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Rime Bear Pelt",
+        "quantity": 1
+      },
+      {
+        "name": "Thick Fleece",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Rime Bear Pelt, 1x Thick Fleece",
+    "outcomes": {
+      "superior": "Two people sleep warm in any cold, even an open blizzard, and wake with an extra Hit Die.",
+      "normal": "Two people sleep warm in any cold.",
+      "flawed": "Sleep warm in ordinary cold."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "FIELD KIT — Vigil Recipes",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-rime-fur-boots",
+    "name": "Rime-Fur Boots",
+    "type": "Armour",
+    "dc": 13,
+    "time": "3 hours",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Rime Bear Pelt",
+        "quantity": 1
+      },
+      {
+        "name": "Bear Claw",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Rime Bear Pelt, 1x Bear Claw",
+    "outcomes": {
+      "superior": "Snow and ice aren't difficult terrain, and you can't get frostbite in your feet.",
+      "normal": "Snow isn't difficult terrain for you.",
+      "flawed": "Very warm boots."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-frostmaw-mantle",
+    "name": "Frostmaw Mantle",
+    "type": "Armour",
+    "dc": 14,
+    "time": "4 hours",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Frostmaw Pelt",
+        "quantity": 1
+      },
+      {
+        "name": "Cured Wolf Leather",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Frostmaw Pelt, 1x Cured Wolf Leather",
+    "outcomes": {
+      "superior": "Cold-weather gear, immunity to cold damage from weather, and resistance to cold damage.",
+      "normal": "Cold-weather gear and resistance to cold damage.",
+      "flawed": "Cold-weather gear."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-frostmaw-hood",
+    "name": "Frostmaw Hood",
+    "type": "Accessory",
+    "dc": 13,
+    "time": "2 hours",
+    "tool": "Weaver (DEX)",
+    "materials": [
+      {
+        "name": "Frostmaw Pelt",
+        "quantity": 1
+      },
+      {
+        "name": "Night-Ear",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Frostmaw Pelt, 1x Night-Ear",
+    "outcomes": {
+      "superior": "You can't be surprised in snow or fog, and you see through blowing snow out to 120 ft.",
+      "normal": "You see through blowing snow out to 60 ft.",
+      "flawed": "A warm hood."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-frostmaw-saddle-blanket",
+    "name": "Frostmaw Saddle Blanket",
+    "type": "Utility",
+    "dc": 12,
+    "time": "2 hours",
+    "tool": "Weaver (DEX)",
+    "materials": [
+      {
+        "name": "Frostmaw Pelt",
+        "quantity": 1
+      },
+      {
+        "name": "Woven Wool",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "1x Frostmaw Pelt, 2x Woven Wool",
+    "outcomes": {
+      "superior": "A mount or dog wearing it ignores cold weather and has resistance to cold damage.",
+      "normal": "A mount or dog wearing it ignores cold weather.",
+      "flawed": "Keeps a mount warmer."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "FIELD KIT — Vigil Recipes",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-frostbreath-flask",
+    "name": "Frostbreath Flask",
+    "type": "Throwable",
+    "dc": 15,
+    "time": "2 hours",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Frostmaw Breath Gland",
+        "quantity": 1
+      },
+      {
+        "name": "Empty Infusion Base",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Frostmaw Breath Gland, 1x Empty Infusion Base",
+    "outcomes": {
+      "superior": "Opened: a 15-ft cone of freezing breath, 4d8 cold (DC 15 DEX half) and speed halved for a round.",
+      "normal": "Opened: a 15-ft cone, 3d8 cold (DC 14 DEX half).",
+      "flawed": "A 10-ft cone, 2d6 cold."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-frostbreath-arrowheads",
+    "name": "Frostbreath Arrowheads",
+    "type": "Weapon",
+    "dc": 15,
+    "time": "2 hours",
+    "tool": "Fletcher (DEX)",
+    "materials": [
+      {
+        "name": "Frostmaw Breath Gland",
+        "quantity": 1
+      },
+      {
+        "name": "Wood Planks",
+        "quantity": 1
+      },
+      {
+        "name": "Grey Flight Feathers",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "1x Frostmaw Breath Gland, 1x Wood Planks, 2x Grey Flight Feathers",
+    "outcomes": {
+      "superior": "10 arrows: +1d8 cold, and the target's speed drops by 10 ft until its next turn.",
+      "normal": "10 arrows: +1d6 cold.",
+      "flawed": "5 arrows: +1d4 cold."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-rimeguard-tonic",
+    "name": "Rimeguard Tonic",
+    "type": "Potion",
+    "dc": 15,
+    "time": "2 hours",
+    "tool": "Alchemist (INT)",
+    "materials": [
+      {
+        "name": "Frostmaw Breath Gland",
+        "quantity": 1
+      },
+      {
+        "name": "Emberleaf",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Frostmaw Breath Gland, 1x Emberleaf",
+    "outcomes": {
+      "superior": "For 24 hours: immunity to cold damage and frostbite.",
+      "normal": "For 24 hours: resistance to cold damage and immunity to frostbite.",
+      "flawed": "For 8 hours: resistance to cold damage."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-adder-venom-coating",
+    "name": "Adder Venom Coating",
+    "type": "Poison",
+    "dc": 11,
+    "time": "1 hour",
+    "tool": "Poisoner (INT)",
+    "materials": [
+      {
+        "name": "Adder Venom",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "2x Adder Venom",
+    "outcomes": {
+      "superior": "3 doses. A hit deals +1d6 poison, and DC 12 CON or poisoned for 1 minute.",
+      "normal": "2 doses. A hit deals +1d4 poison.",
+      "flawed": "1 dose. +1 poison."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-adder-antivenom",
+    "name": "Adder Antivenom",
+    "type": "Potion",
+    "dc": 10,
+    "time": "30 min",
+    "tool": "Herbalism Kit (WIS)",
+    "materials": [
+      {
+        "name": "Adder Venom",
+        "quantity": 1
+      },
+      {
+        "name": "Bitterleaf",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Adder Venom, 1x Bitterleaf",
+    "outcomes": {
+      "superior": "Cures snake venom and gives immunity to it for 24 hours.",
+      "normal": "Cures snake venom.",
+      "flawed": "Advantage on your next save against snake venom."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-numbing-salve",
+    "name": "Numbing Salve",
+    "type": "Potion",
+    "dc": 11,
+    "time": "30 min",
+    "tool": "Herbalism Kit (WIS)",
+    "materials": [
+      {
+        "name": "Adder Venom",
+        "quantity": 1
+      },
+      {
+        "name": "Rendered Tallow",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Adder Venom, 1x Rendered Tallow",
+    "outcomes": {
+      "superior": "3 applications. Ignore the effects of one injury for 8 hours.",
+      "normal": "2 applications. Ignore one injury's effects for 4 hours.",
+      "flawed": "1 application."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "HERBALISM — Vigil Recipes",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-coil-hide-belt",
+    "name": "Coil-Hide Belt",
+    "type": "Accessory",
+    "dc": 11,
+    "time": "1 hour",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Coil Hide",
+        "quantity": 1
+      },
+      {
+        "name": "Rimecopper Ingot",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Coil Hide, 1x Rimecopper Ingot",
+    "outcomes": {
+      "superior": "Advantage on checks to escape a grapple, and you can't be squeezed or crushed by constrictors.",
+      "normal": "Advantage on checks to escape a grapple.",
+      "flawed": "A handsome belt."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-coil-hide-grip-wrap",
+    "name": "Coil-Hide Grip Wrap",
+    "type": "Upgrade",
+    "dc": 10,
+    "time": "30 min",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Coil Hide",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Coil Hide",
+    "outcomes": {
+      "superior": "Weapon or tool: you can't be disarmed of it, and it never slips.",
+      "normal": "Weapon or tool: advantage on checks to keep hold of it.",
+      "flawed": "Weapon or tool: a better grip."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-coil-hide-waterskin",
+    "name": "Coil-Hide Waterskin",
+    "type": "Utility",
+    "dc": 10,
+    "time": "30 min",
+    "tool": "Leatherworker (DEX)",
+    "materials": [
+      {
+        "name": "Coil Hide",
+        "quantity": 1
+      },
+      {
+        "name": "Pine Pitch",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Coil Hide, 1x Pine Pitch",
+    "outcomes": {
+      "superior": "Holds 2 gallons, never leaks, and squeezes flat when empty.",
+      "normal": "Holds a gallon and never leaks.",
+      "flawed": "Holds half a gallon."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "FIELD KIT — Vigil Recipes",
+    "section": "Common Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-viper-fang-dagger",
+    "name": "Viper-Fang Dagger",
+    "type": "Weapon",
+    "dc": 14,
+    "time": "3 hours",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Viper Fang",
+        "quantity": 1
+      },
+      {
+        "name": "Ashwood Haft",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Viper Fang, 1x Ashwood Haft",
+    "outcomes": {
+      "superior": "+1 dagger. Once per short rest, a hit deals +2d6 poison.",
+      "normal": "Dagger. Once per short rest, a hit deals +1d6 poison.",
+      "flawed": "A fang dagger."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Rare Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-viper-fang-darts",
+    "name": "Viper-Fang Darts",
+    "type": "Throwable",
+    "dc": 13,
+    "time": "1 hour",
+    "tool": "Fletcher (DEX)",
+    "materials": [
+      {
+        "name": "Viper Fang",
+        "quantity": 1
+      },
+      {
+        "name": "Adder Venom",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Viper Fang, 1x Adder Venom",
+    "outcomes": {
+      "superior": "10 darts. A hit deals +1d6 poison, and DC 13 CON or poisoned for 1 minute.",
+      "normal": "10 darts. A hit deals +1d4 poison.",
+      "flawed": "5 darts."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-viper-fang-necklace",
+    "name": "Viper-Fang Necklace",
+    "type": "Accessory",
+    "dc": 12,
+    "time": "1 hour",
+    "tool": "Jeweler (DEX)",
+    "materials": [
+      {
+        "name": "Viper Fang",
+        "quantity": 1
+      },
+      {
+        "name": "Lean Sinew",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Viper Fang, 1x Lean Sinew",
+    "outcomes": {
+      "superior": "+2 to Intimidation, and advantage on saves against poison.",
+      "normal": "+1 to Intimidation.",
+      "flawed": "A fang on a cord."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "TROPHIES & CHARMS — Vigil Recipes",
+    "section": "Uncommon Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-crownhorn-bow",
+    "name": "Crownhorn Bow",
+    "type": "Weapon",
+    "dc": 17,
+    "time": "8 hours",
+    "tool": "Fletcher (DEX)",
+    "materials": [
+      {
+        "name": "Crownhorn Antler",
+        "quantity": 1
+      },
+      {
+        "name": "Swift Tendon",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Crownhorn Antler, 1x Swift Tendon",
+    "outcomes": {
+      "superior": "+1 longbow. +1d6 damage against beasts, and +30 ft range.",
+      "normal": "+1 longbow.",
+      "flawed": "Longbow."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Epic Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-crownhorn-helm",
+    "name": "Crownhorn Helm",
+    "type": "Armour",
+    "dc": 16,
+    "time": "6 hours",
+    "tool": "Smith (STR)",
+    "materials": [
+      {
+        "name": "Crownhorn Antler",
+        "quantity": 1
+      },
+      {
+        "name": "Iron Ingot",
+        "quantity": 2
+      }
+    ],
+    "materialsText": "1x Crownhorn Antler, 2x Iron Ingot",
+    "outcomes": {
+      "superior": "+1 AC helmet. When you move 20 ft straight toward a creature and hit it, it takes +2d8 and is knocked prone (DC 15 STR).",
+      "normal": "Helmet. When you move 20 ft straight toward a creature and hit it, it takes +1d8.",
+      "flawed": "A heavy antlered helm."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Epic Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
+  },
+  {
+    "id": "vigil-recipe-crownhorn-staff",
+    "name": "Crownhorn Staff",
+    "type": "Focus",
+    "dc": 17,
+    "time": "6 hours",
+    "tool": "Woodcarver (DEX)",
+    "materials": [
+      {
+        "name": "Crownhorn Antler",
+        "quantity": 1
+      },
+      {
+        "name": "Stillwood Heartwood",
+        "quantity": 1
+      }
+    ],
+    "materialsText": "1x Crownhorn Antler, 1x Stillwood Heartwood",
+    "outcomes": {
+      "superior": "+1 druidic focus. Once per long rest, cast speak with animals and animal friendship without a slot.",
+      "normal": "Druidic focus. Once per long rest, cast speak with animals.",
+      "flawed": "Druidic focus."
+    },
+    "chapter": "UNDYING VIGIL — THORNSPINE",
+    "group": "WILDLIFE PAST THE WALL — Vigil Recipes",
+    "section": "Epic Recipes",
+    "source": "Undying_Vigil_Crafting",
+    "set": "undying-vigil"
   }
 ]

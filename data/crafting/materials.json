@@ -4956,6 +4956,11 @@
         "creature": "THORNSPINE DIREWOLF",
         "pool": "Common",
         "weight": 30
+      },
+      {
+        "creature": "FROSTMAW",
+        "pool": "Common",
+        "weight": 30
       }
     ]
   },
@@ -4996,6 +5001,11 @@
       },
       {
         "creature": "THORNSPINE DIREWOLF",
+        "pool": "Common",
+        "weight": 25
+      },
+      {
+        "creature": "FROSTMAW",
         "pool": "Common",
         "weight": 25
       }
@@ -5047,6 +5057,21 @@
       },
       {
         "creature": "THORNSPINE SABRETOOTH",
+        "pool": "Common",
+        "weight": 20
+      },
+      {
+        "creature": "FROSTMAW",
+        "pool": "Common",
+        "weight": 15
+      },
+      {
+        "creature": "CROWNHORN ELK",
+        "pool": "Common",
+        "weight": 10
+      },
+      {
+        "creature": "HIGHLAND DEER",
         "pool": "Common",
         "weight": 20
       }
@@ -5119,6 +5144,16 @@
         "creature": "THORNSPINE SABRETOOTH",
         "pool": "Common",
         "weight": 35
+      },
+      {
+        "creature": "RIME BEAR",
+        "pool": "Common",
+        "weight": 25
+      },
+      {
+        "creature": "PINEWOOD BEAR",
+        "pool": "Rare",
+        "weight": 40
       }
     ]
   },
@@ -5163,6 +5198,11 @@
         "creature": "THORNSPINE WOLF",
         "pool": "Epic",
         "weight": 70
+      },
+      {
+        "creature": "FROSTMAW",
+        "pool": "Rare",
+        "weight": 25
       }
     ]
   },
@@ -5185,6 +5225,16 @@
         "creature": "RIDGE STAG",
         "pool": "Common",
         "weight": 28
+      },
+      {
+        "creature": "CROWNHORN ELK",
+        "pool": "Common",
+        "weight": 25
+      },
+      {
+        "creature": "HIGHLAND DEER",
+        "pool": "Common",
+        "weight": 40
       }
     ]
   },
@@ -5207,6 +5257,16 @@
         "creature": "RIDGE STAG",
         "pool": "Common",
         "weight": 22
+      },
+      {
+        "creature": "CROWNHORN ELK",
+        "pool": "Common",
+        "weight": 20
+      },
+      {
+        "creature": "HIGHLAND DEER",
+        "pool": "Rare",
+        "weight": 40
       }
     ]
   },
@@ -5229,6 +5289,11 @@
         "creature": "RIDGE STAG",
         "pool": "Rare",
         "weight": 34
+      },
+      {
+        "creature": "CROWNHORN ELK",
+        "pool": "Rare",
+        "weight": 30
       }
     ]
   },
@@ -5464,6 +5529,16 @@
         "creature": "BRAINLESS BEAR",
         "pool": "Common",
         "weight": 30
+      },
+      {
+        "creature": "RIME BEAR",
+        "pool": "Common",
+        "weight": 15
+      },
+      {
+        "creature": "PINEWOOD BEAR",
+        "pool": "Common",
+        "weight": 25
       }
     ]
   },
@@ -5486,6 +5561,16 @@
         "creature": "THORNSPINE BEAR",
         "pool": "Common",
         "weight": 20
+      },
+      {
+        "creature": "RIME BEAR",
+        "pool": "Common",
+        "weight": 20
+      },
+      {
+        "creature": "PINEWOOD BEAR",
+        "pool": "Common",
+        "weight": 25
       }
     ]
   },
@@ -5513,6 +5598,11 @@
         "creature": "BRAINLESS BEAR",
         "pool": "Common",
         "weight": 30
+      },
+      {
+        "creature": "RIME BEAR",
+        "pool": "Common",
+        "weight": 14
       }
     ]
   },
@@ -5540,6 +5630,11 @@
         "creature": "BRAINLESS BEAR",
         "pool": "Rare",
         "weight": 30
+      },
+      {
+        "creature": "PINEWOOD BEAR",
+        "pool": "Epic",
+        "weight": 50
       }
     ]
   },
@@ -5562,6 +5657,11 @@
         "creature": "THORNSPINE BEAR",
         "pool": "Rare",
         "weight": 24
+      },
+      {
+        "creature": "RIME BEAR",
+        "pool": "Rare",
+        "weight": 30
       }
     ]
   },
@@ -7579,6 +7679,11 @@
         "creature": "TUSKBACK BOAR",
         "pool": "Common",
         "weight": 28
+      },
+      {
+        "creature": "RIDGE BOAR",
+        "pool": "Common",
+        "weight": 30
       }
     ]
   },
@@ -7601,6 +7706,11 @@
         "creature": "TUSKBACK BOAR",
         "pool": "Common",
         "weight": 24
+      },
+      {
+        "creature": "RIDGE BOAR",
+        "pool": "Rare",
+        "weight": 40
       }
     ]
   },
@@ -7623,6 +7733,11 @@
         "creature": "TUSKBACK BOAR",
         "pool": "Rare",
         "weight": 30
+      },
+      {
+        "creature": "RIDGE BOAR",
+        "pool": "Epic",
+        "weight": 50
       }
     ]
   },
@@ -7779,6 +7894,11 @@
         "creature": "CAVE BAT",
         "pool": "Common",
         "weight": 50
+      },
+      {
+        "creature": "DUSK BAT SWARM",
+        "pool": "Common",
+        "weight": 50
       }
     ]
   },
@@ -7800,6 +7920,11 @@
     "appearsIn": [
       {
         "creature": "CAVE BAT",
+        "pool": "Common",
+        "weight": 50
+      },
+      {
+        "creature": "DUSK BAT SWARM",
         "pool": "Common",
         "weight": 50
       }
@@ -7824,6 +7949,16 @@
         "creature": "CAVE BAT",
         "pool": "Rare",
         "weight": 100
+      },
+      {
+        "creature": "DUSK BAT SWARM",
+        "pool": "Rare",
+        "weight": 100
+      },
+      {
+        "creature": "DUSK BAT SWARM",
+        "pool": "Epic",
+        "weight": 50
       }
     ]
   },
@@ -7846,6 +7981,11 @@
         "creature": "CAVE BAT",
         "pool": "Epic",
         "weight": 100
+      },
+      {
+        "creature": "DUSK BAT SWARM",
+        "pool": "Epic",
+        "weight": 50
       }
     ]
   },
@@ -7866,6 +8006,21 @@
     "appearsIn": [
       {
         "creature": "TARN SERPENT",
+        "pool": "Common",
+        "weight": 30
+      },
+      {
+        "creature": "SCREE ADDER",
+        "pool": "Rare",
+        "weight": 40
+      },
+      {
+        "creature": "SCREE ADDER",
+        "pool": "Epic",
+        "weight": 60
+      },
+      {
+        "creature": "ASHBACK VIPER",
         "pool": "Common",
         "weight": 30
       }
@@ -7912,6 +8067,11 @@
         "creature": "TARN SERPENT",
         "pool": "Rare",
         "weight": 35
+      },
+      {
+        "creature": "ROOTCOIL CONSTRICTOR",
+        "pool": "Epic",
+        "weight": 60
       }
     ]
   },
@@ -7935,6 +8095,16 @@
         "creature": "TARN SERPENT",
         "pool": "Rare",
         "weight": 25
+      },
+      {
+        "creature": "SCREE ADDER",
+        "pool": "Epic",
+        "weight": 40
+      },
+      {
+        "creature": "ASHBACK VIPER",
+        "pool": "Epic",
+        "weight": 50
       }
     ]
   },
@@ -8460,6 +8630,11 @@
         "creature": "THORNSPINE WOLF",
         "pool": "Common",
         "weight": 12
+      },
+      {
+        "creature": "FROSTMAW",
+        "pool": "Common",
+        "weight": 15
       }
     ],
     "appearance": "Thin ropes of dark, stringy meat around a column of knobbled bone."
@@ -8486,6 +8661,11 @@
         "creature": "THORNSPINE WOLF",
         "pool": "Common",
         "weight": 12
+      },
+      {
+        "creature": "FROSTMAW",
+        "pool": "Common",
+        "weight": 15
       }
     ],
     "appearance": "A narrow foreleg, the meat wrapped tight in silvery sinew."
@@ -8513,6 +8693,11 @@
         "creature": "THORNSPINE WOLF",
         "pool": "Rare",
         "weight": 20
+      },
+      {
+        "creature": "FROSTMAW",
+        "pool": "Rare",
+        "weight": 25
       }
     ],
     "appearance": "A flat, deep-red slab, lean and laced with grey connective tissue."
@@ -8541,6 +8726,11 @@
         "creature": "THORNSPINE WOLF",
         "pool": "Epic",
         "weight": 30
+      },
+      {
+        "creature": "FROSTMAW",
+        "pool": "Epic",
+        "weight": 40
       }
     ],
     "appearance": "A long, narrow strip of almost purple meat with no fat on it at all."
@@ -8567,6 +8757,16 @@
         "creature": "RIDGE STAG",
         "pool": "Common",
         "weight": 12
+      },
+      {
+        "creature": "CROWNHORN ELK",
+        "pool": "Common",
+        "weight": 15
+      },
+      {
+        "creature": "HIGHLAND DEER",
+        "pool": "Common",
+        "weight": 20
       }
     ],
     "appearance": "A thick, round roast of deep maroon meat, marbled with white sinew."
@@ -8593,6 +8793,16 @@
         "creature": "RIDGE STAG",
         "pool": "Common",
         "weight": 12
+      },
+      {
+        "creature": "CROWNHORN ELK",
+        "pool": "Common",
+        "weight": 15
+      },
+      {
+        "creature": "HIGHLAND DEER",
+        "pool": "Common",
+        "weight": 20
       }
     ],
     "appearance": "A short leg section, the dark meat glossy with silvery tendon."
@@ -8619,6 +8829,16 @@
         "creature": "RIDGE STAG",
         "pool": "Common",
         "weight": 10
+      },
+      {
+        "creature": "CROWNHORN ELK",
+        "pool": "Common",
+        "weight": 15
+      },
+      {
+        "creature": "HIGHLAND DEER",
+        "pool": "Rare",
+        "weight": 30
       }
     ],
     "appearance": "A thin, layered flap of red meat and pale fat from the chest."
@@ -8646,6 +8866,16 @@
         "creature": "RIDGE STAG",
         "pool": "Rare",
         "weight": 14
+      },
+      {
+        "creature": "CROWNHORN ELK",
+        "pool": "Rare",
+        "weight": 20
+      },
+      {
+        "creature": "HIGHLAND DEER",
+        "pool": "Rare",
+        "weight": 30
       }
     ],
     "appearance": "A broad, uneven roast, dark red, with a flat blade of bone inside."
@@ -8673,6 +8903,11 @@
         "creature": "RIDGE STAG",
         "pool": "Rare",
         "weight": 13
+      },
+      {
+        "creature": "CROWNHORN ELK",
+        "pool": "Rare",
+        "weight": 20
       }
     ],
     "appearance": "A curved row of slender ribs with a strip of dark meat along the top."
@@ -8700,6 +8935,11 @@
         "creature": "RIDGE STAG",
         "pool": "Rare",
         "weight": 13
+      },
+      {
+        "creature": "CROWNHORN ELK",
+        "pool": "Rare",
+        "weight": 30
       }
     ],
     "appearance": "A heavy, tapering leg of tight-grained, dark red muscle."
@@ -8728,6 +8968,16 @@
         "creature": "RIDGE STAG",
         "pool": "Epic",
         "weight": 22
+      },
+      {
+        "creature": "CROWNHORN ELK",
+        "pool": "Epic",
+        "weight": 25
+      },
+      {
+        "creature": "HIGHLAND DEER",
+        "pool": "Epic",
+        "weight": 50
       }
     ],
     "appearance": "A long, smooth cylinder of deep crimson meat, perfectly lean."
@@ -8756,6 +9006,16 @@
         "creature": "RIDGE STAG",
         "pool": "Epic",
         "weight": 18
+      },
+      {
+        "creature": "CROWNHORN ELK",
+        "pool": "Epic",
+        "weight": 25
+      },
+      {
+        "creature": "HIGHLAND DEER",
+        "pool": "Epic",
+        "weight": 50
       }
     ],
     "appearance": "Two small, soft strips of dark red meat, smooth as velvet."
@@ -8891,6 +9151,16 @@
         "creature": "THORNSPINE BEAR",
         "pool": "Common",
         "weight": 12
+      },
+      {
+        "creature": "RIME BEAR",
+        "pool": "Common",
+        "weight": 13
+      },
+      {
+        "creature": "PINEWOOD BEAR",
+        "pool": "Common",
+        "weight": 25
       }
     ],
     "appearance": "A huge, fatty roast, the dark meat streaked with yellowish fat."
@@ -8917,6 +9187,16 @@
         "creature": "THORNSPINE BEAR",
         "pool": "Common",
         "weight": 12
+      },
+      {
+        "creature": "RIME BEAR",
+        "pool": "Common",
+        "weight": 13
+      },
+      {
+        "creature": "PINEWOOD BEAR",
+        "pool": "Common",
+        "weight": 25
       }
     ],
     "appearance": "A leg section as thick as a forearm, wrapped in heavy sinew."
@@ -8944,6 +9224,16 @@
         "creature": "THORNSPINE BEAR",
         "pool": "Rare",
         "weight": 14
+      },
+      {
+        "creature": "RIME BEAR",
+        "pool": "Rare",
+        "weight": 15
+      },
+      {
+        "creature": "PINEWOOD BEAR",
+        "pool": "Rare",
+        "weight": 30
       }
     ],
     "appearance": "A massive dark roast the size of a child's torso, heavy with seams of fat."
@@ -8971,6 +9261,16 @@
         "creature": "THORNSPINE BEAR",
         "pool": "Rare",
         "weight": 14
+      },
+      {
+        "creature": "RIME BEAR",
+        "pool": "Rare",
+        "weight": 15
+      },
+      {
+        "creature": "PINEWOOD BEAR",
+        "pool": "Rare",
+        "weight": 30
       }
     ],
     "appearance": "A broad slab of thick ribs under dark meat and a rind of creamy fat."
@@ -8998,6 +9298,16 @@
         "creature": "THORNSPINE BEAR",
         "pool": "Rare",
         "weight": 16
+      },
+      {
+        "creature": "RIME BEAR",
+        "pool": "Epic",
+        "weight": 20
+      },
+      {
+        "creature": "PINEWOOD BEAR",
+        "pool": "Epic",
+        "weight": 50
       }
     ],
     "appearance": "A whole hindquarter, dark as wine, under a thick cap of yellow fat."
@@ -9026,6 +9336,11 @@
         "creature": "THORNSPINE BEAR",
         "pool": "Epic",
         "weight": 20
+      },
+      {
+        "creature": "RIME BEAR",
+        "pool": "Epic",
+        "weight": 20
       }
     ],
     "appearance": "A long, heavy loin of near-black meat with a thin seam of fat."
@@ -9052,6 +9367,11 @@
     "appearsIn": [
       {
         "creature": "THORNSPINE BEAR",
+        "pool": "Epic",
+        "weight": 20
+      },
+      {
+        "creature": "RIME BEAR",
         "pool": "Epic",
         "weight": 20
       }
@@ -9295,6 +9615,11 @@
         "creature": "TUSKBACK BOAR",
         "pool": "Common",
         "weight": 16
+      },
+      {
+        "creature": "RIDGE BOAR",
+        "pool": "Common",
+        "weight": 25
       }
     ],
     "appearance": "A thick, square cheek, mostly pale fat with streaks of pink meat."
@@ -9321,6 +9646,11 @@
         "creature": "TUSKBACK BOAR",
         "pool": "Common",
         "weight": 16
+      },
+      {
+        "creature": "RIDGE BOAR",
+        "pool": "Common",
+        "weight": 25
       }
     ],
     "appearance": "A knobbly joint in thick, bristled skin, the meat packed around the bone."
@@ -9347,6 +9677,11 @@
         "creature": "TUSKBACK BOAR",
         "pool": "Common",
         "weight": 16
+      },
+      {
+        "creature": "RIDGE BOAR",
+        "pool": "Common",
+        "weight": 20
       }
     ],
     "appearance": "Split hooves in pale, bristly skin. Mostly bone and gristle."
@@ -9375,6 +9710,11 @@
         "creature": "TUSKBACK BOAR",
         "pool": "Rare",
         "weight": 14
+      },
+      {
+        "creature": "RIDGE BOAR",
+        "pool": "Rare",
+        "weight": 30
       }
     ],
     "appearance": "A thick slab of alternating pink meat and white fat under bristly skin."
@@ -9402,6 +9742,11 @@
         "creature": "TUSKBACK BOAR",
         "pool": "Rare",
         "weight": 12
+      },
+      {
+        "creature": "RIDGE BOAR",
+        "pool": "Rare",
+        "weight": 30
       }
     ],
     "appearance": "A big, heavily marbled roast, deep pink and streaked with fat."
@@ -9457,6 +9802,11 @@
         "creature": "TUSKBACK BOAR",
         "pool": "Rare",
         "weight": 11
+      },
+      {
+        "creature": "RIDGE BOAR",
+        "pool": "Epic",
+        "weight": 50
       }
     ],
     "appearance": "A whole hind leg, round and heavy, the meat a deep rosy pink."
@@ -9539,6 +9889,21 @@
         "creature": "TARN SERPENT",
         "pool": "Common",
         "weight": 28
+      },
+      {
+        "creature": "SCREE ADDER",
+        "pool": "Common",
+        "weight": 30
+      },
+      {
+        "creature": "ROOTCOIL CONSTRICTOR",
+        "pool": "Common",
+        "weight": 40
+      },
+      {
+        "creature": "ASHBACK VIPER",
+        "pool": "Common",
+        "weight": 20
       }
     ],
     "appearance": "Long, thin strips of pale, almost see-through meat, cold to the touch."
@@ -9566,6 +9931,16 @@
         "creature": "TARN SERPENT",
         "pool": "Rare",
         "weight": 25
+      },
+      {
+        "creature": "ROOTCOIL CONSTRICTOR",
+        "pool": "Rare",
+        "weight": 50
+      },
+      {
+        "creature": "ASHBACK VIPER",
+        "pool": "Rare",
+        "weight": 40
       }
     ],
     "appearance": "A long, firm fillet of white meat with a faint blue sheen."
@@ -9592,6 +9967,11 @@
     "appearsIn": [
       {
         "creature": "TARN SERPENT",
+        "pool": "Epic",
+        "weight": 40
+      },
+      {
+        "creature": "ROOTCOIL CONSTRICTOR",
         "pool": "Epic",
         "weight": 40
       }
@@ -12289,5 +12669,186 @@
     "source": "VIGIL",
     "set": "undying-vigil",
     "notes": "The heart of a fallen star melted in the Forge's crucible. It glows in the dark like a cooling coal."
+  },
+  {
+    "id": "material-rime-bear-pelt",
+    "name": "Rime Bear Pelt",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "beast",
+      "bear"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A thick white pelt from a rime bear. Snow slides off it.",
+    "appearsIn": [
+      {
+        "creature": "RIME BEAR",
+        "pool": "Rare",
+        "weight": 40
+      },
+      {
+        "creature": "RIME BEAR",
+        "pool": "Epic",
+        "weight": 40
+      }
+    ]
+  },
+  {
+    "id": "material-frostmaw-pelt",
+    "name": "Frostmaw Pelt",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "beast",
+      "wolf"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Blue-white fur from a frostmaw. It stays cold to the touch even by a fire.",
+    "appearsIn": [
+      {
+        "creature": "FROSTMAW",
+        "pool": "Rare",
+        "weight": 50
+      }
+    ]
+  },
+  {
+    "id": "material-frostmaw-breath-gland",
+    "name": "Frostmaw Breath Gland",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Advanced Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "beast",
+      "wolf"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "The gland a frostmaw breathes its freezing breath from. Handle with gloves.",
+    "appearsIn": [
+      {
+        "creature": "FROSTMAW",
+        "pool": "Epic",
+        "weight": 60
+      }
+    ]
+  },
+  {
+    "id": "material-adder-venom",
+    "name": "Adder Venom",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "serpent",
+      "venom"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A few drops of scree-adder venom, milked into a vial.",
+    "appearsIn": [
+      {
+        "creature": "SCREE ADDER",
+        "pool": "Common",
+        "weight": 70
+      },
+      {
+        "creature": "SCREE ADDER",
+        "pool": "Rare",
+        "weight": 60
+      },
+      {
+        "creature": "ASHBACK VIPER",
+        "pool": "Common",
+        "weight": 50
+      }
+    ]
+  },
+  {
+    "id": "material-coil-hide",
+    "name": "Coil Hide",
+    "tier": 1,
+    "tierLabel": "Tier 1 – Basic Materials",
+    "rarity": "common",
+    "tags": [
+      "tier-1",
+      "beast",
+      "serpent"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "Supple, patterned hide from a constrictor. Grips like a fist.",
+    "appearsIn": [
+      {
+        "creature": "ROOTCOIL CONSTRICTOR",
+        "pool": "Common",
+        "weight": 60
+      },
+      {
+        "creature": "ROOTCOIL CONSTRICTOR",
+        "pool": "Rare",
+        "weight": 50
+      }
+    ]
+  },
+  {
+    "id": "material-viper-fang",
+    "name": "Viper Fang",
+    "tier": 2,
+    "tierLabel": "Tier 2 – Standard Materials",
+    "rarity": "uncommon",
+    "tags": [
+      "tier-2",
+      "beast",
+      "serpent",
+      "venom"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A hollow fang as long as a finger, still beaded with venom.",
+    "appearsIn": [
+      {
+        "creature": "ASHBACK VIPER",
+        "pool": "Rare",
+        "weight": 60
+      },
+      {
+        "creature": "ASHBACK VIPER",
+        "pool": "Epic",
+        "weight": 50
+      }
+    ]
+  },
+  {
+    "id": "material-crownhorn-antler",
+    "name": "Crownhorn Antler",
+    "tier": 3,
+    "tierLabel": "Tier 3 – Advanced Materials",
+    "rarity": "rare",
+    "tags": [
+      "tier-3",
+      "beast",
+      "deer"
+    ],
+    "source": "VIGIL",
+    "set": "undying-vigil",
+    "notes": "A great spread of antler from a crownhorn elk, wide as a cart.",
+    "appearsIn": [
+      {
+        "creature": "CROWNHORN ELK",
+        "pool": "Epic",
+        "weight": 50
+      }
+    ]
   }
 ]

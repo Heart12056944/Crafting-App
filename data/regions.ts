@@ -36,7 +36,7 @@ export const REGIONS: Region[] = [
     description:
       "The last village before the climb: red roofs, a fountain square, and stone walls around the gardens. Pilgrims and Order patrols pass through on the cobbled road, and the mountain fills half the sky.",
     // Map: 53_Village_Fountain_20x20_no_grid_day_no_watermark.jpg
-    creatures: ["valdren-mouser", "feral-hound", "carrion-crow", "ridge-fox", "compact-deserter"],
+    creatures: ["valdren-mouser", "feral-hound", "carrion-crow", "ridge-fox", "compact-deserter", "pinewood-bear", "ridge-boar", "highland-deer"],
     spots: ["village-gardens", "snowmelt-stream", "pine-stand"],
     wildAnimals: ["valdren-mouser", "feral-hound", "ridge-fox"],
     gmNote: "Civilised side of the Wall. Undead are almost never seen here; a lone Brainless would be news for a month.",
@@ -49,7 +49,7 @@ export const REGIONS: Region[] = [
     description:
       "A dirt trail winding between grey stone ridges and patches of green. The first real climb: easy going for the fit, a warning for everyone else.",
     // Map: 94_Eagle_s_Edge_Trail_40x30_no_grid_day_sunlight.jpg
-    creatures: ["crag-hawk", "mountain-ram", "ridge-fox", "scree-jackal", "thornspine-wolf", "tuskback-boar"],
+    creatures: ["crag-hawk", "mountain-ram", "ridge-fox", "scree-jackal", "thornspine-wolf", "tuskback-boar", "pinewood-bear", "ridge-boar", "highland-deer", "scree-adder"],
     spots: ["shaded-rock-slopes", "thornspine-surface-seam", "pine-stand"],
     wildAnimals: ["mountain-ram", "ridge-fox", "scree-jackal", "tuskback-boar"],
   },
@@ -61,7 +61,7 @@ export const REGIONS: Region[] = [
     description:
       "A falls thunders down into a narrow gorge, and the road crosses it on an old stone bridge. Travellers camp on the far side to dry out; not all of them leave.",
     // Map: 218_The_Thunder_Falls_Crossing_30x40_no_grid_day.jpg
-    creatures: ["ridge-stag", "thornspine-wolf", "crag-lynx", "thornspine-bear", "carrion-crow", "tarn-serpent"],
+    creatures: ["ridge-stag", "thornspine-wolf", "crag-lynx", "thornspine-bear", "carrion-crow", "tarn-serpent", "pinewood-bear", "crownhorn-elk", "highland-deer", "rootcoil-constrictor"],
     spots: ["spray-soaked-rocks", "plunge-pool", "tarnside-reedbeds"],
     wildAnimals: ["ridge-stag", "reedfowl", "crag-lynx", "thornspine-wolf"],
     gmNote: "The wrecked cart and scattered bones by the east camp are a good hook: a bear, or something worse.",
@@ -74,7 +74,7 @@ export const REGIONS: Region[] = [
     description:
       "A cracked stone ridge, barely wide enough for a cart, runs across a sea of cloud. The drop on either side is not something anyone has measured.",
     // Map: 208_Mountain_s_Spine_Crossing_30x45_no_grid_day.jpg
-    creatures: ["crag-hawk", "mountain-ram", "snow-cat", "ridge-panther", "cave-bat", "brainless-wolf"],
+    creatures: ["crag-hawk", "mountain-ram", "snow-cat", "ridge-panther", "cave-bat", "brainless-wolf", "rime-bear", "frostmaw"],
     spots: ["cloud-ledges", "old-ironbark-grove", "deep-ridge-vein"],
     wildAnimals: ["mountain-ram", "ridge-panther", "snow-cat"],
     gmNote: "Fighting on the spine: a creature shoved off the edge falls into the cloud. Strong winds are common.",
@@ -87,7 +87,7 @@ export const REGIONS: Region[] = [
     description:
       "The path clings to a cliff above a fast mountain river, crossing it on a single plank bridge. Great slabs of rock overhang the trail.",
     // Map: b0eda10ecc7b14461d7c71a4fa946369.jpg (Tehox canyon river)
-    creatures: ["thornspine-bear", "ridge-panther", "tuskback-boar", "thornspine-direwolf", "tarn-serpent"],
+    creatures: ["thornspine-bear", "ridge-panther", "tuskback-boar", "thornspine-direwolf", "tarn-serpent", "rootcoil-constrictor", "crownhorn-elk"],
     spots: ["canyon-rapids", "deep-tarn", "old-ironbark-grove"],
     wildAnimals: ["thornspine-direwolf", "ridge-panther", "tuskback-boar"],
   },
@@ -99,7 +99,7 @@ export const REGIONS: Region[] = [
     description:
       "Two towers and a gatehouse close the pass, with a camp of tents and wagons on the upper side. Everyone going higher stops here.",
     // Map: 204_Mountain_Gate_30x40_no_grid_day.jpg
-    creatures: ["snow-cat", "thornspine-direwolf", "thornspine-sabretooth", "compact-deserter", "crag-hawk"],
+    creatures: ["snow-cat", "thornspine-direwolf", "thornspine-sabretooth", "compact-deserter", "crag-hawk", "rime-bear", "frostmaw"],
     spots: ["lightning-scarred-ridge", "deep-ridge-vein"],
     wildAnimals: ["snow-cat", "thornspine-direwolf", "thornspine-sabretooth"],
   },
@@ -124,7 +124,7 @@ export const REGIONS: Region[] = [
     description:
       "A small fort dug into the cliff, with barracks, a mess and storerooms above and the working tunnels below. The rock gets warmer the deeper you go.",
     // Map: 166_Mountain_Mine_Fort_40x50_no_grid_day.jpg
-    creatures: ["cave-bat", "thornspine-bear", "brainless"],
+    creatures: ["cave-bat", "thornspine-bear", "brainless", "dusk-bat-swarm"],
     spots: ["vigil-mine-galleries", "the-warm-seam", "ashline-lode"],
     wildAnimals: [],
     gmNote: "The deep rock here is the Unwavering's black stone. Something in the lowest tunnels occasionally answers a pickaxe.",
@@ -178,7 +178,7 @@ export const REGIONS: Region[] = [
     description:
       "A pale, sun-baked canyon whose walls are riddled with dark, honeycombed burrows. Something made them. Something may still use them.",
     // Map: 0e50aeb04b2c5322eab3c4cd49206c9c.jpg (Box Avenue canyon)
-    creatures: ["cave-bat", "brainless", "brainless-bear", "skeleton-warrior", "bloom-amalgam", "scree-jackal"],
+    creatures: ["cave-bat", "brainless", "brainless-bear", "skeleton-warrior", "bloom-amalgam", "scree-jackal", "scree-adder", "ashback-viper", "dusk-bat-swarm"],
     spots: ["resin-burrows", "ashline-lode"],
     wildAnimals: ["scree-jackal"],
   },
@@ -190,7 +190,7 @@ export const REGIONS: Region[] = [
     description:
       "A palisade fort on a rock island, ringed by a moat-river and reached by a single bridge. Fires still burn in the yard. Someone is living here.",
     // Map: 162_Orc_Stronghold_40x40_no_grid_day.jpg
-    creatures: ["skeleton-warrior", "skeleton-archer", "skeleton-knight", "skeleton-mage", "death-knight", "brainless-bear", "waking-cultist"],
+    creatures: ["skeleton-warrior", "skeleton-archer", "skeleton-knight", "skeleton-mage", "death-knight", "brainless-bear", "waking-cultist", "ridge-boar"],
     spots: ["rusted-armoury", "thornspine-tarn", "old-battlefield-meadow"],
     wildAnimals: [],
   },
@@ -227,7 +227,7 @@ export const REGIONS: Region[] = [
     description:
       "A trail camp among the rocks, with a broken bridge and a few tents nobody came back for. The last place anyone tried to keep past the Wall.",
     // Map: 8239338-7896abb8-6a25-11f1-a1ac-e61f2674a2e9.jpg (broken-bridge trail camp)
-    creatures: ["brainless", "brainless-wolf", "compact-deserter", "carrion-crow", "ridge-fox"],
+    creatures: ["brainless", "brainless-wolf", "compact-deserter", "carrion-crow", "ridge-fox", "ridge-boar", "crownhorn-elk"],
     spots: ["pine-stand", "shaded-rock-slopes", "snowmelt-stream"],
     wildAnimals: ["ridge-fox", "feral-hound"],
     gmNote: "A natural rest stop. Whoever left the camp left in a hurry: the supplies are still in the crates.",
@@ -240,7 +240,7 @@ export const REGIONS: Region[] = [
     description:
       "A rocky river crossing in old forest, where fog sits in the hollows and a narrow plank bridge spans the rapids. In winter the river freezes solid.",
     // Map: 25_Rocky_Forest_River_DFNG30x40.jpg (summer), 25_Rocky_Forest_River_Winter_WDFNG30x40.jpg (winter)
-    creatures: ["ridge-stag", "thornspine-wolf", "crag-lynx", "brainless-wolf", "tarn-serpent"],
+    creatures: ["ridge-stag", "thornspine-wolf", "crag-lynx", "brainless-wolf", "tarn-serpent", "rime-bear", "frostmaw", "crownhorn-elk", "highland-deer", "rootcoil-constrictor"],
     spots: ["canyon-rapids", "old-ironbark-grove", "shaded-rock-slopes"],
     wildAnimals: ["ridge-stag", "crag-lynx", "thornspine-wolf"],
     gmNote: "Use the winter map in winter: the river is walkable ice, and the fog turns to freezing mist.",
@@ -252,7 +252,7 @@ export const REGIONS: Region[] = [
     set: "undying-vigil",
     description: "A grey pass choked with fallen boulders between two cliff walls. Every sound echoes.",
     // Map: 7926863078f0b1c020b1f9b6a6b920c6.jpg (grey boulder pass)
-    creatures: ["mountain-ram", "scree-jackal", "brainless", "skeleton-warrior", "thornspine-bear"],
+    creatures: ["mountain-ram", "scree-jackal", "brainless", "skeleton-warrior", "thornspine-bear", "frostmaw", "scree-adder"],
     spots: ["thornspine-surface-seam", "shaded-rock-slopes"],
     wildAnimals: ["mountain-ram", "scree-jackal"],
     gmNote: "Perfect ambush ground: the cliffs give the high ground to whoever gets there first.",
@@ -277,7 +277,7 @@ export const REGIONS: Region[] = [
     set: "undying-vigil",
     description: "Red stone mesas rising out of a dry, cracked basin. Nothing grows here but thorny scrub.",
     // Map: f0bdb7d6e6e33c3a7e8a623f5ed9733e.jpg (red canyon)
-    creatures: ["scree-jackal", "carrion-crow", "brainless", "skeleton-archer", "brainless-bear"],
+    creatures: ["scree-jackal", "carrion-crow", "brainless", "skeleton-archer", "brainless-bear", "scree-adder", "ashback-viper"],
     spots: ["ashline-lode", "thornspine-surface-seam"],
     wildAnimals: ["scree-jackal"],
   },
@@ -288,7 +288,7 @@ export const REGIONS: Region[] = [
     set: "undying-vigil",
     description: "Giant skulls carved into the cliff face look down on a cracked plain split by chasms. Whoever carved them wanted visitors to turn back.",
     // Map: 9918e042e2cf4e64fcc150025ef49653.jpg (skull cliffs)
-    creatures: ["skeleton-warrior", "skeleton-archer", "skeleton-knight", "directed-brainless", "waking-cultist", "carrion-crow"],
+    creatures: ["skeleton-warrior", "skeleton-archer", "skeleton-knight", "directed-brainless", "waking-cultist", "carrion-crow", "ashback-viper"],
     spots: ["shattered-altar", "old-battlefield-meadow"],
     wildAnimals: [],
   },
@@ -312,7 +312,7 @@ export const REGIONS: Region[] = [
     set: "undying-vigil",
     description: "Caverns around an underground river, strung with web and lit by blue crystal. Old bones and a smashed boat lie on the bank.",
     // Map: 179_Spider_Infested_Cave_40x40_no_grid_lit.jpg
-    creatures: ["silkchoke-spider", "silkchoke-matriarch", "tarn-serpent", "cave-bat"],
+    creatures: ["silkchoke-spider", "silkchoke-matriarch", "tarn-serpent", "cave-bat", "dusk-bat-swarm", "rootcoil-constrictor"],
     spots: ["web-choked-galleries", "deep-tarn", "lantern-crystal-veins"],
     wildAnimals: [],
   },
@@ -323,7 +323,7 @@ export const REGIONS: Region[] = [
     set: "undying-vigil",
     description: "Winding tunnels lit by blue crystal growing from the walls. The air gets warmer the further down you go, and it smells of hot metal.",
     // Map: CaveTunnelsVol4Public.jpg
-    creatures: ["cave-bat", "skeleton-warrior", "brainless", "silkchoke-spider"],
+    creatures: ["cave-bat", "skeleton-warrior", "brainless", "silkchoke-spider", "dusk-bat-swarm"],
     spots: ["lantern-crystal-veins", "deep-ridge-vein"],
     wildAnimals: [],
     gmNote: "These lead down to the Still-Burning Forge.",

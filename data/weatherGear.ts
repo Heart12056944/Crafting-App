@@ -7,7 +7,7 @@ export type Exposure = "cold" | "wet" | "heat";
 
 // Worn clothing/gear in a character's own pack.
 export const PERSONAL_GEAR: Record<Exposure, string[]> = {
-  cold: ["Winter Coat", "Cured Wolf-Leather Jerkin", "Winter-Fur Cloak", "Direwolf Cloak", "Sabretooth Mantle", "Blackstone Warming Stone", "Blackstone Plate"],
+  cold: ["Winter Coat", "Cured Wolf-Leather Jerkin", "Winter-Fur Cloak", "Direwolf Cloak", "Sabretooth Mantle", "Blackstone Warming Stone", "Blackstone Plate", "Rime Bear Cloak", "Frostmaw Mantle"],
   wet: ["Oilskin Cloak"],
   heat: ["Summer Linens", "Mist-Lined Cloak"],
 };

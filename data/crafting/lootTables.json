@@ -5979,5 +5979,995 @@
     "set": "undying-vigil",
     "family": "spider",
     "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-rime-bear-common",
+    "creature": "RIME BEAR",
+    "creatureTier": "Uncommon",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 25,
+        "materialName": "Thick Winter Pelt",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "Dense under-fur grown for the high passes. Sheds snow like water."
+      },
+      {
+        "weight": 20,
+        "materialName": "Dense Bear Fat",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "Heavy winter fat. Renders into tallow that keeps out cold and wet.",
+        "amount": "1d2"
+      },
+      {
+        "weight": 15,
+        "materialName": "Bear Claw",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A thick, blunt claw from a Thornspine bear.",
+        "amount": "1d2"
+      },
+      {
+        "weight": 14,
+        "materialName": "Heavy Bear Bone",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "Thigh bone of a mountain bear. Nearly as hard as iron."
+      },
+      {
+        "weight": 13,
+        "materialName": "Bear Neck",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A heavy, fatty neck roast. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 13,
+        "materialName": "Bear Shank",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A massive shank, thick with sinew. Spoils in a few days unless cooked or cured."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-rime-bear-rare",
+    "creature": "RIME BEAR",
+    "creatureTier": "Uncommon",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 40,
+        "materialName": "Rime Bear Pelt",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A thick white pelt from a rime bear. Snow slides off it."
+      },
+      {
+        "weight": 30,
+        "materialName": "Great Bear Claw",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A claw the length of a dagger."
+      },
+      {
+        "weight": 15,
+        "materialName": "Bear Shoulder",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A shoulder roast as big as a man's chest. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 15,
+        "materialName": "Bear Ribs",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A slab of rich, fatty ribs. Spoils in a few days unless cooked or cured."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-rime-bear-epic",
+    "creature": "RIME BEAR",
+    "creatureTier": "Uncommon",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 40,
+        "materialName": "Rime Bear Pelt",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A thick white pelt from a rime bear. Snow slides off it.",
+        "amount": "2"
+      },
+      {
+        "weight": 20,
+        "materialName": "Bear Haunch",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A whole hindquarter, heavy and dark-meated. Wants a long, slow braise. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 20,
+        "materialName": "Bear Backstrap",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "The loin along a bear's spine. Dark, rich and tender. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 20,
+        "materialName": "Bear Tenderloin",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "The inner loin. Rare to get out whole. Spoils in a few days unless cooked or cured."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-frostmaw-common",
+    "creature": "FROSTMAW",
+    "creatureTier": "Uncommon",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 30,
+        "materialName": "Coarse Wolf Pelt",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Rough grey pelt from a Thornspine wolf. Needs curing before it is good for much."
+      },
+      {
+        "weight": 25,
+        "materialName": "Wolf Fang",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A long, hooked canine. Good arrowhead stock.",
+        "amount": "1d3"
+      },
+      {
+        "weight": 15,
+        "materialName": "Wolf Neck",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Stringy neck meat. Best stewed for hours. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 15,
+        "materialName": "Wolf Shank",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A sinewy foreleg shank. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 15,
+        "materialName": "Lean Sinew",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Clean sinew from a fast-running beast. Dries into excellent cord."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-frostmaw-rare",
+    "creature": "FROSTMAW",
+    "creatureTier": "Uncommon",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 50,
+        "materialName": "Frostmaw Pelt",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "Blue-white fur from a frostmaw. It stays cold to the touch even by a fire."
+      },
+      {
+        "weight": 25,
+        "materialName": "Wolf Shoulder",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "The meatiest part of a wolf, and still lean. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 25,
+        "materialName": "Alpha's Ruff",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "The thick mane of a pack leader. Other wolves give it room even off the body."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-frostmaw-epic",
+    "creature": "FROSTMAW",
+    "creatureTier": "Uncommon",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 60,
+        "materialName": "Frostmaw Breath Gland",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "The gland a frostmaw breathes its freezing breath from. Handle with gloves."
+      },
+      {
+        "weight": 40,
+        "materialName": "Wolf Backstrap",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "The long muscle along a wolf's spine. Surprisingly tender. Spoils in a few days unless cooked or cured."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-pinewood-bear-common",
+    "creature": "PINEWOOD BEAR",
+    "creatureTier": "Common",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 25,
+        "materialName": "Bear Claw",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A thick, blunt claw from a Thornspine bear."
+      },
+      {
+        "weight": 25,
+        "materialName": "Dense Bear Fat",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "Heavy winter fat. Renders into tallow that keeps out cold and wet."
+      },
+      {
+        "weight": 25,
+        "materialName": "Bear Neck",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A heavy, fatty neck roast. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 25,
+        "materialName": "Bear Shank",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A massive shank, thick with sinew. Spoils in a few days unless cooked or cured."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-pinewood-bear-rare",
+    "creature": "PINEWOOD BEAR",
+    "creatureTier": "Common",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 40,
+        "materialName": "Thick Winter Pelt",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "Dense under-fur grown for the high passes. Sheds snow like water."
+      },
+      {
+        "weight": 30,
+        "materialName": "Bear Shoulder",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A shoulder roast as big as a man's chest. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 30,
+        "materialName": "Bear Ribs",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A slab of rich, fatty ribs. Spoils in a few days unless cooked or cured."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-pinewood-bear-epic",
+    "creature": "PINEWOOD BEAR",
+    "creatureTier": "Common",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 50,
+        "materialName": "Whole Bear Hide",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "An unbroken bear hide. Heavy, warm and nearly arrow-proof once tanned."
+      },
+      {
+        "weight": 50,
+        "materialName": "Bear Haunch",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A whole hindquarter, heavy and dark-meated. Wants a long, slow braise. Spoils in a few days unless cooked or cured."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-ridge-boar-common",
+    "creature": "RIDGE BOAR",
+    "creatureTier": "Common",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 30,
+        "materialName": "Bristle Hide",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Thick hide covered in stiff black bristles."
+      },
+      {
+        "weight": 25,
+        "materialName": "Boar Jowl",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Fatty cheek meat. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 25,
+        "materialName": "Boar Hock",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "The lower leg joint. Boils down rich. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 20,
+        "materialName": "Boar Trotters",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "The feet. Mostly for broth. Spoils in a few days unless cooked or cured."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-ridge-boar-rare",
+    "creature": "RIDGE BOAR",
+    "creatureTier": "Common",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 40,
+        "materialName": "Boar Tusk",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A short, sharp tusk. Makes a good hook or awl.",
+        "amount": "1d2"
+      },
+      {
+        "weight": 30,
+        "materialName": "Boar Belly",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A slab of fatty belly. Crisps beautifully over coals. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 30,
+        "materialName": "Boar Shoulder",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A heavily marbled shoulder roast. Spoils in a few days unless cooked or cured."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-ridge-boar-epic",
+    "creature": "RIDGE BOAR",
+    "creatureTier": "Common",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 50,
+        "materialName": "Thick Boar Hide",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "Heavy, wind-proof hide from an old tuskback."
+      },
+      {
+        "weight": 50,
+        "materialName": "Boar Ham",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "The whole hind leg. Spoils in a few days unless cooked or cured."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-scree-adder-common",
+    "creature": "SCREE ADDER",
+    "creatureTier": "Common",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 70,
+        "materialName": "Adder Venom",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A few drops of scree-adder venom, milked into a vial."
+      },
+      {
+        "weight": 30,
+        "materialName": "Serpent Rib Meat",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "Strips of pale meat picked from between a tarn serpent's ribs. Spoils in a few days unless cooked or cured."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-scree-adder-rare",
+    "creature": "SCREE ADDER",
+    "creatureTier": "Common",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 60,
+        "materialName": "Adder Venom",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A few drops of scree-adder venom, milked into a vial.",
+        "amount": "2"
+      },
+      {
+        "weight": 40,
+        "materialName": "Serpent Scale",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A dinner-plate scale from a tarn serpent. Hard and slick."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-scree-adder-epic",
+    "creature": "SCREE ADDER",
+    "creatureTier": "Common",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 60,
+        "materialName": "Serpent Scale",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A dinner-plate scale from a tarn serpent. Hard and slick.",
+        "amount": "1d2"
+      },
+      {
+        "weight": 40,
+        "materialName": "Venom Sac of the Deep",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "A tarn serpent's venom sac. The venom stays cold and potent for months."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-rootcoil-constrictor-common",
+    "creature": "ROOTCOIL CONSTRICTOR",
+    "creatureTier": "Common",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 60,
+        "materialName": "Coil Hide",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "Supple, patterned hide from a constrictor. Grips like a fist."
+      },
+      {
+        "weight": 40,
+        "materialName": "Serpent Rib Meat",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "Strips of pale meat picked from between a tarn serpent's ribs. Spoils in a few days unless cooked or cured."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-rootcoil-constrictor-rare",
+    "creature": "ROOTCOIL CONSTRICTOR",
+    "creatureTier": "Common",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 50,
+        "materialName": "Coil Hide",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "Supple, patterned hide from a constrictor. Grips like a fist.",
+        "amount": "2"
+      },
+      {
+        "weight": 50,
+        "materialName": "Serpent Fillet",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A long, firm fillet. Cold to the touch even after it's cut. Spoils in a few days unless cooked or cured."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-rootcoil-constrictor-epic",
+    "creature": "ROOTCOIL CONSTRICTOR",
+    "creatureTier": "Common",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 60,
+        "materialName": "Serpent Hide",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "Smooth, water-proof hide from a tarn serpent's belly."
+      },
+      {
+        "weight": 40,
+        "materialName": "Serpent Backstrap",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "The muscle running the serpent's whole length. Prized and rarely taken whole. Spoils in a few days unless cooked or cured."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-ashback-viper-common",
+    "creature": "ASHBACK VIPER",
+    "creatureTier": "Uncommon",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 50,
+        "materialName": "Adder Venom",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A few drops of scree-adder venom, milked into a vial.",
+        "amount": "1d2"
+      },
+      {
+        "weight": 30,
+        "materialName": "Serpent Scale",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A dinner-plate scale from a tarn serpent. Hard and slick."
+      },
+      {
+        "weight": 20,
+        "materialName": "Serpent Rib Meat",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "Strips of pale meat picked from between a tarn serpent's ribs. Spoils in a few days unless cooked or cured."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-ashback-viper-rare",
+    "creature": "ASHBACK VIPER",
+    "creatureTier": "Uncommon",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 60,
+        "materialName": "Viper Fang",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A hollow fang as long as a finger, still beaded with venom."
+      },
+      {
+        "weight": 40,
+        "materialName": "Serpent Fillet",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A long, firm fillet. Cold to the touch even after it's cut. Spoils in a few days unless cooked or cured."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-ashback-viper-epic",
+    "creature": "ASHBACK VIPER",
+    "creatureTier": "Uncommon",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 50,
+        "materialName": "Viper Fang",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "A hollow fang as long as a finger, still beaded with venom.",
+        "amount": "2"
+      },
+      {
+        "weight": 50,
+        "materialName": "Venom Sac of the Deep",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "A tarn serpent's venom sac. The venom stays cold and potent for months."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-crownhorn-elk-common",
+    "creature": "CROWNHORN ELK",
+    "creatureTier": "Uncommon",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 25,
+        "materialName": "Stag Hide",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Thin, supple hide from a ridge stag."
+      },
+      {
+        "weight": 20,
+        "materialName": "Antler Tine",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A single antler point. Hard, light, easy to carve.",
+        "amount": "1d3"
+      },
+      {
+        "weight": 15,
+        "materialName": "Stag Neck",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A thick neck roast. Wants slow cooking. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 15,
+        "materialName": "Stag Shank",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Lower leg, all connective tissue. Rich when braised. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 15,
+        "materialName": "Stag Brisket",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Thin breast meat between the forelegs. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 10,
+        "materialName": "Lean Sinew",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Clean sinew from a fast-running beast. Dries into excellent cord."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-crownhorn-elk-rare",
+    "creature": "CROWNHORN ELK",
+    "creatureTier": "Uncommon",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 30,
+        "materialName": "Branching Antler",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A full antler branch. Springy enough to bend into a bow."
+      },
+      {
+        "weight": 30,
+        "materialName": "Stag Hindquarter",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "The big muscles of the rear leg. Roasts or slices into steaks. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 20,
+        "materialName": "Stag Shoulder",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A whole shoulder roast. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 20,
+        "materialName": "Stag Rib Rack",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A rack of ribs, lean and dark. Spoils in a few days unless cooked or cured."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-crownhorn-elk-epic",
+    "creature": "CROWNHORN ELK",
+    "creatureTier": "Uncommon",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 50,
+        "materialName": "Crownhorn Antler",
+        "tier": "T3",
+        "source": "VIGIL",
+        "notes": "A great spread of antler from a crownhorn elk, wide as a cart."
+      },
+      {
+        "weight": 25,
+        "materialName": "Stag Backstrap",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "The loin along the spine. The cut every hunter wants. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 25,
+        "materialName": "Stag Tenderloin",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "Two small strips from inside the ribcage. The most tender meat on a stag. Spoils in a few days unless cooked or cured."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-highland-deer-common",
+    "creature": "HIGHLAND DEER",
+    "creatureTier": "Common",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 40,
+        "materialName": "Stag Hide",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Thin, supple hide from a ridge stag."
+      },
+      {
+        "weight": 20,
+        "materialName": "Stag Neck",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A thick neck roast. Wants slow cooking. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 20,
+        "materialName": "Stag Shank",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Lower leg, all connective tissue. Rich when braised. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 20,
+        "materialName": "Lean Sinew",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Clean sinew from a fast-running beast. Dries into excellent cord."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-highland-deer-rare",
+    "creature": "HIGHLAND DEER",
+    "creatureTier": "Common",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 40,
+        "materialName": "Antler Tine",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "A single antler point. Hard, light, easy to carve."
+      },
+      {
+        "weight": 30,
+        "materialName": "Stag Shoulder",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A whole shoulder roast. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 30,
+        "materialName": "Stag Brisket",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Thin breast meat between the forelegs. Spoils in a few days unless cooked or cured."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-highland-deer-epic",
+    "creature": "HIGHLAND DEER",
+    "creatureTier": "Common",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 50,
+        "materialName": "Stag Backstrap",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "The loin along the spine. The cut every hunter wants. Spoils in a few days unless cooked or cured."
+      },
+      {
+        "weight": 50,
+        "materialName": "Stag Tenderloin",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "Two small strips from inside the ribcage. The most tender meat on a stag. Spoils in a few days unless cooked or cured."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-dusk-bat-swarm-common",
+    "creature": "DUSK BAT SWARM",
+    "creatureTier": "Common",
+    "pool": "Common",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 50,
+        "materialName": "Bat Wing Membrane",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Thin, tough wing skin from a cave bat.",
+        "amount": "1d3"
+      },
+      {
+        "weight": 50,
+        "materialName": "Bat Guano",
+        "tier": "T0",
+        "source": "VIGIL",
+        "notes": "Dried cave droppings. Leached and boiled, they give up nitre.",
+        "amount": "1d4"
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-dusk-bat-swarm-rare",
+    "creature": "DUSK BAT SWARM",
+    "creatureTier": "Common",
+    "pool": "Rare",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 100,
+        "materialName": "Echo Bone",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A tiny skull bone that rings when sound bounces off it."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
+  },
+  {
+    "id": "loot-dusk-bat-swarm-epic",
+    "creature": "DUSK BAT SWARM",
+    "creatureTier": "Common",
+    "pool": "Epic",
+    "totalWeight": 100,
+    "entries": [
+      {
+        "weight": 50,
+        "materialName": "Echo Bone",
+        "tier": "T1",
+        "source": "VIGIL",
+        "notes": "A tiny skull bone that rings when sound bounces off it.",
+        "amount": "2"
+      },
+      {
+        "weight": 50,
+        "materialName": "Night-Ear",
+        "tier": "T2",
+        "source": "VIGIL",
+        "notes": "The great folded ear of an elder bat. Hears a heartbeat through stone."
+      }
+    ],
+    "set": "undying-vigil",
+    "family": "beast",
+    "source": "Undying_Vigil_Crafting"
   }
 ]
