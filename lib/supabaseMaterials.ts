@@ -98,3 +98,38 @@ export async function deleteCampaignMaterial(
     throw error;
   }
 }
+// Applies changes as deltas to whatever is in the database now, so two people
+// changing materials at once (a player gathering while the GM loots) both
+// count instead of the last save overwriting the other. Returns the fresh list.
+export async function applyCampaignMaterialDeltas(
+  campaignId: string,
+  deltas: { name: string; delta: number; tier?: number | null }[]
+): Promise<SupabaseMaterial[]> {
+  const changes = deltas.filter((item) => item.delta !== 0);
+  if (changes.length) {
+    const { data: current, error } = await supabase
+      .from("campaign_materials")
+      .select("*")
+      .eq("campaign_id", campaignId)
+      .in("name", changes.map((item) => item.name));
+    if (error) throw error;
+    const byName = new Map(((current as SupabaseMaterial[] | null) || []).map((row) => [row.name, row]));
+    const upserts: { campaign_id: string; name: string; qty: number; tier: number | null }[] = [];
+    const removals: string[] = [];
+    for (const item of changes) {
+      const row = byName.get(item.name);
+      const qty = Math.max(0, (row?.qty || 0) + item.delta);
+      if (qty > 0) upserts.push({ campaign_id: campaignId, name: item.name, qty, tier: row?.tier ?? item.tier ?? null });
+      else if (row) removals.push(item.name);
+    }
+    if (upserts.length) {
+      const { error: upsertError } = await supabase.from("campaign_materials").upsert(upserts, { onConflict: "campaign_id,name" });
+      if (upsertError) throw upsertError;
+    }
+    if (removals.length) {
+      const { error: deleteError } = await supabase.from("campaign_materials").delete().eq("campaign_id", campaignId).in("name", removals);
+      if (deleteError) throw deleteError;
+    }
+  }
+  return fetchCampaignMaterials(campaignId);
+}

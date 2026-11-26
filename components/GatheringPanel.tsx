@@ -1293,7 +1293,7 @@ export default function GatheringPanel(props: {
                   </div>
                 ))
               )}
-              {results.items.length > 0 && <p className="text-sm italic">Added to the campaign inventory and the shared loot log.</p>}
+              {results.items.length > 0 && <p className="text-sm italic">Added to the party&apos;s materials (Crafting → Materials) and the shared loot log.</p>}
             </div>
           )}
         </div>

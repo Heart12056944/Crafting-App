@@ -55,7 +55,7 @@ import {
 } from "@/data/phaseEffects";
 
 import { fetchCampaigns, createCampaign, deleteCampaign, setActiveCampaign } from "@/lib/supabaseCampaigns";
-import { fetchCampaignMaterials, replaceCampaignMaterials } from "@/lib/supabaseMaterials";
+import { applyCampaignMaterialDeltas, fetchCampaignMaterials, replaceCampaignMaterials } from "@/lib/supabaseMaterials";
 import {
   fetchCampaignDiscoveries,
   setCampaignDiscovery,
@@ -1806,6 +1806,13 @@ export default function ArcaneCraftingCodexPage() {
     });
   }
   const shouldSaveMaterialsRef = useRef(false);
+  // Material syncing works in deltas: every local change is diffed against the
+  // last list we had, and only the difference is written. Lists that came from
+  // the server are remembered so loading them never writes anything back.
+  const serverMaterialsRef = useRef<Material[] | null>(null);
+  const previousMaterialsRef = useRef<Material[] | null>(null);
+  const pendingMaterialDeltasRef = useRef<Map<string, number>>(new Map());
+  const materialSyncRef = useRef<Promise<void>>(Promise.resolve());
   const shouldSaveCharactersRef = useRef(false);
   // What each character looked like when last loaded or saved, so only changed characters are written.
   const savedCharactersRef = useRef<Map<string, string>>(new Map());
@@ -1836,6 +1843,25 @@ export default function ArcaneCraftingCodexPage() {
     window.setTimeout(() => {
       skipSupabaseSaveRef.current = false;
     }, 2000);
+  }
+
+  // Shows a list loaded from the server, keeping any local changes that are
+  // still on their way up.
+  function setMaterialsFromServer(list: Material[]) {
+    const pending = pendingMaterialDeltasRef.current;
+    let next = list;
+    if (pending.size) {
+      const byName = new Map(list.map((material) => [material.name, { ...material }]));
+      pending.forEach((delta, name) => {
+        const row = byName.get(name);
+        const qty = (row?.qty || 0) + delta;
+        if (qty > 0) byName.set(name, row ? { ...row, qty } : { id: crypto.randomUUID(), name, qty, tier: getMaterialTier(name) });
+        else byName.delete(name);
+      });
+      next = [...byName.values()];
+    }
+    serverMaterialsRef.current = next;
+    setMaterials(next);
   }
 
   function markMaterialsForSupabaseSave() {
@@ -1957,7 +1983,7 @@ export default function ArcaneCraftingCodexPage() {
           )
         );
         setActiveInventoryId(activeProfile.id);
-        setMaterials(activeMaterials);
+        setMaterialsFromServer(activeMaterials);
         setCharacters(activeCharacters);
       rememberSavedCharacters(supabaseCharacterRows.length > 0 ? activeCharacters : []);
         setCraftedItems(activeCraftedItems);
@@ -1981,7 +2007,7 @@ export default function ArcaneCraftingCodexPage() {
         skipNextSupabaseSave();
         setInventoryProfiles([fallbackProfile]);
         setActiveInventoryId(fallbackProfile.id);
-        setMaterials(fallbackMaterials);
+        setMaterialsFromServer(fallbackMaterials);
         setCharacters([fallbackCharacter]);
         setCraftedItems([]);
         setDisabledTags([]);
@@ -2012,7 +2038,7 @@ export default function ArcaneCraftingCodexPage() {
         : characters;
 
       skipNextSupabaseSave();
-      setMaterials(activeMaterials);
+      setMaterialsFromServer(activeMaterials);
       setCraftedItems(activeCraftedItems);
       setCharacters(activeCharacters);
       rememberSavedCharacters(supabaseCharacterRows.length > 0 ? activeCharacters : []);
@@ -2050,6 +2076,76 @@ export default function ArcaneCraftingCodexPage() {
       refreshActiveCampaignFromSupabase(campaignId);
     }, 1200);
   }
+
+  // Writes local material changes as deltas. Runs on every change, including
+  // ones made during the brief "skip saving" window after a refresh, so a
+  // gather or loot roll is never dropped.
+  useEffect(() => {
+    if (!materialsLoaded || !activeInventoryId) return;
+    const previous = previousMaterialsRef.current;
+    previousMaterialsRef.current = materials;
+    if (materials === serverMaterialsRef.current || previous === null) return;
+    const before = new Map(previous.map((material) => [material.name, material.qty]));
+    const after = new Map(materials.map((material) => [material.name, material.qty]));
+    const pending = pendingMaterialDeltasRef.current;
+    let changed = false;
+    new Set([...before.keys(), ...after.keys()]).forEach((name) => {
+      const delta = (after.get(name) || 0) - (before.get(name) || 0);
+      if (delta !== 0) {
+        pending.set(name, (pending.get(name) || 0) + delta);
+        changed = true;
+      }
+    });
+    if (!changed) return;
+    const campaignId = activeInventoryId;
+    materialSyncRef.current = materialSyncRef.current.then(async () => {
+      const batch = [...pendingMaterialDeltasRef.current.entries()].filter(([, delta]) => delta !== 0);
+      if (!batch.length) return;
+      pendingMaterialDeltasRef.current = new Map();
+      try {
+        const rows = await applyCampaignMaterialDeltas(
+          campaignId,
+          batch.map(([name, delta]) => ({ name, delta, tier: getMaterialTier(name) }))
+        );
+        setMaterialsFromServer(supabaseMaterialsToLocalMaterials(rows));
+      } catch (error) {
+        console.warn("Failed to save campaign materials to Supabase.", error);
+        batch.forEach(([name, delta]) => pendingMaterialDeltasRef.current.set(name, (pendingMaterialDeltasRef.current.get(name) || 0) + delta));
+        setImportLog("Warning: materials changed here, but saving to Supabase failed. They'll retry with your next change.");
+      }
+    });
+  }, [materials, materialsLoaded, activeInventoryId]);
+
+  // Other people's material changes (a player gathering, the GM looting)
+  // show up here without a reload.
+  useEffect(() => {
+    if (!materialsLoaded || !activeInventoryId) return;
+    const campaignId = activeInventoryId;
+    let timer: number | null = null;
+    const channel = supabase
+      .channel(`artisan-codex-materials-${campaignId}`)
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "campaign_materials", filter: `campaign_id=eq.${campaignId}` },
+        () => {
+          if (timer) window.clearTimeout(timer);
+          timer = window.setTimeout(async () => {
+            try {
+              await materialSyncRef.current;
+              const rows = await fetchCampaignMaterials(campaignId);
+              setMaterialsFromServer(supabaseMaterialsToLocalMaterials(rows));
+            } catch (error) {
+              console.warn("Failed to refresh campaign materials.", error);
+            }
+          }, 700);
+        }
+      )
+      .subscribe();
+    return () => {
+      if (timer) window.clearTimeout(timer);
+      supabase.removeChannel(channel);
+    };
+  }, [materialsLoaded, activeInventoryId]);
 
   useEffect(() => {
     if (!materialsLoaded || !activeInventoryId) return;
@@ -2166,21 +2262,7 @@ export default function ArcaneCraftingCodexPage() {
     window.localStorage.setItem("arcane-crafting-materials", JSON.stringify(materials));
     window.localStorage.setItem(DISABLED_TAGS_STORAGE_KEY, JSON.stringify(disabledTags));
 
-    if (shouldSaveMaterialsRef.current) {
-      shouldSaveMaterialsRef.current = false;
-
-      replaceCampaignMaterials(
-        activeInventoryId,
-        materials.map((material) => ({
-          name: material.name,
-          qty: material.qty,
-          tier: material.tier ?? getMaterialTier(material.name),
-        }))
-      ).catch((error) => {
-        console.warn("Failed to save campaign materials to Supabase.", error);
-        setImportLog("Warning: materials saved locally, but Supabase sync failed.");
-      });
-    }
+    shouldSaveMaterialsRef.current = false;
 
     if (shouldSaveCharactersRef.current && characters.length > 0) {
       shouldSaveCharactersRef.current = false;
@@ -2790,7 +2872,7 @@ export default function ArcaneCraftingCodexPage() {
       skipNextSupabaseSave();
       skipNextSupabaseSave();
       setActiveInventoryId(profile.id);
-      setMaterials(activeMaterials);
+      setMaterialsFromServer(activeMaterials);
       setCharacters(activeCharacters);
       rememberSavedCharacters(supabaseCharacterRows.length > 0 ? activeCharacters : []);
       setCraftedItems(activeCraftedItems);
@@ -2866,7 +2948,7 @@ export default function ArcaneCraftingCodexPage() {
 
       setInventoryProfiles((current) => [...current, profile]);
       setActiveInventoryId(profile.id);
-      setMaterials(profile.materials);
+      setMaterialsFromServer(profile.materials);
       setCharacters(profile.characters);
       setCraftedItems(profile.craftedItems);
       setDisabledTags(profile.disabledTags);
@@ -2949,7 +3031,7 @@ export default function ArcaneCraftingCodexPage() {
 
       if (nextActive) {
         setActiveInventoryId(nextActive.id);
-        setMaterials(nextActive.materials);
+        setMaterialsFromServer(nextActive.materials);
         setCharacters(nextActive.characters.length ? nextActive.characters : [defaultCharacter()]);
         setCraftedItems(nextActive.craftedItems || []);
         setDisabledTags(nextActive.disabledTags || []);
