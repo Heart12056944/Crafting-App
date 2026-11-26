@@ -95,6 +95,29 @@ export const BASIC_PRICES_CP: Record<string, number> = {
   Kindlepod: 5,
 };
 
+// Plain tools sold as items (not crafted from a recipe), in copper. Owning
+// one in a character's inventory lets them gather with it.
+export const TOOL_PRICES_CP: Record<string, number> = {
+  Pickaxe: 200,
+  "Woodcutter's Axe": 500,
+  "Herbalism Kit": 500,
+  "Fishing Rod": 100,
+};
+export const GEAR_DESCRIPTIONS: Record<string, string> = {
+  Pickaxe: "A plain iron pickaxe. Needed to mine ore and stone at a gathering spot.",
+  "Woodcutter's Axe": "A long-hafted felling axe. Needed to cut timber at a gathering spot.",
+  "Herbalism Kit": "Clippers, pouches and a mortar. Needed to forage herbs at a gathering spot.",
+  "Fishing Rod": "A plain rod and line. Needed to fish at a gathering spot.",
+};
+export const GATHERING_GEAR = Object.keys(TOOL_PRICES_CP);
+const gearPriceByName = new Map(Object.entries(TOOL_PRICES_CP).map(([name, cp]) => [name.toLowerCase(), cp]));
+export function gearPriceCp(name: string): number | null {
+  return gearPriceByName.get(name.trim().toLowerCase()) ?? null;
+}
+export function gearName(name: string): string | null {
+  return GATHERING_GEAR.find((gear) => gear.toLowerCase() === name.trim().toLowerCase()) || null;
+}
+
 // Value of a material by tier when it has no set price: 2 sp, 1 gp, 5 gp, 25 gp, 125 gp, 500 gp.
 const TIER_VALUE_CP = [20, 100, 500, 2500, 12500, 50000];
 
@@ -208,25 +231,28 @@ export const SHOP_TEMPLATES: ShopTemplate[] = [
     name: "General Store",
     description: "Cloth, cord, thread and the odds and ends every crafter runs out of.",
     stock: ["Cloth", "Cloth Bolts", "Leather Cord", "Leather Scraps", "Twine (50ft.)", "Cotton Thread", "Basic Fiber", "Resin", "Binding Agents", "Wood Planks", "Charcoal", "Fish Oil", "Coarse Salt", "Empty Vials (set of 3)", "Blank Scrolls"],
-    items: ["Dried Meat Strips", "Trail Cakes", "Winter Coat", "Fur Mittens & Hat", "Snow Goggles", "Oilskin Cloak", "Waxed Tarp", "Oiled Boots", "Summer Linens", "Large Waterskin"],
+    items: ["Pickaxe", "Woodcutter's Axe", "Fishing Rod", "Dried Meat Strips", "Trail Cakes", "Winter Coat", "Fur Mittens & Hat", "Snow Goggles", "Oilskin Cloak", "Waxed Tarp", "Oiled Boots", "Summer Linens", "Large Waterskin"],
   },
   {
     kind: "smithy",
     name: "Smithy",
     description: "Iron, fittings, plates and plain blades.",
     stock: ["Scrap Steel", "Iron Ingot", "Grey Ironstone", "Metal Fitting", "Reinforced Metal Plates", "Steel Blade", "Reinforced Steel Blade", "Wooden Shield", "Whetstone Paste", "Charcoal"],
+    items: ["Pickaxe", "Woodcutter's Axe"],
   },
   {
     kind: "apothecary",
     name: "Apothecary",
     description: "Infusion bases, vials, spirit and common herbs.",
     stock: ["Empty Infusion Base", "Empty Vials (set of 3)", "Distilled Alcohol", "Bitterleaf", "Crag Moss", "Bone Meal", "Hollowreed Seed", "Rendered Tallow"],
+    items: ["Herbalism Kit"],
   },
   {
     kind: "woodworker",
     name: "Woodworker & Fletcher",
     description: "Timber, pitch, glue and cord.",
     stock: ["Pine Logs", "Wood Planks", "Pine Pitch", "Pitch Binder", "Fish Glue", "Resin", "Twine (50ft.)", "Carved Focus"],
+    items: ["Woodcutter's Axe", "Fishing Rod"],
   },
   {
     kind: "hunter",
@@ -263,6 +289,7 @@ export const SHOP_TEMPLATES: ShopTemplate[] = [
     kind: "fishmonger",
     name: "Dockside Fishmonger",
     description: "The day's catch: shark, crab and octopus, plus salt for curing. Nothing from anything a crew would brag about killing.",
+    items: ["Fishing Rod"],
     stock: ["Shark Fillet", "Shark Steak", "Shark Belly", "Crab Leg Meat", "Crab Body Meat", "Crab Claw Meat", "Octopus Tentacle", "Octopus Mantle", "Coarse Salt", "Fish Oil"],
   },
   {
@@ -270,7 +297,7 @@ export const SHOP_TEMPLATES: ShopTemplate[] = [
     name: "Order Quartermaster",
     description: "Grave salt, bone meal and field supplies for those who fight the dead.",
     stock: ["Grave Salt", "Bone Meal", "Iron Ingot", "Whetstone Paste", "Empty Infusion Base", "Blank Scrolls", "Carved Focus", "Fish Oil"],
-    items: ["Compact Bean Brick", "Dried Meat Strips", "Winter Coat", "Fur Mittens & Hat", "Oilskin Cloak", "Snowshoes", "Crampons", "Fleece Bedroll"],
+    items: ["Pickaxe", "Woodcutter's Axe", "Herbalism Kit", "Fishing Rod", "Compact Bean Brick", "Dried Meat Strips", "Winter Coat", "Fur Mittens & Hat", "Oilskin Cloak", "Snowshoes", "Crampons", "Fleece Bedroll"],
   },
   { kind: "custom", name: "New Shop", description: "", stock: [] },
 ];
@@ -281,7 +308,7 @@ export function stockFromNames(names: string[], items: string[] = []): StockEntr
   return [
     ...Array.from(new Set(names)).map((name) => ({ name, kind: "material" as const, priceCp: materialValueCp(name), qty: null })),
     ...items
-      .filter((name) => foodRecipeByName.has(name))
-      .map((name) => ({ name, kind: "item" as const, priceCp: itemValueCp({ recipe: foodRecipeByName.get(name) }), qty: null })),
+      .filter((name) => foodRecipeByName.has(name) || gearPriceCp(name) !== null)
+      .map((name) => ({ name, kind: "item" as const, priceCp: gearPriceCp(name) ?? itemValueCp({ recipe: foodRecipeByName.get(name) }), qty: null })),
   ];
 }

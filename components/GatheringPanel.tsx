@@ -119,6 +119,31 @@ type FishingGear = {
   baitUpgrade: boolean;
 };
 
+// Mining and woodcutting tools in a character's inventory count as owning the
+// tool. Crafted picks also add their recipe's mining bonus.
+const TOOL_ITEMS: Partial<Record<GatheringActivity, { match: RegExp; exclude?: RegExp }>> = {
+  mining: { match: /\b(pick|pickaxe|mattock)\b/i, exclude: /lock ?picks?|toothpick/i },
+  woodcutting: { match: /\b(axe|hatchet|handaxe|hand axe|woodcutter)\b/i, exclude: /great ?-?axe|battle ?-?axe|pole ?-?axe|axe-?beak/i },
+  foraging: { match: /\bherbalism kit\b/i },
+  fishing: { match: /\bfishing (rod|tackle|pole)\b/i },
+};
+const TOOL_ITEM_BONUS: Record<string, Record<string, number>> = {
+  "Boar-Tusk Pick": { Superior: 2, Normal: 1, Flawed: 0 },
+  "Femur-Hafted Pick": { Superior: 1, Normal: 0, Flawed: 0 },
+};
+function toolItemFor(rows: InventoryRow[], characterId: string | undefined, activity: GatheringActivity | undefined): { row: InventoryRow; bonus: number } | null {
+  const rule = activity ? TOOL_ITEMS[activity] : undefined;
+  if (!rule || !characterId) return null;
+  let best: { row: InventoryRow; bonus: number } | null = null;
+  rows
+    .filter((row) => row.character_id === characterId && row.qty > 0 && rule.match.test(row.name) && !(rule.exclude && rule.exclude.test(row.name)))
+    .forEach((row) => {
+      const bonus = TOOL_ITEM_BONUS[row.name]?.[row.quality || "Normal"] ?? 0;
+      if (!best || bonus > best.bonus) best = { row, bonus };
+    });
+  return best;
+}
+
 function fishingGearFor(rows: InventoryRow[], characterId: string | undefined): FishingGear {
   const mine = rows.filter((row) => characterId && row.character_id === characterId && row.qty > 0);
   let rod: InventoryRow | null = null;
@@ -940,11 +965,13 @@ export default function GatheringPanel(props: {
   const attemptsUsed = character?.gatheringToday ?? 0;
   const attemptsLeft = attemptsPerDay - attemptsUsed;
   const fishingGear = fishingGearFor(inventoryRows, character?.id);
+  const toolItem = toolItemFor(inventoryRows, character?.id, spot?.activity);
   const baseMods = spot ? modsFor(cardIds, spot.activity) : null;
-  const mods = baseMods && spot?.activity === "fishing" ? withFishingGear(baseMods, fishingGear) : baseMods;
+  const fishedMods = baseMods && spot?.activity === "fishing" ? withFishingGear(baseMods, fishingGear) : baseMods;
+  const mods = fishedMods && toolItem?.bonus ? { ...fishedMods, gearBonus: fishedMods.gearBonus + toolItem.bonus } : fishedMods;
   const craftedRod = spot?.activity === "fishing" ? fishingGear.rod : null;
-  const toolOwned = Boolean(character && activity && (character.ownedTools?.[activity.tool] || craftedRod));
-  const toolBroken = Boolean(character && activity && character.brokenTools?.[activity.tool] && !craftedRod);
+  const toolOwned = Boolean(character && activity && (character.ownedTools?.[activity.tool] || craftedRod || toolItem));
+  const toolBroken = Boolean(character && activity && character.brokenTools?.[activity.tool] && !craftedRod && !toolItem);
   const busy = Boolean(roll) && !results;
 
   const statBonus = character && activity ? character.stats[activity.stat] || 0 : 0;
@@ -1118,7 +1145,7 @@ export default function GatheringPanel(props: {
                   ? ` + ${skillProfBonus >= toolProfBonus ? `${activity.label} skill` : activity.tool} proficiency (+${profBonus})`
                   : ""}
                 {mods?.checkBonus ? ` + attributes (+${mods.checkBonus})` : ""}
-                {mods?.gearBonus ? ` + bait (+${mods.gearBonus})` : ""}
+                {mods?.gearBonus ? ` + ${spot.activity === "fishing" ? "bait" : toolItem?.row.name || "gear"} (+${mods.gearBonus})` : ""}
                 {weatherBonus ? ` ${weatherBonus > 0 ? "+" : "−"} ${props.weather?.label.toLowerCase()} (${weatherBonus > 0 ? "+" : ""}${weatherBonus})` : ""} vs DC {spotDc}
                 {dcPenalty ? ` (picked over: +${dcPenalty})` : ""}
               </p>
@@ -1132,7 +1159,9 @@ export default function GatheringPanel(props: {
                 <strong>Tool:</strong>{" "}
                 {craftedRod
                   ? `${craftedRod.name} (${craftedRod.quality || "Normal"})`
-                  : `${activity.tool} ${toolOwned ? (toolBroken ? "(broken)" : "(owned)") : "(missing)"}`}
+                  : toolItem
+                    ? `${toolItem.row.name}${toolItem.row.quality ? ` (${toolItem.row.quality})` : ""}, from inventory`
+                    : `${activity.tool} ${toolOwned ? (toolBroken ? "(broken)" : "(owned)") : `(missing — add a ${activity.tool.toLowerCase()} to the inventory or tick it on the sheet)`}`}
               </p>
               {spot.activity === "fishing" && (
                 <p>

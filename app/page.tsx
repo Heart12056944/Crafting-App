@@ -634,19 +634,39 @@ const RECIPE_DISCOVERY_FILTER_STORAGE_KEY = "artisan-codex-recipe-discovery-filt
 const STATS: Stat[] = ["STR", "DEX", "CON", "INT", "WIS", "CHA"];
 const DEVICE_ID_STORAGE_KEY = "artisan-codex-device-id";
 
-// A random id for this browser, kept in local storage. Character claims are
-// tied to it, which is what locks a claimed character to one computer.
+// A random id for this browser, kept in local storage and a year-long cookie
+// (so clearing one doesn't lose it). Character claims are tied to it.
 function readOrCreateDeviceId(): string {
-  try {
-    let id = window.localStorage.getItem(DEVICE_ID_STORAGE_KEY);
-    if (!id) {
-      id = crypto.randomUUID();
-      window.localStorage.setItem(DEVICE_ID_STORAGE_KEY, id);
+  const fromCookie = () => {
+    try {
+      const match = document.cookie.match(new RegExp(`(?:^|; )${DEVICE_ID_STORAGE_KEY}=([^;]+)`));
+      return match ? decodeURIComponent(match[1]) : null;
+    } catch {
+      return null;
     }
+  };
+  try {
+    let id = window.localStorage.getItem(DEVICE_ID_STORAGE_KEY) || fromCookie();
+    if (!id) id = crypto.randomUUID();
+    window.localStorage.setItem(DEVICE_ID_STORAGE_KEY, id);
+    document.cookie = `${DEVICE_ID_STORAGE_KEY}=${encodeURIComponent(id)}; max-age=31536000; path=/; SameSite=Lax`;
     return id;
   } catch {
-    return crypto.randomUUID();
+    return fromCookie() || crypto.randomUUID();
   }
+}
+
+// A claim's state is a comma-separated list of the device ids holding it, so a
+// player can use the same character on more than one computer.
+function claimDevices(state: string | undefined): string[] {
+  return (state || "").split(",").map((part) => part.trim()).filter(Boolean);
+}
+
+// Claim PINs are stored hashed (kind "claim-pin"), never as typed.
+async function hashClaimPin(characterId: string, pin: string): Promise<string> {
+  const bytes = new TextEncoder().encode(`${characterId}:${pin.trim()}`);
+  const digest = await crypto.subtle.digest("SHA-256", bytes);
+  return Array.from(new Uint8Array(digest)).map((b) => b.toString(16).padStart(2, "0")).join("");
 }
 
 const TOOL_OPTIONS = [
@@ -1708,12 +1728,13 @@ export default function ArcaneCraftingCodexPage() {
   );
 
   const [deviceId, setDeviceId] = useState("");
-  const [characterClaims, setCharacterClaims] = useState<Record<string, string>>({}); // character id -> device id
+  const [characterClaims, setCharacterClaims] = useState<Record<string, string>>({}); // character id -> device ids (comma-separated)
+  const [claimPins, setClaimPins] = useState<Record<string, string>>({}); // character id -> hashed PIN
   const [claimMessage, setClaimMessage] = useState("");
   // Claimed characters that are in play. Claimed future characters (not active) don't count.
   const myCharacterIds = deviceId
     ? characters
-        .filter((character) => characterClaims[character.id] === deviceId && (character.isActive !== false || adminUnlocked))
+        .filter((character) => claimDevices(characterClaims[character.id]).includes(deviceId) && (character.isActive !== false || adminUnlocked))
         .map((character) => character.id)
     : [];
   const lockToClaimed = !adminUnlocked && myCharacterIds.length > 0;
@@ -1721,30 +1742,65 @@ export default function ArcaneCraftingCodexPage() {
   const selectedCharacterId = ownCharacter(selectedCharacterChoice);
   const lootCharacterId = ownCharacter(lootCharacterChoice);
 
-  function claimCharacter(characterId: string) {
+  // Claim a character on this device. A new claim sets a PIN; a character
+  // already claimed elsewhere can be added to this device with its PIN, so
+  // claims survive a new browser, a cleared cache or a second computer.
+  async function claimCharacter(characterId: string, pin: string) {
     if (!activeInventoryId || !deviceId || !characterId) return;
-    const holder = characterClaims[characterId];
-    if (holder && holder !== deviceId) {
-      setClaimMessage("That character is already claimed on another device. Ask the GM to release it.");
+    const holders = claimDevices(characterClaims[characterId]);
+    if (holders.includes(deviceId)) return;
+    const cleanPin = pin.trim();
+    if (cleanPin.length < 4) {
+      setClaimMessage("Choose a PIN of at least 4 characters. You'll use it to claim this character on another device.");
       return;
     }
+    const hashed = await hashClaimPin(characterId, cleanPin);
+    if (holders.length > 0 || claimPins[characterId]) {
+      if (!claimPins[characterId]) {
+        setClaimMessage("That character was claimed before PINs existed. Ask the GM to release it, then claim it again.");
+        return;
+      }
+      if (claimPins[characterId] !== hashed) {
+        setClaimMessage("Wrong PIN for that character.");
+        return;
+      }
+    }
+    const next = [...holders, deviceId].join(",");
     setClaimMessage("");
-    setCharacterClaims((current) => ({ ...current, [characterId]: deviceId }));
-    setCharacterClaim(activeInventoryId, characterId, deviceId).catch((error) => {
+    setCharacterClaims((current) => ({ ...current, [characterId]: next }));
+    setClaimPins((current) => ({ ...current, [characterId]: hashed }));
+    try {
+      await setCharacterClaim(activeInventoryId, characterId, next);
+      await setCampaignValue(activeInventoryId, "claim-pin", characterId, hashed);
+    } catch (error) {
       console.warn("Failed to save character claim.", error);
       setClaimMessage("Could not save your claim. Check your connection and try again.");
-    });
+    }
   }
 
+  // A player releases the claim on this device only; the GM clears it
+  // everywhere (and its PIN, so it can be claimed fresh).
   function releaseCharacter(characterId: string) {
     if (!activeInventoryId) return;
-    if (!adminUnlocked && characterClaims[characterId] !== deviceId) return;
+    const holders = claimDevices(characterClaims[characterId]);
+    if (!adminUnlocked && !holders.includes(deviceId)) return;
+    const remaining = adminUnlocked ? [] : holders.filter((id) => id !== deviceId);
+    const next = remaining.join(",");
     setCharacterClaims((current) => {
-      const next = { ...current };
-      delete next[characterId];
-      return next;
+      const copy = { ...current };
+      if (next) copy[characterId] = next;
+      else delete copy[characterId];
+      return copy;
     });
-    setCharacterClaim(activeInventoryId, characterId, null).catch((error) => {
+    if (adminUnlocked) {
+      setClaimPins((current) => {
+        const copy = { ...current };
+        delete copy[characterId];
+        return copy;
+      });
+      setCampaignValue(activeInventoryId, "claim-pin", characterId, null).catch(() => undefined);
+    }
+    setCharacterClaim(activeInventoryId, characterId, next || null).catch((error) => {
       console.warn("Failed to release character claim.", error);
       setClaimMessage("Could not release that claim. Try again.");
     });
@@ -2239,6 +2295,7 @@ export default function ArcaneCraftingCodexPage() {
       const hiddenRecipes: string[] = [];
       const openSpots: string[] = [];
       const claims: Record<string, string> = {};
+      const pins: Record<string, string> = {};
       const wild: string[] = [];
       const calendarRows: Record<string, string> = {};
       let combatState: CombatState | null = null;
@@ -2272,6 +2329,7 @@ export default function ArcaneCraftingCodexPage() {
         }
         if (row.kind === "wild-animal") wild.push(row.item_key);
         if (row.kind === "character-claim" && row.state) claims[row.item_key] = row.state;
+        if (row.kind === "claim-pin" && row.state) pins[row.item_key] = row.state;
         if (row.kind === "gathering-spot" && row.state === "discovered") openSpots.push(row.item_key);
         if (row.kind === "material" && row.state === "discovered") discoveredMaterials.push(row.item_key);
         if (row.kind === "recipe" && row.state === "discovered") discoveredRecipes.push(row.item_key);
@@ -2283,6 +2341,7 @@ export default function ArcaneCraftingCodexPage() {
       setManuallyHiddenRecipeIds(hiddenRecipes);
       setEnabledGatheringSpotIds(openSpots);
       setCharacterClaims(claims);
+      setClaimPins(pins);
       setCampaignDay(day);
       setCalendarValues(calendarRows);
       setCombat(combatState);
@@ -5125,6 +5184,7 @@ export default function ArcaneCraftingCodexPage() {
         <CharacterClaimBar
           characters={effectiveCharacters.filter((character) => adminUnlocked || character.isActive !== false || character.claimable)}
           claims={characterClaims}
+          pins={claimPins}
           deviceId={deviceId}
           adminUnlocked={adminUnlocked}
           message={claimMessage}
@@ -6513,6 +6573,7 @@ function MaterialsPanel({
 function CharacterClaimBar({
   characters,
   claims,
+  pins,
   deviceId,
   adminUnlocked,
   message,
@@ -6521,30 +6582,51 @@ function CharacterClaimBar({
 }: {
   characters: Character[];
   claims: Record<string, string>;
+  pins: Record<string, string>;
   deviceId: string;
   adminUnlocked: boolean;
   message: string;
-  onClaim: (characterId: string) => void;
+  onClaim: (characterId: string, pin: string) => void;
   onRelease: (characterId: string) => void;
 }) {
-  const mine = characters.filter((character) => deviceId && claims[character.id] === deviceId);
-  const claimable = characters.filter((character) => claims[character.id] !== deviceId || !deviceId);
+  const [choice, setChoice] = useState("");
+  const [pin, setPin] = useState("");
+  const holders = (id: string) => claimDevices(claims[id]);
+  const mine = characters.filter((character) => deviceId && holders(character.id).includes(deviceId));
+  const claimable = characters.filter((character) => !deviceId || !holders(character.id).includes(deviceId));
+  const chosen = characters.find((character) => character.id === choice);
+  const chosenTaken = chosen ? holders(chosen.id).length > 0 || Boolean(pins[chosen.id]) : false;
+
+  function submit() {
+    if (!choice) return;
+    onClaim(choice, pin);
+    setPin("");
+    setChoice("");
+  }
 
   return (
     <div className="space-y-2 rounded-xl border border-[#9a7b45] bg-[#ead6ad] px-4 py-3 font-serif text-[#251b10]">
       {adminUnlocked ? (
         <div className="flex flex-wrap items-center gap-2 text-sm">
           <strong>Character claims:</strong>
-          {characters.map((character) => (
-            <span key={character.id} className="flex items-center gap-1 rounded-full border border-[#9a7b45] bg-[#fff0c7] px-3 py-0.5">
-              {character.name}: {claims[character.id] ? (claims[character.id] === deviceId ? "this computer" : `claimed (device ${claims[character.id].slice(0, 4)})`) : "unclaimed"}
-              {claims[character.id] && (
-                <button className="ml-1 text-xs font-bold text-[#8b1a1a] underline" onClick={() => onRelease(character.id)}>
-                  release
-                </button>
-              )}
-            </span>
-          ))}
+          {characters.map((character) => {
+            const list = holders(character.id);
+            return (
+              <span key={character.id} className="flex items-center gap-1 rounded-full border border-[#9a7b45] bg-[#fff0c7] px-3 py-0.5">
+                {character.name}:{" "}
+                {list.length === 0
+                  ? "unclaimed"
+                  : list.includes(deviceId)
+                    ? `this computer${list.length > 1 ? ` + ${list.length - 1} more` : ""}`
+                    : `claimed on ${list.length} device${list.length === 1 ? "" : "s"}`}
+                {(list.length > 0 || pins[character.id]) && (
+                  <button className="ml-1 text-xs font-bold text-[#8b1a1a] underline" onClick={() => onRelease(character.id)}>
+                    release
+                  </button>
+                )}
+              </span>
+            );
+          })}
         </div>
       ) : (
         <div className="flex flex-wrap items-center gap-2">
@@ -6554,27 +6636,45 @@ function CharacterClaimBar({
             <span key={character.id} className="flex items-center gap-1 rounded-full border border-[#4b3115] bg-[#4b3115] px-3 py-0.5 text-sm text-[#fff0c7]">
               {character.name}
               {character.isActive === false && <span className="text-xs italic">(not in play yet)</span>}
-              <button className="ml-1 text-xs underline" onClick={() => onRelease(character.id)} aria-label={`Release ${character.name}`}>
+              <button className="ml-1 text-xs underline" onClick={() => onRelease(character.id)} aria-label={`Release ${character.name} on this device`}>
                 release
               </button>
             </span>
           ))}
           <select
-            value=""
-            onChange={(event) => onClaim(event.target.value)}
+            value={choice}
+            onChange={(event) => setChoice(event.target.value)}
             className="rounded border border-[#9a7b45] bg-[#fff0c7] px-2 py-1 text-sm"
             aria-label="Claim a character"
           >
             <option value="">Claim a character...</option>
             {claimable.map((character) => (
-              <option key={character.id} value={character.id} disabled={Boolean(claims[character.id])}>
+              <option key={character.id} value={character.id}>
                 {character.name}
                 {character.isActive === false ? " (future character)" : ""}
-                {claims[character.id] ? " (claimed on another device)" : ""}
+                {holders(character.id).length > 0 ? " (claimed — needs its PIN)" : ""}
               </option>
             ))}
           </select>
-          <span className="text-xs">Claimed characters are locked to this computer. Crafting, looting, gathering and inventory use them.</span>
+          {chosen && (
+            <>
+              <input
+                type="password"
+                value={pin}
+                onChange={(event) => setPin(event.target.value)}
+                onKeyDown={(event) => event.key === "Enter" && submit()}
+                placeholder={chosenTaken ? "Its PIN" : "Choose a PIN"}
+                className="w-28 rounded border border-[#9a7b45] bg-[#fff0c7] px-2 py-1 text-sm"
+                aria-label={chosenTaken ? `PIN for ${chosen.name}` : `New PIN for ${chosen.name}`}
+              />
+              <button className="rounded bg-[#4b3115] px-3 py-1 text-sm font-bold text-[#fff0c7]" onClick={submit}>
+                {chosenTaken ? "Add this device" : "Claim"}
+              </button>
+            </>
+          )}
+          <span className="text-xs">
+            Claims are saved to the campaign. You can claim several characters, and use your PIN to claim the same one on another device.
+          </span>
         </div>
       )}
       {message && <p className="text-sm font-bold text-[#7a3f00]">{message}</p>}

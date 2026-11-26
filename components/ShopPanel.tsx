@@ -16,6 +16,10 @@ import { changeForCp, formatCp, paymentPlan } from "@/data/coins";
 import {
   SELL_RATE,
   SHOP_TEMPLATES,
+  GATHERING_GEAR,
+  GEAR_DESCRIPTIONS,
+  gearName,
+  gearPriceCp,
   isMaterialName,
   itemValueCp,
   materialValueCp,
@@ -53,7 +57,7 @@ function recipeFor(row: Pick<InventoryRow, "name" | "metadata">) {
 // What a shop pays for one of this item (half its value; a half-used
 // consumable is worth only the uses left on it).
 export function itemSaleCp(row: InventoryRow) {
-  const value = itemValueCp({ recipe: recipeFor(row), rarity: row.rarity, quality: row.quality });
+  const value = gearPriceCp(row.name) ?? itemValueCp({ recipe: recipeFor(row), rarity: row.rarity, quality: row.quality });
   const meta = row.metadata || {};
   let fraction = 1;
   if (meta.consumable && row.qty === 1) {
@@ -135,6 +139,12 @@ function ShopEditor({ shop, onDone }: { shop: ShopRow; onDone: (message: string)
   function addEntry() {
     const entryName = newName.trim();
     if (!entryName || stock.some((entry) => entry.name.toLowerCase() === entryName.toLowerCase())) return;
+    const gear = gearName(entryName);
+    if (gear) {
+      setStock([...stock, { name: gear, kind: "item", priceCp: gearPriceCp(gear) ?? 0, qty: null }]);
+      setNewName("");
+      return;
+    }
     const recipe = recipeByName.get(entryName.toLowerCase());
     const material = isMaterialName(entryName) || !recipe;
     setStock([
@@ -156,6 +166,23 @@ function ShopEditor({ shop, onDone }: { shop: ShopRow; onDone: (message: string)
         <input className={fieldClass} value={description} placeholder="Description" onChange={(event) => setDescription(event.target.value)} aria-label="Shop description" />
       </div>
       <p className="text-xs">Price is in gold (0.2 = 2 sp). Leave stock blank for unlimited.</p>
+      <button
+        type="button"
+        className="rounded border border-[#9a7b45] bg-[#ead6ad] px-2 py-1 text-xs font-bold"
+        onClick={() =>
+          setStock([
+            ...stock,
+            ...GATHERING_GEAR.filter((gear) => !stock.some((entry) => entry.name.toLowerCase() === gear.toLowerCase())).map((gear) => ({
+              name: gear,
+              kind: "item" as const,
+              priceCp: gearPriceCp(gear) ?? 0,
+              qty: null,
+            })),
+          ])
+        }
+      >
+        Add gathering tools (pickaxe, woodcutter&apos;s axe, herbalism kit, fishing rod)
+      </button>
       <div className="max-h-80 space-y-1 overflow-y-auto">
         {stock.map((entry, index) => (
           <div key={entry.name} className="grid grid-cols-[1fr_80px_80px_auto] items-center gap-2">
@@ -327,11 +354,11 @@ export default function ShopPanel({
           characterId: activeBuyer === PARTY_FUND ? null : activeBuyer,
           name: entry.name,
           qty,
-          kind: recipe?.category || "item",
+          kind: recipe?.category || (gearName(entry.name) ? "tool" : "item"),
           rarity: recipe?.rarity || null,
           quality: "Normal",
           source: `Bought at ${shop.name}`,
-          description: outcome?.description || recipe?.description || null,
+          description: outcome?.description || recipe?.description || GEAR_DESCRIPTIONS[entry.name] || null,
           metadata: { consumable: info.consumable, usesPerItem: info.usesPerItem, recipeId: recipe?.id || null },
         });
       }
